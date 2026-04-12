@@ -30,7 +30,7 @@ export const Hero = () => {
     <section className="py-20 lg:py-24 lg:pt-36">
       <div className="container flex flex-col justify-between gap-8 md:gap-14 lg:flex-row lg:gap-20">
         {/* Left */}
-        <div className="flex-1">
+        <div className="lg:flex-[0.9]">
           <h1 className="text-[var(--hooklyne-navy)] max-w-lg text-3xl tracking-tight md:text-4xl lg:text-5xl leading-[1.1]">
             Find the prospects actually worth reaching out to.
           </h1>
@@ -57,7 +57,7 @@ export const Hero = () => {
         </div>
 
         {/* Right - feature list */}
-        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-10">
+        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-10 lg:max-w-none">
           <DashedLine
             orientation="vertical"
             className="absolute top-0 left-0 max-lg:hidden"
@@ -75,7 +75,7 @@ export const Hero = () => {
                   <h2 className="font-text text-[var(--hooklyne-navy)] font-semibold">
                     {feature.title}
                   </h2>
-                  <p className="text-[var(--muted-foreground)] max-w-76 text-sm">
+                  <p className="text-[var(--muted-foreground)] text-sm">
                     {feature.description}
                   </p>
                 </div>
