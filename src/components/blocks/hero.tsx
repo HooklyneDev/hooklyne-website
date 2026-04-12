@@ -75,7 +75,7 @@ export const Hero = () => {
                   <h2 className="font-text text-[var(--hooklyne-navy)] font-semibold">
                     {feature.title}
                   </h2>
-                  <p className="text-[var(--muted-foreground)] text-sm">
+                  <p className="text-[var(--muted-foreground)] text-sm max-w-xs">
                     {feature.description}
                   </p>
                 </div>
