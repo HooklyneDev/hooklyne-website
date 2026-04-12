@@ -57,7 +57,7 @@ export const Hero = () => {
         </div>
 
         {/* Right - feature list */}
-        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-16 lg:max-w-none">
+        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-10 lg:max-w-none">
           <DashedLine
             orientation="vertical"
             className="absolute top-0 left-0 max-lg:hidden"
@@ -75,7 +75,7 @@ export const Hero = () => {
                   <h2 className="font-text text-[var(--hooklyne-navy)] font-semibold">
                     {feature.title}
                   </h2>
-                  <p className="text-[var(--muted-foreground)] text-sm max-w-72">
+                  <p className="text-[var(--muted-foreground)] text-sm">
                     {feature.description}
                   </p>
                 </div>
