@@ -27,7 +27,7 @@ const features = [
   },
   {
     title: "Real-time signal monitoring",
-    description: <>Track companies over time. When something relevant happens,<br />you get a ready-to-send follow-up.</>,
+    description: <>Track companies over time. When something relevant<br />happens, you get a ready-to-send follow-up.</>,
     icon: Bell,
   },
 ];
