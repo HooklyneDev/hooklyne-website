@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -17,24 +16,20 @@ export const Navbar = () => {
 
   useEffect(() => {
     setPathname(window.location.pathname);
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 lg:pt-6 px-4">
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:pt-5 flex justify-center pointer-events-none">
       <nav
         className={cn(
-          "w-full transition-all duration-300 rounded-2xl border",
-          "max-w-[min(100%,1220px)]",
+          "w-full pointer-events-auto transition-all duration-300 rounded-2xl border",
+          "max-w-[1220px]",
           scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md border-[var(--hooklyne-blue)]/10"
-            : "bg-white/80 backdrop-blur-sm border-[var(--border)]",
+            ? "bg-white/60 backdrop-blur-2xl shadow-lg border-white/40"
+            : "bg-white/40 backdrop-blur-2xl border-white/30",
         )}
       >
         <div className="flex items-center justify-between px-5 py-3">
@@ -49,15 +44,16 @@ export const Navbar = () => {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5">
             {ITEMS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 className={cn(
                   "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
-                  "text-[var(--foreground)] hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
-                  pathname === link.href && "text-[var(--hooklyne-blue)]",
+                  pathname === link.href
+                    ? "text-[var(--hooklyne-blue)]"
+                    : "text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
                 )}
               >
                 {link.label}
@@ -81,7 +77,7 @@ export const Navbar = () => {
                   color: "#ffffff",
                 }}
               >
-                Request access
+                Book a demo
               </Button>
             </a>
           </div>
@@ -93,18 +89,9 @@ export const Navbar = () => {
             aria-label="Toggle menu"
           >
             <div className="absolute top-1/2 left-1/2 block w-[18px] -translate-x-1/2 -translate-y-1/2">
-              <span
-                aria-hidden="true"
-                className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-300 ${isMenuOpen ? "rotate-45" : "-translate-y-1.5"}`}
-              />
-              <span
-                aria-hidden="true"
-                className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-300 ${isMenuOpen ? "opacity-0" : ""}`}
-              />
-              <span
-                aria-hidden="true"
-                className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-300 ${isMenuOpen ? "-rotate-45" : "translate-y-1.5"}`}
-              />
+              <span aria-hidden="true" className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-300 ${isMenuOpen ? "rotate-45" : "-translate-y-1.5"}`} />
+              <span aria-hidden="true" className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-300 ${isMenuOpen ? "opacity-0" : ""}`} />
+              <span aria-hidden="true" className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-300 ${isMenuOpen ? "-rotate-45" : "translate-y-1.5"}`} />
             </div>
           </button>
         </div>
@@ -116,22 +103,18 @@ export const Navbar = () => {
             isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
           )}
         >
-          <div className="border-t border-[var(--border)] px-5 py-4 flex flex-col gap-1">
+          <div className="border-t border-white/30 px-5 py-4 flex flex-col gap-1">
             {ITEMS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className={cn(
-                  "py-2.5 px-3 rounded-lg text-sm font-medium transition-colors",
-                  "text-[var(--foreground)] hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
-                  pathname === link.href && "text-[var(--hooklyne-blue)]",
-                )}
+                className="py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
+            <div className="mt-3 pt-3 border-t border-white/30 flex flex-col gap-2">
               <a
                 href="https://portal.hooklyne.com"
                 className="py-2.5 px-3 text-sm font-medium text-[var(--muted-foreground)]"
@@ -147,7 +130,7 @@ export const Navbar = () => {
                     color: "#ffffff",
                   }}
                 >
-                  Request access
+                  Book a demo
                 </Button>
               </a>
             </div>
