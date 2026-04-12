@@ -1,88 +1,145 @@
-import { ChevronRight } from "lucide-react";
+import { Search, UserCheck, FileText, Send } from "lucide-react";
 
-import { DashedLine } from "../dashed-line";
-
-import { Card, CardContent } from "@/components/ui/card";
-
-const items = [
+const steps = [
   {
-    title: "Purpose-built for product development",
-    image: "/features/triage-card.svg",
+    number: "01",
+    icon: Search,
+    title: "Describe your ideal prospect",
+    description:
+      "Tell Hooklyne the type of company, their situation, and their focus. No forms, no filters - just describe it like you would to a colleague.",
+    tag: "Find me companies",
   },
   {
-    title: "Manage projects end-to-end",
-    image: "/features/cycle-card.svg",
+    number: "02",
+    icon: UserCheck,
+    title: "Get a ranked list with matched contacts",
+    description:
+      "Hooklyne returns a ranked list of matching companies, highest signal first. It then finds the right decision-maker at each one - not just a job title, the actual person.",
+    tag: "Smart person matching",
   },
   {
-    title: "Build momentum and healthy habits",
-    image: "/features/overview-card.svg",
+    number: "03",
+    icon: FileText,
+    title: "Receive outreach written in your voice",
+    description:
+      "For each prospect, Hooklyne writes a personalised email or LinkedIn message based on real signals - in your tone, referencing their situation. No editing needed.",
+    tag: "Outreach written",
+  },
+  {
+    number: "04",
+    icon: Send,
+    title: "Send. Track. Repeat.",
+    description:
+      "Outreach lands in My Leads ready to send. Signals keep updating so you always know when to follow up and why.",
+    tag: "My Leads",
   },
 ];
 
 export const Features = () => {
   return (
-    <section id="feature-modern-teams" className="pb-28 lg:pb-32">
+    <section id="how-it-works" className="pb-28 lg:pb-32">
       <div className="container">
-        {/* Top dashed line with text */}
-        <div className="relative flex items-center justify-center">
-          <DashedLine className="text-muted-foreground" />
-          <span className="bg-muted text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide max-md:hidden">
-            MEASURE TWICE. CUT ONCE.
-          </span>
-        </div>
-
-        {/* Content */}
-        <div className="mx-auto mt-10 grid max-w-4xl items-center gap-3 md:gap-0 lg:mt-24 lg:grid-cols-2">
-          <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl">
-            Made for modern product teams
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center mb-16 lg:mb-20">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">
+            How it works
+          </p>
+          <h2 className="text-3xl tracking-tight md:text-4xl lg:text-5xl text-[var(--hooklyne-navy)]">
+            From description to outreach in minutes
           </h2>
-          <p className="text-muted-foreground leading-snug">
-            Mainline is built on the habits that make the best product teams
-            successful: staying focused, moving quickly, and always aiming for
-            high-quality work.
+          <p className="text-[var(--muted-foreground)] mt-4 text-lg leading-relaxed">
+            Three ways to start. One workflow out. Every path ends in ready-to-send outreach.
           </p>
         </div>
 
-        {/* Features Card */}
-        <Card className="mt-8 rounded-3xl md:mt-12 lg:mt-20">
-          <CardContent className="flex p-0 max-md:flex-col">
-            {items.map((item, i) => (
-              <div key={i} className="flex flex-1 max-md:flex-col">
-                <div className="flex-1 p-4 pe-0! md:p-6">
-                  <div className="relative aspect-[1.28/1] overflow-hidden rounded-xl bg-card">
-                    <img
-                      src={item.image}
-                      alt={`${item.title} interface`}
-                      className="object-cover object-left-top ps-4 pt-2"
-                    />
+        {/* Steps */}
+        <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+          {steps.map((step) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={step.number}
+                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 lg:p-8 flex gap-5"
+              >
+                <div className="shrink-0">
+                  <div className="size-10 rounded-xl bg-[var(--hooklyne-blue)]/8 flex items-center justify-center">
+                    <Icon className="size-5 text-[var(--hooklyne-blue)]" />
                   </div>
-
-                  <a
-                    href="#"
-                    className="group flex items-center justify-between gap-4 pe-4 pt-4 md:pe-6 md:pt-6"
-                  >
-                    <h3 className="font-display max-w-60 text-2xl leading-tight font-bold tracking-tight">
-                      {item.title}
-                    </h3>
-                    <div className="rounded-full border p-2">
-                      <ChevronRight className="size-6 transition-transform group-hover:translate-x-1 lg:size-9" />
-                    </div>
-                  </a>
                 </div>
-                {i < items.length - 1 && (
-                  <div className="relative hidden md:block">
-                    <DashedLine orientation="vertical" />
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs font-mono font-semibold text-[var(--muted-foreground)]">
+                      {step.number}
+                    </span>
+                    <span className="text-xs font-medium text-[var(--hooklyne-teal)] bg-[var(--hooklyne-teal)]/8 px-2 py-0.5 rounded-full">
+                      {step.tag}
+                    </span>
                   </div>
+                  <h3 className="text-lg font-semibold text-[var(--hooklyne-navy)] mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Three entry points */}
+        <div className="mt-12 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 lg:p-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">
+            Three ways to start
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Find me companies",
+                subtitle: "Describe it. Find it. Send it.",
+                detail: "Just a description",
+                highlight: true,
+                badge: "Most powerful",
+              },
+              {
+                title: "I know who I want to reach",
+                subtitle: "Add a name or list. We verify and write.",
+                detail: "A name + LinkedIn URL",
+                highlight: false,
+                badge: null,
+              },
+              {
+                title: "I know the company",
+                subtitle: "Enter the company. We find the right person.",
+                detail: "A company name + domain",
+                highlight: false,
+                badge: null,
+              },
+            ].map((entry) => (
+              <div
+                key={entry.title}
+                className={`rounded-xl p-4 border ${
+                  entry.highlight
+                    ? "border-[var(--hooklyne-blue)]/30 bg-[var(--hooklyne-blue)]/4"
+                    : "border-[var(--border)] bg-[var(--bg)]"
+                }`}
+              >
+                {entry.badge && (
+                  <span className="text-xs font-semibold text-[var(--hooklyne-orange)] uppercase tracking-wide mb-2 block">
+                    {entry.badge}
+                  </span>
                 )}
-                {i < items.length - 1 && (
-                  <div className="relative block md:hidden">
-                    <DashedLine orientation="horizontal" />
-                  </div>
-                )}
+                <h4 className="text-sm font-semibold text-[var(--hooklyne-navy)] mb-1">
+                  {entry.title}
+                </h4>
+                <p className="text-xs text-[var(--muted-foreground)] mb-3">{entry.subtitle}</p>
+                <span className="text-xs text-[var(--muted-foreground)]">
+                  Need: <span className="font-medium text-[var(--foreground)]">{entry.detail}</span>
+                </span>
               </div>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );
