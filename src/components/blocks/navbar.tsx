@@ -39,8 +39,8 @@ export const Navbar = () => {
             <img
               src="/logo.svg"
               alt="Hooklyne"
-              width={110}
-              height={22}
+              width={140}
+              height={28}
             />
           </a>
 
