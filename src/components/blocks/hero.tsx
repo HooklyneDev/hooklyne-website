@@ -77,7 +77,7 @@ export const Hero = () => {
             const Icon = feature.icon;
             return (
               <div key={feature.title} className="flex gap-2.5 lg:gap-5">
-                <Icon className="text-[var(--hooklyne-blue)] mt-1 size-4 shrink-0 lg:size-5" />
+                <Icon className="text-[var(--hooklyne-blue)] mt-1 size-4 shrink-0 lg:size-5 ml-4" />
                 <div>
                   <h2 className="font-text text-[var(--hooklyne-navy)] font-semibold">
                     {feature.title}
