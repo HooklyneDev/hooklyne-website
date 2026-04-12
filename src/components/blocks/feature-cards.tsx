@@ -27,11 +27,13 @@ export const FeatureCards = () => {
   return (
     <section className="pb-24 lg:pb-28">
       <div className="container">
-        <div className="relative flex items-center justify-center mb-12">
-          <DashedLine className="text-muted-foreground" />
-          <span className="bg-muted text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide max-md:hidden">
+        {/* Section label - connection line with centered label */}
+        <div className="relative flex items-center gap-3 mb-12">
+          <DashedLine className="text-muted-foreground flex-1" />
+          <span className="shrink-0 bg-muted text-muted-foreground px-3 py-1 rounded-full font-mono text-xs font-medium tracking-widest uppercase whitespace-nowrap">
             WHAT HOOKLYNE DELIVERS
           </span>
+          <DashedLine className="text-muted-foreground flex-1" />
         </div>
 
         <div className="mx-auto mb-10 grid max-w-4xl items-center gap-3 md:gap-0 lg:grid-cols-2">
@@ -71,12 +73,12 @@ export const FeatureCards = () => {
                   </a>
                 </div>
                 {i < cards.length - 1 && (
-                  <div className="relative hidden md:block">
+                  <div className="relative hidden md:flex items-stretch">
                     <DashedLine orientation="vertical" />
                   </div>
                 )}
                 {i < cards.length - 1 && (
-                  <div className="relative block md:hidden">
+                  <div className="relative flex md:hidden px-6 py-0">
                     <DashedLine orientation="horizontal" />
                   </div>
                 )}

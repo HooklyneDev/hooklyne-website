@@ -18,15 +18,16 @@ export const Background = ({
   return (
     <div
       className={cn(
-        "relative mx-2.5 overflow-hidden",
-        isTop && "rounded-b-2xl",
-        !isTop && "rounded-t-2xl rounded-b-4xl",
+        "relative w-full overflow-hidden",
+        isTop && "rounded-b-3xl",
+        !isTop && "rounded-t-3xl rounded-b-4xl",
         className,
       )}
       style={{
         background: isTop
           ? "linear-gradient(to bottom, #f1f5f9 0%, #f8fafc 60%, #f1f5f9 100%)"
           : "linear-gradient(to bottom, #f1f5f9 0%, #f8fafc 100%)",
+        minHeight: isTop ? undefined : "60vh",
       }}
     >
       <div className="relative z-10">{children}</div>

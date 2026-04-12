@@ -1,4 +1,15 @@
-import { Search, UserCheck, FileText, Send } from "lucide-react";
+import {
+  Search,
+  UserCheck,
+  FileText,
+  Send,
+  ClipboardList,
+  Phone,
+  Linkedin,
+  FileAudio,
+  Radar,
+  Layers,
+} from "lucide-react";
 import { DashedLine } from "@/components/dashed-line";
 
 const modes = [
@@ -6,7 +17,8 @@ const modes = [
     badge: "Most powerful",
     title: "Find me companies",
     subtitle: "Describe it. Find it. Send it.",
-    description: "Describe the type of company, their situation, their focus. Hooklyne returns a ranked list, highest signal first. Select, describe the person by role, and the system runs: verifies email, finds LinkedIn, writes outreach anchored to the signal that ranked them.",
+    description:
+      "Describe the type of company, their situation, their focus. Hooklyne returns a ranked list, highest signal first. Select, describe the person by role, and the system runs: verifies email, finds LinkedIn, writes outreach anchored to the signal that ranked them.",
     tags: ["Prospecting from scratch", "Testing a new segment", "Building pipeline fast"],
     need: "Just a description",
     highlight: true,
@@ -15,7 +27,8 @@ const modes = [
     badge: null,
     title: "I know who I want to reach",
     subtitle: "Add a name or list. We verify and write.",
-    description: "Submit companies with a contact name or role description. Hooklyne finds their details, verifies the email, and writes the outreach. Ready-to-send in under 60 seconds per prospect.",
+    description:
+      "Submit companies with a contact name or role description. Hooklyne finds their details, verifies the email, and writes the outreach. Ready-to-send in under 60 seconds per prospect.",
     tags: ["Working a known list", "Trade show follow-up", "Warm pipeline"],
     need: "A name + LinkedIn URL per company",
     highlight: false,
@@ -24,7 +37,8 @@ const modes = [
     badge: null,
     title: "I know the company",
     subtitle: "Enter the company. We find the right door.",
-    description: "Enter the company. Describe the type of person you want to reach - not a job title, an actual role description. Hooklyne surfaces 3 matched contacts. Pick one or run them all.",
+    description:
+      "Enter the company. Describe the type of person you want to reach - not a job title, an actual role description. Hooklyne surfaces 3 matched contacts. Pick one or run them all.",
     tags: ["Target account lists", "You know the company, not the right person"],
     need: "A company name + domain",
     highlight: false,
@@ -32,19 +46,55 @@ const modes = [
 ];
 
 const signalFeatures = [
-  { title: "Context-aware search", desc: "Finds by meaning, not keywords. Surfaces relevant signals others miss." },
-  { title: "ICP-relative scoring", desc: "Every hook scored 1-10 against your product and ICP. Only 6+ ships. Same news scores differently for every sender." },
-  { title: "Cited research", desc: "Every finding has a clickable source. No hallucinations. Verify it yourself." },
-  { title: "Direct intelligence", desc: "Newsrooms and press pages scraped before they hit aggregators." },
+  {
+    title: "Context-aware search",
+    desc: "Finds by meaning, not keywords. Surfaces relevant signals others miss.",
+  },
+  {
+    title: "ICP-relative scoring",
+    desc: "Every hook scored 1-10 against your product and ICP. Only 6+ ships. Same news scores differently for every sender.",
+  },
+  {
+    title: "Cited research",
+    desc: "Every finding has a clickable source. No hallucinations. Verify it yourself.",
+  },
+  {
+    title: "Direct intelligence",
+    desc: "Newsrooms and press pages scraped before they hit aggregators.",
+  },
 ];
 
 const beyond = [
-  { icon: "📋", title: "Meeting prep briefs", desc: "Deep company brief - key people, recent news, talking points - in under 5 minutes. Show up knowing more than anyone in the room." },
-  { icon: "📞", title: "Company phone numbers", desc: "Found via registries and business databases. ~€0.01 per lookup. Available when you want to follow up by phone after your email lands." },
-  { icon: "🔗", title: "LinkedIn connection messages", desc: "Each package includes a signal-anchored LinkedIn invite in your voice - ready to send alongside or instead of the email." },
-  { icon: "📝", title: "Signal call scripts", desc: "When a signal fires: opening line, 30-sec pitch, discovery questions, objection handlers. All based on the specific signal." },
-  { icon: "📡", title: "Long-term prospect tracking", desc: "Track companies and contacts over time. The moment something relevant happens, you get an alert and a ready-to-send follow-up." },
-  { icon: "⚡", title: "Staged outreach", desc: "Not just one touch. Signal-triggered follow-ups for the prospects you're nurturing. Each one anchored to something new, in your voice." },
+  {
+    Icon: ClipboardList,
+    title: "Meeting prep briefs",
+    desc: "Deep company brief - key people, recent news, talking points - in under 5 minutes. Show up knowing more than anyone in the room.",
+  },
+  {
+    Icon: Phone,
+    title: "Company phone numbers",
+    desc: "Found via registries and business databases. ~\u20ac0.01 per lookup. Available when you want to follow up by phone after your email lands.",
+  },
+  {
+    Icon: Linkedin,
+    title: "LinkedIn connection messages",
+    desc: "Each package includes a signal-anchored LinkedIn invite in your voice - ready to send alongside or instead of the email.",
+  },
+  {
+    Icon: FileAudio,
+    title: "Signal call scripts",
+    desc: "When a signal fires: opening line, 30-sec pitch, discovery questions, objection handlers. All based on the specific signal.",
+  },
+  {
+    Icon: Radar,
+    title: "Long-term prospect tracking",
+    desc: "Track companies and contacts over time. The moment something relevant happens, you get an alert and a ready-to-send follow-up.",
+  },
+  {
+    Icon: Layers,
+    title: "Staged outreach",
+    desc: "Not just one touch. Signal-triggered follow-ups for the prospects you're nurturing. Each one anchored to something new, in your voice.",
+  },
 ];
 
 export const Features = () => {
@@ -53,11 +103,13 @@ export const Features = () => {
       {/* How it works */}
       <section id="how-it-works" className="pb-20 lg:pb-28">
         <div className="container">
-          <div className="relative flex items-center justify-center mb-12 lg:mb-16">
-            <DashedLine className="text-muted-foreground" />
-            <span className="bg-muted text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide max-md:hidden">
+          {/* Section label */}
+          <div className="relative flex items-center gap-3 mb-12 lg:mb-16">
+            <DashedLine className="text-muted-foreground flex-1" />
+            <span className="shrink-0 bg-muted text-muted-foreground px-3 py-1 rounded-full font-mono text-xs font-medium tracking-widest uppercase whitespace-nowrap">
               THREE WAYS IN. ONE WORKFLOW OUT.
             </span>
+            <DashedLine className="text-muted-foreground flex-1" />
           </div>
 
           <div className="mx-auto max-w-4xl mb-10 grid items-center gap-3 md:gap-0 lg:grid-cols-2">
@@ -89,7 +141,9 @@ export const Features = () => {
                 <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4 flex-1">{mode.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {mode.tags.map((tag) => (
-                    <span key={tag} className="text-xs text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/6 px-2 py-0.5 rounded-full">{tag}</span>
+                    <span key={tag} className="text-xs text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/6 px-2 py-0.5 rounded-full">
+                      {tag}
+                    </span>
                   ))}
                 </div>
                 <p className="text-xs text-[var(--muted-foreground)]">
@@ -113,11 +167,13 @@ export const Features = () => {
                 { label: "My Leads - ready to send", highlight: true },
               ].map((step, i, arr) => (
                 <div key={step.label} className="flex items-center gap-1.5">
-                  <span className={`text-xs font-medium px-2.5 py-1 rounded-lg ${
-                    step.highlight
-                      ? "bg-[var(--hooklyne-teal)]/10 text-[var(--hooklyne-teal)] font-semibold"
-                      : "bg-[var(--bg)] text-[var(--muted-foreground)] border border-[var(--border)]"
-                  }`}>
+                  <span
+                    className={`text-xs font-medium px-2.5 py-1 rounded-lg ${
+                      step.highlight
+                        ? "bg-[var(--hooklyne-teal)]/10 text-[var(--hooklyne-teal)] font-semibold"
+                        : "bg-[var(--bg)] text-[var(--muted-foreground)] border border-[var(--border)]"
+                    }`}
+                  >
                     {step.label}
                   </span>
                   {i < arr.length - 1 && <span className="text-[var(--muted-foreground)]/40 text-xs">›</span>}
@@ -150,13 +206,10 @@ export const Features = () => {
                 </p>
               </div>
               <p className="text-xs text-[var(--muted-foreground)]">Real-time on Growth Smarter and above. Email digest on Start.</p>
-
-              {/* Placeholder image */}
               <div className="mt-6 rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 flex items-center justify-center min-h-[160px]">
                 <p className="text-xs text-[var(--muted-foreground)]/50 text-center">Replace with signal notification screenshot</p>
               </div>
             </div>
-
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4">Why we search differently</p>
               <div className="space-y-3">
@@ -186,11 +239,13 @@ export const Features = () => {
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {beyond.map((item) => (
-              <div key={item.title} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
-                <span className="text-2xl mb-3 block">{item.icon}</span>
-                <h3 className="text-sm font-semibold text-[var(--hooklyne-navy)] mb-1.5">{item.title}</h3>
-                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.desc}</p>
+            {beyond.map(({ Icon, title, desc }) => (
+              <div key={title} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+                <div className="size-9 rounded-lg bg-[var(--hooklyne-blue)]/8 flex items-center justify-center mb-3">
+                  <Icon className="size-5 text-[var(--hooklyne-blue)]" />
+                </div>
+                <h3 className="text-sm font-semibold text-[var(--hooklyne-navy)] mb-1.5">{title}</h3>
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

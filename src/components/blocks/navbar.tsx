@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { UserCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
@@ -29,19 +30,14 @@ export const Navbar = () => {
           "w-full pointer-events-auto transition-all duration-300 rounded-2xl border",
           "max-w-[960px]",
           scrolled
-            ? "bg-white/60 backdrop-blur-2xl shadow-lg border-white/40"
-            : "bg-white/40 backdrop-blur-2xl border-white/30",
+            ? "bg-white/90 backdrop-blur-2xl shadow-lg border-white/60"
+            : "bg-white/70 backdrop-blur-2xl border-white/50",
         )}
       >
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
           <a href="/" className="flex shrink-0 items-center gap-2">
-            <img
-              src="/logo.svg"
-              alt="Hooklyne"
-              width={140}
-              height={28}
-            />
+            <img src="/logo.svg" alt="Hooklyne" width={140} height={28} />
           </a>
 
           {/* Desktop nav */}
@@ -66,8 +62,9 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="https://portal.hooklyne.com"
-              className="text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+              className="flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
             >
+              <UserCircle className="size-4 shrink-0" />
               Log in
             </a>
             <a href="/contact">
@@ -118,9 +115,10 @@ export const Navbar = () => {
             <div className="mt-3 pt-3 border-t border-white/30 flex flex-col gap-2">
               <a
                 href="https://portal.hooklyne.com"
-                className="py-2.5 px-3 text-sm font-medium text-[var(--muted-foreground)]"
+                className="flex items-center gap-2 py-2.5 px-3 text-sm font-medium text-[var(--muted-foreground)]"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <UserCircle className="size-4 shrink-0" />
                 Log in
               </a>
               <a href="/contact" onClick={() => setIsMenuOpen(false)}>
