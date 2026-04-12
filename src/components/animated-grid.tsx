@@ -46,7 +46,7 @@ export const AnimatedGrid = () => {
     if (!ctx) return;
 
     const GRID = 80;
-    const DOT_COUNT = 14;
+    const DOT_COUNT = 20;
     const TRAIL_LENGTH = 6;
 
     let width = 0;
@@ -132,7 +132,7 @@ export const AnimatedGrid = () => {
           const bx = gridX(dots[j].col) + (gridX(dots[j].targetCol) - gridX(dots[j].col)) * dots[j].progress;
           const by = gridY(dots[j].row) + (gridY(dots[j].targetRow) - gridY(dots[j].row)) * dots[j].progress;
           const dist = Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2);
-          const maxDist = GRID * 3;
+          const maxDist = GRID * 5;
           if (dist < maxDist) {
             const alpha = (1 - dist / maxDist) * 0.1;
             ctx.strokeStyle = `rgba(2, 47, 81, ${alpha})`;
