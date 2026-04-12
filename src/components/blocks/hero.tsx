@@ -37,13 +37,13 @@ export const Hero = () => {
     <section className="py-20 lg:py-24 lg:pt-36">
       <div className="container flex flex-col justify-between gap-8 md:gap-14 lg:flex-row lg:gap-20">
         {/* Left */}
-        <div className="lg:flex-[0.9]">
+        <div className="lg:flex-[0.75]">
           <h1 className="text-[var(--hooklyne-navy)] max-w-lg text-3xl tracking-tight md:text-4xl lg:text-5xl leading-[1.1]">
             Find the prospects actually worth reaching out to.
           </h1>
 
           <p className="text-[var(--muted-foreground)] mt-5 max-w-md text-lg leading-relaxed">
-            Ranked by relevant news signals - so every first touch has a real reason, with a ready-to-send message already written in your voice.
+            Ranked by relevant news signals, so every first touch has a real reason, with a ready-to-send message already written in your voice.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
