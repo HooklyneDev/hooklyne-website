@@ -92,16 +92,14 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Hero image - placeholder */}
+      {/* Hero image */}
       <div className="mt-8 max-lg:ml-6 max-lg:h-[400px] max-lg:overflow-hidden md:mt-12 lg:container lg:mt-16">
-        <div className="relative h-[520px] w-full rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg flex items-center justify-center">
-          <div className="text-center">
-            <div className="size-14 rounded-2xl bg-[var(--hooklyne-blue)]/10 flex items-center justify-center mx-auto mb-3">
-              <FileText className="size-7 text-[var(--hooklyne-blue)]" />
-            </div>
-            <p className="text-sm font-medium text-[var(--muted-foreground)]">Product screenshot goes here</p>
-            <p className="text-xs text-[var(--muted-foreground)]/50 mt-1 max-w-xs mx-auto">Portal screenshot - prospect card with signal score, verified contact, and outreach preview</p>
-          </div>
+        <div className="relative w-full rounded-2xl border border-[var(--border)] shadow-xl overflow-hidden">
+          <img
+            src="/hero-screenshot.png"
+            alt="Hooklyne portal - Prospect Signals view showing signal scores, outreach sequences, and ready-to-send emails"
+            className="w-full object-cover object-top"
+          />
         </div>
       </div>
     </section>
