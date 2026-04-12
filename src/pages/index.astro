@@ -7,9 +7,6 @@ import { FAQ } from '@/components/blocks/faq';
 import { Features } from '@/components/blocks/features';
 import { Hero } from '@/components/blocks/hero';
 import { Logos } from '@/components/blocks/logos';
-import { Pricing } from '@/components/blocks/pricing';
-import { ResourceAllocation } from '@/components/blocks/resource-allocation';
-import { Testimonials } from '@/components/blocks/testimonials';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -17,13 +14,10 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <Background>
     <AnimatedGrid client:only="react" />
     <Hero />
-    <Logos client:only="react" />
-    <Features />
-    <ResourceAllocation />
+    <Logos />
   </Background>
-  <Testimonials client:only='react' />
   <Background variant="bottom">
-    <Pricing client:only='react' />
-    <FAQ client:only='react' />
+    <Features />
+    <FAQ />
   </Background>
 </DefaultLayout>

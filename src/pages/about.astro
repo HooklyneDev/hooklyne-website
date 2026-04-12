@@ -4,13 +4,12 @@ import { Background } from '@/components/background';
 import { AnimatedGrid } from '@/components/animated-grid';
 ---
 
-<DefaultLayout title="About - Hooklyne" description="Two founders who got tired of the same problem. Hooklyne is what we built to fix it.">
+<DefaultLayout title="About - Hooklyne" description="We built the research layer we wished existed. Between cheap contact databases and expensive agencies.">
   <Background>
     <AnimatedGrid client:only="react" />
     <section class="py-28 lg:py-32 lg:pt-48">
-      <div class="container max-w-3xl">
+      <div class="container max-w-4xl">
 
-        {/* Badge */}
         <div class="mb-6">
           <span class="inline-flex items-center gap-1.5 rounded-full border border-[#344ca3]/20 bg-[#344ca3]/5 px-3 py-1 text-xs font-semibold text-[#344ca3] uppercase tracking-wide">
             About us
@@ -18,72 +17,77 @@ import { AnimatedGrid } from '@/components/animated-grid';
         </div>
 
         <h1 class="text-[#022f51] text-4xl tracking-tight md:text-5xl leading-tight mb-6">
-          We got tired of the<br />same problem.
+          We got tired of the same problem.
         </h1>
 
-        <p class="text-[#64748b] text-lg md:text-xl leading-relaxed mb-6">
-          Both of us work in B2B sales. We've seen the same thing at every company: the research takes longer than the outreach. You spend hours finding the right company, finding the right person, figuring out what to say - and by the time you're ready, the moment has passed.
-        </p>
-
-        <p class="text-[#64748b] text-lg leading-relaxed mb-6">
-          The tools that exist either give you raw data and expect you to do the work, or they're built for enterprise teams with SDR armies and six-figure contracts. There was nothing in the middle - nothing that worked for a 15-person Dutch company with two sales reps and a full pipeline to manage.
-        </p>
-
-        <p class="text-[#64748b] text-lg leading-relaxed mb-12">
-          So we built it.
-        </p>
-
-        {/* Divider */}
-        <div class="border-t border-[#e2e8f0] mb-12"></div>
-
-        {/* Founders */}
-        <div class="grid gap-8 md:grid-cols-2 mb-16">
-          <div class="rounded-2xl border border-[#e2e8f0] bg-white p-6">
-            <div class="size-12 rounded-xl bg-[#022f51] flex items-center justify-center mb-4">
-              <span class="text-white text-lg font-bold">J</span>
-            </div>
-            <h3 class="text-[#022f51] font-semibold text-lg mb-1">Joey</h3>
-            <p class="text-xs text-[#344ca3] font-medium mb-3">Co-founder</p>
-            <p class="text-sm text-[#64748b] leading-relaxed">
-              Background in SaaS, sales consulting, and building products. Has run outreach campaigns across verticals and got obsessed with why the research step was still broken in 2024.
+        <div class="grid gap-8 lg:grid-cols-2 mb-12">
+          <div>
+            <p class="text-[#64748b] text-lg leading-relaxed mb-4">
+              Both of us work in B2B sales. We've seen the same thing at every company: the research takes longer than the outreach. You spend hours finding the right company, finding the right person, figuring out what to say - and by the time you're ready, the moment has passed.
+            </p>
+            <p class="text-[#64748b] text-base leading-relaxed mb-4">
+              The choice was always the same: spend 30 minutes researching each prospect and send 10 great emails, or skip the research and blast 200 templates. Neither worked.
+            </p>
+            <p class="text-[#64748b] text-base leading-relaxed">
+              The tools that exist either give you raw data and expect you to do the work, or they're built for enterprise teams with SDR armies and six-figure contracts. There was nothing in the middle - nothing that worked for a 15-person Dutch company with two sales reps and a full pipeline to manage.
             </p>
           </div>
-          <div class="rounded-2xl border border-[#e2e8f0] bg-white p-6">
-            <div class="size-12 rounded-xl bg-[#344ca3] flex items-center justify-center mb-4">
-              <span class="text-white text-lg font-bold">T</span>
+
+          {/* Image placeholder - about hero */}
+          <div class="rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] min-h-[280px] flex items-center justify-center">
+            <p class="text-xs text-[#64748b]/50 text-center px-4">Replace with founders photo - casual setting, whiteboard or laptop visible</p>
+          </div>
+        </div>
+
+        <div class="border-t border-[#e2e8f0] pt-12 mb-12">
+          <p class="text-2xl font-semibold text-[#022f51] mb-2">So we built it.</p>
+          <p class="text-[#64748b] text-base leading-relaxed max-w-2xl">
+            Today, Hooklyne finds the real reason to reach out, verifies the contact, and writes the outreach in your voice. Your team reviews and sends. That's it.
+          </p>
+        </div>
+
+        {/* Founders */}
+        <div class="grid gap-6 md:grid-cols-2 mb-14">
+          <div class="rounded-2xl border border-[#e2e8f0] bg-white p-6 flex gap-4">
+            <div class="shrink-0">
+              <div class="size-14 rounded-2xl border border-[#e2e8f0] bg-[#f1f5f9] flex items-center justify-center overflow-hidden">
+                <span class="text-xl font-bold text-[#022f51]">J</span>
+              </div>
+              <p class="text-center text-[#64748b] text-[10px] mt-1">Replace with photo</p>
             </div>
-            <h3 class="text-[#022f51] font-semibold text-lg mb-1">Tim</h3>
-            <p class="text-xs text-[#344ca3] font-medium mb-3">Co-founder</p>
-            <p class="text-sm text-[#64748b] leading-relaxed">
-              Sales background in the Dutch market, deep in B2B account development. Knows exactly how Dutch buyers think and what makes outreach land - or get ignored.
-            </p>
+            <div>
+              <h3 class="text-[#022f51] font-semibold text-base mb-0.5">Joey</h3>
+              <p class="text-xs text-[#344ca3] font-medium mb-2">Co-founder</p>
+              <p class="text-sm text-[#64748b] leading-relaxed">Background in SaaS, sales consulting, and building products. Has run outreach campaigns across verticals and got obsessed with why the research step was still broken.</p>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-[#e2e8f0] bg-white p-6 flex gap-4">
+            <div class="shrink-0">
+              <div class="size-14 rounded-2xl border border-[#e2e8f0] bg-[#f1f5f9] flex items-center justify-center overflow-hidden">
+                <span class="text-xl font-bold text-[#344ca3]">T</span>
+              </div>
+              <p class="text-center text-[#64748b] text-[10px] mt-1">Replace with photo</p>
+            </div>
+            <div>
+              <h3 class="text-[#022f51] font-semibold text-base mb-0.5">Tim</h3>
+              <p class="text-xs text-[#344ca3] font-medium mb-2">Co-founder</p>
+              <p class="text-sm text-[#64748b] leading-relaxed">Sales background deep in Dutch B2B account development. Knows exactly how Dutch buyers think and what makes outreach land - or get ignored.</p>
+            </div>
           </div>
         </div>
 
         {/* What we believe */}
-        <div class="mb-16">
+        <div class="mb-14">
           <h2 class="text-[#022f51] text-2xl font-semibold mb-6">What we believe</h2>
-          <div class="space-y-4">
+          <div class="grid gap-4 md:grid-cols-2">
             {[
-              {
-                title: "Quality over quantity",
-                body: "Call 5 prepared, don't blast 1,000. The best outreach is specific, timely, and relevant - not a numbers game. Hooklyne is built around this principle.",
-              },
-              {
-                title: "Outreach should sound like you",
-                body: "Generic templates get ignored. We write in your voice, referencing real signals about the prospect. It takes more effort to build - but the results speak for themselves.",
-              },
-              {
-                title: "Dutch B2B deserves better tooling",
-                body: "Most sales intelligence tools are built for the US market, in English, for enterprise teams. The Dutch SME market has been underserved. We're fixing that.",
-              },
-              {
-                title: "You shouldn't need to interpret data",
-                body: "Tools that give you a data dump and expect you to figure it out aren't saving you time. Hooklyne delivers finished work - not raw intelligence to analyse.",
-              },
+              { title: "Quality over quantity", body: "Call 5 prepared, don't blast 1,000. The best outreach is specific, timely, and relevant - not a numbers game. Hooklyne is built around this principle." },
+              { title: "Outreach should sound like you", body: "Generic templates get ignored. We write in your voice, referencing real signals about the prospect. It takes more to build - but the results speak for themselves." },
+              { title: "Dutch B2B deserves better tooling", body: "Most sales intelligence tools are built for the US market, in English, for enterprise teams. The Dutch SME market has been underserved. We're fixing that." },
+              { title: "You shouldn't need to interpret data", body: "Tools that give you a data dump and expect you to figure it out aren't saving you time. Hooklyne delivers finished work - not raw intelligence to analyse." },
             ].map((item) => (
-              <div class="flex gap-4 rounded-xl border border-[#e2e8f0] bg-white p-5">
-                <div class="mt-0.5 size-2 rounded-full bg-[#ff8c42] shrink-0"></div>
+              <div class="rounded-xl border border-[#e2e8f0] bg-white p-5 flex gap-3">
+                <div class="mt-1 size-2 rounded-full bg-[#ff8c42] shrink-0"></div>
                 <div>
                   <h4 class="text-sm font-semibold text-[#022f51] mb-1">{item.title}</h4>
                   <p class="text-sm text-[#64748b] leading-relaxed">{item.body}</p>
@@ -93,16 +97,29 @@ import { AnimatedGrid } from '@/components/animated-grid';
           </div>
         </div>
 
+        {/* Stats */}
+        <div class="grid grid-cols-3 gap-4 mb-14 rounded-2xl border border-[#e2e8f0] bg-white p-6">
+          {[
+            { v: "4", l: "Intelligence sources" },
+            { v: "20+", l: "Data providers" },
+            { v: "EN + NL", l: "From day one" },
+          ].map((s) => (
+            <div class="text-center">
+              <div class="text-2xl font-bold text-[#022f51]">{s.v}</div>
+              <div class="text-xs text-[#64748b] mt-1">{s.l}</div>
+            </div>
+          ))}
+        </div>
+
         {/* CTA */}
-        <div class="rounded-2xl border border-[#344ca3]/20 bg-[#344ca3]/4 p-8 text-center">
-          <h3 class="text-[#022f51] text-xl font-semibold mb-2">We're running a pilot</h3>
-          <p class="text-[#64748b] text-sm mb-6 max-w-md mx-auto">
+        <div class="rounded-2xl border border-[#344ca3]/20 bg-[#022f51] p-8 text-center text-white">
+          <h3 class="text-xl font-semibold mb-2">We're running a pilot</h3>
+          <p class="text-white/70 text-sm mb-6 max-w-md mx-auto">
             10 fully researched prospect packages, all features included, in exchange for a feedback call. No credit card.
           </p>
           <a
             href="/contact"
-            class="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            style="background-color: #022f51"
+            class="inline-flex items-center gap-2 rounded-lg bg-white text-[#022f51] px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Request pilot access
           </a>
