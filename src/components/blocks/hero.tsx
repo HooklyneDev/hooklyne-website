@@ -1,26 +1,33 @@
 import { ArrowRight, Zap, Users, FileText, Bell } from "lucide-react";
 import { DashedLine } from "@/components/dashed-line";
 import { Button } from "@/components/ui/button";
+import type { ReactNode } from "react";
+
+type Feature = {
+  title: string;
+  description: ReactNode;
+  icon: React.ElementType;
+};
 
 const features = [
   {
     title: "Signal-ranked prospects",
-    description: "Ranked by how relevant their latest news is to what you sell. Every first touch has a real reason.",
+    description: <>Ranked by how relevant their latest news is to what you sell.<br />Every first touch has a real reason.</>,
     icon: Zap,
   },
   {
     title: "Smart person matching",
-    description: "Describe who you want by role, not job title. We find the right person across title variants.",
+    description: <>Describe who you want by role, not job title. We find the right<br />person across title variants.</>,
     icon: Users,
   },
   {
     title: "Outreach written in your voice",
-    description: "A signal-anchored email and LinkedIn invite in your sender's actual tone. Ready to send.",
+    description: <>A signal-anchored email and LinkedIn invite in your sender's actual<br />tone. Ready to send.</>,
     icon: FileText,
   },
   {
     title: "Real-time signal monitoring",
-    description: "Track companies over time. When something relevant happens, you get a ready-to-send follow-up.",
+    description: <>Track companies over time. When something relevant happens,<br />you get a ready-to-send follow-up.</>,
     icon: Bell,
   },
 ];
