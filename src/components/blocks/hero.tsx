@@ -27,17 +27,10 @@ const features = [
 
 export const Hero = () => {
   return (
-    <section className="py-28 lg:py-32 lg:pt-44">
+    <section className="py-20 lg:py-24 lg:pt-36">
       <div className="container flex flex-col justify-between gap-8 md:gap-14 lg:flex-row lg:gap-20">
         {/* Left */}
         <div className="flex-1">
-          <div className="mb-5">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--hooklyne-blue)]/20 bg-[var(--hooklyne-blue)]/5 px-3 py-1 text-xs font-semibold text-[var(--hooklyne-blue)] uppercase tracking-wide">
-              <span className="size-1.5 rounded-full bg-[var(--hooklyne-orange)] inline-block" />
-              Invite-only pilot
-            </span>
-          </div>
-
           <h1 className="text-[var(--hooklyne-navy)] max-w-lg text-3xl tracking-tight md:text-4xl lg:text-5xl leading-[1.1]">
             Find the prospects actually worth reaching out to.
           </h1>
@@ -60,20 +53,6 @@ export const Hero = () => {
               See how it works
               <ArrowRight className="size-3.5" />
             </a>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-[var(--border)] pt-8">
-            {[
-              { v: "4", l: "Intelligence sources" },
-              { v: "20+", l: "Data providers" },
-              { v: "25h", l: "Saved per month" },
-              { v: "EN + NL", l: "From day one" },
-            ].map((s) => (
-              <div key={s.l}>
-                <div className="text-xl font-bold text-[var(--hooklyne-navy)]">{s.v}</div>
-                <div className="text-xs text-[var(--muted-foreground)] mt-0.5">{s.l}</div>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -107,8 +86,8 @@ export const Hero = () => {
       </div>
 
       {/* Hero image - placeholder */}
-      <div className="mt-12 max-lg:ml-6 max-lg:h-[550px] max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
-        <div className="relative h-[420px] w-full rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg flex items-center justify-center">
+      <div className="mt-8 max-lg:ml-6 max-lg:h-[400px] max-lg:overflow-hidden md:mt-12 lg:container lg:mt-16">
+        <div className="relative h-[520px] w-full rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-lg flex items-center justify-center">
           <div className="text-center">
             <div className="size-14 rounded-2xl bg-[var(--hooklyne-blue)]/10 flex items-center justify-center mx-auto mb-3">
               <FileText className="size-7 text-[var(--hooklyne-blue)]" />
