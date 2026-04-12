@@ -18,8 +18,8 @@ export const Background = ({
   return (
     <div
       className={cn(
-        "relative mx-2.5 mt-2.5 lg:mx-4 overflow-hidden",
-        isTop && "rounded-t-4xl rounded-b-2xl",
+        "relative mx-2.5 overflow-hidden",
+        isTop && "rounded-b-2xl",
         !isTop && "rounded-t-2xl rounded-b-4xl",
         className,
       )}
