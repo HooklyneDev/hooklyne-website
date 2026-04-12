@@ -45,7 +45,7 @@ export const AnimatedGrid = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const GRID = 56;
+    const GRID = 80;
     const DOT_COUNT = 14;
     const TRAIL_LENGTH = 6;
 

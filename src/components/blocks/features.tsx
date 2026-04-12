@@ -49,20 +49,17 @@ export const Features = () => {
             {items.map((item, i) => (
               <div key={i} className="flex flex-1 max-md:flex-col">
                 <div className="flex-1 p-4 pe-0! md:p-6">
-                  <div className="relative aspect-[1.28/1] overflow-hidden">
+                  <div className="relative aspect-[1.28/1] overflow-hidden rounded-xl bg-card">
                     <img
                       src={item.image}
                       alt={`${item.title} interface`}
                       className="object-cover object-left-top ps-4 pt-2"
                     />
-                    <div className="from-background absolute inset-0 z-10 bg-linear-to-t via-transparent to-transparent" />
                   </div>
 
                   <a
                     href="#"
-                    className={
-                      "group flex items-center justify-between gap-4 pe-4 pt-4 md:pe-6 md:pt-6"
-                    }
+                    className="group flex items-center justify-between gap-4 pe-4 pt-4 md:pe-6 md:pt-6"
                   >
                     <h3 className="font-display max-w-60 text-2xl leading-tight font-bold tracking-tight">
                       {item.title}

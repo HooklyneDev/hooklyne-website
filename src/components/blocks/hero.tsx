@@ -8,7 +8,6 @@ import {
 
 import { DashedLine } from "@/components/dashed-line";
 import { Button } from "@/components/ui/button";
-import { GITHUB_URL } from "@/consts";
 
 const features = [
   {
@@ -50,11 +49,11 @@ export const Hero = () => {
 
           <div className="mt-8 flex flex-wrap items-center gap-4 lg:flex-nowrap">
             <Button asChild>
-              <a href={GITHUB_URL}>Get template</a>
+              <a href="#">Get template</a>
             </Button>
             <Button
               variant="outline"
-              className="from-background h-auto gap-2 bg-linear-to-r to-transparent shadow-md"
+              className="bg-card h-auto gap-2 shadow-md"
               asChild
             >
               <a
