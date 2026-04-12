@@ -4,6 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { AnimatedGrid } from '@/components/animated-grid';
 import { Background } from '@/components/background';
 import { FAQ } from '@/components/blocks/faq';
+import { FeatureCards } from '@/components/blocks/feature-cards';
 import { Features } from '@/components/blocks/features';
 import { Hero } from '@/components/blocks/hero';
 import { Logos } from '@/components/blocks/logos';
@@ -17,6 +18,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     <Logos />
   </Background>
   <Background variant="bottom">
+    <FeatureCards />
     <Features />
     <FAQ />
   </Background>
