@@ -5,22 +5,22 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     title: "Signal-ranked prospects",
-    description: "Ranked by how relevant their latest developments are to what you sell. Every first touch has a real reason.",
+    description: "Ranked by how relevant their latest news is to what you sell. Every first touch has a real reason.",
     icon: Zap,
   },
   {
     title: "Smart person matching",
-    description: "Describe who you want by role, not job title. We find the right person across title variants and local language.",
+    description: "Describe who you want by role, not job title. We find the right person across title variants.",
     icon: Users,
   },
   {
     title: "Outreach written in your voice",
-    description: "Not a template. A signal-anchored email and LinkedIn invite in your sender's actual tone, ready to send.",
+    description: "A signal-anchored email and LinkedIn invite in your sender's actual tone. Ready to send.",
     icon: FileText,
   },
   {
     title: "Real-time signal monitoring",
-    description: "Track companies over time. The moment something relevant happens, you get an alert and a ready-to-send follow-up.",
+    description: "Track companies over time. When something relevant happens, you get a ready-to-send follow-up.",
     icon: Bell,
   },
 ];
@@ -57,7 +57,7 @@ export const Hero = () => {
         </div>
 
         {/* Right - feature list */}
-        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-24 lg:max-w-none">
+        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-20 lg:max-w-none">
           <DashedLine
             orientation="vertical"
             className="absolute top-0 left-0 max-lg:hidden"
@@ -75,7 +75,7 @@ export const Hero = () => {
                   <h2 className="font-text text-[var(--hooklyne-navy)] font-semibold">
                     {feature.title}
                   </h2>
-                  <p className="text-[var(--muted-foreground)] text-sm max-w-xs">
+                  <p className="text-[var(--muted-foreground)] text-sm max-w-72">
                     {feature.description}
                   </p>
                 </div>
