@@ -26,7 +26,7 @@ export const Navbar = () => {
       <nav
         className={cn(
           "w-full pointer-events-auto transition-all duration-300 rounded-2xl border",
-          "max-w-[1220px]",
+          "max-w-[960px]",
           scrolled
             ? "bg-white/60 backdrop-blur-2xl shadow-lg border-white/40"
             : "bg-white/40 backdrop-blur-2xl border-white/30",
