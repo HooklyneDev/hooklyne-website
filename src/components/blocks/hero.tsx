@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: "Outreach written in your voice",
-    description: <>A signal-anchored email and LinkedIn invite in your sender's actual<br />tone. Ready to send.</>,
+    description: <>A signal-anchored email and LinkedIn invite in your sender's<br />actual tone. Ready to send.</>,
     icon: FileText,
   },
   {
