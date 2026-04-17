@@ -7,7 +7,7 @@ export const Hero = () => {
       <div className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
         <a
           href="/contact"
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white px-4 py-1.5 text-sm font-medium text-[var(--hooklyne-navy)] hover:border-[var(--hooklyne-blue)] transition-colors"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] hover:border-[var(--hooklyne-blue)] transition-colors"
         >
           Invite-only pilot - now open
           <ArrowRight className="size-3.5" />

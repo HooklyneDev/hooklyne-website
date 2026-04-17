@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { UserCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,10 +29,10 @@ export const Navbar = () => {
       <nav
         className={cn(
           "w-full pointer-events-auto transition-all duration-300 rounded-2xl border",
-          "max-w-[960px]",
+          "max-w-[1220px]",
           scrolled
-            ? "bg-white/90 backdrop-blur-2xl shadow-lg border-white/60"
-            : "bg-white/70 backdrop-blur-2xl border-white/50",
+            ? "bg-white/90 dark:bg-[#111c2e]/95 backdrop-blur-2xl shadow-lg border-white/60 dark:border-[#1e3148]/80"
+            : "bg-white/70 dark:bg-[#0d1420]/80 backdrop-blur-2xl border-white/50 dark:border-[#1e3148]/50",
         )}
       >
         <div className="flex items-center justify-between px-5 py-3">
@@ -60,6 +61,7 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <a
               href="https://portal.hooklyne.com"
               className="flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
@@ -101,7 +103,7 @@ export const Navbar = () => {
             isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
           )}
         >
-          <div className="border-t border-white/30 px-5 py-4 flex flex-col gap-1">
+          <div className="border-t border-[var(--border)] px-5 py-4 flex flex-col gap-1">
             {ITEMS.map((link) => (
               <a
                 key={link.label}
@@ -112,7 +114,11 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <div className="mt-3 pt-3 border-t border-white/30 flex flex-col gap-2">
+            <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
+              <div className="flex items-center justify-between px-3 py-1">
+                <span className="text-sm text-[var(--muted-foreground)]">Theme</span>
+                <ThemeToggle />
+              </div>
               <a
                 href="https://portal.hooklyne.com"
                 className="flex items-center gap-2 py-2.5 px-3 text-sm font-medium text-[var(--muted-foreground)]"
