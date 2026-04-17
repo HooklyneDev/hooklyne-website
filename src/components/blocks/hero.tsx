@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export const Hero = () => {
   return (
     <section className="pt-24 pb-0 lg:pt-32">
-      <div className="container flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
+      <div className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
         <a
           href="/contact"
           className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white px-4 py-1.5 text-sm font-medium text-[var(--hooklyne-navy)] hover:border-[var(--hooklyne-blue)] transition-colors"
@@ -13,7 +13,7 @@ export const Hero = () => {
           <ArrowRight className="size-3.5" />
         </a>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--hooklyne-navy)] leading-[1.1] max-w-2xl">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--hooklyne-navy)] leading-[1.1] max-w-3xl">
           Find the prospects actually worth reaching out to.
         </h1>
 
@@ -39,7 +39,7 @@ export const Hero = () => {
       </div>
 
       <div className="container mt-14 lg:mt-16">
-        <div className="relative w-full rounded-t-2xl border border-b-0 border-[var(--border)] shadow-xl overflow-hidden" style={{ maxHeight: "500px" }}>
+        <div className="relative w-full rounded-t-2xl border border-b-0 border-[var(--border)] shadow-xl overflow-hidden" style={{ maxHeight: "600px" }}>
           <img
             src="/hero-screenshot.png"
             alt="Hooklyne portal - Prospect Signals view showing signal scores, outreach sequences, and ready-to-send emails"
