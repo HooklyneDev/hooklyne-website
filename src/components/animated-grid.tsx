@@ -27,6 +27,8 @@ type PulseRing = {
   rgb: [number, number, number];
 };
 
+type Zone = { x: number; y: number; w: number; h: number };
+
 const DIRS: Direction[] = ["up", "down", "left", "right"];
 
 const LIGHT = {
@@ -53,6 +55,8 @@ const nextPos = (
   row: number,
   cols: number,
   rows: number,
+  gridSize: number,
+  deadZones: Zone[],
 ) => {
   const moves: Record<Direction, [number, number]> = {
     up:    [col, row - 1],
@@ -62,6 +66,9 @@ const nextPos = (
   };
   const [nc, nr] = moves[dir];
   if (nc < 0 || nr < 0 || nc >= cols || nr >= rows) return null;
+  const px = nc * gridSize;
+  const py = nr * gridSize;
+  if (deadZones.some((z) => px >= z.x && px <= z.x + z.w && py >= z.y && py <= z.y + z.h)) return null;
   return [nc, nr] as [number, number];
 };
 
@@ -85,9 +92,33 @@ export const AnimatedGrid = () => {
     let animId: number;
     let dots: Dot[] = [];
     let pulseRings: PulseRing[] = [];
+    let deadZones: Zone[] = [];
 
     const isDark = () => document.documentElement.classList.contains("dark");
     const theme = () => (isDark() ? DARK : LIGHT);
+
+    const computeDeadZones = () => {
+      const canvasRect = canvas.getBoundingClientRect();
+      const zones: Zone[] = [];
+
+      // Navbar - top 90px of canvas
+      zones.push({ x: 0, y: 0, w: width, h: 90 });
+
+      // Hero text content block
+      const hero = document.getElementById("hero-content");
+      if (hero) {
+        const r = hero.getBoundingClientRect();
+        const pad = 24;
+        zones.push({
+          x: r.left - canvasRect.left - pad,
+          y: r.top  - canvasRect.top  - pad,
+          w: r.width  + pad * 2,
+          h: r.height + pad * 2,
+        });
+      }
+
+      deadZones = zones;
+    };
 
     const resize = () => {
       width = canvas.offsetWidth;
@@ -97,10 +128,20 @@ export const AnimatedGrid = () => {
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
       cols = Math.floor(width / GRID) + 1;
       rows = Math.floor(height / GRID) + 1;
+      computeDeadZones();
+    };
+
+    const inDeadZone = (col: number, row: number) => {
+      const px = col * GRID;
+      const py = row * GRID;
+      return deadZones.some((z) => px >= z.x && px <= z.x + z.w && py >= z.y && py <= z.y + z.h);
     };
 
     const randomDir = (col: number, row: number): Direction => {
-      const valid = DIRS.filter((d) => nextPos(d, col, row, cols, rows) !== null);
+      const valid = DIRS.filter(
+        (d) => nextPos(d, col, row, cols, rows, GRID, deadZones) !== null
+      );
+      if (valid.length === 0) return DIRS[Math.floor(Math.random() * DIRS.length)];
       return valid[Math.floor(Math.random() * valid.length)];
     };
 
@@ -112,10 +153,16 @@ export const AnimatedGrid = () => {
 
     const initDots = () => {
       dots = Array.from({ length: DOT_COUNT }, (_, i) => {
-        const col = Math.floor(Math.random() * cols);
-        const row = Math.floor(Math.random() * rows);
+        let col: number, row: number;
+        let attempts = 0;
+        do {
+          col = Math.floor(Math.random() * cols);
+          row = Math.floor(Math.random() * rows);
+          attempts++;
+        } while (inDeadZone(col, row) && attempts < 50);
+
         const dir = randomDir(col, row);
-        const target = nextPos(dir, col, row, cols, rows) ?? [col, row];
+        const target = nextPos(dir, col, row, cols, rows, GRID, deadZones) ?? [col, row];
         return {
           col,
           row,
@@ -235,13 +282,11 @@ export const AnimatedGrid = () => {
         const y = gridY(dot.row) + (gridY(dot.targetRow) - gridY(dot.row)) * dot.progress;
         const rgb = dotRgb(dot.type);
 
-        // Glow
         ctx.beginPath();
         ctx.arc(x, y, 6, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${dot.opacity * 0.12})`;
         ctx.fill();
 
-        // Dot
         ctx.beginPath();
         ctx.arc(x, y, dot.type === "navy" ? 2.5 : 3, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${dot.opacity})`;
@@ -282,13 +327,13 @@ export const AnimatedGrid = () => {
 
           dot.pauseFrames = Math.floor(Math.random() * 35) + 8;
 
-          const canContinue = nextPos(dot.direction, dot.col, dot.row, cols, rows) !== null;
+          const canContinue = nextPos(dot.direction, dot.col, dot.row, cols, rows, GRID, deadZones) !== null;
           if (Math.random() < 0.7 && canContinue) {
             // continue same direction
           } else {
             dot.direction = randomDir(dot.col, dot.row);
           }
-          const target = nextPos(dot.direction, dot.col, dot.row, cols, rows) ?? [dot.col, dot.row];
+          const target = nextPos(dot.direction, dot.col, dot.row, cols, rows, GRID, deadZones) ?? [dot.col, dot.row];
           dot.targetCol = target[0];
           dot.targetRow = target[1];
 
@@ -314,11 +359,16 @@ export const AnimatedGrid = () => {
       animId = requestAnimationFrame(frame);
     };
 
-    resize();
-    initDots();
-    frame();
+    // Wait one frame for hero-content to be positioned
+    requestAnimationFrame(() => {
+      resize();
+      initDots();
+      frame();
+    });
 
-    const ro = new ResizeObserver(resize);
+    const ro = new ResizeObserver(() => {
+      resize();
+    });
     ro.observe(canvas);
 
     const mo = new MutationObserver(() => {});

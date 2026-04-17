@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export const Hero = () => {
   return (
     <section className="pt-24 pb-0 lg:pt-32">
-      <div className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
+      <div id="hero-content" className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
         <a
           href="/contact"
           className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] hover:border-[var(--hooklyne-blue)] transition-colors"
