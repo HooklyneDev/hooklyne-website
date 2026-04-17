@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 type Direction = "up" | "down" | "left" | "right";
+type DotType = "navy" | "signal" | "tracker";
 
 type Dot = {
   col: number;
@@ -14,9 +15,37 @@ type Dot = {
   opacity: number;
   targetOpacity: number;
   trail: { x: number; y: number }[];
+  type: DotType;
+  pulseOnArrive: boolean;
+};
+
+type PulseRing = {
+  x: number;
+  y: number;
+  radius: number;
+  opacity: number;
+  rgb: [number, number, number];
 };
 
 const DIRS: Direction[] = ["up", "down", "left", "right"];
+
+const LIGHT = {
+  grid:       "rgba(52, 76, 163, 0.07)",
+  node:       "rgba(52, 76, 163, 0.13)",
+  navy:       [2,   47,  81]  as [number, number, number],
+  signal:     [255, 140, 66]  as [number, number, number],
+  tracker:    [13,  148, 136] as [number, number, number],
+  connection: [2,   47,  81]  as [number, number, number],
+};
+
+const DARK = {
+  grid:       "rgba(100, 140, 230, 0.1)",
+  node:       "rgba(100, 140, 230, 0.2)",
+  navy:       [120, 160, 255] as [number, number, number],
+  signal:     [255, 170, 100] as [number, number, number],
+  tracker:    [45,  212, 191] as [number, number, number],
+  connection: [120, 160, 255] as [number, number, number],
+};
 
 const nextPos = (
   dir: Direction,
@@ -46,8 +75,8 @@ export const AnimatedGrid = () => {
     if (!ctx) return;
 
     const GRID = 80;
-    const DOT_COUNT = 20;
-    const TRAIL_LENGTH = 6;
+    const DOT_COUNT = 24;
+    const TRAIL_LENGTH = 10;
 
     let width = 0;
     let height = 0;
@@ -55,6 +84,10 @@ export const AnimatedGrid = () => {
     let rows = 0;
     let animId: number;
     let dots: Dot[] = [];
+    let pulseRings: PulseRing[] = [];
+
+    const isDark = () => document.documentElement.classList.contains("dark");
+    const theme = () => (isDark() ? DARK : LIGHT);
 
     const resize = () => {
       width = canvas.offsetWidth;
@@ -71,8 +104,14 @@ export const AnimatedGrid = () => {
       return valid[Math.floor(Math.random() * valid.length)];
     };
 
+    const pickType = (i: number): DotType => {
+      if (i < 3) return "signal";
+      if (i < 6) return "tracker";
+      return "navy";
+    };
+
     const initDots = () => {
-      dots = Array.from({ length: DOT_COUNT }, () => {
+      dots = Array.from({ length: DOT_COUNT }, (_, i) => {
         const col = Math.floor(Math.random() * cols);
         const row = Math.floor(Math.random() * rows);
         const dir = randomDir(col, row);
@@ -83,12 +122,14 @@ export const AnimatedGrid = () => {
           targetCol: target[0],
           targetRow: target[1],
           progress: Math.random(),
-          speed: 0.008 + Math.random() * 0.006,
+          speed: 0.007 + Math.random() * 0.006,
           direction: dir,
           pauseFrames: 0,
-          opacity: Math.random() * 0.35 + 0.2,
-          targetOpacity: Math.random() * 0.35 + 0.2,
+          opacity: Math.random() * 0.4 + 0.25,
+          targetOpacity: Math.random() * 0.4 + 0.25,
           trail: [],
+          type: pickType(i),
+          pulseOnArrive: Math.random() < 0.4,
         };
       });
     };
@@ -96,8 +137,16 @@ export const AnimatedGrid = () => {
     const gridX = (col: number) => col * GRID;
     const gridY = (row: number) => row * GRID;
 
+    const dotRgb = (type: DotType): [number, number, number] => {
+      const t = theme();
+      if (type === "signal") return t.signal;
+      if (type === "tracker") return t.tracker;
+      return t.navy;
+    };
+
     const drawGrid = () => {
-      ctx.strokeStyle = "rgba(52, 76, 163, 0.06)";
+      const t = theme();
+      ctx.strokeStyle = t.grid;
       ctx.lineWidth = 0.5;
       for (let c = 0; c <= cols; c++) {
         ctx.beginPath();
@@ -114,17 +163,38 @@ export const AnimatedGrid = () => {
     };
 
     const drawIntersections = () => {
+      const t = theme();
       for (let c = 0; c <= cols; c++) {
         for (let r = 0; r <= rows; r++) {
           ctx.beginPath();
           ctx.arc(gridX(c), gridY(r), 1.5, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(52, 76, 163, 0.1)";
+          ctx.fillStyle = t.node;
           ctx.fill();
         }
       }
     };
 
+    const drawTrails = () => {
+      dots.forEach((dot) => {
+        if (dot.trail.length < 2) return;
+        const x = gridX(dot.col) + (gridX(dot.targetCol) - gridX(dot.col)) * dot.progress;
+        const y = gridY(dot.row) + (gridY(dot.targetRow) - gridY(dot.row)) * dot.progress;
+        const rgb = dotRgb(dot.type);
+        const all = [...dot.trail, { x, y }];
+        for (let i = 1; i < all.length; i++) {
+          const alpha = (i / all.length) * dot.opacity * 0.55;
+          ctx.beginPath();
+          ctx.moveTo(all[i - 1].x, all[i - 1].y);
+          ctx.lineTo(all[i].x, all[i].y);
+          ctx.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      });
+    };
+
     const drawConnections = () => {
+      const t = theme();
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const ax = gridX(dots[i].col) + (gridX(dots[i].targetCol) - gridX(dots[i].col)) * dots[i].progress;
@@ -134,9 +204,12 @@ export const AnimatedGrid = () => {
           const dist = Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2);
           const maxDist = GRID * 5;
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.1;
-            ctx.strokeStyle = `rgba(2, 47, 81, ${alpha})`;
-            ctx.lineWidth = 0.75;
+            const proximity = 1 - dist / maxDist;
+            const crossType = dots[i].type !== dots[j].type;
+            const alpha = proximity * (crossType ? 0.18 : 0.09);
+            const rgb = crossType ? t.signal : t.connection;
+            ctx.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
+            ctx.lineWidth = crossType ? 1 : 0.75;
             ctx.beginPath();
             ctx.moveTo(ax, ay);
             ctx.lineTo(bx, by);
@@ -146,30 +219,32 @@ export const AnimatedGrid = () => {
       }
     };
 
+    const drawPulseRings = () => {
+      pulseRings.forEach((ring) => {
+        ctx.beginPath();
+        ctx.arc(ring.x, ring.y, ring.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${ring.rgb[0]}, ${ring.rgb[1]}, ${ring.rgb[2]}, ${ring.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+    };
+
     const drawDots = () => {
       dots.forEach((dot) => {
         const x = gridX(dot.col) + (gridX(dot.targetCol) - gridX(dot.col)) * dot.progress;
         const y = gridY(dot.row) + (gridY(dot.targetRow) - gridY(dot.row)) * dot.progress;
-
-        // Trail
-        dot.trail.forEach((pt, i) => {
-          const trailOpacity = (i / dot.trail.length) * dot.opacity * 0.4;
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 1.2, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(52, 76, 163, ${trailOpacity})`;
-          ctx.fill();
-        });
-
-        // Dot
-        ctx.beginPath();
-        ctx.arc(x, y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(52, 76, 163, ${dot.opacity})`;
-        ctx.fill();
+        const rgb = dotRgb(dot.type);
 
         // Glow
         ctx.beginPath();
-        ctx.arc(x, y, 5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(52, 76, 163, ${dot.opacity * 0.15})`;
+        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${dot.opacity * 0.12})`;
+        ctx.fill();
+
+        // Dot
+        ctx.beginPath();
+        ctx.arc(x, y, dot.type === "navy" ? 2.5 : 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${dot.opacity})`;
         ctx.fill();
       });
     };
@@ -193,30 +268,47 @@ export const AnimatedGrid = () => {
           dot.progress = 0;
           dot.col = dot.targetCol;
           dot.row = dot.targetRow;
-          dot.pauseFrames = Math.floor(Math.random() * 40) + 10;
 
-          // Bias: 70% chance to continue same direction
-          const continueDir = Math.random() < 0.7 ? dot.direction : null;
-          const canContinue = continueDir
-            ? nextPos(continueDir, dot.col, dot.row, cols, rows) !== null
-            : false;
+          if (dot.pulseOnArrive) {
+            pulseRings.push({
+              x: gridX(dot.col),
+              y: gridY(dot.row),
+              radius: 3,
+              opacity: dot.opacity * 0.7,
+              rgb: dotRgb(dot.type),
+            });
+            dot.pulseOnArrive = Math.random() < 0.4;
+          }
 
-          dot.direction = canContinue ? dot.direction : randomDir(dot.col, dot.row);
+          dot.pauseFrames = Math.floor(Math.random() * 35) + 8;
+
+          const canContinue = nextPos(dot.direction, dot.col, dot.row, cols, rows) !== null;
+          if (Math.random() < 0.7 && canContinue) {
+            // continue same direction
+          } else {
+            dot.direction = randomDir(dot.col, dot.row);
+          }
           const target = nextPos(dot.direction, dot.col, dot.row, cols, rows) ?? [dot.col, dot.row];
           dot.targetCol = target[0];
           dot.targetRow = target[1];
 
           dot.opacity += (dot.targetOpacity - dot.opacity) * 0.1;
-          dot.targetOpacity = Math.random() * 0.35 + 0.2;
+          dot.targetOpacity = Math.random() * 0.4 + 0.25;
         }
       });
+
+      pulseRings = pulseRings
+        .map((r) => ({ ...r, radius: r.radius + 1.2, opacity: r.opacity * 0.93 }))
+        .filter((r) => r.opacity > 0.015);
     };
 
     const frame = () => {
       ctx.clearRect(0, 0, width, height);
       drawGrid();
       drawIntersections();
+      drawTrails();
       drawConnections();
+      drawPulseRings();
       drawDots();
       updateDots();
       animId = requestAnimationFrame(frame);
@@ -229,9 +321,13 @@ export const AnimatedGrid = () => {
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
+    const mo = new MutationObserver(() => {});
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
     return () => {
       cancelAnimationFrame(animId);
       ro.disconnect();
+      mo.disconnect();
     };
   }, []);
 
