@@ -31,8 +31,8 @@ export const Navbar = () => {
           "w-full pointer-events-auto transition-all duration-300 rounded-2xl border",
           "max-w-[1220px]",
           scrolled
-            ? "bg-white/90 dark:bg-[#111c2e]/95 backdrop-blur-2xl shadow-lg border-white/60 dark:border-[#1e3148]/80"
-            : "bg-white/70 dark:bg-[#0d1420]/80 backdrop-blur-2xl border-white/50 dark:border-[#1e3148]/50",
+            ? "bg-white/98 dark:bg-[#111c2e]/98 backdrop-blur-2xl shadow-lg border-[var(--border)]"
+            : "bg-white/95 dark:bg-[#0d1420]/95 backdrop-blur-2xl border-[var(--border)]",
         )}
       >
         <div className="flex items-center justify-between px-5 py-3">
@@ -64,7 +64,7 @@ export const Navbar = () => {
             <ThemeToggle />
             <a
               href="https://portal.hooklyne.com"
-              className="flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+              className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
             >
               <UserCircle className="size-4 shrink-0" />
               Log in
@@ -121,7 +121,7 @@ export const Navbar = () => {
               </div>
               <a
                 href="https://portal.hooklyne.com"
-                className="flex items-center gap-2 py-2.5 px-3 text-sm font-medium text-[var(--muted-foreground)]"
+                className="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <UserCircle className="size-4 shrink-0" />

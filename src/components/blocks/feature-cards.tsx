@@ -51,7 +51,7 @@ export const FeatureCards = () => {
               <div key={i} className="flex flex-1 max-md:flex-col">
                 <div className="flex-1 p-4 pe-0! md:p-6">
                   {/* Image placeholder */}
-                  <div className="relative aspect-[1.4/1] overflow-hidden rounded-xl bg-[var(--bg)] border border-[var(--border)] flex items-center justify-center">
+                  <div className="relative aspect-[1.4/1] overflow-hidden rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center">
                     <p className="text-xs text-[var(--muted-foreground)]/50 text-center px-4">{card.imageAlt}</p>
                   </div>
 
