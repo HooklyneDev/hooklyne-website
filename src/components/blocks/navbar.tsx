@@ -28,12 +28,15 @@ export const Navbar = () => {
     <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:pt-5 flex justify-center pointer-events-none">
       <nav
         className={cn(
-          "w-full pointer-events-auto transition-all duration-300 rounded-2xl border",
+          "w-full pointer-events-auto transition-all duration-500 rounded-2xl",
           "max-w-[1220px]",
-          scrolled
-            ? "bg-white/98 dark:bg-[#111c2e]/98 backdrop-blur-2xl shadow-lg border-[var(--border)]"
-            : "bg-white/95 dark:bg-[#0d1420]/95 backdrop-blur-2xl border-[var(--border)]",
+          "backdrop-blur-2xl backdrop-saturate-150",
         )}
+        style={{
+          background: scrolled ? "var(--glass-bg-scrolled)" : "var(--glass-bg)",
+          border: "1px solid var(--glass-border)",
+          boxShadow: `var(--glass-shadow), inset 0 1px 0 var(--glass-highlight)`,
+        }}
       >
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
