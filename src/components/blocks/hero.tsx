@@ -154,9 +154,9 @@ export const Hero = () => {
               poster="/hooklyne-hero.png"
               style={{
                 position: "absolute",
-                inset: "-3.5% 0",
+                inset: 0,
                 width: "100%",
-                height: "107%",
+                height: "100%",
                 objectFit: "cover",
                 objectPosition: "center center",
                 display: "block",
