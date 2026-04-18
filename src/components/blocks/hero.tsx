@@ -86,24 +86,59 @@ export const Hero = () => {
       <div className="container mt-14 lg:mt-16">
         <div
           ref={screenshotRef}
-          className="relative w-full rounded-2xl border border-[var(--border)] shadow-xl overflow-hidden"
-          style={{ maxHeight: "600px", transformOrigin: "top center" }}
+          className="relative w-full rounded-2xl shadow-2xl overflow-hidden"
+          style={{ transformOrigin: "top center" }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/hooklyne-hero.png"
-            className="w-full object-cover object-top"
-          >
-            <source src="/hooklyne-hero.webm" type="video/webm" />
-            <source src="/hooklyne-hero.mp4" type="video/mp4" />
-          </video>
+          {/* Browser chrome frame */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
-          />
+            className="flex items-center gap-2 px-4 border border-b-0 rounded-t-2xl"
+            style={{
+              height: "38px",
+              background: "var(--card)",
+              borderColor: "var(--border)",
+            }}
+          >
+            {/* Traffic lights */}
+            <div className="flex items-center gap-1.5">
+              <div className="size-3 rounded-full" style={{ background: "#ff5f57" }} />
+              <div className="size-3 rounded-full" style={{ background: "#febc2e" }} />
+              <div className="size-3 rounded-full" style={{ background: "#28c840" }} />
+            </div>
+            {/* Fake URL bar */}
+            <div
+              className="flex-1 mx-4 flex items-center gap-1.5 px-3 rounded-md text-xs"
+              style={{
+                height: "22px",
+                maxWidth: "280px",
+                background: "var(--background)",
+                color: "var(--muted-foreground)",
+              }}
+            >
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}>
+                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              app.hooklyne.com
+            </div>
+          </div>
+
+          {/* Video content */}
+          <div className="relative overflow-hidden border border-t-0 rounded-b-2xl" style={{ borderColor: "var(--border)", maxHeight: "560px" }}>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/hooklyne-hero.png"
+              className="w-full object-cover object-top"
+            >
+              <source src="/hooklyne-hero.webm" type="video/webm" />
+              <source src="/hooklyne-hero.mp4" type="video/mp4" />
+            </video>
+            <div
+              className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
+            />
+          </div>
         </div>
 
         {/* Feature grid — Supabase-style */}
