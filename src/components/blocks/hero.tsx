@@ -131,8 +131,8 @@ export const Hero = () => {
               poster="/hooklyne-hero.png"
               className="w-full object-cover object-top"
             >
-              <source src="/hooklyne-hero.webm" type="video/webm" />
-              <source src="/hooklyne-hero.mp4" type="video/mp4" />
+              <source src="/Hooklyne-intro-video.webm" type="video/webm" />
+              <source src="/Hooklyne-intro-video.mp4" type="video/mp4" />
             </video>
             <div
               className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
