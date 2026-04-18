@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, Zap, Users, FileText, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -81,35 +82,49 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Screenshot + features as one unified panel */}
+      {/* Video / screenshot */}
       <div className="container mt-14 lg:mt-16">
-        {/* Screenshot with perspective tilt */}
         <div
           ref={screenshotRef}
-          className="relative w-full rounded-t-2xl border border-b-0 border-[var(--border)] shadow-xl overflow-hidden"
+          className="relative w-full rounded-2xl border border-[var(--border)] shadow-xl overflow-hidden"
           style={{ maxHeight: "600px", transformOrigin: "top center" }}
         >
-          <img
-            src="/hooklyne-hero.png"
-            alt="Hooklyne portal - Prospect Signals view showing signal scores, outreach sequences, and ready-to-send emails"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/hooklyne-hero.png"
             className="w-full object-cover object-top"
-          />
+          >
+            <source src="/hooklyne-hero.webm" type="video/webm" />
+            <source src="/hooklyne-hero.mp4" type="video/mp4" />
+          </video>
           <div
             className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
             style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
           />
         </div>
 
-        {/* Feature bullets - connected to screenshot bottom */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--border)] border border-t-0 border-[var(--border)] rounded-b-2xl overflow-hidden">
-          {features.map((f) => {
+        {/* Feature grid — Supabase-style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-16 lg:mt-20 border-t border-[var(--border)]">
+          {features.map((f, i) => {
             const Icon = f.icon;
             return (
-              <div key={f.title} className="bg-[var(--card)] px-6 py-7">
-                <div className="size-8 rounded-lg flex items-center justify-center mb-4" style={{ background: "rgba(52,76,163,0.08)" }}>
-                  <Icon className="size-4 text-[var(--hooklyne-blue)]" />
-                </div>
-                <h3 className="font-semibold text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] text-sm mb-1.5">
+              <div
+                key={f.title}
+                className={cn(
+                  "pt-8 pb-4 pr-8",
+                  i > 0 && "md:pl-8 md:border-l border-[var(--border)]",
+                  i === 1 && "max-md:border-l-0",
+                )}
+              >
+                <Icon
+                  className="size-7 text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] mb-4"
+                  strokeWidth={1.5}
+                />
+                <div className="w-7 h-px bg-[var(--hooklyne-blue)] mb-5" />
+                <h3 className="font-semibold text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] text-base mb-2">
                   {f.title}
                 </h3>
                 <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
