@@ -174,22 +174,30 @@ export const Hero = () => {
           </div>
 
           {/* Video content */}
-          <div className="relative overflow-hidden border border-t-0 rounded-b-2xl" style={{ borderColor: "var(--border)", maxHeight: "560px" }}>
+          <div
+            className="overflow-hidden border border-t-0 rounded-b-2xl"
+            style={{ borderColor: "var(--border)", maxHeight: "560px" }}
+          >
             <video
               autoPlay
               muted
               loop
               playsInline
               poster="/hooklyne-hero.png"
-              className="w-full object-cover object-top"
+              style={{
+                width: "100%",
+                display: "block",
+                /* Crop letterbox bars: scale up slightly and clip top/bottom */
+                transform: "scale(1.01) translateY(0%)",
+                objectFit: "cover",
+                objectPosition: "center center",
+                marginTop: "-6%",
+                marginBottom: "-6%",
+              }}
             >
-              <source src="/Hooklyne-intro-video.webm" type="video/webm" />
-              <source src="/Hooklyne-intro-video.mp4" type="video/mp4" />
+              <source src="/Hooklyne%20Intro%20video.webm" type="video/webm" />
+              <source src="/Hooklyne%20Intro%20video.mp4" type="video/mp4" />
             </video>
-            <div
-              className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-              style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
-            />
           </div>
         </div>
 
