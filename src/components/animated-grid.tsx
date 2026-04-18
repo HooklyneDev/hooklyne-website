@@ -1,88 +1,51 @@
 import { useEffect, useRef } from "react";
 
-type Direction = "up" | "down" | "left" | "right";
-type DotType = "navy" | "signal" | "tracker";
+const GRID = 120;
 
-type Dot = {
-  col: number;
-  row: number;
-  targetCol: number;
-  targetRow: number;
-  progress: number;
-  speed: number;
-  direction: Direction;
-  pauseFrames: number;
-  opacity: number;
-  targetOpacity: number;
-  breathePhase: number;
-  type: DotType;
-};
+type NodeType = "prospect" | "signal" | "tracker";
 
-type PulseRing = {
+type SNode = {
   x: number;
   y: number;
-  radius: number;
-  maxRadius: number;
-  opacity: number;
+  type: NodeType;
+  breathePhase: number;
+  nextPulse: number;
+  interval: number;
+};
+
+type Pulse = {
+  x: number;
+  y: number;
+  r: number;
+  maxR: number;
+  alpha: number;
+  rgb: [number, number, number];
+};
+
+type Link = {
+  ax: number; ay: number;
+  bx: number; by: number;
+  alpha: number;
+  dir: 1 | -1;
   rgb: [number, number, number];
 };
 
 type Zone = { x: number; y: number; w: number; h: number };
 
-const DIRS: Direction[] = ["up", "down", "left", "right"];
-
-const HEAT: [number, number, number][] = [
-  [255, 140, 66],
-  [52,  76,  163],
-  [13,  148, 136],
-];
-const HEAT_DARK: [number, number, number][] = [
-  [255, 170, 100],
-  [100, 140, 230],
-  [45,  212, 191],
-];
-
 const LIGHT = {
-  grid:    "rgba(52, 76, 163, 0.07)",
-  node:    "rgba(52, 76, 163, 0.12)",
-  navy:    [2,   47,  81]  as [number, number, number],
-  signal:  [255, 140, 66]  as [number, number, number],
-  tracker: [13,  148, 136] as [number, number, number],
+  grid:     "rgba(52, 76, 163, 0.07)",
+  node:     "rgba(52, 76, 163, 0.13)",
+  prospect: [2,   47,  81]  as [number, number, number],
+  signal:   [255, 140, 66]  as [number, number, number],
+  tracker:  [13,  148, 136] as [number, number, number],
 };
 
 const DARK = {
-  grid:    "rgba(100, 140, 230, 0.09)",
-  node:    "rgba(100, 140, 230, 0.18)",
-  navy:    [120, 160, 255] as [number, number, number],
-  signal:  [255, 170, 100] as [number, number, number],
-  tracker: [45,  212, 191] as [number, number, number],
-};
-
-// Ease-in-out cubic — makes movement feel smooth and premium
-const ease = (t: number) =>
-  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-const nextPos = (
-  dir: Direction,
-  col: number,
-  row: number,
-  cols: number,
-  rows: number,
-  gridSize: number,
-  deadZones: Zone[],
-) => {
-  const moves: Record<Direction, [number, number]> = {
-    up:    [col, row - 1],
-    down:  [col, row + 1],
-    left:  [col - 1, row],
-    right: [col + 1, row],
-  };
-  const [nc, nr] = moves[dir];
-  if (nc < 0 || nr < 0 || nc >= cols || nr >= rows) return null;
-  const px = nc * gridSize;
-  const py = nr * gridSize;
-  if (deadZones.some((z) => px >= z.x && px <= z.x + z.w && py >= z.y && py <= z.y + z.h)) return null;
-  return [nc, nr] as [number, number];
+  grid:     "rgba(100, 140, 230, 0.09)",
+  node:     "rgba(100, 140, 230, 0.18)",
+  prospect: [100, 150, 230] as [number, number, number],
+  signal:   [255, 170, 100] as [number, number, number],
+  tracker:  [45,  212, 191] as [number, number, number],
 };
 
 export const AnimatedGrid = () => {
@@ -94,142 +57,144 @@ export const AnimatedGrid = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const GRID = 120;
-    const DOT_COUNT = 24;
-
-    let width = 0;
-    let height = 0;
-    let cols = 0;
-    let rows = 0;
+    let width = 0, height = 0, cols = 0, rows = 0;
     let animId: number;
-    let dots: Dot[] = [];
-    let pulseRings: PulseRing[] = [];
+    let nodes: SNode[] = [];
+    let pulses: Pulse[] = [];
+    let links: Link[] = [];
     let deadZones: Zone[] = [];
+    let frame = 0;
 
     const isDark = () => document.documentElement.classList.contains("dark");
     const theme = () => (isDark() ? DARK : LIGHT);
-    const heatColors = () => (isDark() ? HEAT_DARK : HEAT);
+
+    const nodeRgb = (type: NodeType): [number, number, number] => {
+      const t = theme();
+      if (type === "signal")   return t.signal;
+      if (type === "tracker")  return t.tracker;
+      return t.prospect;
+    };
 
     const computeDeadZones = () => {
-      const canvasRect = canvas.getBoundingClientRect();
+      const cr = canvas.getBoundingClientRect();
       const zones: Zone[] = [];
 
-      // Top — navbar + first row
-      zones.push({ x: 0, y: 0, w: width, h: GRID + 24 });
+      // Top — navbar + buffer
+      zones.push({ x: 0, y: 0, w: width, h: GRID + 16 });
 
-      // Left edge — 2 columns
-      zones.push({ x: 0, y: 0, w: GRID * 2, h: height });
-
-      // Right edge — 2 columns
-      zones.push({ x: width - GRID * 2, y: 0, w: GRID * 2, h: height });
+      // Left + right edge (one column each)
+      zones.push({ x: 0, y: 0, w: GRID, h: height });
+      zones.push({ x: width - GRID, y: 0, w: GRID, h: height });
 
       // Hero text block
       const hero = document.getElementById("hero-content");
       if (hero) {
         const r = hero.getBoundingClientRect();
-        const pad = 32;
+        const p = 28;
         zones.push({
-          x: r.left - canvasRect.left - pad,
-          y: r.top  - canvasRect.top  - pad,
-          w: r.width  + pad * 2,
-          h: r.height + pad * 2,
+          x: r.left - cr.left - p,
+          y: r.top  - cr.top  - p,
+          w: r.width  + p * 2,
+          h: r.height + p * 2,
         });
       }
 
-      // Video — everything from its top edge downward
+      // Everything from video top downward
       const video = document.getElementById("hero-video");
       if (video) {
         const r = video.getBoundingClientRect();
-        const top = r.top - canvasRect.top - 32;
+        const top = r.top - cr.top - 24;
         zones.push({ x: 0, y: top, w: width, h: height - top });
       }
 
       deadZones = zones;
     };
 
+    const inZone = (x: number, y: number) =>
+      deadZones.some((z) => x >= z.x && x <= z.x + z.w && y >= z.y && y <= z.y + z.h);
+
     const resize = () => {
-      width = canvas.offsetWidth;
+      width  = canvas.offsetWidth;
       height = canvas.offsetHeight;
-      canvas.width = width * window.devicePixelRatio;
+      canvas.width  = width  * window.devicePixelRatio;
       canvas.height = height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      cols = Math.floor(width / GRID) + 1;
+      cols = Math.floor(width  / GRID) + 1;
       rows = Math.floor(height / GRID) + 1;
       computeDeadZones();
     };
 
-    const inDeadZone = (col: number, row: number) => {
-      const px = col * GRID;
-      const py = row * GRID;
-      return deadZones.some((z) => px >= z.x && px <= z.x + z.w && py >= z.y && py <= z.y + z.h);
-    };
-
-    const randomDir = (col: number, row: number): Direction => {
-      const valid = DIRS.filter(
-        (d) => nextPos(d, col, row, cols, rows, GRID, deadZones) !== null
-      );
-      if (valid.length === 0) return DIRS[Math.floor(Math.random() * DIRS.length)];
-      return valid[Math.floor(Math.random() * valid.length)];
-    };
-
-    const pickType = (i: number): DotType => {
-      if (i % 7 === 0) return "signal";
-      if (i % 5 === 0) return "tracker";
-      return "navy";
-    };
-
-    const dotRgb = (type: DotType): [number, number, number] => {
-      const t = theme();
-      if (type === "signal") return t.signal;
-      if (type === "tracker") return t.tracker;
-      return t.navy;
-    };
-
-    const dotPos = (dot: Dot) => {
-      const t = ease(dot.progress);
-      return {
-        x: dot.col * GRID + (dot.targetCol * GRID - dot.col * GRID) * t,
-        y: dot.row * GRID + (dot.targetRow * GRID - dot.row * GRID) * t,
-      };
-    };
-
-    // Sector-based init — divides available cells into a grid so dots
-    // are spread evenly across the whole background from the start
-    const initDots = () => {
-      const available: [number, number][] = [];
-      for (let c = 1; c < cols - 1; c++) {
-        for (let r = 2; r < rows; r++) {
-          if (!inDeadZone(c, r)) available.push([c, r]);
+    const initNodes = () => {
+      const candidates: [number, number][] = [];
+      for (let c = 0; c <= cols; c++) {
+        for (let r = 0; r <= rows; r++) {
+          const x = c * GRID, y = r * GRID;
+          if (!inZone(x, y)) candidates.push([x, y]);
         }
       }
 
       // Shuffle
-      for (let i = available.length - 1; i > 0; i--) {
+      for (let i = candidates.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [available[i], available[j]] = [available[j], available[i]];
+        [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
       }
 
-      // Divide into DOT_COUNT sectors and pick one cell per sector
-      const sectorSize = Math.floor(available.length / DOT_COUNT);
-      dots = Array.from({ length: DOT_COUNT }, (_, i) => {
-        const sectorStart = i * sectorSize;
-        const pick = available[sectorStart + Math.floor(Math.random() * Math.max(1, sectorSize))];
-        const [col, row] = pick ?? available[i % available.length];
-        const dir = randomDir(col, row);
-        const target = nextPos(dir, col, row, cols, rows, GRID, deadZones) ?? [col, row];
-        return {
-          col, row,
-          targetCol: target[0],
-          targetRow: target[1],
-          progress: Math.random(),
-          speed: 0.004 + Math.random() * 0.003,
-          direction: dir,
-          pauseFrames: Math.floor(Math.random() * 40),
-          opacity: Math.random() * 0.3 + 0.4,
-          targetOpacity: Math.random() * 0.3 + 0.4,
+      // Pick evenly from sectors so coverage is balanced
+      const target = Math.min(candidates.length, 32);
+      const step = Math.max(1, Math.floor(candidates.length / target));
+
+      nodes = [];
+      for (let i = 0; i < candidates.length && nodes.length < target; i += step) {
+        const [x, y] = candidates[i];
+        const rand = Math.random();
+        const type: NodeType = rand < 0.12 ? "signal" : rand < 0.25 ? "tracker" : "prospect";
+        const interval = type === "signal"
+          ? 140 + Math.floor(Math.random() * 80)   // ~2–3.5s at 60fps
+          : type === "tracker"
+          ? 200 + Math.floor(Math.random() * 120)  // ~3–5s
+          : 280 + Math.floor(Math.random() * 180); // ~4.5–7.5s
+
+        nodes.push({
+          x, y, type,
           breathePhase: Math.random() * Math.PI * 2,
-          type: pickType(i),
-        };
+          nextPulse: Math.floor(Math.random() * interval),
+          interval,
+        });
+      }
+    };
+
+    const firePulse = (node: SNode) => {
+      const rgb = nodeRgb(node.type);
+      const maxR = node.type === "signal"
+        ? GRID * 2.2
+        : node.type === "tracker"
+        ? GRID * 1.8
+        : GRID * 1.4;
+      pulses.push({ x: node.x, y: node.y, r: 2, maxR, alpha: node.type === "signal" ? 0.55 : 0.38, rgb });
+    };
+
+    // When a pulse from nodeA expands to reach nodeB, briefly connect them
+    const checkPulseConnections = () => {
+      pulses.forEach((p) => {
+        nodes.forEach((n) => {
+          if (n.x === p.x && n.y === p.y) return; // same node
+          const dist = Math.sqrt((n.x - p.x) ** 2 + (n.y - p.y) ** 2);
+          // Trigger when pulse ring radius crosses the distance to this node
+          if (Math.abs(p.r - dist) < 6 && dist < p.maxR) {
+            const alreadyLinked = links.some(
+              (l) => Math.abs(l.ax - p.x) < 2 && Math.abs(l.bx - n.x) < 2
+            );
+            if (!alreadyLinked && Math.random() < 0.35) {
+              links.push({
+                ax: p.x, ay: p.y,
+                bx: n.x, by: n.y,
+                alpha: 0,
+                dir: 1,
+                rgb: p.rgb,
+              });
+            }
+          }
+        });
       });
     };
 
@@ -238,16 +203,10 @@ export const AnimatedGrid = () => {
       ctx.strokeStyle = t.grid;
       ctx.lineWidth = 0.5;
       for (let c = 0; c <= cols; c++) {
-        ctx.beginPath();
-        ctx.moveTo(c * GRID, 0);
-        ctx.lineTo(c * GRID, height);
-        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(c * GRID, 0); ctx.lineTo(c * GRID, height); ctx.stroke();
       }
       for (let r = 0; r <= rows; r++) {
-        ctx.beginPath();
-        ctx.moveTo(0, r * GRID);
-        ctx.lineTo(width, r * GRID);
-        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, r * GRID); ctx.lineTo(width, r * GRID); ctx.stroke();
       }
     };
 
@@ -263,156 +222,114 @@ export const AnimatedGrid = () => {
       }
     };
 
-    const drawConnections = () => {
-      const maxDist = GRID * 2.8;
-      for (let i = 0; i < dots.length; i++) {
-        const { x: ax, y: ay } = dotPos(dots[i]);
-        const neighbours: { dist: number; j: number }[] = [];
-        for (let j = i + 1; j < dots.length; j++) {
-          const { x: bx, y: by } = dotPos(dots[j]);
-          const dist = Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2);
-          if (dist < maxDist) neighbours.push({ dist, j });
-        }
-        neighbours.sort((a, b) => a.dist - b.dist);
-        neighbours.slice(0, 2).forEach(({ dist, j }) => {
-          const { x: bx, y: by } = dotPos(dots[j]);
-          const proximity = 1 - dist / maxDist;
-          const alpha = proximity * proximity * 0.22;
-          const rgb = dotRgb(dots[i].type);
-          ctx.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(ax, ay);
-          ctx.lineTo(bx, by);
-          ctx.stroke();
-        });
-      }
-    };
-
-    const drawPulseRings = () => {
-      pulseRings.forEach((ring) => {
-        const progress = ring.radius / ring.maxRadius;
+    const drawLinks = () => {
+      links.forEach((l) => {
         ctx.beginPath();
-        ctx.arc(ring.x, ring.y, ring.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${ring.rgb[0]}, ${ring.rgb[1]}, ${ring.rgb[2]}, ${ring.opacity * (1 - progress)})`;
+        ctx.moveTo(l.ax, l.ay);
+        ctx.lineTo(l.bx, l.by);
+        ctx.strokeStyle = `rgba(${l.rgb[0]}, ${l.rgb[1]}, ${l.rgb[2]}, ${l.alpha})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       });
     };
 
-    let frame_count = 0;
-
-    const drawDots = () => {
-      frame_count++;
-      dots.forEach((dot) => {
-        const { x, y } = dotPos(dot);
-        const rgb = dotRgb(dot.type);
-
-        // Gentle breathe — offset per dot so they don't all pulse together
-        const breathe = 1 + Math.sin(frame_count * 0.018 + dot.breathePhase) * 0.12;
-        const finalOpacity = dot.opacity * breathe;
-
-        // Soft glow
+    const drawPulses = () => {
+      pulses.forEach((p) => {
+        const progress = p.r / p.maxR;
         ctx.beginPath();
-        ctx.arc(x, y, 9, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${finalOpacity * 0.07})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${p.rgb[0]}, ${p.rgb[1]}, ${p.rgb[2]}, ${p.alpha * (1 - progress)})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+    };
+
+    const drawNodes = () => {
+      nodes.forEach((n) => {
+        const rgb = nodeRgb(n.type);
+        const breathe = 1 + Math.sin(frame * 0.016 + n.breathePhase) * 0.15;
+        const opacity = (n.type === "signal" ? 0.85 : n.type === "tracker" ? 0.7 : 0.55) * breathe;
+        const r = n.type === "signal" ? 3.5 : n.type === "tracker" ? 3 : 2.5;
+
+        // Glow
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity * 0.06})`;
         ctx.fill();
 
-        // Dot
-        const r = dot.type === "navy" ? 2.5 : 3.2;
+        // Core dot
         ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${finalOpacity})`;
+        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
         ctx.fill();
       });
     };
 
     const drawBottomFade = () => {
-      const canvasRect = canvas.getBoundingClientRect();
+      const cr = canvas.getBoundingClientRect();
       const video = document.getElementById("hero-video");
-      let fadeY = height * 0.55;
+      let fadeY = height * 0.52;
       if (video) {
         const r = video.getBoundingClientRect();
-        fadeY = Math.min(r.top - canvasRect.top - 48, height * 0.6);
+        fadeY = Math.min(r.top - cr.top - 40, height * 0.58);
       }
       const bg = isDark() ? "13, 20, 32" : "241, 245, 249";
-      const grad = ctx.createLinearGradient(0, fadeY, 0, fadeY + 80);
+      const grad = ctx.createLinearGradient(0, fadeY, 0, fadeY + 64);
       grad.addColorStop(0, `rgba(${bg}, 0)`);
       grad.addColorStop(1, `rgba(${bg}, 1)`);
       ctx.fillStyle = grad;
       ctx.fillRect(0, fadeY, width, height - fadeY);
     };
 
-    const updateDots = () => {
-      const heat = heatColors();
-      dots.forEach((dot) => {
-        if (dot.pauseFrames > 0) {
-          dot.pauseFrames--;
-          return;
-        }
+    const update = () => {
+      frame++;
 
-        dot.progress += dot.speed;
+      // Tick pulses
+      pulses = pulses
+        .map((p) => ({ ...p, r: p.r + 1.2 }))
+        .filter((p) => p.r < p.maxR);
 
-        if (dot.progress >= 1) {
-          dot.progress = 0;
-          dot.col = dot.targetCol;
-          dot.row = dot.targetRow;
+      // Tick links
+      links = links
+        .map((l) => {
+          const next = l.alpha + l.dir * 0.025;
+          if (l.dir === 1 && next >= 0.28) return { ...l, alpha: 0.28, dir: -1 as -1 };
+          if (l.dir === -1 && next <= 0)   return null;
+          return { ...l, alpha: next };
+        })
+        .filter(Boolean) as Link[];
 
-          // Pulse on every arrival — subtle, branded colors
-          const rgb = heat[Math.floor(Math.random() * heat.length)];
-          pulseRings.push({
-            x: dot.col * GRID,
-            y: dot.row * GRID,
-            radius: 2,
-            maxRadius: GRID * 0.5,
-            opacity: 0.32,
-            rgb,
-          });
-
-          dot.pauseFrames = Math.floor(Math.random() * 35) + 8;
-
-          const canContinue = nextPos(dot.direction, dot.col, dot.row, cols, rows, GRID, deadZones) !== null;
-          if (Math.random() < 0.65 && canContinue) {
-            // keep direction
-          } else {
-            dot.direction = randomDir(dot.col, dot.row);
-          }
-          const target = nextPos(dot.direction, dot.col, dot.row, cols, rows, GRID, deadZones) ?? [dot.col, dot.row];
-          dot.targetCol = target[0];
-          dot.targetRow = target[1];
-
-          dot.opacity += (dot.targetOpacity - dot.opacity) * 0.1;
-          dot.targetOpacity = Math.random() * 0.3 + 0.4;
+      // Fire node pulses
+      nodes.forEach((n) => {
+        n.nextPulse--;
+        if (n.nextPulse <= 0) {
+          firePulse(n);
+          n.nextPulse = n.interval + Math.floor(Math.random() * 60);
         }
       });
 
-      pulseRings = pulseRings
-        .map((r) => ({ ...r, radius: r.radius + 1.1, opacity: r.opacity * 0.96 }))
-        .filter((r) => r.opacity > 0.02 && r.radius < r.maxRadius);
+      checkPulseConnections();
     };
 
-    const frame = () => {
+    const tick = () => {
       ctx.clearRect(0, 0, width, height);
       drawGrid();
       drawIntersections();
-      drawConnections();
-      drawPulseRings();
-      drawDots();
+      drawLinks();
+      drawPulses();
+      drawNodes();
       drawBottomFade();
-      updateDots();
-      animId = requestAnimationFrame(frame);
+      update();
+      animId = requestAnimationFrame(tick);
     };
 
     requestAnimationFrame(() => {
       resize();
-      initDots();
-      frame();
+      initNodes();
+      tick();
     });
 
-    const ro = new ResizeObserver(() => {
-      resize();
-      initDots();
-    });
+    const ro = new ResizeObserver(() => { resize(); initNodes(); });
     ro.observe(canvas);
 
     const mo = new MutationObserver(() => {});
