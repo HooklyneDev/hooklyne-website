@@ -30,7 +30,7 @@ export const FeatureCarousel = () => {
   const slide = SLIDES[active];
 
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-12 lg:py-16">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">What you get</p>

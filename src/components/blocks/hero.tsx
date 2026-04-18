@@ -162,14 +162,14 @@ export const Hero = () => {
                 display: "block",
               }}
             >
-              <source src="/Hooklyne%20Intro%20video.webm" type="video/webm" />
-              <source src="/Hooklyne%20Intro%20video.mp4" type="video/mp4" />
+              <source src="/Hooklyne%20Intro%20Video.webm" type="video/webm" />
+              <source src="/Hooklyne%20Intro%20Video.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
 
         {/* Stat strip - sits right under video */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 lg:mt-14 py-8 border-y border-[var(--border)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 lg:mt-10 py-6 border-y border-[var(--border)]">
           {[
             { v: "4", l: "intelligence sources" },
             { v: "20+", l: "data providers" },
@@ -184,7 +184,7 @@ export const Hero = () => {
         </div>
 
         {/* Feature grid — Supabase-style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-12 lg:mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-8 lg:mt-10">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
