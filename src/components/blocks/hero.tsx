@@ -83,7 +83,7 @@ export const Hero = () => {
       </div>
 
       {/* Video / screenshot */}
-      <div className="container mt-14 lg:mt-16">
+      <div id="hero-video" className="container mt-14 lg:mt-16">
         <div
           ref={screenshotRef}
           className="relative w-full rounded-2xl shadow-2xl overflow-hidden"
@@ -154,9 +154,9 @@ export const Hero = () => {
               poster="/hooklyne-hero.png"
               style={{
                 position: "absolute",
-                inset: "-8% 0",
+                inset: "-3.5% 0",
                 width: "100%",
-                height: "116%",
+                height: "107%",
                 objectFit: "cover",
                 objectPosition: "center center",
                 display: "block",

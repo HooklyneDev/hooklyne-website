@@ -113,13 +113,21 @@ export const AnimatedGrid = () => {
     const computeDeadZones = () => {
       const canvasRect = canvas.getBoundingClientRect();
       const zones: Zone[] = [];
-      zones.push({ x: 0, y: 0, w: width, h: GRID + 20 });
-      zones.push({ x: 0, y: 0, w: 1, h: height });
-      zones.push({ x: (cols - 1) * GRID - 1, y: 0, w: GRID + 2, h: height });
+
+      // Top — navbar + first row
+      zones.push({ x: 0, y: 0, w: width, h: GRID + 24 });
+
+      // Left edge — 2 columns
+      zones.push({ x: 0, y: 0, w: GRID * 2, h: height });
+
+      // Right edge — 2 columns
+      zones.push({ x: width - GRID * 2, y: 0, w: GRID * 2, h: height });
+
+      // Hero text block
       const hero = document.getElementById("hero-content");
       if (hero) {
         const r = hero.getBoundingClientRect();
-        const pad = 24;
+        const pad = 32;
         zones.push({
           x: r.left - canvasRect.left - pad,
           y: r.top  - canvasRect.top  - pad,
@@ -127,6 +135,15 @@ export const AnimatedGrid = () => {
           h: r.height + pad * 2,
         });
       }
+
+      // Video — everything from its top edge downward
+      const video = document.getElementById("hero-video");
+      if (video) {
+        const r = video.getBoundingClientRect();
+        const top = r.top - canvasRect.top - 32;
+        zones.push({ x: 0, y: top, w: width, h: height - top });
+      }
+
       deadZones = zones;
     };
 
@@ -311,13 +328,19 @@ export const AnimatedGrid = () => {
     };
 
     const drawBottomFade = () => {
-      const fadeStart = height * 0.62;
+      const canvasRect = canvas.getBoundingClientRect();
+      const video = document.getElementById("hero-video");
+      let fadeY = height * 0.55;
+      if (video) {
+        const r = video.getBoundingClientRect();
+        fadeY = Math.min(r.top - canvasRect.top - 48, height * 0.6);
+      }
       const bg = isDark() ? "13, 20, 32" : "241, 245, 249";
-      const grad = ctx.createLinearGradient(0, fadeStart, 0, height);
+      const grad = ctx.createLinearGradient(0, fadeY, 0, fadeY + 80);
       grad.addColorStop(0, `rgba(${bg}, 0)`);
-      grad.addColorStop(1, `rgba(${bg}, 0.92)`);
+      grad.addColorStop(1, `rgba(${bg}, 1)`);
       ctx.fillStyle = grad;
-      ctx.fillRect(0, fadeStart, width, height - fadeStart);
+      ctx.fillRect(0, fadeY, width, height - fadeY);
     };
 
     const updateDots = () => {
