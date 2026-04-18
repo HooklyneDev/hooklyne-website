@@ -4,7 +4,6 @@ import { AnimatedGrid } from '@/components/animated-grid';
 import { Background } from '@/components/background';
 import { Hero } from '@/components/blocks/hero';
 import { FeatureCarousel } from '@/components/blocks/feature-carousel';
-import { FeatureGridSix } from '@/components/blocks/feature-grid-six';
 import { FeatureShowcase } from '@/components/blocks/feature-showcase';
 import { FounderQuote } from '@/components/blocks/founder-quote';
 import { HomeFAQ } from '@/components/blocks/home-faq';
@@ -21,7 +20,6 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
   <Background variant="bottom">
     <FeatureCarousel client:only="react" />
-    <FeatureGridSix />
     <FeatureShowcase />
     <FounderQuote />
     <HomePricing client:only="react" />

@@ -32,13 +32,6 @@ export const FeatureCarousel = () => {
   return (
     <section className="py-12 lg:py-16">
       <div className="container">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">What you get</p>
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight">
-            Four things every prospect package includes.
-          </h2>
-        </div>
-
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-2 flex flex-col gap-2">
             {SLIDES.map((s, i) => (

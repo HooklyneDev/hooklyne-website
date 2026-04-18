@@ -18,9 +18,8 @@ export const HomeFAQ = () => {
     <section className="py-20 lg:py-28 border-t border-[var(--border)]">
       <div className="container max-w-3xl">
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
           <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight">
-            Common questions, answered.
+            Questions
           </h2>
         </div>
 

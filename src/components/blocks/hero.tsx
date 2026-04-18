@@ -1,30 +1,6 @@
 import { useEffect, useRef } from "react";
-import { ArrowRight, Zap, Users, FileText, Bell } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-const features = [
-  {
-    icon: Zap,
-    title: "Signal-ranked prospects",
-    description: "Ranked by how relevant their latest news is to what you sell. Every first touch has a real reason.",
-  },
-  {
-    icon: Users,
-    title: "Smart person matching",
-    description: "Describe who you want by role, not job title. We find the right person across title variants.",
-  },
-  {
-    icon: FileText,
-    title: "Outreach written in your voice",
-    description: "A signal-anchored email and LinkedIn invite in your sender's actual tone. Ready to send.",
-  },
-  {
-    icon: Bell,
-    title: "Real-time signal monitoring",
-    description: "Track companies over time. When something relevant happens, you get a ready-to-send follow-up.",
-  },
-];
 
 export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
@@ -168,49 +144,6 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* Stat strip - sits right under video */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 lg:mt-10 py-6 border-y border-[var(--border)]">
-          {[
-            { v: "4", l: "intelligence sources" },
-            { v: "20+", l: "data providers" },
-            { v: "EN + NL", l: "from day one" },
-            { v: "<60s", l: "per prospect package" },
-          ].map((s) => (
-            <div key={s.l} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[var(--heading)] tracking-tight">{s.v}</div>
-              <div className="text-xs text-[var(--muted-foreground)] mt-1.5">{s.l}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Feature grid — Supabase-style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-8 lg:mt-10">
-          {features.map((f, i) => {
-            const Icon = f.icon;
-            return (
-              <div
-                key={f.title}
-                className={cn(
-                  "pt-8 pb-4 pr-8",
-                  i > 0 && "md:pl-8 md:border-l border-[var(--border)]",
-                  i === 1 && "max-md:border-l-0",
-                )}
-              >
-                <Icon
-                  className="size-7 text-[var(--heading)] mb-4"
-                  strokeWidth={1.5}
-                />
-                <div className="w-7 h-px bg-[var(--hooklyne-blue)] mb-5" />
-                <h3 className="font-semibold text-[var(--heading)] text-base mb-2">
-                  {f.title}
-                </h3>
-                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  {f.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

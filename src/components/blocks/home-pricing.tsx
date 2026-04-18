@@ -28,11 +28,10 @@ export const HomePricing = () => {
     <section className="py-20 lg:py-28 border-t border-[var(--border)]">
       <div className="container max-w-6xl">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Pricing</p>
           <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
-            Stop guessing. Start closing.
+            Pricing
           </h2>
-          <p className="text-base text-[var(--muted-foreground)]">Choose the plan that fits your team. Switch anytime.</p>
+          <p className="text-base text-[var(--muted-foreground)]">Switch plans or cancel anytime.</p>
         </div>
 
         <div className="flex items-center justify-center gap-3 mb-10">
