@@ -51,13 +51,13 @@ export const Hero = () => {
       <div id="hero-content" className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
         <a
           href="/contact"
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] hover:border-[var(--hooklyne-blue)] transition-colors"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--heading)] hover:border-[var(--hooklyne-blue)] transition-colors"
         >
           Invite-only pilot - now open
           <ArrowRight className="size-3.5" />
         </a>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--hooklyne-navy)] leading-[1.1] max-w-3xl">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] max-w-3xl">
           Find the prospects actually worth reaching out to
         </h1>
 
@@ -73,7 +73,7 @@ export const Hero = () => {
             </a>
           </Button>
           <a
-            href="/#how-it-works"
+            href="/how-it-works"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors"
           >
             See how it works
@@ -83,7 +83,7 @@ export const Hero = () => {
       </div>
 
       {/* Video / screenshot */}
-      <div id="hero-video" className="container mt-14 lg:mt-16">
+      <div id="hero-video" className="container max-w-6xl mt-14 lg:mt-16">
         <div
           ref={screenshotRef}
           className="relative w-full rounded-2xl shadow-2xl overflow-hidden"
@@ -168,8 +168,23 @@ export const Hero = () => {
           </div>
         </div>
 
+        {/* Stat strip - sits right under video */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 lg:mt-14 py-8 border-y border-[var(--border)]">
+          {[
+            { v: "4", l: "intelligence sources" },
+            { v: "20+", l: "data providers" },
+            { v: "EN + NL", l: "from day one" },
+            { v: "<60s", l: "per prospect package" },
+          ].map((s) => (
+            <div key={s.l} className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-[var(--heading)] tracking-tight">{s.v}</div>
+              <div className="text-xs text-[var(--muted-foreground)] mt-1.5">{s.l}</div>
+            </div>
+          ))}
+        </div>
+
         {/* Feature grid — Supabase-style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-16 lg:mt-20 border-t border-[var(--border)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-12 lg:mt-16">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
@@ -182,11 +197,11 @@ export const Hero = () => {
                 )}
               >
                 <Icon
-                  className="size-7 text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] mb-4"
+                  className="size-7 text-[var(--heading)] mb-4"
                   strokeWidth={1.5}
                 />
                 <div className="w-7 h-px bg-[var(--hooklyne-blue)] mb-5" />
-                <h3 className="font-semibold text-[var(--hooklyne-navy)] dark:text-[var(--foreground)] text-base mb-2">
+                <h3 className="font-semibold text-[var(--heading)] text-base mb-2">
                   {f.title}
                 </h3>
                 <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">

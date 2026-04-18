@@ -9,7 +9,7 @@ export const Footer = () => {
           <p className="text-xs text-[var(--muted-foreground)]">Not more. Smarter.</p>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--muted-foreground)]">
-          <a href="/#how-it-works" className="hover:text-[var(--foreground)] transition-colors">How it works</a>
+          <a href="/how-it-works" className="hover:text-[var(--foreground)] transition-colors">How it works</a>
           <a href="/pricing" className="hover:text-[var(--foreground)] transition-colors">Pricing</a>
           <a href="/about" className="hover:text-[var(--foreground)] transition-colors">About</a>
           <a href="/faq" className="hover:text-[var(--foreground)] transition-colors">FAQ</a>

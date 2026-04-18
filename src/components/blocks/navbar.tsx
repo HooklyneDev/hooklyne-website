@@ -5,7 +5,7 @@ import { UserCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
-  { label: "How it works", href: "/#how-it-works" },
+  { label: "How it works", href: "/how-it-works" },
   { label: "About", href: "/about" },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },

@@ -1,0 +1,73 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { ScreenPlaceholder } from '@/components/screen-placeholder';
+import { FinalCTA } from '@/components/blocks/final-cta';
+import { ArrowRight } from 'lucide-react';
+
+const steps = [
+  {
+    n: "01",
+    title: "Tell us who you sell to.",
+    body: "Share your ICP, sender voice, and target regions in a 30-min onboarding call. We capture how your reps actually write so the outreach sounds like them, not a template.",
+    placeholder: { label: "Sender voice profile setup", hint: "Company, voice, example emails, and ICP captured in one form. Calibrated once, reused on every prospect.", accent: "blue" as const },
+  },
+  {
+    n: "02",
+    title: "We find the signals worth acting on.",
+    body: "We pull from 4 intelligence sources, score every news hook 6+ for relevance, and rank prospects by how strong their signal is. You see the why before you see the who.",
+    placeholder: { label: "Signal feed: ranked prospects", hint: "Heat map of tracked companies sorted by relevance. Hot signals at the top, cooling at the bottom.", accent: "orange" as const },
+  },
+  {
+    n: "03",
+    title: "We match the right person and write the outreach.",
+    body: "We find the right contact across 20+ sources by role description, not just job title. Then we write the email and LinkedIn invite, anchored to the signal, in your rep's voice.",
+    placeholder: { label: "Prospect package: ready to send", hint: "Verified contact + scored hook + email draft + LinkedIn invite, all on one card.", accent: "teal" as const },
+  },
+  {
+    n: "04",
+    title: "You review, pick the best, and send.",
+    body: "Open the portal, glance at the cards, copy the message, and send. When a tracked company moves again, you get a new ready-to-send action in your inbox.",
+    placeholder: { label: "Inbox: review and send", hint: "Prospect cards with one-click copy on email, LinkedIn message, and call script.", accent: "navy" as const },
+  },
+];
+---
+
+<DefaultLayout title="How it works - Hooklyne" description="Four steps from signal to sent. Tell us who you sell to, we research and write, you review and send.">
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-12">
+      <div class="container max-w-3xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Four steps from signal to sent.
+        </h1>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
+          No platform to learn. No sequences to build. We do the research and write the outreach. You review and send.
+        </p>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <section class="py-16 lg:py-24">
+      <div class="container max-w-6xl flex flex-col gap-24 lg:gap-32">
+        {steps.map((s, i) => (
+          <div class:list={["grid lg:grid-cols-2 gap-10 lg:gap-16 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
+            <div>
+              <div class="inline-flex items-center justify-center size-12 rounded-xl bg-[var(--hooklyne-blue)]/10 text-[var(--hooklyne-blue)] font-bold text-lg mb-5">
+                {s.n}
+              </div>
+              <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
+                {s.title}
+              </h2>
+              <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-lg">{s.body}</p>
+            </div>
+            <ScreenPlaceholder {...s.placeholder} ratio="4/3" chrome={true} />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <FinalCTA />
+  </Background>
+</DefaultLayout>

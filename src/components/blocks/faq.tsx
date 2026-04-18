@@ -55,7 +55,7 @@ export const FAQ = () => {
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
-            <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--hooklyne-navy)]">Common questions</h2>
+            <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--heading)]">Common questions</h2>
             <p className="text-[var(--muted-foreground)] mt-3 text-base">Everything you need to know before booking a demo.</p>
           </div>
 
@@ -66,7 +66,7 @@ export const FAQ = () => {
                 value={`item-${i}`}
                 className="rounded-xl border border-[var(--border)] bg-[var(--card)] px-5 data-[state=open]:border-[var(--hooklyne-blue)]/20"
               >
-                <AccordionTrigger className="text-left text-sm font-semibold text-[var(--hooklyne-navy)] hover:no-underline py-4">
+                <AccordionTrigger className="text-left text-sm font-semibold text-[var(--heading)] hover:no-underline py-4">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-[var(--muted-foreground)] leading-relaxed pb-4">
