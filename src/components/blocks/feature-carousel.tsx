@@ -72,12 +72,14 @@ export const FeatureCarousel = () => {
           </div>
 
           <div className="lg:col-span-3">
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-[var(--card)]" style={{ boxShadow: "var(--shadow-md)" }}>
-              <img
-                src={slide.image}
-                alt={slide.alt}
-                className="w-full h-full object-cover object-top"
-              />
+            <div className="rounded-3xl p-3" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, rgba(52,76,163,0.10) 0%, transparent 70%)" }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: "var(--shadow-lg)" }}>
+                <img
+                  src={slide.image}
+                  alt={slide.alt}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -34,8 +34,10 @@ export const FeatureShowcase = () => (
               </h2>
               <p className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-lg">{s.body}</p>
             </div>
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-[var(--card)]" style={{ boxShadow: "var(--shadow-md)" }}>
-              <img src={s.image} alt={s.alt} className="w-full h-full object-cover object-top" />
+            <div className="rounded-3xl p-3" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, rgba(52,76,163,0.10) 0%, transparent 70%)" }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: "var(--shadow-lg)" }}>
+                <img src={s.image} alt={s.alt} className="w-full h-full object-cover object-top" />
+              </div>
             </div>
           </div>
         );
