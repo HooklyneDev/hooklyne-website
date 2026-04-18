@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const GRID = 120;
+const GRID = 90;
 
 type NodeType = "prospect" | "signal" | "tracker";
 
@@ -11,6 +11,10 @@ type SNode = {
   breathePhase: number;
   nextPulse: number;
   interval: number;
+  // optional gentle drift
+  driftAmp: number;
+  driftPhase: number;
+  driftSpeed: number;
 };
 
 type Pulse = {
@@ -79,31 +83,18 @@ export const AnimatedGrid = () => {
       const cr = canvas.getBoundingClientRect();
       const zones: Zone[] = [];
 
-      // Top — navbar + buffer
-      zones.push({ x: 0, y: 0, w: width, h: GRID + 16 });
+      // Top — navbar + one row buffer
+      zones.push({ x: 0, y: 0, w: width, h: GRID * 1.2 });
 
-      // Left + right edge (one column each)
-      zones.push({ x: 0, y: 0, w: GRID, h: height });
-      zones.push({ x: width - GRID, y: 0, w: GRID, h: height });
-
-      // Hero text block
-      const hero = document.getElementById("hero-content");
-      if (hero) {
-        const r = hero.getBoundingClientRect();
-        const p = 28;
-        zones.push({
-          x: r.left - cr.left - p,
-          y: r.top  - cr.top  - p,
-          w: r.width  + p * 2,
-          h: r.height + p * 2,
-        });
-      }
+      // Left + right edges (half a cell each side)
+      zones.push({ x: 0, y: 0, w: GRID * 0.6, h: height });
+      zones.push({ x: width - GRID * 0.6, y: 0, w: GRID * 0.6, h: height });
 
       // Everything from video top downward
       const video = document.getElementById("hero-video");
       if (video) {
         const r = video.getBoundingClientRect();
-        const top = r.top - cr.top - 24;
+        const top = r.top - cr.top - 16;
         zones.push({ x: 0, y: top, w: width, h: height - top });
       }
 
@@ -154,40 +145,52 @@ export const AnimatedGrid = () => {
           ? 200 + Math.floor(Math.random() * 120)  // ~3–5s
           : 280 + Math.floor(Math.random() * 180); // ~4.5–7.5s
 
+        // ~25% of nodes drift gently (signal + some trackers)
+        const drifts = type === "signal" || (type === "tracker" && Math.random() < 0.5);
         nodes.push({
           x, y, type,
           breathePhase: Math.random() * Math.PI * 2,
           nextPulse: Math.floor(Math.random() * interval),
           interval,
+          driftAmp:   drifts ? 10 + Math.random() * 14 : 0,
+          driftPhase: Math.random() * Math.PI * 2,
+          driftSpeed: 0.006 + Math.random() * 0.006,
         });
       }
     };
 
+    const nodeXY = (n: SNode) => ({
+      x: n.x + Math.sin(frame * n.driftSpeed + n.driftPhase) * n.driftAmp,
+      y: n.y + Math.cos(frame * n.driftSpeed * 0.7 + n.driftPhase) * n.driftAmp * 0.6,
+    });
+
     const firePulse = (node: SNode) => {
       const rgb = nodeRgb(node.type);
+      const { x, y } = nodeXY(node);
       const maxR = node.type === "signal"
-        ? GRID * 2.2
+        ? GRID * 2.4
         : node.type === "tracker"
-        ? GRID * 1.8
-        : GRID * 1.4;
-      pulses.push({ x: node.x, y: node.y, r: 2, maxR, alpha: node.type === "signal" ? 0.55 : 0.38, rgb });
+        ? GRID * 2.0
+        : GRID * 1.6;
+      pulses.push({ x, y, r: 2, maxR, alpha: node.type === "signal" ? 0.52 : 0.36, rgb });
     };
 
     // When a pulse from nodeA expands to reach nodeB, briefly connect them
     const checkPulseConnections = () => {
       pulses.forEach((p) => {
         nodes.forEach((n) => {
-          if (n.x === p.x && n.y === p.y) return; // same node
-          const dist = Math.sqrt((n.x - p.x) ** 2 + (n.y - p.y) ** 2);
+          const { x: nx, y: ny } = nodeXY(n);
+          if (Math.abs(nx - p.x) < 2 && Math.abs(ny - p.y) < 2) return; // same node
+          const dist = Math.sqrt((nx - p.x) ** 2 + (ny - p.y) ** 2);
           // Trigger when pulse ring radius crosses the distance to this node
           if (Math.abs(p.r - dist) < 6 && dist < p.maxR) {
             const alreadyLinked = links.some(
-              (l) => Math.abs(l.ax - p.x) < 2 && Math.abs(l.bx - n.x) < 2
+              (l) => Math.abs(l.ax - p.x) < 2 && Math.abs(l.bx - nx) < 2
             );
             if (!alreadyLinked && Math.random() < 0.35) {
               links.push({
                 ax: p.x, ay: p.y,
-                bx: n.x, by: n.y,
+                bx: nx, by: ny,
                 alpha: 0,
                 dir: 1,
                 rgb: p.rgb,
@@ -246,20 +249,21 @@ export const AnimatedGrid = () => {
 
     const drawNodes = () => {
       nodes.forEach((n) => {
+        const { x, y } = nodeXY(n);
         const rgb = nodeRgb(n.type);
-        const breathe = 1 + Math.sin(frame * 0.016 + n.breathePhase) * 0.15;
-        const opacity = (n.type === "signal" ? 0.85 : n.type === "tracker" ? 0.7 : 0.55) * breathe;
+        const breathe = 1 + Math.sin(frame * 0.016 + n.breathePhase) * 0.12;
+        const opacity = (n.type === "signal" ? 0.82 : n.type === "tracker" ? 0.65 : 0.45) * breathe;
         const r = n.type === "signal" ? 3.5 : n.type === "tracker" ? 3 : 2.5;
 
         // Glow
         ctx.beginPath();
-        ctx.arc(n.x, n.y, r * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity * 0.06})`;
+        ctx.arc(x, y, r * 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity * 0.07})`;
         ctx.fill();
 
         // Core dot
         ctx.beginPath();
-        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
         ctx.fill();
       });
