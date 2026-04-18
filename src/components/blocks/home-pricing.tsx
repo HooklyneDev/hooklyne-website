@@ -51,7 +51,7 @@ const PLANS: Plan[] = [
 ];
 
 export const HomePricing = () => {
- const [annual, setAnnual] = useState(false);
+ const [annual, setAnnual] = useState(true);
 
  return (
  <section className="py-20 lg:py-28">

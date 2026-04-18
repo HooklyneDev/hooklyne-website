@@ -37,6 +37,12 @@
   font-display: swap;
 }
 
+.footer-glow-blob {
+  background: radial-gradient(ellipse 55% 130% at 30% 110%, rgba(52,76,163,0.45) 0%, transparent 65%);
+  transform: translateX(0px);
+  will-change: transform;
+}
+
 :root {
   /* Hooklyne brand */
   --hooklyne-navy:        #022f51;

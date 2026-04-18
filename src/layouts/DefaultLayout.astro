@@ -16,4 +16,19 @@ const { title, description } = Astro.props;
         <main><slot /></main>
         <Footer />
     </body>
+    <script is:inline>
+      (function () {
+        var blob = document.querySelector('.footer-glow-blob');
+        if (!blob) return;
+        var ticking = false;
+        function update() {
+          var scrolled = window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          blob.style.transform = 'translateX(' + (scrolled * 140 - 20) + 'px)';
+          ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+          if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+      })();
+    </script>
 </html>
