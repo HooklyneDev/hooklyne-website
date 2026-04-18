@@ -90,7 +90,7 @@ export const AnimatedGrid = () => {
     if (!ctx) return;
 
     const GRID = 120;
-    const DOT_COUNT = 16;
+    const DOT_COUNT = 28;
 
     let width = 0;
     let height = 0;
@@ -187,7 +187,7 @@ export const AnimatedGrid = () => {
           targetCol: target[0],
           targetRow: target[1],
           progress: Math.random(),
-          speed: 0.0022 + Math.random() * 0.0018,
+          speed: 0.004 + Math.random() * 0.003,
           direction: dir,
           pauseFrames: 0,
           opacity: Math.random() * 0.35 + 0.35,
@@ -229,23 +229,21 @@ export const AnimatedGrid = () => {
 
     // One elegant connection per nearest-neighbor pair, smooth proximity fade
     const drawConnections = () => {
-      const maxDist = GRID * 2.2;
+      const maxDist = GRID * 2.8;
       for (let i = 0; i < dots.length; i++) {
         const { x: ax, y: ay } = dotPos(dots[i]);
-        let nearestDist = Infinity;
-        let nearestJ = -1;
+        // Connect to up to 2 nearest neighbours for denser network feel
+        const neighbours: { dist: number; j: number }[] = [];
         for (let j = i + 1; j < dots.length; j++) {
           const { x: bx, y: by } = dotPos(dots[j]);
           const dist = Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2);
-          if (dist < nearestDist) {
-            nearestDist = dist;
-            nearestJ = j;
-          }
+          if (dist < maxDist) neighbours.push({ dist, j });
         }
-        if (nearestJ >= 0 && nearestDist < maxDist) {
-          const { x: bx, y: by } = dotPos(dots[nearestJ]);
-          const proximity = 1 - nearestDist / maxDist;
-          const alpha = proximity * proximity * 0.18;
+        neighbours.sort((a, b) => a.dist - b.dist);
+        neighbours.slice(0, 2).forEach(({ dist, j }) => {
+          const { x: bx, y: by } = dotPos(dots[j]);
+          const proximity = 1 - dist / maxDist;
+          const alpha = proximity * proximity * 0.22;
           const rgb = dotRgb(dots[i].type);
           ctx.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
           ctx.lineWidth = 1;
@@ -253,7 +251,7 @@ export const AnimatedGrid = () => {
           ctx.moveTo(ax, ay);
           ctx.lineTo(bx, by);
           ctx.stroke();
-        }
+        });
       }
     };
 
