@@ -89,87 +89,55 @@ export const Hero = () => {
           className="relative w-full rounded-2xl shadow-2xl overflow-hidden"
           style={{ transformOrigin: "top center" }}
         >
-          {/* Browser chrome frame */}
+          {/* Browser toolbar */}
           <div
-            className="border border-b-0 rounded-t-2xl overflow-hidden"
-            style={{ borderColor: "var(--border)" }}
+            className="flex items-center gap-2 px-4 border border-b-0 rounded-t-2xl"
+            style={{ height: "44px", background: "var(--card)", borderColor: "var(--border)" }}
           >
-            {/* Tab strip */}
-            <div
-              className="flex items-end pl-20 pr-4 pt-2"
-              style={{ background: "var(--border)", height: "36px" }}
-            >
-              {/* Active tab */}
-              <div
-                className="flex items-center gap-2 px-3 text-xs font-medium"
-                style={{
-                  height: "28px",
-                  background: "var(--card)",
-                  color: "var(--foreground)",
-                  borderRadius: "8px 8px 0 0",
-                  marginBottom: "-1px",
-                  whiteSpace: "nowrap",
-                  minWidth: "160px",
-                  maxWidth: "220px",
-                }}
-              >
-                {/* Favicon */}
-                <div
-                  className="size-3.5 rounded-sm flex-shrink-0 flex items-center justify-center"
-                  style={{ background: "var(--hooklyne-navy)" }}
-                >
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
-                  </svg>
-                </div>
-                <span className="truncate flex-1">Dashboard - Hooklyne</span>
-                {/* Close button */}
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.4, flexShrink: 0 }}>
-                  <path d="M18 6 6 18M6 6l12 12"/>
-                </svg>
+            {/* Traffic lights */}
+            <div className="flex items-center gap-1.5 mr-1">
+              <div className="size-3 rounded-full" style={{ background: "#ff5f57" }} />
+              <div className="size-3 rounded-full" style={{ background: "#febc2e" }} />
+              <div className="size-3 rounded-full" style={{ background: "#28c840" }} />
+            </div>
+
+            {/* Nav buttons */}
+            <div className="flex items-center gap-0.5" style={{ color: "var(--muted-foreground)" }}>
+              <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.3 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              </div>
+              <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.3 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </div>
+              <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.45 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
               </div>
             </div>
 
-            {/* Toolbar */}
+            {/* URL bar — wide, centered */}
             <div
-              className="flex items-center gap-2 px-4"
-              style={{ height: "40px", background: "var(--card)", borderTop: "1px solid var(--border)" }}
+              className="flex items-center gap-2 px-3 rounded-full text-xs flex-1 mx-3"
+              style={{
+                height: "28px",
+                background: "var(--background)",
+                color: "var(--muted-foreground)",
+              }}
             >
-              {/* Traffic lights */}
-              <div className="flex items-center gap-1.5 mr-1">
-                <div className="size-3 rounded-full" style={{ background: "#ff5f57" }} />
-                <div className="size-3 rounded-full" style={{ background: "#febc2e" }} />
-                <div className="size-3 rounded-full" style={{ background: "#28c840" }} />
-              </div>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.4, flexShrink: 0 }}>
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span className="flex-1 text-center">portal.hooklyne.com</span>
+            </div>
 
-              {/* Nav buttons */}
-              <div className="flex items-center gap-0.5" style={{ color: "var(--muted-foreground)" }}>
-                <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.35 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                </div>
-                <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.35 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </div>
-                <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.5 }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
-                </div>
+            {/* Right side — profile + menu */}
+            <div className="flex items-center gap-1.5">
+              <div className="flex items-center justify-center size-7 rounded-md" style={{ color: "var(--muted-foreground)", opacity: 0.45 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
               </div>
-
-              {/* URL bar */}
               <div
-                className="flex items-center gap-2 px-3 rounded-full text-xs flex-1 mx-2"
-                style={{
-                  height: "26px",
-                  maxWidth: "320px",
-                  background: "var(--background)",
-                  color: "var(--muted-foreground)",
-                }}
-              >
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.45, flexShrink: 0 }}>
-                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                </svg>
-                <span className="flex-1 text-center">portal.hooklyne.com</span>
-              </div>
+                className="size-6 rounded-full flex-shrink-0"
+                style={{ background: "var(--hooklyne-blue)", opacity: 0.7 }}
+              />
             </div>
           </div>
 
