@@ -14,6 +14,7 @@ type Dot = {
   pauseFrames: number;
   opacity: number;
   targetOpacity: number;
+  breathePhase: number;
   type: DotType;
 };
 
@@ -57,6 +58,10 @@ const DARK = {
   tracker: [45,  212, 191] as [number, number, number],
 };
 
+// Ease-in-out cubic — makes movement feel smooth and premium
+const ease = (t: number) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
 const nextPos = (
   dir: Direction,
   col: number,
@@ -90,7 +95,7 @@ export const AnimatedGrid = () => {
     if (!ctx) return;
 
     const GRID = 120;
-    const DOT_COUNT = 28;
+    const DOT_COUNT = 24;
 
     let width = 0;
     let height = 0;
@@ -108,11 +113,9 @@ export const AnimatedGrid = () => {
     const computeDeadZones = () => {
       const canvasRect = canvas.getBoundingClientRect();
       const zones: Zone[] = [];
-
       zones.push({ x: 0, y: 0, w: width, h: GRID + 20 });
       zones.push({ x: 0, y: 0, w: 1, h: height });
       zones.push({ x: (cols - 1) * GRID - 1, y: 0, w: GRID + 2, h: height });
-
       const hero = document.getElementById("hero-content");
       if (hero) {
         const r = hero.getBoundingClientRect();
@@ -153,8 +156,8 @@ export const AnimatedGrid = () => {
     };
 
     const pickType = (i: number): DotType => {
-      if (i < 3) return "signal";
-      if (i < 6) return "tracker";
+      if (i % 7 === 0) return "signal";
+      if (i % 5 === 0) return "tracker";
       return "navy";
     };
 
@@ -165,21 +168,36 @@ export const AnimatedGrid = () => {
       return t.navy;
     };
 
-    const dotPos = (dot: Dot) => ({
-      x: dot.col * GRID + (dot.targetCol * GRID - dot.col * GRID) * dot.progress,
-      y: dot.row * GRID + (dot.targetRow * GRID - dot.row * GRID) * dot.progress,
-    });
+    const dotPos = (dot: Dot) => {
+      const t = ease(dot.progress);
+      return {
+        x: dot.col * GRID + (dot.targetCol * GRID - dot.col * GRID) * t,
+        y: dot.row * GRID + (dot.targetRow * GRID - dot.row * GRID) * t,
+      };
+    };
 
+    // Sector-based init — divides available cells into a grid so dots
+    // are spread evenly across the whole background from the start
     const initDots = () => {
-      dots = Array.from({ length: DOT_COUNT }, (_, i) => {
-        let col: number, row: number;
-        let attempts = 0;
-        do {
-          col = Math.floor(Math.random() * cols);
-          row = Math.floor(Math.random() * rows);
-          attempts++;
-        } while (inDeadZone(col, row) && attempts < 50);
+      const available: [number, number][] = [];
+      for (let c = 1; c < cols - 1; c++) {
+        for (let r = 2; r < rows; r++) {
+          if (!inDeadZone(c, r)) available.push([c, r]);
+        }
+      }
 
+      // Shuffle
+      for (let i = available.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [available[i], available[j]] = [available[j], available[i]];
+      }
+
+      // Divide into DOT_COUNT sectors and pick one cell per sector
+      const sectorSize = Math.floor(available.length / DOT_COUNT);
+      dots = Array.from({ length: DOT_COUNT }, (_, i) => {
+        const sectorStart = i * sectorSize;
+        const pick = available[sectorStart + Math.floor(Math.random() * Math.max(1, sectorSize))];
+        const [col, row] = pick ?? available[i % available.length];
         const dir = randomDir(col, row);
         const target = nextPos(dir, col, row, cols, rows, GRID, deadZones) ?? [col, row];
         return {
@@ -189,9 +207,10 @@ export const AnimatedGrid = () => {
           progress: Math.random(),
           speed: 0.004 + Math.random() * 0.003,
           direction: dir,
-          pauseFrames: 0,
-          opacity: Math.random() * 0.35 + 0.35,
-          targetOpacity: Math.random() * 0.35 + 0.35,
+          pauseFrames: Math.floor(Math.random() * 40),
+          opacity: Math.random() * 0.3 + 0.4,
+          targetOpacity: Math.random() * 0.3 + 0.4,
+          breathePhase: Math.random() * Math.PI * 2,
           type: pickType(i),
         };
       });
@@ -227,12 +246,10 @@ export const AnimatedGrid = () => {
       }
     };
 
-    // One elegant connection per nearest-neighbor pair, smooth proximity fade
     const drawConnections = () => {
       const maxDist = GRID * 2.8;
       for (let i = 0; i < dots.length; i++) {
         const { x: ax, y: ay } = dotPos(dots[i]);
-        // Connect to up to 2 nearest neighbours for denser network feel
         const neighbours: { dist: number; j: number }[] = [];
         for (let j = i + 1; j < dots.length; j++) {
           const { x: bx, y: by } = dotPos(dots[j]);
@@ -266,22 +283,29 @@ export const AnimatedGrid = () => {
       });
     };
 
+    let frame_count = 0;
+
     const drawDots = () => {
+      frame_count++;
       dots.forEach((dot) => {
         const { x, y } = dotPos(dot);
         const rgb = dotRgb(dot.type);
 
+        // Gentle breathe — offset per dot so they don't all pulse together
+        const breathe = 1 + Math.sin(frame_count * 0.018 + dot.breathePhase) * 0.12;
+        const finalOpacity = dot.opacity * breathe;
+
         // Soft glow
         ctx.beginPath();
-        ctx.arc(x, y, 8, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${dot.opacity * 0.08})`;
+        ctx.arc(x, y, 9, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${finalOpacity * 0.07})`;
         ctx.fill();
 
         // Dot
-        const r = dot.type === "navy" ? 2.5 : 3;
+        const r = dot.type === "navy" ? 2.5 : 3.2;
         ctx.beginPath();
         ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${dot.opacity})`;
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${finalOpacity})`;
         ctx.fill();
       });
     };
@@ -311,20 +335,18 @@ export const AnimatedGrid = () => {
           dot.col = dot.targetCol;
           dot.row = dot.targetRow;
 
-          // Subtle pulse on arrival — only ~25% of the time
-          if (Math.random() < 0.25) {
-            const rgb = heat[Math.floor(Math.random() * heat.length)];
-            pulseRings.push({
-              x: dot.col * GRID,
-              y: dot.row * GRID,
-              radius: 2,
-              maxRadius: GRID * 0.55,
-              opacity: 0.4,
-              rgb,
-            });
-          }
+          // Pulse on every arrival — subtle, branded colors
+          const rgb = heat[Math.floor(Math.random() * heat.length)];
+          pulseRings.push({
+            x: dot.col * GRID,
+            y: dot.row * GRID,
+            radius: 2,
+            maxRadius: GRID * 0.5,
+            opacity: 0.32,
+            rgb,
+          });
 
-          dot.pauseFrames = Math.floor(Math.random() * 40) + 10;
+          dot.pauseFrames = Math.floor(Math.random() * 35) + 8;
 
           const canContinue = nextPos(dot.direction, dot.col, dot.row, cols, rows, GRID, deadZones) !== null;
           if (Math.random() < 0.65 && canContinue) {
@@ -337,12 +359,12 @@ export const AnimatedGrid = () => {
           dot.targetRow = target[1];
 
           dot.opacity += (dot.targetOpacity - dot.opacity) * 0.1;
-          dot.targetOpacity = Math.random() * 0.35 + 0.35;
+          dot.targetOpacity = Math.random() * 0.3 + 0.4;
         }
       });
 
       pulseRings = pulseRings
-        .map((r) => ({ ...r, radius: r.radius + 1.1, opacity: r.opacity * 0.95 }))
+        .map((r) => ({ ...r, radius: r.radius + 1.1, opacity: r.opacity * 0.96 }))
         .filter((r) => r.opacity > 0.02 && r.radius < r.maxRadius);
     };
 
@@ -364,7 +386,10 @@ export const AnimatedGrid = () => {
       frame();
     });
 
-    const ro = new ResizeObserver(() => resize());
+    const ro = new ResizeObserver(() => {
+      resize();
+      initDots();
+    });
     ro.observe(canvas);
 
     const mo = new MutationObserver(() => {});
