@@ -12,7 +12,7 @@ export const Footer = () => (
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 mb-10">
         <div className="max-w-xs">
           <a href="/" className="flex items-center gap-2 mb-3">
-            <img src="/logo.svg" alt="Hooklyne" width={110} height={22} style={{ filter: "brightness(0) invert(1)" }} />
+            <img src="/logo-white.svg" alt="Hooklyne" width={140} height={28} />
           </a>
           <p className="text-sm text-white/50 leading-relaxed">
             Outreach-ready prospect packages in your rep's voice. Not more. Smarter.

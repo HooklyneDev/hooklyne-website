@@ -41,7 +41,8 @@ export const Navbar = () => {
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
           <a href="/" className="flex shrink-0 items-center gap-2">
-            <img src="/logo.svg" alt="Hooklyne" width={140} height={28} />
+            <img src="/logo.svg" alt="Hooklyne" width={140} height={28} className="dark:hidden" />
+            <img src="/logo-white.svg" alt="Hooklyne" width={140} height={28} className="hidden dark:block" />
           </a>
 
           {/* Desktop nav */}
