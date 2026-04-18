@@ -14,11 +14,11 @@ export const Hero = () => {
         </a>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--hooklyne-navy)] leading-[1.1] max-w-3xl">
-          Find the prospects actually worth reaching out to.
+          Find the prospects actually worth reaching out to
         </h1>
 
         <p className="text-lg text-[var(--muted-foreground)] max-w-xl leading-relaxed">
-          Ranked by relevant news signals, so every first touch has a real reason - with a ready-to-send message already written in your voice.
+          Ranked by relevant news signals, so every first touch has a real reason with a ready-to-send message already written in your voice.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 mt-2">

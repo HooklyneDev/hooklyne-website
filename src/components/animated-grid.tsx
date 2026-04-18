@@ -32,8 +32,8 @@ type Zone = { x: number; y: number; w: number; h: number };
 const DIRS: Direction[] = ["up", "down", "left", "right"];
 
 const LIGHT = {
-  grid:       "rgba(52, 76, 163, 0.07)",
-  node:       "rgba(52, 76, 163, 0.13)",
+  grid:       "rgba(52, 76, 163, 0.09)",
+  node:       "rgba(52, 76, 163, 0.15)",
   navy:       [2,   47,  81]  as [number, number, number],
   signal:     [255, 140, 66]  as [number, number, number],
   tracker:    [13,  148, 136] as [number, number, number],
@@ -276,6 +276,16 @@ export const AnimatedGrid = () => {
       });
     };
 
+    const drawBottomFade = () => {
+      const fadeStart = height * 0.62;
+      const bg = isDark() ? "13, 20, 32" : "241, 245, 249";
+      const grad = ctx.createLinearGradient(0, fadeStart, 0, height);
+      grad.addColorStop(0, `rgba(${bg}, 0)`);
+      grad.addColorStop(1, `rgba(${bg}, 0.92)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, fadeStart, width, height - fadeStart);
+    };
+
     const drawDots = () => {
       dots.forEach((dot) => {
         const x = gridX(dot.col) + (gridX(dot.targetCol) - gridX(dot.col)) * dot.progress;
@@ -355,6 +365,7 @@ export const AnimatedGrid = () => {
       drawConnections();
       drawPulseRings();
       drawDots();
+      drawBottomFade();
       updateDots();
       animId = requestAnimationFrame(frame);
     };
