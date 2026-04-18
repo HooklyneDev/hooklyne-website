@@ -1,13 +1,10 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-
 import { Background } from '@/components/background';
 import { FAQ } from '@/components/blocks/faq';
-import { Testimonials } from '@/components/blocks/testimonials';
-import { DashedLine } from '@/components/dashed-line';
+import { FinalCTA } from '@/components/blocks/final-cta';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
-<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<DefaultLayout title="FAQ - Hooklyne" description="Common questions about Hooklyne answered.">
   <Background>
     <FAQ
       client:only='react'
@@ -15,8 +12,6 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
       className2="max-w-xl lg:grid-cols-1"
       headerTag="h1"
     />
-    <DashedLine className="mx-auto max-w-xl" />
-    <Testimonials dashedLineClassName="hidden" client:only='react'
-    />
   </Background>
+  <FinalCTA />
 </DefaultLayout>

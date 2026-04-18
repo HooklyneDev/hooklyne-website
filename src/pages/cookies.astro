@@ -1,0 +1,93 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+
+const lastUpdated = "18 April 2026";
+---
+
+<DefaultLayout title="Cookie Policy - Hooklyne" description="What cookies Hooklyne uses and why.">
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-20">
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Legal</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-3">Cookie Policy</h1>
+        <p class="text-sm text-[var(--muted-foreground)] mb-12">Last updated: {lastUpdated}</p>
+
+        <div class="space-y-10 text-[var(--foreground)]">
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">What are cookies?</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Cookies are small text files stored in your browser when you visit a website. They help the site remember information about your visit so it works correctly and consistently.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Cookies we use</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-5">
+              We use only functional cookies — the minimum required to keep the site and portal operating correctly. We do not use advertising cookies or cross-site tracking.
+            </p>
+
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)]">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-[var(--card)] border-b border-[var(--border)]">
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Name</th>
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Purpose</th>
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Duration</th>
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Type</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[var(--border)]">
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">hooklyne_cookies</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Stores your cookie preference (accepted or declined)</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Persistent</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Functional</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">hooklyne_demo</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Enables demo mode in the portal for authorised users</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">24 hours</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Functional</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">Session cookies</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Keeps you signed in to the portal during your session</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Session</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Functional</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Your choices</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              When you first visit the site, we ask whether you accept functional cookies. If you decline, we only store your preference — no other cookies are set. Because all cookies listed above are strictly functional, declining does not meaningfully affect your experience on the marketing site, but some portal features require session cookies to work.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              You can also clear cookies at any time in your browser settings. For guidance, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener noreferrer" class="text-[var(--hooklyne-blue)] hover:opacity-80">allaboutcookies.org</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Future changes</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              If we introduce analytics or other non-essential cookies, we will update this page, revise our cookie banner to request explicit consent, and not set those cookies until you have agreed.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Questions</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Contact us at <a href="mailto:privacy@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">privacy@hooklyne.com</a>.
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

@@ -1,0 +1,78 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+
+const lastUpdated = "18 April 2026";
+---
+
+<DefaultLayout title="Disclaimer - Hooklyne" description="Legal disclaimer for the Hooklyne website and service.">
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-20">
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Legal</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-3">Disclaimer</h1>
+        <p class="text-sm text-[var(--muted-foreground)] mb-12">Last updated: {lastUpdated}</p>
+
+        <div class="space-y-10">
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Accuracy of information</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              We take care to keep the information on this website accurate and up to date, but we make no guarantees about its completeness or accuracy. Pricing, features, and availability may change without notice. The most current information is always available by contacting us directly.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Service information</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Descriptions of our service — including signal sources, data verification methods, and outreach capabilities — reflect the general operation of the service. Individual results will vary depending on industry, target market, ICP quality, and how outreach is executed by the customer. We do not guarantee specific outcomes such as reply rates, meetings booked, or revenue generated.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Prospect data accuracy</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Contact data provided through our service is sourced from third-party business data providers and publicly available sources. While we apply verification steps to improve accuracy, we cannot guarantee that all contact details are current or correct at the time of use. We recommend verifying contacts before sending high-stakes communications.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">No legal or compliance advice</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Nothing on this website constitutes legal advice. Customers are responsible for ensuring their use of Hooklyne's service — including the outreach they send — complies with applicable laws, including GDPR, the Dutch Telecommunications Act, and any sector-specific regulations. We recommend consulting a legal adviser if you are unsure about your obligations.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">External links</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              This site may link to third-party websites. We are not responsible for the content, privacy practices, or availability of those sites.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Limitation of liability</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              To the extent permitted by law, Hooklyne is not liable for any direct or indirect loss arising from use of this website or our service, including loss resulting from reliance on inaccurate prospect data, failed outreach, or service interruptions.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Governing law</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              This disclaimer is governed by Dutch law. Any disputes relating to the use of this website or our service are subject to the exclusive jurisdiction of the competent courts in the Netherlands.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Contact</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              For questions about this disclaimer, contact us at <a href="mailto:legal@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">legal@hooklyne.com</a>.
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

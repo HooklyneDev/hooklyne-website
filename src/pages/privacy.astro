@@ -1,0 +1,116 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+
+const lastUpdated = "18 April 2026";
+---
+
+<DefaultLayout title="Privacy Policy - Hooklyne" description="How Hooklyne collects, uses, and protects personal data.">
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-20">
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Legal</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-3">Privacy Policy</h1>
+        <p class="text-sm text-[var(--muted-foreground)] mb-12">Last updated: {lastUpdated}</p>
+
+        <div class="prose prose-slate max-w-none space-y-10 text-[var(--foreground)]">
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">1. Who we are</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Hooklyne is a B2B sales intelligence service based in the Netherlands. We help sales teams find relevant reasons to reach out to prospects and write personalised outreach in the sender's voice. References to "Hooklyne", "we", "us", or "our" in this policy refer to the entity operating this service.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mt-3">
+              For questions about this policy or your personal data, contact us at: <a href="mailto:privacy@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">privacy@hooklyne.com</a>
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">2. Data we collect about website visitors</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">When you visit this website we may collect:</p>
+            <ul class="list-disc pl-5 space-y-2 text-[var(--muted-foreground)]">
+              <li>Information you submit via our contact form: name, company, email address, and message</li>
+              <li>Basic technical data your browser sends automatically: IP address, browser type, pages visited, and referrer</li>
+            </ul>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mt-3">
+              We do not use advertising trackers or third-party behavioural analytics. If we introduce analytics tools in the future, we will update this policy and request your consent where required.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">3. How we use your data</h2>
+            <ul class="list-disc pl-5 space-y-2 text-[var(--muted-foreground)]">
+              <li><strong class="text-[var(--heading)] font-medium">Contact form submissions</strong> — to respond to your enquiry and, if you become a customer, to manage your account. Legal basis: contract performance or legitimate interests.</li>
+              <li><strong class="text-[var(--heading)] font-medium">Technical data</strong> — to keep the website secure and functioning correctly. Legal basis: legitimate interests.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">4. Prospect data — our service</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              Hooklyne's core service involves researching and preparing outreach for B2B sales prospects on behalf of our customers. In doing so, we process personal data relating to business contacts (such as name, business email address, job title, company, and publicly available business activity).
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              This data is sourced from publicly available business sources and third-party business data providers who operate under their own lawful basis for making such data available. We process this data only to the extent necessary to deliver our service and only retain it for as long as required for the relevant outreach activity.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              <strong class="text-[var(--heading)] font-medium">Role under GDPR:</strong> Hooklyne acts as a data processor on behalf of its customers, who are the data controllers. Our customers determine the purpose and scope of the outreach. We process data only on documented instructions from customers and in accordance with a Data Processing Agreement.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              <strong class="text-[var(--heading)] font-medium">Lawful basis for B2B prospecting:</strong> B2B outreach directed at individuals in their professional capacity is generally permitted under Article 6(1)(f) GDPR (legitimate interests), provided the outreach is relevant, proportionate, and individuals can easily opt out. Our customers are responsible for ensuring their outreach meets these requirements.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">5. If you are a prospect — your rights</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              If you have received outreach generated through Hooklyne and wish to be removed from the sender's prospect list, you can contact the sender directly or email us at <a href="mailto:privacy@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">privacy@hooklyne.com</a>. We will pass your request to the relevant customer and ensure your details are suppressed.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Under GDPR you have the right to: access your data, correct inaccuracies, request erasure, restrict processing, and object to processing based on legitimate interests. To exercise any right, email us at the address above.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">6. Data sharing and transfers</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              We share data only where necessary to deliver our service: with our customers (as described above), with infrastructure providers who host our systems, and with business data providers who supply the underlying contact and intelligence data.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              All data processing takes place within the European Economic Area or with providers that offer adequate safeguards under GDPR. We do not sell personal data.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">7. Retention</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Contact form data is retained for as long as needed to manage the enquiry or customer relationship, and no longer than 3 years after last contact. Prospect data is retained only for the duration of active outreach campaigns and deleted upon customer request or contract termination.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">8. Cookies</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              We use only functional cookies required for the site to operate. See our <a href="/cookies" class="text-[var(--hooklyne-blue)] hover:opacity-80">Cookie Policy</a> for details.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">9. Changes to this policy</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              We may update this policy when our practices change. Material changes will be communicated via the website. The date at the top of this page reflects the most recent revision.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">10. Complaints</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              If you believe we have handled your data unlawfully, you have the right to lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens): <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener noreferrer" class="text-[var(--hooklyne-blue)] hover:opacity-80">autoriteitpersoonsgegevens.nl</a>
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>
