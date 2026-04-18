@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 const SLIDES = [
   {
     title: "Every outreach backed by a real signal.",
-    body: "No more cold templates. Each prospect comes with a scored news hook and the rationale that turns it into a reason to reach out.",
+    body: "We watch 7 intelligence sources for news, hiring, and product moves. Every prospect arrives with a scored hook and the rationale that turns it into a reason to reach out.",
     placeholder: { label: "Prospect card: news hook + score", hint: "Headline, 8/10 relevance badge, source link, why-this-matters rationale", accent: "blue" as const },
   },
   {
-    title: "Verified contacts from 20+ sources.",
-    body: "We match the right person by role description, not just job title. Verified email, company phone, and the source we found them through.",
+    title: "Triple-verified across 20+ sources.",
+    body: "Single-source databases hand you one wrong number. We aggregate 20+ providers, match by role description (not just job title), and only ship a contact when three sources agree.",
     placeholder: { label: "Contact card: verified email + phone", hint: "Person, role, company, verified checkmark, source badges", accent: "teal" as const },
   },
   {
