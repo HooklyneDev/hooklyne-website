@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--card)]">
+    <footer className="bg-[var(--card)]">
       <div className="container py-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <a href="/" className="flex items-center gap-2 mb-2">

@@ -6,133 +6,133 @@ import { ScreenPlaceholder } from '@/components/screen-placeholder';
 import { FinalCTA } from '@/components/blocks/final-cta';
 
 const stats = [
-  { v: "4", l: "intelligence sources" },
-  { v: "20+", l: "data providers" },
-  { v: "6+", l: "minimum hook score" },
-  { v: "EN + NL", l: "languages" },
-  { v: "<60s", l: "per package" },
-  { v: "100%", l: "founder access" },
+ { v: "7", l: "intelligence sources" },
+ { v: "20+", l: "data providers" },
+ { v: "6+", l: "minimum hook score" },
+ { v: "EN + NL", l: "languages" },
+ { v: "<60s", l: "per package" },
+ { v: "100%", l: "founder access" },
 ];
 
 const beliefs = [
-  { title: "Quality over quantity", body: "Send 5 prepared, don't blast 1,000. The best outreach is specific, timely, and relevant - not a numbers game." },
-  { title: "Outreach should sound like you", body: "Generic templates get ignored. We write in your voice, anchored to a real signal about the prospect." },
-  { title: "Dutch B2B deserves better tooling", body: "Most sales intelligence is built for the US market. We're fixing that for Dutch SMEs first." },
-  { title: "You shouldn't interpret data", body: "We deliver finished work, not raw intelligence. Open the portal, review, send." },
+ { title: "Quality over quantity", body: "Send 5 prepared, don't blast 1,000. The best outreach is specific, timely, and relevant - not a numbers game." },
+ { title: "Outreach should sound like you", body: "Generic templates get ignored. We write in your voice, anchored to a real signal about the prospect." },
+ { title: "Dutch B2B deserves better tooling", body: "Most sales intelligence is built for the US market. We're fixing that for Dutch SMEs first." },
+ { title: "You shouldn't interpret data", body: "We deliver finished work, not raw intelligence. Open the portal, review, send." },
 ];
 ---
 
 <DefaultLayout title="About - Hooklyne" description="We built the research layer we wished existed. Between cheap contact databases and expensive agencies.">
-  <Background>
-    <AnimatedGrid client:only="react" />
+ <Background>
+ <AnimatedGrid client:only="react" />
 
-    <section class="pt-32 lg:pt-40 pb-12">
-      <div class="container max-w-4xl text-center">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About us</p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6">
-          We built the research layer we wished existed.
-        </h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-          Hooklyne is built by sales leaders who run outbound themselves. Between cheap contact databases and expensive agencies, there's the work nobody had time to do. So we built it.
-        </p>
-      </div>
+ <section class="pt-32 lg:pt-40 pb-12">
+ <div class="container max-w-4xl text-center">
+ <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About us</p>
+ <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6">
+ We built the research layer we wished existed.
+ </h1>
+ <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+ Hooklyne is built by sales leaders who run outbound themselves. Between cheap contact databases and expensive agencies, there's the work nobody had time to do. So we built it.
+ </p>
+ </div>
 
-      <div class="container max-w-6xl mt-16">
-        <div class="grid grid-cols-12 gap-4">
-          <div class="col-span-12 lg:col-span-7">
-            <ScreenPlaceholder label="Founder workspace" hint="Real photo: founder at desk, dual monitors with Hooklyne portal open." ratio="3/2" accent="blue" />
-          </div>
-          <div class="col-span-6 lg:col-span-5 flex flex-col gap-4">
-            <ScreenPlaceholder label="Co-founders in conversation" hint="Two founders, casual setting, whiteboard nearby." ratio="4/3" accent="teal" />
-            <ScreenPlaceholder label="Portal close-up" hint="Hand on laptop, Hooklyne UI on screen." ratio="16/9" accent="orange" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </Background>
+ <div class="container max-w-6xl mt-16">
+ <div class="grid grid-cols-12 gap-4">
+ <div class="col-span-12 lg:col-span-7">
+ <ScreenPlaceholder label="Founder workspace" hint="Real photo: founder at desk, dual monitors with Hooklyne portal open." ratio="3/2" accent="blue" />
+ </div>
+ <div class="col-span-6 lg:col-span-5 flex flex-col gap-4">
+ <ScreenPlaceholder label="Co-founders in conversation" hint="Two founders, casual setting, whiteboard nearby." ratio="4/3" accent="teal" />
+ <ScreenPlaceholder label="Portal close-up" hint="Hand on laptop, Hooklyne UI on screen." ratio="16/9" accent="orange" />
+ </div>
+ </div>
+ </div>
+ </section>
+ </Background>
 
-  <Background variant="bottom">
-    <section class="py-20 lg:py-28">
-      <div class="container max-w-6xl">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8 lg:p-12">
-          {stats.map((s) => (
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold text-[var(--heading)] tracking-tight">{s.v}</div>
-              <div class="text-xs text-[var(--muted-foreground)] mt-2">{s.l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+ <Background variant="bottom">
+ <section class="py-20 lg:py-28">
+ <div class="container max-w-6xl">
+ <div class="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-6 rounded-2xl bg-[var(--card)] p-8 lg:p-12">
+ {stats.map((s) => (
+ <div class="text-center">
+ <div class="text-3xl md:text-4xl font-bold text-[var(--heading)] tracking-tight">{s.v}</div>
+ <div class="text-xs text-[var(--muted-foreground)] mt-2">{s.l}</div>
+ </div>
+ ))}
+ </div>
+ </div>
+ </section>
 
-    <section class="py-16 lg:py-20">
-      <div class="container max-w-6xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Why we began</p>
-        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
-          We got tired of the same problem.
-        </h2>
-        <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
-          <p>
-            We've worked B2B sales for years. The choice was always the same: spend 30 minutes researching each prospect and send 10 great emails, or skip the research and blast 200 templates. Neither worked.
-          </p>
-          <p>
-            The tools that exist either give you raw data and expect you to do the work, or they're built for enterprise teams with SDR armies and six-figure contracts. There was nothing in the middle - nothing that worked for a 15-person Dutch company with two sales reps and a full pipeline.
-          </p>
-          <p class="text-[var(--heading)] font-medium text-lg">
-            So we built it. Today, Hooklyne finds the real reason to reach out, verifies the contact, and writes the outreach in your voice. Your team reviews and sends.
-          </p>
-        </div>
-      </div>
-    </section>
+ <section class="py-16 lg:py-20">
+ <div class="container max-w-6xl">
+ <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Why we began</p>
+ <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
+ We got tired of the same problem.
+ </h2>
+ <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
+ <p>
+ We've worked B2B sales for years. The choice was always the same: spend 30 minutes researching each prospect and send 10 great emails, or skip the research and blast 200 templates. Neither worked.
+ </p>
+ <p>
+ The tools that exist either give you raw data and expect you to do the work, or they're built for enterprise teams with SDR armies and six-figure contracts. There was nothing in the middle - nothing that worked for a 15-person Dutch company with two sales reps and a full pipeline.
+ </p>
+ <p class="text-[var(--heading)] font-medium text-lg">
+ So we built it. Today, Hooklyne finds the real reason to reach out, verifies the contact, and writes the outreach in your voice. Your team reviews and sends.
+ </p>
+ </div>
+ </div>
+ </section>
 
-    <section class="py-16 lg:py-20 border-t border-[var(--border)]">
-      <div class="container max-w-6xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">What we believe</p>
-        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-10 leading-tight">
-          Four principles, no exceptions.
-        </h2>
-        <div class="grid md:grid-cols-2 gap-5">
-          {beliefs.map((b) => (
-            <div class="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
-              <div class="flex items-start gap-3">
-                <div class="mt-1.5 size-2 rounded-full bg-[var(--hooklyne-orange)] shrink-0"></div>
-                <div>
-                  <h3 class="text-base font-semibold text-[var(--heading)] mb-2">{b.title}</h3>
-                  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+ <section class="py-16 lg:py-20">
+ <div class="container max-w-6xl">
+ <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">What we believe</p>
+ <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-10 leading-tight">
+ Four principles, no exceptions.
+ </h2>
+ <div class="grid md:grid-cols-2 gap-5">
+ {beliefs.map((b) => (
+ <div class="rounded-2xl bg-[var(--card)] p-6">
+ <div class="flex items-start gap-3">
+ <div class="mt-1.5 size-2 rounded-full bg-[var(--hooklyne-orange)] shrink-0"></div>
+ <div>
+ <h3 class="text-base font-semibold text-[var(--heading)] mb-2">{b.title}</h3>
+ <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
+ </div>
+ </div>
+ </div>
+ ))}
+ </div>
+ </div>
+ </section>
 
-    <section class="py-16 lg:py-20 border-t border-[var(--border)]">
-      <div class="container max-w-6xl">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Built here</p>
-            <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
-              Dutch company. International reach.
-            </h2>
-            <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-4">
-              Native Dutch outreach with cultural tone, not translations. For Dutch companies reaching out to EU markets in English, we adjust for communication styles.
-            </p>
-            <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-              Direct line to every customer. Feedback becomes features, fast.
-            </p>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <ScreenPlaceholder label="Tim, Founder" hint="Headshot, professional but approachable." ratio="1/1" accent="navy" />
-            <ScreenPlaceholder label="Co-founder" hint="Same style, paired headshot." ratio="1/1" accent="blue" />
-            <div class="col-span-2">
-              <ScreenPlaceholder label="Workspace" hint="Real workspace photo: laptop with portal, notebook, coffee. Dutch setting a plus." ratio="16/9" accent="teal" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+ <section class="py-16 lg:py-20">
+ <div class="container max-w-6xl">
+ <div class="grid lg:grid-cols-2 gap-10 items-center">
+ <div>
+ <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Built here</p>
+ <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
+ Dutch company. International reach.
+ </h2>
+ <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-4">
+ Native Dutch outreach with cultural tone, not translations. For Dutch companies reaching out to EU markets in English, we adjust for communication styles.
+ </p>
+ <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+ Direct line to every customer. Feedback becomes features, fast.
+ </p>
+ </div>
+ <div class="grid grid-cols-2 gap-4">
+ <ScreenPlaceholder label="Tim, Founder" hint="Headshot, professional but approachable." ratio="1/1" accent="navy" />
+ <ScreenPlaceholder label="Co-founder" hint="Same style, paired headshot." ratio="1/1" accent="blue" />
+ <div class="col-span-2">
+ <ScreenPlaceholder label="Workspace" hint="Real workspace photo: laptop with portal, notebook, coffee. Dutch setting a plus." ratio="16/9" accent="teal" />
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <FinalCTA />
-  </Background>
+ <FinalCTA />
+ </Background>
 </DefaultLayout>

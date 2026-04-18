@@ -41,7 +41,7 @@ const CARDS = [
 ];
 
 export const FeatureGridSix = () => (
-  <section className="py-20 lg:py-28 border-t border-[var(--border)]">
+  <section className="py-20 lg:py-28">
     <div className="container">
       <div className="text-center max-w-2xl mx-auto mb-14">
         <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Capabilities</p>
