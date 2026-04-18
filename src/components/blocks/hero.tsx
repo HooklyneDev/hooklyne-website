@@ -143,8 +143,8 @@ export const Hero = () => {
 
           {/* Video content */}
           <div
-            className="overflow-hidden border border-t-0 rounded-b-2xl"
-            style={{ borderColor: "var(--border)", maxHeight: "560px" }}
+            className="border border-t-0 rounded-b-2xl"
+            style={{ borderColor: "var(--border)", position: "relative", paddingBottom: "52%", overflow: "hidden" }}
           >
             <video
               autoPlay
@@ -153,14 +153,13 @@ export const Hero = () => {
               playsInline
               poster="/hooklyne-hero.png"
               style={{
+                position: "absolute",
+                inset: "-8% 0",
                 width: "100%",
-                display: "block",
-                /* Crop letterbox bars: scale up slightly and clip top/bottom */
-                transform: "scale(1.01) translateY(0%)",
+                height: "116%",
                 objectFit: "cover",
                 objectPosition: "center center",
-                marginTop: "-6%",
-                marginBottom: "-6%",
+                display: "block",
               }}
             >
               <source src="/Hooklyne%20Intro%20video.webm" type="video/webm" />
