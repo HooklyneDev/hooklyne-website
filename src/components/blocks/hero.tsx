@@ -91,33 +91,60 @@ export const Hero = () => {
         >
           {/* Browser chrome frame */}
           <div
-            className="flex items-center gap-2 px-4 border border-b-0 rounded-t-2xl"
-            style={{
-              height: "38px",
-              background: "var(--card)",
-              borderColor: "var(--border)",
-            }}
+            className="border border-b-0 rounded-t-2xl overflow-hidden"
+            style={{ background: "var(--card)", borderColor: "var(--border)" }}
           >
-            {/* Traffic lights */}
-            <div className="flex items-center gap-1.5">
-              <div className="size-3 rounded-full" style={{ background: "#ff5f57" }} />
-              <div className="size-3 rounded-full" style={{ background: "#febc2e" }} />
-              <div className="size-3 rounded-full" style={{ background: "#28c840" }} />
-            </div>
-            {/* Fake URL bar */}
+            {/* Tab strip */}
             <div
-              className="flex-1 mx-4 flex items-center gap-1.5 px-3 rounded-md text-xs"
-              style={{
-                height: "22px",
-                maxWidth: "280px",
-                background: "var(--background)",
-                color: "var(--muted-foreground)",
-              }}
+              className="flex items-end px-3 pt-2 gap-0"
+              style={{ background: "var(--background)", height: "32px" }}
             >
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}>
-                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-              app.hooklyne.com
+              <div
+                className="flex items-center gap-1.5 px-3 text-xs font-medium rounded-t-lg"
+                style={{
+                  height: "26px",
+                  background: "var(--card)",
+                  color: "var(--foreground)",
+                  borderTop: "1px solid var(--border)",
+                  borderLeft: "1px solid var(--border)",
+                  borderRight: "1px solid var(--border)",
+                  borderBottom: "1px solid var(--card)",
+                  marginBottom: "-1px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <div className="size-2.5 rounded-sm flex-shrink-0" style={{ background: "var(--hooklyne-navy)" }} />
+                Hooklyne
+              </div>
+            </div>
+
+            {/* Toolbar */}
+            <div
+              className="flex items-center gap-3 px-4"
+              style={{ height: "36px", borderTop: "1px solid var(--border)" }}
+            >
+              {/* Traffic lights */}
+              <div className="flex items-center gap-1.5">
+                <div className="size-2.5 rounded-full" style={{ background: "#ff5f57" }} />
+                <div className="size-2.5 rounded-full" style={{ background: "#febc2e" }} />
+                <div className="size-2.5 rounded-full" style={{ background: "#28c840" }} />
+              </div>
+              {/* URL bar */}
+              <div
+                className="flex items-center gap-1.5 px-3 rounded-md text-xs mx-auto"
+                style={{
+                  height: "22px",
+                  width: "240px",
+                  background: "var(--background)",
+                  color: "var(--muted-foreground)",
+                }}
+              >
+                {/* Lock icon */}
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.5, flexShrink: 0 }}>
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                portal.hooklyne.com
+              </div>
             </div>
           </div>
 
