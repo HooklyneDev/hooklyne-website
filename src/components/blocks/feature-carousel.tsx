@@ -1,27 +1,30 @@
 import { useState } from "react";
-import { ScreenPlaceholder } from "@/components/screen-placeholder";
 import { cn } from "@/lib/utils";
 
 const SLIDES = [
   {
     title: "Every outreach backed by a real signal.",
     body: "We watch 7 intelligence sources for news, hiring, and product moves. Every prospect arrives with a scored hook and the rationale that turns it into a reason to reach out.",
-    placeholder: { label: "Prospect card: news hook + score", hint: "Headline, 8/10 relevance badge, source link, why-this-matters rationale", accent: "blue" as const },
+    image: "/screens/signal-hook.png",
+    alt: "Portal showing a news hook signal and rationale for a prospect",
   },
   {
     title: "Triple-verified across 20+ sources.",
     body: "Single-source databases hand you one wrong number. We aggregate 20+ providers, match by role description (not just job title), and only ship a contact when three sources agree.",
-    placeholder: { label: "Contact card: verified email + phone", hint: "Person, role, company, verified checkmark, source badges", accent: "teal" as const },
+    image: "/screens/contact-verified.png",
+    alt: "Portal contact card showing verified email, phone, and source badges",
   },
   {
     title: "Written in your rep's voice. Not a template.",
     body: "Calibrated from a 30-min interview. Each email and LinkedIn invite reads like the rep wrote it on a sharp morning.",
-    placeholder: { label: "Voice profile: template vs Hooklyne", hint: "Side-by-side comparison: generic template (left) vs signal-anchored email in your voice (right)", accent: "orange" as const },
+    image: "/screens/voice-email.png",
+    alt: "Portal showing a personalized outreach email draft anchored to a signal",
   },
   {
     title: "Real-time signals. Act when it matters.",
     body: "When a prospect posts, hires, or makes the news, you get a ready-to-send email and LinkedIn message in your inbox.",
-    placeholder: { label: "Signal alert: ready-to-send action", hint: "Notification card with company event + send email / LinkedIn / call script buttons", accent: "navy" as const },
+    image: "/screens/inbox-ready.png",
+    alt: "Portal inbox showing prospect cards ready to review and send",
   },
 ];
 
@@ -69,12 +72,13 @@ export const FeatureCarousel = () => {
           </div>
 
           <div className="lg:col-span-3">
-            <ScreenPlaceholder
-              label={slide.placeholder.label}
-              hint={slide.placeholder.hint}
-              accent={slide.placeholder.accent}
-              ratio="4/3"
-            />
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-[var(--card)]" style={{ boxShadow: "var(--shadow-md)" }}>
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
           </div>
         </div>
       </div>

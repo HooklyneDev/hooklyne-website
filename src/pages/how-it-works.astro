@@ -1,7 +1,6 @@
 ---
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
-import { ScreenPlaceholder } from '@/components/screen-placeholder';
 import { FinalCTA } from '@/components/blocks/final-cta';
 import { ArrowRight } from 'lucide-react';
 
@@ -10,25 +9,29 @@ const steps = [
     n: "01",
     title: "Tell us who you sell to.",
     body: "Share your ICP, sender voice, and target regions in a 30-min onboarding call. We capture how your reps actually write so the outreach sounds like them, not a template.",
-    placeholder: { label: "Sender voice profile setup", hint: "Company, voice, example emails, and ICP captured in one form. Calibrated once, reused on every prospect.", accent: "blue" as const },
+    image: "/screens/stage-contact.png",
+    alt: "Portal prospecting setup showing ICP and voice profile configuration",
   },
   {
     n: "02",
     title: "We find the signals worth acting on.",
     body: "We pull from 7 intelligence sources, score every news hook 6+ for relevance, and rank prospects by how strong their signal is. You see the why before you see the who.",
-    placeholder: { label: "Signal feed: ranked prospects", hint: "Heat map of tracked companies sorted by relevance. Hot signals at the top, cooling at the bottom.", accent: "orange" as const },
+    image: "/screens/stage-signal.png",
+    alt: "Portal signals feed showing ranked companies with news hooks and relevance scores",
   },
   {
     n: "03",
     title: "We match the right person and write the outreach.",
     body: "Most databases ship you one source and one wrong number. We aggregate 20+ to triple-verify the contact, then write the email and LinkedIn invite anchored to the signal, in your rep's voice.",
-    placeholder: { label: "Prospect package: ready to send", hint: "Verified contact + scored hook + email draft + LinkedIn invite, all on one card.", accent: "teal" as const },
+    image: "/screens/voice-email.png",
+    alt: "Portal showing a verified contact with a personalized email draft ready to send",
   },
   {
     n: "04",
     title: "You review, pick the best, and send.",
     body: "Open the portal, glance at the cards, copy the message, and send. When a tracked company moves again, you get a new ready-to-send action in your inbox.",
-    placeholder: { label: "Inbox: review and send", hint: "Prospect cards with one-click copy on email, LinkedIn message, and call script.", accent: "navy" as const },
+    image: "/screens/inbox-ready.png",
+    alt: "Portal My Leads inbox showing prospect cards ready to review and send",
   },
 ];
 ---
@@ -62,7 +65,9 @@ const steps = [
               </h2>
               <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-lg">{s.body}</p>
             </div>
-            <ScreenPlaceholder {...s.placeholder} ratio="4/3" chrome={true} />
+            <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-[var(--card)] shadow-md">
+              <img src={s.image} alt={s.alt} class="w-full h-full object-cover object-top" loading="lazy" />
+            </div>
           </div>
         ))}
       </div>

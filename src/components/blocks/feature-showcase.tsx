@@ -1,16 +1,17 @@
-import { ScreenPlaceholder } from "@/components/screen-placeholder";
 import { cn } from "@/lib/utils";
 
 const SECTIONS = [
   {
     title: "Your research layer between cheap data and expensive agencies.",
     body: "Databases give you a name. Agencies run campaigns for €2,500+/mo. We give your team the research and the outreach at a fraction, without replacing anyone.",
-    placeholder: { label: "Positioning: 3-tier diagram", hint: "Databases (bottom) → Hooklyne (middle, highlighted) → Agencies (top)", accent: "blue" as const, ratio: "4/3" as const },
+    image: "/screens/positioning-stack.png",
+    alt: "Hooklyne portal dashboard showing the full prospect workspace",
   },
   {
     title: "Dutch-built. International reach.",
     body: "Native Dutch outreach with cultural tone, not translations. For Dutch companies reaching out to EU in English, we adjust for communication styles. EN + NL from day one.",
-    placeholder: { label: "EN + NL outreach side by side", hint: "Dutch email (left) + English email (right), same prospect, both personalized", accent: "navy" as const, ratio: "4/3" as const },
+    image: "/screens/dutch-en-nl.png",
+    alt: "Portal showing intelligence and signals for Dutch and international prospects",
   },
 ];
 
@@ -33,7 +34,9 @@ export const FeatureShowcase = () => (
               </h2>
               <p className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-lg">{s.body}</p>
             </div>
-            <ScreenPlaceholder {...s.placeholder} />
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-[var(--card)]" style={{ boxShadow: "var(--shadow-md)" }}>
+              <img src={s.image} alt={s.alt} className="w-full h-full object-cover object-top" />
+            </div>
           </div>
         );
       })}
