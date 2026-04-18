@@ -121,7 +121,17 @@ export const AnimatedGrid = () => {
     const computeDeadZones = () => {
       const canvasRect = canvas.getBoundingClientRect();
       const zones: Zone[] = [];
-      zones.push({ x: 0, y: 0, w: width, h: 90 });
+
+      // Top edge + navbar (covers first grid row)
+      zones.push({ x: 0, y: 0, w: width, h: GRID + 20 });
+
+      // Left edge column
+      zones.push({ x: 0, y: 0, w: 1, h: height });
+
+      // Right edge column
+      zones.push({ x: (cols - 1) * GRID - 1, y: 0, w: GRID + 2, h: height });
+
+      // Hero content block
       const hero = document.getElementById("hero-content");
       if (hero) {
         const r = hero.getBoundingClientRect();
@@ -281,15 +291,11 @@ export const AnimatedGrid = () => {
 
     const drawActiveConnections = () => {
       activeConnections.forEach((conn) => {
-        const grad = ctx.createLinearGradient(conn.ax, conn.ay, conn.bx, conn.by);
-        grad.addColorStop(0, `rgba(${conn.rgb[0]}, ${conn.rgb[1]}, ${conn.rgb[2]}, 0)`);
-        grad.addColorStop(0.5, `rgba(${conn.rgb[0]}, ${conn.rgb[1]}, ${conn.rgb[2]}, ${conn.opacity})`);
-        grad.addColorStop(1, `rgba(${conn.rgb[0]}, ${conn.rgb[1]}, ${conn.rgb[2]}, 0)`);
         ctx.beginPath();
         ctx.moveTo(conn.ax, conn.ay);
         ctx.lineTo(conn.bx, conn.by);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = `rgba(${conn.rgb[0]}, ${conn.rgb[1]}, ${conn.rgb[2]}, ${conn.opacity})`;
+        ctx.lineWidth = 1.2;
         ctx.stroke();
       });
     };
@@ -336,7 +342,6 @@ export const AnimatedGrid = () => {
     };
 
     const checkCollisions = () => {
-      const heat = heatColors();
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const ax = gridX(dots[i].col) + (gridX(dots[i].targetCol) - gridX(dots[i].col)) * dots[i].progress;
@@ -350,8 +355,9 @@ export const AnimatedGrid = () => {
               (c) => Math.abs(c.ax - ax) < 4 && Math.abs(c.bx - bx) < 4
             );
             if (!alreadyConnected) {
-              const rgb = heat[Math.floor(Math.random() * heat.length)];
-              activeConnections.push({ ax, ay, bx, by, opacity: 0.7, rgb });
+              // Use the "other" dot's type color for each end's connection
+              const rgb = dotRgb(dots[j].type);
+              activeConnections.push({ ax, ay, bx, by, opacity: 0.5, rgb });
             }
           }
         }

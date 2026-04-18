@@ -90,7 +90,7 @@ export const Hero = () => {
           style={{ maxHeight: "600px", transformOrigin: "top center" }}
         >
           <img
-            src="/hero-screenshot.png"
+            src="/hooklyne-hero.png"
             alt="Hooklyne portal - Prospect Signals view showing signal scores, outreach sequences, and ready-to-send emails"
             className="w-full object-cover object-top"
           />
