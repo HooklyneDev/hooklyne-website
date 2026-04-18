@@ -83,18 +83,32 @@ export const AnimatedGrid = () => {
       const cr = canvas.getBoundingClientRect();
       const zones: Zone[] = [];
 
-      // Top — navbar + one row buffer
+      // Top — navbar + buffer
       zones.push({ x: 0, y: 0, w: width, h: GRID * 1.2 });
 
-      // Left + right edges (half a cell each side)
-      zones.push({ x: 0, y: 0, w: GRID * 0.6, h: height });
-      zones.push({ x: width - GRID * 0.6, y: 0, w: GRID * 0.6, h: height });
+      // Left + right edges
+      zones.push({ x: 0, y: 0, w: GRID * 0.5, h: height });
+      zones.push({ x: width - GRID * 0.5, y: 0, w: GRID * 0.5, h: height });
+
+      // Hero text — generous breathing room (no nodes touching the text)
+      const hero = document.getElementById("hero-content");
+      if (hero) {
+        const r = hero.getBoundingClientRect();
+        const padX = 80;
+        const padY = 60;
+        zones.push({
+          x: r.left - cr.left - padX,
+          y: r.top  - cr.top  - padY,
+          w: r.width  + padX * 2,
+          h: r.height + padY * 2,
+        });
+      }
 
       // Everything from video top downward
       const video = document.getElementById("hero-video");
       if (video) {
         const r = video.getBoundingClientRect();
-        const top = r.top - cr.top - 16;
+        const top = r.top - cr.top - 32;
         zones.push({ x: 0, y: top, w: width, h: height - top });
       }
 
@@ -131,7 +145,7 @@ export const AnimatedGrid = () => {
       }
 
       // Pick evenly from sectors so coverage is balanced
-      const target = Math.min(candidates.length, 32);
+      const target = Math.min(candidates.length, 14);
       const step = Math.max(1, Math.floor(candidates.length / target));
 
       nodes = [];
@@ -140,10 +154,10 @@ export const AnimatedGrid = () => {
         const rand = Math.random();
         const type: NodeType = rand < 0.12 ? "signal" : rand < 0.25 ? "tracker" : "prospect";
         const interval = type === "signal"
-          ? 140 + Math.floor(Math.random() * 80)   // ~2–3.5s at 60fps
+          ? 240 + Math.floor(Math.random() * 120)  // ~4–6s at 60fps
           : type === "tracker"
-          ? 200 + Math.floor(Math.random() * 120)  // ~3–5s
-          : 280 + Math.floor(Math.random() * 180); // ~4.5–7.5s
+          ? 360 + Math.floor(Math.random() * 180)  // ~6–9s
+          : 480 + Math.floor(Math.random() * 240); // ~8–12s
 
         // ~25% of nodes drift gently (signal + some trackers)
         const drifts = type === "signal" || (type === "tracker" && Math.random() < 0.5);
@@ -187,7 +201,7 @@ export const AnimatedGrid = () => {
             const alreadyLinked = links.some(
               (l) => Math.abs(l.ax - p.x) < 2 && Math.abs(l.bx - nx) < 2
             );
-            if (!alreadyLinked && Math.random() < 0.35) {
+            if (!alreadyLinked && Math.random() < 0.18) {
               links.push({
                 ax: p.x, ay: p.y,
                 bx: nx, by: ny,
