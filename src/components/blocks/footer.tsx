@@ -2,8 +2,10 @@ export const Footer = () => (
   <footer className="relative bg-[var(--hooklyne-navy)] overflow-hidden">
     <div className="footer-glow-blob absolute inset-0 pointer-events-none" />
 
-    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-6xl opacity-[0.035] pointer-events-none select-none">
-      <img src="/footer.svg" alt="" aria-hidden="true" className="w-full" />
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-6xl opacity-[0.04] pointer-events-none select-none">
+      <svg viewBox="0 0 1200 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+        <text x="50%" y="160" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="200" fill="white" letterSpacing="-4">HOOKLYNE</text>
+      </svg>
     </div>
 
     <div className="container relative z-10 pt-14 pb-10 lg:pt-16 lg:pb-12">
