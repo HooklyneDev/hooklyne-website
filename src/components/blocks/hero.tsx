@@ -135,9 +135,9 @@ export const Hero = () => {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
               </div>
               <div
-                className="size-6 rounded-full flex-shrink-0"
-                style={{ background: "var(--hooklyne-blue)", opacity: 0.7 }}
-              />
+                className="size-6 rounded-full flex-shrink-0 flex items-center justify-center text-white font-semibold"
+                style={{ background: "var(--hooklyne-blue)", opacity: 0.7, fontSize: "10px" }}
+              >H</div>
             </div>
           </div>
 
