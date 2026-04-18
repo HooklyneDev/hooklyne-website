@@ -12,6 +12,7 @@ export const CookieBar = () => {
   function accept() {
     localStorage.setItem("hooklyne_cookies", "accepted");
     setVisible(false);
+    window.dispatchEvent(new Event("hooklyne:cookies:accepted"));
   }
 
   function decline() {

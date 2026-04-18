@@ -44,7 +44,7 @@ export const Footer = () => (
           &copy; {new Date().getFullYear()} Hooklyne. All rights reserved.
         </p>
         <p className="text-xs text-white/30">
-          KVK-nummer: <span className="text-white/40">TBD</span> &middot; BTW: <span className="text-white/40">TBD</span>
+          KVK: <span className="text-white/40">99990512</span>
         </p>
       </div>
     </div>

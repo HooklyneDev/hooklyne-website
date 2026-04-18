@@ -20,6 +20,26 @@ const { title, description } = Astro.props;
     </body>
     <script is:inline>
       (function () {
+        var GA_ID = 'G-XXXXXXXXXX';
+        function loadGA() {
+          if (window.__ga_loaded) return;
+          window.__ga_loaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+          s.async = true;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+        }
+        if (localStorage.getItem('hooklyne_cookies') === 'accepted') loadGA();
+        window.addEventListener('hooklyne:cookies:accepted', loadGA);
+      })();
+    </script>
+    <script is:inline>
+      (function () {
         var blob = document.querySelector('.footer-glow-blob');
         if (!blob) return;
         var ticking = false;
