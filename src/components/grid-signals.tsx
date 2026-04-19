@@ -2,9 +2,22 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const SPACING = 48;
-const MIN_DIST = 96;
-const MAX_CONCURRENT = 3;
-const PULSE_DURATION = 2200;
+const MIN_DIST = 120;
+const MAX_CONCURRENT = 2;
+const PULSE_DURATION = 2800;
+
+const SIGNAL_LABELS = [
+  "Funding round",
+  "New hire",
+  "Press mention",
+  "Series A",
+  "Expansion",
+  "Leadership change",
+  "Product launch",
+  "Job posting",
+  "Partnership",
+  "Office opening",
+];
 
 type Pulse = {
   id: number;
@@ -12,6 +25,8 @@ type Pulse = {
   y: number;
   color: string;
   opacity: number;
+  label: string;
+  labelSide: "left" | "right";
 };
 
 let globalId = 0;
@@ -19,6 +34,7 @@ let globalId = 0;
 export const GridSignals = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const prevPositions = useRef<{ x: number; y: number }[]>([]);
+  const usedLabels = useRef<string[]>([]);
   const [pulses, setPulses] = useState<Pulse[]>([]);
 
   const fire = useCallback(() => {
@@ -29,10 +45,8 @@ export const GridSignals = () => {
     const { width, height } = rect;
     const vh = window.innerHeight;
 
-    // Only fire in the portion of the hero that's actually on screen
     const visibleTop    = Math.max(0, -rect.top);
     const visibleBottom = Math.min(height, vh - rect.top);
-
     if (visibleBottom <= visibleTop) return;
 
     const cols   = Math.floor(width / SPACING);
@@ -63,7 +77,15 @@ export const GridSignals = () => {
     const centerLeft  = (width - 640) / 2;
     const centerRight = centerLeft + 640;
     const inCenter    = picked.x >= centerLeft && picked.x <= centerRight;
-    const useOrange   = !inCenter && Math.random() > 0.45;
+    const useOrange   = !inCenter && Math.random() > 0.5;
+
+    // Pick a label not recently used
+    const available = SIGNAL_LABELS.filter((l) => !usedLabels.current.slice(-3).includes(l));
+    const label = available[Math.floor(Math.random() * available.length)];
+    usedLabels.current = [...usedLabels.current.slice(-6), label];
+
+    // Show label on whichever side has more space
+    const labelSide: "left" | "right" = picked.x > width / 2 ? "left" : "right";
 
     const id = ++globalId;
     setPulses((prev) => {
@@ -71,8 +93,10 @@ export const GridSignals = () => {
         id,
         x: picked.x,
         y: picked.y,
-        color:   useOrange ? "var(--hooklyne-orange)" : "var(--hooklyne-blue)",
-        opacity: inCenter ? 0.4 : 0.8,
+        color:     useOrange ? "var(--hooklyne-orange)" : "var(--hooklyne-blue)",
+        opacity:   inCenter ? 0.25 : 0.55,
+        label,
+        labelSide,
       }];
       return next.length > MAX_CONCURRENT ? next.slice(-MAX_CONCURRENT) : next;
     });
@@ -87,9 +111,10 @@ export const GridSignals = () => {
 
     let timer: ReturnType<typeof setTimeout>;
     const schedule = () => {
-      timer = setTimeout(() => { fire(); schedule(); }, 900 + Math.random() * 1100);
+      // Calm cadence — one every 2-3.5s
+      timer = setTimeout(() => { fire(); schedule(); }, 2000 + Math.random() * 1500);
     };
-    timer = setTimeout(() => { fire(); schedule(); }, 400);
+    timer = setTimeout(() => { fire(); schedule(); }, 800);
     return () => clearTimeout(timer);
   }, [fire]);
 
@@ -103,7 +128,7 @@ export const GridSignals = () => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(52,76,163,0.25) 1.5px, transparent 1.5px)",
+          backgroundImage: "radial-gradient(circle, rgba(52,76,163,0.18) 1.5px, transparent 1.5px)",
           backgroundSize: `${SPACING}px ${SPACING}px`,
         }}
       />
@@ -114,7 +139,7 @@ export const GridSignals = () => {
         style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
       />
 
-      {/* Sonar pulses */}
+      {/* Pulses */}
       {pulses.map((p) => (
         <div
           key={p.id}
@@ -126,57 +151,67 @@ export const GridSignals = () => {
             ["--op" as string]: p.opacity,
           }}
         >
-          {/* Core dot — holds visible, then fades */}
-          <div
-            style={{
-              position: "absolute",
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              background: p.color,
-              transform: "translate(-50%, -50%)",
-              animation: `gs-dot ${PULSE_DURATION}ms ease-out forwards`,
-            }}
-          />
-          {/* Expanding ring — sonar ping */}
-          <div
-            style={{
-              position: "absolute",
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              border: `1.5px solid ${p.color}`,
-              transform: "translate(-50%, -50%)",
-              animation: `gs-ring ${PULSE_DURATION}ms ease-out forwards`,
-            }}
-          />
-          {/* Second ring — slightly delayed for double-ping effect */}
-          <div
-            style={{
-              position: "absolute",
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              border: `1px solid ${p.color}`,
-              transform: "translate(-50%, -50%)",
-              animation: `gs-ring ${PULSE_DURATION}ms ease-out ${PULSE_DURATION * 0.28}ms forwards`,
-              opacity: 0,
-            }}
-          />
+          {/* Core dot */}
+          <div style={{
+            position: "absolute",
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            background: p.color,
+            transform: "translate(-50%, -50%)",
+            animation: `gs-dot ${PULSE_DURATION}ms ease-out forwards`,
+          }} />
+
+          {/* Expanding ring */}
+          <div style={{
+            position: "absolute",
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            border: `1px solid ${p.color}`,
+            transform: "translate(-50%, -50%)",
+            animation: `gs-ring ${PULSE_DURATION}ms ease-out forwards`,
+          }} />
+
+          {/* Signal label */}
+          <div style={{
+            position: "absolute",
+            top: "50%",
+            ...(p.labelSide === "right"
+              ? { left: "14px" }
+              : { right: "14px" }),
+            transform: "translateY(-50%)",
+            whiteSpace: "nowrap",
+            fontSize: "9px",
+            fontWeight: 600,
+            letterSpacing: "0.04em",
+            color: p.color,
+            opacity: 0,
+            animation: `gs-label ${PULSE_DURATION}ms ease-out forwards`,
+            fontFamily: "var(--font-dm-sans, sans-serif)",
+          }}>
+            {p.label}
+          </div>
         </div>
       ))}
 
       <style>{`
         @keyframes gs-dot {
           0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-          8%   { opacity: var(--op, 0.8); transform: translate(-50%, -50%) scale(1.2); }
-          20%  { opacity: var(--op, 0.8); transform: translate(-50%, -50%) scale(1); }
-          80%  { opacity: calc(var(--op, 0.8) * 0.4); }
+          8%   { opacity: var(--op, 0.55); transform: translate(-50%, -50%) scale(1.1); }
+          30%  { opacity: var(--op, 0.55); transform: translate(-50%, -50%) scale(1); }
+          85%  { opacity: calc(var(--op, 0.55) * 0.3); }
           100% { opacity: 0; }
         }
         @keyframes gs-ring {
-          0%   { transform: translate(-50%, -50%) scale(1);  opacity: var(--op, 0.8); }
-          100% { transform: translate(-50%, -50%) scale(12); opacity: 0; }
+          0%   { transform: translate(-50%, -50%) scale(1); opacity: var(--op, 0.55); }
+          100% { transform: translate(-50%, -50%) scale(10); opacity: 0; }
+        }
+        @keyframes gs-label {
+          0%   { opacity: 0; }
+          12%  { opacity: calc(var(--op, 0.55) * 0.7); }
+          60%  { opacity: calc(var(--op, 0.55) * 0.7); }
+          100% { opacity: 0; }
         }
       `}</style>
     </div>
