@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const PERKS = [
  "10 full prospect packages",
- "All features unlocked",
+ "Full portal access",
  "No payment, no card",
  "20-min feedback call in return",
 ];

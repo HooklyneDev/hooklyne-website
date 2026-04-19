@@ -107,7 +107,7 @@ export const Features = () => {
           <div className="relative flex items-center gap-3 mb-12 lg:mb-16">
             <DashedLine className="text-muted-foreground flex-1" />
             <span className="shrink-0 bg-muted text-muted-foreground px-3 py-1 rounded-full font-mono text-xs font-medium tracking-widest uppercase whitespace-nowrap">
-              THREE WAYS IN. ONE WORKFLOW OUT.
+              How you start
             </span>
             <DashedLine className="text-muted-foreground flex-1" />
           </div>

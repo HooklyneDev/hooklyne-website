@@ -124,7 +124,7 @@ export const Hero = () => {
           className="text-lg text-[var(--muted-foreground)] max-w-xl leading-relaxed"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "200ms" }}
         >
-          Every prospect comes with verified contact details, a live news hook, and a first message written in your voice - matched to the signal and what you sell.
+          A research workflow that finds fitting companies, verifies decision-makers across 20+ data providers, watches for live buying signals, and drafts first outreach in your rep's voice.
         </p>
 
         <div
