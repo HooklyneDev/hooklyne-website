@@ -1,12 +1,10 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-
 import { Background } from '@/components/background';
 import { Contact } from '@/components/blocks/contact';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
-<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<DefaultLayout title="Contact - Hooklyne" description="Get in touch with the Hooklyne team. Book a demo, start a free pilot, or ask a question.">
   <Background>
-    <Contact />
+    <Contact client:load />
   </Background>
 </DefaultLayout>

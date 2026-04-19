@@ -1,109 +1,224 @@
 import {
- Accordion,
- AccordionContent,
- AccordionItem,
- AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const faqs = [
- {
- question: "What is Hooklyne?",
- answer: "A signal-ranked outreach engine for B2B sales teams. We give you a ranked list of companies and prospects, ordered by how relevant their latest developments are to what you sell. Every first touch has a real reason - a live news signal that connects their world to your product. For each prospect, we find the right person by role description, verify the contact, and write a ready-to-send email and LinkedIn message in your voice.",
- },
- {
- question: "What do I get per prospect?",
- answer: "A complete package: verified contact, company phone number, news hook (scored 1-10, with clickable source), buying signal, personalized email in your voice, LinkedIn invite, and outreach rationale. On higher plans: meeting prep brief, sector news, and real-time signal tracking.",
- },
- {
- question: "How are credits used?",
- answer: "1cr: prospect package (news-hooked email + LinkedIn message in your voice), company discovery (up to 20 ranked companies), or meeting prep brief. 2cr: contact finding (verified email, triple-checked across 20+ sources). 2cr per company per month: signal tracking (daily sweeps of job posts, news, funding). Browsing, reading signals, viewing matched roles, weekly sector briefings, and exports are always free.",
- },
- {
- question: "We already use Apollo or Lusha - why do we need Hooklyne?",
- answer: "Apollo and Lusha give you data. Hooklyne gives you done. With Apollo you still need to interpret signals, find the right contact, and write the outreach yourself - that's 2 to 4 hours per prospect. Hooklyne does all of that and delivers a ready-to-send message in your voice. It also supports Dutch natively, which most tools handle poorly.",
- },
- {
- question: "Can't ChatGPT do this?",
- answer: "ChatGPT can help write outreach, but it doesn't find your prospects, verify contacts, monitor signals, or know when to reach out. You'd still do all the research yourself, then prompt it carefully every time. Hooklyne is a complete workflow - it handles everything from finding companies to delivering outreach that's ready to send.",
- },
- {
- question: "What languages do you support?",
- answer: "English and Dutch natively. Our system researches in English for maximum coverage but delivers in your language with cultural awareness built in. Native Dutch outreach with local tone, not translations. For Dutch companies reaching out to EU markets in English, we adjust for cultural communication styles. More languages coming.",
- },
- {
- question: "Is there a contract?",
- answer: "No. Monthly plans cancel anytime. Annual plans are 12-month commitments billed at a lower monthly rate - you save up to €60/mo on Scale compared to monthly billing.",
- },
- {
- question: "How do I get started?",
- answer: "Start a free pilot. 10 full prospect packages, all features, no payment needed. We ask for a 20-min feedback call and case study permission in return. Book a demo call and we'll set you up.",
- },
- {
- question: "What about data privacy? Is this GDPR-compliant?",
- answer: "Yes. Hooklyne processes only publicly available professional data - company information and business contact details accessible under GDPR's legitimate interest basis. We don't store personal data beyond what's needed to deliver the service and comply with Dutch and EU data protection rules.",
- },
- {
- question: "What if I run out of credits?",
- answer: "You can top up at any time at €0.85 per credit across all plans. There are no blockers - your data, signals, and contacts stay accessible regardless of credit balance.",
- },
- {
- question: "What is signal tracking?",
- answer: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell and ranked in your dashboard. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. Extra companies above your plan limit cost 2cr per company per month.",
- },
- {
- question: "What does 'outreach in your voice' mean?",
- answer: "During setup we collect writing samples and tone inputs from you. Every email and LinkedIn message Hooklyne generates is written to match your style - not a generic template. The prospect package is ready to send or copy-paste directly. No editing required.",
- },
- {
- question: "How long does setup take?",
- answer: "Start plan: self-serve, up to 30 minutes. Growth plan: 45-min setup call with us - you leave with a working system and first targets queued. Scale plan: full setup session plus team training. Enterprise: dedicated onboarding track.",
- },
- {
- question: "Can I use Hooklyne for markets outside the Netherlands?",
- answer: "Yes. We support English and Dutch natively. For Dutch companies reaching out to EU markets, we adjust the tone and communication style for the target country. More markets and languages are in the roadmap.",
- },
+type QA = { q: string; a: string };
+type Group = { title: string; items: QA[] };
+
+const groups: Group[] = [
+  {
+    title: "How Hooklyne works",
+    items: [
+      {
+        q: "What does Hooklyne actually do?",
+        a: "Hooklyne is a research workflow for B2B sales teams. It finds companies that match your ICP, verifies decision-maker contact details across 20+ data providers, watches each prospect for live buying signals, and drafts first-touch outreach in your rep's voice. Everything arrives in one portal, ready to review and send.",
+      },
+      {
+        q: "Is this just another AI prospecting tool?",
+        a: "No. Most \"AI prospecting tools\" are one model talking to a static contact database. Hooklyne is a multi-stage workflow - six specialised stages, each doing a specific job a human researcher would do. The research layer is what makes the output useful. The writing is the last step, not the whole product.",
+      },
+      {
+        q: "How is Hooklyne different from a contact database like Apollo or Cognism?",
+        a: "Databases give you a name and an email. Hooklyne gives you a complete prospect package - a verified contact, a live signal explaining why to reach out this week, and a drafted message in your rep's voice. Databases leave the research and writing to you. Hooklyne does both, and runs continuously.",
+      },
+      {
+        q: "How is Hooklyne different from a sales agency?",
+        a: "Agencies typically cost €2,500 per month or more and replace part of your team. Hooklyne costs a fraction of that and adds to your team instead - your rep stays in the sales seat, but with proper research and drafted outreach done for them. You send from your own inbox, with your own voice, on your own schedule.",
+      },
+      {
+        q: "Does Hooklyne use AI?",
+        a: "Hooklyne combines several specialised research and data systems into a single workflow. Some of them are language-based. The point isn't that any one of them is \"AI\" - the point is that the workflow produces prospect packages that work. We don't publicly detail which systems are used because the combination is how we deliver results.",
+      },
+      {
+        q: "Will the messages sound like they were written by a bot?",
+        a: "No, and this is the main reason the workflow is shaped the way it is. Every message goes through multiple reasoning passes: hook selection, angle, voice match, and quality check. Voice is calibrated from a 30-minute interview and up to five example emails you provide. The output reads like your rep wrote it on a sharp morning, because every draft has been read and rewritten specifically to match how your rep writes.",
+      },
+    ],
+  },
+  {
+    title: "Contacts, signals, and data quality",
+    items: [
+      {
+        q: "How do you find contact details?",
+        a: "We run a waterfall across 20+ contact data providers. One provider is tried first - chosen based on the geography of the prospect - and if they don't return a verified match, the next provider tries. This continues until we get a result that passes verification.",
+      },
+      {
+        q: "Why not just use one database?",
+        a: "Contact data providers rarely overlap. Any single provider has roughly 40% of any given market, and the 40% each one covers is different. A single-source tool gives you thin coverage and frequent bounces. Combining 20+ providers is the only way to reach the 80%+ coverage outbound actually needs.",
+      },
+      {
+        q: "How are email addresses verified?",
+        a: "Four layers of verification. Three during the enrichment process - parallel checks that only pass a contact through if multiple methods agree. And a final separate deliverability check at the end. Invalid addresses, catch-all domains, spam traps, disposable emails, role-based addresses, and known complainer addresses are all flagged or filtered. If we can't verify a contact, we don't ship it.",
+      },
+      {
+        q: "Will verifying my prospects damage my sender reputation?",
+        a: "No. Verification runs through our infrastructure, not yours. Your domain is never used to probe mail servers during the verification process.",
+      },
+      {
+        q: "What kinds of signals do you track?",
+        a: "Seven intelligence sources: funding, hiring, leadership changes, product launches, press mentions, expansions, and sector news. Each tracked prospect is watched continuously.",
+      },
+      {
+        q: "How fresh are the signals?",
+        a: "Real-time. Most signals surface within hours of the underlying event. We also monitor profile and company pages directly for changes that don't make the press - new roles added to team pages, quietly launched products, expansions visible on careers pages before they're announced. Weekly or monthly signal tools miss most of this. Ours don't.",
+      },
+      {
+        q: "Why don't I see every hire and press release from my tracked prospects?",
+        a: "Because we score every signal twice - for relevance to the prospect, and for relevance to what you sell. Only the ones that pass both checks reach your inbox. A routine junior hire at a company you can't sell to doesn't need your attention.",
+      },
+      {
+        q: "How accurate is the data?",
+        a: "Contact data accuracy depends on the source and region. Our waterfall approach maximises coverage, and the four-layer verification removes emails that would bounce. We aim to ship only verified, reachable contacts - if one doesn't verify, we don't ship it. The industry standard to stay inbox-friendly is a bounce rate below 2%, and we aim to stay well under that.",
+      },
+      {
+        q: "Is the data sourcing GDPR-compliant?",
+        a: "Yes. All contact sourcing follows EU data protection standards. Data providers in our waterfall operate under GDPR-compliant processes, and nothing we ship has been obtained outside the bounds of European data law. As a Dutch-built product serving EMEA, compliance is foundational - not a bolt-on.",
+      },
+    ],
+  },
+  {
+    title: "Research and message quality",
+    items: [
+      {
+        q: "How do you avoid making stuff up about my prospects?",
+        a: "Research is grounded in live web sources, not training data. The system plans what to look up, searches, synthesises, then searches again where gaps remain - iteratively, the way a human researcher works. Every fact is traceable back to a real, current source. No invented quotes, no made-up statistics, no fabricated customer names. If we claim it, there's a source behind it.",
+      },
+      {
+        q: "Can I see the sources behind a meeting prep brief?",
+        a: "Yes. Every brief shows its work - where each fact came from, so you can double-check anything before you walk into the meeting.",
+      },
+      {
+        q: "How do you personalise the messages?",
+        a: "Through the Sender Profile. Five tabs covering your company, voice, example emails, products, and rules. Set it up once during onboarding (about 30 minutes). Every piece of outreach from that point inherits your voice. Messages get multiple reasoning passes - hook, angle, voice match, quality check - before they reach your inbox.",
+      },
+    ],
+  },
+  {
+    title: "Languages and markets",
+    items: [
+      {
+        q: "Do you support Dutch outreach?",
+        a: "Yes. Native Dutch, written with the cultural tone Dutch buyers expect - not translated from English. EN and NL from day one.",
+      },
+      {
+        q: "Can I target prospects outside the Netherlands?",
+        a: "Yes. Our EMEA coverage is strong, and we tune contact data provider selection by region so coverage stays high across the UK, DACH, Benelux, and the Nordics.",
+      },
+      {
+        q: "Is Hooklyne only for Dutch companies?",
+        a: "We're Dutch-built and our core audience is Dutch and UK B2B SMEs. That said, any EMEA team reaching out in Dutch or English can use Hooklyne today.",
+      },
+    ],
+  },
+  {
+    title: "Credits, plans, and billing",
+    items: [
+      {
+        q: "How does the credit system work?",
+        a: "Every prospecting, intelligence, or meeting prep action consumes credits. Reading, reviewing, and editing existing prospects does not. You see what's used and what's left on your dashboard, and credits reset monthly.",
+      },
+      {
+        q: "Do I pay for contacts we can't verify?",
+        a: "No. Contact lookup credits are only charged on verified hits. If we can't find or verify a contact, you pay nothing for that attempt.",
+      },
+      {
+        q: "What happens if I run out of credits mid-month?",
+        a: "Top-ups are available on every plan at €0.85 per credit. Enterprise plans get custom rates.",
+      },
+      {
+        q: "Can I change plans?",
+        a: "Yes, at any time.",
+      },
+      {
+        q: "Is there a long-term contract?",
+        a: "No. Monthly and annual options are available, with annual plans saving up to €60 per month depending on tier. Cancel anytime.",
+      },
+      {
+        q: "Are there per-seat fees?",
+        a: "The Start plan is for 1 seat. Growth is 2 seats, Scale is 5 seats. Enterprise has unlimited seats. Most teams won't hit seat limits.",
+      },
+    ],
+  },
+  {
+    title: "Pilots and onboarding",
+    items: [
+      {
+        q: "What's the free pilot?",
+        a: "We build 10 full prospect packages for you - verified contacts, real signals, messages drafted in your voice. No payment needed. We ask for a 20-minute feedback call in exchange.",
+      },
+      {
+        q: "How long does onboarding take?",
+        a: "Most teams are live in under a week. The Sender Profile takes around 30 minutes to set up properly, and ICP calibration usually takes one or two iterations. Growth and Scale plans include a kick-off call to shorten this.",
+      },
+      {
+        q: "Do I need to change my CRM or sequencer?",
+        a: "No. Hooklyne doesn't replace your CRM or your outreach tool. Packages copy cleanly into whatever you use, or you send from your own inbox.",
+      },
+      {
+        q: "Who actually sends the emails?",
+        a: "You do. Hooklyne drafts and delivers the outreach. The send happens from your inbox, your sequencer, or your LinkedIn. Your voice, your domain, your reputation.",
+      },
+    ],
+  },
 ];
 
 export const FAQ = () => {
- return (
- <section id="faq" className="pb-28 lg:pb-32">
- <div className="container">
- <div className="mx-auto max-w-3xl">
- <div className="text-center mb-12">
- <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
- <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--heading)]">Common questions.</h2>
- <p className="text-[var(--muted-foreground)] mt-3 text-base">Everything you need to know before booking a demo.</p>
- </div>
+  return (
+    <section id="faq" className="pb-28 lg:pb-32">
+      <div className="container">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+            <h1 className="text-4xl md:text-5xl tracking-tight text-[var(--heading)] leading-tight mb-4">
+              Frequently asked questions
+            </h1>
+            <p className="text-[var(--muted-foreground)] text-base max-w-xl mx-auto leading-relaxed">
+              Common questions about how Hooklyne works, what's included, and how to get started. If your question isn't here, get in touch.
+            </p>
+          </div>
 
- <Accordion type="single" collapsible className="space-y-2">
- {faqs.map((faq, i) => (
- <AccordionItem
- key={i}
- value={`item-${i}`}
- className="rounded-xl bg-[var(--card)] px-5 data-[state=open]:border-[var(--hooklyne-blue)]/20"
- >
- <AccordionTrigger className="text-left text-sm font-semibold text-[var(--heading)] hover:no-underline py-4">
- {faq.question}
- </AccordionTrigger>
- <AccordionContent className="text-sm text-[var(--muted-foreground)] leading-relaxed pb-4">
- {faq.answer}
- </AccordionContent>
- </AccordionItem>
- ))}
- </Accordion>
+          <div className="flex flex-col gap-12">
+            {groups.map((g, gi) => (
+              <div key={gi}>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-4">
+                  {g.title}
+                </h2>
+                <Accordion type="single" collapsible className="space-y-2">
+                  {g.items.map((qa, i) => (
+                    <AccordionItem
+                      key={i}
+                      value={`g${gi}-item-${i}`}
+                      className="rounded-xl bg-[var(--card)] px-5 data-[state=open]:border-[var(--hooklyne-blue)]/20"
+                    >
+                      <AccordionTrigger className="text-left text-sm font-semibold text-[var(--heading)] hover:no-underline py-4">
+                        {qa.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-sm text-[var(--muted-foreground)] leading-relaxed pb-4">
+                        {qa.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
+          </div>
 
- <div className="mt-10 text-center">
- <p className="text-sm text-[var(--muted-foreground)] mb-4">Still have questions? We're happy to walk you through it.</p>
- <a
- href="/contact"
- className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
- style={{ backgroundColor: "var(--hooklyne-navy)" }}
- >
- Book a demo
- </a>
- </div>
- </div>
- </div>
- </section>
- );
+          <div className="mt-16 rounded-2xl p-8 text-center" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+            <h3 className="text-xl font-semibold text-[var(--heading)] mb-2">Didn't find your answer?</h3>
+            <p className="text-sm text-[var(--muted-foreground)] mb-5">Get in touch. We answer fast.</p>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: "var(--hooklyne-navy)" }}
+            >
+              Contact us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };

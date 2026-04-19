@@ -2,79 +2,298 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { FinalCTA } from '@/components/blocks/final-cta';
+import { PortalShot } from '@/components/portal-shot';
 import { ArrowRight } from 'lucide-react';
 
-const steps = [
+const stages = [
   {
-    n: "01",
-    title: "Tell us who you sell to.",
-    body: "Share your ICP, sender voice, and target regions in a 30-min onboarding call. We capture how your reps actually write so the outreach sounds like them, not a template.",
-    image: "/screens/stage-contact.png",
-    alt: "Portal prospecting setup showing ICP and voice profile configuration",
+    n: 1,
+    key: "Discovery",
+    h2: "Discovery - find companies by what they actually do",
+    claim: "We find companies semantically, not by industry code.",
+    how: "You describe your ideal customer in plain language - what they do, what situation they're in, what signals matter to you. The system searches across billions of pages using semantic matching - not keyword lookups, not SIC codes. What comes back are companies that match the meaning of what you described, even if they'd never surface under the label you'd normally filter for.",
+    diff: "A database filter for \"industrial automation companies in the Netherlands, 50-200 employees\" gives you everyone who tagged themselves that way. Some are what you actually sell to. Most aren't. We find the ones that fit regardless of how they describe themselves on their own website or in Chamber of Commerce records.\n\nThe search index is built specifically for finding companies and decision-makers, not as a general web search. Because it's semantic, results aren't influenced by SEO position. The companies you see are the ones that match, not the ones that paid to rank.",
+    note: {
+      title: "A note on \"find similar.\"",
+      body: "The same technology lets you start from a company you already love. Upload your best customers and we surface companies that share the meaningful traits, not just the industry code or headcount band. The shape of a great customer, not the label.",
+    },
+    shot: {
+      label: "Discovery workspace",
+      describe: "Portal screen: prompt field with an ICP description, and a results grid of matched companies with relevance scores and quick-add buttons.",
+      url: "portal.hooklyne.com/prospecting",
+      overlays: [
+        { x: 22, y: 24, tag: "PROMPT", title: "Dutch industrial OEMs exploring servitisation", tone: "blue" as const },
+        { x: 78, y: 70, tag: "MATCHED", title: "42 companies found", body: "Semantic fit, not SIC code", tone: "teal" as const, pulse: true },
+      ],
+    },
   },
   {
-    n: "02",
-    title: "We find the signals worth acting on.",
-    body: "We pull from 7 intelligence sources, score every news hook 6+ for relevance, and rank prospects by how strong their signal is. You see the why before you see the who.",
-    image: "/screens/stage-signal.png",
-    alt: "Portal signals feed showing ranked companies with news hooks and relevance scores",
+    n: 2,
+    key: "Verification",
+    h2: "Verification - contact data that holds up",
+    claim: "Every contact verified across 20+ providers, then run through four layers of email verification before ship.",
+    how: "For each company we surface, we need a real, reachable person. A waterfall runs under the hood: one contact data provider is tried first, chosen based on the geography of the prospect. If they don't return a verified match, the next provider tries. And the next. Until one of them returns a result that passes verification.\n\nEvery email is then pushed through four layers of verification - three during enrichment, run in parallel before a contact is accepted, and one separate deliverability check at the end. Invalid addresses, catch-all domains, spam traps, disposable emails, role-based addresses (info@, sales@), and known complainer addresses are flagged or filtered before anything reaches you. Verification runs without touching your sender reputation.\n\nIf a contact can't be verified, it isn't shipped. You never pay for unverified data.",
+    diff: "Contact data vendors rarely overlap. Any single provider has roughly 40% of any real market, with different 40% gaps. If you rely on one database, you miss more than half the contacts you need - or worse, get stale data that bounces. Running across 20+ providers is how we reach the 80%+ coverage that actually works for outbound.\n\nEvery lookup is live. Not a cached database record from 18 months ago. When a contact ships, it was verified just now.\n\nThe industry bar to stay inbox-friendly is a bounce rate below 2%. With four verification layers running before ship, the target is well below that.",
+    note: {
+      title: "On compliance.",
+      body: "All contact sourcing is GDPR-compliant. Providers in the waterfall follow EU data protection standards. Nothing we ship has been obtained outside European data law.",
+    },
+    shot: {
+      label: "Verification waterfall",
+      describe: "Portal screen: a contact card with a vertical list of provider attempts, each with a status pill (tried, matched, verified) and a final email deliverability score.",
+      url: "portal.hooklyne.com/prospect/142",
+      overlays: [
+        { x: 22, y: 30, tag: "ATTEMPT 3/20", title: "Verified match found", tone: "teal" as const, pulse: true },
+        { x: 78, y: 72, tag: "EMAIL", title: "Passed 4-layer check", body: "SMTP · Catch-all · Role · Deliverability", tone: "blue" as const },
+      ],
+    },
   },
   {
-    n: "03",
-    title: "We match the right person and write the outreach.",
-    body: "Most databases ship you one source and one wrong number. We aggregate 20+ to triple-verify the contact, then write the email and LinkedIn invite anchored to the signal, in your rep's voice.",
-    image: "/screens/voice-email.png",
-    alt: "Portal showing a verified contact with a personalized email draft ready to send",
+    n: 3,
+    key: "Signals",
+    h2: "Signals - watched continuously, scored twice",
+    claim: "Seven intelligence sources watched in real time. Only surfaces what's relevant to both your prospect and your product.",
+    how: "Once a prospect enters your tracked list, they are watched continuously. Multiple data feeds power the watcher - hiring data, funding announcements, leadership change alerts, press mentions, product launches, expansions, sector news. Profile and company pages are monitored directly for changes too, not just the news cycle.\n\nWhen a signal fires, it gets scored two ways: how important it is for the prospect's business, and how relevant it is to what you sell. A signal that scores high on both makes it to your inbox. Everything else stays in the background.\n\nAlerts come as they happen. No dashboard to check, hoping something moved.",
+    diff: "\"Signal\" tools that check weekly miss most of the movement. Tools that fire on every press release bury the real news under noise. Bilateral scoring is the filter that turns signals from a feed into a list of real opportunities. And monitoring profiles and company pages directly catches movements that never reach the press - quiet launches, new hires before the announcement, expansions visible on a careers page before the headline.",
+    sources: ["Funding", "Hiring", "Leadership changes", "Product launches", "Press mentions", "Expansions", "Sector news"],
+    shot: {
+      label: "Signals feed",
+      describe: "Portal screen: a vertical feed of firing signals with sector tags, twin scores (prospect importance + product relevance), and a \"prep meeting\" action on each row.",
+      url: "portal.hooklyne.com/signals",
+      overlays: [
+        { x: 24, y: 22, tag: "FUNDING", title: "Series B · €12M", body: "Scored 9/10 for your ICP", tone: "orange" as const, pulse: true },
+        { x: 78, y: 70, tag: "HIRING", title: "New VP Sales", body: "Relevance to your product: 8/10", tone: "blue" as const },
+      ],
+    },
   },
   {
-    n: "04",
-    title: "You review, pick the best, and send.",
-    body: "Open the portal, glance at the cards, copy the message, and send. When a tracked company moves again, you get a new ready-to-send action in your inbox.",
-    image: "/screens/inbox-ready.png",
-    alt: "Portal My Leads inbox showing prospect cards ready to review and send",
+    n: 4,
+    key: "Research",
+    h2: "Research - live context, traceable sources",
+    claim: "Every piece of context is grounded in current web sources. Every claim traces back to where it came from.",
+    how: "When a signal fires or a prospect enters your pipeline, live web research runs. What the company has said publicly in the recent past. What the contact posted in the last 90 days. How their business actually works. What's changed since their last annual report.\n\nThe research is iterative, not one-shot. The system plans what to look up, searches, reads, synthesises, then searches again where gaps remain - the way a human researcher actually works, not the way a language model summarises in one pass. Every fact is traceable to a real, current source. Every brief shows its work.",
+    diff: "Language models without live retrieval hallucinate. They invent plausible-sounding facts from a training set that may be 18 months stale. Messages built on that kind of research land as lies the moment a prospect says \"we haven't done that since 2023.\" Live, sourced research prevents that entirely.\n\nNo invented quotes. No made-up statistics. No fabricated customer names. If it shows up in a brief or an outreach message, there's a source behind it.",
+    shot: {
+      label: "Research brief",
+      describe: "Portal screen: a prospect brief with paragraphs of context, each sentence carrying a small citation number linking to the source URL underneath.",
+      url: "portal.hooklyne.com/prospect/142/brief",
+      overlays: [
+        { x: 26, y: 26, tag: "SOURCED", title: "12 citations in this brief", tone: "blue" as const },
+        { x: 76, y: 74, tag: "FRESH", title: "Last refreshed 2h ago", body: "Live retrieval, not training data", tone: "teal" as const, pulse: true },
+      ],
+    },
+  },
+  {
+    n: 5,
+    key: "Drafting",
+    h2: "Drafting - messages that read like your rep wrote them",
+    claim: "Each message is drafted through multiple reasoning passes. Not generated in one shot.",
+    how: "When it's time to write, the system doesn't produce one draft and stop. It reasons through the hook (why is this signal the right one to lead with), the angle (how does your product connect to what's happening), the voice match (does this read like your rep actually writes), and the quality check (is this ready to send). Each pass refines what came before. What reaches your inbox has been read and rewritten several times before you see it.",
+    diff: "One-shot generation is what makes AI outreach look generic. You can tell instantly. Multiple passes, each focused on a specific quality, is what takes output from \"technically coherent\" to \"I'd read this.\" It's the same reason a good editor improves a draft - specialised attention at each pass.",
+    note: {
+      title: "Where the voice comes from.",
+      body: "The 5-tab Sender Profile you fill in during onboarding - company, voice, example emails, products, rules - is what the drafting stage references on every message. Set up once, your voice follows every output.",
+    },
+    shot: {
+      label: "Draft with voice match",
+      describe: "Portal screen: a drafted email on the left with the subject, opening hook, body, and CTA; on the right a panel showing which voice traits were matched (cadence, openers, sign-off).",
+      url: "portal.hooklyne.com/prospect/142/draft",
+      overlays: [
+        { x: 24, y: 26, tag: "VOICE", title: "Matched to Tim's cadence", tone: "blue" as const },
+        { x: 78, y: 70, tag: "PASSES", title: "4 reasoning passes", body: "Hook · Angle · Voice · QC", tone: "orange" as const, pulse: true },
+      ],
+    },
+  },
+  {
+    n: 6,
+    key: "Delivery",
+    h2: "Delivery - one package, reviewable in under a minute",
+    claim: "Everything the first five stages produced arrives on one screen, ready to send.",
+    how: "Every prospect is delivered as a single card in the portal. Company context, contact details, the live signal, the scored hook, the draft email, the draft LinkedIn invite - all visible on one screen. You review, edit if you want, accept as drafted if it's right, and send from your own tool or copy into your sequencer. Dutch or English, per prospect or globally.",
+    diff: "Most prospecting tools hand you raw data and expect you to do the last-mile work yourself. Write the email. Research the context. Decide the angle. The last mile is where outbound teams burn hours every day. Hooklyne does the last mile and delivers the result in reviewable form.",
+    shot: {
+      label: "Prospect package card",
+      describe: "Portal screen: a single prospect card open, sectioned into Company / Contact / Signal / Hook / Email / LinkedIn, each collapsible, with an \"Accept and send\" and \"Edit\" button at the bottom.",
+      url: "portal.hooklyne.com/leads",
+      overlays: [
+        { x: 22, y: 24, tag: "REVIEW", title: "Under a minute per package", tone: "teal" as const },
+        { x: 78, y: 72, tag: "ACTIONS", title: "Accept · Edit · Skip", body: "Send from your own inbox", tone: "blue" as const, pulse: true },
+      ],
+    },
   },
 ];
 ---
 
-<DefaultLayout title="How it works - Hooklyne" description="Four steps from signal to sent. Tell us who you sell to, we research and write, you review and send.">
+<DefaultLayout
+  title="How it works - Hooklyne"
+  description="The research workflow behind every Hooklyne prospect package. Six stages, from discovery to delivery, explained step by step."
+>
   <Background>
-    <section class="pt-32 lg:pt-40 pb-12">
+    <section class="pt-32 lg:pt-40 pb-12" data-fade>
       <div class="container max-w-3xl text-center">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Four steps from signal to sent.
+          A research workflow, not a chatbot.
         </h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
-          No platform to learn. No sequences to build. We do the research and write the outreach. You review and send.
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Hooklyne is built as a sequence of specialised stages, each doing one job a human researcher would do. Together they produce prospect packages your rep can act on - continuously, at real volume, without cutting corners.
         </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group"
+          >
+            Start your free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="/product"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the product
+            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-16 lg:pb-24" data-fade>
+      <div class="container max-w-5xl">
+        <div
+          class="rounded-3xl p-6 lg:p-10"
+          style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); box-shadow: var(--shadow-md); border: 1px solid var(--border);"
+        >
+          <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-4">
+            {stages.map((s, i) => (
+              <>
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-full" style="background: var(--background); border: 1px solid var(--border);">
+                  <span class="inline-flex items-center justify-center size-6 rounded-full text-[11px] font-bold text-white" style="background: var(--hooklyne-navy);">
+                    {s.n}
+                  </span>
+                  <span class="text-sm font-semibold text-[var(--heading)]">{s.key}</span>
+                </div>
+                {i < stages.length - 1 && (
+                  <span class="text-[var(--muted-foreground)] text-sm">→</span>
+                )}
+              </>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   </Background>
 
   <Background variant="bottom">
+    <section class="py-20 lg:py-24" data-fade>
+      <div class="container max-w-4xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-4">Why this matters</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-6">
+          Most "AI prospecting tools" are one prompt and a database.
+        </h2>
+        <p class="text-lg text-[var(--muted-foreground)] leading-relaxed mb-5">
+          The market is full of tools that claim to automate outbound but are really one language model talking to a static contact list. They produce generic messages, send to unverified emails, and quietly burn your sender reputation on the way.
+        </p>
+        <p class="text-lg text-[var(--muted-foreground)] leading-relaxed mb-8">
+          Hooklyne is a different shape. Six specialised stages, each doing specific work, each checked before output moves on. When you read a Hooklyne prospect package, you're looking at the result of hundreds of small decisions - made continuously, not in one shot.
+        </p>
+        <p class="text-xl md:text-2xl font-medium italic text-[var(--heading)]">
+          This is what changes the output. Not the model. The workflow.
+        </p>
+      </div>
+    </section>
+
     <section class="py-16 lg:py-24">
-      <div class="container max-w-6xl flex flex-col gap-24 lg:gap-32">
-        {steps.map((s, i) => (
-          <div class:list={["grid lg:grid-cols-2 gap-10 lg:gap-16 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
+      <div class="container max-w-6xl flex flex-col gap-28 lg:gap-36">
+        {stages.map((s, i) => (
+          <div data-fade class:list={["grid lg:grid-cols-2 gap-10 lg:gap-16 items-start", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
             <div>
-              <div class="inline-flex items-center justify-center size-12 rounded-xl bg-[var(--hooklyne-blue)]/10 text-[var(--hooklyne-blue)] font-bold text-lg mb-5">
-                {s.n}
+              <div class="inline-flex items-center gap-2 mb-5">
+                <span class="inline-flex items-center justify-center size-9 rounded-xl text-sm font-bold text-white" style="background: var(--hooklyne-navy);">
+                  {s.n}
+                </span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Stage {s.n}</span>
               </div>
               <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
-                {s.title}
+                {s.h2}
               </h2>
-              <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-lg">{s.body}</p>
-            </div>
-            <div class="rounded-3xl p-3" style="background: radial-gradient(ellipse 90% 80% at 50% 50%, rgba(52,76,163,0.10) 0%, transparent 70%)">
-              <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
-                <img src={s.image} alt={s.alt} class="w-full h-full object-cover object-top" loading="lazy" />
+
+              <div class="rounded-2xl p-5 mb-6" style="background: rgba(52,76,163,0.06); border-left: 3px solid var(--hooklyne-blue);">
+                <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-1.5">The claim</p>
+                <p class="text-base font-medium text-[var(--heading)] leading-snug">{s.claim}</p>
               </div>
+
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">How it works</p>
+              <div class="text-base text-[var(--muted-foreground)] leading-relaxed space-y-3 mb-6">
+                {s.how.split("\n\n").map((p) => <p>{p}</p>)}
+              </div>
+
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">Why it's different</p>
+              <div class="text-base text-[var(--muted-foreground)] leading-relaxed space-y-3">
+                {s.diff.split("\n\n").map((p) => <p>{p}</p>)}
+              </div>
+
+              {s.sources && (
+                <div class="mt-6">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Seven intelligence sources</p>
+                  <div class="flex flex-wrap gap-2">
+                    {s.sources.map((src) => (
+                      <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background: var(--card); border: 1px solid var(--border); color: var(--heading);">
+                        {src}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {s.note && (
+                <div class="mt-6 rounded-xl p-4" style="background: var(--card); border: 1px solid var(--border);">
+                  <p class="text-sm font-semibold text-[var(--heading)] mb-1">{s.note.title}</p>
+                  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.note.body}</p>
+                </div>
+              )}
+            </div>
+
+            <div class="lg:sticky lg:top-28">
+              <PortalShot
+                label={s.shot.label}
+                describe={s.shot.describe}
+                url={s.shot.url}
+                overlays={s.shot.overlays}
+              />
             </div>
           </div>
         ))}
       </div>
     </section>
 
-    <FinalCTA />
+    <section class="py-20 lg:py-24" data-fade>
+      <div class="container max-w-4xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-4">Credits</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-5">
+          One credit system. Every action priced transparently.
+        </h2>
+        <p class="text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto mb-8">
+          The workflow runs on credits. Every prospecting action, every intelligence match, every meeting prep brief has a transparent cost. You see what's used and what's left. You pick a plan that matches your volume. You scale or cancel anytime.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/pricing"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group"
+          >
+            See pricing
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            Start your free pilot
+            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <FinalCTA client:load />
   </Background>
 </DefaultLayout>

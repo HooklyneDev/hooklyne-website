@@ -4,14 +4,11 @@ import { FAQ } from '@/components/blocks/faq';
 import { FinalCTA } from '@/components/blocks/final-cta';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
-<DefaultLayout title="FAQ - Hooklyne" description="Common questions about Hooklyne answered.">
+<DefaultLayout title="FAQ - Hooklyne" description="Answers to common questions about Hooklyne, the research workflow, credits, signals, and what's included in each plan.">
   <Background>
-    <FAQ
-      client:only='react'
-      className="py-28 text-center lg:pt-44 lg:pb-32"
-      className2="max-w-xl lg:grid-cols-1"
-      headerTag="h1"
-    />
+    <div class="pt-32 lg:pt-40">
+      <FAQ client:visible />
+    </div>
   </Background>
-  <FinalCTA />
+  <FinalCTA client:load />
 </DefaultLayout>

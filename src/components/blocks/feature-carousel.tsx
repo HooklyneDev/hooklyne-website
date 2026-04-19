@@ -3,28 +3,28 @@ import { cn } from "@/lib/utils";
 
 const SLIDES = [
   {
-    title: "Every outreach backed by a real signal.",
-    body: "We watch 7 intelligence sources for news, hiring, and product moves. Every prospect arrives with a scored hook and the rationale that turns it into a reason to reach out.",
+    title: "Every outreach anchored to a real signal.",
+    body: "Hiring, funding, leadership changes, press mentions - watched across seven intelligence sources, continuously. Every prospect arrives with a scored hook and the reason it matters this week.",
     image: "/home/hooklyne-signal-based-outreach.webp",
-    alt: "Hooklyne portal showing a live signal hook and outreach rationale for a B2B prospect",
+    alt: "PLACEHOLDER: Portal screenshot of a prospect card with a live signal badge (e.g. 'Series B funding - 3 days ago') and the reasoning panel underneath showing why it matters to the rep's ICP.",
   },
   {
-    title: "Triple-verified across 20+ sources.",
-    body: "Single-source databases hand you one wrong number. We aggregate 20+ providers, match by role description (not just job title), and only ship a contact when three sources agree.",
+    title: "Contacts verified across 20+ providers, not one database.",
+    body: "Single-source databases hand you one wrong number. A waterfall runs across 20+ contact data providers, selects the right one per region, and puts every email through four layers of verification before you see it.",
     image: "/home/hooklyne-triple-verified-contact-data.webp",
-    alt: "Hooklyne portal contact card showing triple-verified email and phone across 20+ sources",
+    alt: "PLACEHOLDER: Portal screenshot of a verified contact card showing the name, title, email with a green 'Verified - deliverable' badge, and a collapsed list of '20+ providers checked' with the winning source highlighted.",
   },
   {
     title: "Written in your rep's voice. Not a template.",
-    body: "Calibrated from a 30-min interview. Each email and LinkedIn invite reads like the rep wrote it on a sharp morning.",
+    body: "Calibrated from a 30-minute interview. Every email and LinkedIn invite runs through multiple reasoning passes - hook, angle, voice match, quality check - before it reaches your inbox. Reads like your rep wrote it on a sharp morning.",
     image: "/home/hooklyne-personalized-outreach-email.webp",
-    alt: "Hooklyne portal showing a personalized B2B outreach email written in the rep's voice",
+    alt: "PLACEHOLDER: Portal screenshot of a draft email pane with the voice profile sidebar visible on the right - tone keywords, sample phrasing, and an inline 'Drafted in Tim's voice' badge above the subject line.",
   },
   {
-    title: "Real-time signals. Act when it matters.",
-    body: "When a prospect posts, hires, or makes the news, you get a ready-to-send email and LinkedIn message in your inbox.",
+    title: "Companies found by what they do, not what they're labelled.",
+    body: "Databases filter by industry code. Shallow. Semantic search across billions of web pages surfaces companies that actually match your ICP - regardless of how they describe themselves.",
     image: "/home/hooklyne-real-time-prospect-signals.webp",
-    alt: "Hooklyne portal inbox showing real-time prospect signal cards ready to review and send",
+    alt: "PLACEHOLDER: Portal screenshot of the Prospecting 'Find me companies' flow - a plain-language ICP prompt at the top, a ranked result list below with fit scores on the right and 3 surfaced decision-makers per row.",
   },
 ];
 

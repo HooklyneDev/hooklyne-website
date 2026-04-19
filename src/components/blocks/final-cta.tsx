@@ -15,10 +15,10 @@ export const FinalCTA = () => (
         }}
       >
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-tight">
-          Start your free pilot.
+          Try 10 prospect packages, free.
         </h2>
         <p className="text-base md:text-lg text-white/75 max-w-xl mx-auto mb-8">
-          10 prospects. Full packages. No payment needed. In exchange for a 20-min feedback call.
+          Fully built packages. Verified contacts, real signals, messages in your voice. No payment needed. In exchange for a 20-minute feedback call.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a

@@ -15,7 +15,7 @@ export const FounderQuote = () => (
  >
  <Quote className="size-8 mx-auto mb-6 text-[var(--hooklyne-blue)]" strokeWidth={1.5} />
  <blockquote className="text-xl md:text-2xl font-medium text-[var(--heading)] leading-snug mb-6">
- We built Hooklyne because we were tired of choosing between doing research properly and doing enough outreach.
+ Most teams can't choose between proper research and enough outreach, so they sacrifice both. We built Hooklyne so they don't have to.
  </blockquote>
  <div className="flex items-center justify-center gap-3">
  <div className="size-10 rounded-full bg-[var(--hooklyne-blue)]/15 flex items-center justify-center text-[var(--hooklyne-blue)] font-semibold">
