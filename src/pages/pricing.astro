@@ -307,25 +307,6 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
         </div>
       </div>
 
-      <!-- Signal tracking note -->
-      <div class="rounded-2xl border border-[var(--border)] p-6 mb-12" style="background: var(--background)">
-        <h3 class="text-sm font-semibold text-[var(--heading)] mb-3">Signal tracking - included per plan</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            ["Start", "Up to 10 companies"],
-            ["Growth", "Up to 40 companies"],
-            ["Scale", "Up to 100 companies"],
-            ["Enterprise", "Negotiated"],
-          ].map(([plan, limit]) => (
-            <div class="text-center">
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-1">{plan}</p>
-              <p class="text-sm font-medium text-[var(--heading)]">{limit}</p>
-            </div>
-          ))}
-        </div>
-        <p class="text-xs text-[var(--muted-foreground)] mt-4">Additional companies tracked above your plan limit: 2cr per company per month.</p>
-      </div>
-
       <!-- FAQ section -->
       <div class="mb-12">
         <div class="text-center mb-8">
