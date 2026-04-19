@@ -6,7 +6,6 @@ import ValueProps from '@/components/blocks/value-props.astro';
 import { FeatureCarousel } from '@/components/blocks/feature-carousel';
 import { FeatureShowcase } from '@/components/blocks/feature-showcase';
 import { FounderQuote } from '@/components/blocks/founder-quote';
-import { HomeFAQ } from '@/components/blocks/home-faq';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import { FinalCTA } from '@/components/blocks/final-cta';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -24,6 +23,5 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     <FounderQuote />
     <HomePricing client:load />
     <FinalCTA />
-    <HomeFAQ client:load />
   </Background>
 </DefaultLayout>

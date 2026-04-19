@@ -70,7 +70,6 @@ const PLANS = [
       "Weekly market briefing",
       "Meeting prep briefs",
       "Full setup + team training",
-      "Dedicated Slack or WhatsApp",
     ],
   },
   {
@@ -232,53 +231,7 @@ export const HomePricing = () => {
           })}
         </div>
 
-        {/* Credit table */}
-        <div className="mt-12 rounded-2xl bg-[var(--card)] overflow-hidden" style={{ boxShadow: "var(--shadow-sm)" }}>
-          <div className="px-6 py-5 border-b border-[var(--border)]">
-            <h3 className="text-base font-semibold text-[var(--heading)]">What each credit gets you</h3>
-            <p className="text-sm text-[var(--muted-foreground)] mt-1">Every credit maps to a clear deliverable. Browsing, reading signals, and viewing intel are always free.</p>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[var(--border)]" style={{ background: "var(--background)" }}>
-                  <th className="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">Action</th>
-                  <th className="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)] hidden sm:table-cell">What you get</th>
-                  <th className="text-right px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--hooklyne-blue)]">Credits</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Company discovery", "Up to 20 ranked companies, ICP-filtered, with signal hooks", "1cr"],
-                  ["View matched roles", "Up to 3 decision-makers per company", "Free"],
-                  ["Prospect package", "News-hooked email + LinkedIn message, NL or EN, in your voice", "1cr"],
-                  ["Contact finding", "Verified email, triple-checked across 20+ sources", "2cr"],
-                  ["Signal tracking", "Daily sweeps: job posts, news, funding. Scored and ranked.", "2cr / company / mo"],
-                  ["Meeting prep brief", "Company overview, talking points, key people, recent news", "1cr"],
-                  ["Weekly sector briefing", "5–10 articles from your market, scored for relevance", "Included"],
-                  ["Export to CSV", "Full export of your leads and signals", "Free"],
-                ].map(([action, desc, cost]) => {
-                  const isFree = cost === "Free" || cost === "Included";
-                  return (
-                    <tr key={action} className="border-b border-[var(--border)] last:border-0 hover:bg-[var(--card-hover)] transition-colors">
-                      <td className="px-6 py-3.5 font-medium text-[var(--foreground)] whitespace-nowrap">{action}</td>
-                      <td className="px-6 py-3.5 text-[var(--muted-foreground)] hidden sm:table-cell">{desc}</td>
-                      <td className="px-6 py-3.5 text-right">
-                        <span
-                          className={cn("text-sm font-semibold", isFree ? "text-[var(--hooklyne-teal)]" : "text-[var(--hooklyne-blue)]")}
-                        >
-                          {cost}
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className="text-center mt-8">
+        <div className="text-center mt-10">
           <a href="/pricing" className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
             Full pricing breakdown and FAQ
             <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
