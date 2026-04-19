@@ -197,7 +197,7 @@ export const GridSignals = () => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 58px, rgba(52,76,163,0.09) 59px, rgba(52,76,163,0.09) 60px)",
+          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 58px, rgba(52,76,163,0.04) 59px, rgba(52,76,163,0.04) 60px)",
         }}
       />
 
