@@ -23,17 +23,17 @@ export const FinalCTA = () => (
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
             href="/contact"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-white text-[var(--hooklyne-navy)] px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-white text-[var(--hooklyne-navy)] px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity group"
           >
             Book a demo
-            <ArrowRight className="size-4" />
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
           <a
             href="/pricing"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-white/85 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-white/85 hover:text-white transition-colors group"
           >
             See pricing
-            <ArrowRight className="size-3.5" />
+            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>

@@ -16,9 +16,9 @@ export const Hero = () => {
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh   = window.innerHeight;
-      const prog = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.55)));
-      const deg  = 18 * (1 - prog);
-      el.style.transform = `perspective(1200px) rotateX(${deg}deg)`;
+      const prog = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
+      const deg  = 26 * (1 - prog);
+      el.style.transform = `perspective(900px) rotateX(${deg}deg)`;
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -131,18 +131,18 @@ export const Hero = () => {
           className="flex flex-wrap items-center justify-center gap-4 mt-2"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "310ms" }}
         >
-          <Button asChild className="h-11 px-6 text-sm font-semibold rounded-lg" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
+          <Button asChild className="h-11 px-6 text-sm font-semibold rounded-lg group" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
             <a href="/contact">
               Start your free pilot
-              <ArrowRight className="ml-1.5 size-4" />
+              <ArrowRight className="ml-1.5 size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
           </Button>
           <a
             href="/how-it-works"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
             See how it works
-            <ArrowRight className="size-3.5" />
+            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>
