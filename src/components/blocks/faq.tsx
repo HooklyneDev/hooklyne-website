@@ -16,7 +16,7 @@ const faqs = [
  },
  {
  question: "How are credits used?",
- answer: "1 credit = prospect package (news hook + buying signal + personalized email + LinkedIn invite + outreach rationale). 2 credits = contact finding (verified email + role + company from 20+ sources, triple verified). 3 credits = full prospect (everything combined). Meeting prep and signal call scripts cost 1 credit each. Company discovery costs 1 credit.",
+ answer: "1cr: prospect package (news-hooked email + LinkedIn message in your voice), company discovery (up to 20 ranked companies), or meeting prep brief. 2cr: contact finding (verified email, triple-checked across 20+ sources). 2cr per company per month: signal tracking (daily sweeps of job posts, news, funding). Browsing, reading signals, viewing matched roles, weekly sector briefings, and exports are always free.",
  },
  {
  question: "We already use Apollo or Lusha - why do we need Hooklyne?",
