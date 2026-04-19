@@ -5,18 +5,18 @@ import { ArrowRight } from 'lucide-react';
 
 const values = [
   {
-    title: "Research quality over volume.",
-    body: "More prospects isn't better. Better prospects is better. We'd rather ship 50 real hooks than 500 weak ones.",
+    title: "Quality over volume.",
+    body: "Fifty real hooks beat five hundred weak ones. Every time.",
     tone: "blue",
   },
   {
-    title: "Tools that fit a small team.",
-    body: "Most B2B software is built for big sales teams and sold down-market. We build for small teams from the start - 1 to 3 reps, no operations support, limited budget. Everything is designed to work in that shape.",
+    title: "Built for small teams.",
+    body: "1-3 reps, no research support, limited budget. That's the shape we design for. Not enterprise sold down-market.",
     tone: "orange",
   },
   {
-    title: "Outreach that doesn't embarrass the sender.",
-    body: "The bar for \"good enough\" AI outreach has dropped so low that a lot of it is genuinely harmful to the sender's reputation. We hold a higher bar. Every message that ships has been through multiple reasoning passes and a quality check. If it's not ready to send, we don't send it to you.",
+    title: "Outreach you'd sign your name to.",
+    body: "Generic AI outreach burns sender reputation. We hold a higher bar. Four reasoning passes, a quality check, and if it's not ready, it doesn't ship.",
     tone: "teal",
   },
 ];
@@ -24,15 +24,9 @@ const values = [
 const team = [
   {
     name: "Tim",
-    role: "Founder - research engine",
+    role: "Founder",
     initial: "T",
-    body: "Builds the research engine: discovery, verification, signals, drafting. Ex-B2B sales, has used every prospecting tool on the market and was done compromising.",
-  },
-  {
-    name: "Joey",
-    role: "Co-founder - product",
-    initial: "J",
-    body: "Builds the product you see: the portal, the interfaces, the daily experience. Keeps the tool usable for a rep with 20 minutes between calls.",
+    body: "Built Hooklyne after years in B2B sales trying to do proper outbound without a research team behind him. The tool is the one he wished existed.",
   },
 ];
 ---
@@ -46,10 +40,10 @@ const team = [
       <div class="container max-w-4xl text-center">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6">
-          Built by people who were tired of choosing between proper research and enough outreach.
+          Proper research. Enough outreach. Pick both.
         </h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-          Hooklyne exists because B2B sales teams deserve better than cheap databases and expensive agencies. We built the research layer most teams can't afford to staff.
+          The research layer most B2B teams can't afford to staff. Delivered as software.
         </p>
       </div>
     </section>
@@ -60,17 +54,17 @@ const team = [
       <div class="container max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-4">Why we built this</p>
         <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
-          There was nothing built for a 15-person team that still wanted to do outbound properly.
+          Nothing fit a 15-person team that still wanted to do outbound right.
         </h2>
         <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
           <p>
-            Most B2B teams we've worked with have the same problem. A handful of sales reps, no research support, and a choice between two bad options: prospect from a database that hands you yesterday's news, or hire an agency that charges more than a junior rep's salary. Neither works for a 10-person company trying to grow.
+            Small teams have two bad options. A database that hands you yesterday's news, or an agency that costs more than a junior rep. Neither works for a 10-person company trying to grow.
           </p>
           <p>
-            We wanted to build something different. Not another database. Not another AI email writer. A proper research workflow - the kind of output a dedicated researcher would give you, if you could justify hiring one - delivered as software.
+            So we built the third option. Not another database. Not another email writer. The output a dedicated researcher would give you, if you could justify hiring one.
           </p>
           <p class="text-[var(--heading)] font-medium text-lg">
-            The result is Hooklyne. Six specialised stages working together to produce prospect packages your reps can act on in under a minute. Built in the Netherlands, used by B2B teams across EMEA.
+            Six stages. One prospect package. Under a minute to review and send. Dutch-built, used across EMEA.
           </p>
         </div>
       </div>
@@ -80,13 +74,13 @@ const team = [
       <div class="container max-w-5xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">The team</p>
         <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
-          Two founders. A small group of collaborators.
+          A founder and a small group of collaborators.
         </h2>
         <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-10 max-w-2xl">
-          Hooklyne is built by Tim and Joey, with help from a small group of collaborators. Tim builds the research engine. Joey builds the product you see. Both of us have done B2B sales and both of us have used every tool on the market.
+          Built by Tim, with a small group of collaborators. B2B sales background. Built the tool he kept wishing existed.
         </p>
 
-        <div class="grid md:grid-cols-2 gap-5">
+        <div class="max-w-xl">
           {team.map((t) => (
             <div
               class="rounded-2xl p-6 flex gap-5 items-start"
@@ -143,7 +137,7 @@ const team = [
             Dutch-built. EMEA-focused.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6 max-w-2xl">
-            We're based in the Netherlands. Our core audience is B2B SMEs in the Netherlands and the UK, with strong support for the rest of EMEA. Dutch and English from day one - native, not translated. GDPR-compliant throughout, by design rather than as a bolt-on.
+            Based in the Netherlands. Core audience: Dutch and UK B2B SMEs, with strong coverage across EMEA. Native Dutch and English from day one. GDPR-compliant by design.
           </p>
           <div class="inline-flex items-center gap-2 text-sm" style="color: var(--muted-foreground);">
             <span class="text-xs font-semibold uppercase tracking-widest">KVK</span>

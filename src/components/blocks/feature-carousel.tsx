@@ -3,26 +3,26 @@ import { cn } from "@/lib/utils";
 
 const SLIDES = [
   {
-    title: "Every outreach anchored to a real signal.",
-    body: "Hiring, funding, leadership changes, press mentions - watched across seven intelligence sources, continuously. Every prospect arrives with a scored hook and the reason it matters this week.",
+    title: "Every email anchored to a real reason.",
+    body: "Seven intelligence sources watched live: funding, hiring, leadership, launches, press, expansion, sector news. Every prospect lands with a scored hook and why it matters this week.",
     image: "/home/hooklyne-signal-based-outreach.webp",
     alt: "PLACEHOLDER: Portal screenshot of a prospect card with a live signal badge (e.g. 'Series B funding - 3 days ago') and the reasoning panel underneath showing why it matters to the rep's ICP.",
   },
   {
-    title: "Contacts verified across 20+ providers, not one database.",
-    body: "Single-source databases hand you one wrong number. A waterfall runs across 20+ contact data providers, selects the right one per region, and puts every email through four layers of verification before you see it.",
+    title: "20+ providers checked. One clean contact.",
+    body: "Single-source databases bounce. A waterfall across 20+ providers, tuned per region, plus four deliverability layers. Only verified contacts ship.",
     image: "/home/hooklyne-triple-verified-contact-data.webp",
     alt: "PLACEHOLDER: Portal screenshot of a verified contact card showing the name, title, email with a green 'Verified - deliverable' badge, and a collapsed list of '20+ providers checked' with the winning source highlighted.",
   },
   {
-    title: "Written in your rep's voice. Not a template.",
-    body: "Calibrated from a 30-minute interview. Every email and LinkedIn invite runs through multiple reasoning passes - hook, angle, voice match, quality check - before it reaches your inbox. Reads like your rep wrote it on a sharp morning.",
+    title: "Reads like your rep wrote it.",
+    body: "Voice calibrated from a 30-minute interview. Four reasoning passes per draft - hook, angle, voice, quality check. No template smell.",
     image: "/home/hooklyne-personalized-outreach-email.webp",
     alt: "PLACEHOLDER: Portal screenshot of a draft email pane with the voice profile sidebar visible on the right - tone keywords, sample phrasing, and an inline 'Drafted in Tim's voice' badge above the subject line.",
   },
   {
-    title: "Companies found by what they do, not what they're labelled.",
-    body: "Databases filter by industry code. Shallow. Semantic search across billions of web pages surfaces companies that actually match your ICP - regardless of how they describe themselves.",
+    title: "Find fit. Not filters.",
+    body: "Databases filter by industry code. We search billions of pages semantically for what companies actually do. Real fits, not SIC code guesses.",
     image: "/home/hooklyne-real-time-prospect-signals.webp",
     alt: "PLACEHOLDER: Portal screenshot of the Prospecting 'Find me companies' flow - a plain-language ICP prompt at the top, a ranked result list below with fit scores on the right and 3 surfaced decision-makers per row.",
   },

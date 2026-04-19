@@ -4,94 +4,89 @@ import { Background } from '@/components/background';
 import { PortalShot } from '@/components/portal-shot';
 import { FinalCTA } from '@/components/blocks/final-cta';
 
-// Section 2 - Prospect package blocks
 const packageBlocks = [
   {
     tag: "THE COMPANY",
-    title: "Why it fits your ICP",
-    body: "What they do, in plain language. What's changed recently and why it's worth an hour of your time. Not a scrape of the homepage - live web research pulled at the moment you need it.",
+    title: "A fit. Not a guess.",
+    body: "What they do, what just changed, why it's worth your time. Live research, not a scraped homepage.",
     icon: "building",
   },
   {
     tag: "THE DECISION-MAKER",
-    title: "Verified across 20+ providers",
-    body: "Name, role, verified business email, direct number where available. Checked across 20+ data providers with regional selection, then run through four layers of email verification. If we can't verify, we don't ship.",
+    title: "Verified, or not shipped.",
+    body: "Name, role, email, phone where we have it. Checked across 20+ providers. Four deliverability layers. If it's not clean, it doesn't land.",
     icon: "shield",
   },
   {
     tag: "THE HOOK",
-    title: "A live reason to reach out",
-    body: "A live buying signal from the last 14 days. Funding, hire, product launch, press mention, leadership change, expansion. Scored twice - once for importance to the prospect, once for relevance to what you sell.",
+    title: "A real reason to write today.",
+    body: "A live signal from the last 14 days. Scored for their business, scored for your product. Only the real ones come through.",
     icon: "radar",
   },
   {
     tag: "THE MESSAGE",
-    title: "Drafted in your rep's voice",
-    body: "A first email and a LinkedIn invite, anchored to the signal. Every message goes through hook, angle, voice, and quality check before it's delivered. Ready to send, not ready to rewrite.",
+    title: "In your voice. Ready to send.",
+    body: "An email and a LinkedIn invite, anchored to the signal. Drafted through four passes. Not a template.",
     icon: "edit",
   },
 ];
 
-// Section 5 - Prospecting modes
 const prospectingModes = [
   {
     n: "01",
     title: "Find me companies",
-    body: "Describe your ideal customer in plain language - the industry, the size, the situation, the signals you'd want to see. Semantic search runs across billions of web pages and returns ranked companies that match the meaning of what you described, regardless of how they label themselves. Each comes with three decision-makers surfaced.",
+    body: "Describe your ICP. Get ranked fits with three decision-makers each.",
   },
   {
     n: "02",
     title: "I know the company",
-    body: "Already have a target in mind? Enter the company name and domain. The system finds three matched decision-makers and surfaces the best angle for each.",
+    body: "Paste the domain. Get three matched decision-makers and the angle for each.",
   },
   {
     n: "03",
     title: "I know who to reach",
-    body: "Paste a name or LinkedIn URL. The system verifies the email, pulls fresh context on the company, and generates ready-to-send outreach anchored to what's currently happening.",
+    body: "Paste a name or LinkedIn URL. Get verified email, fresh context, draft outreach.",
   },
   {
     n: "04",
-    title: "Find similar companies",
+    title: "Find similar",
     soon: true,
-    body: "Upload your best customers. Get lookalike companies that share the meaningful traits, not just the industry code. Semantic matching finds patterns in who you're already winning with, and surfaces the next 50 companies that fit the same shape.",
+    body: "Upload your best customers. Get the next 50 that share the shape, not the label.",
   },
 ];
 
-// Section 7 - Signal sources
 const signalSources = [
-  "Funding rounds",
-  "Leadership changes",
-  "Hiring sprees",
-  "Product launches",
-  "Press mentions",
-  "Expansions",
-  "Sector-specific news",
+  "Funding",
+  "Leadership",
+  "Hiring",
+  "Launches",
+  "Press",
+  "Expansion",
+  "Sector news",
 ];
 
-// Section 10 - Profile tabs
 const profileTabs = [
-  { n: "1", title: "Company and value prop", body: "What you do, what makes you different, who your ideal customer is, which regions you sell into." },
-  { n: "2", title: "Voice and tone", body: "How your rep communicates. Tone keywords, style notes, signature elements." },
-  { n: "3", title: "Example emails", body: "Up to five past emails that capture your rep's voice. One is required, more is better. This is what we calibrate against." },
-  { n: "4", title: "Products and services", body: "The full list with descriptions, so messages can reference the right product for the right signal." },
-  { n: "5", title: "Rules and context", body: "Anything off-limits, anything extra we should know. Do-not-mention rules. Specific tone preferences by segment." },
+  { n: "1", title: "Company", body: "What you do, who you sell to, where." },
+  { n: "2", title: "Voice", body: "Tone, cadence, signature moves." },
+  { n: "3", title: "Examples", body: "Up to five past emails. The calibration fuel." },
+  { n: "4", title: "Products", body: "So the right product meets the right signal." },
+  { n: "5", title: "Rules", body: "Off-limits topics. Segment-specific tone. House style." },
 ];
 ---
 
 <DefaultLayout
   title="Product - Hooklyne"
-  description="Inside Hooklyne: verified prospect packages, signals, meeting prep briefs, and sector intelligence - all in one portal. See what you get."
+  description="Verified prospect packages, live signals, meeting prep briefs, and sector intelligence. All in one portal."
 >
   <Background>
-    <!-- Section 1 - Hero -->
     <section class="pt-28 pb-12 lg:pt-44 lg:pb-16">
       <div class="container max-w-4xl text-center">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4" data-fade>Product</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6" data-fade data-delay="1">
-          Every prospect, fully packaged.
+          Every prospect. Fully packaged.
         </h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed" data-fade data-delay="2">
-          A name is not a prospect. A prospect is a verified decision-maker, a live reason to reach out, and a first message that reads like your rep wrote it. That's what Hooklyne ships - every time.
+        <p class="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed" data-fade data-delay="2">
+          A verified contact, a live reason to reach out, and a first message in your voice. Every time.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4" data-fade data-delay="3">
           <a
@@ -111,33 +106,31 @@ const profileTabs = [
           </a>
         </div>
 
-        <!-- Hero shot -->
         <div class="mt-16 lg:mt-20" data-fade data-delay="4">
           <PortalShot
             client:load
-            label="Prospect package card"
-            describe="Full-width screenshot: one prospect card opened in the portal. Company header with fit score, decision-maker with verified email badge, signal pill (e.g. 'Series B - 4d ago'), draft email in the right pane, LinkedIn invite collapsed below. This single shot carries the product page hero."
+            label="Prospect package"
+            describe="The full card: company header + fit score, decision-maker + verified email badge, live signal pill, draft email in the right pane, LinkedIn invite below."
             ratio="16/9"
             overlays={[
-              { x: 18, y: 22, tag: "SIGNAL", title: "Series B, €12M", body: "Raised 4 days ago", tone: "orange", pulse: true },
-              { x: 82, y: 32, tag: "CONTACT", title: "Verified deliverable", body: "Checked across 20+ providers", tone: "teal" },
-              { x: 74, y: 74, tag: "VOICE", title: "Drafted in Tim's voice", body: "4 reasoning passes", tone: "blue" },
+              { x: 18, y: 22, tag: "SIGNAL", title: "Series B, €12M", body: "4 days ago", tone: "orange", pulse: true },
+              { x: 82, y: 32, tag: "CONTACT", title: "Verified deliverable", tone: "teal" },
+              { x: 74, y: 74, tag: "VOICE", title: "In your cadence", body: "4 reasoning passes", tone: "blue" },
             ]}
           />
         </div>
       </div>
     </section>
 
-    <!-- Section 2 - Prospect package -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="max-w-2xl mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The package</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            What's in a prospect package
+            Four parts. One screen. Ready to send.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Every company has passed your ICP filter. Every contact has been verified across 20+ providers. Every message has been reasoned through multiple passes before it reaches you. Here's what arrives in the portal.
+            Company, contact, hook, message. Everything verified before it reaches you.
           </p>
         </div>
 
@@ -161,38 +154,37 @@ const profileTabs = [
       </div>
     </section>
 
-    <!-- Section 3 - Portal at a glance -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The portal</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Review and send in under 60 seconds
+            Open it. Send it. Close it.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            The portal is built for one moment - getting from "this prospect arrived" to "this message is sent" as fast as possible. Every feature exists to serve that moment.
+            Built for one moment: prospect in, message out. Under a minute.
           </p>
         </div>
 
         <PortalShot
           client:load
-          label="Portal dashboard, full width"
-          describe="Full-width dashboard screenshot: left sidebar nav (Dashboard / Prospecting / My Leads / Signals / Intelligence / Meeting Prep / Profile), 'Daily focus' card top-centre with 2 priority actions, Signal heat top-5 list with rising/cooling arrows, credit meter top-right."
+          label="Portal dashboard"
+          describe="Full dashboard: sidebar nav, Daily focus card top-centre, Signal heat top-5 list, credit meter top-right."
           ratio="16/9"
           overlays={[
-            { x: 22, y: 20, tag: "DAILY FOCUS", title: "2 actions ready", body: "Prioritised for you, not your inbox", tone: "orange", pulse: true },
-            { x: 80, y: 30, tag: "CREDITS", title: "312 / 400 remaining", body: "Resets in 11 days", tone: "blue" },
-            { x: 70, y: 74, tag: "SIGNAL HEAT", title: "Top 5, ranked", body: "3 rising, 1 stable, 1 cooling", tone: "teal" },
+            { x: 22, y: 20, tag: "DAILY FOCUS", title: "2 actions ready", body: "Ranked, not dumped", tone: "orange", pulse: true },
+            { x: 80, y: 30, tag: "CREDITS", title: "312 / 400", body: "Resets in 11 days", tone: "blue" },
+            { x: 70, y: 74, tag: "SIGNAL HEAT", title: "Top 5 prospects", body: "3 rising · 1 cooling", tone: "teal" },
           ]}
         />
 
         <ul class="grid md:grid-cols-2 gap-3 mt-12 max-w-4xl mx-auto">
           {[
-            "Every prospect reviewable on one screen - no digging through tabs",
-            "Edit the message in place, or accept it as drafted",
-            "Copy to your sequencing tool, or send from your own inbox",
-            "Dutch or English, toggled per prospect",
-            "Your ICP, your voice, your signals - configured once, tuned over time",
+            "Every prospect on one screen. No digging.",
+            "Edit in place, or accept as drafted.",
+            "Send from your inbox, or paste into your sequencer.",
+            "Dutch or English, toggled per prospect.",
+            "Tuned once. Sharper every week.",
           ].map((f) => (
             <li class="flex items-start gap-2.5 text-sm text-[var(--foreground)]">
               <svg class="size-4 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -203,33 +195,32 @@ const profileTabs = [
       </div>
     </section>
 
-    <!-- Section 4 - Dashboard -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Dashboard</p>
             <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-              Start every day knowing what to do
+              Start the day knowing where to go.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-8">
-              The dashboard is the first thing you see. It's not a blank wall of data - it tells you what to act on today.
+              Not a blank wall of numbers. A clear instruction for today.
             </p>
 
-            <div class="space-y-5">
+            <div class="space-y-4">
               {[
-                { t: "Daily focus", b: "1-2 priority actions ranked for you, with sales angle and urgency level shown. Start here, not in your inbox." },
-                { t: "Signal heat", b: "Your top 5 hottest tracked prospects, ranked by heat score. Each shows whether it's rising, stable, or cooling." },
-                { t: "Market intelligence", b: "Top 6 news items from your sector, ranked for a salesperson who needs to know what to say in the next meeting." },
-                { t: "Pipeline stats", b: "Active leads, ready leads, completed briefs, hottest prospect - at a glance." },
-                { t: "Credit usage", b: "What you've used, what's left, when it resets." },
-                { t: "Recent activity", b: "Latest leads added, latest briefs completed, so you always know where you left off." },
+                { t: "Daily focus", b: "Two priority actions, ranked and angled. Start here." },
+                { t: "Signal heat", b: "Your hottest five prospects. Rising, stable, cooling." },
+                { t: "Market intel", b: "Six headlines you can use in today's meeting." },
+                { t: "Pipeline stats", b: "Active, ready, completed, hottest. At a glance." },
+                { t: "Credits", b: "What's used, what's left, when it resets." },
+                { t: "Recent activity", b: "Where you left off. So you don't lose momentum." },
               ].map((f) => (
                 <div class="flex gap-3">
                   <div class="size-1.5 rounded-full bg-[var(--hooklyne-orange)] mt-2 shrink-0"></div>
                   <div>
                     <p class="text-sm font-semibold text-[var(--heading)]">{f.t}</p>
-                    <p class="text-sm text-[var(--muted-foreground)] mt-1 leading-relaxed">{f.b}</p>
+                    <p class="text-sm text-[var(--muted-foreground)] mt-0.5 leading-relaxed">{f.b}</p>
                   </div>
                 </div>
               ))}
@@ -240,10 +231,10 @@ const profileTabs = [
             <PortalShot
               client:load
               label="Dashboard detail"
-              describe="Close-up of the Daily focus + Signal heat cards. Top card shows 2 actions with priority dots and sales angles. Right card lists top 5 hottest prospects with heat score bars and up/down trend chips."
+              describe="Close-up of Daily focus + Signal heat cards with priority dots, angles, and heat bars."
               ratio="3/2"
               overlays={[
-                { x: 28, y: 18, tag: "PRIORITY 1", title: "High - act today", tone: "orange", pulse: true },
+                { x: 28, y: 18, tag: "PRIORITY 1", title: "Act today", tone: "orange", pulse: true },
                 { x: 75, y: 58, tag: "HEAT", title: "Rising", body: "+12 since Friday", tone: "teal" },
               ]}
             />
@@ -252,16 +243,15 @@ const profileTabs = [
       </div>
     </section>
 
-    <!-- Section 5 - Prospecting -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Prospecting</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Four ways to find your next customer
+            Four ways in. Same package out.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Different starting points call for different tools. Whether you're describing an ideal target from scratch or chasing a specific company you saw in the news, there's a direct way in.
+            Start from an ICP, a domain, a name, or your best customers. Every path lands on a ready-to-send card.
           </p>
         </div>
 
@@ -280,35 +270,34 @@ const profileTabs = [
           ))}
         </div>
 
-        <div class="mt-10 rounded-2xl p-6 lg:p-8" style="background: var(--card); box-shadow: var(--shadow-xs)">
+        <div class="mt-10 rounded-2xl p-6 lg:p-7" style="background: var(--card); box-shadow: var(--shadow-xs)">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Search history</p>
-          <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">Everything you find stays searchable</h3>
+          <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">Nothing you find gets lost.</h3>
           <p class="text-sm text-[var(--muted-foreground)] leading-relaxed max-w-3xl">
-            Every company ever surfaced through Prospecting lives in your Search History. Filter by status (Found, Selected, Dismissed, Submitted), country, company size, or date. Ship any of them back into the flow, single or bulk, whenever the timing is right.
+            Every company stays in your search history. Filter, sort, resurrect. Bring one back into the flow whenever the timing's right.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Section 6 - My Leads -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="lg:order-2">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">My Leads</p>
             <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-              Your pipeline, properly tracked
+              Your pipeline. Without the spreadsheet.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
-              Once you submit a prospect, it lives in My Leads. Every state tracked, every step visible, always one click away from your next action.
+              Every prospect tracked, every state visible, one click from your next action.
             </p>
             <ul class="space-y-3">
               {[
-                "Full list: company, role, domain, status, date added, contact details",
-                "Status tracking: Ready, Processing, Pending, Tracking, Rejected, Approved - colour-coded so state is visible at a glance",
-                "Expand any row for full prospect details, brief links, contact info, and outreach angle",
-                "Filter, search, sort, paginate - pipeline hygiene without a spreadsheet",
-                "One-click jump to Meeting Prep, pre-filled with that prospect's data",
+                "Company, role, domain, status, date - all in one row.",
+                "Colour-coded status: Ready, Processing, Tracking, Approved.",
+                "Expand for brief, contact, outreach angle.",
+                "Filter and sort. No CSV needed.",
+                "One click to Meeting Prep, pre-filled.",
               ].map((f) => (
                 <li class="flex items-start gap-2.5 text-sm text-[var(--foreground)]">
                   <svg class="size-4 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -321,12 +310,12 @@ const profileTabs = [
           <div class="lg:order-1">
             <PortalShot
               client:load
-              label="My Leads, expanded row view"
-              describe="Screenshot: data table of prospects with columns for company, role, domain, status pill, date added. One row expanded in place to show the full prospect drawer - brief link, contact details, outreach angle preview."
+              label="My Leads"
+              describe="Table of prospects with columns and one expanded row showing brief link + contact details."
               ratio="3/2"
               overlays={[
                 { x: 20, y: 28, tag: "STATUS", title: "Ready", tone: "teal" },
-                { x: 76, y: 68, tag: "JUMP TO", title: "Meeting Prep", body: "Pre-filled from this row", tone: "blue" },
+                { x: 76, y: 68, tag: "JUMP TO", title: "Meeting Prep", body: "Pre-filled", tone: "blue" },
               ]}
             />
           </div>
@@ -334,28 +323,27 @@ const profileTabs = [
       </div>
     </section>
 
-    <!-- Section 7 - Signals -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signals</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Signals that actually mean something
+            The right moment. Not every moment.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Most "signal" tools fire on everything - every hire, every post, every press release. That's noise. Every signal is scored two ways: relevance to the prospect's business, and relevance to what you sell. Only signals that pass both checks reach you.
+            Every signal scored twice: matters to them, matters to you. Only the ones that pass both land in your inbox.
           </p>
         </div>
 
         <PortalShot
           client:load
           label="Signals feed"
-          describe="Screenshot: Signals feed grouped by company. Each group header shows the company + fit score. Under it, 2-3 signal rows with type icon, headline, date, and a relevance score bar. Right sidebar shows filters (type, recency) and grouped counts."
+          describe="Feed grouped by company, with twin scores and filter sidebar."
           ratio="16/9"
           overlays={[
-            { x: 22, y: 24, tag: "FUNDING", title: "Scored 9/10", body: "Live 2 hours ago", tone: "orange", pulse: true },
-            { x: 78, y: 30, tag: "FILTER", title: "7 signal types", tone: "blue" },
-            { x: 72, y: 78, tag: "ACTIONS", title: "Move to leads", body: "Or dismiss / keep tracking", tone: "teal" },
+            { x: 22, y: 24, tag: "FUNDING", title: "9/10 fit", body: "2 hours ago", tone: "orange", pulse: true },
+            { x: 78, y: 30, tag: "FILTERS", title: "7 signal types", tone: "blue" },
+            { x: 72, y: 78, tag: "ACTIONS", title: "Move · Dismiss · Track", tone: "teal" },
           ]}
         />
 
@@ -370,78 +358,76 @@ const profileTabs = [
 
         <div class="grid md:grid-cols-3 gap-5 mt-12">
           <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Continuous, not weekly.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Signals are monitored in real time. When something moves, you know fast enough to act on it - not next Monday.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Live. Not weekly.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">When something moves, you know. Not next Monday.</p>
           </div>
           <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Not just news polling.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Profile and company pages are monitored for changes too. A new role on a team page, a product line quietly launched, a location expansion that hasn't made the press yet.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Deeper than news.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Company pages watched directly. New roles, quiet launches, careers-page expansions - before the press catches up.</p>
           </div>
           <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Alerts come to you.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Grouped by company, ranked by heat, filterable by type and recency. From the feed: move to leads, dismiss, or keep tracking.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Signal, not noise.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Grouped by company, ranked by heat. Move to leads, dismiss, keep tracking.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 8 - Intelligence -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="max-w-2xl mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Intelligence</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Turn sector news into real outreach
+            Read the news. Then act on it.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Intelligence has two jobs: keep you informed about what's moving in your market, and make sure you act on it when a story actually matches a prospect in your pipeline.
+            Sector stories curated for your market, matched to prospects in your pipeline.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-5">
           <div class="rounded-2xl p-7" style="background: var(--card); box-shadow: var(--shadow-xs)">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Sector news</p>
-            <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">What's moving in your market</h3>
+            <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">What's moving this week.</h3>
             <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Weekly news curated for your sector, ranked by relevance. Filter by region. Browse previous weeks. Written for a salesperson who needs to know what to say in their next meeting - not a market analyst writing a report.
+              Curated for your sector. Ranked for relevance. Written for a salesperson, not an analyst.
             </p>
           </div>
           <div class="rounded-2xl p-7" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Match to prospects</p>
-            <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">News matched to your leads</h3>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Match to leads</p>
+            <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">News with a name on it.</h3>
             <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Select up to 25 of your own leads. For each, the most relevant news item is matched with a short "why it matters" paragraph and a ready-to-use outreach angle. One click to copy. One click to send.
+              Pick up to 25 leads. Each one gets the most relevant story with a ready outreach angle. Copy, send.
             </p>
           </div>
         </div>
 
         <p class="text-center text-sm italic text-[var(--muted-foreground)] mt-8">
-          The difference between reading news and doing something with it.
+          The gap between reading news and doing something with it.
         </p>
       </div>
     </section>
 
-    <!-- Section 9 - Meeting Prep -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Meeting Prep</p>
             <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-              Walk into every meeting knowing who you're talking to
+              Walk in knowing more than they expected.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
-              You booked the meeting. You need to be the one in the room who did their homework. Meeting Prep generates a full research brief in about five minutes, pulling from live web sources with every fact traceable to its origin.
+              Full brief in about five minutes. Live sources. Every fact traceable.
             </p>
 
             <div class="space-y-5">
               <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">How it works</p>
-                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Fill the meeting details - company, domain, contact name and title, LinkedIn, meeting date, meeting type, any context you want to add. The brief generates in approximately five minutes.</p>
+                <p class="text-sm font-semibold text-[var(--heading)] mb-2">How to run it</p>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Fill company, contact, meeting type. Hit generate. Brief in your inbox in ~5 minutes.</p>
               </div>
 
               <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">Meeting types supported</p>
+                <p class="text-sm font-semibold text-[var(--heading)] mb-2">Meeting types</p>
                 <div class="flex flex-wrap gap-1.5">
                   {["Cold outreach", "Warm intro", "Inbound", "Follow-up", "Conference", "Post-conference", "Pitch"].map((t) => (
                     <span class="text-xs px-2.5 py-1 rounded-full" style="background: rgba(52,76,163,0.06); color: var(--hooklyne-blue)">{t}</span>
@@ -450,14 +436,14 @@ const profileTabs = [
               </div>
 
               <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">What's in the brief</p>
+                <p class="text-sm font-semibold text-[var(--heading)] mb-2">In the brief</p>
                 <ul class="space-y-2">
                   {[
-                    "Recent company news, hires, funding, product launches",
-                    "What the contact has said publicly in the last 90 days",
-                    "How their business actually works, in plain language",
-                    "Specific angles your pitch should lean on",
-                    "Every claim sourced, so you can double-check anything before the meeting",
+                    "Recent moves: news, hires, funding, launches",
+                    "What the contact said publicly in the last 90 days",
+                    "How their business actually works",
+                    "Angles your pitch should lean on",
+                    "Every claim sourced and clickable",
                   ].map((b) => (
                     <li class="flex items-start gap-2.5 text-sm text-[var(--muted-foreground)]">
                       <svg class="size-3.5 shrink-0 mt-1 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -466,23 +452,18 @@ const profileTabs = [
                   ))}
                 </ul>
               </div>
-
-              <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">Where it lives</p>
-                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Every brief is stored in My Briefs with full status tracking (Queued, Generating, Completed, Error). Download as PDF, open in Google Drive, or read in-app. Pre-fills automatically when launched from a My Leads row.</p>
-              </div>
             </div>
           </div>
 
           <div class="lg:sticky lg:top-28">
             <PortalShot
               client:load
-              label="Meeting prep brief, first page"
-              describe="Screenshot: the brief rendered as a document - company summary up top, 'recent moves' bullets, decision-maker public context section with quoted snippets, pitch angles highlighted, footnote-style citations on the right margin."
+              label="Meeting brief"
+              describe="Brief rendered as a document: summary, recent moves, contact context, pitch angles, citations on the margin."
               ratio="3/2"
               overlays={[
-                { x: 22, y: 20, tag: "BRIEF", title: "Completed in 4m 38s", tone: "teal" },
-                { x: 78, y: 58, tag: "SOURCES", title: "12 citations", body: "Every claim traceable", tone: "blue" },
+                { x: 22, y: 20, tag: "READY", title: "Generated in 4m 38s", tone: "teal" },
+                { x: 78, y: 58, tag: "SOURCED", title: "12 citations", body: "Every claim clickable", tone: "blue" },
               ]}
             />
           </div>
@@ -490,16 +471,15 @@ const profileTabs = [
       </div>
     </section>
 
-    <!-- Section 10 - Sender Profile -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Sender Profile</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            One profile. Every message sounds like you.
+            Set it once. Sound like you forever.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            The reason your outreach reads like your rep wrote it: a sender profile tuned once, referenced every time. It's the core of how we personalise at volume.
+            The five tabs that turn a generic draft into something your rep would actually send.
           </p>
         </div>
 
@@ -527,37 +507,32 @@ const profileTabs = [
         </div>
 
         <p class="text-center text-sm italic text-[var(--muted-foreground)] max-w-2xl mx-auto">
-          A completion percentage keeps you honest. Every tab matters. Fill them all once, and every piece of outreach from that moment inherits your voice.
+          A completion bar keeps you honest. Fill every tab once. Every message inherits your voice from that moment.
         </p>
       </div>
     </section>
 
-    <!-- Section 11 - Bilingual -->
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-4xl text-center">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Bilingual</p>
         <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
           Native Dutch. Natural English.
         </h2>
-        <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-4">
-          Every label, every message, every brief - available in both languages from day one. Not translated. Written.
-        </p>
-        <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-          Dutch outreach reads like Dutch outreach, with the cultural tone Dutch buyers expect. English outreach adjusts for the audience: Dutch-to-UK reads differently than Dutch-to-Dutch. Toggle per prospect. Toggle the whole interface. Your call.
+        <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto">
+          Not translated. Written. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it. Toggle per prospect or for the whole interface.
         </p>
       </div>
     </section>
 
-    <!-- Section 12 - Credits teaser -->
     <section class="py-16 lg:py-20" data-fade>
       <div class="container max-w-4xl">
         <div class="rounded-2xl p-8 lg:p-10 text-center" style="background: var(--card); box-shadow: var(--shadow-md)">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">Credits</p>
           <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            One credit system. One subscription. No surprises.
+            One number. No surprises.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto mb-7">
-            Every action has a transparent credit cost. Prospecting consumes credits. Intelligence consumes credits. You always know what's left and when it resets. No per-user fees on most plans. No upsell pressure.
+            Every action priced in plain view. You see what's used. You see what's left. You scale up, cancel, or top up whenever.
           </p>
           <div class="flex flex-wrap items-center justify-center gap-3">
             <a href="/pricing" class="inline-flex items-center gap-1.5 h-10 px-5 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine" style="background: var(--hooklyne-navy)">
