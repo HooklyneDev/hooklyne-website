@@ -205,11 +205,13 @@ export const GridSignals = () => {
         WebkitMaskImage: mask,
       }}
     >
-      {/* Concentric ring grid */}
+      {/* Concentric rings — individual gradients, single origin, no repeat artifacts */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 119px, rgba(52,76,163,0.12) 120px)",
+          backgroundImage: [150, 300, 450, 600, 750, 900, 1050]
+            .map(r => `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,0.11) ${r}px, transparent ${r + 1}px)`)
+            .join(", "),
         }}
       />
 
