@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GridSignals } from "@/components/grid-signals";
 
 export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,21 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="pt-24 pb-0 lg:pt-32">
+    <section className="pt-24 pb-0 lg:pt-32 relative">
+      {/* GridSignals — clipped to video midpoint, always 2-3 pulses visible */}
+      <GridSignals />
+
+      {/* Subtle living gradient — two drifting colour spots */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 55% 40% at 15% 40%, rgba(52,76,163,0.07) 0%, transparent 70%),
+            radial-gradient(ellipse 45% 35% at 85% 65%, rgba(52,76,163,0.05) 0%, transparent 70%),
+            radial-gradient(ellipse 35% 25% at 60% 10%, rgba(13,148,136,0.04) 0%, transparent 65%)
+          `,
+        }}
+      />
       <div id="hero-content" className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
         <a
           href="/contact"

@@ -7,6 +7,22 @@ const PULSE_DURATION = 3200;
 const EDGE_PAD = SPACING;
 const ZONE_PAD = 60;
 
+// Clip the container height to the video's midpoint so pulses are always visible
+function useVideoMidpointClip(containerRef: React.RefObject<HTMLDivElement | null>) {
+  useEffect(() => {
+    const clip = () => {
+      const el = containerRef.current;
+      const video = document.getElementById("hero-video");
+      if (!el || !video) return;
+      const clipH = video.offsetTop + video.offsetHeight * 0.52;
+      el.style.height = `${Math.max(300, clipH)}px`;
+    };
+    clip();
+    window.addEventListener("resize", clip);
+    return () => window.removeEventListener("resize", clip);
+  }, [containerRef]);
+}
+
 const SIGNAL_LABELS = [
   "Funding round",
   "New hire",
@@ -34,6 +50,7 @@ let globalId = 0;
 
 export const GridSignals = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  useVideoMidpointClip(containerRef);
   const prevPositions = useRef<{ x: number; y: number }[]>([]);
   const usedLabels = useRef<string[]>([]);
   const [pulses, setPulses] = useState<Pulse[]>([]);
@@ -163,8 +180,9 @@ export const GridSignals = () => {
       timers.push(setTimeout(run, initialDelay));
     };
 
-    loop(3500, 5000, 500);          // Loop A — starts almost immediately
-    loop(4000, 6000, 2400);         // Loop B — offset so they're never simultaneous
+    loop(2200, 3500, 300);           // Loop A — fast, starts almost immediately
+    loop(3000, 4500, 1600);         // Loop B — offset
+    loop(2500, 4000, 3000);         // Loop C — second offset, ensures always 2-3 visible
 
     return () => timers.forEach(clearTimeout);
   }, [spawnPulse]);
@@ -172,7 +190,7 @@ export const GridSignals = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 overflow-hidden pointer-events-none"
+      className="absolute top-0 left-0 right-0 overflow-hidden pointer-events-none"
       style={{ zIndex: 0 }}
     >
       {/* Static dot grid */}
