@@ -42,8 +42,10 @@ export const Hero = () => {
         }}
       />
 
-      {/* Pulse signals — client-side island */}
-      <GridSignals />
+      {/* Positioned wrapper constrains the Astro island so pulses can't escape the hero section */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+        <GridSignals />
+      </div>
 
       {/* Subtle living gradient — two drifting colour spots */}
       <div
