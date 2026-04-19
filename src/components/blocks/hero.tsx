@@ -30,6 +30,17 @@ export const Hero = () => {
 
   return (
     <section className="pt-24 pb-0 lg:pt-32 relative">
+      {/* Centre glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 0,
+          background: "radial-gradient(ellipse 60% 45% at 50% 35%, rgba(52,76,163,0.10) 0%, transparent 70%)",
+          maskImage: ringMask,
+          WebkitMaskImage: ringMask,
+        }}
+      />
+
       {/* Concentric rings — static div, not inside the hydrated GridSignals island
           so it only renders once and never doubles on React mount */}
       <div
