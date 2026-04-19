@@ -192,30 +192,13 @@ export const GridSignals = () => {
     return () => timers.forEach(clearTimeout);
   }, [spawnPulse]);
 
-  // Mask: transparent at very top (navbar) → opaque through content → fades out before video
-  const mask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
-
   return (
     <div
       ref={containerRef}
       className="absolute inset-0 overflow-hidden pointer-events-none"
-      style={{
-        zIndex: 0,
-        maskImage: mask,
-        WebkitMaskImage: mask,
-      }}
+      style={{ zIndex: 1 }}
     >
-      {/* Concentric rings — individual gradients, single origin, no repeat artifacts */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: [150, 300, 450, 600, 750, 900, 1050]
-            .map(r => `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,0.11) ${r}px, transparent ${r + 1}px)`)
-            .join(", "),
-        }}
-      />
-
-      {/* Pulses */}
+      {/* Pulses only — rings are a static div in hero.tsx to avoid hydration double-render */}
       {pulses.map((p) => (
         <div
           key={p.id}

@@ -23,9 +23,26 @@ export const Hero = () => {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
+  const rings = [150, 300, 450, 600, 750, 900, 1050]
+    .map(r => `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,0.11) ${r}px, transparent ${r + 1}px)`)
+    .join(", ");
+
   return (
     <section className="pt-24 pb-0 lg:pt-32 relative">
-      {/* GridSignals — clipped to video midpoint, always 2-3 pulses visible */}
+      {/* Concentric rings — static div, not inside the hydrated GridSignals island
+          so it only renders once and never doubles on React mount */}
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{
+          zIndex: 0,
+          backgroundImage: rings,
+          maskImage: ringMask,
+          WebkitMaskImage: ringMask,
+        }}
+      />
+
+      {/* Pulse signals — client-side island */}
       <GridSignals />
 
       {/* Subtle living gradient — two drifting colour spots */}
