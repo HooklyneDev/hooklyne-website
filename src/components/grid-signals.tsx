@@ -210,7 +210,18 @@ export const GridSignals = () => {
             ["--op" as string]: p.opacity,
           }}
         >
-          {/* Single expanding ring — large base size so border stays hairline as it grows */}
+          {/* Center dot */}
+          <div style={{
+            position: "absolute",
+            width: 5,
+            height: 5,
+            borderRadius: "50%",
+            background: p.color,
+            transform: "translate(-50%, -50%)",
+            animation: `gs-dot ${PULSE_DURATION}ms ease-out forwards`,
+          }} />
+
+          {/* Expanding ring — large base so border stays 1px hairline throughout */}
           <div style={{
             position: "absolute",
             width: 500,
@@ -242,6 +253,12 @@ export const GridSignals = () => {
       ))}
 
       <style>{`
+        @keyframes gs-dot {
+          0%   { opacity: 0;             transform: translate(-50%,-50%) scale(0.5); }
+          8%   { opacity: var(--op,0.5); transform: translate(-50%,-50%) scale(1); }
+          70%  { opacity: var(--op,0.5); }
+          100% { opacity: 0; }
+        }
         @keyframes gs-ring {
           0%   { transform: translate(-50%,-50%) scale(0.01); opacity: var(--op,0.5); }
           100% { transform: translate(-50%,-50%) scale(1);    opacity: 0; }

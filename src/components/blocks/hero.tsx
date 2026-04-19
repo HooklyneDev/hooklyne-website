@@ -58,7 +58,7 @@ export const Hero = () => {
           `,
         }}
       />
-      <div id="hero-content" className="container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
+      <div id="hero-content" className="relative z-10 container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
         <a
           href="/contact"
           className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--heading)] hover:border-[var(--hooklyne-blue)] transition-colors"
@@ -93,7 +93,7 @@ export const Hero = () => {
       </div>
 
       {/* Video / screenshot */}
-      <div id="hero-video" className="container max-w-6xl mt-14 lg:mt-16">
+      <div id="hero-video" className="relative z-10 container max-w-6xl mt-14 lg:mt-16">
         <div
           ref={screenshotRef}
           className="relative w-full rounded-2xl shadow-2xl overflow-hidden"
