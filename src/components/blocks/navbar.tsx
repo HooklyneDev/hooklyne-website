@@ -75,7 +75,7 @@ export const Navbar = () => {
             </a>
             <a href="/contact">
               <Button
-                className="text-sm font-semibold rounded-lg px-4 py-2 h-auto"
+                className="text-sm font-semibold rounded-lg px-4 py-2 h-auto btn-shine"
                 style={{
                   backgroundColor: "var(--hooklyne-navy)",
                   color: "#ffffff",
@@ -133,7 +133,7 @@ export const Navbar = () => {
               </a>
               <a href="/contact" onClick={() => setIsMenuOpen(false)}>
                 <Button
-                  className="w-full text-sm font-semibold rounded-lg"
+                  className="w-full text-sm font-semibold rounded-lg btn-shine"
                   style={{
                     backgroundColor: "var(--hooklyne-navy)",
                     color: "#ffffff",

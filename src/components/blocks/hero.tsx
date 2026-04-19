@@ -131,7 +131,7 @@ export const Hero = () => {
           className="flex flex-wrap items-center justify-center gap-4 mt-2"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "310ms" }}
         >
-          <Button asChild className="h-11 px-6 text-sm font-semibold rounded-lg group" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
+          <Button asChild className="h-11 px-6 text-sm font-semibold rounded-lg group btn-shine" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
             <a href="/contact">
               Start your free pilot
               <ArrowRight className="ml-1.5 size-4 transition-transform duration-200 group-hover:translate-x-0.5" />

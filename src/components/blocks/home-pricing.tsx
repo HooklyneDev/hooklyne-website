@@ -116,7 +116,7 @@ export const HomePricing = () => {
  <a
  href="/contact"
  className={cn(
- "block text-center rounded-lg text-sm font-semibold py-2.5 transition-colors",
+ "block text-center rounded-lg text-sm font-semibold py-2.5 transition-colors btn-shine",
  p.highlighted
  ? "bg-[var(--hooklyne-navy)] text-white hover:opacity-90"
  : "ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white",
