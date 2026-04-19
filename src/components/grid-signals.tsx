@@ -3,8 +3,9 @@ import { useEffect, useRef, useState, useCallback } from "react";
 
 const SPACING = 48;
 const MIN_DIST = 120;
-const MAX_CONCURRENT = 2;
-const PULSE_DURATION = 2800;
+const PULSE_DURATION = 3200;
+const EDGE_PAD = SPACING;
+const ZONE_PAD = 60;
 
 const SIGNAL_LABELS = [
   "Funding round",
@@ -37,9 +38,9 @@ export const GridSignals = () => {
   const usedLabels = useRef<string[]>([]);
   const [pulses, setPulses] = useState<Pulse[]>([]);
 
-  const fire = useCallback(() => {
+  const getCandidate = useCallback(() => {
     const el = containerRef.current;
-    if (!el) return;
+    if (!el) return null;
 
     const rect = el.getBoundingClientRect();
     const { width, height } = rect;
@@ -47,7 +48,45 @@ export const GridSignals = () => {
 
     const visibleTop    = Math.max(0, -rect.top);
     const visibleBottom = Math.min(height, vh - rect.top);
-    if (visibleBottom <= visibleTop) return;
+    if (visibleBottom <= visibleTop + SPACING) return null;
+
+    // Dead zones in container-local coords
+    type Zone = { x: number; y: number; w: number; h: number };
+    const dead: Zone[] = [];
+
+    // Left + right edges
+    dead.push({ x: 0,           y: 0, w: EDGE_PAD, h: height });
+    dead.push({ x: width - EDGE_PAD, y: 0, w: EDGE_PAD, h: height });
+
+    // Navbar strip (top of visible area)
+    dead.push({ x: 0, y: visibleTop, w: width, h: 96 });
+
+    // Hero content text block
+    const heroContent = document.getElementById("hero-content");
+    if (heroContent) {
+      const r = heroContent.getBoundingClientRect();
+      dead.push({
+        x: r.left - rect.left - ZONE_PAD,
+        y: r.top  - rect.top  - ZONE_PAD,
+        w: r.width  + ZONE_PAD * 2,
+        h: r.height + ZONE_PAD * 2,
+      });
+    }
+
+    // Hero video
+    const heroVideo = document.getElementById("hero-video");
+    if (heroVideo) {
+      const r = heroVideo.getBoundingClientRect();
+      dead.push({
+        x: r.left - rect.left - ZONE_PAD,
+        y: r.top  - rect.top  - ZONE_PAD,
+        w: r.width  + ZONE_PAD * 2,
+        h: r.height + ZONE_PAD * 2,
+      });
+    }
+
+    const inDead = (x: number, y: number) =>
+      dead.some((z) => x >= z.x && x <= z.x + z.w && y >= z.y && y <= z.y + z.h);
 
     const cols   = Math.floor(width / SPACING);
     const minRow = Math.floor(visibleTop / SPACING);
@@ -59,7 +98,7 @@ export const GridSignals = () => {
         const x = c * SPACING;
         const y = r * SPACING;
         if (y < visibleTop || y > visibleBottom) continue;
-
+        if (inDead(x, y)) continue;
         const tooClose = prevPositions.current.some((p) => {
           const dx = x - p.x;
           const dy = y - p.y;
@@ -70,53 +109,65 @@ export const GridSignals = () => {
       }
     }
 
-    if (candidates.length === 0) return;
+    if (candidates.length === 0) return null;
     const picked = candidates[Math.floor(Math.random() * candidates.length)];
-    prevPositions.current = [...prevPositions.current.slice(-5), picked];
+    prevPositions.current = [...prevPositions.current.slice(-6), picked];
 
     const centerLeft  = (width - 640) / 2;
     const centerRight = centerLeft + 640;
     const inCenter    = picked.x >= centerLeft && picked.x <= centerRight;
     const useOrange   = !inCenter && Math.random() > 0.5;
 
-    // Pick a label not recently used
-    const available = SIGNAL_LABELS.filter((l) => !usedLabels.current.slice(-3).includes(l));
+    const available = SIGNAL_LABELS.filter((l) => !usedLabels.current.slice(-4).includes(l));
     const label = available[Math.floor(Math.random() * available.length)];
-    usedLabels.current = [...usedLabels.current.slice(-6), label];
+    usedLabels.current = [...usedLabels.current.slice(-8), label];
 
-    // Show label on whichever side has more space
-    const labelSide: "left" | "right" = picked.x > width / 2 ? "left" : "right";
+    // Label on the side with more room, but never outside container
+    const labelSide: "left" | "right" = picked.x > width * 0.55 ? "left" : "right";
 
+    return {
+      x: picked.x,
+      y: picked.y,
+      color:     useOrange ? "var(--hooklyne-orange)" : "var(--hooklyne-blue)",
+      opacity:   inCenter ? 0.22 : 0.5,
+      label,
+      labelSide,
+    };
+  }, []);
+
+  const spawnPulse = useCallback(() => {
+    const data = getCandidate();
+    if (!data) return null;
     const id = ++globalId;
-    setPulses((prev) => {
-      const next = [...prev, {
-        id,
-        x: picked.x,
-        y: picked.y,
-        color:     useOrange ? "var(--hooklyne-orange)" : "var(--hooklyne-blue)",
-        opacity:   inCenter ? 0.25 : 0.55,
-        label,
-        labelSide,
-      }];
-      return next.length > MAX_CONCURRENT ? next.slice(-MAX_CONCURRENT) : next;
-    });
-
+    const pulse: Pulse = { id, ...data };
+    setPulses((prev) => [...prev, pulse]);
     setTimeout(() => {
       setPulses((prev) => prev.filter((p) => p.id !== id));
     }, PULSE_DURATION);
-  }, []);
+    return id;
+  }, [getCandidate]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let timer: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      // Calm cadence — one every 2-3.5s
-      timer = setTimeout(() => { fire(); schedule(); }, 2000 + Math.random() * 1500);
+    // Two independent loops — staggered so they're never in sync
+    // Loop A fires every 3.5-5s, Loop B fires every 4-6s with a head-start offset
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    const loop = (minDelay: number, maxDelay: number, initialDelay: number) => {
+      const run = () => {
+        spawnPulse();
+        const next = minDelay + Math.random() * (maxDelay - minDelay);
+        timers.push(setTimeout(run, next));
+      };
+      timers.push(setTimeout(run, initialDelay));
     };
-    timer = setTimeout(() => { fire(); schedule(); }, 800);
-    return () => clearTimeout(timer);
-  }, [fire]);
+
+    loop(3500, 5000, 500);          // Loop A — starts almost immediately
+    loop(4000, 6000, 2400);         // Loop B — offset so they're never simultaneous
+
+    return () => timers.forEach(clearTimeout);
+  }, [spawnPulse]);
 
   return (
     <div
@@ -177,14 +228,12 @@ export const GridSignals = () => {
           <div style={{
             position: "absolute",
             top: "50%",
-            ...(p.labelSide === "right"
-              ? { left: "14px" }
-              : { right: "14px" }),
+            ...(p.labelSide === "right" ? { left: "12px" } : { right: "12px" }),
             transform: "translateY(-50%)",
             whiteSpace: "nowrap",
             fontSize: "9px",
             fontWeight: 600,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.05em",
             color: p.color,
             opacity: 0,
             animation: `gs-label ${PULSE_DURATION}ms ease-out forwards`,
@@ -197,20 +246,20 @@ export const GridSignals = () => {
 
       <style>{`
         @keyframes gs-dot {
-          0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-          8%   { opacity: var(--op, 0.55); transform: translate(-50%, -50%) scale(1.1); }
-          30%  { opacity: var(--op, 0.55); transform: translate(-50%, -50%) scale(1); }
-          85%  { opacity: calc(var(--op, 0.55) * 0.3); }
+          0%   { opacity: 0;                transform: translate(-50%,-50%) scale(0.5); }
+          8%   { opacity: var(--op,0.5);    transform: translate(-50%,-50%) scale(1.15); }
+          25%  { opacity: var(--op,0.5);    transform: translate(-50%,-50%) scale(1); }
+          80%  { opacity: calc(var(--op,0.5) * 0.25); }
           100% { opacity: 0; }
         }
         @keyframes gs-ring {
-          0%   { transform: translate(-50%, -50%) scale(1); opacity: var(--op, 0.55); }
-          100% { transform: translate(-50%, -50%) scale(10); opacity: 0; }
+          0%   { transform: translate(-50%,-50%) scale(1);  opacity: var(--op,0.5); }
+          100% { transform: translate(-50%,-50%) scale(10); opacity: 0; }
         }
         @keyframes gs-label {
           0%   { opacity: 0; }
-          12%  { opacity: calc(var(--op, 0.55) * 0.7); }
-          60%  { opacity: calc(var(--op, 0.55) * 0.7); }
+          12%  { opacity: calc(var(--op,0.5) * 0.65); }
+          65%  { opacity: calc(var(--op,0.5) * 0.65); }
           100% { opacity: 0; }
         }
       `}</style>
