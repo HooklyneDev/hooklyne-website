@@ -193,12 +193,11 @@ export const GridSignals = () => {
       className="absolute top-0 left-0 right-0 overflow-hidden pointer-events-none"
       style={{ zIndex: 0 }}
     >
-      {/* Static dot grid */}
+      {/* Concentric ring grid — sonar/ripple pattern */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(52,76,163,0.18) 1.5px, transparent 1.5px)",
-          backgroundSize: `${SPACING}px ${SPACING}px`,
+          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 58px, rgba(52,76,163,0.09) 59px, rgba(52,76,163,0.09) 60px)",
         }}
       />
 

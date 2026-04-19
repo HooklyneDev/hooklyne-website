@@ -25,11 +25,7 @@ export const Background = ({
       )}
       style={{
         background: isTop
-          ? `
-            radial-gradient(ellipse 75% 45% at 50% 0%, var(--bg-glow-top) 0%, transparent 65%),
-            radial-gradient(ellipse 40% 30% at 100% 0%, var(--bg-glow-corner) 0%, transparent 60%),
-            linear-gradient(to bottom, var(--background) 0%, var(--card) 60%, var(--background) 100%)
-          `
+          ? "linear-gradient(to bottom, var(--background) 0%, var(--card) 55%, var(--background) 100%)"
           : "linear-gradient(to bottom, var(--background) 0%, var(--card) 100%)",
         minHeight: isTop ? undefined : "60vh",
       }}
