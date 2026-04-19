@@ -99,16 +99,20 @@ export const GridSignals = () => {
       });
     }
 
-    // Hero video
+    // Hero video — block its own footprint AND everything full-width below the midpoint
     const heroVideo = document.getElementById("hero-video");
     if (heroVideo) {
       const r = heroVideo.getBoundingClientRect();
+      // Element dead zone (with padding)
       dead.push({
         x: r.left - rect.left - ZONE_PAD,
         y: r.top  - rect.top  - ZONE_PAD,
         w: r.width  + ZONE_PAD * 2,
         h: r.height + ZONE_PAD * 2,
       });
+      // Full-width cutoff from video midpoint downward — pulses never appear below here
+      const videoMidY = r.top - rect.top + r.height * 0.5;
+      dead.push({ x: 0, y: videoMidY, w: width, h: height });
     }
 
     const inDead = (x: number, y: number) =>
