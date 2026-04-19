@@ -48,6 +48,12 @@ const RATIO_PB: Record<NonNullable<Props["ratio"]>, string> = {
   "3/2": "66.66%",
 };
 
+const RATIO_DIMS: Record<NonNullable<Props["ratio"]>, string> = {
+  "16/9": "1600 × 900",
+  "4/3": "1600 × 1200",
+  "3/2": "1500 × 1000",
+};
+
 const TONE: Record<NonNullable<Overlay["tone"]>, { bg: string; fg: string; dot: string }> = {
   blue: { bg: "rgba(52,76,163,0.10)", fg: "var(--hooklyne-blue)", dot: "var(--hooklyne-blue)" },
   teal: { bg: "rgba(13,148,136,0.12)", fg: "var(--hooklyne-teal)", dot: "var(--hooklyne-teal)" },
@@ -119,6 +125,9 @@ export const PortalShot = ({
                   {describe}
                 </p>
               )}
+              <p className="text-[10px] mt-3 font-mono tracking-wider" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
+                {RATIO_DIMS[ratio]} · {ratio}
+              </p>
             </div>
           )}
 
@@ -128,8 +137,8 @@ export const PortalShot = ({
             return (
               <div
                 key={i}
-                className="absolute pointer-events-none"
-                style={{ left: `${o.x}%`, top: `${o.y}%`, transform: "translate(-50%, -50%)" }}
+                className="absolute pointer-events-none portal-float"
+                style={{ left: `${o.x}%`, top: `${o.y}%`, transform: "translate(-50%, -50%)", animationDelay: `${(i * 0.6).toFixed(1)}s` }}
               >
                 <div
                   className="rounded-xl px-3 py-2 flex items-start gap-2 min-w-[170px] max-w-[240px]"

@@ -16,7 +16,7 @@ const SLIDES = [
   },
   {
     title: "Reads like your rep wrote it.",
-    body: "Voice calibrated from a 30-minute interview. Four reasoning passes per draft - hook, angle, voice, quality check. No template smell.",
+    body: "Voice is calibrated from a 30-minute interview. Every draft is reasoned through four times before it lands. No template smell.",
     image: "/home/hooklyne-personalized-outreach-email.webp",
     alt: "PLACEHOLDER: Portal screenshot of a draft email pane with the voice profile sidebar visible on the right - tone keywords, sample phrasing, and an inline 'Drafted in Tim's voice' badge above the subject line.",
   },

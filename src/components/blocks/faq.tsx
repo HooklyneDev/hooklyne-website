@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -34,7 +35,7 @@ const groups: Group[] = [
       },
       {
         q: "Will the messages sound like a bot wrote them?",
-        a: "No. Voice is calibrated from a 30-minute interview and up to five example emails. Every draft goes through four reasoning passes - hook, angle, voice, quality - before it reaches you.",
+        a: "No. Voice is calibrated from a 30-minute interview and up to five example emails. Every draft is reasoned through four times before it reaches you.",
       },
     ],
   },
@@ -104,6 +105,10 @@ const groups: Group[] = [
         a: "Yes. Native Dutch, written to the tone Dutch buyers expect. Not translated.",
       },
       {
+        q: "How is the language chosen?",
+        a: "Automatically, at prospecting. From the company domain and the contact's location. Once a prospect is in, language is locked for that package.",
+      },
+      {
         q: "Can I target prospects outside the Netherlands?",
         a: "Yes. Provider selection tunes per region. Strong coverage across the UK, DACH, Benelux, and the Nordics.",
       },
@@ -166,55 +171,68 @@ const groups: Group[] = [
 ];
 
 export const FAQ = () => {
+  const [active, setActive] = useState(0);
+  const g = groups[active];
+
   return (
     <section id="faq" className="pb-28 lg:pb-32">
       <div className="container">
         <div className="mx-auto max-w-3xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
             <h1 className="text-4xl md:text-5xl tracking-tight text-[var(--heading)] leading-tight mb-4">
-              Frequently asked questions
+              Questions, answered straight.
             </h1>
             <p className="text-[var(--muted-foreground)] text-base max-w-xl mx-auto leading-relaxed">
-              Short answers to the questions we hear most. Nothing here that fits yours? Ask us directly.
+              The ones we hear most. Can't find yours? Ask us directly.
             </p>
           </div>
 
-          <div className="flex flex-col gap-12">
-            {groups.map((g, gi) => (
-              <div key={gi}>
-                <h2 className="text-sm font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-4">
-                  {g.title}
-                </h2>
-                <Accordion type="single" collapsible className="space-y-2">
-                  {g.items.map((qa, i) => (
-                    <AccordionItem
-                      key={i}
-                      value={`g${gi}-item-${i}`}
-                      className="rounded-xl bg-[var(--card)] px-5 data-[state=open]:border-[var(--hooklyne-blue)]/20"
-                    >
-                      <AccordionTrigger className="text-left text-sm font-semibold text-[var(--heading)] hover:no-underline py-4">
-                        {qa.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-sm text-[var(--muted-foreground)] leading-relaxed pb-4">
-                        {qa.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            ))}
+          <div className="sticky top-20 z-10 mb-8 -mx-4 px-4 pb-2">
+            <div className="flex gap-1 overflow-x-auto scrollbar-none rounded-2xl p-1.5" style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
+              {groups.map((grp, gi) => (
+                <button
+                  key={gi}
+                  onClick={() => setActive(gi)}
+                  className="shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all"
+                  style={
+                    active === gi
+                      ? { background: "var(--hooklyne-navy)", color: "white" }
+                      : { color: "var(--muted-foreground)" }
+                  }
+                >
+                  {grp.title}
+                </button>
+              ))}
+            </div>
           </div>
 
+          <Accordion type="single" collapsible className="space-y-2" key={active}>
+            {g.items.map((qa, i) => (
+              <AccordionItem
+                key={i}
+                value={`g${active}-item-${i}`}
+                className="rounded-xl bg-[var(--card)] px-5 data-[state=open]:border-[var(--hooklyne-blue)]/20"
+              >
+                <AccordionTrigger className="text-left text-sm font-semibold text-[var(--heading)] hover:no-underline py-4">
+                  {qa.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-[var(--muted-foreground)] leading-relaxed pb-4">
+                  {qa.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
           <div className="mt-16 rounded-2xl p-8 text-center" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-            <h3 className="text-xl font-semibold text-[var(--heading)] mb-2">Didn't find your answer?</h3>
-            <p className="text-sm text-[var(--muted-foreground)] mb-5">Get in touch. We answer fast.</p>
+            <h3 className="text-xl font-semibold text-[var(--heading)] mb-2">Still wondering something?</h3>
+            <p className="text-sm text-[var(--muted-foreground)] mb-5">Shoot us a message. You'll hear back fast.</p>
             <a
               href="/contact"
               className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               style={{ backgroundColor: "var(--hooklyne-navy)" }}
             >
-              Contact us
+              Talk to us
             </a>
           </div>
         </div>

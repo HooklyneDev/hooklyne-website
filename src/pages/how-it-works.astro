@@ -71,7 +71,7 @@ const stages = [
     n: 5,
     key: "Drafting",
     title: "Reads like your rep wrote it.",
-    body: "Four reasoning passes: hook, angle, voice, quality. Each draft is read and rewritten before it reaches you. Generic stops here.",
+    body: "Every draft is reasoned through four times before it reaches you. Hook first, then angle, then voice, then a final quality check. Generic stops here.",
     shot: {
       label: "Draft with voice match",
       describe: "Portal: drafted email on the left, voice-match panel on the right showing cadence, openers, sign-off.",
@@ -106,7 +106,7 @@ const stages = [
 >
   <Background>
     <section class="pt-32 lg:pt-40 pb-12" data-fade>
-      <div class="container max-w-3xl text-center">
+      <div class="container max-w-4xl text-center">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           A research workflow. Not a chatbot.
@@ -134,22 +134,22 @@ const stages = [
     </section>
 
     <section class="pb-16 lg:pb-24" data-fade>
-      <div class="container max-w-5xl">
+      <div class="container max-w-6xl">
         <div
-          class="rounded-3xl p-6 lg:p-8"
+          class="relative rounded-2xl px-3 py-3 lg:px-5 lg:py-4 overflow-hidden"
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); box-shadow: var(--shadow-md); border: 1px solid var(--border);"
         >
-          <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-4">
+          {/* Connecting rail */}
+          <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-px pointer-events-none hidden md:block" style="background: linear-gradient(90deg, transparent 0%, var(--border-strong) 10%, var(--border-strong) 90%, transparent 100%);"></div>
+
+          <div class="relative grid grid-cols-3 md:grid-cols-6 gap-1.5 md:gap-0">
             {stages.map((s, i) => (
-              <>
-                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-full" style="background: var(--background); border: 1px solid var(--border);">
-                  <span class="inline-flex items-center justify-center size-6 rounded-full text-[11px] font-bold text-white" style="background: var(--hooklyne-navy);">
-                    {s.n}
-                  </span>
-                  <span class="text-sm font-semibold text-[var(--heading)]">{s.key}</span>
-                </div>
-                {i < stages.length - 1 && <span class="text-[var(--muted-foreground)] text-sm">→</span>}
-              </>
+              <div class="flex flex-col md:flex-row items-center justify-center gap-1.5 md:gap-2 px-1.5 md:px-2 py-2 md:py-1.5 rounded-xl relative" style="background: var(--background); border: 1px solid var(--border);">
+                <span class="inline-flex items-center justify-center size-6 shrink-0 rounded-full text-[11px] font-bold text-white" style="background: var(--hooklyne-navy);">
+                  {s.n}
+                </span>
+                <span class="text-[11px] md:text-[13px] font-semibold text-[var(--heading)] whitespace-nowrap">{s.key}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -159,7 +159,7 @@ const stages = [
 
   <Background variant="bottom">
     <section class="py-14 lg:py-20" data-fade>
-      <div class="container max-w-3xl text-center">
+      <div class="container max-w-4xl text-center">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-5">
           Most "AI prospecting" is one prompt and a list.
         </h2>
@@ -215,7 +215,7 @@ const stages = [
     </section>
 
     <section class="py-20 lg:py-24" data-fade>
-      <div class="container max-w-3xl text-center">
+      <div class="container max-w-4xl text-center">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-4">
           One credit system. One number.
         </h2>

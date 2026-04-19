@@ -9,7 +9,7 @@ const SECTIONS = [
   },
   {
     title: "Native Dutch. Natural English.",
-    body: "Written, not translated. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it. Toggle per prospect.",
+    body: "Written, not translated. Language is picked from the company domain and the contact's location at prospecting, then locked. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it.",
     image: "/home/hooklyne-dutch-international-outreach.webp",
     alt: "PLACEHOLDER: Portal screenshot with a prospect card duplicated side-by-side - left version in Dutch for a Rotterdam prospect, right version in English for a UK prospect. A language toggle pill sits above, tone-notes overlaid on each draft ('Direct, no small talk' / 'Warmer opening').",
   },
