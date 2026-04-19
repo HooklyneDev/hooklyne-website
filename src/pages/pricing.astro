@@ -14,13 +14,34 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
       </div>
 
       <!-- Free pilot banner -->
-      <div class="rounded-2xl bg-[var(--hooklyne-teal)]/5 border border-[var(--hooklyne-teal)]/20 border-l-4 border-l-[var(--hooklyne-teal)] p-5 mb-10">
-        <p class="text-sm font-semibold text-[var(--hooklyne-teal)] mb-1">Free pilot</p>
-        <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">10 full prospect packages. 1 seat configured with your ICP. Sector news for 2 weeks. Full portal access. Signal tracking, discovery, and meeting prep are visible but locked. In exchange, we ask for a 20-min feedback call and case study permission. No payment required.</p>
-        <a href="/contact" class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[var(--hooklyne-teal)] hover:opacity-80 transition-opacity">
-          Start your free pilot
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+      <div class="rounded-2xl overflow-hidden mb-10" style="background: var(--card); box-shadow: var(--shadow-xs); border: 1px solid var(--border)">
+        <div class="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center size-10 rounded-xl" style="background: rgba(13,148,136,0.12)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7l8 5 8-5-8-5Z"/><path d="m4 12 8 5 8-5"/><path d="m4 17 8 5 8-5"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)]">Free pilot</p>
+              <p class="text-base font-semibold text-[var(--heading)]">Try it before you pay.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 text-sm md:border-l md:border-r md:border-[var(--border)] md:px-6">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">You get</p>
+              <p class="text-[var(--foreground)] leading-relaxed">10 prospect packages, fully built. Portal access. Two weeks of sector news.</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">We ask</p>
+              <p class="text-[var(--foreground)] leading-relaxed">20 minutes of honest feedback. Permission to mention you if it works.</p>
+            </div>
+          </div>
+
+          <a href="/contact" class="inline-flex items-center justify-center gap-1.5 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine whitespace-nowrap" style="background: var(--hooklyne-teal)">
+            Start pilot
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
       <!-- Toggle -->
@@ -160,6 +181,91 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
           </a>
         </div>
 
+      </div>
+
+      <!-- Three ways to build a prospect -->
+      <div class="mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">Three ways to build a prospect</h2>
+          <p class="text-sm text-[var(--muted-foreground)]">Every workflow lands in the same place: a prospect package ready to send. Pick the path that matches how you work.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <!-- Path 1 -->
+          <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">1</span>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Discovery-first</p>
+            </div>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from an ICP</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Describe your ideal customer. Get up to 20 ranked companies with signal hooks. Pick one and generate a full prospect package.</p>
+            <div class="mt-auto pt-4 border-t border-[var(--border)]">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[var(--muted-foreground)]">Company discovery</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
+                <span class="text-[var(--heading)]">Total per prospect</span>
+                <span class="text-[var(--hooklyne-navy)]">2cr</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Path 2 -->
+          <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">2</span>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Contact-first</p>
+            </div>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from a known company</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">You already have the target list. We find and verify the right decision-maker, then generate the prospect package.</p>
+            <div class="mt-auto pt-4 border-t border-[var(--border)]">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[var(--muted-foreground)]">Contact finding</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">2cr</span>
+              </div>
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
+                <span class="text-[var(--heading)]">Total per prospect</span>
+                <span class="text-[var(--hooklyne-navy)]">3cr</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Path 3 -->
+          <div class="rounded-2xl p-5 flex flex-col relative text-white" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-xl)">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap" style="background: var(--hooklyne-orange)">
+              Most efficient
+            </div>
+            <div class="flex items-center gap-2 mb-3 mt-1">
+              <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-[var(--hooklyne-navy)]" style="background: #86efac">3</span>
+              <p class="text-xs font-semibold uppercase tracking-widest text-white/60">Signal-driven</p>
+            </div>
+            <h3 class="text-base font-semibold text-white mb-2">Start from a signal</h3>
+            <p class="text-sm text-white/70 leading-relaxed mb-4">Track target companies daily. When a buying signal fires - hire, news, funding, expansion - a prospect package is ready to send.</p>
+            <div class="mt-auto pt-4 border-t border-white/15">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-white/60">Signal tracking</span>
+                <span class="font-semibold text-blue-300">2cr / co / mo</span>
+              </div>
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-white/60">Prospect package</span>
+                <span class="font-semibold text-blue-300">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-white/15">
+                <span class="text-white">Timing</span>
+                <span class="text-green-300">When they're ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Credit table -->
