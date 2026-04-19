@@ -7,7 +7,6 @@ type NavChild = { label: string; href: string; desc?: string; icon?: any };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
 
 const ITEMS: NavItem[] = [
-  { label: "Home", href: "/" },
   { label: "Product", href: "/product" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
