@@ -93,13 +93,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Signal toast float ─────────────────────────────────────────────── */
-@keyframes toast-float {
-  0%   { opacity: 0; transform: translateY(0px); }
-  10%  { opacity: 1; }
-  72%  { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-88px); }
-}
 
 /* ── Video frame glow pulse ─────────────────────────────────────────── */
 @keyframes hero-frame-glow {
