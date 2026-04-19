@@ -1,13 +1,24 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { UserCircle } from "lucide-react";
+import { UserCircle, ChevronDown, HelpCircle, Newspaper } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const ITEMS = [
+type NavChild = { label: string; href: string; desc?: string; icon?: any };
+type NavItem = { label: string; href?: string; children?: NavChild[] };
+
+const ITEMS: NavItem[] = [
+  { label: "Home", href: "/" },
+  { label: "Product", href: "/product" },
   { label: "How it works", href: "/how-it-works" },
-  { label: "About", href: "/about" },
   { label: "Pricing", href: "/pricing" },
-  { label: "FAQ", href: "/faq" },
+  {
+    label: "Resources",
+    children: [
+      { label: "FAQ", href: "/faq", desc: "Common questions", icon: HelpCircle },
+      { label: "News", href: "/blog", desc: "Updates and articles", icon: Newspaper },
+    ],
+  },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -15,6 +26,7 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pathname, setPathname] = useState("");
+  const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
 
   useEffect(() => {
     setPathname(window.location.pathname);
@@ -22,6 +34,8 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isActive = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog"));
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:pt-5 flex justify-center pointer-events-none">
@@ -45,20 +59,84 @@ export const Navbar = () => {
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {ITEMS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={cn(
-                  "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
-                  pathname === link.href
-                    ? "text-[var(--hooklyne-blue)]"
-                    : "text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
-                )}
-              >
-                {link.label}
-              </a>
-            ))}
+            {ITEMS.map((link) => {
+              if (link.children) {
+                const childActive = link.children.some((c) => isActive(c.href));
+                return (
+                  <div key={link.label} className="relative group">
+                    <button
+                      className={cn(
+                        "inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
+                        childActive
+                          ? "text-[var(--hooklyne-blue)]"
+                          : "text-[var(--foreground)]/80 group-hover:text-[var(--hooklyne-blue)] group-hover:bg-[var(--hooklyne-blue)]/5",
+                      )}
+                    >
+                      {link.label}
+                      <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                    </button>
+
+                    {/* Dropdown */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 hidden group-hover:block">
+                      <div
+                        className="w-64 rounded-xl p-2"
+                        style={{
+                          background: "var(--card)",
+                          border: "1px solid var(--border)",
+                          boxShadow: "var(--shadow-lg)",
+                        }}
+                      >
+                        {link.children.map((c) => {
+                          const Icon = c.icon;
+                          return (
+                            <a
+                              key={c.label}
+                              href={c.href}
+                              className={cn(
+                                "flex items-start gap-3 p-3 rounded-lg transition-colors",
+                                isActive(c.href)
+                                  ? "bg-[var(--hooklyne-blue)]/5"
+                                  : "hover:bg-[var(--card-hover)]",
+                              )}
+                            >
+                              {Icon && (
+                                <div
+                                  className="flex items-center justify-center size-8 rounded-lg shrink-0"
+                                  style={{ background: "rgba(52,76,163,0.08)" }}
+                                >
+                                  <Icon className="size-4 text-[var(--hooklyne-blue)]" />
+                                </div>
+                              )}
+                              <div>
+                                <p className="text-sm font-semibold text-[var(--heading)] leading-tight">{c.label}</p>
+                                {c.desc && (
+                                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">{c.desc}</p>
+                                )}
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href!}
+                  className={cn(
+                    "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
+                    isActive(link.href!)
+                      ? "text-[var(--hooklyne-blue)]"
+                      : "text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
+                  )}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           {/* CTA */}
@@ -101,20 +179,51 @@ export const Navbar = () => {
         <div
           className={cn(
             "lg:hidden overflow-hidden transition-all duration-300 ease-in-out",
-            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+            isMenuOpen ? "max-h-[640px] opacity-100" : "max-h-0 opacity-0",
           )}
         >
           <div className="border-t border-[var(--border)] px-5 py-4 flex flex-col gap-1">
-            {ITEMS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {ITEMS.map((link) => {
+              if (link.children) {
+                const open = mobileSubOpen === link.label;
+                return (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => setMobileSubOpen(open ? null : link.label)}
+                      className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
+                    >
+                      {link.label}
+                      <ChevronDown className={cn("size-4 transition-transform duration-200", open && "rotate-180")} />
+                    </button>
+                    <div className={cn("overflow-hidden transition-all duration-200", open ? "max-h-48" : "max-h-0")}>
+                      <div className="pl-3 py-1 flex flex-col gap-1">
+                        {link.children.map((c) => (
+                          <a
+                            key={c.label}
+                            href={c.href}
+                            className="py-2 px-3 rounded-lg text-sm text-[var(--foreground)]/70 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {c.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href!}
+                  className="py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
               <a
                 href="https://portal.hooklyne.com"

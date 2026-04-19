@@ -1,0 +1,160 @@
+---
+import { Background } from '@/components/background';
+import { FeatureCarousel } from '@/components/blocks/feature-carousel';
+import { FinalCTA } from '@/components/blocks/final-cta';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const capabilities = [
+  {
+    title: "ICP-matched discovery",
+    body: "Describe your ideal customer. Get up to 20 ranked companies per request, each with a signal hook explaining why they matter now.",
+    icon: "target",
+  },
+  {
+    title: "Triple-verified contacts",
+    body: "Verified email, triple-checked across 20+ sources. We match by role description, not just job title - so you reach the actual decision-maker.",
+    icon: "shield",
+  },
+  {
+    title: "Daily signal tracking",
+    body: "Track target companies for job posts, news, funding rounds, leadership changes. Every signal scored for relevance to what you sell.",
+    icon: "radar",
+  },
+  {
+    title: "Voice-calibrated outreach",
+    body: "A 30-minute calibration captures your tone. Every email and LinkedIn invite reads like the rep wrote it, not a template.",
+    icon: "mic",
+  },
+  {
+    title: "Meeting prep briefs",
+    body: "Company overview, talking points, key people, recent news. Ready in under five minutes before your call.",
+    icon: "briefcase",
+  },
+  {
+    title: "Weekly sector briefing",
+    body: "5-10 articles from your market, scored for relevance. Stay informed without reading ten newsletters.",
+    icon: "newspaper",
+  },
+  {
+    title: "NL + EN native",
+    body: "Native Dutch outreach with local tone. Native English for international reach. Cultural awareness built in, not bolted on.",
+    icon: "globe",
+  },
+  {
+    title: "Full portability",
+    body: "Export your leads, contacts, and signals to CSV any time. Your data stays yours - no lock-in.",
+    icon: "download",
+  },
+];
+
+const notThese = [
+  {
+    label: "Not a database",
+    body: "Apollo and Lusha give you raw data. You still interpret, verify, and write. That's 2-4 hours per prospect.",
+  },
+  {
+    label: "Not an agency",
+    body: "Outsourced campaigns start at €2,500/mo. You lose ownership of voice and speed. We keep your team in the loop.",
+  },
+  {
+    label: "Not ChatGPT",
+    body: "A chat model can draft text. It won't find companies, verify contacts, or watch signals. You'd still do the research.",
+  },
+];
+---
+
+<DefaultLayout title="Product - Hooklyne" description="Eight capabilities that turn a company name into a ready-to-send outreach package. Built for B2B sales teams who value precision over volume.">
+  <Background>
+    <!-- Hero -->
+    <section class="pt-28 pb-12 lg:pt-44 lg:pb-16">
+      <div class="container max-w-4xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4" data-fade>Product</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6" data-fade data-delay="1">
+          The research layer between raw data and done-for-you.
+        </h1>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed" data-fade data-delay="2">
+          Eight capabilities that turn a company name into a ready-to-send outreach package. Built for B2B sales teams who value precision over volume.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4" data-fade data-delay="3">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 h-11 px-6 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine group"
+            style="background: var(--hooklyne-navy)"
+          >
+            Start your free pilot
+            <svg class="size-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a
+            href="/how-it-works"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the workflow
+            <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities grid -->
+    <section class="py-12 lg:py-16" data-fade>
+      <div class="container max-w-6xl">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3">What's in the box.</h2>
+          <p class="text-base text-[var(--muted-foreground)]">Every capability maps to a clear credit cost on the <a href="/pricing" class="text-[var(--hooklyne-blue)] hover:opacity-80 underline underline-offset-2">pricing page</a>. No hidden consumption.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {capabilities.map((c) => (
+            <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col" style="box-shadow: var(--shadow-xs)">
+              <div
+                class="flex items-center justify-center size-10 rounded-xl mb-4"
+                style="background: rgba(52,76,163,0.08)"
+              >
+                {c.icon === "target" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>}
+                {c.icon === "shield" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>}
+                {c.icon === "radar" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"/><path d="M4 6h.01"/><path d="M2.29 9.62A10 10 0 1 0 21.31 8.35"/><path d="M16.24 7.76A6 6 0 1 0 17.92 12"/><path d="M12 18h.01"/><path d="M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/></svg>}
+                {c.icon === "mic" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>}
+                {c.icon === "briefcase" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>}
+                {c.icon === "newspaper" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>}
+                {c.icon === "globe" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>}
+                {c.icon === "download" && <svg class="size-5 text-[var(--hooklyne-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>}
+              </div>
+              <h3 class="text-base font-semibold text-[var(--heading)] mb-2">{c.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature carousel -->
+    <FeatureCarousel client:load />
+
+    <!-- What we're not -->
+    <section class="py-20 lg:py-28" data-fade>
+      <div class="container max-w-5xl">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3">What Hooklyne is not.</h2>
+          <p class="text-base text-[var(--muted-foreground)]">Clear positioning saves you time. Here's what we don't replace.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          {notThese.map((n) => (
+            <div class="rounded-2xl bg-[var(--card)] p-6" style="box-shadow: var(--shadow-xs)">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-2">{n.label}</p>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{n.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 rounded-2xl p-6 text-center" style="background: var(--hooklyne-navy); color: white">
+          <p class="text-sm md:text-base font-medium leading-relaxed max-w-2xl mx-auto">
+            Hooklyne sits between raw data and outsourced agencies. Your team stays in control. We do the research and write the first draft. You send.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <FinalCTA />
+  </Background>
+</DefaultLayout>

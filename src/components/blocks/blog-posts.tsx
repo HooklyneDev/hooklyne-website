@@ -7,13 +7,13 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
     <>
       <section>
         <div className="container max-w-5xl space-y-4 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
-            Blog
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)]">News</p>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--heading)]">
+            Updates and articles.
           </h1>
 
-          <p className="text-muted-foreground max-w-md leading-snug font-medium lg:mx-auto">
-            Explore our blog for insightful articles, personal reflections and
-            more.
+          <p className="text-[var(--muted-foreground)] max-w-md leading-snug font-medium lg:mx-auto">
+            Product updates, market research, and sales playbooks from the team.
           </p>
         </div>
       </section>

@@ -17,9 +17,14 @@ export const Footer = () => (
         <nav className="flex flex-wrap gap-x-10 gap-y-6 text-sm">
           <div className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Product</p>
+            <a href="/product" className="text-white/60 hover:text-white transition-colors">Product</a>
             <a href="/how-it-works" className="text-white/60 hover:text-white transition-colors">How it works</a>
             <a href="/pricing" className="text-white/60 hover:text-white transition-colors">Pricing</a>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Resources</p>
             <a href="/faq" className="text-white/60 hover:text-white transition-colors">FAQ</a>
+            <a href="/blog" className="text-white/60 hover:text-white transition-colors">News</a>
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Company</p>
