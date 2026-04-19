@@ -19,7 +19,7 @@ export const HomeFAQ = () => {
       <div className="container max-w-3xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight">
-            Questions
+            Questions.
           </h2>
         </div>
 

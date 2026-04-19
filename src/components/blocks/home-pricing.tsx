@@ -106,7 +106,7 @@ export const HomePricing = () => {
       <div className="container max-w-6xl">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
-            Simple pricing
+            Simple pricing.
           </h2>
           <p className="text-base text-[var(--muted-foreground)]">
             One credit system. Every action priced transparently. Switch plans or cancel anytime.

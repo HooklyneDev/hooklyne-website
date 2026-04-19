@@ -29,7 +29,7 @@ export const Contact = () => {
  <div className="lg:col-span-3 rounded-2xl bg-[var(--card)] p-7" style={{ boxShadow: "var(--shadow-md)" }}>
  <div className="flex items-center gap-2 mb-4">
  <Calendar className="size-5 text-[var(--hooklyne-blue)]" />
- <h2 className="text-base font-semibold text-[var(--heading)]">Book a demo</h2>
+ <h2 className="text-base font-semibold text-[var(--heading)]">Book a demo.</h2>
  </div>
  <div
  className="rounded-xl flex flex-col items-center justify-center text-center px-6"
@@ -84,7 +84,7 @@ export const Contact = () => {
  </div>
 
  <div className="mt-12 rounded-2xl bg-[var(--card)] p-7 lg:p-8" style={{ boxShadow: "var(--shadow-xs)" }}>
- <h2 className="text-base font-semibold text-[var(--heading)] mb-1">Or send a message</h2>
+ <h2 className="text-base font-semibold text-[var(--heading)] mb-1">Or send a message.</h2>
  <p className="text-sm text-[var(--muted-foreground)] mb-6">For non-booking questions. We reply within one business day.</p>
  <form className="grid md:grid-cols-2 gap-5">
  <div className="space-y-2">

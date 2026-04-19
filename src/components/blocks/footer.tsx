@@ -10,7 +10,7 @@ export const Footer = () => (
             <img src="/logo-white.svg" alt="Hooklyne" width={140} height={28} />
           </a>
           <p className="text-sm text-white/50 leading-relaxed">
-            Outreach-ready prospect packages in your rep's voice. Not more. Smarter.
+            Find the prospects actually worth reaching out to.
           </p>
         </div>
 

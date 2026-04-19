@@ -114,7 +114,7 @@ export const Features = () => {
 
           <div className="mx-auto max-w-4xl mb-10 grid items-center gap-3 md:gap-0 lg:grid-cols-2">
             <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl text-[var(--hooklyne-navy)]">
-              From description to outreach in minutes
+              From description to outreach in minutes.
             </h2>
             <p className="text-[var(--muted-foreground)] leading-snug">
               Every user starts from a different place. Hooklyne meets them there - and the modes chain together. One flow, start to send, no switching tools.
@@ -233,7 +233,7 @@ export const Features = () => {
         <div className="container">
           <div className="text-center mb-10">
             <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Beyond first outreach</p>
-            <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--hooklyne-navy)] mb-3">Everything in one place</h2>
+            <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--hooklyne-navy)] mb-3">Everything in one place.</h2>
             <p className="text-[var(--muted-foreground)] max-w-xl mx-auto text-base leading-relaxed">
               The core is prospect discovery and first-touch outreach. But the platform does more - and it all feeds the same goal: reaching the right person at the right moment with the right message.
             </p>

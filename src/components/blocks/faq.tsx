@@ -71,7 +71,7 @@ export const FAQ = () => {
  <div className="mx-auto max-w-3xl">
  <div className="text-center mb-12">
  <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
- <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--heading)]">Common questions</h2>
+ <h2 className="text-3xl tracking-tight md:text-4xl text-[var(--heading)]">Common questions.</h2>
  <p className="text-[var(--muted-foreground)] mt-3 text-base">Everything you need to know before booking a demo.</p>
  </div>
 

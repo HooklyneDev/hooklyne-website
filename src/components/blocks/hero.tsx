@@ -117,7 +117,7 @@ export const Hero = () => {
           className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] max-w-3xl"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "90ms" }}
         >
-          Find the prospects actually worth reaching out to
+          Find the prospects actually worth reaching out to.
         </h1>
 
         <p
