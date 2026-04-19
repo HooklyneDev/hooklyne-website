@@ -37,6 +37,23 @@
   font-display: swap;
 }
 
+.hero-mobile-pulse {
+  position: absolute;
+  width: 88vw;
+  height: 88vw;
+  border-radius: 50%;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background: radial-gradient(circle, rgba(52,76,163,0.09) 0%, rgba(52,76,163,0.04) 55%, transparent 75%);
+  animation: hero-mobile-pulse 4s ease-in-out infinite;
+}
+
+@keyframes hero-mobile-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
+  50%       { transform: translate(-50%, -50%) scale(1.10); opacity: 0.6; }
+}
+
 .footer-glow-blob {
   background: radial-gradient(ellipse 55% 130% at 30% 110%, rgba(52,76,163,0.45) 0%, transparent 65%);
   transform: translateX(0px);
@@ -326,6 +343,12 @@
 @layer components {
   button {
     cursor: pointer;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
   [class*="border"] {
     @apply border-border;

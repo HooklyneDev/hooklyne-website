@@ -30,9 +30,14 @@ export const Hero = () => {
 
   return (
     <section className="pt-24 pb-0 lg:pt-32 relative">
-      {/* Centre glow */}
+      {/* Mobile: single breathing circle — replaces rings + pulses on small screens */}
+      <div className="sm:hidden absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
+        <div className="hero-mobile-pulse" />
+      </div>
+
+      {/* Desktop: centre glow + concentric rings + pulse signals */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hidden sm:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
           background: "radial-gradient(ellipse 60% 45% at 50% 35%, rgba(52,76,163,0.10) 0%, transparent 70%)",
@@ -40,11 +45,8 @@ export const Hero = () => {
           WebkitMaskImage: ringMask,
         }}
       />
-
-      {/* Concentric rings — static div, not inside the hydrated GridSignals island
-          so it only renders once and never doubles on React mount */}
       <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
+        className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
         style={{
           zIndex: 0,
           backgroundImage: rings,
@@ -52,9 +54,7 @@ export const Hero = () => {
           WebkitMaskImage: ringMask,
         }}
       />
-
-      {/* Positioned wrapper constrains the Astro island so pulses can't escape the hero section */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
         <GridSignals />
       </div>
 

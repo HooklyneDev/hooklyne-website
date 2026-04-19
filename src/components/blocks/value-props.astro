@@ -47,9 +47,9 @@ const STEPS = [
         style="background: linear-gradient(90deg, transparent 0%, rgba(52,76,163,0.5) 30%, rgba(52,76,163,0.8) 50%, rgba(52,76,163,0.5) 70%, transparent 100%);"
       ></div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+      <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none lg:grid lg:grid-cols-5 lg:overflow-visible">
         {STEPS.map(({ n, icon, title, body }, i) => (
-          <div class={`relative flex flex-col gap-4 p-7 ${i < STEPS.length - 1 ? 'lg:border-r border-[var(--border)]' : ''}`}>
+          <div class={`snap-start flex-shrink-0 w-[78vw] sm:w-[44vw] lg:w-auto relative flex flex-col gap-4 p-6 lg:p-7 ${i < STEPS.length - 1 ? 'border-r border-[var(--border)]' : ''}`}>
 
             <!-- Connecting arrow (desktop only) -->
             {i < STEPS.length - 1 && (
