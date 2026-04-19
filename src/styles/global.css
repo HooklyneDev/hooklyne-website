@@ -37,6 +37,35 @@
   font-display: swap;
 }
 
+/* ── Scroll reveal ─────────────────────────────────────────────────── */
+[data-fade] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1);
+}
+[data-fade].is-visible {
+  opacity: 1;
+  transform: none;
+}
+[data-fade][data-delay="1"] { transition-delay:  80ms; }
+[data-fade][data-delay="2"] { transition-delay: 160ms; }
+[data-fade][data-delay="3"] { transition-delay: 240ms; }
+[data-fade][data-delay="4"] { transition-delay: 320ms; }
+[data-fade][data-delay="5"] { transition-delay: 400ms; }
+
+/* ── FAQ smooth expand ──────────────────────────────────────────────── */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.faq-answer.open {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
+}
+
 .hero-mobile-pulse {
   position: absolute;
   width: 88vw;

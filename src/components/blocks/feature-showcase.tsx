@@ -16,7 +16,7 @@ const SECTIONS = [
 ];
 
 export const FeatureShowcase = () => (
-  <section className="py-20 lg:py-28">
+  <section className="py-20 lg:py-28" data-fade>
     <div className="container max-w-6xl flex flex-col gap-24 lg:gap-32">
       {SECTIONS.map((s, i) => {
         const reverse = i % 2 === 1;

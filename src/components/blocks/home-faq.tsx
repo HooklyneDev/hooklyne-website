@@ -12,46 +12,48 @@ const ITEMS = [
 ];
 
 export const HomeFAQ = () => {
- const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(0);
 
- return (
- <section className="py-20 lg:py-28">
- <div className="container max-w-3xl">
- <div className="text-center mb-12">
- <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight">
- Questions
- </h2>
- </div>
+  return (
+    <section className="py-20 lg:py-28" data-fade>
+      <div className="container max-w-3xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight">
+            Questions
+          </h2>
+        </div>
 
- <div className="rounded-2xl bg-[var(--card)] overflow-hidden">
- {ITEMS.map((item, i) => {
- const isOpen = open === i;
- return (
- <div key={item.q} className={cn(i > 0 && "")}>
- <button
- onClick={() => setOpen(isOpen ? null : i)}
- className="w-full text-left px-6 py-5 flex items-start justify-between gap-4 hover:bg-[var(--card-hover)] transition-colors"
- >
- <span className="font-medium text-[var(--heading)]">{item.q}</span>
- {isOpen
- ? <Minus className="size-5 shrink-0 text-[var(--hooklyne-blue)] mt-0.5" />
- : <Plus className="size-5 shrink-0 text-[var(--muted-foreground)] mt-0.5" />}
- </button>
- {isOpen && (
- <div className="px-6 pb-5 text-sm text-[var(--muted-foreground)] leading-relaxed">{item.a}</div>
- )}
- </div>
- );
- })}
- </div>
+        <div className="rounded-2xl bg-[var(--card)] overflow-hidden" style={{ boxShadow: "var(--shadow-sm)" }}>
+          {ITEMS.map((item, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={item.q} className={cn(i > 0 && "border-t border-[var(--border)]")}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full text-left px-6 py-5 flex items-start justify-between gap-4 hover:bg-[var(--card-hover)] transition-colors"
+                >
+                  <span className="font-medium text-[var(--heading)]">{item.q}</span>
+                  {isOpen
+                    ? <Minus className="size-5 shrink-0 text-[var(--hooklyne-blue)] mt-0.5" />
+                    : <Plus className="size-5 shrink-0 text-[var(--muted-foreground)] mt-0.5" />}
+                </button>
+                <div className={cn("faq-answer", isOpen && "open")}>
+                  <div>
+                    <p className="px-6 pb-5 text-sm text-[var(--muted-foreground)] leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
- <div className="text-center mt-8">
- <a href="/faq" className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity">
- See all questions
- <ArrowRight className="size-3.5" />
- </a>
- </div>
- </div>
- </section>
- );
+        <div className="text-center mt-8">
+          <a href="/faq" className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity">
+            See all questions
+            <ArrowRight className="size-3.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 };

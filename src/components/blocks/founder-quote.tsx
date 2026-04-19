@@ -1,7 +1,7 @@
 import { Quote } from "lucide-react";
 
 export const FounderQuote = () => (
- <section className="py-20 lg:py-28">
+ <section className="py-20 lg:py-28" data-fade>
  <div className="container max-w-3xl">
  <div
  className="rounded-3xl p-10 lg:p-14 text-center relative overflow-hidden"

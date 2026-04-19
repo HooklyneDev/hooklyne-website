@@ -30,19 +30,32 @@ const SLIDES = [
 
 export const FeatureCarousel = () => {
   const [active, setActive] = useState(0);
-  const slide = SLIDES[active];
+  const [visible, setVisible] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  const handleSelect = (i: number) => {
+    if (i === active) return;
+    setFading(true);
+    setTimeout(() => {
+      setActive(i);
+      setVisible(i);
+      setFading(false);
+    }, 180);
+  };
+
+  const slide = SLIDES[visible];
 
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-20 lg:py-28" data-fade>
       <div className="container max-w-6xl">
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-2 flex flex-col gap-2">
             {SLIDES.map((s, i) => (
               <button
                 key={s.title}
-                onClick={() => setActive(i)}
+                onClick={() => handleSelect(i)}
                 className={cn(
-                  "text-left rounded-xl p-5 border transition-all",
+                  "text-left rounded-xl p-5 border transition-all duration-200",
                   active === i
                     ? "border-[var(--hooklyne-blue)]/40 bg-[var(--card)] shadow-md"
                     : "border-transparent hover:bg-[var(--card)]/50",
@@ -51,7 +64,7 @@ export const FeatureCarousel = () => {
                 <div className="flex items-start gap-3">
                   <div
                     className={cn(
-                      "shrink-0 size-6 rounded-md flex items-center justify-center text-xs font-bold transition-colors",
+                      "shrink-0 size-6 rounded-md flex items-center justify-center text-xs font-bold transition-colors duration-200",
                       active === i ? "bg-[var(--hooklyne-blue)] text-white" : "bg-[var(--muted)] text-[var(--muted-foreground)]",
                     )}
                   >
@@ -59,12 +72,14 @@ export const FeatureCarousel = () => {
                   </div>
                   <div>
                     <h3 className={cn(
-                      "font-semibold text-base mb-1",
+                      "font-semibold text-base mb-1 transition-colors duration-200",
                       active === i ? "text-[var(--heading)]" : "text-[var(--foreground)]/70",
                     )}>{s.title}</h3>
-                    {active === i && (
-                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
-                    )}
+                    <div className={cn("faq-answer", active === i && "open")}>
+                      <div>
+                        <p className="text-sm text-[var(--muted-foreground)] leading-relaxed pt-0.5">{s.body}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </button>
@@ -77,7 +92,8 @@ export const FeatureCarousel = () => {
                 <img
                   src={slide.image}
                   alt={slide.alt}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top transition-opacity duration-180"
+                  style={{ opacity: fading ? 0 : 1 }}
                 />
               </div>
             </div>
