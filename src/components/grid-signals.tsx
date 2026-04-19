@@ -209,7 +209,7 @@ export const GridSignals = () => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 59px, rgba(52,76,163,0.05) 60px)",
+          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 59px, rgba(52,76,163,0.10) 60px)",
         }}
       />
 
@@ -225,24 +225,13 @@ export const GridSignals = () => {
             ["--op" as string]: p.opacity,
           }}
         >
-          {/* Core dot */}
+          {/* Single expanding ring */}
           <div style={{
             position: "absolute",
-            width: 6,
-            height: 6,
+            width: 8,
+            height: 8,
             borderRadius: "50%",
-            background: p.color,
-            transform: "translate(-50%, -50%)",
-            animation: `gs-dot ${PULSE_DURATION}ms ease-out forwards`,
-          }} />
-
-          {/* Expanding ring */}
-          <div style={{
-            position: "absolute",
-            width: 6,
-            height: 6,
-            borderRadius: "50%",
-            border: `1px solid ${p.color}`,
+            border: `1.5px solid ${p.color}`,
             transform: "translate(-50%, -50%)",
             animation: `gs-ring ${PULSE_DURATION}ms ease-out forwards`,
           }} />
@@ -268,13 +257,6 @@ export const GridSignals = () => {
       ))}
 
       <style>{`
-        @keyframes gs-dot {
-          0%   { opacity: 0;             transform: translate(-50%,-50%) scale(0.5); }
-          8%   { opacity: var(--op,0.5); transform: translate(-50%,-50%) scale(1.15); }
-          25%  { opacity: var(--op,0.5); transform: translate(-50%,-50%) scale(1); }
-          80%  { opacity: calc(var(--op,0.5) * 0.25); }
-          100% { opacity: 0; }
-        }
         @keyframes gs-ring {
           0%   { transform: translate(-50%,-50%) scale(1);  opacity: var(--op,0.5); }
           100% { transform: translate(-50%,-50%) scale(10); opacity: 0; }
