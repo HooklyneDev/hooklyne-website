@@ -63,7 +63,7 @@ export const Hero = () => {
       />
 
       {/* ── Desktop: grid signal pulses ───────────────────────────── */}
-      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 4 }}>
         <GridSignals />
       </div>
 
