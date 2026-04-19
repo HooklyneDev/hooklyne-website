@@ -29,7 +29,7 @@ export const Hero = () => {
           href="/contact"
           className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--heading)] hover:border-[var(--hooklyne-blue)] transition-colors"
         >
-          Invite-only pilot - now open
+          For B2B founders and sales reps
           <ArrowRight className="size-3.5" />
         </a>
 
@@ -38,7 +38,7 @@ export const Hero = () => {
         </h1>
 
         <p className="text-lg text-[var(--muted-foreground)] max-w-xl leading-relaxed">
-          Ranked by relevant news signals, so every first touch has a real reason with a ready-to-send message already written in your voice.
+          Every prospect comes with verified contact details, a live news hook, and a first message written in your voice - matched to the signal and what you sell.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
