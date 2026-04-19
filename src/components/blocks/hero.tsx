@@ -79,6 +79,28 @@ export const Hero = () => {
         }}
       />
 
+      {/* ── Grain texture ─────────────────────────────────────────── */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 2, opacity: 0.045 }}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <filter id="hero-grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#hero-grain)" />
+      </svg>
+
+      {/* ── Left + right vignette ─────────────────────────────────── */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 3,
+          background: "linear-gradient(to right, var(--background) 0%, transparent 16%, transparent 84%, var(--background) 100%)",
+        }}
+      />
+
       {/* ── Hero copy ─────────────────────────────────────────────── */}
       <div id="hero-content" className="relative z-10 container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
 
