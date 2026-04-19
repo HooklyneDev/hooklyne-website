@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { UserCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -41,8 +40,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
           <a href="/" className="flex shrink-0 items-center gap-2">
-            <img src="/logo.svg" alt="Hooklyne" width={140} height={28} className="dark:hidden" />
-            <img src="/logo-white.svg" alt="Hooklyne" width={140} height={28} className="hidden dark:block" />
+            <img src="/logo.svg" alt="Hooklyne" width={140} height={28} />
           </a>
 
           {/* Desktop nav */}
@@ -65,7 +63,6 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <ThemeToggle />
             <a
               href="https://portal.hooklyne.com"
               className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
@@ -119,10 +116,6 @@ export const Navbar = () => {
               </a>
             ))}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
-              <div className="flex items-center justify-between px-3 py-1">
-                <span className="text-sm text-[var(--muted-foreground)]">Theme</span>
-                <ThemeToggle />
-              </div>
               <a
                 href="https://portal.hooklyne.com"
                 className="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"

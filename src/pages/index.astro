@@ -19,11 +19,11 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </Background>
 
   <Background variant="bottom">
-    <FeatureCarousel client:only="react" />
+    <FeatureCarousel client:load />
     <FeatureShowcase />
     <FounderQuote />
-    <HomePricing client:only="react" />
+    <HomePricing client:load />
     <FinalCTA />
-    <HomeFAQ client:only="react" />
+    <HomeFAQ client:load />
   </Background>
 </DefaultLayout>

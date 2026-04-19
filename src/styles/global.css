@@ -3,8 +3,6 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:is(.dark *));
-
 @font-face {
   font-family: "DM Sans";
   src: url("/fonts/dm-sans/DMSans-Regular.ttf") format("truetype");
@@ -111,7 +109,7 @@
   pointer-events: none;
 }
 .btn-shine:hover::after {
-  animation: btn-glare 0.48s ease-out forwards;
+  animation: btn-glare 0.65s ease-out forwards;
 }
 @keyframes btn-glare {
   from { transform: translateX(-100%); }
@@ -235,63 +233,6 @@
   --text-family: var(--font-dm-sans);
   --display-weight: 600;
   --text-weight: 400;
-}
-
-.dark {
-  /* Surfaces */
-  --background: #0d1420;
-  --card: #111c2e;
-  --card-hover: #162236;
-  --border: #1e3148;
-  --border-strong: #243d5e;
-
-  /* Text hierarchy */
-  --foreground: #f1f5f9;
-  --heading: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --muted-foreground: #94a3b8;
-  --muted-light: #64748b;
-
-  /* Shadcn semantic tokens */
-  --card-foreground: #f1f5f9;
-  --popover: #111c2e;
-  --popover-foreground: #f1f5f9;
-  --primary: #344ca3;
-  --primary-foreground: #ffffff;
-  --secondary: #162236;
-  --secondary-foreground: #f1f5f9;
-  --muted: #162236;
-  --accent: #344ca3;
-  --accent-foreground: #ffffff;
-  --destructive: oklch(0.704 0.191 22.216);
-  --input: #1e3148;
-  --ring: #344ca3;
-
-  --sidebar: #111c2e;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #344ca3;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #0d1420;
-  --sidebar-accent-foreground: #f1f5f9;
-  --sidebar-border: #1e3148;
-  --sidebar-ring: #344ca3;
-
-  /* Background glows */
-  --bg-glow-top:    rgba(80, 110, 220, 0.12);
-  --bg-glow-corner: rgba(13, 148, 136, 0.08);
-
-  /* Liquid glass */
-  --glass-bg:          rgba(13, 20, 32, 0.45);
-  --glass-bg-scrolled: rgba(17, 28, 46, 0.65);
-  --glass-border:      rgba(255, 255, 255, 0.09);
-  --glass-highlight:   rgba(255, 255, 255, 0.07);
-  --glass-shadow:      0 8px 32px rgba(0, 0, 0, 0.35);
-
-  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.2),  0 1px 2px rgba(0, 0, 0, 0.15);
-  --shadow:     0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
-  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
-  --shadow-lg:  0 10px 30px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
-  --shadow-xl:  0 20px 48px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {
