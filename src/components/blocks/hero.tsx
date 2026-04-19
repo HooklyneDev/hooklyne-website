@@ -194,14 +194,10 @@ export const Hero = () => {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center">
               <div className="flex items-center justify-center size-7 rounded-md" style={{ color: "var(--muted-foreground)", opacity: 0.45 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
               </div>
-              <div
-                className="size-6 rounded-full flex-shrink-0 flex items-center justify-center text-white font-semibold"
-                style={{ background: "var(--hooklyne-blue)", opacity: 0.7, fontSize: "10px" }}
-              >H</div>
             </div>
           </div>
 
