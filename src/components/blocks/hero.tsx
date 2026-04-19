@@ -57,6 +57,7 @@ export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
   const posRef        = useRef(0);
   const usedRef       = useRef<number[]>([]);
+  const sideCount     = useRef<{ left: number; right: number }>({ left: 0, right: 0 });
 
   const [cycleIdx, setCycleIdx] = useState(0);
   const [cycling,  setCycling]  = useState(false);
@@ -92,6 +93,21 @@ export const Hero = () => {
 
   /* Floating toasts */
   const spawnToast = useCallback(() => {
+    /* Find a side that still has room (max 2 per side) */
+    const startPos = posRef.current;
+    let chosenPos: typeof POSITIONS[number] | null = null;
+    for (let offset = 0; offset < POSITIONS.length; offset++) {
+      const candidate = POSITIONS[(startPos + offset) % POSITIONS.length];
+      if (sideCount.current[candidate[0]] < 2) {
+        chosenPos = candidate;
+        posRef.current = (startPos + offset + 1) % POSITIONS.length;
+        break;
+      }
+    }
+    if (!chosenPos) return; /* both sides full — skip */
+
+    const [side, top] = chosenPos;
+
     const avail = TOAST_POOL
       .map((_, i) => i)
       .filter(i => !usedRef.current.slice(-6).includes(i));
@@ -99,14 +115,15 @@ export const Hero = () => {
     usedRef.current = [...usedRef.current.slice(-10), pick];
 
     const [signal, company, color] = TOAST_POOL[pick];
-    const [side, top] = POSITIONS[posRef.current % POSITIONS.length];
-    posRef.current++;
-
     const id       = ++_toastId;
     const DURATION = 3800;
 
+    sideCount.current[side]++;
     setToasts(prev => [...prev, { id, signal, company, side, top, color }]);
-    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), DURATION);
+    setTimeout(() => {
+      sideCount.current[side]--;
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, DURATION);
   }, []);
 
   useEffect(() => {
