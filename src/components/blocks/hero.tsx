@@ -13,9 +13,9 @@ export const Hero = () => {
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      const progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
-      const deg = 9 * (1 - progress);
-      el.style.transform = `perspective(1400px) rotateX(${deg}deg)`;
+      const progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.55)));
+      const deg = 18 * (1 - progress);
+      el.style.transform = `perspective(1200px) rotateX(${deg}deg)`;
     };
 
     update();
@@ -40,7 +40,7 @@ export const Hero = () => {
         className="hidden sm:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 60% 45% at 50% 35%, rgba(52,76,163,0.10) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 55% 40% at 50% 32%, rgba(52,76,163,0.22) 0%, rgba(52,76,163,0.08) 45%, transparent 70%)",
           maskImage: ringMask,
           WebkitMaskImage: ringMask,
         }}
