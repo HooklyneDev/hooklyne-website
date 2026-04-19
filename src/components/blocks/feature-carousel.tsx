@@ -73,7 +73,7 @@ export const FeatureCarousel = () => {
 
           <div className="lg:col-span-3">
             <div className="rounded-3xl p-3" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, rgba(52,76,163,0.10) 0%, transparent 70%)" }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: "var(--shadow-lg)" }}>
+              <div className="rounded-2xl overflow-hidden aspect-video" style={{ boxShadow: "var(--shadow-lg)" }}>
                 <img
                   src={slide.image}
                   alt={slide.alt}
