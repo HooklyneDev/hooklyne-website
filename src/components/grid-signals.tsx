@@ -205,14 +205,6 @@ export const GridSignals = () => {
         WebkitMaskImage: mask,
       }}
     >
-      {/* Concentric ring grid */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "repeating-radial-gradient(circle at 50% 38%, transparent 0px, transparent 58px, rgba(52,76,163,0.04) 59px, rgba(52,76,163,0.04) 60px)",
-        }}
-      />
-
       {/* Pulses */}
       {pulses.map((p) => (
         <div
