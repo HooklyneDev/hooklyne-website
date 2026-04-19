@@ -1,6 +1,6 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { AnimatedGrid } from '@/components/animated-grid';
+import { GridSignals } from '@/components/grid-signals';
 import { Background } from '@/components/background';
 import { Hero } from '@/components/blocks/hero';
 import ValueProps from '@/components/blocks/value-props.astro';
@@ -15,7 +15,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Background>
-    <AnimatedGrid client:only="react" />
+    <GridSignals client:only="react" />
     <Hero />
     <ValueProps />
   </Background>
