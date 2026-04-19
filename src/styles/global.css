@@ -87,6 +87,35 @@
   50%       { transform: translate(-50%, -50%) scale(1.10); opacity: 0.65; }
 }
 
+/* ── Hero entrance (stagger) ────────────────────────────────────────── */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Signal toast float ─────────────────────────────────────────────── */
+@keyframes toast-float {
+  0%   { opacity: 0; transform: translateY(0px); }
+  10%  { opacity: 1; }
+  72%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-88px); }
+}
+
+/* ── Video frame glow pulse ─────────────────────────────────────────── */
+@keyframes hero-frame-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(52,76,163,0.10),
+      0 25px 60px rgba(0,0,0,0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(52,76,163,0.30),
+      0 25px 60px rgba(0,0,0,0.18),
+      0 0 55px rgba(52,76,163,0.11);
+  }
+}
+
 .footer-glow-blob {
   background: radial-gradient(ellipse 55% 130% at 30% 110%, rgba(52,76,163,0.45) 0%, transparent 65%);
   transform: translateX(0px);
