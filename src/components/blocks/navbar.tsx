@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { UserCircle, ChevronDown, HelpCircle, Newspaper } from "lucide-react";
+import { UserCircle, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type NavChild = { label: string; href: string; desc?: string; icon?: any };
+type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
 
 const ITEMS: NavItem[] = [
@@ -13,8 +13,8 @@ const ITEMS: NavItem[] = [
   {
     label: "Resources",
     children: [
-      { label: "FAQ", href: "/faq", desc: "Common questions", icon: HelpCircle },
-      { label: "News", href: "/blog", desc: "Updates and articles", icon: Newspaper },
+      { label: "FAQ", href: "/faq" },
+      { label: "News", href: "/blog" },
     ],
   },
   { label: "About", href: "/about" },
@@ -78,43 +78,27 @@ export const Navbar = () => {
                     {/* Dropdown */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 hidden group-hover:block">
                       <div
-                        className="w-64 rounded-xl p-2"
+                        className="min-w-[160px] rounded-xl py-1.5"
                         style={{
                           background: "var(--card)",
                           border: "1px solid var(--border)",
                           boxShadow: "var(--shadow-lg)",
                         }}
                       >
-                        {link.children.map((c) => {
-                          const Icon = c.icon;
-                          return (
-                            <a
-                              key={c.label}
-                              href={c.href}
-                              className={cn(
-                                "flex items-start gap-3 p-3 rounded-lg transition-colors",
-                                isActive(c.href)
-                                  ? "bg-[var(--hooklyne-blue)]/5"
-                                  : "hover:bg-[var(--card-hover)]",
-                              )}
-                            >
-                              {Icon && (
-                                <div
-                                  className="flex items-center justify-center size-8 rounded-lg shrink-0"
-                                  style={{ background: "rgba(52,76,163,0.08)" }}
-                                >
-                                  <Icon className="size-4 text-[var(--hooklyne-blue)]" />
-                                </div>
-                              )}
-                              <div>
-                                <p className="text-sm font-semibold text-[var(--heading)] leading-tight">{c.label}</p>
-                                {c.desc && (
-                                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">{c.desc}</p>
-                                )}
-                              </div>
-                            </a>
-                          );
-                        })}
+                        {link.children.map((c) => (
+                          <a
+                            key={c.label}
+                            href={c.href}
+                            className={cn(
+                              "block px-4 py-2 text-sm font-medium transition-colors",
+                              isActive(c.href)
+                                ? "text-[var(--hooklyne-blue)]"
+                                : "text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)]",
+                            )}
+                          >
+                            {c.label}
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </div>
