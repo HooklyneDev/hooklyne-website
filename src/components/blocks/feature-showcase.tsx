@@ -4,14 +4,14 @@ const SECTIONS = [
   {
     title: "Your research layer between cheap data and expensive agencies.",
     body: "Databases give you a name. Agencies run campaigns for €2,500+/mo. We give your team the research and the outreach at a fraction, without replacing anyone.",
-    image: "/screens/positioning-stack.png",
-    alt: "Hooklyne portal dashboard showing the full prospect workspace",
+    image: "/home/hooklyne-research-layer-b2b-prospecting.webp",
+    alt: "Hooklyne portal showing the research layer between raw data and full-service agencies for B2B prospecting",
   },
   {
     title: "Dutch-built. International reach.",
     body: "Native Dutch outreach with cultural tone, not translations. For Dutch companies reaching out to EU in English, we adjust for communication styles. EN + NL from day one.",
-    image: "/screens/dutch-en-nl.png",
-    alt: "Portal showing intelligence and signals for Dutch and international prospects",
+    image: "/home/hooklyne-dutch-international-outreach.webp",
+    alt: "Hooklyne portal showing Dutch and international prospect outreach with native language support",
   },
 ];
 

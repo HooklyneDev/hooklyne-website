@@ -5,26 +5,26 @@ const SLIDES = [
   {
     title: "Every outreach backed by a real signal.",
     body: "We watch 7 intelligence sources for news, hiring, and product moves. Every prospect arrives with a scored hook and the rationale that turns it into a reason to reach out.",
-    image: "/screens/signal-hook.png",
-    alt: "Portal showing a news hook signal and rationale for a prospect",
+    image: "/home/hooklyne-signal-based-outreach.webp",
+    alt: "Hooklyne portal showing a live signal hook and outreach rationale for a B2B prospect",
   },
   {
     title: "Triple-verified across 20+ sources.",
     body: "Single-source databases hand you one wrong number. We aggregate 20+ providers, match by role description (not just job title), and only ship a contact when three sources agree.",
-    image: "/screens/contact-verified.png",
-    alt: "Portal contact card showing verified email, phone, and source badges",
+    image: "/home/hooklyne-triple-verified-contact-data.webp",
+    alt: "Hooklyne portal contact card showing triple-verified email and phone across 20+ sources",
   },
   {
     title: "Written in your rep's voice. Not a template.",
     body: "Calibrated from a 30-min interview. Each email and LinkedIn invite reads like the rep wrote it on a sharp morning.",
-    image: "/screens/voice-email.png",
-    alt: "Portal showing a personalized outreach email draft anchored to a signal",
+    image: "/home/hooklyne-personalized-outreach-email.webp",
+    alt: "Hooklyne portal showing a personalized B2B outreach email written in the rep's voice",
   },
   {
     title: "Real-time signals. Act when it matters.",
     body: "When a prospect posts, hires, or makes the news, you get a ready-to-send email and LinkedIn message in your inbox.",
-    image: "/screens/inbox-ready.png",
-    alt: "Portal inbox showing prospect cards ready to review and send",
+    image: "/home/hooklyne-real-time-prospect-signals.webp",
+    alt: "Hooklyne portal inbox showing real-time prospect signal cards ready to review and send",
   },
 ];
 
