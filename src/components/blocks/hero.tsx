@@ -1,24 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridSignals } from "@/components/grid-signals";
 
-/* ── Cycling headline words ─────────────────────────────────────────── */
-const CYCLE_WORDS = [
-  "worth reaching out to",
-  "fresh off a funding round",
-  "on a hiring spree",
-  "about to expand",
-  "ready for your pitch",
-];
 
 
 /* ── Component ──────────────────────────────────────────────────────── */
 export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
-
-  const [cycleIdx, setCycleIdx] = useState(0);
-  const [cycling,  setCycling]  = useState(false);
 
   /* Scroll tilt */
   useEffect(() => {
@@ -36,17 +25,6 @@ export const Hero = () => {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-  /* Cycling words */
-  useEffect(() => {
-    const t = setInterval(() => {
-      setCycling(true);
-      setTimeout(() => {
-        setCycleIdx(i => (i + 1) % CYCLE_WORDS.length);
-        setCycling(false);
-      }, 280);
-    }, 3000);
-    return () => clearInterval(t);
-  }, []);
 
 
   const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
@@ -117,16 +95,7 @@ export const Hero = () => {
           className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] max-w-3xl"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "90ms" }}
         >
-          Find the prospects actually{" "}
-          <span
-            style={{
-              display: "inline",
-              transition: "opacity 0.28s ease",
-              opacity: cycling ? 0 : 1,
-            }}
-          >
-            {CYCLE_WORDS[cycleIdx]}
-          </span>
+          Find the prospects actually worth reaching out to
         </h1>
 
         <p
