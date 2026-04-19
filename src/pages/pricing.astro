@@ -2,246 +2,352 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
-<DefaultLayout title="Pricing - Hooklyne" description="Pay for what you use. Every credit is a clear deliverable. Start, Growth Smarter, Scale, and Enterprise plans.">
- <section class="py-28 lg:py-32 lg:pt-44">
- <div class="container max-w-6xl">
+<DefaultLayout title="Pricing - Hooklyne" description="Pay for what you use. Every credit is a clear deliverable. Start, Growth, Scale, and Enterprise plans.">
+  <section class="py-28 lg:py-32 lg:pt-44">
+    <div class="container max-w-6xl">
 
- {/* Header */}
- <div class="text-center mb-12">
- <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Pricing</p>
- <h1 class="text-[var(--heading)] text-4xl tracking-tight md:text-5xl mb-4">Pay for what you use.</h1>
- <p class="text-[var(--muted-foreground)] text-lg max-w-xl mx-auto">Every credit is a clear deliverable. No hidden consumption. No failed lookups charged. Switch anytime.</p>
- </div>
+      <!-- Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Pricing</p>
+        <h1 class="text-[var(--heading)] text-4xl tracking-tight md:text-5xl mb-4">Simple pricing</h1>
+        <p class="text-[var(--muted-foreground)] text-lg max-w-xl mx-auto">One credit system. Every action priced transparently. Switch plans or cancel anytime.</p>
+      </div>
 
- {/* Free pilot banner */}
- <div class="rounded-2xl border-l-4 border-[var(--hooklyne-teal)] bg-[var(--hooklyne-teal)]/5 border border-[var(--hooklyne-teal)]/20 p-5 mb-10">
- <p class="text-sm font-semibold text-[var(--hooklyne-teal)] mb-1">Free pilot</p>
- <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">10 full prospect packages. 1 seat configured. Sector news for 2 weeks. Portal access. Signals, discovery, and meeting prep visible but locked. You commit to: 20-min feedback call + case study permission. Our cost: ~€6. This is the entry point for every customer.</p>
- <a href="/contact" class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[var(--hooklyne-teal)] hover:opacity-80 transition-opacity">
- Start your free pilot →
- </a>
- </div>
+      <!-- Free pilot banner -->
+      <div class="rounded-2xl bg-[var(--hooklyne-teal)]/5 border border-[var(--hooklyne-teal)]/20 border-l-4 border-l-[var(--hooklyne-teal)] p-5 mb-10">
+        <p class="text-sm font-semibold text-[var(--hooklyne-teal)] mb-1">Free pilot</p>
+        <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">10 full prospect packages. 1 seat configured. Sector news for 2 weeks. Portal access. Signals, discovery, and meeting prep visible but locked. You commit to: 20-min feedback call + case study permission. Our cost: ~€6. This is the entry point for every customer.</p>
+        <a href="/contact" class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[var(--hooklyne-teal)] hover:opacity-80 transition-opacity">
+          Start your free pilot
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
 
- {/* Toggle */}
- <div class="flex items-center justify-center gap-3 mb-10" id="billing-toggle">
- <span class="text-sm font-medium text-[var(--foreground)]" id="label-monthly">Monthly</span>
- <button
- id="toggle-btn"
- class="relative w-12 h-6 rounded-full bg-[var(--hooklyne-navy)] transition-colors cursor-pointer"
- onclick="toggleBilling()"
- aria-label="Toggle billing period"
- >
- <span id="toggle-knob" class="absolute top-0.5 left-0.5 size-5 rounded-full bg-[var(--card)] transition-transform duration-200"></span>
- </button>
- <span class="text-sm font-medium text-[var(--muted-foreground)]" id="label-annual">Annual <span class="text-xs font-semibold text-[var(--hooklyne-teal)] bg-[var(--hooklyne-teal)]/10 px-1.5 py-0.5 rounded-full ml-1">Save 10%</span></span>
- </div>
+      <!-- Toggle -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <span class="text-sm font-medium transition-colors" id="label-monthly" style="color: var(--muted-foreground)">Monthly</span>
+        <button
+          id="toggle-btn"
+          class="relative w-12 h-6 rounded-full transition-colors cursor-pointer btn-shine"
+          style="background: var(--hooklyne-navy)"
+          onclick="toggleBilling()"
+          aria-label="Toggle billing period"
+        >
+          <span id="toggle-knob" class="absolute top-0.5 left-0.5 size-5 rounded-full bg-white transition-transform duration-200 shadow-sm" style="transform: translateX(24px)"></span>
+        </button>
+        <span class="text-sm font-medium flex items-center gap-2 transition-colors" id="label-annual" style="color: var(--heading)">
+          Annual
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal)">Save up to €60/mo</span>
+        </span>
+      </div>
 
- {/* Plan cards */}
- <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
- {/* Start */}
- <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col">
- <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Start</p>
- <div class="mb-1">
- <span class="text-3xl font-bold text-[var(--heading)]">€</span>
- <span class="text-3xl font-bold text-[var(--heading)] monthly-price">59</span>
- <span class="text-3xl font-bold text-[var(--heading)] annual-price hidden">53</span>
- <span class="text-sm text-[var(--muted-foreground)]">/mo</span>
- </div>
- <p class="text-xs text-[var(--muted-foreground)] mb-5">Validate before you commit</p>
- <div class="space-y-2.5 flex-1 text-sm">
- {[
- ["Credits", "75/mo"],
- ["Seats", "1"],
- ["News", "Weekly"],
- ["Signals", "Email digest"],
- ["Discovery", "-"],
- ["Overage", "€1.50/cr"],
- ["Onboarding", "Self-serve"],
- ].map(([k, v]) => (
- <div class="flex items-center justify-between">
- <span class="text-[var(--muted-foreground)]">{k}</span>
- <span class="font-medium text-[var(--foreground)]">{v}</span>
- </div>
- ))}
- </div>
- <a href="/contact" class="mt-6 block text-center rounded-lg border border-[var(--hooklyne-navy)] text-[var(--heading)] text-sm font-semibold py-2.5 hover:bg-[var(--hooklyne-navy)] hover:text-white transition-colors">
- Get started
- </a>
- </div>
+      <!-- Plan cards -->
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
 
- {/* Growth Smarter */}
- <div class="rounded-2xl border-2 border-[var(--hooklyne-navy)] bg-[var(--card)] p-5 flex flex-col relative">
- <div class="absolute -top-3 left-1/2 -translate-x-1/2">
- <span class="bg-[var(--hooklyne-navy)] text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap">Growth Smarter</span>
- </div>
- <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3 mt-1">Recommended</p>
- <div class="mb-1">
- <span class="text-3xl font-bold text-[var(--heading)]">€</span>
- <span class="text-3xl font-bold text-[var(--heading)] monthly-price">149</span>
- <span class="text-3xl font-bold text-[var(--heading)] annual-price hidden">134</span>
- <span class="text-sm text-[var(--muted-foreground)]">/mo</span>
- </div>
- <p class="text-xs text-[var(--muted-foreground)] mb-5">Teams with consistent outbound</p>
- <div class="space-y-2.5 flex-1 text-sm">
- {[
- ["Credits", "150/mo"],
- ["Seats", "2"],
- ["News", "Weekly"],
- ["Signals", "Real-time"],
- ["Discovery", "10/mo"],
- ["Overage", "€1.20/cr"],
- ["Onboarding", "Call"],
- ].map(([k, v]) => (
- <div class="flex items-center justify-between">
- <span class="text-[var(--muted-foreground)]">{k}</span>
- <span class="font-medium text-[var(--foreground)]">{v}</span>
- </div>
- ))}
- </div>
- <a href="/contact" class="mt-6 block text-center rounded-lg bg-[var(--hooklyne-navy)] text-white text-sm font-semibold py-2.5 hover:opacity-90 transition-opacity">
- Get started
- </a>
- </div>
+        <!-- Start -->
+        <div class="rounded-2xl p-5 flex flex-col relative" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3 mt-1">Start</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-[var(--heading)] price-display" data-monthly="49" data-annual="39">€39</span>
+            <span class="text-sm text-[var(--muted-foreground)] ml-1">/mo</span>
+          </div>
+          <div class="h-5 mb-2">
+            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Save €10/mo on annual</span>
+          </div>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Solo rep. Test and validate your outbound.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
+            <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["100 credits / mo", "1 seat", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0.85/cr</p>
+          <a href="/contact" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
+            Get started
+          </a>
+        </div>
 
- {/* Scale */}
- <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col">
- <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Scale</p>
- <div class="mb-1">
- <span class="text-3xl font-bold text-[var(--heading)]">€</span>
- <span class="text-3xl font-bold text-[var(--heading)] monthly-price">349</span>
- <span class="text-3xl font-bold text-[var(--heading)] annual-price hidden">314</span>
- <span class="text-sm text-[var(--muted-foreground)]">/mo</span>
- </div>
- <p class="text-xs text-[var(--muted-foreground)] mb-5">Full teams, volume</p>
- <div class="space-y-2.5 flex-1 text-sm">
- {[
- ["Credits", "500/mo"],
- ["Seats", "5"],
- ["News", "Weekly"],
- ["Signals", "Real-time"],
- ["Discovery", "Unlimited"],
- ["Overage", "€0.90/cr"],
- ["Onboarding", "Full setup"],
- ].map(([k, v]) => (
- <div class="flex items-center justify-between">
- <span class="text-[var(--muted-foreground)]">{k}</span>
- <span class="font-medium text-[var(--foreground)]">{v}</span>
- </div>
- ))}
- </div>
- <a href="/contact" class="mt-6 block text-center rounded-lg border border-[var(--hooklyne-navy)] text-[var(--heading)] text-sm font-semibold py-2.5 hover:bg-[var(--hooklyne-navy)] hover:text-white transition-colors">
- Get started
- </a>
- </div>
+        <!-- Growth (featured) -->
+        <div class="rounded-2xl p-5 flex flex-col relative text-white" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-xl)">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap" style="background: var(--hooklyne-orange)">
+            Recommended
+          </div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-3 mt-1">Growth</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-white price-display" data-monthly="159" data-annual="129">€129</span>
+            <span class="text-sm text-white/40 ml-1">/mo</span>
+          </div>
+          <div class="h-5 mb-2">
+            <span class="text-xs font-medium save-note text-green-300">Save €30/mo on annual</span>
+          </div>
+          <p class="text-xs leading-relaxed text-white/50 mb-4">1-2 reps. Full pipeline. Everything included.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: rgba(255,255,255,0.08)">
+            <span class="text-2xl font-bold text-blue-300">400</span>
+            <span class="text-xs text-white/40">credits / month</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["400 credits / mo", "2 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "45-min setup + strategy call", "ICP configured with you"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-white/70">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-green-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-white/30 mb-4">Top-up: €0.85/cr</p>
+          <a href="/contact" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine text-white border border-white/22 hover:bg-white/24" style="background: rgba(255,255,255,0.14)">
+            Get started
+          </a>
+        </div>
 
- {/* Enterprise */}
- <div class="rounded-2xl bg-[var(--card-hover)] p-5 flex flex-col">
- <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Enterprise</p>
- <div class="mb-1">
- <span class="text-3xl font-bold text-[var(--heading)]">Custom</span>
- </div>
- <p class="text-xs text-[var(--muted-foreground)] mb-5">Sales departments, multi-market</p>
- <div class="space-y-2.5 flex-1 text-sm">
- {[
- ["Credits", "Custom volume"],
- ["Seats", "Unlimited"],
- ["News", "Weekly"],
- ["Signals", "Real-time"],
- ["Discovery", "Unlimited"],
- ["Overage", "Custom rate"],
- ["Onboarding", "Full setup + training"],
- ].map(([k, v]) => (
- <div class="flex items-center justify-between">
- <span class="text-[var(--muted-foreground)]">{k}</span>
- <span class="font-medium text-[var(--foreground)] text-xs">{v}</span>
- </div>
- ))}
- </div>
- <a href="/contact" class="mt-6 block text-center rounded-lg border border-[var(--hooklyne-navy)] text-[var(--heading)] text-sm font-semibold py-2.5 hover:bg-[var(--hooklyne-navy)] hover:text-white transition-colors">
- Talk to sales
- </a>
- </div>
- </div>
+        <!-- Scale -->
+        <div class="rounded-2xl p-5 flex flex-col relative" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3 mt-1">Scale</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-[var(--heading)] price-display" data-monthly="299" data-annual="239">€239</span>
+            <span class="text-sm text-[var(--muted-foreground)] ml-1">/mo</span>
+          </div>
+          <div class="h-5 mb-2">
+            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Save €60/mo on annual</span>
+          </div>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Small sales team. Volume outbound. Up to 5 reps.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
+            <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["800 credits / mo", "5 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Full setup + team training", "Dedicated Slack or WhatsApp"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0.85/cr</p>
+          <a href="/contact" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
+            Get started
+          </a>
+        </div>
 
- {/* Credit table */}
- <div class="rounded-2xl bg-[var(--card)] overflow-hidden mb-12">
- <div class="px-6 py-5">
- <h2 class="text-lg font-semibold text-[var(--heading)]">What credits get you</h2>
- <p class="text-sm text-[var(--muted-foreground)] mt-1">Every credit maps to a clear deliverable. No hidden consumption. No failed lookups charged.</p>
- </div>
- <div class="overflow-x-auto">
- <table class="w-full text-sm">
- <thead>
- <tr class="">
- <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">Action</th>
- <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">What you get</th>
- <th class="text-right px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--hooklyne-blue)]">Credits</th>
- </tr>
- </thead>
- <tbody class="divide-y divide-[var(--border)]">
- {[
- ["Prospect package", "News hook (scored, cited) + buying signal + personalized email + LinkedIn invite + outreach rationale", "1"],
- ["Contact finding", "Verified email + role + company from 20+ sources, triple verified", "2"],
- ["Full prospect", "Everything above combined: contact + research + outreach in one", "3"],
- ["Signal call script", "When a signal fires: opening line, 30-sec pitch, discovery questions, objection handlers. Based on the specific signal.", "1"],
- ["Meeting prep brief", "Deep company research + talking points + key people + recent news. Real-time: ready in under 5 minutes.", "1"],
- ["Company discovery", "Describe a company type, get matching companies back", "1"],
- ].map(([action, desc, credits]) => (
- <tr class="hover:bg-[var(--card-hover)] transition-colors">
- <td class="px-6 py-4 font-semibold text-[var(--foreground)] whitespace-nowrap">{action}</td>
- <td class="px-6 py-4 text-[var(--muted-foreground)] max-w-md">{desc}</td>
- <td class="px-6 py-4 text-right">
- <span class="font-bold text-[var(--hooklyne-blue)]">{credits}</span>
- </td>
- </tr>
- ))}
- </tbody>
- </table>
- </div>
- </div>
+        <!-- Enterprise -->
+        <div class="rounded-2xl p-5 flex flex-col relative" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3 mt-1">Enterprise</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-[var(--heading)]">Custom</span>
+          </div>
+          <div class="h-5 mb-2"></div>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Sales departments. Multi-market. Custom volumes.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
+            <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">Custom</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credit volume</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["Custom credit volume", "Unlimited seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Full setup + team training", "Dedicated account manager"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: Custom rate</p>
+          <a href="/contact" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
+            Talk to us
+          </a>
+        </div>
 
- {/* Final CTA */}
- <div class="rounded-2xl bg-[var(--hooklyne-navy)] p-8 text-center text-white">
- <h2 class="text-2xl font-semibold mb-2">Start your free pilot</h2>
- <p class="text-white/70 text-sm mb-6 max-w-md mx-auto">10 full prospect packages. All features. No payment needed. In exchange for a feedback call and case study rights.</p>
- <a href="/contact" class="inline-flex items-center gap-2 rounded-lg bg-[var(--card)] text-[var(--heading)] px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity">
- Book a demo call
- </a>
- </div>
+      </div>
 
- </div>
- </section>
+      <!-- Credit table -->
+      <div class="rounded-2xl bg-[var(--card)] overflow-hidden mb-12" style="box-shadow: var(--shadow-sm)">
+        <div class="px-6 py-5 border-b border-[var(--border)]">
+          <h2 class="text-base font-semibold text-[var(--heading)]">What each credit gets you</h2>
+          <p class="text-sm text-[var(--muted-foreground)] mt-1">Every credit maps to a clear deliverable. Browsing, reading signals, and viewing intel are always free.</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-[var(--border)]" style="background: var(--background)">
+                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">Action</th>
+                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)] hidden sm:table-cell">What you get</th>
+                <th class="text-right px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--hooklyne-blue)]">Credits</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Company discovery", "Up to 20 ranked companies, ICP-filtered, with signal hooks", "1cr", false],
+                ["View matched roles", "Up to 3 decision-makers per company", "Free", true],
+                ["Prospect package", "News-hooked email + LinkedIn message, NL or EN, in your voice", "1cr", false],
+                ["Contact finding", "Verified email, triple-checked across 20+ sources", "2cr", false],
+                ["Signal tracking", "Daily sweeps: job posts, news, funding. Scored and ranked.", "2cr / company / mo", false],
+                ["Meeting prep brief", "Company overview, talking points, key people, recent news", "1cr", false],
+                ["Weekly sector briefing", "5-10 articles from your market, scored for relevance", "Included", true],
+                ["Export to CSV", "Full export of your leads and signals", "Free", true],
+              ].map(([action, desc, cost, isFree]) => (
+                <tr class="border-b border-[var(--border)] last:border-0 hover:bg-[var(--card-hover)] transition-colors">
+                  <td class="px-6 py-3.5 font-medium text-[var(--foreground)] whitespace-nowrap">{action}</td>
+                  <td class="px-6 py-3.5 text-[var(--muted-foreground)] hidden sm:table-cell">{desc}</td>
+                  <td class="px-6 py-3.5 text-right">
+                    <span class={`text-sm font-semibold ${isFree ? "text-[var(--hooklyne-teal)]" : "text-[var(--hooklyne-blue)]"}`}>{cost}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Signal tracking note -->
+      <div class="rounded-2xl border border-[var(--border)] p-6 mb-12" style="background: var(--background)">
+        <h3 class="text-sm font-semibold text-[var(--heading)] mb-3">Signal tracking - included per plan</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            ["Start", "Up to 10 companies"],
+            ["Growth", "Up to 40 companies"],
+            ["Scale", "Up to 100 companies"],
+            ["Enterprise", "Negotiated"],
+          ].map(([plan, limit]) => (
+            <div class="text-center">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-1">{plan}</p>
+              <p class="text-sm font-medium text-[var(--heading)]">{limit}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-[var(--muted-foreground)] mt-4">Additional companies tracked above your plan limit: 2cr per company per month.</p>
+      </div>
+
+      <!-- FAQ section -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight">Pricing questions</h2>
+          <p class="text-sm text-[var(--muted-foreground)] mt-2">Everything you need to know before you start.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-2" id="pricing-faq">
+          {[
+            {
+              q: "What is a credit?",
+              a: "A credit is the unit you spend on actions that produce a deliverable. Company discovery costs 1cr (up to 20 ranked companies). A prospect package costs 1cr (news-hooked email + LinkedIn message in your voice). Contact finding costs 2cr (verified email, triple-checked). Signal tracking costs 2cr per company per month. Browsing, reading intel, and exporting are always free."
+            },
+            {
+              q: "What happens when I run out of credits?",
+              a: "You can top up at any time at €0.85 per credit. There are no overage blockers - you just buy more credits when you need them. Your existing data, signals, and contacts remain accessible regardless of credit balance."
+            },
+            {
+              q: "What is signal tracking?",
+              a: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. Additional companies above your limit cost 2cr per company per month."
+            },
+            {
+              q: "Can I switch plans?",
+              a: "Yes, anytime. Monthly plans switch at the next billing date. If you upgrade mid-month, you get prorated credit for the days remaining. Downgrading takes effect at your next renewal."
+            },
+            {
+              q: "What is included in the free pilot?",
+              a: "10 full prospect packages. 1 seat configured with your ICP. Sector news for 2 weeks. Full portal access. Signal tracking, discovery, and meeting prep are visible but locked. We ask for a 20-min feedback call and case study permission in return. No payment needed."
+            },
+            {
+              q: "Is there a contract?",
+              a: "No contract on monthly plans - cancel anytime. Annual plans are a 12-month commitment billed upfront or monthly, with a discount built in. You save up to €60/mo on the Scale plan compared to monthly billing."
+            },
+            {
+              q: "What does 'outreach in your voice' mean?",
+              a: "During setup we collect writing samples and tone inputs from you. Every email and LinkedIn message Hooklyne generates is written to match your style, not a generic template. The prospect package is ready to send or copy-paste directly."
+            },
+            {
+              q: "What does the 45-min setup call include on Growth?",
+              a: "We configure your ICP with you, set up signal tracking for your target market, review your tone profile, and plan the first month of outbound. You leave the call with a working system and a list of first targets already queued."
+            },
+          ].map((item, i) => (
+            <div class="faq-item rounded-xl bg-[var(--card)]" style="box-shadow: var(--shadow-xs)">
+              <button
+                class="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-semibold text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors"
+                onclick={`toggleFaq(${i})`}
+                aria-expanded="false"
+                id={`faq-btn-${i}`}
+              >
+                {item.q}
+                <svg class="size-4 shrink-0 ml-3 transition-transform duration-200 faq-icon" id={`faq-icon-${i}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" id={`faq-answer-${i}`}>
+                <div>
+                  <p class="px-5 pb-4 text-sm text-[var(--muted-foreground)] leading-relaxed">{item.a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="rounded-2xl p-8 text-center text-white" style="background: var(--hooklyne-navy)">
+        <h2 class="text-2xl font-semibold mb-2">Start your free pilot</h2>
+        <p class="text-white/70 text-sm mb-6 max-w-md mx-auto">10 full prospect packages. All features. No payment needed. In exchange for a feedback call and case study rights.</p>
+        <a href="/contact" class="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-90 btn-shine" style="background: var(--card); color: var(--heading)">
+          Book a demo call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
 </DefaultLayout>
 
 <script>
- let isAnnual = false;
+  /* ── Billing toggle ─────────────────────────────────────────────── */
+  let isAnnual = true;
 
- function toggleBilling() {
- isAnnual = !isAnnual;
- const knob = document.getElementById('toggle-knob');
- const monthly = document.querySelectorAll('.monthly-price');
- const annual = document.querySelectorAll('.annual-price');
- const labelMonthly = document.getElementById('label-monthly');
- const labelAnnual = document.getElementById('label-annual');
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const knob = document.getElementById('toggle-knob') as HTMLElement;
+    const labelMonthly = document.getElementById('label-monthly') as HTMLElement;
+    const labelAnnual = document.getElementById('label-annual') as HTMLElement;
+    const priceEls = document.querySelectorAll<HTMLElement>('.price-display');
+    const saveNotes = document.querySelectorAll<HTMLElement>('.save-note');
 
- if (isAnnual) {
- knob.style.transform = 'translateX(24px)';
- monthly.forEach(el => el.classList.add('hidden'));
- annual.forEach(el => el.classList.remove('hidden'));
- labelMonthly.classList.add('text-[var(--muted-foreground)]');
- labelMonthly.classList.remove('text-[var(--foreground)]');
- labelAnnual.classList.add('text-[var(--foreground)]');
- labelAnnual.classList.remove('text-[var(--muted-foreground)]');
- } else {
- knob.style.transform = 'translateX(0)';
- monthly.forEach(el => el.classList.remove('hidden'));
- annual.forEach(el => el.classList.add('hidden'));
- labelMonthly.classList.remove('text-[var(--muted-foreground)]');
- labelMonthly.classList.add('text-[var(--foreground)]');
- labelAnnual.classList.remove('text-[var(--foreground)]');
- labelAnnual.classList.add('text-[var(--muted-foreground)]');
- }
- }
+    knob.style.transform = isAnnual ? 'translateX(24px)' : 'translateX(0)';
+    labelMonthly.style.color = isAnnual ? 'var(--muted-foreground)' : 'var(--heading)';
+    labelAnnual.style.color = isAnnual ? 'var(--heading)' : 'var(--muted-foreground)';
 
- (window as any).toggleBilling = toggleBilling;
+    priceEls.forEach(el => {
+      const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
+      if (val) el.textContent = '€' + val;
+    });
+
+    saveNotes.forEach(el => {
+      el.style.display = isAnnual ? '' : 'none';
+    });
+  }
+
+  (window as any).toggleBilling = toggleBilling;
+
+  /* ── Pricing FAQ accordion ──────────────────────────────────────── */
+  function toggleFaq(index: number) {
+    const answer = document.getElementById('faq-answer-' + index);
+    const icon = document.getElementById('faq-icon-' + index);
+    const btn = document.getElementById('faq-btn-' + index);
+    if (!answer || !icon || !btn) return;
+
+    const isOpen = answer.classList.contains('open');
+
+    // Close all others
+    document.querySelectorAll('.faq-answer').forEach((el, i) => {
+      el.classList.remove('open');
+      const ic = document.getElementById('faq-icon-' + i);
+      const bt = document.getElementById('faq-btn-' + i);
+      if (ic) ic.style.transform = '';
+      if (bt) bt.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      answer.classList.add('open');
+      icon.style.transform = 'rotate(180deg)';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  (window as any).toggleFaq = toggleFaq;
 </script>

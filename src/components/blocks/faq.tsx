@@ -32,7 +32,7 @@ const faqs = [
  },
  {
  question: "Is there a contract?",
- answer: "No. Monthly plans cancel anytime. Annual plans are 12-month commitments with 10% savings.",
+ answer: "No. Monthly plans cancel anytime. Annual plans are 12-month commitments billed at a lower monthly rate - you save up to €60/mo on Scale compared to monthly billing.",
  },
  {
  question: "How do I get started?",
@@ -44,7 +44,23 @@ const faqs = [
  },
  {
  question: "What if I run out of credits?",
- answer: "Overage credits kick in automatically at your plan's overage rate. Start: €1.50/cr. Growth Smarter: €1.20/cr. Scale: €0.90/cr. You'll never get blocked mid-workflow - you just pay for what you use above your monthly allowance.",
+ answer: "You can top up at any time at €0.85 per credit across all plans. There are no blockers - your data, signals, and contacts stay accessible regardless of credit balance.",
+ },
+ {
+ question: "What is signal tracking?",
+ answer: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell and ranked in your dashboard. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. Extra companies above your plan limit cost 2cr per company per month.",
+ },
+ {
+ question: "What does 'outreach in your voice' mean?",
+ answer: "During setup we collect writing samples and tone inputs from you. Every email and LinkedIn message Hooklyne generates is written to match your style - not a generic template. The prospect package is ready to send or copy-paste directly. No editing required.",
+ },
+ {
+ question: "How long does setup take?",
+ answer: "Start plan: self-serve, up to 30 minutes. Growth plan: 45-min setup call with us - you leave with a working system and first targets queued. Scale plan: full setup session plus team training. Enterprise: dedicated onboarding track.",
+ },
+ {
+ question: "Can I use Hooklyne for markets outside the Netherlands?",
+ answer: "Yes. We support English and Dutch natively. For Dutch companies reaching out to EU markets, we adjust the tone and communication style for the target country. More markets and languages are in the roadmap.",
  },
 ];
 
