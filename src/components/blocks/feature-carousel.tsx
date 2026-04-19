@@ -34,7 +34,7 @@ export const FeatureCarousel = () => {
 
   return (
     <section className="py-20 lg:py-28">
-      <div className="container">
+      <div className="container max-w-6xl">
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-2 flex flex-col gap-2">
             {SLIDES.map((s, i) => (
