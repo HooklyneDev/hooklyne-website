@@ -211,8 +211,8 @@ export const Hero = () => {
               poster="/hooklyne-hero.png"
               style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", display: "block" }}
             >
-              <source src="/Hooklyne%20Intro%20Video.webm" type="video/webm" />
-              <source src="/Hooklyne%20Intro%20Video.mp4" type="video/mp4" />
+              <source src="/home/hooklyne-intro.webm" type="video/webm" />
+              <source src="/home/hooklyne-intro.mp4" type="video/mp4" />
             </video>
           </div>
         </div>

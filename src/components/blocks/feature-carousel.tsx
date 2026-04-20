@@ -24,7 +24,7 @@ const SLIDES = [
     title: "Find fit. Not filters.",
     body: "Databases filter by industry code. We search billions of pages semantically for what companies actually do. Real fits, not SIC code guesses.",
     image: "/home/hooklyne-real-time-prospect-signals.webp",
-    alt: "PLACEHOLDER: Portal screenshot of the Prospecting 'Find me companies' flow - a plain-language ICP prompt at the top, a ranked result list below with fit scores on the right and 3 surfaced decision-makers per row.",
+    alt: "PLACEHOLDER: Portal screenshot of the Prospecting 'Find me companies' flow - a plain-language ICP description field at the top, a ranked result list below with fit scores on the right and 3 surfaced decision-makers per row.",
   },
 ];
 
@@ -54,7 +54,7 @@ export const FeatureCarousel = () => {
             Four things most tools skip.
           </h2>
         </div>
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-2 flex flex-col gap-2">
             {SLIDES.map((s, i) => (
               <button
@@ -92,9 +92,9 @@ export const FeatureCarousel = () => {
             ))}
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 lg:-mt-8">
             <div className="rounded-3xl p-3" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, rgba(52,76,163,0.10) 0%, transparent 70%)" }}>
-              <div className="rounded-2xl overflow-hidden aspect-video" style={{ boxShadow: "var(--shadow-lg)" }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: "var(--shadow-lg)" }}>
                 <img
                   src={slide.image}
                   alt={slide.alt}

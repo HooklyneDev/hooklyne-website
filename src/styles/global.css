@@ -91,29 +91,34 @@
 .btn-shine {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 .btn-shine::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(
     108deg,
-    transparent 38%,
-    rgba(255, 255, 255, 0.18) 50%,
-    transparent 62%
+    transparent 40%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 60%
   );
-  transform: translateX(-100%);
+  transform: translateX(-120%);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 .btn-shine:hover::after {
-  animation: btn-glare 0.65s ease-out forwards;
+  opacity: 1;
+  animation: btn-glare-hover 1.6s ease-in-out infinite alternate;
 }
-@keyframes btn-glare {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(100%); }
+@keyframes btn-glare-hover {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(120%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after,
+  .btn-shine:hover::after { animation: none; }
 }
 
 /* ── Hero entrance (stagger) ────────────────────────────────────────── */

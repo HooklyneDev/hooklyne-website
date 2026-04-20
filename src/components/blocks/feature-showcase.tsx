@@ -10,8 +10,8 @@ export const FeatureShowcase = () => (
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px rounded-3xl overflow-hidden" style={{ background: "var(--border)" }}>
-          <div className="p-8 lg:p-10" style={{ background: "var(--card)" }}>
+        <div className="grid md:grid-cols-3 gap-px rounded-3xl" style={{ background: "var(--border)", boxShadow: "var(--shadow-sm)" }}>
+          <div className="p-8 lg:p-10 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" style={{ background: "var(--card)" }}>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">Contact database</p>
             <p className="text-xl font-semibold text-[var(--heading)] mb-6 leading-tight">Rows. Nothing more.</p>
             <ul className="space-y-2.5 text-sm text-[var(--muted-foreground)]">
@@ -31,7 +31,7 @@ export const FeatureShowcase = () => (
               `,
             }}
           >
-            <div className="absolute -top-3 left-8 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-white" style={{ background: "var(--hooklyne-navy)" }}>Hooklyne</div>
+            <div className="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-4" style={{ background: "var(--hooklyne-navy)" }}>Hooklyne</div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)] mb-3">Research layer</p>
             <p className="text-xl font-semibold text-[var(--heading)] mb-6 leading-tight">A full prospect package.</p>
             <ul className="space-y-2.5 text-sm text-[var(--foreground)]">
@@ -42,7 +42,7 @@ export const FeatureShowcase = () => (
             </ul>
           </div>
 
-          <div className="p-8 lg:p-10" style={{ background: "var(--card)" }}>
+          <div className="p-8 lg:p-10 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none" style={{ background: "var(--card)" }}>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">Outbound agency</p>
             <p className="text-xl font-semibold text-[var(--heading)] mb-6 leading-tight">€2,500+ a month.</p>
             <ul className="space-y-2.5 text-sm text-[var(--muted-foreground)]">

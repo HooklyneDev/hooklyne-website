@@ -19,7 +19,7 @@ const groups: Group[] = [
       },
       {
         q: "Is this just another AI prospecting tool?",
-        a: "No. Most are one prompt and a database. Hooklyne is six specialised stages working together. Research first, writing last.",
+        a: "No. Most are one ask and a database. Hooklyne is six specialised stages working together. Research first, writing last.",
       },
       {
         q: "How is Hooklyne different from a contact database?",

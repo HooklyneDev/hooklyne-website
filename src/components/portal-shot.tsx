@@ -31,8 +31,14 @@ type Props = {
   label: string;
   /** Longer one-liner describing the intended screenshot content */
   describe?: string;
-  /** Browser URL shown in the chrome bar */
+  /** Browser URL shown in the chrome bar (legacy, prefer crumb) */
   url?: string;
+  /** Breadcrumb shown in the chrome bar (e.g. "Prospecting / Discovery") */
+  crumb?: string;
+  /** Small status chip on the right of the chrome bar (e.g. "Live", "Updated 2m ago") */
+  status?: string;
+  /** Tone for the status chip */
+  statusTone?: "blue" | "teal" | "orange" | "navy";
   /** Aspect ratio of the inner shot */
   ratio?: "16/9" | "4/3" | "3/2";
   /** Overlay pills positioned on top of the shot */
@@ -64,12 +70,17 @@ const TONE: Record<NonNullable<Overlay["tone"]>, { bg: string; fg: string; dot: 
 export const PortalShot = ({
   label,
   describe,
-  url = "portal.hooklyne.com",
+  url,
+  crumb,
+  status,
+  statusTone = "teal",
   ratio = "16/9",
   overlays = [],
   src,
   className,
 }: Props) => {
+  const crumbText = crumb ?? ((url ? url.replace(/^portal\.hooklyne\.com\/?/, "").split("/").filter(Boolean).join(" / ") : "") || "Portal");
+  const statusChip = TONE[statusTone];
   return (
     <div className={cn("relative w-full rounded-2xl overflow-visible", className)}>
       {/* Glow wash */}
@@ -79,25 +90,34 @@ export const PortalShot = ({
       />
 
       <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-lg)" }}>
-        {/* Chrome */}
+        {/* Chrome - repurposed as a context strip */}
         <div
-          className="flex items-center gap-2 px-3 border border-b-0 rounded-t-2xl"
+          className="flex items-center gap-3 px-4 border border-b-0 rounded-t-2xl"
           style={{ height: "36px", background: "var(--card)", borderColor: "var(--border)" }}
         >
-          <div className="flex items-center gap-1 mr-1">
-            <div className="size-2.5 rounded-full" style={{ background: "#ff5f57" }} />
-            <div className="size-2.5 rounded-full" style={{ background: "#febc2e" }} />
-            <div className="size-2.5 rounded-full" style={{ background: "#28c840" }} />
+          <div className="flex items-center gap-1.5 shrink-0">
+            <div className="size-2 rounded-full" style={{ background: "var(--border-strong)" }} />
+            <div className="size-2 rounded-full" style={{ background: "var(--border-strong)" }} />
+            <div className="size-2 rounded-full" style={{ background: "var(--border-strong)" }} />
           </div>
-          <div
-            className="flex-1 mx-2 px-3 rounded-full text-[11px] flex items-center justify-center gap-1.5"
-            style={{ height: "22px", background: "var(--background)", color: "var(--muted-foreground)" }}
-          >
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.55 }}>
-              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-            {url}
+          <div className="h-3 w-px" style={{ background: "var(--border)" }} />
+          <div className="flex-1 flex items-center gap-1.5 text-[11px] font-medium truncate" style={{ color: "var(--muted-foreground)" }}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--hooklyne-blue)" }}>Hooklyne</span>
+            <span style={{ opacity: 0.4 }}>/</span>
+            <span className="truncate" style={{ color: "var(--heading)" }}>{crumbText}</span>
           </div>
+          {status && (
+            <div
+              className="shrink-0 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold"
+              style={{ background: statusChip.bg, color: statusChip.fg }}
+            >
+              <span className="relative flex size-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: statusChip.dot }} />
+                <span className="relative inline-flex rounded-full size-1.5" style={{ background: statusChip.dot }} />
+              </span>
+              {status}
+            </div>
+          )}
         </div>
 
         {/* Shot */}

@@ -1,6 +1,7 @@
 ---
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
 import { PortalShot } from '@/components/portal-shot';
 import { FinalCTA } from '@/components/blocks/final-cta';
 
@@ -79,8 +80,9 @@ const profileTabs = [
   description="Verified prospect packages, live signals, meeting prep briefs, and sector intelligence. All in one portal."
 >
   <Background>
-    <section class="pt-28 pb-12 lg:pt-44 lg:pb-16">
-      <div class="container max-w-4xl text-center">
+    <section class="pt-28 pb-12 lg:pt-44 lg:pb-16 relative">
+      <HeroGlow client:load />
+      <div class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4" data-fade>Product</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6" data-fade data-delay="1">
           Every prospect. Fully packaged.
@@ -167,7 +169,7 @@ const profileTabs = [
         <PortalShot
           client:load
           label="Portal dashboard"
-          describe="Full dashboard: sidebar nav, Daily focus card top-centre, Signal heat top-5 list, credit meter top-right."
+          describe="Full dashboard: sidebar nav, Daily focus card top-centre, Signal heat top-5 list, pipeline stats top-right."
           ratio="16/9"
           overlays={[
             { x: 22, y: 20, tag: "DAILY FOCUS", title: "2 actions ready", body: "Ranked, not dumped", tone: "orange", pulse: true },
@@ -211,7 +213,6 @@ const profileTabs = [
                 { t: "Signal heat", b: "Your hottest five prospects. Rising, stable, cooling." },
                 { t: "Market intel", b: "Six headlines you can use in today's meeting." },
                 { t: "Pipeline stats", b: "Active, ready, completed, hottest. At a glance." },
-                { t: "Credits", b: "What's used, what's left, when it resets." },
                 { t: "Recent activity", b: "Where you left off. So you don't lose momentum." },
               ].map((f) => (
                 <div class="flex gap-3">
@@ -268,13 +269,6 @@ const profileTabs = [
           ))}
         </div>
 
-        <div class="mt-10 rounded-2xl p-6 lg:p-7" style="background: var(--card); box-shadow: var(--shadow-xs)">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Search history</p>
-          <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">Nothing you find gets lost.</h3>
-          <p class="text-sm text-[var(--muted-foreground)] leading-relaxed max-w-3xl">
-            Every company stays in your search history. Filter, sort, resurrect. Bring one back into the flow whenever the timing's right.
-          </p>
-        </div>
       </div>
     </section>
 
@@ -519,30 +513,6 @@ const profileTabs = [
         <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto">
           Not translated. Written. Language is picked automatically from the company domain and the contact's location, then locked for that prospect. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it.
         </p>
-      </div>
-    </section>
-
-    <section class="py-16 lg:py-20" data-fade>
-      <div class="container max-w-4xl">
-        <div class="rounded-2xl p-8 lg:p-10 text-center" style="background: var(--card); box-shadow: var(--shadow-md)">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">Credits</p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            One number. No surprises.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto mb-7">
-            Every action priced in plain view. You see what's used. You see what's left. You scale up, cancel, or top up whenever.
-          </p>
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <a href="/pricing" class="inline-flex items-center gap-1.5 h-10 px-5 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine" style="background: var(--hooklyne-navy)">
-              See pricing
-              <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a href="/contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors">
-              Start your free pilot
-              <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 

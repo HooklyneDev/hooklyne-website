@@ -124,7 +124,7 @@ export const Contact = () => {
               <p className="text-xs text-[var(--muted-foreground)] max-w-md">
                 You'll hear back within one business day. We only use your details to reply. See our <a href="/privacy" className="underline hover:text-[var(--heading)]">privacy policy</a> for the rest.
               </p>
-              <Button size="lg" type="submit" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
+              <Button size="lg" type="submit" className="btn-shine" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
                 Send message
               </Button>
             </div>
