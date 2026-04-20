@@ -2,7 +2,6 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { Background } from '@/components/background';
 import { Hero } from '@/components/blocks/hero';
-import ValueProps from '@/components/blocks/value-props.astro';
 import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { FeatureCarousel } from '@/components/blocks/feature-carousel';
 import { FeatureShowcase } from '@/components/blocks/feature-showcase';
@@ -16,13 +15,12 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <Background>
     <Hero client:load />
     <SignalTicker />
-    <ValueProps />
+    <DIYCompare client:visible />
   </Background>
 
   <Background variant="bottom">
     <FeatureCarousel client:load />
     <FeatureShowcase />
-    <DIYCompare client:visible />
     <FounderQuote />
     <HomePricing client:load />
   </Background>

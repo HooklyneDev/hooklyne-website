@@ -1,60 +1,6 @@
 export const FeatureShowcase = () => (
   <section className="py-14 lg:py-20" data-fade>
     <div className="container max-w-6xl">
-      {/* Comparison block: Database / Hooklyne / Agency */}
-      <div className="mb-16 lg:mb-20">
-        <div className="max-w-3xl mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-orange)] mb-4">The middle option</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1]">
-            Between a cheap database and a €2,500 agency.
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-px rounded-3xl" style={{ background: "var(--border)", boxShadow: "var(--shadow-sm)" }}>
-          <div className="p-8 lg:p-10 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" style={{ background: "var(--card)" }}>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">Contact database</p>
-            <p className="text-xl font-semibold text-[var(--heading)] mb-6 leading-tight">Rows. Nothing more.</p>
-            <ul className="space-y-2.5 text-sm text-[var(--muted-foreground)]">
-              <li>One data source, thin coverage</li>
-              <li>No signal, no context</li>
-              <li>You still write every email</li>
-              <li>Bounces hurt your domain</li>
-            </ul>
-          </div>
-
-          <div
-            className="p-8 lg:p-10 relative"
-            style={{
-              background: `
-                radial-gradient(ellipse 60% 40% at 50% 0%, rgba(52,76,163,0.14), transparent 70%),
-                linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%)
-              `,
-            }}
-          >
-            <div className="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-4" style={{ background: "var(--hooklyne-navy)" }}>Hooklyne</div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)] mb-3">Research layer</p>
-            <p className="text-xl font-semibold text-[var(--heading)] mb-6 leading-tight">A full prospect package.</p>
-            <ul className="space-y-2.5 text-sm text-[var(--foreground)]">
-              <li>20+ providers, four verification layers</li>
-              <li>Live signal, scored for your ICP</li>
-              <li>Drafted in your voice, ready to send</li>
-              <li>You keep the inbox and the reputation</li>
-            </ul>
-          </div>
-
-          <div className="p-8 lg:p-10 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none" style={{ background: "var(--card)" }}>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">Outbound agency</p>
-            <p className="text-xl font-semibold text-[var(--heading)] mb-6 leading-tight">€2,500+ a month.</p>
-            <ul className="space-y-2.5 text-sm text-[var(--muted-foreground)]">
-              <li>Replaces part of your team</li>
-              <li>Sends from their domain</li>
-              <li>Locked in on campaigns</li>
-              <li>You lose the sender voice</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
       {/* Bilingual block */}
       <div
         className="relative rounded-3xl overflow-hidden p-8 lg:p-14"
