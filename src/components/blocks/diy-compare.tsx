@@ -5,7 +5,7 @@ import type { LucideIcon } from "lucide-react";
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
   <span
     className={`inline-flex items-center justify-center shrink-0 ${className}`}
-    style={{ background: "var(--hooklyne-navy)" }}
+    style={{ background: "var(--hooklyne-blue)" }}
     aria-hidden="true"
   >
     <img src="/logo-mark.svg" alt="" className="size-5 block" />
