@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check, X, Clock, Database, Wrench, Sparkles, Euro, Workflow, Briefcase } from "lucide-react";
+import { Check, X, Clock, Database, Wrench, Workflow, Briefcase, Euro } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
@@ -12,7 +12,7 @@ const HooklyneMark = ({ className = "" }: { className?: string }) => (
   </span>
 );
 
-type TabKey = "database" | "diy" | "builder" | "agency" | "hooklyne";
+type TabKey = "hooklyne" | "database" | "diy" | "builder" | "agency";
 
 type Step = {
   step: string;
@@ -28,7 +28,8 @@ type TabDef = {
   label: string;
   sub: string;
   icon: LucideIcon;
-  tone: "orange" | "amber" | "teal";
+  tone: "teal" | "orange" | "amber";
+  totalLabel: string;
   total: string;
   totalSub: string;
   steps: Step[];
@@ -36,20 +37,87 @@ type TabDef = {
 
 const TABS: TabDef[] = [
   {
+    key: "hooklyne",
+    label: "Hooklyne",
+    sub: "One package per prospect",
+    icon: Wrench, // unused for hooklyne
+    tone: "teal",
+    totalLabel: "Your time",
+    total: "<60s to review and send",
+    totalSub: "everything else is handled",
+    steps: [
+      {
+        step: "1", label: "Set your ICP and sender profile",
+        detail: "Describe who you sell to in plain language. We store your voice, your cadence, and your ICP — and match against them every run.",
+        time: "once", callout: "Your profile, applied to every prospect", good: true,
+      },
+      {
+        step: "2", label: "Contacts verified before you see them",
+        detail: "20+ providers run in sequence. Four deliverability layers per address. If it cannot be verified, it does not ship.",
+        time: "auto", callout: "Your domain reputation stays clean", good: true,
+      },
+      {
+        step: "3", label: "Buying signals, scored for your ICP",
+        detail: "Funding, hiring, leadership, launches, press, expansion and sector news — monitored continuously and ranked against your ICP.",
+        time: "auto", callout: "The right moment, not just the right company", good: true,
+      },
+      {
+        step: "4", label: "Research brief with live citations",
+        detail: "Every fact sourced from a live URL. No stale training data. Every claim is clickable — walk into the meeting with full confidence.",
+        time: "auto", callout: "Zero hallucinations, every fact citable", good: true,
+      },
+      {
+        step: "5", label: "Message drafted in your voice",
+        detail: "Reasoned through four passes: hook, angle, voice, QC. Dutch or English locked per prospect. Reads like your rep wrote it.",
+        time: "auto", callout: "No generic openers, no template smell", good: true,
+      },
+      {
+        step: "6", label: "Review card and meeting prep",
+        detail: "Company, contact, signal, hook, email, LinkedIn — one card. Meeting prep included. Accept and send from your own inbox.",
+        time: "<60s", callout: "Under a minute from review to sent", good: true,
+      },
+    ],
+  },
+  {
     key: "database",
     label: "Contact database",
     sub: "Rows you filter",
     icon: Database,
     tone: "orange",
+    totalLabel: "Cost",
     total: "€99 - €300 / mo",
-    totalSub: "rows, nothing more",
+    totalSub: "plus all the manual work on top",
     steps: [
-      { step: "1", label: "Filter a big list", detail: "Industry, size, geo, title. Taxonomy rarely matches how you actually sell.", time: "~15 min", callout: "Thin coverage outside US", good: false },
-      { step: "2", label: "Emails, mostly", detail: "Single provider per row. No waterfall. Bounce rate burns your domain.", time: "varies", callout: "~20% bounce risk", good: false },
-      { step: "3", label: "No signals", detail: "A row is a row. No funding, no hiring, no leadership, no launches.", time: "—", callout: "Zero buying context", good: false },
-      { step: "4", label: "No research", detail: "You still Google the company. You still read the founder's LinkedIn.", time: "your time", callout: "Research stays on you", good: false },
-      { step: "5", label: "You write every email", detail: "Merge fields only get you a name and a company. The hook is yours.", time: "your time", callout: "Generic or slow", good: false },
-      { step: "6", label: "Send from your tool", detail: "At least the domain stays yours. That's the one good part.", time: "manual", callout: "Inbox stays clean-ish", good: true },
+      {
+        step: "1", label: "Filter a list",
+        detail: "Industry, headcount, geo, title. The taxonomy rarely matches how you actually think about your ICP.",
+        time: "~15 min", callout: "ICP is your problem to map", good: false,
+      },
+      {
+        step: "2", label: "Emails included, quality varies",
+        detail: "Single provider per row. No waterfall. Older exports degrade fast — bounces burn your domain reputation over time.",
+        time: "included", callout: "Bounce risk real, domain reputation yours to lose", good: false,
+      },
+      {
+        step: "3", label: "No signal monitoring",
+        detail: "A contact row has no context. Funding, hiring, launches — you check manually, if at all.",
+        time: "your time", callout: "No buying context included", good: false,
+      },
+      {
+        step: "4", label: "No research",
+        detail: "You still Google the company, read their blog, look up the founder. The database stops at the row.",
+        time: "your time", callout: "Research is still yours to do", good: false,
+      },
+      {
+        step: "5", label: "You write every message",
+        detail: "Merge fields give you a name and company. The hook, the angle, the voice — all manual, every time.",
+        time: "your time", callout: "Generic, or slow — pick one", good: false,
+      },
+      {
+        step: "6", label: "Send from your own inbox",
+        detail: "You own the sending setup. That part is fine. Everything before this point still takes your rep's time.",
+        time: "manual", callout: "Inbox is yours, prep time is not", good: true,
+      },
     ],
   },
   {
@@ -58,15 +126,40 @@ const TABS: TabDef[] = [
     sub: "Spreadsheet + Claude",
     icon: Wrench,
     tone: "amber",
-    total: "~6h 30m / batch of 10",
-    totalSub: "across 6 tools, every cycle",
+    totalLabel: "Time",
+    total: "~45 min per prospect",
+    totalSub: "across multiple tools every cycle",
     steps: [
-      { step: "1", label: "Build the ICP list", detail: "Filter a database or scrape sources. Paste into a sheet, dedupe, clean columns.", time: "45 min", callout: "Stale data, wrong size bands", good: false },
-      { step: "2", label: "Verify emails", detail: "Paste into a verifier. Toss bounces. Re-verify borderline ones.", time: "30 min", callout: "Still ~20% unreliable", good: false },
-      { step: "3", label: "Hunt for signals", detail: "Google each company. LinkedIn each founder. Skim press mentions by hand.", time: "2 hr", callout: "Miss most of what matters", good: false },
-      { step: "4", label: "Research with Claude", detail: "Prompt per company. Check the citations Claude returns. Stitch findings into notes.", time: "1 hr", callout: "Re-prompt every prospect", good: false },
-      { step: "5", label: "Draft the emails", detail: "Write a hook. Rewrite. Paste into template. Match your voice by hand.", time: "1.5 hr", callout: "Generic, or takes forever", good: false },
-      { step: "6", label: "Organize and send", detail: "Sheet for prospects, doc for drafts, tabs for research. Merge by hand.", time: "45 min", callout: "Context lives nowhere", good: false },
+      {
+        step: "1", label: "Source and filter the list",
+        detail: "Pull from a database, clean in a sheet, dedupe. Batch work for 10 takes 30-45 min and goes stale quickly.",
+        time: "~4 min", callout: "Repeat every cycle as data drifts", good: false,
+      },
+      {
+        step: "2", label: "Verify emails yourself",
+        detail: "Run through a verifier, discard bounces, re-check borderlines. Faster than no verification — still 15-20% uncertainty.",
+        time: "~3 min", callout: "Good practice, not watertight", good: false,
+      },
+      {
+        step: "3", label: "Check for signals manually",
+        detail: "Google the company, check their blog, skim LinkedIn. Quick if you are lucky, a rabbit hole if you are not.",
+        time: "~12 min", callout: "You catch what you think to look for", good: false,
+      },
+      {
+        step: "4", label: "Research with Claude",
+        detail: "Claude does solid research and cites sources now. You still need to prompt per company, review the output and fill gaps.",
+        time: "~10 min", callout: "Good output, but re-prompt for every prospect", good: false,
+      },
+      {
+        step: "5", label: "Write the message",
+        detail: "Draft a hook. Revise. Match your tone by hand. Claude helps but the final voice check and rewrite is yours.",
+        time: "~15 min", callout: "Still manual judgement on every draft", good: false,
+      },
+      {
+        step: "6", label: "Assemble and send",
+        detail: "Copy from the sheet, paste the draft, add the context. Doable — just not something that scales without slipping.",
+        time: "~5 min", callout: "Works, does not scale cleanly", good: false,
+      },
     ],
   },
   {
@@ -75,81 +168,99 @@ const TABS: TabDef[] = [
     sub: "Build-your-own agents",
     icon: Workflow,
     tone: "amber",
-    total: "~8 hrs setup + €150+ / mo",
-    totalSub: "you build the workflow",
+    totalLabel: "Upfront",
+    total: "Days to build + €150+ / mo",
+    totalSub: "ongoing upkeep on top",
     steps: [
-      { step: "1", label: "Learn the tool", detail: "Weeks of tutorials. Table joins, enrichment chains, conditional logic.", time: "weeks", callout: "Not a sales tool, a builder", good: false },
-      { step: "2", label: "Build the workflow", detail: "Chain providers, write conditionals, tune prompts, wire credits.", time: "hours", callout: "Your job now", good: false },
-      { step: "3", label: "Bolt on signals", detail: "Scrapers and APIs for funding, hiring, press. You pick the sources.", time: "hours", callout: "Coverage depends on you", good: false },
-      { step: "4", label: "Prompt the research", detail: "Write your own research + draft prompts. QA every output.", time: "hours", callout: "Hallucinations still yours", good: false },
-      { step: "5", label: "Maintain it", detail: "Providers change, sites change, prompts drift. Workflow rots.", time: "ongoing", callout: "Constant upkeep", good: false },
-      { step: "6", label: "Hand-finish each prospect", detail: "Still need to review, edit, verify, and send from your inbox.", time: "your time", callout: "Powerful, if you have the time", good: true },
+      {
+        step: "1", label: "Learn the platform",
+        detail: "Table joins, enrichment waterfalls, conditional branching, API credits. Powerful, but the learning curve is real.",
+        time: "days", callout: "Built for operators, not AEs", good: false,
+      },
+      {
+        step: "2", label: "Build the enrichment flow",
+        detail: "Chain providers, handle failures, tune credit spend. You are building infrastructure before you prospect anyone.",
+        time: "hours", callout: "Your engineering time, not selling time", good: false,
+      },
+      {
+        step: "3", label: "Add your own signal sources",
+        detail: "Connect APIs or scrapers for funding, hiring, news. Coverage and freshness depend entirely on what you wire up.",
+        time: "hours", callout: "Only as good as what you build", good: false,
+      },
+      {
+        step: "4", label: "Prompt your own research and drafts",
+        detail: "Write the research prompts, the draft prompts, and QA every output. You own the quality.",
+        time: "hours", callout: "Output quality is your responsibility", good: false,
+      },
+      {
+        step: "5", label: "Keep it running",
+        detail: "Provider APIs change, sites block scrapers, prompts drift. A workflow that runs well today needs maintenance.",
+        time: "ongoing", callout: "Real upkeep — not set and forget", good: false,
+      },
+      {
+        step: "6", label: "Review and finish by hand",
+        detail: "Even a well-built workflow usually ends with manual review, editing, and sending. Which is fine — if the rest held.",
+        time: "your time", callout: "Powerful when it works", good: true,
+      },
     ],
   },
   {
     key: "agency",
     label: "Outbound agency",
-    sub: "€2,500+ / month",
+    sub: "Fully outsourced",
     icon: Briefcase,
     tone: "orange",
+    totalLabel: "Cost",
     total: "€2,500 - €5,000 / mo",
-    totalSub: "plus platform and list fees",
+    totalSub: "typically a 3-6 month commitment",
     steps: [
-      { step: "1", label: "Long onboarding", detail: "Weeks to define ICP, hand over assets, agree copy, sign retainer.", time: "2-4 wks", callout: "Slow to start, slow to change", good: false },
-      { step: "2", label: "They pick targets", detail: "From their own database and lists. You approve, not choose.", time: "theirs", callout: "You lose the filter", good: false },
-      { step: "3", label: "They send from their domain", detail: "Not your inbox, not your reputation. Prospects hear from a stranger.", time: "theirs", callout: "Your domain stays out", good: false },
-      { step: "4", label: "Generic campaigns", detail: "Sequences templated across their book. Scale wins, relevance loses.", time: "theirs", callout: "Same email, many names", good: false },
-      { step: "5", label: "You lose sender voice", detail: "Replies come to them first. Your rep never builds a relationship.", time: "—", callout: "No voice match", good: false },
-      { step: "6", label: "Locked-in retainer", detail: "Hard to pause, hard to leave. Results often show after 90+ days.", time: "3-6 mo", callout: "Heavy commitment", good: false },
-    ],
-  },
-  {
-    key: "hooklyne",
-    label: "Hooklyne",
-    sub: "One package per prospect",
-    icon: Sparkles,
-    tone: "teal",
-    total: "<60s review per prospect",
-    totalSub: "one card, one inbox",
-    steps: [
-      { step: "1", label: "Describe or point", detail: "Describe your ICP in plain words, paste a domain, or drop in a name. Pick your way in.", time: "2 min", callout: "Real fits, not filter guesses", good: true },
-      { step: "2", label: "Emails arrive verified", detail: "20+ providers waterfalled. Four deliverability layers. Unverifiable ones never ship.", time: "auto", callout: "Your domain stays clean", good: true },
-      { step: "3", label: "Signals scored for your ICP", detail: "Seven categories watched continuously: funding, hiring, leadership, launches, press, expansion, sector.", time: "auto", callout: "Catch the moment, not the noise", good: true },
-      { step: "4", label: "Brief with live citations", detail: "Every claim traces to a real URL. No stale training data, no hallucinations.", time: "auto", callout: "Source-level confidence", good: true },
-      { step: "5", label: "Drafts in your voice", detail: "Four reasoning passes: hook, angle, voice, QC. Dutch or English, locked per prospect.", time: "auto", callout: "Generic stops here", good: true },
-      { step: "6", label: "One card, ready to send", detail: "Company, signal, hook, email, LinkedIn. Review and send from your inbox, your domain.", time: "<60s", good: true, callout: "Under a minute per prospect" },
+      {
+        step: "1", label: "Onboarding takes weeks",
+        detail: "ICP definition, copywriting handover, infrastructure setup, retainer sign-off. You will not be live in week one.",
+        time: "2-4 wks", callout: "Slow to start, slow to adjust", good: false,
+      },
+      {
+        step: "2", label: "They pick the targets",
+        detail: "From their database and their process. You review and approve, but the filter logic is theirs.",
+        time: "theirs", callout: "You approve, not choose", good: false,
+      },
+      {
+        step: "3", label: "Separate sending infrastructure",
+        detail: "Most agencies send from a secondary inbox setup — not your main domain. Your main sender reputation stays separate.",
+        time: "theirs", callout: "Your main inbox is protected, but disconnected", good: false,
+      },
+      {
+        step: "4", label: "Campaigns, not conversations",
+        detail: "Sequenced at scale. Works for volume but personalisation is limited by how much they can do per seat.",
+        time: "theirs", callout: "Scale over relevance", good: false,
+      },
+      {
+        step: "5", label: "Your rep is not the sender",
+        detail: "Replies come to a shared inbox. The relationship between your rep and the prospect starts later, if at all.",
+        time: "—", callout: "Sender voice and relationship are lost", good: false,
+      },
+      {
+        step: "6", label: "Hard to pause or redirect",
+        detail: "Retainers run for months. Changing ICP, copy or strategy mid-contract takes time and goodwill.",
+        time: "3-6 mo", callout: "Right for some, not for agile teams", good: false,
+      },
     ],
   },
 ];
 
 const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; soft: string }> = {
-  orange: {
-    bg: "rgba(255,140,66,0.10)",
-    border: "rgba(255,140,66,0.30)",
-    fg: "var(--hooklyne-orange)",
-    soft: "rgba(255,140,66,0.08)",
-  },
-  amber: {
-    bg: "rgba(245,158,11,0.10)",
-    border: "rgba(245,158,11,0.30)",
-    fg: "#b45309",
-    soft: "rgba(245,158,11,0.08)",
-  },
-  teal: {
-    bg: "rgba(13,148,136,0.10)",
-    border: "rgba(13,148,136,0.30)",
-    fg: "var(--hooklyne-teal)",
-    soft: "rgba(13,148,136,0.08)",
-  },
+  teal:   { bg: "rgba(13,148,136,0.10)",  border: "rgba(13,148,136,0.30)",  fg: "var(--hooklyne-teal)",   soft: "rgba(13,148,136,0.08)"  },
+  orange: { bg: "rgba(255,140,66,0.10)",  border: "rgba(255,140,66,0.30)",  fg: "var(--hooklyne-orange)", soft: "rgba(255,140,66,0.08)"  },
+  amber:  { bg: "rgba(245,158,11,0.10)",  border: "rgba(245,158,11,0.30)",  fg: "#b45309",                soft: "rgba(245,158,11,0.08)"  },
 };
+
+const NUDGE_ORDER: TabKey[] = ["database", "diy", "builder", "agency"];
 
 export const DIYCompare = () => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
   const [nudgeIdx, setNudgeIdx] = useState(0);
 
-  // Cycle the auto-hover nudge left-to-right across non-Hooklyne tabs
-  const NUDGE_ORDER: TabKey[] = ["database", "diy", "builder", "agency"];
   useEffect(() => {
     if (hasInteracted) return;
     const id = window.setInterval(() => {
@@ -157,6 +268,7 @@ export const DIYCompare = () => {
     }, 1600);
     return () => window.clearInterval(id);
   }, [hasInteracted]);
+
   const nudgeKey: TabKey | null = hasInteracted ? null : NUDGE_ORDER[nudgeIdx];
   const active = TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
@@ -166,57 +278,36 @@ export const DIYCompare = () => {
     <section className="py-14 lg:py-20" data-fade>
       <style>{`
         @keyframes diycompareAutoHover {
-          0% {
-            background: transparent;
-            border-color: transparent;
-            transform: translateY(0);
-          }
-          25%, 75% {
-            background: var(--card-hover);
-            border-color: var(--border-strong);
-            transform: translateY(-2px);
-          }
-          100% {
-            background: transparent;
-            border-color: transparent;
-            transform: translateY(0);
-          }
+          0%       { background: transparent; border-color: transparent; transform: translateY(0); }
+          25%, 75% { background: var(--card-hover); border-color: var(--border-strong); transform: translateY(-2px); }
+          100%     { background: transparent; border-color: transparent; transform: translateY(0); }
         }
-        .diycompare-auto-hover {
-          animation: diycompareAutoHover 1.6s ease-in-out infinite;
-        }
-        .diycompare-auto-hover:hover {
-          animation: none;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .diycompare-auto-hover { animation: none; }
-        }
+        .diycompare-auto-hover { animation: diycompareAutoHover 1.6s ease-in-out infinite; }
+        .diycompare-auto-hover:hover { animation: none; }
+        @media (prefers-reduced-motion: reduce) { .diycompare-auto-hover { animation: none; } }
       `}</style>
+
       <div className="container max-w-6xl">
         {/* Header */}
         <div className="max-w-3xl mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
-            The workflow
-          </p>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">The workflow</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
             Six steps, handled.
           </h2>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            This is what a prospect package looks like inside Hooklyne. Tap the other tabs to see what the same six steps cost you with a database, a spreadsheet, a builder, or an agency.
+            This is the Hooklyne workflow — from your ICP to a review-ready prospect card. Tap the other tabs to see the honest version of what the same six steps cost with a database, a spreadsheet, a builder tool, or an agency.
           </p>
         </div>
 
-        {/* Tab switcher label */}
+        {/* Tab label */}
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">
-            Compare with
-          </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">Compare with</span>
           <span className="flex-1 h-px" style={{ background: "var(--border)" }} />
         </div>
 
-        {/* Tab switcher - larger, label + sub */}
+        {/* Tabs */}
         <div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1fr_1.5fr] gap-2 mb-5 p-1.5 rounded-2xl"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 mb-5 p-1.5 rounded-2xl"
           style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-xs)" }}
           role="tablist"
         >
@@ -228,68 +319,38 @@ export const DIYCompare = () => {
             return (
               <button
                 key={t.key}
-                onClick={() => {
-                  setTab(t.key);
-                  setHasInteracted(true);
-                }}
+                onClick={() => { setTab(t.key); setHasInteracted(true); }}
                 role="tab"
                 aria-selected={isActive}
                 className={`relative text-left px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm${nudge ? " diycompare-auto-hover" : ""}`}
                 style={{
-                  background: isActive
-                    ? t.key === "hooklyne"
-                      ? "var(--hooklyne-navy)"
-                      : tTone.bg
-                    : "transparent",
+                  background: isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.bg) : "transparent",
                   border: `1px solid ${isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.border) : "transparent"}`,
-                  color: isActive && t.key === "hooklyne" ? "#fff" : "var(--heading)",
                 }}
-                onMouseEnter={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.background = "var(--card-hover)";
-                    e.currentTarget.style.borderColor = "var(--border-strong)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderColor = "transparent";
-                  }
-                }}
+                onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.background = "var(--card-hover)"; e.currentTarget.style.borderColor = "var(--border-strong)"; } }}
+                onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "transparent"; } }}
               >
-
                 <div className="flex items-center gap-2.5">
                   {t.key === "hooklyne" ? (
-                    <HooklyneMark className="size-8 rounded-lg shrink-0 block" />
+                    <HooklyneMark className="size-8 rounded-lg" />
                   ) : (
                     <span
                       className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors"
-                      style={{
-                        background: isActive ? tTone.fg : "var(--card-hover)",
-                        color: isActive ? "#fff" : "var(--muted-foreground)",
-                      }}
+                      style={{ background: isActive ? tTone.fg : "var(--card-hover)", color: isActive ? "#fff" : "var(--muted-foreground)" }}
                     >
                       <Icon className="size-4" />
                     </span>
                   )}
                   <div className="min-w-0">
                     <div
-                      className={`text-[13px] leading-tight ${
-                        t.key === "hooklyne" ? "font-bold" : "font-semibold"
-                      }`}
-                      style={{
-                        color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--heading)",
-                        letterSpacing: t.key === "hooklyne" ? "-0.01em" : "0",
-                      }}
+                      className={`text-[13px] leading-tight ${t.key === "hooklyne" ? "font-bold" : "font-medium"}`}
+                      style={{ color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--heading)" }}
                     >
                       {t.label}
                     </div>
                     <div
                       className="text-[11px] leading-tight mt-0.5 truncate"
-                      style={{
-                        color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--muted-foreground)",
-                        opacity: isActive && t.key === "hooklyne" ? 0.9 : 1,
-                      }}
+                      style={{ color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.85)" : "var(--muted-foreground)" }}
                     >
                       {t.sub}
                     </div>
@@ -302,22 +363,17 @@ export const DIYCompare = () => {
 
         {/* Totals strip */}
         <div
-          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 px-5 py-3 rounded-xl transition-colors"
+          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 px-5 py-3 rounded-xl"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
           <div className="flex items-center gap-2">
-            {isHooklyne ? (
-              <Clock className="size-4" style={{ color: tone.fg }} />
-            ) : active.key === "database" ? (
+            {active.key === "database" || active.key === "agency" ? (
               <Euro className="size-4" style={{ color: tone.fg }} />
             ) : (
               <Clock className="size-4" style={{ color: tone.fg }} />
             )}
-            <span
-              className="text-xs font-bold uppercase tracking-[0.2em]"
-              style={{ color: tone.fg }}
-            >
-              {active.key === "database" ? "Cost" : "Per prospect"}
+            <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: tone.fg }}>
+              {active.totalLabel}
             </span>
           </div>
           <div className="flex items-baseline gap-2">
@@ -328,22 +384,15 @@ export const DIYCompare = () => {
 
         {/* Steps grid */}
         <div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden transition-all"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden"
           style={{ background: "var(--border)", boxShadow: "var(--shadow-md)" }}
         >
           {active.steps.map((s) => (
-            <div
-              key={s.step}
-              className="p-6 lg:p-7 relative"
-              style={{ background: "var(--card)" }}
-            >
+            <div key={s.step} className="p-6 lg:p-7" style={{ background: "var(--card)" }}>
               <div className="flex items-center justify-between mb-4">
                 <span
                   className="inline-flex items-center justify-center size-7 rounded-lg text-[11px] font-bold"
-                  style={{
-                    background: isHooklyne ? "var(--hooklyne-navy)" : tone.soft,
-                    color: isHooklyne ? "#fff" : tone.fg,
-                  }}
+                  style={{ background: isHooklyne ? "var(--hooklyne-navy)" : tone.soft, color: isHooklyne ? "#fff" : tone.fg }}
                 >
                   {s.step}
                 </span>
@@ -354,12 +403,8 @@ export const DIYCompare = () => {
                   {s.time}
                 </span>
               </div>
-              <div className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">
-                {s.label}
-              </div>
-              <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">
-                {s.detail}
-              </p>
+              <div className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
+              <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
               <div className="flex items-start gap-1.5 pt-3 border-t border-dashed border-[var(--border)]">
                 {s.good ? (
                   <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
@@ -373,7 +418,7 @@ export const DIYCompare = () => {
         </div>
 
         <p className="mt-4 text-[11px] text-[var(--muted-foreground)]/70">
-          Timings based on a typical 10-prospect research cycle by a solo AE. Database pricing reflects common single-seat plans.
+          DIY timings are per prospect for a solo AE doing thorough work. Database pricing reflects common single-seat plans.
         </p>
       </div>
     </section>
