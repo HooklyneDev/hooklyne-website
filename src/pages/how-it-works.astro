@@ -3,6 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { PortalShot } from '@/components/portal-shot';
+import { ResearchBrief } from '@/components/research-brief';
 import { ArrowRight } from 'lucide-react';
 
 const stages = [
@@ -221,14 +222,18 @@ const stages = [
             </div>
 
             <div>
-              <PortalShot
-                label={s.shot.label}
-                describe={s.shot.describe}
-                crumb={s.shot.crumb}
-                status={s.shot.status}
-                statusTone={s.shot.statusTone}
-                overlays={s.shot.overlays}
-              />
+              {s.n === 4 ? (
+                <ResearchBrief />
+              ) : (
+                <PortalShot
+                  label={s.shot.label}
+                  describe={s.shot.describe}
+                  crumb={s.shot.crumb}
+                  status={s.shot.status}
+                  statusTone={s.shot.statusTone}
+                  overlays={s.shot.overlays}
+                />
+              )}
             </div>
           </div>
         ))}
