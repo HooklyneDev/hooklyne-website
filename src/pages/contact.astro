@@ -3,7 +3,7 @@ import { Background } from '@/components/background';
 import { Contact } from '@/components/blocks/contact';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
-<DefaultLayout title="Contact - Hooklyne" description="Get in touch with the Hooklyne team. Book a demo, start a free pilot, or ask a question.">
+<DefaultLayout title="Contact - Hooklyne" description="Get in touch with the Hooklyne team. Book a demo, start a free pilot, or ask a question." hideFinalCTA={true}>
   <Background>
     <Contact client:load />
   </Background>

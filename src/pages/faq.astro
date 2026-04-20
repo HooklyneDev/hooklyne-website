@@ -1,7 +1,6 @@
 ---
 import { Background } from '@/components/background';
 import { FAQ } from '@/components/blocks/faq';
-import { FinalCTA } from '@/components/blocks/final-cta';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 <DefaultLayout title="FAQ - Hooklyne" description="Answers to common questions about Hooklyne, the research workflow, credits, signals, and what's included in each plan.">
@@ -10,5 +9,4 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
       <FAQ client:visible />
     </div>
   </Background>
-  <FinalCTA client:load />
 </DefaultLayout>
