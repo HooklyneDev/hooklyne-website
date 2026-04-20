@@ -44,7 +44,7 @@ const TABS: TabDef[] = [
     tone: "teal",
     totalLabel: "Your time",
     total: "<60s to review and send",
-    totalSub: "everything else is handled",
+    totalSub: "everything else is handled for you",
     steps: [
       {
         step: "1", label: "Describe the company type",
@@ -53,28 +53,28 @@ const TABS: TabDef[] = [
       },
       {
         step: "2", label: "Pick the contact you want to reach",
-        detail: "Each company shows the available roles. You choose the one that fits. That contact goes through a 20+ provider waterfall. Unverifiable ones never reach you.",
-        time: "30 sec", callout: "You choose the role. We verify the address.", good: true,
+        detail: "Each company shows available roles. You pick the one that fits. We run a waterfall across 20+ contact providers with four verification layers - because no single database has more than 40% of any market.",
+        time: "30 sec", callout: "You pick the role. We verify the address.", good: true,
       },
       {
         step: "3", label: "Lands in My Leads with a reason",
-        detail: "Every prospect arrives with a why-this-company signal already attached: funding round, hiring move, leadership change, launch. Not a guess, a sourced event.",
-        time: "auto", callout: "A reason to reach out, not just a name", good: true,
+        detail: "Every prospect arrives with a signal attached: funding round, hiring move, leadership change, launch. Scored twice - once for the prospect's business, once for what you sell. Only signals that pass both reach you.",
+        time: "auto", callout: "A reason to reach out, not just a name.", good: true,
       },
       {
         step: "4", label: "Full email, written in your voice",
-        detail: "Four reasoning passes: hook, angle, voice, QC. Dutch or English locked from the prospect's domain. Reads like your rep wrote it after doing the research.",
-        time: "auto", callout: "No template smell, no generic opener", good: true,
+        detail: "Four reasoning passes: hook, angle, voice, quality check. Language matched automatically to the prospect's domain. Reads like your rep wrote it after doing the research.",
+        time: "auto", callout: "No template smell. Dutch or English, locked to the prospect.", good: true,
       },
       {
         step: "5", label: "Track signals from that lead",
-        detail: "Choose to monitor any lead for ongoing signals: new funding, team changes, press coverage. You get notified when the moment changes, not when the calendar says so.",
-        time: "toggle", callout: "Catch the next moment too, not just the first", good: true,
+        detail: "Monitor any lead for ongoing signals: new funding, team changes, press coverage. You get notified when the moment changes - not when the calendar says so.",
+        time: "toggle", callout: "Catch the next moment too, not just the first.", good: true,
       },
       {
         step: "6", label: "Request a meeting brief",
-        detail: "When you are ready to meet, request a live-researched brief. Every claim traces to a real URL. No hallucinations, no stale data. Walk in prepared.",
-        time: "on demand", callout: "Cited, current, ready when you need it", good: true,
+        detail: "When you are ready to meet, request a live-researched brief. Every claim traces to a real URL. Walk in prepared.",
+        time: "on demand", callout: "Every claim traces to a source. No made-up facts.", good: true,
       },
     ],
   },
@@ -295,7 +295,7 @@ export const DIYCompare = () => {
             From ICP to inbox. Six simple steps.
           </h2>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            You describe who you sell to. We find the ranked list, verify the contact, attach the buying signal, write the email in your voice, and prep the meeting brief when you need it. Your rep reviews and sends. That is the whole job.
+            You describe who you sell to. Hooklyne finds the ranked list, verifies the contact, attaches the signal, and drafts the email in your voice. Your rep reviews and sends. That is the whole job.
           </p>
         </div>
 
