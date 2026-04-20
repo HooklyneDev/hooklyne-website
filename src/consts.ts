@@ -1,6 +1,6 @@
-export const SITE_TITLE = "Hooklyne - Stop researching leads. Start closing them.";
+export const SITE_TITLE = "Hooklyne - Find the prospects actually worth reaching out to.";
 export const SITE_DESCRIPTION =
-  "Hooklyne finds your next prospects, matches the right contact, and writes the outreach - in your voice, ready to send. Built for Dutch B2B SMEs.";
+  "Find the prospects actually worth reaching out to. Hooklyne matches the right contact and drafts outreach in your voice, ready to send. Built for Dutch B2B SMEs.";
 export const SITE_URL = "https://hooklyne.com";
 export const GITHUB_URL = "https://github.com/HooklyneDev";
 
@@ -32,7 +32,7 @@ export const SITE_METADATA = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Hooklyne - Stop researching leads. Start closing them.",
+        alt: "Hooklyne - Find the prospects actually worth reaching out to.",
       },
     ],
   },

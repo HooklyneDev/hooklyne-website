@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 export const FinalCTA = () => (
-  <section className="py-20 lg:py-28" data-fade>
+  <section className="py-14 lg:py-20" data-fade>
     <div className="container max-w-6xl">
       <div
         className="relative rounded-3xl overflow-hidden p-10 lg:p-16 text-center text-white"

@@ -46,7 +46,7 @@ export const FeatureCarousel = () => {
   const slide = SLIDES[visible];
 
   return (
-    <section className="py-20 lg:py-28" data-fade>
+    <section className="py-14 lg:py-20" data-fade>
       <div className="container max-w-6xl">
         <div className="max-w-3xl mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">What makes it work</p>

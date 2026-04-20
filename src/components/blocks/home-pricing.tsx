@@ -27,7 +27,7 @@ const PLANS = [
 
 export const HomePricing = () => {
   return (
-    <section className="py-20 lg:py-28" data-fade>
+    <section className="py-14 lg:py-20" data-fade>
       <div className="container max-w-5xl">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
