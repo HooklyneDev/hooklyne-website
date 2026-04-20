@@ -5,6 +5,8 @@ import type { LucideIcon } from "lucide-react";
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
   <svg
     viewBox="0 0 32 32"
+    width="32"
+    height="32"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
     aria-hidden="true"
@@ -281,9 +283,12 @@ export const DIYCompare = () => {
                   )}
                   <div className="min-w-0">
                     <div
-                      className="text-[13px] font-bold leading-tight"
+                      className={`text-[13px] leading-tight ${
+                        t.key === "hooklyne" ? "font-bold" : "font-semibold"
+                      }`}
                       style={{
-                        color: isActive && t.key === "hooklyne" ? "#fff" : "var(--heading)",
+                        color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--heading)",
+                        letterSpacing: t.key === "hooklyne" ? "-0.01em" : "0",
                       }}
                     >
                       {t.label}
@@ -291,7 +296,8 @@ export const DIYCompare = () => {
                     <div
                       className="text-[11px] leading-tight mt-0.5 truncate"
                       style={{
-                        color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.85)" : "var(--muted-foreground)",
+                        color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--muted-foreground)",
+                        opacity: isActive && t.key === "hooklyne" ? 0.9 : 1,
                       }}
                     >
                       {t.sub}
