@@ -280,13 +280,18 @@ export const DIYCompare = () => {
                     </span>
                   )}
                   <div className="min-w-0">
-                    <div className="text-[13px] font-bold leading-tight">
+                    <div
+                      className="text-[13px] font-bold leading-tight"
+                      style={{
+                        color: isActive && t.key === "hooklyne" ? "#fff" : "var(--heading)",
+                      }}
+                    >
                       {t.label}
                     </div>
                     <div
                       className="text-[11px] leading-tight mt-0.5 truncate"
                       style={{
-                        color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.7)" : "var(--muted-foreground)",
+                        color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.85)" : "var(--muted-foreground)",
                       }}
                     >
                       {t.sub}
