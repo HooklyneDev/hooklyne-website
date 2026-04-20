@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check, X, Clock, Database, Wrench, Workflow, Briefcase, Euro } from "lucide-react";
+import { Check, X, Clock, Database, Wrench, Briefcase, Euro, Network } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
@@ -12,7 +12,7 @@ const HooklyneMark = ({ className = "" }: { className?: string }) => (
   </span>
 );
 
-type TabKey = "hooklyne" | "database" | "diy" | "builder" | "agency";
+type TabKey = "hooklyne" | "database" | "diy" | "salesnav" | "agency";
 
 type Step = {
   step: string;
@@ -122,85 +122,85 @@ const TABS: TabDef[] = [
   },
   {
     key: "diy",
-    label: "DIY stack",
-    sub: "Spreadsheet + Claude",
+    label: "DIY / Builder",
+    sub: "Claude, spreadsheet or workflow tool",
     icon: Wrench,
     tone: "amber",
     totalLabel: "Time",
     total: "~45 min per prospect",
-    totalSub: "across multiple tools every cycle",
+    totalSub: "or weeks of setup for a builder tool",
     steps: [
       {
         step: "1", label: "Source and filter the list",
-        detail: "Pull from a database, clean in a sheet, dedupe. Batch work for 10 takes 30-45 min and goes stale quickly.",
+        detail: "Pull from a database, clean in a sheet - or spend days learning a builder tool before you prospect anyone.",
         time: "~4 min", callout: "Repeat every cycle as data drifts", good: false,
       },
       {
-        step: "2", label: "Verify emails yourself",
-        detail: "Run through a verifier, discard bounces, re-check borderlines. Faster than no verification, still 15-20% uncertainty.",
-        time: "~3 min", callout: "Good practice, not watertight", good: false,
+        step: "2", label: "Verify emails",
+        detail: "Run through a verifier, discard bounces, re-check borderlines. Or build a provider waterfall yourself in a workflow tool.",
+        time: "~3 min", callout: "Manual or built - still ~15-20% uncertainty", good: false,
       },
       {
-        step: "3", label: "Check for signals manually",
-        detail: "Google the company, check their blog, skim LinkedIn. Quick if you are lucky, a rabbit hole if you are not.",
+        step: "3", label: "Find signals",
+        detail: "Google, LinkedIn, press - by hand. Or wire up scrapers and APIs in a builder. Either way, coverage depends on what you check.",
         time: "~12 min", callout: "You catch what you think to look for", good: false,
       },
       {
-        step: "4", label: "Research with Claude",
-        detail: "Claude does solid research and cites sources now. You still need to prompt per company, review the output and fill gaps.",
+        step: "4", label: "Research with Claude or your own agents",
+        detail: "Claude cites sources now and does solid research. You still re-prompt per company, review output and fill gaps - every time.",
         time: "~10 min", callout: "Good output, but re-prompt for every prospect", good: false,
       },
       {
         step: "5", label: "Write the message",
-        detail: "Draft a hook. Revise. Match your tone by hand. Claude helps but the final voice check and rewrite is yours.",
-        time: "~15 min", callout: "Still manual judgement on every draft", good: false,
+        detail: "Draft a hook. Revise. Match your tone. Claude helps but the final voice check is yours - whether you built an agent or not.",
+        time: "~15 min", callout: "Still your call on every draft", good: false,
       },
       {
-        step: "6", label: "Assemble and send",
-        detail: "Copy from the sheet, paste the draft, add the context. Doable, just not something that scales without slipping.",
-        time: "~5 min", callout: "Works, does not scale cleanly", good: false,
+        step: "6", label: "Assemble, maintain and send",
+        detail: "Paste and send from the sheet, or keep a workflow tool running as providers change and prompts drift. Both take ongoing effort.",
+        time: "~5 min", callout: "Works - does not scale without slipping", good: false,
       },
     ],
   },
   {
-    key: "builder",
-    label: "Workflow builder",
-    sub: "Build-your-own agents",
-    icon: Workflow,
-    tone: "amber",
-    totalLabel: "Upfront",
-    total: "Days to build + €150+ / mo",
-    totalSub: "ongoing upkeep on top",
+    key: "salesnav",
+    label: "Sales Navigator",
+    sub: "LinkedIn prospecting",
+    icon: Network,
+    tone: "orange",
+    totalLabel: "Cost",
+    total: "€90 - €150 / mo",
+    totalSub: "plus all the manual work on top",
     steps: [
       {
-        step: "1", label: "Learn the platform",
-        detail: "Table joins, enrichment waterfalls, conditional branching, API credits. Powerful, but the learning curve is real.",
-        time: "days", callout: "Built for operators, not AEs", good: false,
+        step: "1", label: "Filter companies and people",
+        detail: "Good filters for seniority, company size and industry. Still firmographic - it ranks by profile data, not actual fit to your ICP.",
+        time: "~15 min", callout: "Good reach, limited ICP depth", good: false,
       },
       {
-        step: "2", label: "Build the enrichment flow",
-        detail: "Chain providers, handle failures, tune credit spend. You are building infrastructure before you prospect anyone.",
-        time: "hours", callout: "Your engineering time, not selling time", good: false,
+        step: "2", label: "Limited contact data",
+        detail: "Sales Nav surfaces profiles, not verified emails. You get InMail credits and some phone numbers. Deliverable emails need an extra tool.",
+        time: "varies", callout: "Emails need a separate verifier", good: false,
       },
       {
-        step: "3", label: "Add your own signal sources",
-        detail: "Connect APIs or scrapers for funding, hiring, news. Coverage and freshness depend entirely on what you wire up.",
-        time: "hours", callout: "Only as good as what you build", good: false,
+        step: "3", label: "Basic activity signals",
+        detail: "Job changes, company growth, shared connections. Useful, but limited to what LinkedIn tracks - no funding, press or sector signals.",
+        time: "included", callout: "LinkedIn signals only, not the full picture", good: false,
       },
       {
-        step: "4", label: "Prompt your own research and drafts",
-        detail: "Write the research prompts, the draft prompts, and QA every output. You own the quality.",
-        time: "hours", callout: "Output quality is your responsibility", good: false,
+        step: "4", label: "Account insights only",
+        detail: "Sales Nav shows headcount growth and news snippets. Deep research - recent press, product moves, leadership changes - is still yours to do.",
+        time: "your time", callout: "Research is still on you", good: false,
       },
       {
-        step: "5", label: "Keep it running",
-        detail: "Provider APIs change, sites block scrapers, prompts drift. A workflow that runs well today needs maintenance.",
-        time: "ongoing", callout: "Real upkeep, not set and forget", good: false,
+        step: "5", label: "You write every message",
+        detail: "InMail or email - you write the hook, the angle, the opener. No voice matching, no reasoning passes. Templates at best.",
+        time: "your time", callout: "Generic or slow", good: false,
       },
       {
-        step: "6", label: "Review and finish by hand",
-        detail: "Even a well-built workflow ends with manual review, editing, and sending. Which is fine if the rest held.",
-        time: "your time", callout: "Powerful when it works", good: true,
+        step: "6", label: "Send via LinkedIn or your inbox",
+        detail: "InMail limits cap your volume. Sending from your inbox needs the email first - which Sales Nav often cannot give you directly.",
+        time: "manual", callout: "Inbox stays yours, reach is capped", good: true,
       },
     ],
   },
@@ -254,7 +254,7 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
   amber:  { bg: "rgba(245,158,11,0.10)",  border: "rgba(245,158,11,0.30)",  fg: "#b45309",                soft: "rgba(245,158,11,0.08)"  },
 };
 
-const NUDGE_ORDER: TabKey[] = ["database", "diy", "builder", "agency"];
+const NUDGE_ORDER: TabKey[] = ["database", "diy", "salesnav", "agency"];
 
 export const DIYCompare = () => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
@@ -417,9 +417,6 @@ export const DIYCompare = () => {
           ))}
         </div>
 
-        <p className="mt-4 text-[11px] text-[var(--muted-foreground)]/70">
-          DIY timings are per prospect for a solo AE doing thorough work. Database pricing reflects common single-seat plans.
-        </p>
       </div>
     </section>
   );
