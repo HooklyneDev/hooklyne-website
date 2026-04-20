@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check, X, Clock, Database, Wrench, Briefcase, Euro, Network } from "lucide-react";
+import { Check, X, Clock, Database, Wrench, Briefcase, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
@@ -12,7 +12,7 @@ const HooklyneMark = ({ className = "" }: { className?: string }) => (
   </span>
 );
 
-type TabKey = "hooklyne" | "database" | "diy" | "salesnav" | "agency";
+type TabKey = "hooklyne" | "database" | "aioutreach" | "diy" | "agency";
 
 type Step = {
   step: string;
@@ -32,6 +32,8 @@ type TabDef = {
   totalLabel: string;
   total: string;
   totalSub: string;
+  goodAt?: string;
+  footerNote?: string;
   steps: Step[];
 };
 
@@ -40,7 +42,7 @@ const TABS: TabDef[] = [
     key: "hooklyne",
     label: "Hooklyne",
     sub: "Entire workflow",
-    icon: Wrench, // unused for hooklyne
+    icon: Wrench,
     tone: "teal",
     totalLabel: "Your time",
     total: "<60s to review and send",
@@ -63,8 +65,8 @@ const TABS: TabDef[] = [
       },
       {
         step: "4", label: "Full email, written in your voice",
-        detail: "Four reasoning passes: hook, angle, voice, quality check. Language matched automatically to the prospect's domain. Reads like your rep wrote it after doing the research.",
-        time: "auto", callout: "No template smell. Dutch or English, locked to the prospect.", good: true,
+        detail: "Four reasoning passes: hook, angle, voice, quality check. Reads like your rep wrote it after doing the research.",
+        time: "auto", callout: "Not generic. Dutch or English, locked to the prospect.", good: true,
       },
       {
         step: "5", label: "Track signals from that lead",
@@ -81,168 +83,151 @@ const TABS: TabDef[] = [
   {
     key: "database",
     label: "Contact database",
-    sub: "Rows you filter",
+    sub: "Rows, filters, exports",
     icon: Database,
     tone: "orange",
-    totalLabel: "Cost",
-    total: "€99 - €300 / mo",
-    totalSub: "plus all the manual work on top",
+    totalLabel: "Your time",
+    total: "~45 min per prospect",
+    totalSub: "research and writing on you",
+    goodAt: "Fast, familiar, cheap per row. Great if you already know your ICP tightly and just need to pull a list of contacts to run through your own process.",
+    footerNote: "Database price + verification tool + your time. The rows are cheap. The work around them is not.",
     steps: [
       {
-        step: "1", label: "Filter a list",
-        detail: "Industry, headcount, geo, title. The taxonomy rarely matches how you actually think about your ICP.",
-        time: "~15 min", callout: "ICP is your problem to map", good: false,
+        step: "1", label: "Build the filter query",
+        detail: "Pick industry, company size, geography, seniority, job function. Save the view. The list refreshes against the database.",
+        time: "5 min", callout: "Fast to build a list once you know the filters", good: true,
       },
       {
-        step: "2", label: "Emails included, quality varies",
-        detail: "Single provider per row. No waterfall. Older exports degrade fast. Bounces burn your domain reputation over time.",
-        time: "included", callout: "Bounce risk real, domain reputation yours to lose", good: false,
+        step: "2", label: "Export the rows",
+        detail: "Download CSV or push to your CRM. You get name, title, company, email, phone if available.",
+        time: "instant", callout: "Standard format, works with your existing tools", good: true,
       },
       {
-        step: "3", label: "No signal monitoring",
-        detail: "A contact row has no context. Funding, hiring, launches - you check manually, if at all.",
-        time: "your time", callout: "No buying context included", good: false,
+        step: "3", label: "Verify the emails yourself",
+        detail: "Most databases show one source. Coverage varies by region. Bounce rates on single-source data typically run 8-15%, which damages sender reputation if you send blind. Most buyers add a verification tool on top.",
+        time: "10 min", callout: "Verification is your job, or your sender reputation pays for it", good: false,
       },
       {
-        step: "4", label: "No research",
-        detail: "You still Google the company, read their blog, look up the founder. The database stops at the row.",
-        time: "your time", callout: "Research is still yours to do", good: false,
+        step: "4", label: "Research each prospect",
+        detail: "The row tells you what they do, not what's happening at their company this week. You check LinkedIn, news, funding sites manually to find a reason to reach out.",
+        time: "15 min", callout: "The database doesn't know what's changed since last indexed", good: false,
       },
       {
-        step: "5", label: "You write every message",
-        detail: "Merge fields give you a name and company. The hook, the angle, the voice - all manual, every time.",
-        time: "your time", callout: "Generic or slow", good: false,
+        step: "5", label: "Write the email",
+        detail: "Draft from scratch or from a template. No auto-personalisation, no voice matching, no signal-anchored hook - you bring all of that.",
+        time: "15 min", callout: "Every message is your writing time", good: false,
+      },
+    ],
+  },
+  {
+    key: "aioutreach",
+    label: "AI outreach tool",
+    sub: "Generated emails over a list",
+    icon: Zap,
+    tone: "amber",
+    totalLabel: "Your time",
+    total: "~15 min per prospect",
+    totalSub: "speed is real, research is not",
+    goodAt: "Volume. If you have a clean list and want to send a lot of emails quickly with basic personalisation, these tools ship. They've built fast workflows for configured-once, sent-many campaigns.",
+    footerNote: "Fast at sending. Not built for research. If your ICP is tight and your list is pre-verified, this is a sending layer - not a prospecting layer.",
+    steps: [
+      {
+        step: "1", label: "Upload your list and set variables",
+        detail: "Import contacts, map fields. Set the variables the AI will fill - first name, company, a custom field you've scraped from LinkedIn, a pain point you've guessed at.",
+        time: "10 min", callout: "If your list is clean, setup is quick", good: true,
       },
       {
-        step: "6", label: "Send from your own inbox",
-        detail: "You own the sending setup. That part is fine. Everything before this point still takes your rep's time.",
-        time: "manual", callout: "Inbox is yours, prep time is not", good: true,
+        step: "2", label: "Write the template with AI fill-ins",
+        detail: "Most tools generate a base email and ask the AI to personalise per prospect. The personalisation pulls from your variables and whatever the model was trained on.",
+        time: "5 min", callout: "The AI doesn't research the prospect. It works with what you gave it.", good: false,
+      },
+      {
+        step: "3", label: "Campaign sends on schedule",
+        detail: "Warm-up, pacing, deliverability handling. This part they do well.",
+        time: "auto", callout: "Sending infrastructure is mature", good: true,
+      },
+      {
+        step: "4", label: "Deal with the reply traffic",
+        detail: "Some emails hit. Some bounce (list quality dependent). Some get flagged as generic. The ones that reply come back without the context of why they were messaged.",
+        time: "ongoing", callout: "Generic personalisation reads as generic. Response rates reflect it.", good: false,
       },
     ],
   },
   {
     key: "diy",
-    label: "DIY / Builder",
-    sub: "Claude, spreadsheet or workflow tool",
+    label: "DIY stack",
+    sub: "Spreadsheet, AI chat, manual work",
     icon: Wrench,
     tone: "amber",
-    totalLabel: "Time",
-    total: "~45 min per prospect",
-    totalSub: "or weeks of setup for a builder tool",
+    totalLabel: "Your time",
+    total: "~90 min per prospect",
+    totalSub: "every minute is yours",
+    goodAt: "Total control. You make every decision. No subscription cost beyond the tools you already have. For a founder doing 2-3 prospects a week, this is genuinely viable - and many are doing exactly this right now.",
+    footerNote: "Maximum control, minimum leverage. Sustainable for a handful of prospects a week. Breaks the moment you need volume.",
     steps: [
       {
-        step: "1", label: "Source and filter the list",
-        detail: "Pull from a database, clean in a sheet - or spend days learning a builder tool before you prospect anyone.",
-        time: "~4 min", callout: "Repeat every cycle as data drifts", good: false,
+        step: "1", label: "Build the list",
+        detail: "LinkedIn Sales Navigator search, export to spreadsheet. Or a database export, or a scrape. You pick the companies and the people manually.",
+        time: "10 min", callout: "You control the shortlist completely", good: true,
       },
       {
-        step: "2", label: "Verify emails",
-        detail: "Run through a verifier, discard bounces, re-check borderlines. Or build a provider waterfall yourself in a workflow tool.",
-        time: "~3 min", callout: "Manual or built - still ~15-20% uncertainty", good: false,
+        step: "2", label: "Find and verify the email",
+        detail: "Try a pattern-matcher or a free email finder. Run it through a verification tool. Manual, slow, and inconsistent across providers.",
+        time: "15 min", callout: "One provider's blind spot is your blind spot", good: false,
       },
       {
-        step: "3", label: "Find signals",
-        detail: "Google, LinkedIn, press - by hand. Or wire up scrapers and APIs in a builder. Either way, coverage depends on what you check.",
-        time: "~12 min", callout: "You catch what you think to look for", good: false,
+        step: "3", label: "Research the prospect",
+        detail: "Open the company website, their LinkedIn, their recent news. Scan funding databases. Read the CEO's last three posts. Write notes.",
+        time: "20 min", callout: "This is where most of your time goes. Every prospect. Every week.", good: false,
       },
       {
-        step: "4", label: "Research with Claude or your own agents",
-        detail: "Claude cites sources now and does solid research. You still re-prompt per company, review output and fill gaps - every time.",
-        time: "~10 min", callout: "Good output, but re-prompt for every prospect", good: false,
+        step: "4", label: "Write the email in AI chat",
+        detail: "Paste your research into ChatGPT or Claude. Ask for a first draft. Rewrite because it sounds generic. Rewrite again because it invented a fact. Paste back into your sequencer.",
+        time: "20 min", callout: "The AI doesn't know it's 2026. Hallucinations happen unless you catch them.", good: false,
       },
       {
-        step: "5", label: "Write the message",
-        detail: "Draft a hook. Revise. Match your tone. Claude helps but the final voice check is yours - whether you built an agent or not.",
-        time: "~15 min", callout: "Still your call on every draft", good: false,
+        step: "5", label: "Send and track manually",
+        detail: "Send from your inbox or paste into a sequencer. Update a spreadsheet. Hope you remember to follow up.",
+        time: "5 min", callout: "Tracking is a tab you forget to check", good: false,
       },
       {
-        step: "6", label: "Assemble, maintain and send",
-        detail: "Paste and send from the sheet, or keep a workflow tool running as providers change and prompts drift. Both take ongoing effort.",
-        time: "~5 min", callout: "Works - does not scale without slipping", good: false,
-      },
-    ],
-  },
-  {
-    key: "salesnav",
-    label: "Sales Navigator",
-    sub: "LinkedIn prospecting",
-    icon: Network,
-    tone: "orange",
-    totalLabel: "Cost",
-    total: "€90 - €150 / mo",
-    totalSub: "plus all the manual work on top",
-    steps: [
-      {
-        step: "1", label: "Filter companies and people",
-        detail: "Good filters for seniority, company size and industry. Still firmographic - it ranks by profile data, not actual fit to your ICP.",
-        time: "~15 min", callout: "Good reach, limited ICP depth", good: false,
-      },
-      {
-        step: "2", label: "Limited contact data",
-        detail: "Sales Nav surfaces profiles, not verified emails. You get InMail credits and some phone numbers. Deliverable emails need an extra tool.",
-        time: "varies", callout: "Emails need a separate verifier", good: false,
-      },
-      {
-        step: "3", label: "Basic activity signals",
-        detail: "Job changes, company growth, shared connections. Useful, but limited to what LinkedIn tracks - no funding, press or sector signals.",
-        time: "included", callout: "LinkedIn signals only, not the full picture", good: false,
-      },
-      {
-        step: "4", label: "Account insights only",
-        detail: "Sales Nav shows headcount growth and news snippets. Deep research - recent press, product moves, leadership changes - is still yours to do.",
-        time: "your time", callout: "Research is still on you", good: false,
-      },
-      {
-        step: "5", label: "You write every message",
-        detail: "InMail or email - you write the hook, the angle, the opener. No voice matching, no reasoning passes. Templates at best.",
-        time: "your time", callout: "Generic or slow", good: false,
-      },
-      {
-        step: "6", label: "Send via LinkedIn or your inbox",
-        detail: "InMail limits cap your volume. Sending from your inbox needs the email first - which Sales Nav often cannot give you directly.",
-        time: "manual", callout: "Inbox stays yours, reach is capped", good: true,
+        step: "6", label: "Do it again next week",
+        detail: "The work doesn't compound. Every prospect starts from scratch.",
+        time: "ongoing", callout: "Your time is the product", good: false,
       },
     ],
   },
   {
     key: "agency",
     label: "Outbound agency",
-    sub: "Fully outsourced",
+    sub: "Fully outsourced, €2,500+/mo",
     icon: Briefcase,
     tone: "orange",
-    totalLabel: "Cost",
-    total: "€2,500 - €5,000 / mo",
-    totalSub: "typically a 3-6 month commitment",
+    totalLabel: "Your time",
+    total: "Minutes per prospect",
+    totalSub: "not your voice, not your control, not your learning",
+    goodAt: "Off your plate. A good agency brings experienced SDRs, existing infrastructure, and a process. If you have the budget and the patience to onboard them properly, they can book meetings.",
+    footerNote: "If budget is not a constraint and you want outbound off your plate entirely, an agency works. For a small team that wants to own the function and the learning, the math rarely works.",
     steps: [
       {
-        step: "1", label: "Onboarding takes weeks",
-        detail: "ICP definition, copywriting handover, infrastructure setup, retainer sign-off. You will not be live in week one.",
-        time: "2-4 wks", callout: "Slow to start, slow to adjust", good: false,
+        step: "1", label: "Onboard the agency",
+        detail: "Strategy calls, ICP documents, persona workshops, messaging reviews. They learn your business. Expensive weeks of calendar time before any prospect is contacted.",
+        time: "wks 1-2", callout: "Ramp takes weeks. Budget starts immediately.", good: false,
       },
       {
-        step: "2", label: "They pick the targets",
-        detail: "From their database and their process. You review and approve, but the filter logic is theirs.",
-        time: "theirs", callout: "You approve, not choose", good: false,
+        step: "2", label: "They run campaigns in their voice",
+        detail: "Their SDRs write the messages. They send from their domains or yours. You review drafts, sometimes weekly, sometimes monthly. You are a step removed from what goes out.",
+        time: "wks 3+", callout: "The voice in the inbox is not your rep's voice", good: false,
       },
       {
-        step: "3", label: "Separate sending infrastructure",
-        detail: "Most agencies use a secondary inbox setup, not your main domain. Your main sender reputation stays separate.",
-        time: "theirs", callout: "Your main inbox is protected, but disconnected", good: false,
+        step: "3", label: "Review results in a report",
+        detail: "They deliver a dashboard. Meetings booked, emails sent, response rate. You learn the numbers. You don't learn what's working, why, or how to replicate it if the agency leaves.",
+        time: "monthly", callout: "The learning stays with the agency", good: false,
       },
       {
-        step: "4", label: "Campaigns, not conversations",
-        detail: "Sequenced at scale. Works for volume but personalisation is limited by how much they can do per seat.",
-        time: "theirs", callout: "Scale over relevance", good: false,
-      },
-      {
-        step: "5", label: "Your rep is not the sender",
-        detail: "Replies come to a shared inbox. The relationship between your rep and the prospect starts later, if at all.",
-        time: "n/a", callout: "Sender voice and relationship are lost", good: false,
-      },
-      {
-        step: "6", label: "Hard to pause or redirect",
-        detail: "Retainers run for months. Changing ICP, copy or strategy mid-contract takes time and goodwill.",
-        time: "3-6 mo", callout: "Right for some, not for agile teams", good: false,
+        step: "4", label: "Cancel and lose the pipeline",
+        detail: "Stop paying and everything stops. No knowledge transfer, no process you own, no contacts you keep. The meetings booked while you paid are yours. The machine is theirs.",
+        time: "any time", callout: "Leverage is rented, not built", good: false,
       },
     ],
   },
@@ -254,7 +239,7 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
   amber:  { bg: "rgba(245,158,11,0.10)",  border: "rgba(245,158,11,0.30)",  fg: "#b45309",                soft: "rgba(245,158,11,0.08)"  },
 };
 
-const NUDGE_ORDER: TabKey[] = ["database", "diy", "salesnav", "agency"];
+const NUDGE_ORDER: TabKey[] = ["database", "aioutreach", "diy", "agency"];
 
 export const DIYCompare = () => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
@@ -363,24 +348,31 @@ export const DIYCompare = () => {
 
         {/* Totals strip */}
         <div
-          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 px-5 py-3 rounded-xl"
+          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-5 px-5 py-3 rounded-xl"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
           <div className="flex items-center gap-2">
-            {active.key === "database" || active.key === "agency" ? (
-              <Euro className="size-4" style={{ color: tone.fg }} />
-            ) : (
-              <Clock className="size-4" style={{ color: tone.fg }} />
-            )}
+            <Clock className="size-4" style={{ color: tone.fg }} />
             <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: tone.fg }}>
               {active.totalLabel}
             </span>
           </div>
-          <div className="flex items-baseline gap-2">
+          <div className="flex items-baseline gap-2 flex-wrap">
             <span className="text-2xl font-bold text-[var(--heading)]">{active.total}</span>
             <span className="text-xs text-[var(--muted-foreground)]">{active.totalSub}</span>
           </div>
         </div>
+
+        {/* What it's good at */}
+        {active.goodAt && (
+          <div
+            className="mb-5 px-5 py-3 rounded-xl text-[13px] text-[var(--muted-foreground)] leading-relaxed"
+            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+          >
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--heading)] mr-2">What it's good at:</span>
+            {active.goodAt}
+          </div>
+        )}
 
         {/* Steps grid */}
         <div
@@ -388,7 +380,7 @@ export const DIYCompare = () => {
           style={{ background: "var(--border)", boxShadow: "var(--shadow-md)" }}
         >
           {active.steps.map((s) => (
-            <div key={s.step} className="p-6 lg:p-7" style={{ background: "var(--card)" }}>
+            <div key={s.step} className="flex flex-col h-full p-6 lg:p-7" style={{ background: "var(--card)" }}>
               <div className="flex items-center justify-between mb-4">
                 <span
                   className="inline-flex items-center justify-center size-7 rounded-lg text-[11px] font-bold"
@@ -405,7 +397,7 @@ export const DIYCompare = () => {
               </div>
               <div className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
               <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
-              <div className="flex items-start gap-1.5 pt-3 border-t border-dashed border-[var(--border)]">
+              <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
                 {s.good ? (
                   <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
                 ) : (
@@ -417,6 +409,12 @@ export const DIYCompare = () => {
           ))}
         </div>
 
+        {/* Footer note */}
+        {active.footerNote && (
+          <p className="mt-4 text-[13px] text-[var(--muted-foreground)] leading-relaxed max-w-3xl">
+            {active.footerNote}
+          </p>
+        )}
       </div>
     </section>
   );
