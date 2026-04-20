@@ -48,10 +48,10 @@ export const Contact = () => {
             }}
           >
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-orange)] mb-3">10 packages, free</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-orange)] mb-3">10 prospects, free</p>
               <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">Start a free pilot</h2>
               <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                Fully built packages. No payment. We ask for 20 minutes of honest feedback in return.
+                Ten fully built prospects. No payment. We ask for 20 minutes of honest feedback in return.
               </p>
             </div>
             <span className="mt-6 text-sm font-semibold text-[var(--hooklyne-orange)] group-hover:opacity-80 transition-opacity">

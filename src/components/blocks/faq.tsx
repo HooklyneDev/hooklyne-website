@@ -152,7 +152,7 @@ const groups: Group[] = [
     items: [
       {
         q: "What's the free pilot?",
-        a: "Ten full prospect packages, free. Verified contacts, live signals, messages in your voice. We ask for a 20-minute feedback call in return.",
+        a: "Ten fully built prospects, free. Verified contacts, live signals, messages in your voice. We ask for a 20-minute feedback call in return.",
       },
       {
         q: "How long does onboarding take?",
