@@ -46,9 +46,15 @@ export const FeatureCarousel = () => {
   const slide = SLIDES[visible];
 
   return (
-    <section className="py-20 lg:py-28" data-fade>
+    <section className="py-24 lg:py-32" data-fade>
       <div className="container max-w-6xl">
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+        <div className="max-w-3xl mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">What makes it work</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1]">
+            Four things most tools skip.
+          </h2>
+        </div>
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
           <div className="lg:col-span-2 flex flex-col gap-2">
             {SLIDES.map((s, i) => (
               <button

@@ -1,4 +1,3 @@
-import { Calendar, Sparkles, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,36 +13,31 @@ export const Contact = () => {
             Let's talk.
           </h1>
           <p className="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
-            Book a demo, start a free pilot, or just send us a question. We answer fast.
+            Book a demo, start a free pilot, or just send us a question. You'll hear back fast.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-5 mb-12">
-          <div
-            className="rounded-2xl p-7 flex flex-col"
+          <a
+            href="mailto:hello@hooklyne.com?subject=Demo%20request"
+            className="group rounded-2xl p-7 flex flex-col justify-between min-h-[200px] transition-all hover:-translate-y-0.5"
             style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-md)" }}
           >
-            <div
-              className="inline-flex items-center justify-center size-11 rounded-xl mb-5"
-              style={{ background: "rgba(52,76,163,0.10)" }}
-            >
-              <Calendar className="size-5 text-[var(--hooklyne-blue)]" />
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">20 minutes</p>
+              <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">Book a demo</h2>
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                We show the portal live, walk through a real prospect package, and answer your questions.
+              </p>
             </div>
-            <h2 className="text-lg font-semibold text-[var(--heading)] mb-2">Book a demo</h2>
-            <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-6 flex-1">
-              20 minutes. We show the portal live, walk through a real prospect package, and answer your questions.
-            </p>
-            <a
-              href="mailto:hello@hooklyne.com?subject=Demo%20request"
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group self-start"
-            >
-              Book a demo
-              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </a>
-          </div>
+            <span className="mt-6 text-sm font-semibold text-[var(--hooklyne-blue)] group-hover:opacity-80 transition-opacity">
+              Book a slot →
+            </span>
+          </a>
 
-          <div
-            className="rounded-2xl p-7 flex flex-col"
+          <a
+            href="mailto:hello@hooklyne.com?subject=Pilot%20request"
+            className="group rounded-2xl p-7 flex flex-col justify-between min-h-[200px] transition-all hover:-translate-y-0.5"
             style={{
               background: `
                 radial-gradient(ellipse 60% 40% at 30% 0%, rgba(255,140,66,0.14), transparent 65%),
@@ -53,24 +47,17 @@ export const Contact = () => {
               boxShadow: "var(--shadow-md)",
             }}
           >
-            <div
-              className="inline-flex items-center justify-center size-11 rounded-xl mb-5"
-              style={{ background: "rgba(255,140,66,0.14)" }}
-            >
-              <Sparkles className="size-5 text-[var(--hooklyne-orange)]" />
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-orange)] mb-3">10 packages, free</p>
+              <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">Start a free pilot</h2>
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                Fully built packages. No payment. We ask for 20 minutes of honest feedback in return.
+              </p>
             </div>
-            <h2 className="text-lg font-semibold text-[var(--heading)] mb-2">Start a free pilot</h2>
-            <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-6 flex-1">
-              10 fully built prospect packages, free. No payment needed. We ask for 20 minutes of feedback in exchange.
-            </p>
-            <a
-              href="mailto:hello@hooklyne.com?subject=Pilot%20request"
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group self-start"
-            >
-              Request a pilot
-              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </a>
-          </div>
+            <span className="mt-6 text-sm font-semibold text-[var(--hooklyne-orange)] group-hover:opacity-80 transition-opacity">
+              Request a pilot →
+            </span>
+          </a>
         </div>
 
         <div
@@ -78,7 +65,7 @@ export const Contact = () => {
           style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-xs)" }}
         >
           <h2 className="text-xl font-semibold text-[var(--heading)] mb-1">Or send a message</h2>
-          <p className="text-sm text-[var(--muted-foreground)] mb-7">For any other question. We reply within one business day.</p>
+          <p className="text-sm text-[var(--muted-foreground)] mb-7">For anything else. You'll hear back within one business day.</p>
           <form className="grid md:grid-cols-2 gap-5">
             <div className="space-y-2">
               <Label>Name</Label>
@@ -135,7 +122,7 @@ export const Contact = () => {
             </div>
             <div className="md:col-span-2 flex items-center justify-between flex-wrap gap-4">
               <p className="text-xs text-[var(--muted-foreground)] max-w-md">
-                We'll get back to you within one business day. Your details are only used to respond to your message - see our <a href="/privacy" className="underline hover:text-[var(--heading)]">privacy policy</a> for full details.
+                You'll hear back within one business day. We only use your details to reply. See our <a href="/privacy" className="underline hover:text-[var(--heading)]">privacy policy</a> for the rest.
               </p>
               <Button size="lg" type="submit" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
                 Send message
@@ -145,13 +132,12 @@ export const Contact = () => {
         </div>
 
         <div className="mt-10 text-center">
-          <div className="inline-flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
-            <Mail className="size-4" />
-            <span>Prefer email? Write to us at</span>
+          <p className="text-sm text-[var(--muted-foreground)]">
+            Prefer email? Write to us at{" "}
             <a href="mailto:hello@hooklyne.com" className="text-[var(--hooklyne-blue)] font-medium hover:opacity-80 transition-opacity">
               hello@hooklyne.com
             </a>
-          </div>
+          </p>
           <p className="text-xs text-[var(--muted-foreground)] mt-2">Based in the Netherlands, reachable across EMEA.</p>
         </div>
       </div>

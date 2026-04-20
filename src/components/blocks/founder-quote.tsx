@@ -1,32 +1,19 @@
-import { Quote } from "lucide-react";
-
 export const FounderQuote = () => (
- <section className="py-20 lg:py-28" data-fade>
- <div className="container max-w-3xl">
- <div
- className="rounded-3xl p-10 lg:p-14 text-center relative overflow-hidden"
- style={{
- background: `
- radial-gradient(ellipse 80% 60% at 50% 0%, rgba(52,76,163,0.10), transparent 70%),
- linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%)
- `,
- boxShadow: "var(--shadow-md)",
- }}
- >
- <Quote className="size-8 mx-auto mb-6 text-[var(--hooklyne-blue)]" strokeWidth={1.5} />
- <blockquote className="text-xl md:text-2xl font-medium text-[var(--heading)] leading-snug mb-6">
- Most teams can't choose between proper research and enough outreach, so they sacrifice both. We built Hooklyne so they don't have to.
- </blockquote>
- <div className="flex items-center justify-center gap-3">
- <div className="size-10 rounded-full bg-[var(--hooklyne-blue)]/15 flex items-center justify-center text-[var(--hooklyne-blue)] font-semibold">
- T
- </div>
- <div className="text-left">
- <div className="text-sm font-semibold text-[var(--heading)]">Tim</div>
- <div className="text-xs text-[var(--muted-foreground)]">Founder, Hooklyne</div>
- </div>
- </div>
- </div>
- </div>
- </section>
+  <section className="py-24 lg:py-32" data-fade>
+    <div className="container max-w-6xl">
+      <div className="max-w-4xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-6">From the founder</p>
+        <blockquote className="text-3xl md:text-4xl lg:text-5xl font-medium text-[var(--heading)] leading-[1.2] tracking-tight">
+          Most teams can't pick between proper research and enough outreach. So they sacrifice both. We built Hooklyne so they don't have to.
+        </blockquote>
+        <div className="mt-10 flex items-center gap-4">
+          <div className="h-px w-12 bg-[var(--border-strong)]"></div>
+          <div>
+            <div className="text-sm font-semibold text-[var(--heading)]">Tim</div>
+            <div className="text-xs text-[var(--muted-foreground)]">Founder, Hooklyne</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 );
