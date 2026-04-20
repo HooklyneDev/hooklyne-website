@@ -13,6 +13,7 @@ const ITEMS: NavItem[] = [
   {
     label: "Resources",
     children: [
+      { label: "Guides", href: "/guides" },
       { label: "FAQ", href: "/faq" },
       { label: "News", href: "/blog" },
     ],
@@ -42,12 +43,13 @@ export const Navbar = () => {
         className={cn(
           "w-full pointer-events-auto transition-all duration-500 rounded-2xl",
           "max-w-[1220px]",
-          "backdrop-blur-2xl backdrop-saturate-150",
+          "backdrop-blur-xl backdrop-saturate-[180%]",
         )}
         style={{
           background: scrolled ? "var(--glass-bg-scrolled)" : "var(--glass-bg)",
           border: "1px solid var(--glass-border)",
           boxShadow: `var(--glass-shadow), inset 0 1px 0 var(--glass-highlight)`,
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
         }}
       >
         <div className="flex items-center justify-between px-5 py-3">
@@ -68,7 +70,7 @@ export const Navbar = () => {
                         "inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
                         childActive
                           ? "text-[var(--hooklyne-blue)]"
-                          : "text-[var(--foreground)]/80 group-hover:text-[var(--hooklyne-blue)] group-hover:bg-[var(--hooklyne-blue)]/5",
+                          : "text-[var(--hooklyne-navy)]/80 group-hover:text-[var(--hooklyne-blue)] group-hover:bg-[var(--hooklyne-blue)]/5",
                       )}
                     >
                       {link.label}
@@ -113,7 +115,7 @@ export const Navbar = () => {
                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
                     isActive(link.href!)
                       ? "text-[var(--hooklyne-blue)]"
-                      : "text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
+                      : "text-[var(--hooklyne-navy)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5",
                   )}
                 >
                   {link.label}
