@@ -1,6 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, X, Clock, Database, Wrench, Sparkles, Euro, Workflow, Briefcase } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+const HooklyneMark = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 32 32"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-hidden="true"
+  >
+    <rect width="32" height="32" rx="6" fill="#344ca3" />
+    <text
+      x="16"
+      y="22"
+      fontFamily="Arial, sans-serif"
+      fontSize="18"
+      fontWeight="bold"
+      fill="white"
+      textAnchor="middle"
+    >
+      H
+    </text>
+  </svg>
+);
 
 type TabKey = "database" | "diy" | "builder" | "agency" | "hooklyne";
 
@@ -45,17 +67,17 @@ const TABS: TabDef[] = [
   {
     key: "diy",
     label: "DIY stack",
-    sub: "Spreadsheet + ChatGPT",
+    sub: "Spreadsheet + Claude",
     icon: Wrench,
     tone: "amber",
-    total: "~6h 30m per prospect",
-    totalSub: "across 6 tools",
+    total: "~6h 30m / batch of 10",
+    totalSub: "across 6 tools, every cycle",
     steps: [
-      { step: "1", label: "Build the ICP list", detail: "Filter a database. Paste into a sheet. Dedupe. Clean the columns.", time: "45 min", callout: "Stale data, wrong bands", good: false },
-      { step: "2", label: "Verify emails", detail: "Paste into a verifier. Toss bounces. Re-verify borderline ones.", time: "30 min", callout: "~20% still unreliable", good: false },
-      { step: "3", label: "Hunt for signals", detail: "Google each company. LinkedIn each founder. Skim press mentions.", time: "2 hr", callout: "Miss 80% of what matters", good: false },
-      { step: "4", label: "Research each account", detail: "ChatGPT a summary. Check which parts are real. Fix hallucinations.", time: "1 hr", callout: "No live citations", good: false },
-      { step: "5", label: "Draft the emails", detail: "Write a hook. Rewrite. Paste into template. Make it sound like you.", time: "1.5 hr", callout: "Generic, or takes forever", good: false },
+      { step: "1", label: "Build the ICP list", detail: "Filter a database or scrape sources. Paste into a sheet, dedupe, clean columns.", time: "45 min", callout: "Stale data, wrong size bands", good: false },
+      { step: "2", label: "Verify emails", detail: "Paste into a verifier. Toss bounces. Re-verify borderline ones.", time: "30 min", callout: "Still ~20% unreliable", good: false },
+      { step: "3", label: "Hunt for signals", detail: "Google each company. LinkedIn each founder. Skim press mentions by hand.", time: "2 hr", callout: "Miss most of what matters", good: false },
+      { step: "4", label: "Research with Claude", detail: "Prompt per company. Check the citations Claude returns. Stitch findings into notes.", time: "1 hr", callout: "Re-prompt every prospect", good: false },
+      { step: "5", label: "Draft the emails", detail: "Write a hook. Rewrite. Paste into template. Match your voice by hand.", time: "1.5 hr", callout: "Generic, or takes forever", good: false },
       { step: "6", label: "Organize and send", detail: "Sheet for prospects, doc for drafts, tabs for research. Merge by hand.", time: "45 min", callout: "Context lives nowhere", good: false },
     ],
   },
@@ -136,6 +158,18 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
 export const DIYCompare = () => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [nudgeIdx, setNudgeIdx] = useState(0);
+
+  // Cycle the auto-hover nudge left-to-right across non-Hooklyne tabs
+  const NUDGE_ORDER: TabKey[] = ["database", "diy", "builder", "agency"];
+  useEffect(() => {
+    if (hasInteracted) return;
+    const id = window.setInterval(() => {
+      setNudgeIdx((i) => (i + 1) % NUDGE_ORDER.length);
+    }, 2200);
+    return () => window.clearInterval(id);
+  }, [hasInteracted]);
+  const nudgeKey: TabKey | null = hasInteracted ? null : NUDGE_ORDER[nudgeIdx];
   const active = TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
   const isHooklyne = active.key === "hooklyne";
@@ -156,7 +190,7 @@ export const DIYCompare = () => {
           }
         }
         .diycompare-auto-hover {
-          animation: diycompareAutoHover 2.6s ease-in-out infinite;
+          animation: diycompareAutoHover 1.8s ease-in-out 1;
         }
         .diycompare-auto-hover:hover {
           animation: none;
@@ -197,7 +231,7 @@ export const DIYCompare = () => {
             const isActive = tab === t.key;
             const tTone = TONE[t.tone];
             const Icon = t.icon;
-            const nudge = !hasInteracted && !isActive && t.key === "diy";
+            const nudge = !isActive && t.key === nudgeKey;
             return (
               <button
                 key={t.key}
@@ -233,17 +267,7 @@ export const DIYCompare = () => {
 
                 <div className="flex items-center gap-2.5">
                   {t.key === "hooklyne" ? (
-                    <img
-                      src="/favicon.svg"
-                      alt=""
-                      aria-hidden
-                      className="size-8 rounded-lg shrink-0"
-                      style={{
-                        boxShadow: isActive
-                          ? "0 0 0 1px rgba(255,255,255,0.15)"
-                          : "0 0 0 1px var(--border)",
-                      }}
-                    />
+                    <HooklyneMark className="size-8 rounded-lg shrink-0 block" />
                   ) : (
                     <span
                       className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors"
