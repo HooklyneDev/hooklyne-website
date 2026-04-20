@@ -254,19 +254,8 @@ export const DIYCompare = () => {
                     )}
                   </span>
                   <div className="min-w-0">
-                    <div className="text-[13px] font-bold leading-tight flex items-center gap-1.5">
+                    <div className="text-[13px] font-bold leading-tight">
                       {t.label}
-                      {t.key === "hooklyne" && (
-                        <span
-                          className="text-[8px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded"
-                          style={{
-                            background: isActive ? "rgba(13,148,136,0.35)" : "var(--hooklyne-teal)",
-                            color: "#fff",
-                          }}
-                        >
-                          Ours
-                        </span>
-                      )}
                     </div>
                     <div
                       className="text-[11px] leading-tight mt-0.5 truncate"
