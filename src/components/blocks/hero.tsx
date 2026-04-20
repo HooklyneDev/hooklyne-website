@@ -204,12 +204,12 @@ export const Hero = () => {
           {/* Video */}
           <div
             className="border border-t-0 rounded-b-2xl"
-            style={{ borderColor: "var(--border)", position: "relative", paddingBottom: "52%", overflow: "hidden" }}
+            style={{ borderColor: "var(--border)", position: "relative", paddingBottom: "56.7%", overflow: "hidden" }}
           >
             <video
               autoPlay muted loop playsInline
               poster="/hooklyne-hero.png"
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", display: "block" }}
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "center center", display: "block", background: "var(--card)" }}
             >
               <source src="/home/hooklyne-intro.webm" type="video/webm" />
               <source src="/home/hooklyne-intro.mp4" type="video/mp4" />
