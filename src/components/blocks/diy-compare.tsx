@@ -43,6 +43,7 @@ const TABS: TabDef[] = [
     key: "hooklyne",
     label: "Hooklyne",
     sub: "Entire workflow",
+    price: "€39–299/mo",
     icon: Wrench,
     tone: "teal",
     totalLabel: "Your time",
