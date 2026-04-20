@@ -153,6 +153,11 @@ export const FeatureCarousel = () => {
                   className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-180"
                   style={{ opacity: fading ? 0 : 1 }}
                 />
+                {/* Bottom fade — softens the hard edge where portal UI meets page background */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+                  style={{ background: "linear-gradient(to bottom, transparent 0%, var(--background) 100%)" }}
+                />
                 {/* Floating contextual overlays */}
                 <div
                   className="absolute inset-0 pointer-events-none transition-opacity duration-180"

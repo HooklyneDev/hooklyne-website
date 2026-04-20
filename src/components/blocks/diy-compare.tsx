@@ -47,34 +47,34 @@ const TABS: TabDef[] = [
     totalSub: "everything else is handled",
     steps: [
       {
-        step: "1", label: "Set your ICP and sender profile",
-        detail: "Describe who you sell to in plain language. We store your voice, your cadence, and your ICP — and match against them every run.",
-        time: "once", callout: "Your profile, applied to every prospect", good: true,
+        step: "1", label: "Describe the company type",
+        detail: "Plain language, not filter grids. We run a semantic match across billions of pages and return a ranked list. Best fit at the top, scored against your ICP.",
+        time: "2 min", callout: "A ranked shortlist, not a dump of rows", good: true,
       },
       {
-        step: "2", label: "Contacts verified before you see them",
-        detail: "20+ providers run in sequence. Four deliverability layers per address. If it cannot be verified, it does not ship.",
-        time: "auto", callout: "Your domain reputation stays clean", good: true,
+        step: "2", label: "Pick the contact you want to reach",
+        detail: "Each company shows the available roles. You choose the one that fits. That contact goes through a 20+ provider waterfall. Unverifiable ones never reach you.",
+        time: "30 sec", callout: "You choose the role. We verify the address.", good: true,
       },
       {
-        step: "3", label: "Buying signals, scored for your ICP",
-        detail: "Funding, hiring, leadership, launches, press, expansion and sector news — monitored continuously and ranked against your ICP.",
-        time: "auto", callout: "The right moment, not just the right company", good: true,
+        step: "3", label: "Lands in My Leads with a reason",
+        detail: "Every prospect arrives with a why-this-company signal already attached: funding round, hiring move, leadership change, launch. Not a guess, a sourced event.",
+        time: "auto", callout: "A reason to reach out, not just a name", good: true,
       },
       {
-        step: "4", label: "Research brief with live citations",
-        detail: "Every fact sourced from a live URL. No stale training data. Every claim is clickable — walk into the meeting with full confidence.",
-        time: "auto", callout: "Zero hallucinations, every fact citable", good: true,
+        step: "4", label: "Full email, written in your voice",
+        detail: "Four reasoning passes: hook, angle, voice, QC. Dutch or English locked from the prospect's domain. Reads like your rep wrote it after doing the research.",
+        time: "auto", callout: "No template smell, no generic opener", good: true,
       },
       {
-        step: "5", label: "Message drafted in your voice",
-        detail: "Reasoned through four passes: hook, angle, voice, QC. Dutch or English locked per prospect. Reads like your rep wrote it.",
-        time: "auto", callout: "No generic openers, no template smell", good: true,
+        step: "5", label: "Track signals from that lead",
+        detail: "Choose to monitor any lead for ongoing signals: new funding, team changes, press coverage. You get notified when the moment changes, not when the calendar says so.",
+        time: "toggle", callout: "Catch the next moment too, not just the first", good: true,
       },
       {
-        step: "6", label: "Review card and meeting prep",
-        detail: "Company, contact, signal, hook, email, LinkedIn — one card. Meeting prep included. Accept and send from your own inbox.",
-        time: "<60s", callout: "Under a minute from review to sent", good: true,
+        step: "6", label: "Request a meeting brief",
+        detail: "When you are ready to meet, request a live-researched brief. Every claim traces to a real URL. No hallucinations, no stale data. Walk in prepared.",
+        time: "on demand", callout: "Cited, current, ready when you need it", good: true,
       },
     ],
   },
@@ -95,12 +95,12 @@ const TABS: TabDef[] = [
       },
       {
         step: "2", label: "Emails included, quality varies",
-        detail: "Single provider per row. No waterfall. Older exports degrade fast — bounces burn your domain reputation over time.",
+        detail: "Single provider per row. No waterfall. Older exports degrade fast. Bounces burn your domain reputation over time.",
         time: "included", callout: "Bounce risk real, domain reputation yours to lose", good: false,
       },
       {
         step: "3", label: "No signal monitoring",
-        detail: "A contact row has no context. Funding, hiring, launches — you check manually, if at all.",
+        detail: "A contact row has no context. Funding, hiring, launches - you check manually, if at all.",
         time: "your time", callout: "No buying context included", good: false,
       },
       {
@@ -110,8 +110,8 @@ const TABS: TabDef[] = [
       },
       {
         step: "5", label: "You write every message",
-        detail: "Merge fields give you a name and company. The hook, the angle, the voice — all manual, every time.",
-        time: "your time", callout: "Generic, or slow — pick one", good: false,
+        detail: "Merge fields give you a name and company. The hook, the angle, the voice - all manual, every time.",
+        time: "your time", callout: "Generic or slow", good: false,
       },
       {
         step: "6", label: "Send from your own inbox",
@@ -137,7 +137,7 @@ const TABS: TabDef[] = [
       },
       {
         step: "2", label: "Verify emails yourself",
-        detail: "Run through a verifier, discard bounces, re-check borderlines. Faster than no verification — still 15-20% uncertainty.",
+        detail: "Run through a verifier, discard bounces, re-check borderlines. Faster than no verification, still 15-20% uncertainty.",
         time: "~3 min", callout: "Good practice, not watertight", good: false,
       },
       {
@@ -157,7 +157,7 @@ const TABS: TabDef[] = [
       },
       {
         step: "6", label: "Assemble and send",
-        detail: "Copy from the sheet, paste the draft, add the context. Doable — just not something that scales without slipping.",
+        detail: "Copy from the sheet, paste the draft, add the context. Doable, just not something that scales without slipping.",
         time: "~5 min", callout: "Works, does not scale cleanly", good: false,
       },
     ],
@@ -195,11 +195,11 @@ const TABS: TabDef[] = [
       {
         step: "5", label: "Keep it running",
         detail: "Provider APIs change, sites block scrapers, prompts drift. A workflow that runs well today needs maintenance.",
-        time: "ongoing", callout: "Real upkeep — not set and forget", good: false,
+        time: "ongoing", callout: "Real upkeep, not set and forget", good: false,
       },
       {
         step: "6", label: "Review and finish by hand",
-        detail: "Even a well-built workflow usually ends with manual review, editing, and sending. Which is fine — if the rest held.",
+        detail: "Even a well-built workflow ends with manual review, editing, and sending. Which is fine if the rest held.",
         time: "your time", callout: "Powerful when it works", good: true,
       },
     ],
@@ -226,7 +226,7 @@ const TABS: TabDef[] = [
       },
       {
         step: "3", label: "Separate sending infrastructure",
-        detail: "Most agencies send from a secondary inbox setup — not your main domain. Your main sender reputation stays separate.",
+        detail: "Most agencies use a secondary inbox setup, not your main domain. Your main sender reputation stays separate.",
         time: "theirs", callout: "Your main inbox is protected, but disconnected", good: false,
       },
       {
@@ -237,7 +237,7 @@ const TABS: TabDef[] = [
       {
         step: "5", label: "Your rep is not the sender",
         detail: "Replies come to a shared inbox. The relationship between your rep and the prospect starts later, if at all.",
-        time: "—", callout: "Sender voice and relationship are lost", good: false,
+        time: "n/a", callout: "Sender voice and relationship are lost", good: false,
       },
       {
         step: "6", label: "Hard to pause or redirect",
@@ -292,10 +292,10 @@ export const DIYCompare = () => {
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">The workflow</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
-            Six steps, handled.
+            From company type to ready-to-send. In six steps.
           </h2>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            This is the Hooklyne workflow — from your ICP to a review-ready prospect card. Tap the other tabs to see the honest version of what the same six steps cost with a database, a spreadsheet, a builder tool, or an agency.
+            You describe who you sell to. We find the ranked list, verify the contact, attach the buying signal, write the email in your voice, and prep the meeting brief when you need it. Your rep reviews and sends. That is the whole job. Tap the other tabs to see what it takes to do the same without Hooklyne.
           </p>
         </div>
 
