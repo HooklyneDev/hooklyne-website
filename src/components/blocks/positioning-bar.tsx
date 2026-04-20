@@ -4,7 +4,7 @@ import { Database, Building2 } from "lucide-react";
 const EN = {
   eyebrow: "Where Hooklyne sits",
   headline: "Between a database and an agency.",
-  body: "Databases hand you rows to filter. Agencies take the whole job off your plate for €2,500+/mo. Hooklyne is the research layer between - proper research, ready-to-send outreach, without replacing your rep.",
+  body: "Databases keep you in control but burn your time. Agencies save your time but take your voice and your learning with them. Hooklyne is the only option that keeps both - your hours and your team's knowledge.",
   segments: {
     left:   { label: "Contact databases", sub: "Rows to filter",    price: "€"    },
     center: { label: "Hooklyne",          sub: "The research layer", price: "€€"   },
@@ -15,7 +15,7 @@ const EN = {
 const NL = {
   eyebrow: "Waar Hooklyne zit",
   headline: "Tussen een database en een agency.",
-  body: "Databases geven je rijen om te filteren. Agencies nemen de hele taak over voor €2.500+/mo. Hooklyne is de onderzoekslaag daartussenin - gedegen research, verzendklare outreach, zonder je rep te vervangen.",
+  body: "Databases houden je in controle maar kosten je tijd. Agencies besparen je tijd maar nemen je stem en je kennis mee. Hooklyne is de enige optie die beide behoudt - je uren en de kennis van je team.",
   segments: {
     left:   { label: "Contactdatabases",  sub: "Rijen om te filteren", price: "€"    },
     center: { label: "Hooklyne",          sub: "De onderzoekslaag",    price: "€€"   },

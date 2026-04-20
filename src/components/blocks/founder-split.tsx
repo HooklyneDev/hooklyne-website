@@ -1,16 +1,13 @@
-import { Briefcase, MapPin, Users } from "lucide-react";
-
 const EN = {
   eyebrow: "From the founder",
   quote: "Most teams can't pick between proper research and enough outreach, so they sacrifice both. We built Hooklyne so they don't have to.",
   name: "Tim",
   role: "Founder · Hooklyne · The Netherlands",
-  credentials: [
-    { label: "10+ years in B2B sales" },
-    { label: "Dutch-built, EMEA-native" },
-    { label: "Building with and for small sales teams" },
+  details: [
+    "Founded 2026 in Utrecht.",
+    "Built with sales reps, not for them.",
+    "The team uses Hooklyne every day.",
   ],
-  closing: "Behind the product. Every day.",
 };
 
 const NL = {
@@ -18,15 +15,12 @@ const NL = {
   quote: "De meeste teams kunnen niet kiezen tussen gedegen onderzoek en voldoende outreach, dus offeren ze allebei op. We bouwden Hooklyne zodat ze dat niet hoeven te doen.",
   name: "Tim",
   role: "Oprichter · Hooklyne · Nederland",
-  credentials: [
-    { label: "10+ jaar in B2B-sales" },
-    { label: "Dutch-built, EMEA-native" },
-    { label: "Bouwen met en voor kleine salesteams" },
+  details: [
+    "Opgericht in 2026 in Utrecht.",
+    "Gebouwd met salesreps, niet voor hen.",
+    "Het team gebruikt Hooklyne elke dag.",
   ],
-  closing: "Achter het product. Elke dag.",
 };
-
-const CREDENTIAL_ICONS = [Briefcase, MapPin, Users];
 
 export const FounderSplit = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
@@ -42,7 +36,6 @@ export const FounderSplit = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
               {t.eyebrow}
             </p>
 
-            {/* Decorative quote mark */}
             <div
               aria-hidden="true"
               className="text-7xl leading-none font-serif mb-2 select-none"
@@ -61,30 +54,14 @@ export const FounderSplit = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             </div>
           </div>
 
-          {/* Right: credentials */}
+          {/* Right: plain text details */}
           <div className="lg:pt-16">
-            <div className="space-y-5">
-              {t.credentials.map((c, i) => {
-                const Icon = CREDENTIAL_ICONS[i];
-                return (
-                  <div key={i} className="flex items-center gap-3">
-                    <span
-                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0"
-                      style={{ background: "var(--hooklyne-navy)", color: "#fff" }}
-                    >
-                      <Icon className="size-4" />
-                    </span>
-                    <span className="text-sm text-[var(--heading)]">{c.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div
-              className="mt-8 pt-6 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--muted-foreground)]"
-              style={{ borderTop: "1px solid var(--border)" }}
-            >
-              {t.closing}
+            <div className="space-y-3">
+              {t.details.map((line, i) => (
+                <p key={i} className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  {line}
+                </p>
+              ))}
             </div>
           </div>
 

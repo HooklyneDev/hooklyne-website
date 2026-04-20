@@ -42,11 +42,13 @@ const CARDS = [
   { name: "Joost", role: "BD · 20-person agency", tag: "Considered selling" },
 ];
 
-/* Stack position styles: index 0 = front, 1 = middle, 2 = back */
-const STACK: { transform: string; opacity: number; zIndex: number }[] = [
-  { transform: "translateX(0px)  translateY(0px)  scale(1)",    opacity: 1,    zIndex: 3 },
-  { transform: "translateX(12px) translateY(14px) scale(0.965)", opacity: 0.72, zIndex: 2 },
-  { transform: "translateX(24px) translateY(28px) scale(0.93)", opacity: 0.45, zIndex: 1 },
+/* Stack position styles: index 0 = front, 1 = middle, 2 = back.
+   Y-only offset so back cards are not pushed outside the container.
+   transformOrigin "top center" keeps cards top-aligned as they scale. */
+const STACK: { y: number; scale: number; opacity: number; zIndex: number }[] = [
+  { y: 0,  scale: 1.00, opacity: 1.00, zIndex: 30 },
+  { y: 8,  scale: 0.96, opacity: 0.82, zIndex: 20 },
+  { y: 16, scale: 0.92, opacity: 0.65, zIndex: 10 },
 ];
 
 export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
@@ -94,7 +96,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
           <div className="hidden lg:flex lg:col-span-2 items-start justify-center pt-16">
             <div
               className="relative"
-              style={{ width: 280, height: 140 }}
+              style={{ width: 280, height: 180 }}
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
             >
@@ -104,9 +106,10 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
                 return (
                   <div
                     key={card.name}
-                    className="absolute inset-x-0 top-0"
+                    className="absolute left-0 right-0 top-0"
                     style={{
-                      transform: s.transform,
+                      transform: `translateY(${s.y}px) scale(${s.scale})`,
+                      transformOrigin: "top center",
                       opacity: s.opacity,
                       zIndex: s.zIndex,
                       transition: reduced
