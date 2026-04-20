@@ -292,7 +292,7 @@ export const DIYCompare = () => {
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">The workflow</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
-            From ICP to inbox. Six steps.
+            From ICP to inbox. Six simple steps.
           </h2>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
             You describe who you sell to. We find the ranked list, verify the contact, attach the buying signal, write the email in your voice, and prep the meeting brief when you need it. Your rep reviews and sends. That is the whole job.
