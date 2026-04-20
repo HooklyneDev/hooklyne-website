@@ -6,6 +6,7 @@ import ValueProps from '@/components/blocks/value-props.astro';
 import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { FeatureCarousel } from '@/components/blocks/feature-carousel';
 import { FeatureShowcase } from '@/components/blocks/feature-showcase';
+import { DIYCompare } from '@/components/blocks/diy-compare';
 import { FounderQuote } from '@/components/blocks/founder-quote';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -21,6 +22,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <Background variant="bottom">
     <FeatureCarousel client:load />
     <FeatureShowcase />
+    <DIYCompare client:visible />
     <FounderQuote />
     <HomePricing client:load />
   </Background>
