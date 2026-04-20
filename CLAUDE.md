@@ -39,8 +39,9 @@ Blog/docs: skip for v1.
 - **Approach first, confirm, then build**
 - Never hardcode colors - always CSS vars
 - EN + NL translations on every page (inline pattern, no i18n library)
-- No em dashes - use ` - ` instead
-- No AI-style writing - plain direct language
+- No em dashes ever - use ` - ` or rewrite the sentence
+- No AI-style writing: no "delve", "dive into", "unleash", "seamlessly", "robust", "leverage", "cutting-edge", "game-changing", "revolutionize", "transformative", "unlock", "empower", "elevate". Write like a direct person, not a press release.
+- No typical AI design patterns: no purple/violet gradient hero blobs, no sparkle/star icons as decorative filler, no "magical" positioning language, no floating card stacks as fake social proof, no infinite scroll testimonial carousels with avatar grids. Design should feel product-led and B2B credible.
 - No bash comments (zsh errors)
 - Surgical edits only
 
