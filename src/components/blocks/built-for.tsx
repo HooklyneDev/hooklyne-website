@@ -37,9 +37,30 @@ const NL = {
 };
 
 const CARDS = [
-  { name: "Sem", role: "Founder · 4-person SaaS", tag: "Solo seller" },
-  { name: "Lotte", role: "SDR · 35-person consultancy", tag: "1 of 2 reps" },
-  { name: "Joost", role: "BD · 20-person agency", tag: "Considered selling" },
+  {
+    name: "Sem",
+    role: "Founder · 4-person SaaS",
+    tag: "Solo seller",
+    situation: "I research and write every outreach email myself. It takes half my day.",
+    outcome: "Hooklyne delivers a researched prospect package. Sem reviews and sends in under a minute.",
+    tone: "blue" as const,
+  },
+  {
+    name: "Lotte",
+    role: "SDR · 35-person consultancy",
+    tag: "1 of 2 reps",
+    situation: "Two reps, 40 accounts each. No time to research properly before reaching out.",
+    outcome: "Each lead arrives with a verified contact, a live signal, and a draft written in Lotte's voice.",
+    tone: "teal" as const,
+  },
+  {
+    name: "Joost",
+    role: "BD · 20-person agency",
+    tag: "Complex sale",
+    situation: "Generic outreach damages our brand. Every email needs to earn the reply.",
+    outcome: "Joost's emails lead with a real signal. Prospects can tell it's not a template.",
+    tone: "orange" as const,
+  },
 ];
 
 /* Stack position styles: index 0 = front, 1 = middle, 2 = back.
@@ -95,14 +116,26 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
           {/* Right: rotating prospect card stack (40%) */}
           <div className="hidden lg:flex lg:col-span-2 items-start justify-center pt-16">
             <div
-              className="relative"
-              style={{ width: 280, height: 180 }}
+              className="relative w-full"
+              style={{ height: 280 }}
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
             >
               {CARDS.map((card, i) => {
                 const pos = (i - front + 3) % 3;
                 const s   = STACK[pos];
+                const accentColor =
+                  card.tone === "teal"   ? "var(--hooklyne-teal)"   :
+                  card.tone === "orange" ? "var(--hooklyne-orange)"  :
+                  "var(--hooklyne-blue)";
+                const accentBg =
+                  card.tone === "teal"   ? "rgba(13,148,136,0.08)"  :
+                  card.tone === "orange" ? "rgba(255,140,66,0.08)"   :
+                  "rgba(52,76,163,0.08)";
+                const accentBorder =
+                  card.tone === "teal"   ? "rgba(13,148,136,0.18)"  :
+                  card.tone === "orange" ? "rgba(255,140,66,0.18)"   :
+                  "rgba(52,76,163,0.18)";
                 return (
                   <div
                     key={card.name}
@@ -118,37 +151,39 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
                     }}
                   >
                     <div
-                      className="rounded-xl px-4 py-3.5"
+                      className="rounded-xl p-5"
                       style={{
                         background: "var(--card)",
                         border: "1px solid var(--border)",
-                        boxShadow: "var(--shadow-md)",
+                        boxShadow: "var(--shadow-lg)",
                       }}
                     >
-                      <div className="flex items-start justify-between gap-2 mb-1.5">
+                      {/* Header */}
+                      <div className="flex items-start justify-between gap-3 mb-4">
                         <div>
-                          <div className="text-[13px] font-semibold text-[var(--heading)] leading-tight">{card.name}</div>
-                          <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">{card.role}</div>
+                          <div className="text-[14px] font-semibold text-[var(--heading)] leading-tight">{card.name}</div>
+                          <div className="text-[12px] text-[var(--muted-foreground)] mt-0.5">{card.role}</div>
                         </div>
                         <span
-                          className="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                          style={{
-                            background: "rgba(52,76,163,0.08)",
-                            color: "var(--hooklyne-blue)",
-                            border: "1px solid rgba(52,76,163,0.15)",
-                          }}
+                          className="shrink-0 text-[10px] font-semibold px-2.5 py-1 rounded-full"
+                          style={{ background: accentBg, color: accentColor, border: `1px solid ${accentBorder}` }}
                         >
                           {card.tag}
                         </span>
                       </div>
-                      <div
-                        className="h-px my-2"
-                        style={{ background: "var(--border)" }}
-                      />
-                      <div className="flex items-center gap-1.5">
-                        <span className="size-1.5 rounded-full" style={{ background: "var(--hooklyne-teal)" }} />
-                        <span className="text-[10px] text-[var(--muted-foreground)]">Signal match · reviewing</span>
-                      </div>
+
+                      {/* Situation */}
+                      <p className="text-[12px] text-[var(--muted-foreground)] leading-relaxed mb-3 italic">
+                        &ldquo;{card.situation}&rdquo;
+                      </p>
+
+                      {/* Divider */}
+                      <div className="h-px mb-3" style={{ background: "var(--border)" }} />
+
+                      {/* Outcome */}
+                      <p className="text-[12px] text-[var(--heading)] leading-relaxed font-medium">
+                        {card.outcome}
+                      </p>
                     </div>
                   </div>
                 );
