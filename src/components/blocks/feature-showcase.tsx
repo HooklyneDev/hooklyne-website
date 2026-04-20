@@ -1,5 +1,5 @@
 export const FeatureShowcase = () => (
-  <section className="py-24 lg:py-32" data-fade>
+  <section className="py-20 lg:py-28" data-fade>
     <div className="container max-w-6xl">
       {/* Comparison block: Database / Hooklyne / Agency */}
       <div className="mb-24 lg:mb-32">

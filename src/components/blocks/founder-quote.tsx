@@ -1,5 +1,5 @@
 export const FounderQuote = () => (
-  <section className="py-24 lg:py-32" data-fade>
+  <section className="py-20 lg:py-28" data-fade>
     <div className="container max-w-6xl">
       <div className="max-w-4xl">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-6">From the founder</p>

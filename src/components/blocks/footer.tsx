@@ -12,6 +12,13 @@ export const Footer = () => (
           <p className="text-sm text-white/50 leading-relaxed">
             Research-grade prospect packages in your rep's voice. Not more. Smarter.
           </p>
+          <div className="mt-5 inline-flex items-center gap-2">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-400"></span>
+            </span>
+            <span className="text-xs font-medium text-white/70">All systems operational</span>
+          </div>
         </div>
 
         <nav className="flex flex-wrap gap-x-10 gap-y-6 text-sm">
