@@ -142,6 +142,29 @@ export const DIYCompare = () => {
 
   return (
     <section className="py-14 lg:py-20" data-fade>
+      <style>{`
+        @keyframes diycompareAutoHover {
+          0%, 100% {
+            background: transparent;
+            border-color: transparent;
+            transform: translateY(0);
+          }
+          50% {
+            background: var(--card-hover);
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+          }
+        }
+        .diycompare-auto-hover {
+          animation: diycompareAutoHover 2.6s ease-in-out infinite;
+        }
+        .diycompare-auto-hover:hover {
+          animation: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .diycompare-auto-hover { animation: none; }
+        }
+      `}</style>
       <div className="container max-w-6xl">
         {/* Header */}
         <div className="max-w-3xl mb-10">
@@ -162,12 +185,6 @@ export const DIYCompare = () => {
             Compare with
           </span>
           <span className="flex-1 h-px" style={{ background: "var(--border)" }} />
-          {!hasInteracted && (
-            <span className="flex items-center gap-1.5 text-[10px] font-semibold text-[var(--hooklyne-blue)] animate-pulse">
-              Tap a tab
-              <span aria-hidden>&rarr;</span>
-            </span>
-          )}
         </div>
 
         {/* Tab switcher - larger, label + sub */}
@@ -180,7 +197,7 @@ export const DIYCompare = () => {
             const isActive = tab === t.key;
             const tTone = TONE[t.tone];
             const Icon = t.icon;
-            const nudge = !hasInteracted && !isActive && t.key !== "hooklyne";
+            const nudge = !hasInteracted && !isActive && t.key === "diy";
             return (
               <button
                 key={t.key}
@@ -190,7 +207,7 @@ export const DIYCompare = () => {
                 }}
                 role="tab"
                 aria-selected={isActive}
-                className="relative text-left px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm"
+                className={`relative text-left px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm${nudge ? " diycompare-auto-hover" : ""}`}
                 style={{
                   background: isActive
                     ? t.key === "hooklyne"
@@ -213,46 +230,31 @@ export const DIYCompare = () => {
                   }
                 }}
               >
-                {/* Attention ping on inactive tabs before first interaction */}
-                {nudge && (
-                  <span className="absolute -top-1 -right-1 flex size-2.5">
-                    <span
-                      className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping"
-                      style={{ background: "var(--hooklyne-blue)" }}
-                    />
-                    <span
-                      className="relative inline-flex rounded-full size-2.5"
-                      style={{ background: "var(--hooklyne-blue)" }}
-                    />
-                  </span>
-                )}
 
                 <div className="flex items-center gap-2.5">
-                  <span
-                    className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors"
-                    style={{
-                      background: isActive
-                        ? t.key === "hooklyne"
-                          ? "rgba(255,255,255,0.12)"
-                          : tTone.fg
-                        : "var(--card-hover)",
-                      color: isActive
-                        ? "#fff"
-                        : "var(--muted-foreground)",
-                    }}
-                  >
-                    {t.key === "hooklyne" ? (
-                      <img
-                        src="/favicon.svg"
-                        alt=""
-                        aria-hidden
-                        className="size-5"
-                        style={{ filter: isActive ? "brightness(0) invert(1)" : "none" }}
-                      />
-                    ) : (
+                  {t.key === "hooklyne" ? (
+                    <img
+                      src="/favicon.svg"
+                      alt=""
+                      aria-hidden
+                      className="size-8 rounded-lg shrink-0"
+                      style={{
+                        boxShadow: isActive
+                          ? "0 0 0 1px rgba(255,255,255,0.15)"
+                          : "0 0 0 1px var(--border)",
+                      }}
+                    />
+                  ) : (
+                    <span
+                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors"
+                      style={{
+                        background: isActive ? tTone.fg : "var(--card-hover)",
+                        color: isActive ? "#fff" : "var(--muted-foreground)",
+                      }}
+                    >
                       <Icon className="size-4" />
-                    )}
-                  </span>
+                    </span>
+                  )}
                   <div className="min-w-0">
                     <div className="text-[13px] font-bold leading-tight">
                       {t.label}
