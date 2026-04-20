@@ -190,7 +190,7 @@ export const DIYCompare = () => {
           }
         }
         .diycompare-auto-hover {
-          animation: diycompareAutoHover 1.8s ease-in-out 1;
+          animation: diycompareAutoHover 2.2s ease-in-out infinite;
         }
         .diycompare-auto-hover:hover {
           animation: none;
