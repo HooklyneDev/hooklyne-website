@@ -3,10 +3,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { Background } from '@/components/background';
 import { Hero } from '@/components/blocks/hero';
 import SignalTicker from '@/components/blocks/signal-ticker.astro';
-import { FeatureCarousel } from '@/components/blocks/feature-carousel';
-import { FeatureShowcase } from '@/components/blocks/feature-showcase';
 import { DIYCompare } from '@/components/blocks/diy-compare';
-import { FounderQuote } from '@/components/blocks/founder-quote';
+import { BuiltFor } from '@/components/blocks/built-for';
+import { PositioningBar } from '@/components/blocks/positioning-bar';
+import { FounderSplit } from '@/components/blocks/founder-split';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -19,9 +19,9 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </Background>
 
   <Background variant="bottom">
-    <FeatureCarousel client:load />
-    <FeatureShowcase />
-    <FounderQuote />
+    <BuiltFor />
+    <PositioningBar />
+    <FounderSplit />
     <HomePricing client:load />
   </Background>
 </DefaultLayout>
