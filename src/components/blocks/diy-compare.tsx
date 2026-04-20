@@ -344,14 +344,6 @@ export const DIYCompare = () => {
                     >
                       {t.sub}
                     </div>
-                    {t.price && (
-                      <div
-                        className="text-[10px] font-semibold mt-1.5 tabular-nums"
-                        style={{ color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.65)" : "var(--muted-foreground)" }}
-                      >
-                        {t.price}
-                      </div>
-                    )}
                   </div>
                 </div>
               </button>
@@ -361,19 +353,25 @@ export const DIYCompare = () => {
 
         {/* Totals strip */}
         <div
-          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-5 px-5 py-3 rounded-xl"
+          className="flex items-center gap-x-6 gap-y-2 mb-5 px-5 py-3 rounded-xl"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Clock className="size-4" style={{ color: tone.fg }} />
             <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: tone.fg }}>
               {active.totalLabel}
             </span>
           </div>
-          <div className="flex items-baseline gap-2 flex-wrap">
+          <div className="flex items-baseline gap-2 flex-1">
             <span className="text-2xl font-bold text-[var(--heading)]">{active.total}</span>
             <span className="text-xs text-[var(--muted-foreground)]">{active.totalSub}</span>
           </div>
+          {active.price && (
+            <div className="shrink-0 text-right">
+              <span className="text-xs font-bold tabular-nums" style={{ color: tone.fg }}>{active.price}</span>
+              <div className="text-[10px] text-[var(--muted-foreground)]">est. tool cost</div>
+            </div>
+          )}
         </div>
 
         {/* Steps grid */}
