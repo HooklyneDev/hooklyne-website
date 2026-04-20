@@ -41,41 +41,32 @@ const CARDS = [
     name: "Sem",
     role: "Founder · 4-person SaaS",
     tag: "Solo seller",
-    situation: "I research and write every outreach email myself. It takes half my day.",
-    outcome: "Hooklyne delivers a researched prospect package. Sem reviews and sends in under a minute.",
+    before: "I spend half my day researching before I can write a single email.",
+    after: "Hooklyne delivers the full package. Sem reviews it and sends in under a minute.",
     tone: "blue" as const,
   },
   {
     name: "Lotte",
     role: "SDR · 35-person consultancy",
     tag: "1 of 2 reps",
-    situation: "Two reps, 40 accounts each. No time to research properly before reaching out.",
-    outcome: "Each lead arrives with a verified contact, a live signal, and a draft written in Lotte's voice.",
+    before: "Two reps, 40 accounts each. There's no time to research properly.",
+    after: "Each lead arrives verified, with a live signal and a draft in Lotte's own voice.",
     tone: "teal" as const,
   },
   {
     name: "Joost",
     role: "BD · 20-person agency",
     tag: "Complex sale",
-    situation: "Generic outreach damages our brand. Every email needs to earn the reply.",
-    outcome: "Joost's emails lead with a real signal. Prospects can tell it's not a template.",
+    before: "Generic outreach kills our brand. Every email has to earn the reply.",
+    after: "Joost's emails open with a real signal. Prospects know it wasn't templated.",
     tone: "orange" as const,
   },
 ];
 
-/* Stack position styles: index 0 = front, 1 = middle, 2 = back.
-   Y-only offset so back cards are not pushed outside the container.
-   transformOrigin "top center" keeps cards top-aligned as they scale. */
-const STACK: { y: number; scale: number; opacity: number; zIndex: number }[] = [
-  { y: 0,  scale: 1.00, opacity: 1.00, zIndex: 30 },
-  { y: 8,  scale: 0.96, opacity: 0.82, zIndex: 20 },
-  { y: 16, scale: 0.92, opacity: 0.65, zIndex: 10 },
-];
-
 export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
-  const [front, setFront]   = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [active, setActive]   = useState(0);
+  const [paused, setPaused]   = useState(false);
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -84,7 +75,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
 
   useEffect(() => {
     if (reduced || paused) return;
-    const id = setInterval(() => setFront((f) => (f + 1) % 3), 4000);
+    const id = setInterval(() => setActive((a) => (a + 1) % 3), 4000);
     return () => clearInterval(id);
   }, [reduced, paused]);
 
@@ -113,81 +104,101 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             </div>
           </div>
 
-          {/* Right: rotating prospect card stack (40%) */}
-          <div className="hidden lg:flex lg:col-span-2 items-start justify-center pt-16">
-            <div
-              className="relative w-full"
-              style={{ height: 280 }}
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-            >
-              {CARDS.map((card, i) => {
-                const pos = (i - front + 3) % 3;
-                const s   = STACK[pos];
-                const accentColor =
-                  card.tone === "teal"   ? "var(--hooklyne-teal)"   :
-                  card.tone === "orange" ? "var(--hooklyne-orange)"  :
-                  "var(--hooklyne-blue)";
-                const accentBg =
-                  card.tone === "teal"   ? "rgba(13,148,136,0.08)"  :
-                  card.tone === "orange" ? "rgba(255,140,66,0.08)"   :
-                  "rgba(52,76,163,0.08)";
-                const accentBorder =
-                  card.tone === "teal"   ? "rgba(13,148,136,0.18)"  :
-                  card.tone === "orange" ? "rgba(255,140,66,0.18)"   :
-                  "rgba(52,76,163,0.18)";
-                return (
-                  <div
-                    key={card.name}
-                    className="absolute left-0 right-0 top-0"
-                    style={{
-                      transform: `translateY(${s.y}px) scale(${s.scale})`,
-                      transformOrigin: "top center",
-                      opacity: s.opacity,
-                      zIndex: s.zIndex,
-                      transition: reduced
-                        ? "none"
-                        : "transform 600ms ease-in-out, opacity 600ms ease-in-out",
-                    }}
-                  >
-                    <div
-                      className="rounded-xl p-5"
+          {/* Right: vertical card column (40%) */}
+          <div
+            className="hidden lg:flex lg:col-span-2 flex-col gap-3 pt-16"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {CARDS.map((card, i) => {
+              const isActive = i === active;
+              const accentColor =
+                card.tone === "teal"   ? "var(--hooklyne-teal)"   :
+                card.tone === "orange" ? "var(--hooklyne-orange)"  :
+                "var(--hooklyne-blue)";
+              const accentBg =
+                card.tone === "teal"   ? "rgba(13,148,136,0.08)"  :
+                card.tone === "orange" ? "rgba(255,140,66,0.08)"   :
+                "rgba(52,76,163,0.08)";
+              const accentBorder =
+                card.tone === "teal"   ? "rgba(13,148,136,0.22)"  :
+                card.tone === "orange" ? "rgba(255,140,66,0.22)"   :
+                "rgba(52,76,163,0.22)";
+              const cardBorder = isActive ? accentBorder : "var(--border)";
+
+              return (
+                <button
+                  key={card.name}
+                  onClick={() => { setActive(i); setPaused(true); }}
+                  className="text-left w-full rounded-xl p-4 transition-all duration-500"
+                  style={{
+                    background: isActive ? accentBg : "var(--card)",
+                    border: `1px solid ${cardBorder}`,
+                    boxShadow: isActive ? "var(--shadow-lg)" : "var(--shadow-sm)",
+                    opacity: isActive ? 1 : 0.55,
+                    transform: isActive ? "scale(1)" : "scale(0.97)",
+                    transformOrigin: "top center",
+                  }}
+                >
+                  {/* Header */}
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                      <div
+                        className="text-[13px] font-semibold leading-tight"
+                        style={{ color: isActive ? "var(--heading)" : "var(--muted-foreground)" }}
+                      >
+                        {card.name}
+                      </div>
+                      <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">{card.role}</div>
+                    </div>
+                    <span
+                      className="shrink-0 text-[10px] font-semibold px-2.5 py-1 rounded-full"
                       style={{
-                        background: "var(--card)",
-                        border: "1px solid var(--border)",
-                        boxShadow: "var(--shadow-lg)",
+                        background: isActive ? accentBg : "var(--card-hover)",
+                        color: isActive ? accentColor : "var(--muted-foreground)",
+                        border: `1px solid ${isActive ? accentBorder : "var(--border)"}`,
                       }}
                     >
-                      {/* Header */}
-                      <div className="flex items-start justify-between gap-3 mb-4">
-                        <div>
-                          <div className="text-[14px] font-semibold text-[var(--heading)] leading-tight">{card.name}</div>
-                          <div className="text-[12px] text-[var(--muted-foreground)] mt-0.5">{card.role}</div>
-                        </div>
-                        <span
-                          className="shrink-0 text-[10px] font-semibold px-2.5 py-1 rounded-full"
-                          style={{ background: accentBg, color: accentColor, border: `1px solid ${accentBorder}` }}
-                        >
-                          {card.tag}
-                        </span>
-                      </div>
+                      {card.tag}
+                    </span>
+                  </div>
 
-                      {/* Situation */}
-                      <p className="text-[12px] text-[var(--muted-foreground)] leading-relaxed mb-3 italic">
-                        &ldquo;{card.situation}&rdquo;
-                      </p>
+                  {/* Before */}
+                  <p className="text-[12px] text-[var(--muted-foreground)] leading-relaxed italic mb-2">
+                    &ldquo;{card.before}&rdquo;
+                  </p>
 
-                      {/* Divider */}
-                      <div className="h-px mb-3" style={{ background: "var(--border)" }} />
-
-                      {/* Outcome */}
-                      <p className="text-[12px] text-[var(--heading)] leading-relaxed font-medium">
-                        {card.outcome}
+                  {/* Divider + after */}
+                  {isActive && (
+                    <div
+                      className="transition-all duration-300"
+                      style={{ overflow: "hidden" }}
+                    >
+                      <div className="h-px mb-2.5" style={{ background: accentBorder }} />
+                      <p className="text-[12px] font-medium leading-relaxed" style={{ color: accentColor }}>
+                        {card.after}
                       </p>
                     </div>
-                  </div>
-                );
-              })}
+                  )}
+                </button>
+              );
+            })}
+
+            {/* Progress dots */}
+            <div className="flex gap-1.5 justify-center pt-1">
+              {CARDS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setActive(i); setPaused(true); }}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: i === active ? 20 : 6,
+                    height: 6,
+                    background: i === active ? "var(--hooklyne-blue)" : "var(--border)",
+                  }}
+                  aria-label={`Show card ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
 

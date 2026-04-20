@@ -2,70 +2,69 @@ const EN = {
   eyebrow: "From the founder",
   quote: "Most teams can't pick between proper research and enough outreach, so they sacrifice both. We built Hooklyne so they don't have to.",
   name: "Tim",
-  role: "Founder · Hooklyne · The Netherlands",
-  details: [
-    "Founded 2026 in Utrecht.",
-    "Built with sales reps, not for them.",
-    "The team uses Hooklyne every day.",
-  ],
+  role: "Founder · Hooklyne · Utrecht, NL",
 };
 
 const NL = {
   eyebrow: "Van de oprichter",
   quote: "De meeste teams kunnen niet kiezen tussen gedegen onderzoek en voldoende outreach, dus offeren ze allebei op. We bouwden Hooklyne zodat ze dat niet hoeven te doen.",
   name: "Tim",
-  role: "Oprichter · Hooklyne · Nederland",
-  details: [
-    "Opgericht in 2026 in Utrecht.",
-    "Gebouwd met salesreps, niet voor hen.",
-    "Het team gebruikt Hooklyne elke dag.",
-  ],
+  role: "Oprichter · Hooklyne · Utrecht, NL",
 };
 
 export const FounderSplit = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
 
   return (
-    <section className="py-14 lg:py-20" data-fade>
-      <div className="container max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+    <section className="py-14 lg:py-24" data-fade>
+      <div className="container max-w-4xl">
 
-          {/* Left: quote */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-6">
-              {t.eyebrow}
-            </p>
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-10 text-center">
+          {t.eyebrow}
+        </p>
 
+        <div
+          className="rounded-2xl px-8 py-12 md:px-16 md:py-16 relative"
+          style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+            boxShadow: "var(--shadow-xl)",
+          }}
+        >
+          {/* Large decorative quote mark */}
+          <div
+            aria-hidden="true"
+            className="absolute top-8 left-10 text-8xl leading-none font-serif select-none pointer-events-none"
+            style={{ color: "var(--border)" }}
+          >
+            &ldquo;
+          </div>
+
+          {/* Quote */}
+          <p className="relative text-2xl md:text-3xl lg:text-4xl text-[var(--heading)] leading-[1.4] font-normal tracking-tight pt-8">
+            {t.quote}
+          </p>
+
+          {/* Attribution */}
+          <div className="mt-10 flex items-center gap-4">
+            {/* Monogram */}
             <div
-              aria-hidden="true"
-              className="text-7xl leading-none font-serif mb-2 select-none"
-              style={{ color: "var(--border)" }}
+              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-sm font-semibold"
+              style={{
+                background: "rgba(52,76,163,0.1)",
+                color: "var(--hooklyne-blue)",
+                border: "1px solid rgba(52,76,163,0.2)",
+              }}
             >
-              &ldquo;
+              {t.name.charAt(0)}
             </div>
-
-            <p className="text-xl md:text-2xl text-[var(--heading)] leading-[1.45] font-normal mb-8">
-              {t.quote}
-            </p>
-
             <div>
-              <div className="text-base font-medium text-[var(--heading)]">{t.name}</div>
-              <div className="text-sm text-[var(--muted-foreground)] mt-0.5">{t.role}</div>
+              <div className="text-sm font-semibold text-[var(--heading)]">{t.name}</div>
+              <div className="text-xs text-[var(--muted-foreground)] mt-0.5">{t.role}</div>
             </div>
           </div>
-
-          {/* Right: plain text details */}
-          <div className="lg:pt-16">
-            <div className="space-y-3">
-              {t.details.map((line, i) => (
-                <p key={i} className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  {line}
-                </p>
-              ))}
-            </div>
-          </div>
-
         </div>
+
       </div>
     </section>
   );
