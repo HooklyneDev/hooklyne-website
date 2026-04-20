@@ -16,10 +16,7 @@ export const Hero = () => {
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh   = window.innerHeight;
-      /* Start resolving only once the element is 20% into the viewport,
-         and complete over a 1.2× viewport-height window so the tilt
-         persists well into the scroll and changes slowly. */
-      const prog = Math.max(0, Math.min(1, (vh * 0.8 - rect.top) / (vh * 1.2)));
+      const prog = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.9)));
       const deg  = 26 * (1 - prog);
       el.style.transform = `perspective(900px) rotateX(${deg}deg)`;
     };
@@ -149,6 +146,16 @@ export const Hero = () => {
           </a>
         </div>
       </div>
+
+      {/* ── Bottom fade — blends hero into the section below ─────── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        style={{
+          zIndex: 20,
+          height: "28%",
+          background: "linear-gradient(to bottom, transparent 0%, var(--background) 100%)",
+        }}
+      />
 
       {/* ── Hero video ────────────────────────────────────────────── */}
       <div id="hero-video" className="relative z-10 container max-w-6xl mt-14 lg:mt-16">
