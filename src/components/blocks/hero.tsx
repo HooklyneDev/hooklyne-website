@@ -16,7 +16,10 @@ export const Hero = () => {
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh   = window.innerHeight;
-      const prog = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
+      /* Start resolving only once the element is 20% into the viewport,
+         and complete over a 1.2× viewport-height window so the tilt
+         persists well into the scroll and changes slowly. */
+      const prog = Math.max(0, Math.min(1, (vh * 0.8 - rect.top) / (vh * 1.2)));
       const deg  = 26 * (1 - prog);
       el.style.transform = `perspective(900px) rotateX(${deg}deg)`;
     };
