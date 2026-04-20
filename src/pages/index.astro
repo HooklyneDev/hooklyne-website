@@ -14,8 +14,8 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Background>
     <Hero client:load />
-    <DIYCompare client:visible />
     <SignalTicker />
+    <DIYCompare client:visible />
   </Background>
 
   <Background variant="bottom">
