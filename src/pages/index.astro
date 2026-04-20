@@ -19,8 +19,8 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </Background>
 
   <Background variant="bottom">
-    <BuiltFor />
-    <PositioningBar />
+    <BuiltFor client:visible />
+    <PositioningBar client:visible />
     <FounderSplit />
     <HomePricing client:load />
   </Background>

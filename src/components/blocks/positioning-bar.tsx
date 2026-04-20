@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { Database, Building2 } from "lucide-react";
 
 const EN = {
@@ -5,21 +6,9 @@ const EN = {
   headline: "Between a database and an agency.",
   body: "Databases hand you rows to filter. Agencies take the whole job off your plate for €2,500+/mo. Hooklyne is the research layer between - proper research, ready-to-send outreach, without replacing your rep.",
   segments: {
-    left: {
-      label: "Contact databases",
-      sub: "Rows to filter",
-      price: "€",
-    },
-    center: {
-      label: "Hooklyne",
-      sub: "The research layer",
-      price: "€€",
-    },
-    right: {
-      label: "Outbound agencies",
-      sub: "Fully outsourced",
-      price: "€€€+",
-    },
+    left:   { label: "Contact databases", sub: "Rows to filter",    price: "€"    },
+    center: { label: "Hooklyne",          sub: "The research layer", price: "€€"   },
+    right:  { label: "Outbound agencies", sub: "Fully outsourced",   price: "€€€+" },
   },
 };
 
@@ -28,29 +17,52 @@ const NL = {
   headline: "Tussen een database en een agency.",
   body: "Databases geven je rijen om te filteren. Agencies nemen de hele taak over voor €2.500+/mo. Hooklyne is de onderzoekslaag daartussenin - gedegen research, verzendklare outreach, zonder je rep te vervangen.",
   segments: {
-    left: {
-      label: "Contactdatabases",
-      sub: "Rijen om te filteren",
-      price: "€",
-    },
-    center: {
-      label: "Hooklyne",
-      sub: "De onderzoekslaag",
-      price: "€€",
-    },
-    right: {
-      label: "Outbound agencies",
-      sub: "Volledig uitbesteed",
-      price: "€€€+",
-    },
+    left:   { label: "Contactdatabases",  sub: "Rijen om te filteren", price: "€"    },
+    center: { label: "Hooklyne",          sub: "De onderzoekslaag",    price: "€€"   },
+    right:  { label: "Outbound agencies", sub: "Volledig uitbesteed",   price: "€€€+" },
   },
 };
 
 export const PositioningBar = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
+  const barRef  = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+  const [reduced,  setReduced]  = useState(false);
+
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (!barRef.current) return;
+    if (reduced) { setRevealed(true); return; }
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setRevealed(true); obs.disconnect(); } },
+      { threshold: 0.25 },
+    );
+    obs.observe(barRef.current);
+    return () => obs.disconnect();
+  }, [reduced]);
+
+  const seg = (delay: number): React.CSSProperties => ({
+    opacity:    revealed ? 1 : 0,
+    transform:  revealed ? "translateX(0)" : "translateX(-20px)",
+    transition: reduced ? "none" : `opacity 400ms ease ${delay}ms, transform 400ms ease ${delay}ms`,
+  });
 
   return (
     <section className="py-14 lg:py-20" data-fade>
+      {/* keyframe for center segment shimmer */}
+      <style>{`
+        @keyframes hk-sweep {
+          0%   { transform: translateX(-120%); }
+          100% { transform: translateX(300%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hk-sweep-inner { animation: none !important; }
+        }
+      `}</style>
+
       <div className="container max-w-6xl">
 
         {/* Header */}
@@ -67,12 +79,12 @@ export const PositioningBar = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
         </div>
 
         {/* Spectrum bar */}
-        <div className="flex rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-md)" }}>
+        <div ref={barRef} className="flex rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-md)" }}>
 
           {/* Left: Contact databases */}
           <div
             className="flex-[3] px-6 py-7 flex flex-col gap-3"
-            style={{ background: "var(--card-hover)", borderRight: "1px solid var(--border)" }}
+            style={{ background: "var(--card-hover)", borderRight: "1px solid var(--border)", ...seg(0) }}
           >
             <div className="flex items-center gap-2.5">
               <span
@@ -94,16 +106,30 @@ export const PositioningBar = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             </div>
           </div>
 
-          {/* Center: Hooklyne */}
+          {/* Center: Hooklyne — with sweep shimmer */}
           <div
-            className="flex-[4] px-6 py-7 flex flex-col gap-3 relative"
+            className="flex-[4] px-6 py-7 flex flex-col gap-3 relative overflow-hidden"
             style={{
               background: "var(--hooklyne-navy)",
               outline: "2px solid var(--hooklyne-orange)",
               outlineOffset: "-2px",
+              ...seg(200),
             }}
           >
-            <div className="flex items-center gap-2.5">
+            {/* Sweep shimmer */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: 0.18 }}>
+              <div
+                className="hk-sweep-inner absolute top-0 bottom-0"
+                style={{
+                  width: "35%",
+                  background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%)",
+                  animation: revealed && !reduced ? "hk-sweep 6s ease-in-out infinite" : "none",
+                  animationDelay: "1.2s",
+                }}
+              />
+            </div>
+
+            <div className="flex items-center gap-2.5 relative">
               <span className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 bg-white/10">
                 <img src="/logo-mark.svg" alt="" className="size-5 block" />
               </span>
@@ -113,7 +139,7 @@ export const PositioningBar = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
               </div>
             </div>
             <div
-              className="self-start text-xs font-bold tracking-widest px-2 py-0.5 rounded"
+              className="relative self-start text-xs font-bold tracking-widest px-2 py-0.5 rounded"
               style={{ background: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.85)" }}
             >
               {t.segments.center.price}
@@ -123,7 +149,7 @@ export const PositioningBar = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
           {/* Right: Outbound agencies */}
           <div
             className="flex-[3] px-6 py-7 flex flex-col gap-3"
-            style={{ background: "var(--card)", borderLeft: "1px solid var(--border)" }}
+            style={{ background: "var(--card)", borderLeft: "1px solid var(--border)", ...seg(400) }}
           >
             <div className="flex items-center gap-2.5">
               <span

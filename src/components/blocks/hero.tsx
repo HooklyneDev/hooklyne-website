@@ -1,13 +1,48 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridSignals } from "@/components/grid-signals";
 
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
+type PopPhase = "idle" | "enter" | "show" | "exit";
+
+const POPOVERS = [
+  {
+    color: "var(--hooklyne-orange)",
+    company: "Vattenfall",
+    signal: "New CRO announced",
+    time: "just now",
+    pos: { top: "13%", right: "6%" },
+  },
+  {
+    color: "var(--hooklyne-blue)",
+    company: "Innocent Drinks",
+    signal: "Head of Procurement vacancy",
+    time: "3m ago",
+    pos: { top: "42%", left: "5%" },
+  },
+  {
+    color: "var(--hooklyne-teal)",
+    company: "Cresta Foods",
+    signal: "Series A funding round",
+    time: "5m ago",
+    pos: { top: "62%", right: "7%" },
+  },
+  {
+    color: "var(--hooklyne-orange)",
+    company: "DPD Netherlands",
+    signal: "UK office expansion",
+    time: "just now",
+    pos: { top: "24%", right: "9%" },
+  },
+] as const;
 
 /* ── Component ──────────────────────────────────────────────────────── */
 export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
+  const [popIdx, setPopIdx]     = useState(0);
+  const [popPhase, setPopPhase] = useState<PopPhase>("idle");
 
   /* Scroll tilt */
   useEffect(() => {
@@ -25,12 +60,44 @@ export const Hero = () => {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-
+  /* Signal popover loop */
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let cancelled = false;
+    const run = async () => {
+      while (!cancelled) {
+        await sleep(1400);
+        if (cancelled) break;
+        setPopPhase("enter");
+        await sleep(300);
+        if (cancelled) break;
+        setPopPhase("show");
+        await sleep(3000);
+        if (cancelled) break;
+        setPopPhase("exit");
+        await sleep(300);
+        if (cancelled) break;
+        setPopPhase("idle");
+        setPopIdx((i) => (i + 1) % POPOVERS.length);
+      }
+    };
+    run();
+    return () => { cancelled = true; };
+  }, []);
 
   const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
   const rings = [150, 300, 450, 600, 750, 900, 1050]
     .map(r => `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,0.11) ${r}px, transparent ${r + 1}px)`)
     .join(", ");
+
+  const pop = POPOVERS[popIdx];
+  const popVisible = popPhase !== "idle";
+  const popOpacity = popPhase === "show" ? 1 : 0;
+  const popTranslate =
+    popPhase === "exit"  ? "translateY(-5px) scale(0.98)" :
+    popPhase === "idle"  ? "translateY(7px)  scale(0.96)" :
+    popPhase === "enter" ? "translateY(7px)  scale(0.96)" :
+    "translateY(0)       scale(1)";
 
   return (
     <section className="pt-24 pb-0 lg:pt-32 relative">
@@ -147,16 +214,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* ── Bottom fade — blends hero into the section below ─────── */}
-      <div
-        className="absolute bottom-0 left-0 right-0 pointer-events-none"
-        style={{
-          zIndex: 20,
-          height: "28%",
-          background: "linear-gradient(to bottom, transparent 0%, var(--background) 100%)",
-        }}
-      />
-
       {/* ── Hero video ────────────────────────────────────────────── */}
       <div id="hero-video" className="relative z-10 container max-w-6xl mt-14 lg:mt-16">
         <div
@@ -172,14 +229,11 @@ export const Hero = () => {
             className="flex items-center gap-2 px-4 border border-b-0 rounded-t-2xl"
             style={{ height: "44px", background: "var(--card)", borderColor: "var(--border)" }}
           >
-            {/* Traffic lights */}
             <div className="flex items-center gap-1.5 mr-1">
               <div className="size-3 rounded-full" style={{ background: "#ff5f57" }} />
               <div className="size-3 rounded-full" style={{ background: "#febc2e" }} />
               <div className="size-3 rounded-full" style={{ background: "#28c840" }} />
             </div>
-
-            {/* Nav buttons */}
             <div className="flex items-center gap-0.5" style={{ color: "var(--muted-foreground)" }}>
               <div className="flex items-center justify-center size-7 rounded-md" style={{ opacity: 0.3 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -191,8 +245,6 @@ export const Hero = () => {
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
               </div>
             </div>
-
-            {/* URL bar */}
             <div
               className="flex items-center gap-2 px-3 rounded-full text-xs flex-1 mx-3"
               style={{ height: "28px", background: "var(--background)", color: "var(--muted-foreground)" }}
@@ -202,8 +254,6 @@ export const Hero = () => {
               </svg>
               <span className="flex-1 text-center">portal.hooklyne.com</span>
             </div>
-
-            {/* Right side */}
             <div className="flex items-center">
               <div className="flex items-center justify-center size-7 rounded-md" style={{ color: "var(--muted-foreground)", opacity: 0.45 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
@@ -224,6 +274,39 @@ export const Hero = () => {
               <source src="/home/hooklyne-intro.webm" type="video/webm" />
               <source src="/home/hooklyne-intro.mp4" type="video/mp4" />
             </video>
+          </div>
+
+          {/* Signal popovers — positioned inside the video frame */}
+          <div
+            className="absolute pointer-events-none"
+            style={{ top: 44, left: 0, right: 0, bottom: 0, zIndex: 10 }}
+          >
+            <div
+              className="absolute max-w-[240px]"
+              style={{
+                ...pop.pos,
+                opacity: popOpacity,
+                transform: popTranslate,
+                transition: "opacity 300ms ease, transform 300ms ease",
+                visibility: popVisible ? "visible" : "hidden",
+              }}
+            >
+              <div
+                className="rounded-xl px-3.5 py-2.5"
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-lg)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="size-2 rounded-full shrink-0" style={{ background: pop.color }} />
+                  <span className="text-[11px] font-semibold text-[var(--heading)]">{pop.company}</span>
+                  <span className="ml-auto text-[10px] text-[var(--muted-foreground)]">{pop.time}</span>
+                </div>
+                <p className="text-[11px] text-[var(--muted-foreground)] leading-snug">{pop.signal}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

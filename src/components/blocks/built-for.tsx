@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const EN = {
   eyebrow: "Built for",
   statements: [
@@ -34,8 +36,34 @@ const NL = {
   ],
 };
 
+const CARDS = [
+  { name: "Sem", role: "Founder · 4-person SaaS", tag: "Solo seller" },
+  { name: "Lotte", role: "SDR · 35-person consultancy", tag: "1 of 2 reps" },
+  { name: "Joost", role: "BD · 20-person agency", tag: "Considered selling" },
+];
+
+/* Stack position styles: index 0 = front, 1 = middle, 2 = back */
+const STACK: { transform: string; opacity: number; zIndex: number }[] = [
+  { transform: "translateX(0px)  translateY(0px)  scale(1)",    opacity: 1,    zIndex: 3 },
+  { transform: "translateX(12px) translateY(14px) scale(0.965)", opacity: 0.72, zIndex: 2 },
+  { transform: "translateX(24px) translateY(28px) scale(0.93)", opacity: 0.45, zIndex: 1 },
+];
+
 export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
+  const [front, setFront]   = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (reduced || paused) return;
+    const id = setInterval(() => setFront((f) => (f + 1) % 3), 4000);
+    return () => clearInterval(id);
+  }, [reduced, paused]);
 
   return (
     <section className="py-14 lg:py-20" data-fade>
@@ -62,27 +90,66 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             </div>
           </div>
 
-          {/* Right: vertical accent line with dots (40%) */}
-          <div className="hidden lg:flex lg:col-span-2 justify-center items-stretch pt-[3.75rem]">
-            <div className="relative flex flex-col items-center w-px"
-              style={{ background: "var(--border)" }}>
-              {/* Three dots, evenly spaced to align with each statement */}
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="absolute"
-                  style={{ top: `calc(${i} * 33.333% + 16.666%)`, transform: "translate(-50%, -50%)" }}
-                >
+          {/* Right: rotating prospect card stack (40%) */}
+          <div className="hidden lg:flex lg:col-span-2 items-start justify-center pt-16">
+            <div
+              className="relative"
+              style={{ width: 280, height: 140 }}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              {CARDS.map((card, i) => {
+                const pos = (i - front + 3) % 3;
+                const s   = STACK[pos];
+                return (
                   <div
-                    className="size-3 rounded-full border-2"
+                    key={card.name}
+                    className="absolute inset-x-0 top-0"
                     style={{
-                      background: "var(--hooklyne-navy)",
-                      borderColor: "var(--background)",
-                      boxShadow: "0 0 0 2px var(--hooklyne-navy)",
+                      transform: s.transform,
+                      opacity: s.opacity,
+                      zIndex: s.zIndex,
+                      transition: reduced
+                        ? "none"
+                        : "transform 600ms ease-in-out, opacity 600ms ease-in-out",
                     }}
-                  />
-                </div>
-              ))}
+                  >
+                    <div
+                      className="rounded-xl px-4 py-3.5"
+                      style={{
+                        background: "var(--card)",
+                        border: "1px solid var(--border)",
+                        boxShadow: "var(--shadow-md)",
+                      }}
+                    >
+                      <div className="flex items-start justify-between gap-2 mb-1.5">
+                        <div>
+                          <div className="text-[13px] font-semibold text-[var(--heading)] leading-tight">{card.name}</div>
+                          <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">{card.role}</div>
+                        </div>
+                        <span
+                          className="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                          style={{
+                            background: "rgba(52,76,163,0.08)",
+                            color: "var(--hooklyne-blue)",
+                            border: "1px solid rgba(52,76,163,0.15)",
+                          }}
+                        >
+                          {card.tag}
+                        </span>
+                      </div>
+                      <div
+                        className="h-px my-2"
+                        style={{ background: "var(--border)" }}
+                      />
+                      <div className="flex items-center gap-1.5">
+                        <span className="size-1.5 rounded-full" style={{ background: "var(--hooklyne-teal)" }} />
+                        <span className="text-[10px] text-[var(--muted-foreground)]">Signal match · reviewing</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
