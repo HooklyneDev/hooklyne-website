@@ -28,7 +28,7 @@ const TABS: TabDef[] = [
   {
     key: "database",
     label: "Contact database",
-    sub: "Apollo-style lists",
+    sub: "Rows you filter",
     icon: Database,
     tone: "orange",
     total: "€99 - €300 / mo",
@@ -62,7 +62,7 @@ const TABS: TabDef[] = [
   {
     key: "builder",
     label: "Workflow builder",
-    sub: "Clay / agent platforms",
+    sub: "Build-your-own agents",
     icon: Workflow,
     tone: "amber",
     total: "~8 hrs setup + €150+ / mo",
@@ -134,7 +134,8 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
 };
 
 export const DIYCompare = () => {
-  const [tab, setTab] = useState<TabKey>("diy");
+  const [tab, setTab] = useState<TabKey>("hooklyne");
+  const [hasInteracted, setHasInteracted] = useState(false);
   const active = TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
   const isHooklyne = active.key === "hooklyne";
@@ -144,15 +145,29 @@ export const DIYCompare = () => {
       <div className="container max-w-6xl">
         {/* Header */}
         <div className="max-w-3xl mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-orange)] mb-4">
-            Compare the real choices
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
+            The workflow
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
-            How teams actually solve this today.
+            Six steps, handled.
           </h2>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            A contact database, a spreadsheet and ChatGPT, a workflow builder like Clay, an outbound agency, or the full research package. Same six steps. Very different outcomes.
+            This is what a prospect package looks like inside Hooklyne. Tap the other tabs to see what the same six steps cost you with a database, a spreadsheet, a builder, or an agency.
           </p>
+        </div>
+
+        {/* Tab switcher label */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">
+            Compare with
+          </span>
+          <span className="flex-1 h-px" style={{ background: "var(--border)" }} />
+          {!hasInteracted && (
+            <span className="flex items-center gap-1.5 text-[10px] font-semibold text-[var(--hooklyne-blue)] animate-pulse">
+              Tap a tab
+              <span aria-hidden>&rarr;</span>
+            </span>
+          )}
         </div>
 
         {/* Tab switcher - larger, label + sub */}
@@ -165,13 +180,17 @@ export const DIYCompare = () => {
             const isActive = tab === t.key;
             const tTone = TONE[t.tone];
             const Icon = t.icon;
+            const nudge = !hasInteracted && !isActive && t.key !== "hooklyne";
             return (
               <button
                 key={t.key}
-                onClick={() => setTab(t.key)}
+                onClick={() => {
+                  setTab(t.key);
+                  setHasInteracted(true);
+                }}
                 role="tab"
                 aria-selected={isActive}
-                className="relative text-left px-4 py-3 rounded-xl transition-all group"
+                className="relative text-left px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm"
                 style={{
                   background: isActive
                     ? t.key === "hooklyne"
@@ -181,10 +200,36 @@ export const DIYCompare = () => {
                   border: `1px solid ${isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.border) : "transparent"}`,
                   color: isActive && t.key === "hooklyne" ? "#fff" : "var(--heading)",
                 }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.background = "var(--card-hover)";
+                    e.currentTarget.style.borderColor = "var(--border-strong)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "transparent";
+                  }
+                }}
               >
+                {/* Attention ping on inactive tabs before first interaction */}
+                {nudge && (
+                  <span className="absolute -top-1 -right-1 flex size-2.5">
+                    <span
+                      className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping"
+                      style={{ background: "var(--hooklyne-blue)" }}
+                    />
+                    <span
+                      className="relative inline-flex rounded-full size-2.5"
+                      style={{ background: "var(--hooklyne-blue)" }}
+                    />
+                  </span>
+                )}
+
                 <div className="flex items-center gap-2.5">
                   <span
-                    className="inline-flex items-center justify-center size-8 rounded-lg shrink-0"
+                    className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors"
                     style={{
                       background: isActive
                         ? t.key === "hooklyne"
@@ -192,9 +237,7 @@ export const DIYCompare = () => {
                           : tTone.fg
                         : "var(--card-hover)",
                       color: isActive
-                        ? t.key === "hooklyne"
-                          ? "#fff"
-                          : "#fff"
+                        ? "#fff"
                         : "var(--muted-foreground)",
                     }}
                   >
@@ -229,12 +272,6 @@ export const DIYCompare = () => {
             );
           })}
         </div>
-
-        {/* Hint */}
-        <p className="text-[11px] text-[var(--muted-foreground)]/80 mb-5 flex items-center gap-1.5">
-          <span className="inline-block size-1 rounded-full" style={{ background: "var(--muted-foreground)" }} />
-          Click a tab to switch views. Same six steps across all three.
-        </p>
 
         {/* Totals strip */}
         <div
