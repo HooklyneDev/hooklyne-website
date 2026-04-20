@@ -5,7 +5,7 @@ import { FinalCTA } from '@/components/blocks/final-cta';
 import { Navbar } from '@/components/blocks/navbar';
 import { CookieBar } from '@/components/blocks/cookie-bar';
 
-const { title, description, hideFinalCTA } = Astro.props;
+const { title, description, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,7 +16,7 @@ const { title, description, hideFinalCTA } = Astro.props;
     >
         <Navbar client:only='react' />
         <main><slot /></main>
-        {!hideFinalCTA && <FinalCTA client:load />}
+        {!hideFinalCTA && <FinalCTA variant={ctaVariant} client:load />}
         <Footer />
         <CookieBar client:load />
     </body>
