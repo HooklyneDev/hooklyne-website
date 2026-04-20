@@ -27,6 +27,7 @@ type TabDef = {
   key: TabKey;
   label: string;
   sub: string;
+  price?: string;
   icon: LucideIcon;
   tone: "teal" | "orange" | "amber";
   totalLabel: string;
@@ -84,6 +85,7 @@ const TABS: TabDef[] = [
     key: "database",
     label: "Contact database",
     sub: "Rows, filters, exports",
+    price: "~€100–300/mo",
     icon: Database,
     tone: "orange",
     totalLabel: "Your time",
@@ -123,6 +125,7 @@ const TABS: TabDef[] = [
     key: "aioutreach",
     label: "AI outreach tool",
     sub: "Generated emails",
+    price: "~€100–500/mo",
     icon: Zap,
     tone: "amber",
     totalLabel: "Your time",
@@ -157,6 +160,7 @@ const TABS: TabDef[] = [
     key: "diy",
     label: "DIY stack",
     sub: "Multi-tool, manual",
+    price: "~€50–150/mo",
     icon: Wrench,
     tone: "amber",
     totalLabel: "Your time",
@@ -201,6 +205,7 @@ const TABS: TabDef[] = [
     key: "agency",
     label: "Outbound agency",
     sub: "Fully outsourced",
+    price: "€2,500+/mo",
     icon: Briefcase,
     tone: "orange",
     totalLabel: "Your time",
@@ -315,18 +320,18 @@ export const DIYCompare = () => {
                 onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.background = "var(--card-hover)"; e.currentTarget.style.borderColor = "var(--border-strong)"; } }}
                 onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "transparent"; } }}
               >
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-start gap-2.5 w-full">
                   {t.key === "hooklyne" ? (
-                    <HooklyneMark className="size-8 rounded-lg" />
+                    <HooklyneMark className="size-8 rounded-lg shrink-0 mt-0.5" />
                   ) : (
                     <span
-                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors"
+                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 mt-0.5 transition-colors"
                       style={{ background: isActive ? tTone.fg : "var(--card-hover)", color: isActive ? "#fff" : "var(--muted-foreground)" }}
                     >
                       <Icon className="size-4" />
                     </span>
                   )}
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <div
                       className={`text-[13px] leading-tight ${t.key === "hooklyne" ? "font-bold" : "font-medium"}`}
                       style={{ color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--heading)" }}
@@ -339,6 +344,14 @@ export const DIYCompare = () => {
                     >
                       {t.sub}
                     </div>
+                    {t.price && (
+                      <div
+                        className="text-[10px] font-semibold mt-1.5 tabular-nums"
+                        style={{ color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.65)" : "var(--muted-foreground)" }}
+                      >
+                        {t.price}
+                      </div>
+                    )}
                   </div>
                 </div>
               </button>
@@ -362,17 +375,6 @@ export const DIYCompare = () => {
             <span className="text-xs text-[var(--muted-foreground)]">{active.totalSub}</span>
           </div>
         </div>
-
-        {/* What it's good at */}
-        {active.goodAt && (
-          <div
-            className="mb-5 px-5 py-3 rounded-xl text-[13px] text-[var(--muted-foreground)] leading-relaxed"
-            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
-          >
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--heading)] mr-2">What it's good at:</span>
-            {active.goodAt}
-          </div>
-        )}
 
         {/* Steps grid */}
         <div
@@ -407,14 +409,15 @@ export const DIYCompare = () => {
               </div>
             </div>
           ))}
+          {/* Summary card fills the empty grid slot when step count < 6 */}
+          {active.footerNote && (
+            <div className="flex flex-col justify-center p-6 lg:p-7" style={{ background: "var(--card)" }}>
+              <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">
+                {active.footerNote}
+              </p>
+            </div>
+          )}
         </div>
-
-        {/* Footer note */}
-        {active.footerNote && (
-          <p className="mt-4 text-[13px] text-[var(--muted-foreground)] leading-relaxed max-w-3xl">
-            {active.footerNote}
-          </p>
-        )}
       </div>
     </section>
   );
