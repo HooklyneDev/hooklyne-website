@@ -4,6 +4,7 @@ import { Background } from '@/components/background';
 import { Hero } from '@/components/blocks/hero';
 import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { DIYCompare } from '@/components/blocks/diy-compare';
+import { WhatYouGet } from '@/components/blocks/what-you-get';
 import { BuiltFor } from '@/components/blocks/built-for';
 import { PositioningBar } from '@/components/blocks/positioning-bar';
 import { FounderSplit } from '@/components/blocks/founder-split';
@@ -19,6 +20,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </Background>
 
   <Background variant="bottom">
+    <WhatYouGet />
     <BuiltFor client:visible />
     <PositioningBar client:visible />
     <FounderSplit />

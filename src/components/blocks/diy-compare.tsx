@@ -286,7 +286,7 @@ export const DIYCompare = () => {
             From ICP to inbox. Six simple steps.
           </h2>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            You describe who you sell to. Hooklyne finds the ranked list, verifies the contact, attaches the signal, and drafts the email in your voice. Your rep reviews and sends. That is the whole job.
+            Each step does one job a human researcher would do. Together they produce prospect packages your rep can act on in under a minute. Here is the whole flow.
           </p>
         </div>
 
