@@ -3,27 +3,13 @@ import { Check, X, Clock, Database, Wrench, Sparkles, Euro, Workflow, Briefcase 
 import type { LucideIcon } from "lucide-react";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
-  <svg
-    viewBox="0 0 32 32"
-    width="32"
-    height="32"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
+  <span
+    className={`inline-flex items-center justify-center shrink-0 ${className}`}
+    style={{ background: "var(--hooklyne-navy)" }}
     aria-hidden="true"
   >
-    <rect width="32" height="32" rx="6" fill="#344ca3" />
-    <text
-      x="16"
-      y="22"
-      fontFamily="Arial, sans-serif"
-      fontSize="18"
-      fontWeight="bold"
-      fill="white"
-      textAnchor="middle"
-    >
-      H
-    </text>
-  </svg>
+    <img src="/logo-mark.svg" alt="" className="size-5 block" />
+  </span>
 );
 
 type TabKey = "database" | "diy" | "builder" | "agency" | "hooklyne";
