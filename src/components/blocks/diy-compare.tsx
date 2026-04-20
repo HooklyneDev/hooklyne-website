@@ -122,7 +122,7 @@ const TABS: TabDef[] = [
   {
     key: "aioutreach",
     label: "AI outreach tool",
-    sub: "Generated emails over a list",
+    sub: "Generated emails",
     icon: Zap,
     tone: "amber",
     totalLabel: "Your time",
@@ -156,7 +156,7 @@ const TABS: TabDef[] = [
   {
     key: "diy",
     label: "DIY stack",
-    sub: "Spreadsheet, AI chat, manual work",
+    sub: "Multi-tool, manual",
     icon: Wrench,
     tone: "amber",
     totalLabel: "Your time",
@@ -200,7 +200,7 @@ const TABS: TabDef[] = [
   {
     key: "agency",
     label: "Outbound agency",
-    sub: "Fully outsourced, €2,500+/mo",
+    sub: "Fully outsourced",
     icon: Briefcase,
     tone: "orange",
     totalLabel: "Your time",
