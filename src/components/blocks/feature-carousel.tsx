@@ -146,17 +146,19 @@ export const FeatureCarousel = () => {
 
           <div className="lg:col-span-3 lg:-mt-8">
             <div className="rounded-3xl p-3" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, rgba(52,76,163,0.10) 0%, transparent 70%)" }}>
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: "var(--shadow-lg)" }}>
+              <div
+                className="relative rounded-2xl overflow-hidden aspect-[4/3]"
+                style={{
+                  boxShadow: "var(--shadow-lg)",
+                  WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+                  maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+                }}
+              >
                 <img
                   src={slide.image}
                   alt={slide.alt}
                   className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-180"
                   style={{ opacity: fading ? 0 : 1 }}
-                />
-                {/* Bottom fade — softens the hard edge where portal UI meets page background */}
-                <div
-                  className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
-                  style={{ background: "linear-gradient(to bottom, transparent 0%, var(--background) 100%)" }}
                 />
                 {/* Floating contextual overlays */}
                 <div
