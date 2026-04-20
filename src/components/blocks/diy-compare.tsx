@@ -168,7 +168,7 @@ export const DIYCompare = () => {
     if (hasInteracted) return;
     const id = window.setInterval(() => {
       setNudgeIdx((i) => (i + 1) % NUDGE_ORDER.length);
-    }, 2200);
+    }, 1600);
     return () => window.clearInterval(id);
   }, [hasInteracted]);
   const nudgeKey: TabKey | null = hasInteracted ? null : NUDGE_ORDER[nudgeIdx];
@@ -180,19 +180,24 @@ export const DIYCompare = () => {
     <section className="py-14 lg:py-20" data-fade>
       <style>{`
         @keyframes diycompareAutoHover {
-          0%, 100% {
+          0% {
             background: transparent;
             border-color: transparent;
             transform: translateY(0);
           }
-          50% {
+          25%, 75% {
             background: var(--card-hover);
             border-color: var(--border-strong);
             transform: translateY(-2px);
           }
+          100% {
+            background: transparent;
+            border-color: transparent;
+            transform: translateY(0);
+          }
         }
         .diycompare-auto-hover {
-          animation: diycompareAutoHover 2.2s ease-in-out infinite;
+          animation: diycompareAutoHover 1.6s ease-in-out infinite;
         }
         .diycompare-auto-hover:hover {
           animation: none;
@@ -225,7 +230,7 @@ export const DIYCompare = () => {
 
         {/* Tab switcher - larger, label + sub */}
         <div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 mb-5 p-1.5 rounded-2xl"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1fr_1.5fr] gap-2 mb-5 p-1.5 rounded-2xl"
           style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-xs)" }}
           role="tablist"
         >
