@@ -1,0 +1,108 @@
+---
+const signals = [
+  { type: "Funding",    tone: "orange", company: "Kortex",      mono: "K", title: "Raised €12M Series B",             source: "TechCrunch",  when: "2h ago" },
+  { type: "Hiring",     tone: "blue",   company: "Vellum Ops",  mono: "V", title: "Hired VP Sales from Adyen",        source: "LinkedIn",    when: "1d ago" },
+  { type: "Leadership", tone: "teal",   company: "Northwave",   mono: "N", title: "New CRO joined from Mollie",       source: "Press release", when: "3h ago" },
+  { type: "Launch",     tone: "blue",   company: "Argon",       mono: "A", title: "Launched AI-native platform",      source: "Product Hunt", when: "5h ago" },
+  { type: "Expansion",  tone: "teal",   company: "Haven",       mono: "H", title: "Opened UK office in London",       source: "Business Wire", when: "1d ago" },
+  { type: "Press",      tone: "orange", company: "Obelisk",     mono: "O", title: "Featured in FT Europe 50",         source: "Financial Times", when: "6h ago" },
+  { type: "Sector",     tone: "blue",   company: "DutchLogix",  mono: "D", title: "Sector: EU freight rates +18%",    source: "Reuters",     when: "2d ago" },
+  { type: "Funding",    tone: "orange", company: "Helio",       mono: "H", title: "Closed €4.2M seed round",          source: "Crunchbase",  when: "4h ago" },
+  { type: "Hiring",     tone: "blue",   company: "Brava",       mono: "B", title: "Hiring 3 AEs for EMEA",            source: "LinkedIn",    when: "7h ago" },
+  { type: "Leadership", tone: "teal",   company: "Stelvio",     mono: "S", title: "Head of Sales replaced",           source: "Press release", when: "1d ago" },
+];
+
+const toneMap = {
+  blue: "var(--hooklyne-blue)",
+  teal: "var(--hooklyne-teal)",
+  orange: "var(--hooklyne-orange)",
+};
+
+// Duplicate for seamless loop
+const track = [...signals, ...signals];
+---
+
+<section class="py-10 lg:py-14 relative" data-fade>
+  <div class="container max-w-6xl mb-6">
+    <div class="flex items-center justify-between flex-wrap gap-3">
+      <div class="flex items-center gap-3">
+        <span class="relative flex size-2">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-70 animate-ping"></span>
+          <span class="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
+        </span>
+        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">Live signal feed</span>
+      </div>
+      <p class="text-xs text-[var(--muted-foreground)]/80">
+        Seven sources, scored for your ICP. Sample of recent pulls.
+      </p>
+    </div>
+  </div>
+
+  <div class="signal-ticker-viewport group">
+    <div class="signal-ticker-track">
+      {track.map((s, i) => (
+        <article
+          class="signal-pill shrink-0 flex items-center gap-3 rounded-xl px-4 py-3"
+          style={`border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-xs);`}
+          data-idx={i}
+        >
+          <span
+            class="inline-flex items-center justify-center size-9 rounded-lg text-sm font-semibold text-white shrink-0"
+            style={`background: ${toneMap[s.tone as keyof typeof toneMap]};`}
+          >
+            {s.mono}
+          </span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span
+                class="text-[9px] font-bold uppercase tracking-[0.18em] px-1.5 py-0.5 rounded"
+                style={`background: ${toneMap[s.tone as keyof typeof toneMap]}1a; color: ${toneMap[s.tone as keyof typeof toneMap]};`}
+              >
+                {s.type}
+              </span>
+              <span class="text-[10px] font-mono text-[var(--muted-foreground)]">{s.when}</span>
+            </div>
+            <div class="text-[13px] font-semibold text-[var(--heading)] leading-tight whitespace-nowrap">
+              {s.company} &middot; <span class="font-normal text-[var(--muted-foreground)]">{s.title}</span>
+            </div>
+            <div class="text-[10px] text-[var(--muted-foreground)]/70 mt-0.5">Source: {s.source}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .signal-ticker-viewport {
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+  }
+
+  .signal-ticker-track {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    animation: signal-ticker-scroll 60s linear infinite;
+    will-change: transform;
+  }
+
+  .signal-ticker-viewport:hover .signal-ticker-track {
+    animation-play-state: paused;
+  }
+
+  .signal-pill {
+    min-width: 320px;
+  }
+
+  @keyframes signal-ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .signal-ticker-track { animation: none; }
+  }
+</style>
