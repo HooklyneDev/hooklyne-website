@@ -241,7 +241,17 @@ export const DIYCompare = () => {
                         : "var(--muted-foreground)",
                     }}
                   >
-                    <Icon className="size-4" />
+                    {t.key === "hooklyne" ? (
+                      <img
+                        src="/favicon.svg"
+                        alt=""
+                        aria-hidden
+                        className="size-5"
+                        style={{ filter: isActive ? "brightness(0) invert(1)" : "none" }}
+                      />
+                    ) : (
+                      <Icon className="size-4" />
+                    )}
                   </span>
                   <div className="min-w-0">
                     <div className="text-[13px] font-bold leading-tight flex items-center gap-1.5">
