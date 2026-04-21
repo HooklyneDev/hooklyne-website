@@ -100,7 +100,7 @@ export const Hero = () => {
     "translateY(0)       scale(1)";
 
   return (
-    <section className="pt-24 pb-0 lg:pt-32 relative">
+    <section className="pt-20 pb-0 lg:pt-32 relative">
 
       {/* ── Mobile: breathing circle ───────────────────────────────── */}
       <div className="sm:hidden absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
@@ -181,14 +181,14 @@ export const Hero = () => {
         </a>
 
         <h1
-          className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] max-w-3xl"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.15] sm:leading-[1.1] max-w-3xl"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "90ms" }}
         >
           Find the prospects actually worth reaching out to.
         </h1>
 
         <p
-          className="text-lg text-[var(--muted-foreground)] max-w-xl leading-relaxed"
+          className="text-base md:text-lg text-[var(--muted-foreground)] max-w-xl leading-relaxed px-2 sm:px-0"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "200ms" }}
         >
           A research workflow that finds fitting companies, verifies decision-makers across 20+ data providers, watches for live buying signals, and drafts first outreach in your rep's voice.
@@ -276,9 +276,9 @@ export const Hero = () => {
             </video>
           </div>
 
-          {/* Signal popovers — positioned inside the video frame */}
+          {/* Signal popovers — positioned inside the video frame (hidden on mobile) */}
           <div
-            className="absolute pointer-events-none"
+            className="hidden sm:block absolute pointer-events-none"
             style={{ top: 44, left: 0, right: 0, bottom: 0, zIndex: 10 }}
           >
             <div

@@ -86,14 +86,14 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
 
           {/* Left: text column (60%) */}
           <div className="lg:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-6 lg:mb-10">
               {t.eyebrow}
             </p>
 
-            <div className="space-y-12">
+            <div className="space-y-8 lg:space-y-12">
               {t.statements.map((s, i) => (
                 <div key={i} className="max-w-xl">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-3">
+                  <h3 className="text-xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.2] md:leading-[1.15] mb-3">
                     {s.headline}
                   </h3>
                   <p className="text-base text-[var(--muted-foreground)] leading-relaxed">

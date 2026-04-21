@@ -16,7 +16,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   return (
     <section className="py-14 lg:py-20" data-fade>
       <div className="container max-w-6xl">
-        <div className="grid lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
 
           {/* Left: screenshot */}
           <div
@@ -39,7 +39,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-4">
               {t.eyebrow}
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-5">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-5">
               {t.headline}
             </h2>
             <p className="text-base text-[var(--muted-foreground)] leading-relaxed">

@@ -154,7 +154,13 @@ const track = [...signals, ...signals];
   }
 
   .signal-pill {
-    min-width: 320px;
+    min-width: 280px;
+  }
+
+  @media (min-width: 640px) {
+    .signal-pill {
+      min-width: 320px;
+    }
   }
 
   @keyframes signal-ticker-scroll {

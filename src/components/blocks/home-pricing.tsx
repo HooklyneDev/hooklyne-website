@@ -30,10 +30,10 @@ export const HomePricing = () => {
     <section className="py-14 lg:py-20" data-fade>
       <div className="container max-w-5xl">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
+          <h2 className="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
             Simple pricing.
           </h2>
-          <p className="text-base text-[var(--muted-foreground)]">
+          <p className="text-sm md:text-base text-[var(--muted-foreground)]">
             One credit system. Every action priced transparently. Switch plans or cancel anytime.
           </p>
         </div>
@@ -46,7 +46,7 @@ export const HomePricing = () => {
               <div
                 key={p.name}
                 className={cn(
-                  "rounded-2xl p-6 flex flex-col relative",
+                  "rounded-2xl p-5 md:p-6 flex flex-col relative",
                   isFeatured ? "text-white" : "bg-[var(--card)]",
                 )}
                 style={{
@@ -117,9 +117,6 @@ export const HomePricing = () => {
           </p>
         </div>
 
-        <p className="text-xs text-[var(--muted-foreground)] text-center mt-6">
-          Enterprise plan available. Annual billing saves up to €60/mo.
-        </p>
       </div>
     </section>
   );

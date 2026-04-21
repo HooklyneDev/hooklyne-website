@@ -282,10 +282,10 @@ export const DIYCompare = () => {
         {/* Header */}
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">The workflow</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             From ICP to inbox. Six simple steps.
           </h2>
-          <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
             Each step does one job a human researcher would do. Together they produce prospect packages your rep can act on in under a minute. Here is the whole flow.
           </p>
         </div>
@@ -313,7 +313,7 @@ export const DIYCompare = () => {
                 onClick={() => { setTab(t.key); setHasInteracted(true); }}
                 role="tab"
                 aria-selected={isActive}
-                className={`relative text-left px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm${nudge ? " diycompare-auto-hover" : ""}`}
+                className={`relative text-left px-2.5 py-2.5 md:px-4 md:py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm${nudge ? " diycompare-auto-hover" : ""}`}
                 style={{
                   background: isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.bg) : "transparent",
                   border: `1px solid ${isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.border) : "transparent"}`,
@@ -354,18 +354,18 @@ export const DIYCompare = () => {
 
         {/* Totals strip */}
         <div
-          className="flex items-center gap-x-6 gap-y-2 mb-5 px-5 py-3 rounded-xl"
+          className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 mb-5 px-4 sm:px-5 py-3 rounded-xl"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
           <div className="flex items-center gap-2 shrink-0">
             <Clock className="size-4" style={{ color: tone.fg }} />
-            <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: tone.fg }}>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: tone.fg }}>
               {active.totalLabel}
             </span>
           </div>
-          <div className="flex items-baseline gap-2 flex-1">
-            <span className="text-2xl font-bold text-[var(--heading)]">{active.total}</span>
-            <span className="text-xs text-[var(--muted-foreground)]">{active.totalSub}</span>
+          <div className="flex items-baseline gap-2 flex-1 min-w-0">
+            <span className="text-xl sm:text-2xl font-bold text-[var(--heading)] whitespace-nowrap">{active.total}</span>
+            <span className="text-xs text-[var(--muted-foreground)] truncate">{active.totalSub}</span>
           </div>
           {active.price && (
             <div className="shrink-0 text-right">
@@ -381,7 +381,7 @@ export const DIYCompare = () => {
           style={{ background: "var(--border)", boxShadow: "var(--shadow-md)" }}
         >
           {active.steps.map((s) => (
-            <div key={s.step} className="flex flex-col h-full p-6 lg:p-7" style={{ background: "var(--card)" }}>
+            <div key={s.step} className="flex flex-col h-full p-5 lg:p-7" style={{ background: "var(--card)" }}>
               <div className="flex items-center justify-between mb-4">
                 <span
                   className="inline-flex items-center justify-center size-7 rounded-lg text-[11px] font-bold"
@@ -410,7 +410,7 @@ export const DIYCompare = () => {
           ))}
           {/* Summary card fills the empty grid slot when step count < 6 */}
           {active.footerNote && (
-            <div className="flex flex-col justify-center p-6 lg:p-7" style={{ background: "var(--card)" }}>
+            <div className="flex flex-col justify-center p-5 lg:p-7" style={{ background: "var(--card)" }}>
               <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">
                 {active.footerNote}
               </p>
