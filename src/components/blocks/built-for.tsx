@@ -82,7 +82,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   return (
     <section className="pt-10 pb-14 lg:pt-12 lg:pb-20" data-fade>
       <div className="container max-w-6xl">
-        <div className="lg:grid lg:grid-cols-5 lg:gap-16 items-start">
+        <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 
           {/* Left: text column (60%) */}
           <div className="lg:col-span-3">
@@ -106,7 +106,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
 
           {/* Right: vertical card column (40%) */}
           <div
-            className="hidden lg:flex lg:col-span-2 flex-col gap-3 pt-16"
+            className="hidden lg:flex lg:col-span-2 flex-col gap-3"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
