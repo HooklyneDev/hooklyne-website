@@ -18,20 +18,47 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
       <div className="container max-w-6xl">
         <div className="grid lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
 
-          {/* Left: screenshot */}
-          <div
-            className="w-full rounded-2xl overflow-hidden order-first"
-            style={{
-              boxShadow: "var(--shadow-xl)",
-              border: "1px solid var(--border)",
-            }}
-          >
-            <img
-              src="/home/hooklyne-research-layer-b2b-prospecting.webp"
-              alt="Hooklyne prospect detail: verified contact, signal summary, and drafted outreach ready to send"
-              className="w-full h-auto block"
-              loading="lazy"
+          {/* Left: screenshot with ambient glow */}
+          <div className="relative order-first">
+            {/* Glow layers behind the image */}
+            <div
+              aria-hidden="true"
+              className="absolute pointer-events-none"
+              style={{
+                inset: "-12% -8% -18% -8%",
+                background:
+                  "radial-gradient(ellipse 60% 55% at 50% 55%, rgba(52,76,163,0.28) 0%, rgba(52,76,163,0.10) 40%, transparent 70%)",
+                filter: "blur(40px)",
+                zIndex: 0,
+              }}
             />
+            <div
+              aria-hidden="true"
+              className="absolute pointer-events-none"
+              style={{
+                inset: "5% 20% 30% 20%",
+                background:
+                  "radial-gradient(ellipse 50% 40% at 50% 50%, rgba(13,148,136,0.14) 0%, transparent 70%)",
+                filter: "blur(30px)",
+                zIndex: 0,
+              }}
+            />
+
+            <div
+              className="relative w-full rounded-2xl overflow-hidden"
+              style={{
+                boxShadow: "var(--shadow-xl)",
+                border: "1px solid var(--border)",
+                zIndex: 1,
+              }}
+            >
+              <img
+                src="/home/hooklyne-research-layer-b2b-prospecting.webp"
+                alt="Hooklyne prospect detail: verified contact, signal summary, and drafted outreach ready to send"
+                className="w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
           </div>
 
           {/* Right: text */}
