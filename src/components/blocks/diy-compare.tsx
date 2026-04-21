@@ -324,7 +324,7 @@ export const DIYCompare = () => {
     const id = window.setInterval(() => {
       i = (i + 1) % stepCount;
       setHighlightIdx(i);
-    }, 1100);
+    }, 1700);
     return () => window.clearInterval(id);
   }, [revealed, stepCount, gridHovered, reducedMotion]);
 
@@ -454,12 +454,10 @@ export const DIYCompare = () => {
                 key={s.step}
                 className="flex flex-col h-full p-5 lg:p-7 relative"
                 style={{
-                  background: isActive ? tone.soft : "var(--card)",
-                  boxShadow: isActive ? `inset 3px 0 0 ${tone.fg}` : undefined,
+                  background: "var(--card)",
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateY(0)" : "translateY(14px)",
-                  transition: "background 500ms ease, box-shadow 500ms ease, opacity 500ms ease, transform 500ms ease",
-                  zIndex: isActive ? 2 : 1,
+                  transition: "opacity 500ms ease, transform 500ms ease",
                 }}
               >
                 <div className="flex items-center justify-between mb-4">
@@ -468,8 +466,8 @@ export const DIYCompare = () => {
                     style={{
                       background: isHooklyne ? "var(--hooklyne-navy)" : tone.soft,
                       color: isHooklyne ? "#fff" : tone.fg,
-                      boxShadow: isActive ? `0 0 0 4px ${tone.soft}` : undefined,
-                      transition: "box-shadow 400ms ease",
+                      boxShadow: isActive ? `0 0 0 3px ${tone.soft}` : "0 0 0 0 transparent",
+                      transition: "box-shadow 700ms ease",
                     }}
                   >
                     {s.step}
