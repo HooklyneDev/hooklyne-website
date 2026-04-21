@@ -124,7 +124,7 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative mx-auto" style={{ height: 360, maxWidth: 380 }}>
+            <div className="relative mx-auto" style={{ height: 440, maxWidth: 380 }}>
               {t.cards.map((card, i) => {
                 const tone = CARD_TONES[i];
                 const Icon = CARD_ICONS[i];
@@ -141,14 +141,16 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
                   tone === "orange" ? "rgba(255,140,66,0.22)"   :
                   "rgba(52,76,163,0.22)";
 
-                // Position in the stack: 0 = front, 1 = middle peek, 2 = back peek
-                const depth = (i - active + t.cards.length) % t.cards.length;
-                const isFront = depth === 0;
+                // Signed offset: -1 = above peek, 0 = center active, +1 = below peek
+                const n = t.cards.length;
+                const rawDiff = (((i - active) % n) + n) % n;
+                const signed = rawDiff === 0 ? 0 : rawDiff === 1 ? 1 : -1;
+                const isCenter = signed === 0;
 
-                // Depth positioning
-                const translateY = depth === 0 ? 0 : depth === 1 ? -34 : -64;
-                const scale      = depth === 0 ? 1  : depth === 1 ? 0.95 : 0.9;
-                const opacity    = depth === 0 ? 1  : depth === 1 ? 0.6  : 0.35;
+                const peakY  = 120; // px distance of peeking cards from center
+                const translateY = signed * peakY;
+                const scale      = isCenter ? 1 : 0.92;
+                const opacity    = isCenter ? 1 : 0.45;
 
                 return (
                   <button
@@ -157,17 +159,17 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
                     aria-label={`Show ${card.sector}`}
                     className="absolute inset-x-0 text-left rounded-2xl p-5 lg:p-6"
                     style={{
-                      top: 0,
+                      top: "50%",
                       background: "var(--card)",
-                      border: `1px solid ${isFront ? accentBorder : "var(--border)"}`,
-                      boxShadow: isFront ? "var(--shadow-xl)" : "var(--shadow-md)",
-                      transform: `translateY(${translateY}px) scale(${scale})`,
-                      transformOrigin: "top center",
+                      border: `1px solid ${isCenter ? accentBorder : "var(--border)"}`,
+                      boxShadow: isCenter ? "var(--shadow-xl)" : "var(--shadow-md)",
+                      transform: `translateY(calc(-50% + ${translateY}px)) scale(${scale})`,
+                      transformOrigin: "center center",
                       opacity,
-                      zIndex: 10 - depth,
+                      zIndex: isCenter ? 10 : 5,
                       transition:
                         "transform 600ms cubic-bezier(0.32,0.72,0.22,1), opacity 500ms ease, box-shadow 500ms ease, border-color 500ms ease",
-                      pointerEvents: isFront ? "auto" : "none",
+                      pointerEvents: isCenter ? "auto" : "none",
                     }}
                   >
                     {/* Icon + sector */}
