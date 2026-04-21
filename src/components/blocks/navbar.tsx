@@ -60,6 +60,7 @@ const ITEMS: NavItem[] = [
     children: [
       { label: "News", href: "/resources/news" },
       { label: "FAQ", href: "/faq" },
+      { label: "Support", href: "/resources/support" },
     ],
   },
   { label: "About", href: "/about" },

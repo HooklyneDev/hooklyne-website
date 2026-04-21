@@ -1,0 +1,112 @@
+---
+import { Background } from '@/components/background';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
+---
+
+<DefaultLayout
+  title="Support - Hooklyne"
+  description="Get help with Hooklyne. Reach the team, find answers, and learn how to get more out of your prospect research."
+  ctaVariant="home"
+>
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-10">
+      <div class="container max-w-5xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Resources</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Support.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+          Real humans, clear answers. Pick the route that fits what you need.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-14">
+      <div class="container max-w-5xl">
+        <div class="grid gap-4 md:grid-cols-3">
+
+          <a
+            href="/faq"
+            class="group rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+          >
+            <span
+              class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
+              style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);"
+            >
+              <BookOpen className="size-5" />
+            </span>
+            <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Browse the FAQ</h2>
+            <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
+              The fastest answers on credits, pricing, data handling, and how a pilot works.
+            </p>
+            <span class="text-[12px] font-semibold text-[var(--hooklyne-blue)] inline-flex items-center gap-1">
+              Read the FAQ
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+
+          <a
+            href="mailto:support@hooklyne.com"
+            class="group rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+          >
+            <span
+              class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
+              style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);"
+            >
+              <Mail className="size-5" />
+            </span>
+            <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Email the team</h2>
+            <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
+              Something not working, or a question only a human can answer. We reply within one business day.
+            </p>
+            <span class="text-[12px] font-semibold inline-flex items-center gap-1" style="color: var(--hooklyne-teal);">
+              support@hooklyne.com
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+
+          <a
+            href="/contact"
+            class="group rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+          >
+            <span
+              class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
+              style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);"
+            >
+              <MessageCircle className="size-5" />
+            </span>
+            <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Talk to someone</h2>
+            <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
+              Walk through the product, scope a pilot, or get a tailored answer for your team. Book a short call.
+            </p>
+            <span class="text-[12px] font-semibold inline-flex items-center gap-1" style="color: var(--hooklyne-orange);">
+              Book a call
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-3xl">
+        <div
+          class="rounded-2xl p-6 md:p-8 text-center"
+          style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+        >
+          <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-3">Response times</p>
+          <p class="text-sm text-[var(--heading)] leading-relaxed mb-1">
+            Email support is handled by the team, not a ticket queue.
+          </p>
+          <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+            Weekdays, Amsterdam hours. Most replies inside four hours, never later than one business day.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </Background>
+</DefaultLayout>

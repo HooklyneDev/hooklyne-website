@@ -36,6 +36,7 @@ export const Footer = () => (
             <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Resources</p>
             <a href="/resources/news" className="text-white/60 hover:text-white transition-colors">News</a>
             <a href="/faq" className="text-white/60 hover:text-white transition-colors">FAQ</a>
+            <a href="/resources/support" className="text-white/60 hover:text-white transition-colors">Support</a>
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Company</p>
