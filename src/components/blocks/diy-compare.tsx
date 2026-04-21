@@ -256,6 +256,7 @@ export const DIYCompare = () => {
   const [gridHovered, setGridHovered] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const revealStartedRef = useRef(false);
 
   useEffect(() => {
     if (hasInteracted) return;
@@ -281,36 +282,37 @@ export const DIYCompare = () => {
     if (reducedMotion) {
       setRevealed(stepCount);
       setHighlightIdx(-1);
+      revealStartedRef.current = true;
       return;
     }
     setRevealed(0);
     setHighlightIdx(-1);
+    revealStartedRef.current = false;
   }, [tab, stepCount, reducedMotion]);
 
-  /* Staggered card reveal when grid scrolls into view (per tab) */
+  /* Staggered card reveal when grid scrolls into view (per tab).
+     Uses a ref guard so the running timeouts don't get cancelled by
+     subsequent re-renders as `revealed` climbs. */
   useEffect(() => {
     if (reducedMotion) return;
-    if (revealed > 0) return;
     const el = gridRef.current;
     if (!el) return;
 
-    const timeouts: number[] = [];
     const obs = new IntersectionObserver(
       (entries) => {
         if (!entries[0].isIntersecting) return;
+        if (revealStartedRef.current) return;
+        revealStartedRef.current = true;
         for (let i = 1; i <= stepCount; i++) {
-          timeouts.push(window.setTimeout(() => setRevealed(i), i * 130));
+          window.setTimeout(() => setRevealed(i), i * 130);
         }
         obs.disconnect();
       },
       { threshold: 0.15 },
     );
     obs.observe(el);
-    return () => {
-      obs.disconnect();
-      timeouts.forEach((t) => window.clearTimeout(t));
-    };
-  }, [tab, revealed, stepCount, reducedMotion]);
+    return () => obs.disconnect();
+  }, [tab, stepCount, reducedMotion]);
 
   /* After all cards revealed, run a soft highlight through them on loop */
   useEffect(() => {
