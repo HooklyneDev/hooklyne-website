@@ -24,7 +24,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             style={{
               border: "1px solid var(--border)",
               boxShadow:
-                "0 0 0 1px rgba(52,76,163,0.10), 0 20px 60px -10px rgba(52,76,163,0.45), 0 0 120px 10px rgba(52,76,163,0.35), var(--shadow-xl)",
+                "0 20px 60px -20px rgba(52,76,163,0.25), 0 0 100px 0 rgba(52,76,163,0.15), var(--shadow-xl)",
             }}
           >
             <img
