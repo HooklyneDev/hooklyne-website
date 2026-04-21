@@ -6,16 +6,38 @@ import { useLang, setLang, type Lang } from "@/lib/use-lang";
 
 const LangToggle = () => {
   const lang = useLang();
-  const other: Lang = lang === "nl" ? "en" : "nl";
   return (
-    <button
-      onClick={() => setLang(other)}
-      aria-label={`Switch to ${other === "nl" ? "Nederlands" : "English"}`}
-      title={other === "nl" ? "Nederlands" : "English"}
-      className="inline-flex items-center justify-center h-9 px-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors shrink-0"
+    <div
+      className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] shrink-0"
+      role="group"
+      aria-label="Language"
     >
-      {other}
-    </button>
+      {(["en", "nl"] as Lang[]).map((k, i) => {
+        const active = lang === k;
+        return (
+          <span key={k} className="inline-flex items-center">
+            <button
+              onClick={() => { if (!active) setLang(k); }}
+              aria-pressed={active}
+              aria-label={`Switch to ${k === "nl" ? "Nederlands" : "English"}`}
+              className={cn(
+                "transition-colors",
+                active
+                  ? "text-[var(--hooklyne-navy)] cursor-default"
+                  : "text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)]",
+              )}
+            >
+              {k}
+            </button>
+            {i === 0 && (
+              <span aria-hidden="true" className="mx-1 text-[var(--border-strong)] select-none">
+                &middot;
+              </span>
+            )}
+          </span>
+        );
+      })}
+    </div>
   );
 };
 
