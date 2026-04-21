@@ -124,7 +124,7 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative mx-auto" style={{ height: 300, maxWidth: 380 }}>
+            <div className="relative mx-auto" style={{ height: 360, maxWidth: 380 }}>
               {t.cards.map((card, i) => {
                 const tone = CARD_TONES[i];
                 const Icon = CARD_ICONS[i];
@@ -146,9 +146,9 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
                 const isFront = depth === 0;
 
                 // Depth positioning
-                const translateY = depth === 0 ? 0 : depth === 1 ? -18 : -36;
-                const scale      = depth === 0 ? 1  : depth === 1 ? 0.96 : 0.92;
-                const opacity    = depth === 0 ? 1  : depth === 1 ? 0.55 : 0.3;
+                const translateY = depth === 0 ? 0 : depth === 1 ? -34 : -64;
+                const scale      = depth === 0 ? 1  : depth === 1 ? 0.95 : 0.9;
+                const opacity    = depth === 0 ? 1  : depth === 1 ? 0.6  : 0.35;
 
                 return (
                   <button
