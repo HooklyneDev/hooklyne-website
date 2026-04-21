@@ -59,13 +59,11 @@ const ITEMS: NavItem[] = [
   {
     label: "Resources",
     children: [
-      { label: "Guides", href: "/guides" },
+      { label: "News", href: "/resources/news" },
       { label: "FAQ", href: "/faq" },
-      { label: "News", href: "/blog" },
     ],
   },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const Navbar = () => {
