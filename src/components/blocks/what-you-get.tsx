@@ -16,7 +16,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   return (
     <section className="py-14 lg:py-20" data-fade>
       <div className="container max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-center">
 
           {/* Left: screenshot */}
           <div
@@ -27,7 +27,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             }}
           >
             <img
-              src="/home/hooklyne-personalized-outreach-email.webp"
+              src="/home/hooklyne-research-layer-b2b-prospecting.webp"
               alt="Hooklyne prospect detail: verified contact, signal summary, and drafted outreach ready to send"
               className="w-full h-auto block"
               loading="lazy"

@@ -16,44 +16,53 @@ export const FounderSplit = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
 
   return (
-    <section className="py-14 lg:py-24" data-fade>
-      <div className="container max-w-4xl">
+    <section className="py-10 lg:py-16" data-fade>
+      <div className="container max-w-3xl">
 
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-10 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-6 text-center">
           {t.eyebrow}
         </p>
 
         <div
-          className="rounded-2xl px-8 py-12 md:px-16 md:py-16 relative"
+          className="rounded-2xl px-8 py-10 md:px-14 md:py-12 relative"
           style={{
             background: "var(--card)",
-            border: "1px solid var(--border)",
-            boxShadow: "var(--shadow-xl)",
+            border: "1px solid rgba(52,76,163,0.18)",
+            boxShadow: "var(--shadow-xl), 0 0 0 1px rgba(52,76,163,0.06), 0 8px 48px rgba(52,76,163,0.10)",
           }}
         >
+          {/* Glow layer */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 rounded-2xl pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(52,76,163,0.07) 0%, transparent 100%)",
+            }}
+          />
+
           {/* Large decorative quote mark */}
           <div
             aria-hidden="true"
-            className="absolute top-8 left-10 text-8xl leading-none font-serif select-none pointer-events-none"
-            style={{ color: "var(--border)" }}
+            className="absolute top-6 left-8 text-7xl leading-none font-serif select-none pointer-events-none"
+            style={{ color: "rgba(52,76,163,0.12)" }}
           >
             &ldquo;
           </div>
 
           {/* Quote */}
-          <p className="relative text-2xl md:text-3xl lg:text-4xl text-[var(--heading)] leading-[1.4] font-normal tracking-tight pt-8">
+          <p className="relative text-xl md:text-2xl lg:text-3xl text-[var(--heading)] leading-[1.45] font-normal tracking-tight pt-6">
             {t.quote}
           </p>
 
           {/* Attribution */}
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-8 flex items-center gap-3">
             {/* Monogram */}
             <div
-              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-sm font-semibold"
+              className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 text-sm font-semibold"
               style={{
                 background: "rgba(52,76,163,0.1)",
                 color: "var(--hooklyne-blue)",
-                border: "1px solid rgba(52,76,163,0.2)",
+                border: "1px solid rgba(52,76,163,0.22)",
               }}
             >
               {t.name.charAt(0)}
