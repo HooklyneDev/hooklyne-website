@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Check, X, Clock, Database, Wrench, Briefcase, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -251,12 +251,6 @@ export const DIYCompare = () => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
   const [nudgeIdx, setNudgeIdx] = useState(0);
-  const [revealed, setRevealed] = useState(0);
-  const [highlightIdx, setHighlightIdx] = useState<number>(-1);
-  const [gridHovered, setGridHovered] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const revealStartedRef = useRef(false);
 
   useEffect(() => {
     if (hasInteracted) return;
@@ -270,63 +264,6 @@ export const DIYCompare = () => {
   const active = TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
   const isHooklyne = active.key === "hooklyne";
-  const stepCount = active.steps.length;
-
-  /* Reduced motion check */
-  useEffect(() => {
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
-  /* Reset reveal + highlight when the tab changes */
-  useEffect(() => {
-    if (reducedMotion) {
-      setRevealed(stepCount);
-      setHighlightIdx(-1);
-      revealStartedRef.current = true;
-      return;
-    }
-    setRevealed(0);
-    setHighlightIdx(-1);
-    revealStartedRef.current = false;
-  }, [tab, stepCount, reducedMotion]);
-
-  /* Staggered card reveal when grid scrolls into view (per tab).
-     Uses a ref guard so the running timeouts don't get cancelled by
-     subsequent re-renders as `revealed` climbs. */
-  useEffect(() => {
-    if (reducedMotion) return;
-    const el = gridRef.current;
-    if (!el) return;
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting) return;
-        if (revealStartedRef.current) return;
-        revealStartedRef.current = true;
-        for (let i = 1; i <= stepCount; i++) {
-          window.setTimeout(() => setRevealed(i), i * 130);
-        }
-        obs.disconnect();
-      },
-      { threshold: 0.15 },
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [tab, stepCount, reducedMotion]);
-
-  /* After all cards revealed, run a soft highlight through them on loop */
-  useEffect(() => {
-    if (reducedMotion) return;
-    if (revealed < stepCount) return;
-    if (gridHovered) return;
-    setHighlightIdx(0);
-    let i = 0;
-    const id = window.setInterval(() => {
-      i = (i + 1) % stepCount;
-      setHighlightIdx(i);
-    }, 1700);
-    return () => window.clearInterval(id);
-  }, [revealed, stepCount, gridHovered, reducedMotion]);
 
   return (
     <section className="pt-8 pb-14 lg:pt-10 lg:pb-20" data-fade>
@@ -439,68 +376,77 @@ export const DIYCompare = () => {
         </div>
 
         {/* Steps grid */}
-        <div
-          ref={gridRef}
-          onMouseEnter={() => setGridHovered(true)}
-          onMouseLeave={() => setGridHovered(false)}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden"
-          style={{ background: "var(--border)", boxShadow: "var(--shadow-md)" }}
-        >
-          {active.steps.map((s, idx) => {
-            const visible = idx < revealed;
-            const isActive = highlightIdx === idx;
-            return (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {active.steps.map((s) => (
+            <div
+              key={s.step}
+              className="group relative flex flex-col h-full p-5 lg:p-7 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background:
+                  "linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,250,253,0.9) 100%)",
+                border: "1px solid rgba(255,255,255,0.8)",
+                boxShadow:
+                  "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 -1px 0 0 rgba(52,76,163,0.04) inset, 0 0 0 1px rgba(52,76,163,0.06), 0 12px 32px -12px rgba(52,76,163,0.18), 0 2px 8px -2px rgba(15,23,42,0.04)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+              }}
+            >
+              {/* top highlight sheen */}
               <div
-                key={s.step}
-                className="flex flex-col h-full p-5 lg:p-7 relative"
+                className="absolute inset-x-0 top-0 h-px pointer-events-none"
                 style={{
-                  background: "var(--card)",
-                  opacity: visible ? 1 : 0,
-                  transform: visible ? "translateY(0)" : "translateY(14px)",
-                  transition: "opacity 500ms ease, transform 500ms ease",
+                  background:
+                    "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)",
                 }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span
-                    className="inline-flex items-center justify-center size-7 rounded-lg text-[11px] font-bold relative"
-                    style={{
-                      background: isHooklyne ? "var(--hooklyne-navy)" : tone.soft,
-                      color: isHooklyne ? "#fff" : tone.fg,
-                      boxShadow: isActive ? `0 0 0 3px ${tone.soft}` : "0 0 0 0 transparent",
-                      transition: "box-shadow 700ms ease",
-                    }}
-                  >
-                    {s.step}
-                  </span>
-                  <span
-                    className="text-[10px] font-mono font-semibold px-2 py-1 rounded"
-                    style={{ background: tone.soft, color: tone.fg }}
-                  >
-                    {s.time}
-                  </span>
-                </div>
-                <div className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
-                <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
-                <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
-                  {s.good ? (
-                    <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
-                  ) : (
-                    <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
-                  )}
-                  <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
-                </div>
+              />
+              {/* soft corner glow */}
+              <div
+                className="absolute -top-16 -right-16 size-40 rounded-full pointer-events-none opacity-60"
+                style={{
+                  background: `radial-gradient(circle, ${tone.soft} 0%, transparent 70%)`,
+                }}
+              />
+
+              <div className="relative flex items-center justify-between mb-4">
+                <span
+                  className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold"
+                  style={{
+                    background: isHooklyne ? "var(--hooklyne-navy)" : tone.fg,
+                    color: "#fff",
+                    boxShadow:
+                      "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 10px -2px rgba(15,23,42,0.2)",
+                  }}
+                >
+                  {s.step}
+                </span>
+                <span
+                  className="text-[10px] font-mono font-semibold px-2 py-1 rounded"
+                  style={{ background: tone.soft, color: tone.fg }}
+                >
+                  {s.time}
+                </span>
               </div>
-            );
-          })}
+              <div className="relative text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
+              <p className="relative text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
+              <div className="relative flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
+                {s.good ? (
+                  <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
+                ) : (
+                  <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
+                )}
+                <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
+              </div>
+            </div>
+          ))}
           {/* Summary card fills the empty grid slot when step count < 6 */}
           {active.footerNote && (
             <div
-              className="flex flex-col justify-center p-5 lg:p-7"
+              className="relative flex flex-col justify-center p-5 lg:p-7 rounded-2xl overflow-hidden"
               style={{
-                background: "var(--card)",
-                opacity: revealed >= stepCount ? 1 : 0,
-                transform: revealed >= stepCount ? "translateY(0)" : "translateY(14px)",
-                transition: "opacity 500ms ease, transform 500ms ease",
+                background:
+                  "linear-gradient(145deg, rgba(255,255,255,0.75) 0%, rgba(248,250,253,0.65) 100%)",
+                border: "1px dashed rgba(52,76,163,0.15)",
+                boxShadow: "0 1px 0 0 rgba(255,255,255,0.9) inset",
               }}
             >
               <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">
