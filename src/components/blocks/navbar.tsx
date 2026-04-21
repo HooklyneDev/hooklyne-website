@@ -8,13 +8,13 @@ const LangToggle = () => {
   const lang = useLang();
   return (
     <div
-      className="inline-flex items-center h-8 p-0.5 rounded-full shrink-0"
+      className="inline-flex items-center h-7 p-0.5 rounded-full shrink-0"
       style={{
         background:
-          "linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(248,250,253,0.4) 100%)",
+          "linear-gradient(145deg, rgba(255,255,255,0.55) 0%, rgba(248,250,253,0.35) 100%)",
         border: "1px solid rgba(52,76,163,0.12)",
         boxShadow:
-          "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 -1px 0 0 rgba(52,76,163,0.04) inset, 0 2px 6px -2px rgba(15,23,42,0.05)",
+          "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 2px 6px -2px rgba(15,23,42,0.05)",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
       }}
@@ -29,15 +29,14 @@ const LangToggle = () => {
             onClick={() => { if (!active) setLang(k); }}
             aria-pressed={active}
             aria-label={`Switch to ${k === "nl" ? "Nederlands" : "English"}`}
-            className="inline-flex items-center justify-center h-7 px-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] transition-all"
+            className="inline-flex items-center justify-center h-6 min-w-[26px] px-2 rounded-full text-[10px] font-bold uppercase tracking-[0.12em] transition-all"
             style={{
-              background: active
-                ? "linear-gradient(145deg, #ffffff 0%, rgba(248,250,253,0.9) 100%)"
-                : "transparent",
-              color: active ? "var(--hooklyne-navy)" : "var(--muted-foreground)",
+              background: active ? "var(--hooklyne-navy)" : "transparent",
+              color: active ? "#ffffff" : "var(--muted-foreground)",
               boxShadow: active
-                ? "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 1px 2px 0 rgba(15,23,42,0.06), 0 0 0 1px rgba(52,76,163,0.08)"
+                ? "0 1px 2px 0 rgba(2,47,81,0.25), 0 0 0 1px rgba(2,47,81,0.1)"
                 : "none",
+              opacity: active ? 1 : 0.7,
               cursor: active ? "default" : "pointer",
             }}
           >
