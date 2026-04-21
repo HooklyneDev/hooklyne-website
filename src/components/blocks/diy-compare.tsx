@@ -329,7 +329,7 @@ export const DIYCompare = () => {
   }, [revealed, stepCount, gridHovered, reducedMotion]);
 
   return (
-    <section className="py-14 lg:py-20" data-fade>
+    <section className="pt-8 pb-14 lg:pt-10 lg:pb-20" data-fade>
       <style>{`
         @keyframes diycompareAutoHover {
           0%       { background: transparent; border-color: transparent; transform: translateY(0); }
