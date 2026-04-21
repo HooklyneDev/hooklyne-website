@@ -25,10 +25,10 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
               aria-hidden="true"
               className="absolute pointer-events-none"
               style={{
-                inset: "-12% -8% -18% -8%",
+                inset: "-18% -12% -22% -12%",
                 background:
-                  "radial-gradient(ellipse 60% 55% at 50% 55%, rgba(52,76,163,0.28) 0%, rgba(52,76,163,0.10) 40%, transparent 70%)",
-                filter: "blur(40px)",
+                  "radial-gradient(ellipse 60% 55% at 50% 55%, rgba(52,76,163,0.55) 0%, rgba(52,76,163,0.22) 40%, transparent 72%)",
+                filter: "blur(50px)",
                 zIndex: 0,
               }}
             />
@@ -36,9 +36,9 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
               aria-hidden="true"
               className="absolute pointer-events-none"
               style={{
-                inset: "5% 20% 30% 20%",
+                inset: "0% 10% 20% 10%",
                 background:
-                  "radial-gradient(ellipse 50% 40% at 50% 50%, rgba(13,148,136,0.14) 0%, transparent 70%)",
+                  "radial-gradient(ellipse 55% 45% at 50% 50%, rgba(52,76,163,0.35) 0%, transparent 70%)",
                 filter: "blur(30px)",
                 zIndex: 0,
               }}
