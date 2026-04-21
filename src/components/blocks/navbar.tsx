@@ -8,33 +8,41 @@ const LangToggle = () => {
   const lang = useLang();
   return (
     <div
-      className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] shrink-0"
+      className="inline-flex items-center h-8 p-0.5 rounded-full shrink-0"
+      style={{
+        background:
+          "linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(248,250,253,0.4) 100%)",
+        border: "1px solid rgba(52,76,163,0.12)",
+        boxShadow:
+          "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 -1px 0 0 rgba(52,76,163,0.04) inset, 0 2px 6px -2px rgba(15,23,42,0.05)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+      }}
       role="group"
       aria-label="Language"
     >
-      {(["en", "nl"] as Lang[]).map((k, i) => {
+      {(["en", "nl"] as Lang[]).map((k) => {
         const active = lang === k;
         return (
-          <span key={k} className="inline-flex items-center">
-            <button
-              onClick={() => { if (!active) setLang(k); }}
-              aria-pressed={active}
-              aria-label={`Switch to ${k === "nl" ? "Nederlands" : "English"}`}
-              className={cn(
-                "transition-colors",
-                active
-                  ? "text-[var(--hooklyne-navy)] cursor-default"
-                  : "text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)]",
-              )}
-            >
-              {k}
-            </button>
-            {i === 0 && (
-              <span aria-hidden="true" className="mx-1 text-[var(--border-strong)] select-none">
-                &middot;
-              </span>
-            )}
-          </span>
+          <button
+            key={k}
+            onClick={() => { if (!active) setLang(k); }}
+            aria-pressed={active}
+            aria-label={`Switch to ${k === "nl" ? "Nederlands" : "English"}`}
+            className="inline-flex items-center justify-center h-7 px-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] transition-all"
+            style={{
+              background: active
+                ? "linear-gradient(145deg, #ffffff 0%, rgba(248,250,253,0.9) 100%)"
+                : "transparent",
+              color: active ? "var(--hooklyne-navy)" : "var(--muted-foreground)",
+              boxShadow: active
+                ? "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 1px 2px 0 rgba(15,23,42,0.06), 0 0 0 1px rgba(52,76,163,0.08)"
+                : "none",
+              cursor: active ? "default" : "pointer",
+            }}
+          >
+            {k}
+          </button>
         );
       })}
     </div>
