@@ -13,9 +13,7 @@ const posts = (await getCollection('blog')).sort(
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
 	<Background>
-		<div class="py-28 lg:pt-44 lg:pb-32">
-			<BlogPosts posts={posts} client:only='react' />
-		</div>
+		<BlogPosts posts={posts} client:only='react' />
 	</Background>
 </DefaultLayout>
 

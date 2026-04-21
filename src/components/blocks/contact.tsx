@@ -8,11 +8,11 @@ export const Contact = () => {
     <section className="pt-32 pb-20 lg:pt-40 lg:pb-28">
       <div className="container max-w-5xl">
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Contact</p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Contact</p>
+          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-[var(--heading)] mb-4">
             Let's talk.
           </h1>
-          <p className="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
             Book a demo, start a free pilot, or just send us a question. You'll hear back fast.
           </p>
         </div>

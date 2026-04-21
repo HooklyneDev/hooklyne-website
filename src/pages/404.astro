@@ -3,41 +3,37 @@ import { ArrowLeft } from "lucide-react";
 
 import { Background } from "@/components/background";
 import { Button } from "@/components/ui/button";
-import BasicLayout from "@/layouts/BasicLayout.astro";
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 ---
 
-<DefaultLayout title="404: Not Found" description="Sorry, the page you're looking for doesn't exist.">
+<DefaultLayout title="404: Not Found - Hooklyne" description="Sorry, the page you're looking for doesn't exist.">
   <Background>
-    <div class="container flex min-h-[70vh] flex-col items-center justify-center py-28 text-center lg:min-h-[80vh] lg:py-32">
-      <div class="relative z-10 max-w-2xl">
-        <h1 class="from-foreground to-foreground/70 relative mb-6 bg-linear-to-br bg-clip-text py-2 text-5xl font-bold text-transparent sm:text-6xl lg:text-7xl">
-          Page Not Found
-        </h1>
-
-        <p class="text-muted-foreground mb-10 text-xl">
-          Sorry, we couldn't find the page you're looking for. The page might
-          have been removed or the URL might be incorrect.
+    <section class="pt-32 lg:pt-40 pb-20">
+      <div class="container max-w-3xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">404</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Page not found.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-10">
+          The page you're after has moved or never existed. Head back home, or get in touch if you got here from a broken link.
         </p>
 
-        <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a href="/">
-          <Button size="lg" className="group min-w-[200px] gap-2">
-              <ArrowLeft className="size-5 transition-transform group-hover:-translate-x-1" />
-              Back to Home
+            <Button
+              className="text-sm font-semibold rounded-lg px-5 py-2.5 h-auto btn-shine"
+              style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}
+            >
+              <ArrowLeft className="size-4 mr-1.5" />
+              Back to home
             </Button>
           </a>
-          <a href="/contact">
-            <Button
-            variant="outline"
-            size="lg"
-            className="min-w-[200px]"
-            >
-              Contact Support
-            </Button>
-           </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 h-10 px-5 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
+          >
+            Contact support
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   </Background>
-</DefaultLayout> 
+</DefaultLayout>

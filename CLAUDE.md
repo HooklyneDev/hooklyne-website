@@ -15,9 +15,9 @@
 
 ## What this site is
 
-Commercial marketing/landing site for Hooklyne. Static, SEO-optimized. Targets Dutch B2B SMEs (10-50 people, 1-3 sales reps). Separate from the portal — no auth, no Supabase.
+Commercial marketing/landing site for Hooklyne. Static, SEO-optimized. Targets Dutch B2B SMEs (10-50 people, 1-3 sales reps). Separate from the portal - no auth, no Supabase.
 
-**Positioning:** "Not more, smarter" — outreach-ready prospect packages in the sender's voice.
+**Positioning:** "Not more, smarter" - outreach-ready prospect packages in the sender's voice.
 **Tone:** Direct, outcome-focused, plain language. No neural/AI jargon. Never name competitors (Apollo, Lusha, Salesmotion) on site.
 **Language:** Dutch-first copy, English secondary. Every page needs NL + EN.
 

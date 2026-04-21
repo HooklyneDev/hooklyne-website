@@ -1,60 +1,55 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const BlogPosts = ({ posts }: { posts: any[] }) => {
   return (
     <>
-      <section>
-        <div className="container max-w-5xl space-y-4 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)]">News</p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--heading)]">
+      <section className="pt-32 lg:pt-40 pb-10">
+        <div className="container max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">News</p>
+          <h1 className="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">
             Updates and articles.
           </h1>
-
-          <p className="text-[var(--muted-foreground)] max-w-md leading-snug font-medium lg:mx-auto">
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
             Product updates, market research, and sales playbooks from the team.
           </p>
         </div>
       </section>
-      <section className="container flex max-w-5xl flex-col-reverse gap-8 md:gap-14 lg:flex-row lg:items-end">
-        <div className="container">
-          <div className="mt-20 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <section className="pb-20">
+        <div className="container max-w-5xl">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <a
                 key={post.id}
-                className="rounded-xl border"
+                className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}
                 href={`/blog/${post.id}/`}
               >
                 <div className="p-2">
                   <img
                     src={post.data.image}
-                    alt="placeholder"
-                    className="aspect-video w-full rounded-lg object-cover"
+                    alt=""
+                    className="aspect-video w-full rounded-xl object-cover"
                   />
                 </div>
-                <div className="px-3 pt-2 pb-4">
-                  <h2 className="mb-1 font-semibold">{post.data.title}</h2>
-                  <p className="text-muted-foreground line-clamp-2 text-sm">
+                <div className="px-4 pt-3 pb-5">
+                  <h2 className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight tracking-tight">
+                    {post.data.title}
+                  </h2>
+                  <p className="text-[13px] text-[var(--muted-foreground)] line-clamp-2 leading-relaxed">
                     {post.data.description}
                   </p>
-                  <Separator className="my-5" />
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      <Avatar className="ring-input size-7 rounded-full ring-1">
-                        <AvatarImage
-                          src={post.data.authorImage}
-                          alt="placeholder"
-                        />
-                        <AvatarFallback>CN</AvatarFallback>
-                      </Avatar>
-                      <span className="text-sm font-medium">
-                        {post.data.authorName}
-                      </span>
-                    </div>
-                    <Badge variant="secondary" className="h-fit">
-                      10 Min Read
-                    </Badge>
+                  <Separator className="my-4" />
+                  <div className="flex items-center justify-between gap-4 text-[12px] text-[var(--muted-foreground)]">
+                    <span className="font-medium">
+                      {post.data.authorName}
+                    </span>
+                    <span>
+                      {new Date(post.data.pubDate).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </span>
                   </div>
                 </div>
               </a>

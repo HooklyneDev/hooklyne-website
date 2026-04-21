@@ -5,6 +5,7 @@ import { Hero } from '@/components/blocks/hero';
 import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { DIYCompare } from '@/components/blocks/diy-compare';
 import { WhatYouGet } from '@/components/blocks/what-you-get';
+import { WaysToStart } from '@/components/blocks/ways-to-start';
 import { BuiltFor } from '@/components/blocks/built-for';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -19,6 +20,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
   <Background variant="bottom">
     <WhatYouGet />
+    <WaysToStart client:visible />
     <BuiltFor client:visible />
     <HomePricing client:load />
   </Background>

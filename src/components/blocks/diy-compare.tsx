@@ -354,23 +354,23 @@ export const DIYCompare = () => {
 
         {/* Totals strip */}
         <div
-          className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 mb-5 px-4 sm:px-5 py-3 rounded-xl"
+          className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-5 px-4 py-2 rounded-lg"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
-          <div className="flex items-center gap-2 shrink-0">
-            <Clock className="size-4" style={{ color: tone.fg }} />
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: tone.fg }}>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Clock className="size-3.5" style={{ color: tone.fg }} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: tone.fg }}>
               {active.totalLabel}
             </span>
           </div>
           <div className="flex items-baseline gap-2 flex-1 min-w-0">
-            <span className="text-xl sm:text-2xl font-bold text-[var(--heading)] whitespace-nowrap">{active.total}</span>
-            <span className="text-xs text-[var(--muted-foreground)] truncate">{active.totalSub}</span>
+            <span className="text-sm md:text-base font-semibold text-[var(--heading)] whitespace-nowrap tracking-tight">{active.total}</span>
+            <span className="text-[12px] text-[var(--muted-foreground)] truncate">{active.totalSub}</span>
           </div>
           {active.price && (
-            <div className="shrink-0 text-right">
-              <span className="text-xs font-bold tabular-nums" style={{ color: tone.fg }}>{active.price}</span>
-              <div className="text-[10px] text-[var(--muted-foreground)]">est. tool cost</div>
+            <div className="shrink-0 flex items-baseline gap-1.5">
+              <span className="text-[11px] font-semibold tabular-nums" style={{ color: tone.fg }}>{active.price}</span>
+              <span className="text-[10px] text-[var(--muted-foreground)]">est. tool cost</span>
             </div>
           )}
         </div>
