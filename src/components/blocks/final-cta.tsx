@@ -73,18 +73,76 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
   const copy = VARIANTS[variant] ?? VARIANTS.home;
 
   return (
-    <section
-      className="relative overflow-hidden text-white"
-      data-fade
-      style={{
-        background: `
-          radial-gradient(ellipse 55% 70% at 15% 0%, rgba(52,76,163,0.55), transparent 65%),
-          radial-gradient(ellipse 45% 70% at 100% 100%, rgba(13,148,136,0.30), transparent 65%),
-          radial-gradient(ellipse 40% 70% at 70% 0%, rgba(255,140,66,0.14), transparent 65%),
-          linear-gradient(135deg, var(--hooklyne-navy) 0%, #021f37 100%)
-        `,
-      }}
-    >
+    <>
+      {/* Full-width liquid-glass trust strip */}
+      <section
+        className="relative"
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(255,255,255,0.75) 0%, rgba(248,250,253,0.65) 100%)",
+          borderTop: "1px solid var(--border)",
+          borderBottom: "1px solid var(--border)",
+          boxShadow:
+            "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 -1px 0 0 rgba(52,76,163,0.04) inset, 0 8px 24px -16px rgba(52,76,163,0.12)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+        }}
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-px pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)",
+          }}
+        />
+        <div className="container max-w-6xl py-5 md:py-4">
+          <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-3 md:gap-0">
+            {TRUST_SIGNALS.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.label} className="contents md:flex md:items-center">
+                  <div className="flex items-center gap-2">
+                    <Icon
+                      className="size-3.5 shrink-0"
+                      style={{ color: "var(--muted-foreground)" }}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className="text-[10px] md:text-[10.5px] font-semibold uppercase tracking-[0.2em] whitespace-nowrap"
+                      style={{ color: "var(--muted-foreground)" }}
+                    >
+                      {s.label}
+                    </span>
+                  </div>
+                  {i < TRUST_SIGNALS.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="hidden md:inline mx-4 select-none"
+                      style={{ color: "rgba(100,116,139,0.35)" }}
+                    >
+                      &middot;
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="relative overflow-hidden text-white"
+        data-fade
+        style={{
+          background: `
+            radial-gradient(ellipse 55% 70% at 15% 0%, rgba(52,76,163,0.55), transparent 65%),
+            radial-gradient(ellipse 45% 70% at 100% 100%, rgba(13,148,136,0.30), transparent 65%),
+            radial-gradient(ellipse 40% 70% at 70% 0%, rgba(255,140,66,0.14), transparent 65%),
+            linear-gradient(135deg, var(--hooklyne-navy) 0%, #021f37 100%)
+          `,
+        }}
+      >
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-px"
@@ -101,43 +159,6 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
         <p className="text-base md:text-lg text-white/70 max-w-xl mx-auto mb-8 leading-relaxed">
           {copy.body}
         </p>
-
-        {/* Trust strip - liquid glass */}
-        <div
-          className="inline-flex flex-col md:flex-row items-center gap-2.5 md:gap-0 rounded-full px-5 md:px-6 py-3 md:py-2.5 mb-6"
-          style={{
-            background:
-              "linear-gradient(145deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
-            border: "1px solid rgba(255,255,255,0.14)",
-            boxShadow:
-              "0 1px 0 0 rgba(255,255,255,0.12) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 8px 24px -8px rgba(0,0,0,0.3)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-          }}
-        >
-          {TRUST_SIGNALS.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <div key={s.label} className="contents md:flex md:items-center">
-                <div className="flex items-center gap-1.5">
-                  <Icon className="size-3.5 text-white/55 shrink-0" aria-hidden="true" />
-                  <span className="text-[10px] md:text-[10.5px] font-semibold uppercase tracking-[0.18em] text-white/70 whitespace-nowrap">
-                    {s.label}
-                  </span>
-                </div>
-                {i < TRUST_SIGNALS.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="hidden md:inline text-white/25 mx-3 select-none"
-                  >
-                    &middot;
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
             href="/contact"
@@ -156,5 +177,6 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
         </div>
       </div>
     </section>
+    </>
   );
 };
