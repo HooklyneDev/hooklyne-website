@@ -86,7 +86,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
 
           {/* Left: text column (60%) */}
           <div className="lg:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-6 lg:mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-6 lg:mb-10">
               {t.eyebrow}
             </p>
 

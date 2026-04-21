@@ -37,7 +37,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
 
           {/* Right: text */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
               {t.eyebrow}
             </p>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-5">
