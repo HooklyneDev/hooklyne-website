@@ -80,7 +80,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   }, [reduced, paused]);
 
   return (
-    <section className="py-14 lg:py-20" data-fade>
+    <section className="pt-10 pb-14 lg:pt-12 lg:pb-20" data-fade>
       <div className="container max-w-6xl">
         <div className="lg:grid lg:grid-cols-5 lg:gap-16 items-start">
 

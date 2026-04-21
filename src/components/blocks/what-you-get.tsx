@@ -14,7 +14,7 @@ export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
   const t = lang === "nl" ? NL : EN;
 
   return (
-    <section className="py-14 lg:py-20" data-fade>
+    <section className="pt-14 pb-10 lg:pt-20 lg:pb-12" data-fade>
       <div className="container max-w-6xl">
         <div className="grid lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
 
