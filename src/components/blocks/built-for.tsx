@@ -106,7 +106,7 @@ export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
 
           {/* Right: vertical card column (40%) */}
           <div
-            className="hidden lg:flex lg:col-span-2 flex-col gap-3"
+            className="hidden lg:flex lg:col-span-2 flex-col gap-3 lg:pt-8"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
