@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Check, X, Clock, Database, Wrench, Briefcase, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -251,6 +251,11 @@ export const DIYCompare = () => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
   const [nudgeIdx, setNudgeIdx] = useState(0);
+  const [revealed, setRevealed] = useState(0);
+  const [highlightIdx, setHighlightIdx] = useState<number>(-1);
+  const [gridHovered, setGridHovered] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (hasInteracted) return;
@@ -264,6 +269,62 @@ export const DIYCompare = () => {
   const active = TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
   const isHooklyne = active.key === "hooklyne";
+  const stepCount = active.steps.length;
+
+  /* Reduced motion check */
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  /* Reset reveal + highlight when the tab changes */
+  useEffect(() => {
+    if (reducedMotion) {
+      setRevealed(stepCount);
+      setHighlightIdx(-1);
+      return;
+    }
+    setRevealed(0);
+    setHighlightIdx(-1);
+  }, [tab, stepCount, reducedMotion]);
+
+  /* Staggered card reveal when grid scrolls into view (per tab) */
+  useEffect(() => {
+    if (reducedMotion) return;
+    if (revealed > 0) return;
+    const el = gridRef.current;
+    if (!el) return;
+
+    const timeouts: number[] = [];
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        for (let i = 1; i <= stepCount; i++) {
+          timeouts.push(window.setTimeout(() => setRevealed(i), i * 130));
+        }
+        obs.disconnect();
+      },
+      { threshold: 0.15 },
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      timeouts.forEach((t) => window.clearTimeout(t));
+    };
+  }, [tab, revealed, stepCount, reducedMotion]);
+
+  /* After all cards revealed, run a soft highlight through them on loop */
+  useEffect(() => {
+    if (reducedMotion) return;
+    if (revealed < stepCount) return;
+    if (gridHovered) return;
+    setHighlightIdx(0);
+    let i = 0;
+    const id = window.setInterval(() => {
+      i = (i + 1) % stepCount;
+      setHighlightIdx(i);
+    }, 1100);
+    return () => window.clearInterval(id);
+  }, [revealed, stepCount, gridHovered, reducedMotion]);
 
   return (
     <section className="py-14 lg:py-20" data-fade>
@@ -377,40 +438,71 @@ export const DIYCompare = () => {
 
         {/* Steps grid */}
         <div
+          ref={gridRef}
+          onMouseEnter={() => setGridHovered(true)}
+          onMouseLeave={() => setGridHovered(false)}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden"
           style={{ background: "var(--border)", boxShadow: "var(--shadow-md)" }}
         >
-          {active.steps.map((s) => (
-            <div key={s.step} className="flex flex-col h-full p-5 lg:p-7" style={{ background: "var(--card)" }}>
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className="inline-flex items-center justify-center size-7 rounded-lg text-[11px] font-bold"
-                  style={{ background: isHooklyne ? "var(--hooklyne-navy)" : tone.soft, color: isHooklyne ? "#fff" : tone.fg }}
-                >
-                  {s.step}
-                </span>
-                <span
-                  className="text-[10px] font-mono font-semibold px-2 py-1 rounded"
-                  style={{ background: tone.soft, color: tone.fg }}
-                >
-                  {s.time}
-                </span>
+          {active.steps.map((s, idx) => {
+            const visible = idx < revealed;
+            const isActive = highlightIdx === idx;
+            return (
+              <div
+                key={s.step}
+                className="flex flex-col h-full p-5 lg:p-7 relative"
+                style={{
+                  background: isActive ? tone.soft : "var(--card)",
+                  boxShadow: isActive ? `inset 3px 0 0 ${tone.fg}` : undefined,
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? "translateY(0)" : "translateY(14px)",
+                  transition: "background 500ms ease, box-shadow 500ms ease, opacity 500ms ease, transform 500ms ease",
+                  zIndex: isActive ? 2 : 1,
+                }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className="inline-flex items-center justify-center size-7 rounded-lg text-[11px] font-bold relative"
+                    style={{
+                      background: isHooklyne ? "var(--hooklyne-navy)" : tone.soft,
+                      color: isHooklyne ? "#fff" : tone.fg,
+                      boxShadow: isActive ? `0 0 0 4px ${tone.soft}` : undefined,
+                      transition: "box-shadow 400ms ease",
+                    }}
+                  >
+                    {s.step}
+                  </span>
+                  <span
+                    className="text-[10px] font-mono font-semibold px-2 py-1 rounded"
+                    style={{ background: tone.soft, color: tone.fg }}
+                  >
+                    {s.time}
+                  </span>
+                </div>
+                <div className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
+                <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
+                <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
+                  {s.good ? (
+                    <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
+                  ) : (
+                    <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
+                  )}
+                  <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
+                </div>
               </div>
-              <div className="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
-              <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
-              <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
-                {s.good ? (
-                  <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
-                ) : (
-                  <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
-                )}
-                <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
           {/* Summary card fills the empty grid slot when step count < 6 */}
           {active.footerNote && (
-            <div className="flex flex-col justify-center p-5 lg:p-7" style={{ background: "var(--card)" }}>
+            <div
+              className="flex flex-col justify-center p-5 lg:p-7"
+              style={{
+                background: "var(--card)",
+                opacity: revealed >= stepCount ? 1 : 0,
+                transform: revealed >= stepCount ? "translateY(0)" : "translateY(14px)",
+                transition: "opacity 500ms ease, transform 500ms ease",
+              }}
+            >
               <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">
                 {active.footerNote}
               </p>
