@@ -6,7 +6,6 @@ import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { DIYCompare } from '@/components/blocks/diy-compare';
 import { WhatYouGet } from '@/components/blocks/what-you-get';
 import { BuiltFor } from '@/components/blocks/built-for';
-import { FounderSplit } from '@/components/blocks/founder-split';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -22,6 +21,5 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     <WhatYouGet />
     <BuiltFor client:visible />
     <HomePricing client:load />
-    <FounderSplit />
   </Background>
 </DefaultLayout>
