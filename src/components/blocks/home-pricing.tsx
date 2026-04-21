@@ -113,7 +113,7 @@ export const HomePricing = () => {
             &ldquo;Most teams can&rsquo;t pick between proper research and enough outreach, so they sacrifice both. We built Hooklyne so they don&rsquo;t have to.&rdquo;
           </p>
           <p className="mt-3 text-xs text-[var(--muted-foreground)]">
-            Tim · Founder, Hooklyne
+            Tim · Founder · Hooklyne · The Netherlands
           </p>
         </div>
 

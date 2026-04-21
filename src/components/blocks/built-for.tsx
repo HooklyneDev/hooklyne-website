@@ -118,83 +118,93 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
             </div>
           </div>
 
-          {/* Right: vertical rotating cards (40%) */}
+          {/* Right: stacked-at-depth card deck (40%) */}
           <div
-            className="hidden lg:flex lg:col-span-2 flex-col gap-3 lg:pt-8"
+            className="hidden lg:block lg:col-span-2 lg:pt-4"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {t.cards.map((card, i) => {
-              const tone = CARD_TONES[i];
-              const Icon = CARD_ICONS[i];
-              const isActive = i === active;
-              const accentColor =
-                tone === "teal"   ? "var(--hooklyne-teal)"   :
-                tone === "orange" ? "var(--hooklyne-orange)"  :
-                "var(--hooklyne-blue)";
-              const accentBg =
-                tone === "teal"   ? "rgba(13,148,136,0.10)"  :
-                tone === "orange" ? "rgba(255,140,66,0.10)"   :
-                "rgba(52,76,163,0.10)";
-              const accentBorder =
-                tone === "teal"   ? "rgba(13,148,136,0.22)"  :
-                tone === "orange" ? "rgba(255,140,66,0.22)"   :
-                "rgba(52,76,163,0.22)";
+            <div className="relative mx-auto" style={{ height: 300, maxWidth: 380 }}>
+              {t.cards.map((card, i) => {
+                const tone = CARD_TONES[i];
+                const Icon = CARD_ICONS[i];
+                const accentColor =
+                  tone === "teal"   ? "var(--hooklyne-teal)"   :
+                  tone === "orange" ? "var(--hooklyne-orange)"  :
+                  "var(--hooklyne-blue)";
+                const accentBg =
+                  tone === "teal"   ? "rgba(13,148,136,0.10)"  :
+                  tone === "orange" ? "rgba(255,140,66,0.10)"   :
+                  "rgba(52,76,163,0.10)";
+                const accentBorder =
+                  tone === "teal"   ? "rgba(13,148,136,0.22)"  :
+                  tone === "orange" ? "rgba(255,140,66,0.22)"   :
+                  "rgba(52,76,163,0.22)";
 
-              return (
-                <button
-                  key={i}
-                  onClick={() => { setActive(i); setPaused(true); }}
-                  className="text-left w-full rounded-xl p-4 lg:p-5 transition-all duration-500"
-                  style={{
-                    background: isActive ? "var(--card)" : "var(--card)",
-                    border: `1px solid ${isActive ? accentBorder : "var(--border)"}`,
-                    boxShadow: isActive ? "var(--shadow-lg)" : "var(--shadow-sm)",
-                    opacity: isActive ? 1 : 0.5,
-                    transform: isActive ? "scale(1)" : "scale(0.97)",
-                    transformOrigin: "top center",
-                  }}
-                >
-                  {/* Icon + sector */}
-                  <div className="flex items-center gap-2.5 mb-3">
-                    <span
-                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors duration-500"
-                      style={{
-                        background: isActive ? accentBg : "var(--card-hover)",
-                        color: isActive ? accentColor : "var(--muted-foreground)",
-                      }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="size-4" />
-                    </span>
-                    <span
-                      className="text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-500"
-                      style={{ color: isActive ? accentColor : "var(--muted-foreground)" }}
-                    >
-                      {card.sector}
-                    </span>
-                  </div>
+                // Position in the stack: 0 = front, 1 = middle peek, 2 = back peek
+                const depth = (i - active + t.cards.length) % t.cards.length;
+                const isFront = depth === 0;
 
-                  {/* Signal */}
-                  <p className="text-[12px] italic text-[var(--muted-foreground)] leading-relaxed mb-2.5">
-                    {card.signal}
-                  </p>
+                // Depth positioning
+                const translateY = depth === 0 ? 0 : depth === 1 ? -18 : -36;
+                const scale      = depth === 0 ? 1  : depth === 1 ? 0.96 : 0.92;
+                const opacity    = depth === 0 ? 1  : depth === 1 ? 0.55 : 0.3;
 
-                  {/* Divider + opener (only when active) */}
-                  {isActive && (
-                    <>
-                      <div className="h-px mb-2.5" style={{ background: accentBorder }} />
-                      <p className="text-[12.5px] leading-relaxed" style={{ color: "var(--heading)" }}>
-                        {card.opener}
-                      </p>
-                    </>
-                  )}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={i}
+                    onClick={() => { setActive(i); setPaused(true); }}
+                    aria-label={`Show ${card.sector}`}
+                    className="absolute inset-x-0 text-left rounded-2xl p-5 lg:p-6"
+                    style={{
+                      top: 0,
+                      background: "var(--card)",
+                      border: `1px solid ${isFront ? accentBorder : "var(--border)"}`,
+                      boxShadow: isFront ? "var(--shadow-xl)" : "var(--shadow-md)",
+                      transform: `translateY(${translateY}px) scale(${scale})`,
+                      transformOrigin: "top center",
+                      opacity,
+                      zIndex: 10 - depth,
+                      transition:
+                        "transform 600ms cubic-bezier(0.32,0.72,0.22,1), opacity 500ms ease, box-shadow 500ms ease, border-color 500ms ease",
+                      pointerEvents: isFront ? "auto" : "none",
+                    }}
+                  >
+                    {/* Icon + sector */}
+                    <div className="flex items-center gap-2.5 mb-4">
+                      <span
+                        className="inline-flex items-center justify-center size-9 rounded-lg shrink-0"
+                        style={{ background: accentBg, color: accentColor }}
+                        aria-hidden="true"
+                      >
+                        <Icon className="size-4" />
+                      </span>
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-[0.2em]"
+                        style={{ color: accentColor }}
+                      >
+                        {card.sector}
+                      </span>
+                    </div>
+
+                    {/* Signal */}
+                    <p className="text-[12.5px] italic text-[var(--muted-foreground)] leading-relaxed mb-3">
+                      {card.signal}
+                    </p>
+
+                    <div className="h-px mb-3" style={{ background: accentBorder }} />
+
+                    {/* Opener */}
+                    <p className="text-[13px] leading-relaxed" style={{ color: "var(--heading)" }}>
+                      {card.opener}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
 
             {/* Progress dots */}
-            <div className="flex gap-1.5 justify-center pt-1">
+            <div className="flex gap-1.5 justify-center pt-5">
               {t.cards.map((_, i) => (
                 <button
                   key={i}
