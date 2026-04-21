@@ -4,43 +4,18 @@ import { UserCircle, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLang, setLang, type Lang } from "@/lib/use-lang";
 
-const LangToggle = ({ compact = false }: { compact?: boolean }) => {
+const LangToggle = () => {
   const lang = useLang();
-  const swap = (next: Lang) => { if (next !== lang) setLang(next); };
+  const other: Lang = lang === "nl" ? "en" : "nl";
   return (
-    <div
-      className={cn(
-        "inline-flex items-center rounded-lg p-0.5 shrink-0",
-        compact ? "h-8" : "h-9",
-      )}
-      style={{
-        background: "var(--card)",
-        border: "1px solid var(--border)",
-      }}
-      role="group"
-      aria-label="Language"
+    <button
+      onClick={() => setLang(other)}
+      aria-label={`Switch to ${other === "nl" ? "Nederlands" : "English"}`}
+      title={other === "nl" ? "Nederlands" : "English"}
+      className="inline-flex items-center justify-center h-9 px-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors shrink-0"
     >
-      {(["en", "nl"] as Lang[]).map((k) => {
-        const active = lang === k;
-        return (
-          <button
-            key={k}
-            onClick={() => swap(k)}
-            aria-pressed={active}
-            className={cn(
-              "inline-flex items-center justify-center rounded-md px-2.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors",
-              compact ? "h-7" : "h-8",
-            )}
-            style={{
-              background: active ? "var(--hooklyne-navy)" : "transparent",
-              color: active ? "#fff" : "var(--muted-foreground)",
-            }}
-          >
-            {k}
-          </button>
-        );
-      })}
-    </div>
+      {other}
+    </button>
   );
 };
 
@@ -254,7 +229,7 @@ export const Navbar = () => {
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
               <div className="flex items-center justify-between px-1">
                 <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">Language</span>
-                <LangToggle compact />
+                <LangToggle />
               </div>
               <a
                 href="https://portal.hooklyne.com"
