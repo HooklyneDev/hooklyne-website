@@ -46,7 +46,7 @@ export const FounderSplit = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
             className="absolute top-6 left-8 text-7xl leading-none font-serif select-none pointer-events-none"
             style={{ color: "rgba(52,76,163,0.12)" }}
           >
-            &ldquo;
+            "
           </div>
 
           {/* Quote */}

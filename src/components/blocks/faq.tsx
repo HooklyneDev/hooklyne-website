@@ -7,11 +7,12 @@ import {
 } from "@/components/ui/accordion";
 
 type QA = { q: string; a: string };
-type Group = { title: string; items: QA[] };
+type Group = { title: string; short: string; items: QA[] };
 
 const groups: Group[] = [
   {
     title: "How Hooklyne works",
+    short: "How it works",
     items: [
       {
         q: "What does Hooklyne actually do?",
@@ -41,6 +42,7 @@ const groups: Group[] = [
   },
   {
     title: "Contacts, signals, and data quality",
+    short: "Data & signals",
     items: [
       {
         q: "How do you find contact details?",
@@ -82,6 +84,7 @@ const groups: Group[] = [
   },
   {
     title: "Research and message quality",
+    short: "Research",
     items: [
       {
         q: "How do you avoid making stuff up about my prospects?",
@@ -99,6 +102,7 @@ const groups: Group[] = [
   },
   {
     title: "Languages and markets",
+    short: "Languages",
     items: [
       {
         q: "Do you support Dutch outreach?",
@@ -120,6 +124,7 @@ const groups: Group[] = [
   },
   {
     title: "Credits, plans, and billing",
+    short: "Credits & plans",
     items: [
       {
         q: "How does the credit system work?",
@@ -149,6 +154,7 @@ const groups: Group[] = [
   },
   {
     title: "Pilots and onboarding",
+    short: "Pilots",
     items: [
       {
         q: "What's the free pilot?",
@@ -188,22 +194,35 @@ export const FAQ = () => {
             </p>
           </div>
 
-          <div className="sticky top-20 z-10 mb-8 -mx-4 px-4 pb-2">
-            <div className="flex gap-1 overflow-x-auto scrollbar-none rounded-2xl p-1.5" style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-sm)" }}>
-              {groups.map((grp, gi) => (
-                <button
-                  key={gi}
-                  onClick={() => setActive(gi)}
-                  className="shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all"
-                  style={
-                    active === gi
-                      ? { background: "var(--hooklyne-navy)", color: "white" }
-                      : { color: "var(--muted-foreground)" }
-                  }
-                >
-                  {grp.title}
-                </button>
-              ))}
+          <div className="mb-10">
+            <div
+              className="flex flex-wrap justify-center gap-1.5 rounded-2xl p-1.5"
+              style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+            >
+              {groups.map((grp, gi) => {
+                const isActive = active === gi;
+                return (
+                  <button
+                    key={gi}
+                    onClick={() => setActive(gi)}
+                    aria-pressed={isActive}
+                    className="flex-1 min-w-max px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors"
+                    style={
+                      isActive
+                        ? { background: "var(--hooklyne-navy)", color: "white" }
+                        : { color: "var(--muted-foreground)", background: "transparent" }
+                    }
+                    onMouseEnter={(e) => {
+                      if (!isActive) e.currentTarget.style.background = "var(--bg)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) e.currentTarget.style.background = "transparent";
+                    }}
+                  >
+                    {grp.short}
+                  </button>
+                );
+              })}
             </div>
           </div>
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hooklyne.com/sitemap-index.xml
+Sitemap: https://www.hooklyne.com/sitemap-index.xml

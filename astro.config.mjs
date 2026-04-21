@@ -7,8 +7,19 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://hooklyne.com",
-  integrations: [mdx(), sitemap(), react()],
+  site: "https://www.hooklyne.com",
+  trailingSlash: "never",
+  build: {
+    format: "file",
+  },
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) =>
+        !page.includes("/blog") && !page.includes("/resources/support"),
+    }),
+    react(),
+  ],
   output: "static",
 
   vite: {

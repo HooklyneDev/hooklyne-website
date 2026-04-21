@@ -99,7 +99,7 @@ export const ResearchBrief = () => {
             <p>
               Sector freight rates are up 18% quarter-over-quarter, which compresses margins on their current pay-as-you-go pricing
               <Cite n={3} />
-              &mdash; creating real pressure to move to the service model sooner.
+              - creating real pressure to move to the service model sooner.
             </p>
           </div>
 

@@ -19,7 +19,7 @@ export const FounderQuote = () => (
           className="absolute -top-8 -left-2 lg:-top-10 lg:-left-4 text-[12rem] lg:text-[18rem] leading-none font-serif select-none pointer-events-none"
           style={{ color: "var(--hooklyne-blue)", opacity: 0.08 }}
         >
-          &ldquo;
+          "
         </div>
 
         <div className="relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">

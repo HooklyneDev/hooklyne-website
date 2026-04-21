@@ -43,7 +43,7 @@ export const FeatureShowcase = () => (
                 <span className="text-[10px] font-mono text-[var(--muted-foreground)]">nl-NL</span>
               </div>
               <p className="text-[15px] text-[var(--heading)] leading-relaxed font-medium mb-3">
-                &ldquo;Direct, zonder omwegen. Recht op het punt.&rdquo;
+                "Direct, zonder omwegen. Recht op het punt."
               </p>
               <ul className="space-y-1.5 text-xs text-[var(--muted-foreground)]">
                 <li>&middot; No small talk</li>
@@ -69,7 +69,7 @@ export const FeatureShowcase = () => (
                 <span className="text-[10px] font-mono text-[var(--muted-foreground)]">en-GB</span>
               </div>
               <p className="text-[15px] text-[var(--heading)] leading-relaxed font-medium mb-3">
-                &ldquo;Warmer opening. Softer close. Adjusted per market.&rdquo;
+                "Warmer opening. Softer close. Adjusted per market."
               </p>
               <ul className="space-y-1.5 text-xs text-[var(--muted-foreground)]">
                 <li>&middot; Contextual opener</li>
