@@ -47,7 +47,6 @@ const imageURL = new URL(finalImage, Astro.url);
 
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="robots" content={`${SITE_METADATA.robots.index ? 'index' : 'noindex'}, ${SITE_METADATA.robots.follow ? 'follow' : 'nofollow'}`} />
-<meta name="keywords" content={SITE_METADATA.keywords.join(', ')} />
 <meta name="author" content={SITE_METADATA.authors[0].name} />
 <meta name="creator" content={SITE_METADATA.creator} />
 <meta name="publisher" content={SITE_METADATA.publisher} />
@@ -117,3 +116,36 @@ const imageURL = new URL(finalImage, Astro.url);
 <meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={imageURL} />
 <meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
+
+<!-- Structured data: Organization -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Hooklyne",
+  "url": "https://hooklyne.com",
+  "logo": "https://hooklyne.com/logo.svg",
+  "description": "Research-grade B2B prospect packages in your rep's voice.",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": { "@type": "PostalAddress", "addressCountry": "NL" }
+  },
+  "sameAs": ["https://github.com/HooklyneDev"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hello@hooklyne.com",
+    "contactType": "customer support",
+    "areaServed": "EMEA",
+    "availableLanguage": ["en", "nl"]
+  }
+})} />
+
+<!-- Structured data: WebSite -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hooklyne",
+  "url": "https://hooklyne.com",
+  "description": finalDescription,
+  "inLanguage": ["en", "nl"],
+  "publisher": { "@type": "Organization", "name": "Hooklyne", "url": "https://hooklyne.com" }
+})} />

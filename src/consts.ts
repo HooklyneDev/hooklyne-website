@@ -1,6 +1,6 @@
-export const SITE_TITLE = "Hooklyne - Find the prospects actually worth reaching out to.";
+export const SITE_TITLE = "B2B prospecting in your rep's voice · Hooklyne";
 export const SITE_DESCRIPTION =
-  "Find the prospects actually worth reaching out to. Hooklyne matches the right contact and drafts outreach in your voice, ready to send. Built for Dutch B2B SMEs.";
+  "Research-grade B2B prospect packages in your rep's voice. Find the right contact, draft outreach, send in under a minute. Built for small EMEA teams.";
 export const SITE_URL = "https://hooklyne.com";
 export const GITHUB_URL = "https://github.com/HooklyneDev";
 
@@ -32,7 +32,7 @@ export const SITE_METADATA = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Hooklyne - Find the prospects actually worth reaching out to.",
+        alt: "Hooklyne - B2B prospecting in your rep's voice.",
       },
     ],
   },

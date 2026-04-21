@@ -12,6 +12,34 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hooklyne",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Research-grade B2B prospect packages in your rep's voice. Find the right contact, draft outreach, send in under a minute.",
+    "url": "https://hooklyne.com",
+    "offers": {
+      "@type": "Offer",
+      "price": "39",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "39",
+        "priceCurrency": "EUR",
+        "billingIncrement": 1,
+        "unitText": "MONTH"
+      }
+    },
+    "featureList": [
+      "B2B prospect research",
+      "Signal-driven outreach",
+      "Email verification",
+      "Company discovery",
+      "Personalised drafting in Dutch and English"
+    ]
+  })} />
   <Background>
     <Hero client:load />
     <SignalTicker />
