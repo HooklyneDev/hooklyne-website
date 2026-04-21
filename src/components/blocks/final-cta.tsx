@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, MapPin, FileText, RotateCcw } from "lucide-react";
 
 export type CTAVariant = "home" | "how-it-works" | "product" | "about" | "pricing" | "faq";
 
@@ -62,6 +62,13 @@ const VARIANTS: Record<CTAVariant, CTACopy> = {
   },
 };
 
+const TRUST_SIGNALS = [
+  { icon: ShieldCheck, label: "GDPR-compliant" },
+  { icon: MapPin,      label: "EU-native" },
+  { icon: FileText,    label: "No contract, pilot anytime" },
+  { icon: RotateCcw,   label: "Cancel whenever" },
+];
+
 export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
   const copy = VARIANTS[variant] ?? VARIANTS.home;
 
@@ -94,6 +101,43 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
         <p className="text-base md:text-lg text-white/70 max-w-xl mx-auto mb-8 leading-relaxed">
           {copy.body}
         </p>
+
+        {/* Trust strip - liquid glass */}
+        <div
+          className="inline-flex flex-col md:flex-row items-center gap-2.5 md:gap-0 rounded-full px-5 md:px-6 py-3 md:py-2.5 mb-6"
+          style={{
+            background:
+              "linear-gradient(145deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
+            border: "1px solid rgba(255,255,255,0.14)",
+            boxShadow:
+              "0 1px 0 0 rgba(255,255,255,0.12) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 8px 24px -8px rgba(0,0,0,0.3)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+          }}
+        >
+          {TRUST_SIGNALS.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.label} className="contents md:flex md:items-center">
+                <div className="flex items-center gap-1.5">
+                  <Icon className="size-3.5 text-white/55 shrink-0" aria-hidden="true" />
+                  <span className="text-[10px] md:text-[10.5px] font-semibold uppercase tracking-[0.18em] text-white/70 whitespace-nowrap">
+                    {s.label}
+                  </span>
+                </div>
+                {i < TRUST_SIGNALS.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="hidden md:inline text-white/25 mx-3 select-none"
+                  >
+                    &middot;
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
             href="/contact"
