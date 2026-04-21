@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { Factory, Utensils, Zap } from "lucide-react";
+import { useLang } from "@/lib/use-lang";
 
 const EN = {
   eyebrow: "Built for",
@@ -16,8 +18,6 @@ const EN = {
       body: "Complex offers. Considered buyers. Niche ICPs. Where spray-and-pray damages your reputation and the email needs to earn the reply.",
     },
   ],
-  sectionEyebrow: "Examples by sector",
-  sectionHeadline: "How it reads for your market.",
   cards: [
     {
       sector: "B2B engineering",
@@ -53,8 +53,6 @@ const NL = {
       body: "Complexe aanbiedingen. Weloverwogen kopers. Niche ICPs. Waar spray-and-pray je reputatie schaadt en de mail de reply moet verdienen.",
     },
   ],
-  sectionEyebrow: "Voorbeelden per sector",
-  sectionHeadline: "Hoe het leest voor jouw markt.",
   cards: [
     {
       sector: "B2B engineering",
@@ -75,101 +73,195 @@ const NL = {
 };
 
 const CARD_TONES = ["blue", "teal", "orange"] as const;
-
 const CARD_ICONS = [Factory, Utensils, Zap];
 
-export const BuiltFor = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
-  const t = lang === "nl" ? NL : EN;
+export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
+  const detected = useLang();
+  const resolved = lang ?? detected;
+  const t = resolved === "nl" ? NL : EN;
+  const [active, setActive]   = useState(0);
+  const [paused, setPaused]   = useState(false);
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (reduced || paused) return;
+    const id = setInterval(() => setActive((a) => (a + 1) % 3), 4000);
+    return () => clearInterval(id);
+  }, [reduced, paused]);
 
   return (
     <section className="pt-10 pb-10 lg:pt-12 lg:pb-12" data-fade>
       <div className="container max-w-6xl">
-        {/* Top: "Built for" statements */}
-        <div className="max-w-4xl mb-14 lg:mb-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
-            {t.eyebrow}
-          </p>
-          <div className="space-y-8 lg:space-y-12">
-            {t.statements.map((s, i) => (
-              <div key={i} className="max-w-xl">
-                <h3 className="text-xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.2] md:leading-[1.15] mb-3">
-                  {s.headline}
-                </h3>
-                <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
-                  {s.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 
-        {/* Sector examples */}
-        <div className="mb-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
-            {t.sectionEyebrow}
-          </p>
-          <h2 className="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15]">
-            {t.sectionHeadline}
-          </h2>
-        </div>
+          {/* Left: text column (60%) */}
+          <div className="lg:col-span-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
+              {t.eyebrow}
+            </p>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {t.cards.map((card, i) => {
-            const tone = CARD_TONES[i];
-            const Icon = CARD_ICONS[i];
-            const accentColor =
-              tone === "teal"   ? "var(--hooklyne-teal)"   :
-              tone === "orange" ? "var(--hooklyne-orange)"  :
-              "var(--hooklyne-blue)";
-            const accentBg =
-              tone === "teal"   ? "rgba(13,148,136,0.10)"  :
-              tone === "orange" ? "rgba(255,140,66,0.10)"   :
-              "rgba(52,76,163,0.10)";
-
-            return (
-              <div
-                key={i}
-                className="rounded-2xl p-5 lg:p-6 flex flex-col"
-                style={{
-                  background: "var(--card)",
-                  border: "1px solid var(--border)",
-                  boxShadow: "var(--shadow-sm)",
-                }}
-              >
-                {/* Icon + sector */}
-                <div className="flex items-center gap-2.5 mb-4">
-                  <span
-                    className="inline-flex items-center justify-center size-8 rounded-lg shrink-0"
-                    style={{ background: accentBg, color: accentColor }}
-                    aria-hidden="true"
-                  >
-                    <Icon className="size-4" />
-                  </span>
-                  <span
-                    className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                    style={{ color: accentColor }}
-                  >
-                    {card.sector}
-                  </span>
+            <div className="space-y-8 lg:space-y-12">
+              {t.statements.map((s, i) => (
+                <div key={i} className="max-w-xl">
+                  <h3 className="text-xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.2] md:leading-[1.15] mb-3">
+                    {s.headline}
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
+                    {s.body}
+                  </p>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Signal */}
-                <p className="text-[12px] italic text-[var(--muted-foreground)] mb-3 leading-relaxed">
-                  {card.signal}
-                </p>
+          {/* Right: vertical rotating cards (40%) */}
+          <div
+            className="hidden lg:flex lg:col-span-2 flex-col gap-3 lg:pt-8"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {t.cards.map((card, i) => {
+              const tone = CARD_TONES[i];
+              const Icon = CARD_ICONS[i];
+              const isActive = i === active;
+              const accentColor =
+                tone === "teal"   ? "var(--hooklyne-teal)"   :
+                tone === "orange" ? "var(--hooklyne-orange)"  :
+                "var(--hooklyne-blue)";
+              const accentBg =
+                tone === "teal"   ? "rgba(13,148,136,0.10)"  :
+                tone === "orange" ? "rgba(255,140,66,0.10)"   :
+                "rgba(52,76,163,0.10)";
+              const accentBorder =
+                tone === "teal"   ? "rgba(13,148,136,0.22)"  :
+                tone === "orange" ? "rgba(255,140,66,0.22)"   :
+                "rgba(52,76,163,0.22)";
 
-                {/* Divider */}
-                <div className="h-px mb-3" style={{ background: "var(--border)" }} />
+              return (
+                <button
+                  key={i}
+                  onClick={() => { setActive(i); setPaused(true); }}
+                  className="text-left w-full rounded-xl p-4 lg:p-5 transition-all duration-500"
+                  style={{
+                    background: isActive ? "var(--card)" : "var(--card)",
+                    border: `1px solid ${isActive ? accentBorder : "var(--border)"}`,
+                    boxShadow: isActive ? "var(--shadow-lg)" : "var(--shadow-sm)",
+                    opacity: isActive ? 1 : 0.5,
+                    transform: isActive ? "scale(1)" : "scale(0.97)",
+                    transformOrigin: "top center",
+                  }}
+                >
+                  {/* Icon + sector */}
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <span
+                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 transition-colors duration-500"
+                      style={{
+                        background: isActive ? accentBg : "var(--card-hover)",
+                        color: isActive ? accentColor : "var(--muted-foreground)",
+                      }}
+                      aria-hidden="true"
+                    >
+                      <Icon className="size-4" />
+                    </span>
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-500"
+                      style={{ color: isActive ? accentColor : "var(--muted-foreground)" }}
+                    >
+                      {card.sector}
+                    </span>
+                  </div>
 
-                {/* Opener */}
-                <p className="text-[13px] text-[var(--heading)] leading-relaxed">
-                  {card.opener}
-                </p>
-              </div>
-            );
-          })}
+                  {/* Signal */}
+                  <p className="text-[12px] italic text-[var(--muted-foreground)] leading-relaxed mb-2.5">
+                    {card.signal}
+                  </p>
+
+                  {/* Divider + opener (only when active) */}
+                  {isActive && (
+                    <>
+                      <div className="h-px mb-2.5" style={{ background: accentBorder }} />
+                      <p className="text-[12.5px] leading-relaxed" style={{ color: "var(--heading)" }}>
+                        {card.opener}
+                      </p>
+                    </>
+                  )}
+                </button>
+              );
+            })}
+
+            {/* Progress dots */}
+            <div className="flex gap-1.5 justify-center pt-1">
+              {t.cards.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setActive(i); setPaused(true); }}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: i === active ? 20 : 6,
+                    height: 6,
+                    background: i === active ? "var(--hooklyne-blue)" : "var(--border)",
+                  }}
+                  aria-label={`Show card ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: static stack of all 3 cards */}
+          <div className="lg:hidden mt-10 grid gap-3">
+            {t.cards.map((card, i) => {
+              const tone = CARD_TONES[i];
+              const Icon = CARD_ICONS[i];
+              const accentColor =
+                tone === "teal"   ? "var(--hooklyne-teal)"   :
+                tone === "orange" ? "var(--hooklyne-orange)"  :
+                "var(--hooklyne-blue)";
+              const accentBg =
+                tone === "teal"   ? "rgba(13,148,136,0.10)"  :
+                tone === "orange" ? "rgba(255,140,66,0.10)"   :
+                "rgba(52,76,163,0.10)";
+
+              return (
+                <div
+                  key={i}
+                  className="rounded-xl p-4"
+                  style={{
+                    background: "var(--card)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-sm)",
+                  }}
+                >
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <span
+                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0"
+                      style={{ background: accentBg, color: accentColor }}
+                      aria-hidden="true"
+                    >
+                      <Icon className="size-4" />
+                    </span>
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-[0.2em]"
+                      style={{ color: accentColor }}
+                    >
+                      {card.sector}
+                    </span>
+                  </div>
+                  <p className="text-[12px] italic text-[var(--muted-foreground)] leading-relaxed mb-2.5">
+                    {card.signal}
+                  </p>
+                  <p className="text-[12.5px] leading-relaxed" style={{ color: "var(--heading)" }}>
+                    {card.opener}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
-
       </div>
     </section>
   );

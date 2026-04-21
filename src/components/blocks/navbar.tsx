@@ -2,6 +2,47 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { UserCircle, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLang, setLang, type Lang } from "@/lib/use-lang";
+
+const LangToggle = ({ compact = false }: { compact?: boolean }) => {
+  const lang = useLang();
+  const swap = (next: Lang) => { if (next !== lang) setLang(next); };
+  return (
+    <div
+      className={cn(
+        "inline-flex items-center rounded-lg p-0.5 shrink-0",
+        compact ? "h-8" : "h-9",
+      )}
+      style={{
+        background: "var(--card)",
+        border: "1px solid var(--border)",
+      }}
+      role="group"
+      aria-label="Language"
+    >
+      {(["en", "nl"] as Lang[]).map((k) => {
+        const active = lang === k;
+        return (
+          <button
+            key={k}
+            onClick={() => swap(k)}
+            aria-pressed={active}
+            className={cn(
+              "inline-flex items-center justify-center rounded-md px-2.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors",
+              compact ? "h-7" : "h-8",
+            )}
+            style={{
+              background: active ? "var(--hooklyne-navy)" : "transparent",
+              color: active ? "#fff" : "var(--muted-foreground)",
+            }}
+          >
+            {k}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
@@ -126,6 +167,7 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <LangToggle />
             <a
               href="https://portal.hooklyne.com"
               className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
@@ -210,6 +252,10 @@ export const Navbar = () => {
               );
             })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
+              <div className="flex items-center justify-between px-1">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">Language</span>
+                <LangToggle compact />
+              </div>
               <a
                 href="https://portal.hooklyne.com"
                 className="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"

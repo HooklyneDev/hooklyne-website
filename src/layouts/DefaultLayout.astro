@@ -9,7 +9,21 @@ const { title, description, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
 ---
 
 <html lang="en">
-    <head>		
+    <head>
+        <script is:inline>
+          (function () {
+            try {
+              var stored = localStorage.getItem('hooklyne-lang');
+              var lang = stored === 'nl' || stored === 'en'
+                ? stored
+                : ((navigator.language || 'en').toLowerCase().startsWith('nl') ? 'nl' : 'en');
+              document.documentElement.setAttribute('lang', lang);
+              document.documentElement.setAttribute('data-lang', lang);
+            } catch (e) {
+              document.documentElement.setAttribute('data-lang', 'en');
+            }
+          })();
+        </script>
         <BaseHead title={title} description={description}  />
     </head>
     <body class={`h-screen antialiased`}

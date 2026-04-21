@@ -1,3 +1,5 @@
+import { useLang } from "@/lib/use-lang";
+
 const EN = {
   eyebrow: "What you get",
   headline: "Every prospect, fully packaged.",
@@ -10,8 +12,10 @@ const NL = {
   subline: "Geverifieerd contact, gescoord signaal, opgesteld bericht - alles in één kaart, klaar om te beoordelen en te versturen.",
 };
 
-export const WhatYouGet = ({ lang = "en" }: { lang?: "en" | "nl" }) => {
-  const t = lang === "nl" ? NL : EN;
+export const WhatYouGet = ({ lang }: { lang?: "en" | "nl" }) => {
+  const detected = useLang();
+  const resolved = lang ?? detected;
+  const t = resolved === "nl" ? NL : EN;
 
   return (
     <section className="pt-14 pb-10 lg:pt-20 lg:pb-12" data-fade>
