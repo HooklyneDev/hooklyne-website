@@ -1,48 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridSignals } from "@/components/grid-signals";
 
-const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
-
-type PopPhase = "idle" | "enter" | "show" | "exit";
-
-const POPOVERS = [
-  {
-    color: "var(--hooklyne-orange)",
-    company: "Vattenfall",
-    signal: "New CRO announced",
-    time: "just now",
-    pos: { top: "13%", right: "6%" },
-  },
-  {
-    color: "var(--hooklyne-blue)",
-    company: "Innocent Drinks",
-    signal: "Head of Procurement vacancy",
-    time: "3m ago",
-    pos: { top: "42%", left: "5%" },
-  },
-  {
-    color: "var(--hooklyne-teal)",
-    company: "Cresta Foods",
-    signal: "Series A funding round",
-    time: "5m ago",
-    pos: { top: "62%", right: "7%" },
-  },
-  {
-    color: "var(--hooklyne-orange)",
-    company: "DPD Netherlands",
-    signal: "UK office expansion",
-    time: "just now",
-    pos: { top: "24%", right: "9%" },
-  },
-] as const;
-
 /* ── Component ──────────────────────────────────────────────────────── */
 export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
-  const [popIdx, setPopIdx]     = useState(0);
-  const [popPhase, setPopPhase] = useState<PopPhase>("idle");
 
   /* Scroll tilt */
   useEffect(() => {
@@ -60,44 +23,10 @@ export const Hero = () => {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-  /* Signal popover loop */
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let cancelled = false;
-    const run = async () => {
-      while (!cancelled) {
-        await sleep(1400);
-        if (cancelled) break;
-        setPopPhase("enter");
-        await sleep(300);
-        if (cancelled) break;
-        setPopPhase("show");
-        await sleep(3000);
-        if (cancelled) break;
-        setPopPhase("exit");
-        await sleep(300);
-        if (cancelled) break;
-        setPopPhase("idle");
-        setPopIdx((i) => (i + 1) % POPOVERS.length);
-      }
-    };
-    run();
-    return () => { cancelled = true; };
-  }, []);
-
   const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
   const rings = [150, 300, 450, 600, 750, 900, 1050]
     .map(r => `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,0.11) ${r}px, transparent ${r + 1}px)`)
     .join(", ");
-
-  const pop = POPOVERS[popIdx];
-  const popVisible = popPhase !== "idle";
-  const popOpacity = popPhase === "show" ? 1 : 0;
-  const popTranslate =
-    popPhase === "exit"  ? "translateY(-5px) scale(0.98)" :
-    popPhase === "idle"  ? "translateY(7px)  scale(0.96)" :
-    popPhase === "enter" ? "translateY(7px)  scale(0.96)" :
-    "translateY(0)       scale(1)";
 
   return (
     <section className="pt-20 pb-0 lg:pt-32 relative">
@@ -276,38 +205,6 @@ export const Hero = () => {
             </video>
           </div>
 
-          {/* Signal popovers — positioned inside the video frame (hidden on mobile) */}
-          <div
-            className="hidden sm:block absolute pointer-events-none"
-            style={{ top: 44, left: 0, right: 0, bottom: 0, zIndex: 10 }}
-          >
-            <div
-              className="absolute max-w-[240px]"
-              style={{
-                ...pop.pos,
-                opacity: popOpacity,
-                transform: popTranslate,
-                transition: "opacity 300ms ease, transform 300ms ease",
-                visibility: popVisible ? "visible" : "hidden",
-              }}
-            >
-              <div
-                className="rounded-xl px-3.5 py-2.5"
-                style={{
-                  background: "var(--card)",
-                  border: "1px solid var(--border)",
-                  boxShadow: "var(--shadow-lg)",
-                }}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="size-2 rounded-full shrink-0" style={{ background: pop.color }} />
-                  <span className="text-[11px] font-semibold text-[var(--heading)]">{pop.company}</span>
-                  <span className="ml-auto text-[10px] text-[var(--muted-foreground)]">{pop.time}</span>
-                </div>
-                <p className="text-[11px] text-[var(--muted-foreground)] leading-snug">{pop.signal}</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
