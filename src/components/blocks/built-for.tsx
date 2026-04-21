@@ -107,9 +107,9 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
             <div className="space-y-8 lg:space-y-12">
               {t.statements.map((s, i) => (
                 <div key={i} className="max-w-xl">
-                  <h3 className="text-xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.2] md:leading-[1.15] mb-3">
+                  <h2 className="text-xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.2] md:leading-[1.15] mb-3">
                     {s.headline}
-                  </h3>
+                  </h2>
                   <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
                     {s.body}
                   </p>
