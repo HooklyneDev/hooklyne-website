@@ -58,7 +58,7 @@ export const Navbar = () => {
       <nav
         className={cn(
           "w-full pointer-events-auto transition-all duration-500 rounded-2xl",
-          "max-w-[1220px]",
+          "max-w-6xl",
           "backdrop-blur-xl backdrop-saturate-[180%]",
         )}
         style={{
