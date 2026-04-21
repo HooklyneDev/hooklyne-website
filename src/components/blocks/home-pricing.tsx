@@ -27,14 +27,14 @@ const PLANS = [
 
 export const HomePricing = () => {
   return (
-    <section className="py-14 lg:py-20" data-fade>
+    <section className="pt-10 pb-14 lg:pt-12 lg:pb-20" data-fade>
       <div className="container max-w-5xl">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
             Simple pricing.
           </h2>
           <p className="text-sm md:text-base text-[var(--muted-foreground)]">
-            One credit system. Every action priced transparently. Switch plans or cancel anytime.
+            Simple credit system. Every action priced transparently. Switch plans or cancel anytime.
           </p>
         </div>
 
