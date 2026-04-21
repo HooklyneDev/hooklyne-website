@@ -96,7 +96,7 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
               "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)",
           }}
         />
-        <div className="container max-w-6xl py-5 md:py-4">
+        <div className="container max-w-6xl py-4 md:py-3">
           <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-3 md:gap-0">
             {TRUST_SIGNALS.map((s, i) => {
               const Icon = s.icon;
@@ -149,20 +149,20 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
         style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent)" }}
       />
 
-      <div className="container max-w-5xl py-16 lg:py-24 text-center relative z-10">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55 mb-5">
+      <div className="container max-w-5xl py-12 lg:py-16 text-center relative z-10">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55 mb-4">
           {copy.kicker}
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 leading-[1.1]">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight mb-3 leading-[1.15]">
           {copy.heading}
         </h2>
-        <p className="text-base md:text-lg text-white/70 max-w-xl mx-auto mb-8 leading-relaxed">
+        <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto mb-6 leading-relaxed">
           {copy.body}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
             href="/contact"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-white text-[var(--hooklyne-navy)] px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-white text-[var(--hooklyne-navy)] px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
           >
             {copy.primaryLabel}
             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
