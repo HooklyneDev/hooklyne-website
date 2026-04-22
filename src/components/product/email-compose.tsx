@@ -2,21 +2,28 @@ import { useEffect, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
 
 /**
- * Email draft compose - split view. Left: verified contact card with
- * pulsing dot. Right: subject + body typing, then "Mark as actioned".
+ * Portal hero - full-width email draft that types itself out and then
+ * gets actioned. No split view, no empty sidebar. Matches the single
+ * focused moment of "open it, send it, close it".
  */
 
-const SUBJECT = "Dutch hiring push - one thing from our Rotterdam build";
-const BODY = [
+const SUBJECT = "Saw the Rotterdam expansion - one quick thing";
+const BODY: string[] = [
   "Hi Marieke,",
   "",
-  "Saw Axiom added four sales roles in Rotterdam this month - congrats on the Series B.",
+  "Congrats on the Series B - saw Axiom added four sales roles in Rotterdam this month.",
   "",
-  "We run a similar regional push for a Dutch logistics SaaS last year. One angle that landed was...",
+  "We helped a Dutch logistics SaaS run the same regional push last year. One angle that landed harder than we expected: the new reps want pipeline on day one, not week four.",
+  "",
+  "Happy to share what we did and the two things we'd skip next time. 15 minutes next Tuesday?",
+  "",
+  "- Joey",
 ];
 
+type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
+
 export const EmailCompose = () => {
-  const [phase, setPhase] = useState<"typing-subject" | "typing-body" | "review" | "actioned">("typing-subject");
+  const [phase, setPhase] = useState<Phase>("typing-subject");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState<string[]>([""]);
   const [reduced, setReduced] = useState(false);
@@ -24,9 +31,9 @@ export const EmailCompose = () => {
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReduced(mq.matches);
-    const handler = () => setReduced(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    const h = () => setReduced(mq.matches);
+    mq.addEventListener("change", h);
+    return () => mq.removeEventListener("change", h);
   }, []);
 
   useEffect(() => {
@@ -44,10 +51,10 @@ export const EmailCompose = () => {
         setBody([""]);
         for (let i = 1; i <= SUBJECT.length && !cancelled; i++) {
           setSubject(SUBJECT.slice(0, i));
-          await new Promise((r) => setTimeout(r, 32));
+          await new Promise((r) => setTimeout(r, 28));
         }
         if (cancelled) return;
-        await new Promise((r) => setTimeout(r, 350));
+        await new Promise((r) => setTimeout(r, 320));
         setPhase("typing-body");
         const acc: string[] = [""];
         for (let line = 0; line < BODY.length && !cancelled; line++) {
@@ -55,18 +62,18 @@ export const EmailCompose = () => {
           for (let i = 1; i <= text.length && !cancelled; i++) {
             acc[line] = text.slice(0, i);
             setBody([...acc]);
-            await new Promise((r) => setTimeout(r, 14));
+            await new Promise((r) => setTimeout(r, 10));
           }
           if (line < BODY.length - 1) {
             acc.push("");
             setBody([...acc]);
-            await new Promise((r) => setTimeout(r, 90));
+            await new Promise((r) => setTimeout(r, 70));
           }
         }
         if (cancelled) return;
-        await new Promise((r) => setTimeout(r, 900));
+        await new Promise((r) => setTimeout(r, 1200));
         setPhase("review");
-        await new Promise((r) => setTimeout(r, 1800));
+        await new Promise((r) => setTimeout(r, 1600));
         if (cancelled) return;
         setPhase("actioned");
         await new Promise((r) => setTimeout(r, 1800));
@@ -82,13 +89,18 @@ export const EmailCompose = () => {
   const typingBody = phase === "typing-body";
 
   return (
-    <GraphicShell crumb="Portal / Draft" status={phase === "actioned" ? "Actioned" : "Drafting"} statusTone={phase === "actioned" ? "teal" : "orange"} ratio="16/9">
+    <GraphicShell
+      crumb="Portal / Draft"
+      status={phase === "actioned" ? "Actioned" : "Drafting"}
+      statusTone={phase === "actioned" ? "teal" : "orange"}
+      ratio="16/9"
+    >
       <style>{`
-        @keyframes ec-caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-        @keyframes ec-btn-press { 0%, 60% { transform: scale(1); } 70% { transform: scale(0.96); } 100% { transform: scale(1); } }
+        @keyframes ec-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+        @keyframes ec-press { 0%,60% { transform: scale(1); } 70% { transform: scale(0.96); } 100% { transform: scale(1); } }
         @keyframes ec-actioned { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-        .ec-caret { animation: ec-caret 0.9s steps(1, end) infinite; }
-        .ec-press { animation: ec-btn-press 1.2s both; }
+        .ec-caret { animation: ec-caret 0.9s steps(1,end) infinite; }
+        .ec-press { animation: ec-press 1.2s both; }
         .ec-actioned { animation: ec-actioned 0.4s both; }
         @media (prefers-reduced-motion: reduce) {
           .ec-caret, .ec-press, .ec-actioned { animation: none !important; }
@@ -96,90 +108,78 @@ export const EmailCompose = () => {
         }
       `}</style>
 
-      <div className="absolute inset-0 flex px-3 py-3 sm:px-5 sm:py-4 gap-3 sm:gap-4">
-        <div className="hidden sm:flex w-[34%] flex-col shrink-0">
-          <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--muted-foreground)" }}>Contact</p>
-          <div className="rounded-xl p-3 flex-1 flex flex-col" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="size-9 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: "rgba(52,76,163,0.10)", color: "var(--hooklyne-blue)" }}>MV</div>
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold truncate" style={{ color: "var(--heading)" }}>Marieke de Vries</p>
-                <p className="text-[10px] truncate" style={{ color: "var(--muted-foreground)" }}>VP Sales · Axiom</p>
+      <div className="absolute inset-0 flex flex-col px-4 py-3 sm:px-6 sm:py-5">
+        <div className="rounded-xl flex-1 flex flex-col min-h-0" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+          <div className="px-3 sm:px-4 py-2 sm:py-2.5 border-b flex items-center gap-2 sm:gap-3" style={{ borderColor: "var(--border)" }}>
+            <div className="size-7 sm:size-8 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0" style={{ background: "rgba(52,76,163,0.10)", color: "var(--hooklyne-blue)" }}>MV</div>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>Marieke de Vries</span>
+                <span className="relative flex size-1.5 shrink-0">
+                  <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-teal)" }} />
+                  <span className="relative inline-flex rounded-full size-1.5" style={{ background: "var(--hooklyne-teal)" }} />
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" style={{ color: "var(--hooklyne-teal)" }}>Verified</span>
               </div>
-              <span className="relative flex size-2 shrink-0">
-                <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-teal)" }} />
-                <span className="relative inline-flex rounded-full size-2" style={{ background: "var(--hooklyne-teal)" }} />
-              </span>
+              <p className="text-[10px] sm:text-[11px] truncate" style={{ color: "var(--muted-foreground)" }}>
+                VP Sales, Axiom Logistics · m.devries@axiom.nl
+              </p>
             </div>
-
-            <div className="space-y-1.5 mb-2">
-              <div className="flex items-center gap-1.5 text-[10px]" style={{ color: "var(--foreground)" }}>
-                <svg className="size-3 shrink-0" style={{ color: "var(--hooklyne-teal)" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                <span className="truncate">m.devries@axiom.nl</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-[10px]" style={{ color: "var(--foreground)" }}>
-                <svg className="size-3 shrink-0" style={{ color: "var(--hooklyne-teal)" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                <span>+31 6 24 •• •• 18</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-[10px]" style={{ color: "var(--foreground)" }}>
-                <svg className="size-3 shrink-0" style={{ color: "var(--hooklyne-teal)" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                <span>LinkedIn verified</span>
-              </div>
-            </div>
-
-            <div className="mt-auto pt-2 border-t" style={{ borderColor: "var(--border)" }}>
-              <p className="text-[9px] font-bold uppercase tracking-widest mb-1" style={{ color: "var(--hooklyne-orange)" }}>Hook</p>
-              <p className="text-[10px] leading-snug" style={{ color: "var(--foreground)" }}>Series B, 4 new sales roles posted this month, Rotterdam HQ.</p>
+            <div className="hidden sm:flex items-center gap-1.5 shrink-0">
+              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,140,66,0.10)", color: "var(--hooklyne-orange)" }}>Hook: Series B</span>
+              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(52,76,163,0.08)", color: "var(--hooklyne-blue)" }}>Rotterdam</span>
             </div>
           </div>
-        </div>
 
-        <div className="flex-1 min-w-0 flex flex-col">
-          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider mb-1.5 sm:mb-2" style={{ color: "var(--muted-foreground)" }}>Draft</p>
-          <div className="rounded-xl flex-1 flex flex-col" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-            <div className="px-3 py-2 border-b flex items-center gap-2" style={{ borderColor: "var(--border)" }}>
-              <span className="text-[10px] font-semibold w-10 shrink-0" style={{ color: "var(--muted-foreground)" }}>To</span>
-              <span className="text-[11px] truncate" style={{ color: "var(--heading)" }}>Marieke de Vries &lt;m.devries@axiom.nl&gt;</span>
-            </div>
-            <div className="px-3 py-2 border-b flex items-center gap-2" style={{ borderColor: "var(--border)" }}>
-              <span className="text-[10px] font-semibold w-10 shrink-0" style={{ color: "var(--muted-foreground)" }}>Subject</span>
-              <span className="text-[11px] font-semibold truncate" style={{ color: "var(--heading)" }}>
-                {subject}
-                {typingSubject && <span className="ec-caret inline-block w-[2px] h-[11px] align-middle ml-0.5" style={{ background: "var(--hooklyne-orange)" }} />}
+          <div className="px-3 sm:px-4 py-1.5 sm:py-2 border-b flex items-baseline gap-2 sm:gap-3" style={{ borderColor: "var(--border)" }}>
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest w-12 shrink-0" style={{ color: "var(--muted-foreground)" }}>Subject</span>
+            <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>
+              {subject}
+              {typingSubject && <span className="ec-caret inline-block w-[2px] h-[11px] sm:h-[13px] align-middle ml-0.5" style={{ background: "var(--hooklyne-orange)" }} />}
+            </span>
+          </div>
+
+          <div className="px-3 sm:px-4 py-2 sm:py-3 flex-1 text-[11px] sm:text-[13px] leading-relaxed overflow-hidden min-h-0" style={{ color: "var(--foreground)" }}>
+            {body.map((line, i) => (
+              <p key={i} className="min-h-[1em]">
+                {line}
+                {typingBody && i === body.length - 1 && (
+                  <span className="ec-caret inline-block w-[2px] h-[12px] sm:h-[14px] align-middle ml-0.5" style={{ background: "var(--hooklyne-orange)" }} />
+                )}
+              </p>
+            ))}
+          </div>
+
+          <div className="px-3 sm:px-4 py-2 sm:py-2.5 border-t flex items-center justify-between gap-2" style={{ borderColor: "var(--border)" }}>
+            <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>
+              <span className="inline-flex items-center gap-1">
+                <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                NL · EN auto
               </span>
+              <span>·</span>
+              <span>Sender profile: Joey</span>
+              <span className="hidden sm:inline">·</span>
+              <span className="hidden sm:inline">Under 60s</span>
             </div>
-            <div className="px-3 py-2 sm:py-3 flex-1 text-[11px] sm:text-xs leading-relaxed overflow-hidden" style={{ color: "var(--foreground)" }}>
-              {body.map((line, i) => (
-                <p key={i} className="min-h-[1em]">
-                  {line}
-                  {typingBody && i === body.length - 1 && (
-                    <span className="ec-caret inline-block w-[2px] h-[12px] align-middle ml-0.5" style={{ background: "var(--hooklyne-orange)" }} />
-                  )}
-                </p>
-              ))}
-            </div>
-            <div className="px-3 py-2 border-t flex items-center justify-between" style={{ borderColor: "var(--border)" }}>
-              <span className="text-[10px]" style={{ color: "var(--muted-foreground)" }}>NL · EN · auto-picked</span>
-              {phase === "actioned" ? (
-                <span
-                  className="ec-actioned inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full"
-                  style={{ background: "rgba(13,148,136,0.12)", color: "var(--hooklyne-teal)" }}
-                >
-                  <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                  Actioned
-                </span>
-              ) : (
-                <span
-                  className={`inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full ${phase === "review" ? "ec-press" : ""}`}
-                  style={{
-                    background: phase === "review" ? "var(--hooklyne-orange)" : "rgba(255,140,66,0.12)",
-                    color: phase === "review" ? "white" : "var(--hooklyne-orange)",
-                  }}
-                >
-                  Mark as actioned
-                </span>
-              )}
-            </div>
+            {phase === "actioned" ? (
+              <span
+                className="ec-actioned inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md"
+                style={{ background: "rgba(13,148,136,0.14)", color: "var(--hooklyne-teal)" }}
+              >
+                <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                Actioned
+              </span>
+            ) : (
+              <span
+                className={`inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md ${phase === "review" ? "ec-press" : ""}`}
+                style={{
+                  background: phase === "review" ? "var(--hooklyne-orange)" : "rgba(255,140,66,0.12)",
+                  color: phase === "review" ? "white" : "var(--hooklyne-orange)",
+                }}
+              >
+                Mark as actioned
+              </span>
+            )}
           </div>
         </div>
       </div>
