@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
 
 /**
@@ -71,6 +71,8 @@ export const FindCompaniesFlow = () => {
   const [step, setStep] = useState(0);
   const [typed, setTyped] = useState("");
   const [reduced, setReduced] = useState(false);
+  const [inView, setInView] = useState(false);
+  const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -81,11 +83,25 @@ export const FindCompaniesFlow = () => {
   }, []);
 
   useEffect(() => {
+    const node = rootRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) setInView(e.isIntersecting);
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (reduced) {
       setStep(1);
       setTyped(PROMPT);
       return;
     }
+    if (!inView) return;
     let cancelled = false;
     const run = async () => {
       while (!cancelled) {
@@ -108,9 +124,10 @@ export const FindCompaniesFlow = () => {
     return () => {
       cancelled = true;
     };
-  }, [reduced]);
+  }, [reduced, inView]);
 
   return (
+    <div ref={rootRef}>
     <GraphicShell
       crumb={step === 0 ? "Prospecting / Find me companies" : step === 1 ? "Prospecting / Select" : "Prospecting / Contacts"}
       status={step === 0 ? "Drafting" : step === 1 ? "6 found" : "Verifying"}
@@ -302,5 +319,6 @@ export const FindCompaniesFlow = () => {
         </div>
       </div>
     </GraphicShell>
+    </div>
   );
 };

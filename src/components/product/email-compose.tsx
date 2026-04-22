@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
 
 /**
@@ -27,6 +27,8 @@ export const EmailCompose = () => {
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState<string[]>([""]);
   const [reduced, setReduced] = useState(false);
+  const [inView, setInView] = useState(false);
+  const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -37,12 +39,26 @@ export const EmailCompose = () => {
   }, []);
 
   useEffect(() => {
+    const node = rootRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) setInView(e.isIntersecting);
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (reduced) {
       setSubject(SUBJECT);
       setBody(BODY);
       setPhase("review");
       return;
     }
+    if (!inView) return;
     let cancelled = false;
     const run = async () => {
       while (!cancelled) {
@@ -83,12 +99,13 @@ export const EmailCompose = () => {
     return () => {
       cancelled = true;
     };
-  }, [reduced]);
+  }, [reduced, inView]);
 
   const typingSubject = phase === "typing-subject";
   const typingBody = phase === "typing-body";
 
   return (
+    <div ref={rootRef}>
     <GraphicShell
       crumb="Portal / Draft"
       status={phase === "actioned" ? "Actioned" : "Drafting"}
@@ -184,5 +201,6 @@ export const EmailCompose = () => {
         </div>
       </div>
     </GraphicShell>
+    </div>
   );
 };
