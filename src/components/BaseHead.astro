@@ -4,45 +4,25 @@
 import '../styles/global.css';
 import {
   SITE_TITLE,
-  SITE_TITLE_NL,
   SITE_DESCRIPTION,
-  SITE_DESCRIPTION_NL,
   SITE_METADATA,
   SITE_URL,
-  altLangPath,
 } from '../consts';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
-  lang?: 'en' | 'nl';
 }
 
-const { title, description, image, lang = 'en' } = Astro.props;
+const { title, description, image } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const defaultTitle = lang === 'nl' ? SITE_TITLE_NL : SITE_TITLE;
-const defaultDescription = lang === 'nl' ? SITE_DESCRIPTION_NL : SITE_DESCRIPTION;
-
-const finalTitle = title || defaultTitle;
-const finalDescription = description || defaultDescription;
+const finalTitle = title || SITE_TITLE;
+const finalDescription = description || SITE_DESCRIPTION;
 const finalImage = image || SITE_METADATA.openGraph.images[0].url;
 const imageURL = new URL(finalImage, Astro.url);
-
-// hreflang alternates for bilingual pages.
-// Only emit the NL alternate on pages that have a real NL counterpart.
-// For now that's only the root (/ and /nl). Add paths here as translations ship.
-const currentPath = Astro.url.pathname;
-// Normalise for the build: strip trailing .html and trailing slash.
-const normalisedPath = currentPath.replace(/\.html$/, '').replace(/\/$/, '') || '/';
-const BILINGUAL_PATHS = new Set(['/', '/nl']);
-const hasBilingualPair = BILINGUAL_PATHS.has(normalisedPath);
-const enPath = altLangPath(normalisedPath, 'en');
-const nlPath = altLangPath(normalisedPath, 'nl');
-const enUrl = new URL(enPath, Astro.site).toString();
-const nlUrl = new URL(nlPath, Astro.site).toString();
 ---
 
 <!-- Global Metadata -->
@@ -116,15 +96,8 @@ const nlUrl = new URL(nlPath, Astro.site).toString();
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical + hreflang alternates -->
+<!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
-{hasBilingualPair && (
-  <>
-    <link rel="alternate" hreflang="en" href={enUrl} />
-    <link rel="alternate" hreflang="nl" href={nlUrl} />
-    <link rel="alternate" hreflang="x-default" href={enUrl} />
-  </>
-)}
 
 <!-- Primary Meta Tags -->
 <title>{finalTitle}</title>
@@ -133,8 +106,7 @@ const nlUrl = new URL(nlPath, Astro.site).toString();
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:locale" content={lang === 'nl' ? 'nl_NL' : 'en_GB'} />
-<meta property="og:locale:alternate" content={lang === 'nl' ? 'en_GB' : 'nl_NL'} />
+<meta property="og:locale" content="en_GB" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:site_name" content={SITE_METADATA.openGraph.siteName} />
 <meta property="og:title" content={finalTitle} />
@@ -181,6 +153,6 @@ const nlUrl = new URL(nlPath, Astro.site).toString();
   "name": "Hooklyne",
   "url": SITE_URL,
   "description": finalDescription,
-  "inLanguage": lang === 'nl' ? ["nl", "en"] : ["en", "nl"],
+  "inLanguage": ["en"],
   "publisher": { "@type": "Organization", "name": "Hooklyne", "url": SITE_URL }
 })} />

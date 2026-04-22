@@ -2,52 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { UserCircle, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLang, switchLangUrl, type Lang } from "@/lib/use-lang";
-
-const LangToggle = () => {
-  const lang = useLang();
-  return (
-    <div
-      className="inline-flex items-center h-7 p-0.5 rounded-full shrink-0"
-      style={{
-        background:
-          "linear-gradient(145deg, rgba(255,255,255,0.55) 0%, rgba(248,250,253,0.35) 100%)",
-        border: "1px solid rgba(52,76,163,0.12)",
-        boxShadow:
-          "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 2px 6px -2px rgba(15,23,42,0.05)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-      }}
-      role="group"
-      aria-label="Language"
-    >
-      {(["en", "nl"] as Lang[]).map((k) => {
-        const active = lang === k;
-        return (
-          <button
-            key={k}
-            onClick={() => { if (!active) switchLangUrl(k); }}
-            aria-pressed={active}
-            aria-label={`Switch to ${k === "nl" ? "Nederlands" : "English"}`}
-            className="inline-flex items-center justify-center h-6 min-w-[26px] px-2 rounded-full text-[10px] font-bold uppercase tracking-[0.12em] transition-all"
-            style={{
-              background: active ? "var(--hooklyne-navy)" : "transparent",
-              color: active ? "#ffffff" : "var(--muted-foreground)",
-              boxShadow: active
-                ? "0 1px 2px 0 rgba(2,47,81,0.25), 0 0 0 1px rgba(2,47,81,0.1)"
-                : "none",
-              opacity: active ? 1 : 0.7,
-              cursor: active ? "default" : "pointer",
-            }}
-          >
-            {k}
-          </button>
-        );
-      })}
-    </div>
-  );
-};
-
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
 
@@ -66,22 +20,11 @@ const ITEMS: NavItem[] = [
   { label: "About", href: "/about" },
 ];
 
-// Paths with a real Dutch translation. Keep in sync with NL_AVAILABLE in use-lang.ts.
-const NL_ROUTES = new Set<string>(["/"]);
-
-function localize(href: string, lang: Lang): string {
-  if (!href.startsWith("/")) return href; // external
-  if (lang !== "nl") return href;
-  if (!NL_ROUTES.has(href)) return href; // no Dutch version yet, send to EN
-  return href === "/" ? "/nl" : `/nl${href}`;
-}
-
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pathname, setPathname] = useState("");
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
-  const lang = useLang();
 
   useEffect(() => {
     setPathname(window.location.pathname);
@@ -90,10 +33,7 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (href: string) => {
-    const h = localize(href, lang);
-    return pathname === h || (h === "/blog" && pathname.startsWith("/blog"));
-  };
+  const isActive = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog"));
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:pt-5 flex justify-center pointer-events-none">
@@ -112,7 +52,7 @@ export const Navbar = () => {
       >
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
-          <a href={localize("/", lang)} className="flex shrink-0 items-center gap-2">
+          <a href="/" className="flex shrink-0 items-center gap-2">
             <img src="/logo.svg" alt="Hooklyne" width={140} height={28} />
           </a>
 
@@ -148,7 +88,7 @@ export const Navbar = () => {
                         {link.children.map((c) => (
                           <a
                             key={c.label}
-                            href={localize(c.href, lang)}
+                            href={c.href}
                             className={cn(
                               "block px-4 py-2 text-sm font-medium transition-colors",
                               isActive(c.href)
@@ -168,7 +108,7 @@ export const Navbar = () => {
               return (
                 <a
                   key={link.label}
-                  href={localize(link.href!, lang)}
+                  href={link.href!}
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
                     isActive(link.href!)
@@ -184,7 +124,6 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <LangToggle />
             <a
               href="https://portal.hooklyne.com"
               className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
@@ -192,7 +131,7 @@ export const Navbar = () => {
               <UserCircle className="size-4 shrink-0" />
               Log in
             </a>
-            <a href={localize("/contact", lang)}>
+            <a href="/contact">
               <Button
                 className="text-sm font-semibold rounded-lg px-4 py-2 h-auto btn-shine"
                 style={{
@@ -244,7 +183,7 @@ export const Navbar = () => {
                         {link.children.map((c) => (
                           <a
                             key={c.label}
-                            href={localize(c.href, lang)}
+                            href={c.href}
                             className="py-2 px-3 rounded-lg text-sm text-[var(--foreground)]/70 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
@@ -260,7 +199,7 @@ export const Navbar = () => {
               return (
                 <a
                   key={link.label}
-                  href={localize(link.href!, lang)}
+                  href={link.href!}
                   className="py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -269,10 +208,6 @@ export const Navbar = () => {
               );
             })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
-              <div className="flex items-center justify-between px-1">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">Language</span>
-                <LangToggle />
-              </div>
               <a
                 href="https://portal.hooklyne.com"
                 className="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
@@ -281,7 +216,7 @@ export const Navbar = () => {
                 <UserCircle className="size-4 shrink-0" />
                 Log in
               </a>
-              <a href={localize("/contact", lang)} onClick={() => setIsMenuOpen(false)}>
+              <a href="/contact" onClick={() => setIsMenuOpen(false)}>
                 <Button
                   className="w-full text-sm font-semibold rounded-lg btn-shine"
                   style={{
