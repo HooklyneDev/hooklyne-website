@@ -170,4 +170,4 @@ The worst mistake we see small teams make is buying the premium tool and then on
 
 ---
 
-*Last updated April 2026. Pricing changes quarterly. If anything here is out of date, email [hello@hooklyne.com](mailto:hello@hooklyne.com) and we will fix it.*
+*Last updated April 2026. Pricing changes quarterly. If anything here is out of date, email [contact@hooklyne.com](mailto:contact@hooklyne.com) and we will fix it.*

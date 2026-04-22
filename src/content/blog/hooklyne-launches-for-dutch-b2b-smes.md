@@ -68,4 +68,4 @@ Before you pay, you can run Hooklyne on ten of your own prospects. Fully built p
 
 A post going live in the next two weeks on how we verify emails across 20+ providers. One on what bilateral signal scoring actually means in practice. One on why we do not name the suppliers in our data stack.
 
-If there is a question you want answered before you commit, email [hello@hooklyne.com](mailto:hello@hooklyne.com). We read every message.
+If there is a question you want answered before you commit, email [contact@hooklyne.com](mailto:contact@hooklyne.com). We read every message.

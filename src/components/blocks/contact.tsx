@@ -4,8 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-const WEB3FORMS_KEY = "d2734bdb-dd47-4ef5-bb94-8b814f46d404";
-
 type Interest = "" | "Pilot" | "Demo" | "Question";
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -42,7 +40,7 @@ export const Contact = () => {
     setFirstName(fullName.trim().split(/\s+/)[0] || fullName);
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -150,7 +148,6 @@ export const Contact = () => {
               <h2 className="text-xl font-semibold text-[var(--heading)] mb-1">Send a message</h2>
               <p className="text-sm text-[var(--muted-foreground)] mb-7">Four fields, nothing more. Real humans read every one.</p>
               <form ref={formRef} onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-5">
-                <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
                 <input
                   type="hidden"
                   name="subject"
@@ -241,8 +238,8 @@ export const Contact = () => {
                     }}
                   >
                     Something went wrong. Email{" "}
-                    <a href="mailto:hello@hooklyne.com" className="underline underline-offset-2 font-medium">
-                      hello@hooklyne.com
+                    <a href="mailto:contact@hooklyne.com" className="underline underline-offset-2 font-medium">
+                      contact@hooklyne.com
                     </a>{" "}
                     directly and we'll pick it up from there.
                   </div>
@@ -256,10 +253,10 @@ export const Contact = () => {
           <p className="text-sm text-[var(--muted-foreground)]">
             Prefer email? Write to us at{" "}
             <a
-              href="mailto:hello@hooklyne.com"
+              href="mailto:contact@hooklyne.com"
               className="text-[var(--hooklyne-blue)] font-medium hover:opacity-80 transition-opacity"
             >
-              hello@hooklyne.com
+              contact@hooklyne.com
             </a>
           </p>
           <p className="text-xs text-[var(--muted-foreground)] mt-2">Based in the Netherlands, reachable across EMEA.</p>

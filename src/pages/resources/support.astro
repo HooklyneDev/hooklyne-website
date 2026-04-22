@@ -103,13 +103,11 @@ import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
 
         <form
           id="support-form"
-          action="https://api.web3forms.com/submit"
+          action="/api/contact"
           method="POST"
           class="rounded-2xl p-6 md:p-8 space-y-5"
           style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
         >
-          {/* Web3Forms access key */}
-          <input type="hidden" name="access_key" value="d2734bdb-dd47-4ef5-bb94-8b814f46d404" />
           <input type="hidden" name="subject" value="New support message from hooklyne.com" />
           <input type="hidden" name="from_name" value="Hooklyne website" />
           {/* Honeypot anti-spam. Bots fill it, humans do not. */}
@@ -198,7 +196,7 @@ import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
             class="hidden rounded-lg p-3.5 text-sm"
             style="background: rgba(255,140,66,0.10); border: 1px solid rgba(255,140,66,0.30); color: var(--hooklyne-orange);"
           >
-            Something went wrong. Please email <a href="mailto:support@hooklyne.com" class="underline underline-offset-2">support@hooklyne.com</a> directly.
+            Something went wrong. Please email <a href="mailto:contact@hooklyne.com" class="underline underline-offset-2">contact@hooklyne.com</a> directly.
           </div>
         </form>
       </div>
