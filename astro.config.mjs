@@ -15,8 +15,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) =>
-        !page.includes("/blog") && !page.includes("/resources/support"),
+      filter: (page) => !page.includes("/resources/support"),
     }),
     react(),
   ],
