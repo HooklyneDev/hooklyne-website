@@ -136,7 +136,7 @@ const stages = [
   <Background>
     <section class="pt-32 lg:pt-44 pb-16 lg:pb-24 relative" data-fade>
       <HeroGlow client:load />
-      <div class="container max-w-4xl text-center relative z-10">
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           A research workflow. Not a chatbot.
@@ -162,7 +162,7 @@ const stages = [
         </div>
       </div>
 
-      <div class="container max-w-6xl relative z-10">
+      <div id="hero-video" class="container max-w-6xl relative z-10">
         <div
           class="relative rounded-2xl px-4 py-4 lg:px-6 lg:py-5 overflow-hidden"
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); box-shadow: var(--shadow-lg); border: 1px solid var(--border);"
