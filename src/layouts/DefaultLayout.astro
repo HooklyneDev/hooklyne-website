@@ -5,26 +5,29 @@ import { FinalCTA } from '@/components/blocks/final-cta';
 import { Navbar } from '@/components/blocks/navbar';
 import { CookieBar } from '@/components/blocks/cookie-bar';
 
-const { title, description, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
+const { title, description, hideFinalCTA, ctaVariant = 'home', lang: propLang } = Astro.props;
+
+// URL is source of truth for lang. Pages can also pass lang explicitly.
+const pathname = Astro.url.pathname;
+const lang: 'en' | 'nl' = propLang || (pathname === '/nl' || pathname.startsWith('/nl/') ? 'nl' : 'en');
 ---
 
-<html lang="en">
+<html lang={lang}>
     <head>
-        <script is:inline>
+        <script is:inline define:vars={{ serverLang: lang }}>
           (function () {
             try {
-              var stored = localStorage.getItem('hooklyne-lang');
-              var lang = stored === 'nl' || stored === 'en'
-                ? stored
-                : ((navigator.language || 'en').toLowerCase().startsWith('nl') ? 'nl' : 'en');
-              document.documentElement.setAttribute('lang', lang);
-              document.documentElement.setAttribute('data-lang', lang);
+              var path = window.location.pathname;
+              var urlLang = (path === '/nl' || path.indexOf('/nl/') === 0) ? 'nl' : 'en';
+              var finalLang = urlLang || serverLang || 'en';
+              document.documentElement.setAttribute('lang', finalLang);
+              document.documentElement.setAttribute('data-lang', finalLang);
             } catch (e) {
-              document.documentElement.setAttribute('data-lang', 'en');
+              document.documentElement.setAttribute('data-lang', serverLang || 'en');
             }
           })();
         </script>
-        <BaseHead title={title} description={description}  />
+        <BaseHead title={title} description={description} lang={lang} />
     </head>
     <body class={`h-screen antialiased`}
     >

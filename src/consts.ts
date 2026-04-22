@@ -1,8 +1,15 @@
-export const SITE_TITLE = "B2B prospecting in your rep's voice · Hooklyne";
-export const SITE_DESCRIPTION =
-  "Research-grade B2B prospect packages in your rep's voice. Find the right contact, draft outreach, send in under a minute. Built for small EMEA teams.";
-export const SITE_URL = "https://hooklyne.com";
+export const SITE_URL = "https://www.hooklyne.com";
 export const GITHUB_URL = "https://github.com/HooklyneDev";
+
+export const SITE_TITLE =
+  "B2B Prospect Research for Benelux & UK SMEs | Hooklyne";
+export const SITE_DESCRIPTION =
+  "Verified contacts, live signals, and first-draft outreach for Benelux and UK B2B teams of 10 to 50 people. Research-grade prospect packages. From €39 a month.";
+
+export const SITE_TITLE_NL =
+  "B2B prospectonderzoek voor Nederlands en Belgisch MKB | Hooklyne";
+export const SITE_DESCRIPTION_NL =
+  "Geverifieerde contacten, live signalen en eerste concept-outreach voor Nederlands en Belgisch MKB met 10 tot 50 medewerkers. Vanaf €39 per maand.";
 
 export const SITE_METADATA = {
   title: {
@@ -14,11 +21,13 @@ export const SITE_METADATA = {
   publisher: "Hooklyne",
   authors: [{ name: "Hooklyne", url: SITE_URL }],
   keywords: [
-    "B2B sales",
-    "sales intelligence",
+    "B2B prospect research",
     "prospect research",
-    "outreach automation",
+    "B2B prospecting",
+    "Benelux B2B sales",
     "Dutch B2B",
+    "MKB prospecting",
+    "sales intelligence",
     "lead generation",
   ],
   robots: {
@@ -32,7 +41,7 @@ export const SITE_METADATA = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Hooklyne - B2B prospecting in your rep's voice.",
+        alt: "Hooklyne - B2B prospect research for Benelux and UK SMEs.",
       },
     ],
   },
@@ -45,11 +54,21 @@ export const SITE_METADATA = {
       { url: "/favicon/favicon.svg", type: "image/svg+xml", sizes: "any" },
       { url: "/favicon/favicon-96x96.png", type: "image/png", sizes: "96x96" },
     ],
-    apple: [
-      { url: "/favicon/apple-touch-icon.png", sizes: "180x180" },
-    ],
-    shortcut: [
-      { url: "/favicon/favicon.ico" },
-    ],
+    apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: [{ url: "/favicon/favicon.ico" }],
   },
 };
+
+/**
+ * Map an EN path to its NL equivalent and vice versa. Used for hreflang
+ * and the language switcher.
+ */
+export function altLangPath(pathname: string, target: "en" | "nl"): string {
+  const stripped = pathname.replace(/^\/nl(\/|$)/, "/") || "/";
+  const canonical =
+    stripped !== "/" && stripped.endsWith("/") ? stripped.slice(0, -1) : stripped;
+  if (target === "nl") {
+    return canonical === "/" ? "/nl" : `/nl${canonical}`;
+  }
+  return canonical;
+}

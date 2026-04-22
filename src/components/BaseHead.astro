@@ -2,21 +2,47 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import { SITE_TITLE, SITE_METADATA } from '../consts';
+import {
+  SITE_TITLE,
+  SITE_TITLE_NL,
+  SITE_DESCRIPTION,
+  SITE_DESCRIPTION_NL,
+  SITE_METADATA,
+  SITE_URL,
+  altLangPath,
+} from '../consts';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: 'en' | 'nl';
 }
+
+const { title, description, image, lang = 'en' } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image } = Astro.props;
-const finalTitle = title || SITE_METADATA.title.default;
-const finalDescription = description || SITE_METADATA.description;
+const defaultTitle = lang === 'nl' ? SITE_TITLE_NL : SITE_TITLE;
+const defaultDescription = lang === 'nl' ? SITE_DESCRIPTION_NL : SITE_DESCRIPTION;
+
+const finalTitle = title || defaultTitle;
+const finalDescription = description || defaultDescription;
 const finalImage = image || SITE_METADATA.openGraph.images[0].url;
 const imageURL = new URL(finalImage, Astro.url);
+
+// hreflang alternates for bilingual pages.
+// Only emit the NL alternate on pages that have a real NL counterpart.
+// For now that's only the root (/ and /nl). Add paths here as translations ship.
+const currentPath = Astro.url.pathname;
+// Normalise for the build: strip trailing .html and trailing slash.
+const normalisedPath = currentPath.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const BILINGUAL_PATHS = new Set(['/', '/nl']);
+const hasBilingualPair = BILINGUAL_PATHS.has(normalisedPath);
+const enPath = altLangPath(normalisedPath, 'en');
+const nlPath = altLangPath(normalisedPath, 'nl');
+const enUrl = new URL(enPath, Astro.site).toString();
+const nlUrl = new URL(nlPath, Astro.site).toString();
 ---
 
 <!-- Global Metadata -->
@@ -30,18 +56,18 @@ const imageURL = new URL(finalImage, Astro.url);
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
 <!-- Preload local fonts -->
-<link 
-  rel="preload" 
-  href="/fonts/dm-sans/DMSans-Regular.ttf" 
-  as="font" 
-  type="font/ttf" 
+<link
+  rel="preload"
+  href="/fonts/dm-sans/DMSans-Regular.ttf"
+  as="font"
+  type="font/ttf"
   crossorigin="anonymous"
 />
-<link 
-  rel="preload" 
-  href="/fonts/dm-sans/DMSans-Bold.ttf" 
-  as="font" 
-  type="font/ttf" 
+<link
+  rel="preload"
+  href="/fonts/dm-sans/DMSans-Bold.ttf"
+  as="font"
+  type="font/ttf"
   crossorigin="anonymous"
 />
 
@@ -83,15 +109,22 @@ const imageURL = new URL(finalImage, Astro.url);
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
+    rel="alternate"
+    type="application/rss+xml"
+    title="Hooklyne"
+    href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
+<!-- Canonical + hreflang alternates -->
 <link rel="canonical" href={canonicalURL} />
+{hasBilingualPair && (
+  <>
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="nl" href={nlUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+  </>
+)}
 
 <!-- Primary Meta Tags -->
 <title>{finalTitle}</title>
@@ -100,6 +133,8 @@ const imageURL = new URL(finalImage, Astro.url);
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
+<meta property="og:locale" content={lang === 'nl' ? 'nl_NL' : 'en_GB'} />
+<meta property="og:locale:alternate" content={lang === 'nl' ? 'en_GB' : 'nl_NL'} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:site_name" content={SITE_METADATA.openGraph.siteName} />
 <meta property="og:title" content={finalTitle} />
@@ -122,9 +157,9 @@ const imageURL = new URL(finalImage, Astro.url);
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Hooklyne",
-  "url": "https://www.hooklyne.com",
-  "logo": "https://www.hooklyne.com/logo.svg",
-  "description": "Research-grade B2B prospect packages in your rep's voice.",
+  "url": SITE_URL,
+  "logo": `${SITE_URL}/logo.svg`,
+  "description": "B2B prospect research for Benelux and UK SMEs.",
   "foundingLocation": {
     "@type": "Place",
     "address": { "@type": "PostalAddress", "addressCountry": "NL" }
@@ -134,7 +169,7 @@ const imageURL = new URL(finalImage, Astro.url);
     "@type": "ContactPoint",
     "email": "hello@hooklyne.com",
     "contactType": "customer support",
-    "areaServed": "EMEA",
+    "areaServed": ["NL", "BE", "GB", "LU"],
     "availableLanguage": ["en", "nl"]
   }
 })} />
@@ -144,8 +179,8 @@ const imageURL = new URL(finalImage, Astro.url);
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Hooklyne",
-  "url": "https://www.hooklyne.com",
+  "url": SITE_URL,
   "description": finalDescription,
-  "inLanguage": ["en", "nl"],
-  "publisher": { "@type": "Organization", "name": "Hooklyne", "url": "https://www.hooklyne.com" }
+  "inLanguage": lang === 'nl' ? ["nl", "en"] : ["en", "nl"],
+  "publisher": { "@type": "Organization", "name": "Hooklyne", "url": SITE_URL }
 })} />

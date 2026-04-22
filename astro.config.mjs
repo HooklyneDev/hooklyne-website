@@ -12,6 +12,13 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "nl"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     mdx(),
     sitemap({

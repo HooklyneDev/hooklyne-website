@@ -1,0 +1,49 @@
+---
+import { SITE_TITLE_NL, SITE_DESCRIPTION_NL } from '../../consts';
+import { Background } from '@/components/background';
+import { Hero } from '@/components/blocks/hero';
+import SignalTicker from '@/components/blocks/signal-ticker.astro';
+import { DIYCompare } from '@/components/blocks/diy-compare';
+import { WhatYouGet } from '@/components/blocks/what-you-get';
+import { WaysToStart } from '@/components/blocks/ways-to-start';
+import { BuiltFor } from '@/components/blocks/built-for';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout title={SITE_TITLE_NL} description={SITE_DESCRIPTION_NL} lang="nl">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hooklyne",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Research-grade B2B prospectpakketten in de stem van je rep. Vind het juiste contact, schrijf de outreach, verstuur binnen een minuut.",
+    "url": "https://www.hooklyne.com/nl",
+    "inLanguage": "nl-NL",
+    "offers": {
+      "@type": "Offer",
+      "price": "39",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "39",
+        "priceCurrency": "EUR",
+        "billingIncrement": 1,
+        "unitText": "MONTH"
+      }
+    }
+  })} />
+  <Background>
+    <Hero client:load />
+    <SignalTicker />
+    <DIYCompare client:visible />
+  </Background>
+
+  <Background variant="bottom">
+    <WhatYouGet />
+    <WaysToStart client:visible />
+    <BuiltFor client:visible />
+    <HomePricing client:load />
+  </Background>
+</DefaultLayout>

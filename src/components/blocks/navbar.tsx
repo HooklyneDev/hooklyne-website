@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { UserCircle, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLang, setLang, type Lang } from "@/lib/use-lang";
+import { useLang, switchLangUrl, type Lang } from "@/lib/use-lang";
 
 const LangToggle = () => {
   const lang = useLang();
@@ -26,7 +26,7 @@ const LangToggle = () => {
         return (
           <button
             key={k}
-            onClick={() => { if (!active) setLang(k); }}
+            onClick={() => { if (!active) switchLangUrl(k); }}
             aria-pressed={active}
             aria-label={`Switch to ${k === "nl" ? "Nederlands" : "English"}`}
             className="inline-flex items-center justify-center h-6 min-w-[26px] px-2 rounded-full text-[10px] font-bold uppercase tracking-[0.12em] transition-all"
@@ -66,11 +66,22 @@ const ITEMS: NavItem[] = [
   { label: "About", href: "/about" },
 ];
 
+// Paths with a real Dutch translation. Keep in sync with NL_AVAILABLE in use-lang.ts.
+const NL_ROUTES = new Set<string>(["/"]);
+
+function localize(href: string, lang: Lang): string {
+  if (!href.startsWith("/")) return href; // external
+  if (lang !== "nl") return href;
+  if (!NL_ROUTES.has(href)) return href; // no Dutch version yet, send to EN
+  return href === "/" ? "/nl" : `/nl${href}`;
+}
+
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pathname, setPathname] = useState("");
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
+  const lang = useLang();
 
   useEffect(() => {
     setPathname(window.location.pathname);
@@ -79,7 +90,10 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog"));
+  const isActive = (href: string) => {
+    const h = localize(href, lang);
+    return pathname === h || (h === "/blog" && pathname.startsWith("/blog"));
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:pt-5 flex justify-center pointer-events-none">
@@ -98,7 +112,7 @@ export const Navbar = () => {
       >
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
-          <a href="/" className="flex shrink-0 items-center gap-2">
+          <a href={localize("/", lang)} className="flex shrink-0 items-center gap-2">
             <img src="/logo.svg" alt="Hooklyne" width={140} height={28} />
           </a>
 
@@ -134,7 +148,7 @@ export const Navbar = () => {
                         {link.children.map((c) => (
                           <a
                             key={c.label}
-                            href={c.href}
+                            href={localize(c.href, lang)}
                             className={cn(
                               "block px-4 py-2 text-sm font-medium transition-colors",
                               isActive(c.href)
@@ -154,7 +168,7 @@ export const Navbar = () => {
               return (
                 <a
                   key={link.label}
-                  href={link.href!}
+                  href={localize(link.href!, lang)}
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
                     isActive(link.href!)
@@ -178,7 +192,7 @@ export const Navbar = () => {
               <UserCircle className="size-4 shrink-0" />
               Log in
             </a>
-            <a href="/contact">
+            <a href={localize("/contact", lang)}>
               <Button
                 className="text-sm font-semibold rounded-lg px-4 py-2 h-auto btn-shine"
                 style={{
@@ -230,7 +244,7 @@ export const Navbar = () => {
                         {link.children.map((c) => (
                           <a
                             key={c.label}
-                            href={c.href}
+                            href={localize(c.href, lang)}
                             className="py-2 px-3 rounded-lg text-sm text-[var(--foreground)]/70 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
@@ -246,7 +260,7 @@ export const Navbar = () => {
               return (
                 <a
                   key={link.label}
-                  href={link.href!}
+                  href={localize(link.href!, lang)}
                   className="py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -267,7 +281,7 @@ export const Navbar = () => {
                 <UserCircle className="size-4 shrink-0" />
                 Log in
               </a>
-              <a href="/contact" onClick={() => setIsMenuOpen(false)}>
+              <a href={localize("/contact", lang)} onClick={() => setIsMenuOpen(false)}>
                 <Button
                   className="w-full text-sm font-semibold rounded-lg btn-shine"
                   style={{
