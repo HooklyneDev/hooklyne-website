@@ -2,14 +2,14 @@ export const SITE_URL = "https://www.hooklyne.com";
 export const GITHUB_URL = "https://github.com/HooklyneDev";
 
 export const SITE_TITLE =
-  "B2B Prospect Research for Benelux & UK SMEs | Hooklyne";
+  "B2B Prospect Research for Dutch and UK SMEs | Hooklyne";
 export const SITE_DESCRIPTION =
-  "Verified contacts, live signals, and first-draft outreach for Benelux and UK B2B teams of 10 to 50 people. Research-grade prospect packages. From €39 a month.";
+  "Verified contacts, live signals, and first-draft outreach for Dutch, UK and EMEA B2B teams of 10 to 50. Dutch and English, native. From €39 a month.";
 
 export const SITE_TITLE_NL =
-  "B2B prospectonderzoek voor Nederlands en Belgisch MKB | Hooklyne";
+  "Prospectonderzoek voor Nederlandse en Britse B2B-teams | Hooklyne";
 export const SITE_DESCRIPTION_NL =
-  "Geverifieerde contacten, live signalen en eerste concept-outreach voor Nederlands en Belgisch MKB met 10 tot 50 medewerkers. Vanaf €39 per maand.";
+  "Geverifieerde contacten, live signalen en een eerste conceptmail voor Nederlandse, Britse en EMEA B2B-teams van 10 tot 50 personen. Native in het Nederlands en Engels. Vanaf €39 per maand.";
 
 export const SITE_METADATA = {
   title: {
@@ -38,10 +38,10 @@ export const SITE_METADATA = {
     siteName: "Hooklyne",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Hooklyne - B2B prospect research for Benelux and UK SMEs.",
+        url: "/favicon/web-app-manifest-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Hooklyne - B2B prospect research for Dutch and UK SMEs.",
       },
     ],
   },
