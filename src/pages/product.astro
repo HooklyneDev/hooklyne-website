@@ -192,7 +192,7 @@ const profileTabs = [
             </div>
             <div class="border border-t-0 rounded-b-2xl relative overflow-hidden" style="border-color: var(--border); padding-bottom: 56.7%;">
               <video
-                autoplay muted loop playsinline
+                autoplay muted loop playsinline preload="metadata"
                 poster="/hooklyne-hero.png"
                 style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; background: var(--card);"
               >
@@ -303,14 +303,13 @@ const profileTabs = [
 
           <div class="lg:sticky lg:top-28">
             <PortalShot
-              client:load
+              client:visible
               label="Dashboard detail"
-              describe="Close-up of Daily focus + Signal heat cards with priority dots, angles, and heat bars."
+              src="/home/screens/hooklyne-positioning-stack.webp"
               ratio="3/2"
-              overlays={[
-                { x: 28, y: 18, tag: "PRIORITY 1", title: "Act today", tone: "orange", pulse: true },
-                { x: 75, y: 58, tag: "HEAT", title: "Rising", body: "+12 since Friday", tone: "teal" },
-              ]}
+              crumb="Portal / Dashboard"
+              status="Live"
+              statusTone="teal"
             />
           </div>
         </div>
@@ -380,14 +379,13 @@ const profileTabs = [
 
           <div class="lg:order-1">
             <PortalShot
-              client:load
+              client:visible
               label="My Leads"
-              describe="Table of prospects with columns and one expanded row showing brief link + contact details."
+              src="/home/screens/hooklyne-inbox-ready.webp"
               ratio="3/2"
-              overlays={[
-                { x: 20, y: 28, tag: "STATUS", title: "Ready", tone: "teal" },
-                { x: 76, y: 68, tag: "JUMP TO", title: "Meeting Prep", body: "Pre-filled", tone: "blue" },
-              ]}
+              crumb="Portal / My Leads"
+              status="Ready"
+              statusTone="teal"
             />
           </div>
         </div>
@@ -522,14 +520,13 @@ const profileTabs = [
 
           <div class="lg:sticky lg:top-28">
             <PortalShot
-              client:load
+              client:visible
               label="Meeting brief"
-              describe="Brief rendered as a document: summary, recent moves, contact context, pitch angles, citations on the margin."
+              src="/screens/stage-review.png"
               ratio="3/2"
-              overlays={[
-                { x: 22, y: 20, tag: "READY", title: "Generated in 4m 38s", tone: "teal" },
-                { x: 78, y: 58, tag: "SOURCED", title: "12 citations", body: "Every claim clickable", tone: "blue" },
-              ]}
+              crumb="Portal / Meeting Prep"
+              status="Ready"
+              statusTone="teal"
             />
           </div>
         </div>

@@ -130,7 +130,13 @@ export const PortalShot = ({
           }}
         >
           {src ? (
-            <img src={src} alt={label} className="absolute inset-0 w-full h-full object-cover object-top" />
+            <img
+              src={src}
+              alt={label}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
               <div
