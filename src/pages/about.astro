@@ -319,6 +319,30 @@ const values = [
       </div>
     </section>
 
+    {/* Directional, not committed roadmap. If pilots plan or Q3 integration dates shift, update these three lines. */}
+    <section class="pt-4 pb-20 lg:pt-6 lg:pb-28" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-3">Where we are going</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6 leading-tight">
+            Small steps, shipped often.
+          </h2>
+          <ul class="flex flex-col gap-3">
+            {[
+              "Pilots running with Dutch and UK SMEs through Q2 2026.",
+              "Integrations with HubSpot and Pipedrive shipping in Q3.",
+              "Next market expansion: DACH. Dutch speakers already covered.",
+            ].map((line) => (
+              <li class="flex items-start gap-3 text-base text-[var(--muted-foreground)] leading-relaxed">
+                <span class="mt-[9px] flex-none w-1.5 h-1.5 rounded-full" style="background: var(--hooklyne-blue);"></span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </Background>
 </DefaultLayout>
 
