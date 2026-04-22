@@ -354,25 +354,36 @@ export const DIYCompare = () => {
 
         {/* Totals strip */}
         <div
-          className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-5 px-4 py-2 rounded-lg"
+          className="mb-5 px-3.5 py-2.5 md:py-2 rounded-lg"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
-          <div className="flex items-center gap-1.5 shrink-0">
-            <Clock className="size-3.5" style={{ color: tone.fg }} />
-            <span className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: tone.fg }}>
-              {active.totalLabel}
-            </span>
-          </div>
-          <div className="flex items-baseline gap-2 flex-1 min-w-0">
-            <span className="text-sm md:text-base font-semibold text-[var(--heading)] whitespace-nowrap tracking-tight">{active.total}</span>
-            <span className="text-[12px] text-[var(--muted-foreground)] truncate">{active.totalSub}</span>
-          </div>
-          {active.price && (
-            <div className="shrink-0 flex items-baseline gap-1.5">
-              <span className="text-[11px] font-semibold tabular-nums" style={{ color: tone.fg }}>{active.price}</span>
-              <span className="text-[10px] text-[var(--muted-foreground)]">est. tool cost</span>
+          <div className="flex flex-col md:flex-row md:items-center md:gap-x-4 gap-y-1.5">
+            {/* Left: label + main value */}
+            <div className="flex items-center gap-2 md:gap-1.5 md:shrink-0">
+              <Clock className="size-3.5 shrink-0" style={{ color: tone.fg }} />
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] shrink-0" style={{ color: tone.fg }}>
+                {active.totalLabel}
+              </span>
+              <span className="text-sm md:text-base font-semibold text-[var(--heading)] tracking-tight leading-tight">
+                {active.total}
+              </span>
             </div>
-          )}
+
+            {/* Middle: sub note */}
+            <div className="md:flex-1 md:min-w-0">
+              <span className="text-[12px] text-[var(--muted-foreground)] leading-snug block md:truncate">
+                {active.totalSub}
+              </span>
+            </div>
+
+            {/* Right: price */}
+            {active.price && (
+              <div className="flex items-baseline gap-1.5 md:shrink-0 pt-1.5 md:pt-0 border-t md:border-t-0" style={{ borderColor: tone.border }}>
+                <span className="text-[11px] font-semibold tabular-nums" style={{ color: tone.fg }}>{active.price}</span>
+                <span className="text-[10px] text-[var(--muted-foreground)]">est. tool cost</span>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Steps grid */}
