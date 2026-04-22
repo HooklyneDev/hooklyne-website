@@ -1,8 +1,11 @@
 ---
 title: "Apollo vs Cognism vs Lusha for Dutch and UK B2B SMEs: an honest breakdown"
-description: "A practical comparison of the three big B2B contact databases from the perspective of a 10 to 50 person company in the Netherlands or UK. What each one does well, where they fall short, and what to do if none of them fit."
+description: "Practical comparison of Apollo, Cognism, and Lusha for Dutch and UK B2B teams of 10 to 50 people. What each does well, where they fall short."
 pubDate: 2026-04-22
 authorName: Tim
+authorBio: "Tim co-founded Hooklyne after running outbound for a 15-person Dutch SaaS. Writes about what actually works in B2B sales for small teams."
+type: guide
+readingTime: "11 min"
 image: /blog/apollo-cognism-lusha-hero.jpg
 ---
 
@@ -48,7 +51,7 @@ Apollo is the cheapest way to get started. It publishes pricing, lets you self-s
 
 The problem is what happens next.
 
-**Email bounce rates.** Independent testing and user reports put Apollo's verified email bounce rate at 15 to 25 percent. For a new domain, that is a sender reputation killer. Two weeks of hard bouncing through Apollo and your deliverability sits in spam purgatory for months. Teams that do best on Apollo already have a mature warmup infrastructure around it.
+**Email bounce rates.** Users regularly report Apollo's verified-email bounce rate landing in the 15 to 25 percent range. Independent teardowns from practitioners on Salesmotion and Amplemarket have described similar numbers. For a new domain, that is a sender reputation killer. Two weeks of hard bouncing and your deliverability sits in spam purgatory for months. Teams that do best on Apollo already have [mature warmup infrastructure](/how-it-works) around it.
 
 **Credit system expires monthly.** Every paid tier runs on credits. Phone number reveals cost 5 to 8 credits each. Email reveals cost 1 credit each. Unused credits expire at the end of each billing cycle. If your team's prospecting is uneven, you either waste credits or run short and pay €0.20 each for top-ups. Budget predictability suffers.
 
@@ -106,7 +109,7 @@ Lusha is the easiest tool on this list to understand. It is a Chrome extension t
 
 The honest limits show up quickly.
 
-**Coverage is the real issue.** Lusha claims 98 percent email accuracy, but accuracy on the emails it returns, not on the contacts you look up. Independent testing in March 2026 found Lusha only returned email addresses for 31 percent of a 300-contact B2B test list. The 69 percent that returned nothing still consume your time, even if not your credits.
+**Coverage is the real issue.** Lusha publishes strong headline accuracy numbers, but that is accuracy on the emails it returns, not on the contacts you look up. User reports and third-party comparisons suggest hit rate on European B2B lists is materially lower than the headline number. The contacts that return nothing still consume your time, even if not your credits.
 
 **Credit math punishes phone reveals.** Phone numbers cost 5 to 10 credits each depending on how the plan is configured. The Pro plan's 3,000 credits per year sounds like a lot until you realise it is 600 phone numbers per year per user, or about 50 per month. For any team doing serious dial volume, that runs out fast.
 
@@ -147,11 +150,11 @@ This is the gap that hit us when we tried to do outbound at our own 15-person co
 
 ## The fourth option, briefly
 
-We built Hooklyne to close that research gap. A semantic ICP search that ranks companies against your description, not your filters. Signals scored both ways. Meeting briefs with every claim traced to a URL. First outreach drafted in your rep's voice.
+We built [Hooklyne](/product) to close that research gap. A semantic ICP search that ranks companies against your description, not your filters. Signals scored both ways. Meeting briefs with every claim traced to a URL. First outreach drafted in your rep's voice. [See how it works.](/how-it-works)
 
 It is not a database. If you primarily need 50 million verified mobile numbers, Cognism still wins. Hooklyne is the layer between a database and the actual outreach.
 
-Pricing is flat, from €39 per month. No platform fees. EU-native, GDPR-compliant. Built in the Netherlands for Dutch and UK SMEs.
+[Pricing is flat](/pricing), from €39 per month. No platform fees. EU-native, GDPR-compliant. Built in the Netherlands for Dutch and UK SMEs.
 
 Before you pay, you can run it on ten of your own prospects for free. Fully built packages with verified contacts, real signals, drafted messages. In exchange for 20 minutes of honest feedback. [Start your free pilot](/contact)
 

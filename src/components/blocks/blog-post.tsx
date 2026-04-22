@@ -1,44 +1,88 @@
 import { format } from "date-fns";
 
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+const TYPE_LABEL: Record<string, string> = {
+  news: "News",
+  article: "Article",
+  guide: "Guide",
+};
+
 const BlogPost = ({
   post,
   children,
 }: {
-  post: any[];
+  post: any;
   children: React.ReactNode;
 }) => {
-  const { title, authorName, image, pubDate, description, authorImage } =
-    post.data;
+  const {
+    title,
+    authorName,
+    authorBio,
+    image,
+    pubDate,
+    description,
+    type = "article",
+    readingTime,
+  } = post.data;
+
   return (
-    <section>
-      <div className="container">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
-          <h1 className="max-w-3xl text-4xl font-bold md:text-5xl">{title}</h1>
-          <h3 className="text-muted-foreground max-w-4xl">{description}</h3>
-          <div className="flex items-center gap-3 text-sm md:text-base">
-            <Avatar className="h-8 w-8 border">
-              <AvatarImage src={authorImage} />
-              <AvatarFallback>{authorName.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <span>
-              <a href="#" className="font-semibold">
-                {authorName}
-              </a>
-              <span className="ml-1">on {format(pubDate, "MMMM d, yyyy")}</span>
-            </span>
+    <article>
+      <div className="container max-w-3xl">
+        <div className="mb-10 text-center">
+          <div className="mb-5 flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)]">
+            <span>{TYPE_LABEL[type] ?? "Article"}</span>
+            {readingTime && (
+              <>
+                <span className="text-[var(--border)]">·</span>
+                <span className="text-[var(--muted-foreground)]">{readingTime}</span>
+              </>
+            )}
           </div>
-          <img
-            src={image}
-            alt="placeholder"
-            className="mt-0 mb-8 aspect-video w-full rounded-lg border object-cover"
-          />
+          <h1 className="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-5">
+            {title}
+          </h1>
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+            {description}
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[var(--muted-foreground)]">
+            <span className="font-semibold text-[var(--heading)]">{authorName}</span>
+            <span className="text-[var(--border)]">·</span>
+            <span>{format(pubDate, "d MMMM yyyy")}</span>
+          </div>
         </div>
+
+        {image && (
+          <div
+            className="mb-12 overflow-hidden rounded-2xl"
+            style={{ border: "1px solid var(--border)" }}
+          >
+            <img
+              src={image}
+              alt=""
+              className="aspect-video w-full object-cover"
+            />
+          </div>
+        )}
+
+        <div className="blog-prose mx-auto">{children}</div>
+
+        {authorBio && (
+          <div
+            className="mt-16 rounded-2xl p-6 md:p-7"
+            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+          >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)] mb-2">
+              Written by
+            </p>
+            <p className="text-sm md:text-base font-semibold text-[var(--heading)] mb-1.5">
+              {authorName}
+            </p>
+            <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+              {authorBio}
+            </p>
+          </div>
+        )}
       </div>
-      <div className="container">
-        <div className="prose mx-auto max-w-3xl">{children}</div>
-      </div>
-    </section>
+    </article>
   );
 };
 
