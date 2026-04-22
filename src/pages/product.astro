@@ -3,6 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { PortalShot } from '@/components/portal-shot';
+import SignalTicker from '@/components/blocks/signal-ticker.astro';
 
 const packageBlocks = [
   {
@@ -79,6 +80,24 @@ const profileTabs = [
   description="Verified prospect packages, live signals, meeting prep briefs, and sector intelligence. All in one portal."
   ctaVariant="product"
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Hooklyne",
+    "description": "Verified prospect packages, live signals, meeting prep briefs, and sector intelligence in one portal.",
+    "brand": { "@type": "Brand", "name": "Hooklyne" },
+    "url": "https://www.hooklyne.com/product",
+    "category": "B2B prospect research software",
+    "audience": { "@type": "BusinessAudience", "audienceType": "B2B SMEs 10-50 people" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "EUR",
+      "lowPrice": "39",
+      "highPrice": "299",
+      "offerCount": 4,
+      "url": "https://www.hooklyne.com/pricing"
+    }
+  })} />
   <Background>
     <section class="pt-28 pb-12 lg:pt-44 lg:pb-16 relative">
       <HeroGlow client:load />
@@ -109,20 +128,34 @@ const profileTabs = [
         </div>
 
         <div class="mt-16 lg:mt-20" data-fade data-delay="4">
-          <PortalShot
-            client:load
-            label="Prospect package"
-            describe="The full card: company header + fit score, decision-maker + verified email badge, live signal pill, draft email in the right pane, LinkedIn invite below."
-            ratio="16/9"
-            overlays={[
-              { x: 18, y: 22, tag: "SIGNAL", title: "Series B, €12M", body: "4 days ago", tone: "orange", pulse: true },
-              { x: 82, y: 32, tag: "CONTACT", title: "Verified deliverable", tone: "teal" },
-              { x: 74, y: 74, tag: "VOICE", title: "In your cadence", body: "4 reasoning passes", tone: "blue" },
-            ]}
-          />
+          <div class="relative w-full rounded-2xl overflow-hidden" style="box-shadow: var(--shadow-xl);">
+            <div class="flex items-center gap-2 px-4 border border-b-0 rounded-t-2xl" style="height: 44px; background: var(--card); border-color: var(--border);">
+              <div class="flex items-center gap-1.5 mr-1">
+                <div class="size-3 rounded-full" style="background: #ff5f57"></div>
+                <div class="size-3 rounded-full" style="background: #febc2e"></div>
+                <div class="size-3 rounded-full" style="background: #28c840"></div>
+              </div>
+              <div class="flex items-center gap-2 px-3 rounded-full text-xs flex-1 mx-3" style="height: 28px; background: var(--background); color: var(--muted-foreground);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.4; flex-shrink: 0;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="flex-1 text-center">portal.hooklyne.com</span>
+              </div>
+            </div>
+            <div class="border border-t-0 rounded-b-2xl relative overflow-hidden" style="border-color: var(--border); padding-bottom: 56.7%;">
+              <video
+                autoplay muted loop playsinline
+                poster="/hooklyne-hero.png"
+                style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; background: var(--card);"
+              >
+                <source src="/home/hooklyne-intro.webm" type="video/webm" />
+                <source src="/home/hooklyne-intro.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <SignalTicker />
 
     <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
@@ -161,9 +194,13 @@ const profileTabs = [
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
             Open it. Send it. Close it.
           </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+          <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
             Built for one moment: prospect in, message out. Under a minute.
           </p>
+          <div class="inline-flex items-center gap-2 mt-5 px-3 py-1.5 rounded-full text-[11px] font-semibold" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal); border: 1px solid rgba(13,148,136,0.25);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg>
+            Median review time: 58 seconds
+          </div>
         </div>
 
         <PortalShot

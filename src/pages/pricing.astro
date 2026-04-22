@@ -1,17 +1,26 @@
 ---
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
 ---
 
 <DefaultLayout title="Pricing - Hooklyne" description="Pay for what you use. Every credit is a clear deliverable. Start, Growth, Scale, and Enterprise plans." ctaVariant="pricing">
-  <section class="pt-32 lg:pt-40 pb-20">
-    <div class="container max-w-6xl">
+  <Background>
+  <section class="pt-32 lg:pt-44 pb-10 relative">
+    <HeroGlow client:load />
+    <div class="container max-w-6xl relative z-10">
 
       <!-- Header -->
-      <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="text-center max-w-2xl mx-auto">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Pricing</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Simple pricing. Transparent credits.</h1>
-        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">One credit system. Every action priced the same across plans. No per-seat fees on Start and Growth. Switch plans or cancel anytime.</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Simple pricing. Transparent credits.</h1>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">One credit system. Every action priced the same across plans. No per-seat fees on Start and Growth. Switch plans or cancel anytime.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container max-w-6xl">
 
       <!-- Free pilot banner -->
       <div class="rounded-2xl overflow-hidden mb-10" style="background: var(--card); box-shadow: var(--shadow-xs); border: 1px solid var(--border)">
@@ -375,6 +384,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
     </div>
   </section>
+  </Background>
 </DefaultLayout>
 
 <script>

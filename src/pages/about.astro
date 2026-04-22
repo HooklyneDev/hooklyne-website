@@ -1,6 +1,8 @@
 ---
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { ArrowRight } from 'lucide-react';
 
 const values = [
@@ -24,18 +26,55 @@ const values = [
   description="Why we built Hooklyne, who's behind it, and how we think about B2B prospecting research."
   ctaVariant="about"
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Hooklyne",
+    "url": "https://www.hooklyne.com/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Hooklyne",
+      "url": "https://www.hooklyne.com",
+      "foundingLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "NL" } },
+      "areaServed": ["NL", "BE", "GB", "LU"],
+      "founder": {
+        "@type": "Person",
+        "name": "Tim",
+        "jobTitle": "Founder",
+        "worksFor": { "@type": "Organization", "name": "Hooklyne" }
+      },
+      "identifier": { "@type": "PropertyValue", "propertyID": "KVK", "value": "99990512" }
+    }
+  })} />
   <Background>
-    <section class="pt-32 lg:pt-40 pb-10" data-fade>
-      <div class="container max-w-4xl text-center">
+    <section class="pt-32 lg:pt-44 pb-14 lg:pb-20 relative" data-fade>
+      <HeroGlow client:load />
+      <div class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           Proper research. Enough outreach. Pick both.
         </h1>
-        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
           The research layer most B2B teams can't afford to staff. Delivered as software.
         </p>
+        <div class="flex flex-wrap items-center justify-center gap-6 mt-8 text-[11px] font-medium text-[var(--muted-foreground)]">
+          <div class="flex items-center gap-1.5">
+            <span class="size-1.5 rounded-full bg-[var(--hooklyne-blue)]"></span>
+            Amsterdam, The Netherlands
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="size-1.5 rounded-full bg-[var(--hooklyne-teal)]"></span>
+            Built for EMEA SMEs
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="size-1.5 rounded-full bg-[var(--hooklyne-orange)]"></span>
+            GDPR-native
+          </div>
+        </div>
       </div>
     </section>
+
+    <SignalTicker />
   </Background>
 
   <Background variant="bottom">
@@ -66,14 +105,41 @@ const values = [
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Founder</p>
-            <div class="relative rounded-2xl overflow-hidden aspect-[4/5]" style="background: linear-gradient(160deg, rgba(52,76,163,0.12) 0%, rgba(13,148,136,0.08) 100%); border: 1px solid var(--border);">
-              <div class="absolute inset-0 flex items-end p-6">
-                <div>
-                  <div class="text-3xl font-semibold text-[var(--heading)] tracking-tight leading-none">Tim</div>
-                  <div class="text-sm text-[var(--muted-foreground)] mt-1">Founder, Hooklyne</div>
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/5]" style="background: linear-gradient(165deg, var(--hooklyne-navy) 0%, #1a2e5f 55%, rgba(13,148,136,0.35) 100%); box-shadow: var(--shadow-lg);">
+              <div
+                class="absolute inset-0 pointer-events-none opacity-[0.08]"
+                style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 18px 18px;"
+              ></div>
+              <div
+                class="absolute inset-0 pointer-events-none"
+                style="background: radial-gradient(ellipse 70% 50% at 50% 25%, rgba(255,255,255,0.18) 0%, transparent 60%);"
+              ></div>
+
+              <div class="absolute top-5 left-5 right-5 flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80">
+                  <span class="relative flex size-1.5">
+                    <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+                    <span class="relative inline-flex size-1.5 rounded-full bg-emerald-400"></span>
+                  </span>
+                  Founder
+                </span>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-white/50">NL / EMEA</span>
+              </div>
+
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[58%] flex items-center justify-center">
+                <div class="relative size-28 md:size-32 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(8px);">
+                  <span class="text-4xl md:text-5xl font-semibold text-white tracking-tight">T</span>
                 </div>
               </div>
-              <div class="absolute top-4 right-4 text-[10px] font-mono uppercase tracking-widest text-[var(--muted-foreground)]/70">The Netherlands</div>
+
+              <div class="absolute left-5 right-5 bottom-5">
+                <div class="text-2xl font-semibold text-white tracking-tight leading-none">Tim</div>
+                <div class="text-sm text-white/60 mt-1.5">Founder, Hooklyne</div>
+                <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-white/40">
+                  <span>Amsterdam</span>
+                  <span>Est. 2025</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -101,6 +167,80 @@ const values = [
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-28" data-fade>
+      <div class="container max-w-5xl">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">What it looks like</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            The output Tim wishes he'd had.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            One prospect, one screen. Verified contact, live signal, drafted message. Ready to send.
+          </p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xl);">
+          <div class="grid md:grid-cols-5 gap-0">
+            <div class="md:col-span-2 p-6 md:p-7" style="background: linear-gradient(180deg, var(--background) 0%, var(--card) 100%); border-right: 1px solid var(--border);">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)]">Company</span>
+                <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
+                  <span class="size-1 rounded-full bg-[var(--hooklyne-teal)]"></span>
+                  9/10 fit
+                </span>
+              </div>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="size-10 rounded-lg flex items-center justify-center text-white text-sm font-bold" style="background: linear-gradient(135deg, #1e3a8a 0%, #2b4fb3 100%);">AB</div>
+                <div>
+                  <div class="text-sm font-semibold text-[var(--heading)]">Acme B.V.</div>
+                  <div class="text-[11px] text-[var(--muted-foreground)]">Industrial OEM · NL · 85 staff</div>
+                </div>
+              </div>
+              <div class="rounded-lg p-3 mb-4" style="background: rgba(255,140,66,0.08); border: 1px solid rgba(255,140,66,0.22);">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/></svg>
+                  <span class="text-[9px] font-bold uppercase tracking-[0.18em]" style="color: var(--hooklyne-orange);">Signal · 2h ago</span>
+                </div>
+                <p class="text-[12px] font-semibold text-[var(--heading)] leading-snug">Raised €12M Series B</p>
+                <p class="text-[11px] text-[var(--muted-foreground)] mt-0.5">Expansion plans named in release</p>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="size-8 rounded-full flex items-center justify-center text-[11px] font-semibold text-white" style="background: var(--hooklyne-navy);">MJ</div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-[12px] font-semibold text-[var(--heading)] truncate">Marieke Jansen</div>
+                  <div class="text-[10px] text-[var(--muted-foreground)]">VP Operations</div>
+                </div>
+                <span class="inline-flex items-center gap-1 text-[9px] font-semibold px-1.5 py-0.5 rounded" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="md:col-span-3 p-6 md:p-7">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)]">Draft · in your voice</span>
+                <span class="text-[10px] font-mono text-[var(--muted-foreground)]">4 passes · QC</span>
+              </div>
+              <div class="space-y-2.5 text-[13px] text-[var(--foreground)] leading-relaxed">
+                <p><span class="text-[var(--muted-foreground)]">Subject:</span> Operations scale-up after the Series B</p>
+                <p class="pt-2 border-t border-[var(--border)]">Hi Marieke,</p>
+                <p>Saw the Series B news. Scaling ops after a raise that size usually means process debt surfaces fast.</p>
+                <p>We help Dutch OEMs find and brief the right decision-makers at companies on the edge of their ICP, in about a minute per prospect. Worth a short call?</p>
+                <p class="text-[var(--muted-foreground)]">- Tim</p>
+              </div>
+              <div class="flex items-center justify-end gap-2 mt-5 pt-4 border-t border-[var(--border)]">
+                <button class="text-[11px] font-semibold px-3 py-1.5 rounded-md text-[var(--muted-foreground)] hover:bg-[var(--card-hover)]" disabled>Edit</button>
+                <button class="text-[11px] font-semibold px-3 py-1.5 rounded-md text-white btn-shine" style="background: var(--hooklyne-navy);" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-center text-xs italic text-[var(--muted-foreground)] mt-6">Example output. Fictional prospect.</p>
       </div>
     </section>
 
