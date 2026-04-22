@@ -124,6 +124,23 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <div
+              className="inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--card)] p-0.5 text-[11px] font-semibold"
+              aria-label="Language"
+            >
+              <span
+                className="px-2 py-1 rounded-md text-white"
+                style={{ backgroundColor: "var(--hooklyne-navy)" }}
+              >
+                EN
+              </span>
+              <span
+                className="px-2 py-1 text-[var(--muted-foreground)]/60 cursor-not-allowed select-none"
+                aria-disabled="true"
+              >
+                NL
+              </span>
+            </div>
             <a
               href="https://portal.hooklyne.com"
               className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
@@ -208,6 +225,23 @@ export const Navbar = () => {
               );
             })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
+              <div
+                className="self-start inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--card)] p-0.5 text-[11px] font-semibold"
+                aria-label="Language"
+              >
+                <span
+                  className="px-2 py-1 rounded-md text-white"
+                  style={{ backgroundColor: "var(--hooklyne-navy)" }}
+                >
+                  EN
+                </span>
+                <span
+                  className="px-2 py-1 text-[var(--muted-foreground)]/60 cursor-not-allowed select-none"
+                  aria-disabled="true"
+                >
+                  NL
+                </span>
+              </div>
               <a
                 href="https://portal.hooklyne.com"
                 className="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
