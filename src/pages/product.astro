@@ -3,6 +3,9 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { PortalShot } from '@/components/portal-shot';
+import { SignalHeatTable } from '@/components/product/signal-heat-table';
+import { FindCompaniesFlow } from '@/components/product/find-companies-flow';
+import { EmailCompose } from '@/components/product/email-compose';
 
 const packageBlocks = [
   {
@@ -200,17 +203,7 @@ const profileTabs = [
           </div>
         </div>
 
-        <PortalShot
-          client:load
-          label="Portal dashboard"
-          describe="Full dashboard: sidebar nav, Daily focus card top-centre, Signal heat top-5 list, pipeline stats top-right."
-          ratio="16/9"
-          overlays={[
-            { x: 22, y: 20, tag: "DAILY FOCUS", title: "2 actions ready", body: "Ranked, not dumped", tone: "orange", pulse: true },
-            { x: 80, y: 30, tag: "CREDITS", title: "312 / 400", body: "Resets in 11 days", tone: "blue" },
-            { x: 70, y: 74, tag: "SIGNAL HEAT", title: "Top 5 prospects", body: "3 rising · 1 cooling", tone: "teal" },
-          ]}
-        />
+        <EmailCompose client:visible />
 
         <ul class="grid md:grid-cols-2 gap-3 mt-12 max-w-4xl mx-auto">
           {[
@@ -288,6 +281,10 @@ const profileTabs = [
           </p>
         </div>
 
+        <div class="mb-10">
+          <FindCompaniesFlow client:visible />
+        </div>
+
         <div class="grid gap-4 md:grid-cols-2">
           {prospectingModes.map((m) => (
             <div class="rounded-2xl bg-[var(--card)] p-6 flex flex-col" style="box-shadow: var(--shadow-xs)">
@@ -361,17 +358,7 @@ const profileTabs = [
           </p>
         </div>
 
-        <PortalShot
-          client:load
-          label="Signals feed"
-          describe="Feed grouped by company, with twin scores and filter sidebar."
-          ratio="16/9"
-          overlays={[
-            { x: 22, y: 24, tag: "FUNDING", title: "9/10 fit", body: "2 hours ago", tone: "orange", pulse: true },
-            { x: 78, y: 30, tag: "FILTERS", title: "7 signal types", tone: "blue" },
-            { x: 72, y: 78, tag: "ACTIONS", title: "Move · Dismiss · Track", tone: "teal" },
-          ]}
-        />
+        <SignalHeatTable client:visible />
 
         <div class="mt-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">What we watch</p>
