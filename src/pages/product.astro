@@ -69,11 +69,59 @@ const signalSources = [
 ];
 
 const profileTabs = [
-  { n: "1", title: "Company", body: "What you do, who you sell to, where." },
-  { n: "2", title: "Voice", body: "Tone, cadence, signature moves." },
-  { n: "3", title: "Examples", body: "Up to five past emails. The calibration fuel." },
-  { n: "4", title: "Products", body: "So the right product meets the right signal." },
-  { n: "5", title: "Rules", body: "Off-limits topics. Segment-specific tone. House style." },
+  {
+    n: "01",
+    title: "Company & Value Prop",
+    body: "What you sell, to whom, and why you. The facts every email rests on.",
+    fields: [
+      "Company name",
+      "Your name",
+      "What we do - the elevator pitch",
+      "Differentiators - why you over alternatives",
+      "Ideal customer - size, role, sector, geography",
+      "Operating regions",
+    ],
+  },
+  {
+    n: "02",
+    title: "Voice & Tone",
+    body: "How you sound on the page. Briefed like you'd brief a ghostwriter.",
+    fields: [
+      "Communication style - how you actually write",
+      "Tone keywords - 3 to 5 words that define you",
+      "Signature - name, title, phone, LinkedIn",
+    ],
+  },
+  {
+    n: "03",
+    title: "Example Emails",
+    body: "Up to five past emails you were proud to send. The calibration fuel.",
+    fields: [
+      "Example email 1 - required",
+      "Example emails 2 to 5 - optional, Dutch or English",
+      "Subjects, bodies, sign-offs - kept verbatim",
+    ],
+  },
+  {
+    n: "04",
+    title: "Products & Services",
+    body: "So the right product meets the right signal in the first paragraph.",
+    fields: [
+      "Product name - what it solves",
+      "One per line, written like a sales sheet",
+      "Pricing, MOQs, timelines where useful",
+    ],
+  },
+  {
+    n: "05",
+    title: "Rules & Context",
+    body: "House style and the things we never say. Applied to every draft.",
+    fields: [
+      "Do-not rules - hard nos, one per line",
+      "Word count cap - per channel",
+      "Additional context - sector focus, priorities, caveats",
+    ],
+  },
 ];
 ---
 
@@ -502,22 +550,30 @@ const profileTabs = [
 
         <div class="rounded-2xl overflow-hidden mb-10" style="background: var(--card); box-shadow: var(--shadow-md)">
           <div class="flex border-b border-[var(--border)] overflow-x-auto">
-            {profileTabs.map((t, i) => (
-              <div class:list={[
-                "flex items-center gap-2 px-5 py-3 text-xs font-semibold whitespace-nowrap",
-                i === 0 ? "text-[var(--hooklyne-blue)] border-b-2 border-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"
-              ]}>
-                <span class="size-5 rounded-md flex items-center justify-center text-[10px]" style={i === 0 ? "background: rgba(52,76,163,0.10)" : "background: var(--background)"}>{t.n}</span>
+            {profileTabs.map((t) => (
+              <div class="flex items-center gap-2 px-4 sm:px-5 py-3 text-xs font-semibold whitespace-nowrap text-[var(--muted-foreground)]">
+                <span class="text-[10px] font-mono tracking-wider text-[var(--hooklyne-blue)]/60">{t.n}</span>
+                <span class="text-[var(--muted-foreground)]/60">·</span>
                 {t.title}
               </div>
             ))}
           </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 p-7">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 p-6 lg:p-7">
             {profileTabs.map((t) => (
-              <div>
-                <p class="text-xs font-bold uppercase tracking-widest text-[var(--hooklyne-blue)]/60 mb-2">Tab {t.n}</p>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-1.5">{t.title}</p>
-                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">{t.body}</p>
+              <div class="rounded-xl p-4 lg:p-5" style="background: var(--background); border: 1px solid var(--border)">
+                <div class="flex items-baseline gap-2 mb-2">
+                  <p class="text-[10px] font-mono tracking-wider text-[var(--hooklyne-blue)]/70">{t.n}</p>
+                  <p class="text-sm font-semibold text-[var(--heading)]">{t.title}</p>
+                </div>
+                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-3">{t.body}</p>
+                <ul class="space-y-1.5 border-t border-[var(--border)] pt-3">
+                  {t.fields.map((f) => (
+                    <li class="flex items-start gap-1.5 text-[11px] text-[var(--foreground)]/80 leading-snug">
+                      <svg class="size-3 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
