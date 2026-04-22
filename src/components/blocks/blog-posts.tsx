@@ -62,12 +62,9 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
                     {post.data.description}
                   </p>
                   <div
-                    className="mt-4 pt-4 flex items-center justify-between gap-4 text-[12px] text-[var(--muted-foreground)]"
+                    className="mt-4 pt-4 text-[12px] text-[var(--muted-foreground)]"
                     style={{ borderTop: "1px solid var(--border)" }}
                   >
-                    <span className="font-medium">
-                      {post.data.authorName ?? "Hooklyne"}
-                    </span>
                     <span>
                       {new Date(post.data.pubDate).toLocaleDateString("en-GB", {
                         day: "numeric",

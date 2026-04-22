@@ -15,8 +15,6 @@ const BlogPost = ({
 }) => {
   const {
     title,
-    authorName,
-    authorBio,
     image,
     pubDate,
     description,
@@ -43,9 +41,7 @@ const BlogPost = ({
           <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
             {description}
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[var(--muted-foreground)]">
-            <span className="font-semibold text-[var(--heading)]">{authorName}</span>
-            <span className="text-[var(--border)]">·</span>
+          <div className="mt-6 text-sm text-[var(--muted-foreground)]">
             <span>{format(pubDate, "d MMMM yyyy")}</span>
           </div>
         </div>
@@ -64,23 +60,6 @@ const BlogPost = ({
         )}
 
         <div className="blog-prose mx-auto">{children}</div>
-
-        {authorBio && (
-          <div
-            className="mt-16 rounded-2xl p-6 md:p-7"
-            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
-          >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)] mb-2">
-              Written by
-            </p>
-            <p className="text-sm md:text-base font-semibold text-[var(--heading)] mb-1.5">
-              {authorName}
-            </p>
-            <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              {authorBio}
-            </p>
-          </div>
-        )}
       </div>
     </article>
   );
