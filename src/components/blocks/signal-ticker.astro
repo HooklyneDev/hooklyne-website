@@ -1,79 +1,83 @@
 ---
-// Fictional companies for demo. Sources are Hooklyne's own signal taxonomy,
-// not named outlets, to keep this legally clean.
-// `mark` = ID of an inline SVG logo rendered below.
-const signals = [
- { type: "Funding", tone: "orange", company: "Acme B.V.", mark: "acme", title: "Raised €12M Series B", source: "Funding tracker", when: "2h ago" },
- { type: "Hiring", tone: "blue", company: "Globex Labs", mark: "globex", title: "Hiring senior AEs across EMEA", source: "Job boards", when: "1d ago" },
- { type: "Leadership", tone: "teal", company: "Initech Nordics", mark: "initech", title: "New CRO announced", source: "Public profiles", when: "3h ago" },
- { type: "Launch", tone: "blue", company: "Umbra Systems", mark: "umbra", title: "Launched a platform revamp", source: "Company blog", when: "5h ago" },
- { type: "Expansion", tone: "teal", company: "Vertex Goods", mark: "vertex", title: "Opened a UK office", source: "Company news", when: "1d ago" },
- { type: "Press", tone: "orange", company: "Pinnacle Retail", mark: "pinnacle", title: "Featured as a fast-growth SME", source: "Press wires", when: "6h ago" },
- { type: "Sector", tone: "blue", company: "NorthPort Freight", mark: "northport",title: "Sector freight rates moved +18%", source: "Industry trackers", when: "2d ago" },
- { type: "Funding", tone: "orange", company: "Lumen Industries", mark: "lumen", title: "Closed a €4.2M seed round", source: "Funding tracker", when: "4h ago" },
- { type: "Hiring", tone: "blue", company: "Cresta Foods", mark: "cresta", title: "Opened 3 AE roles in Benelux", source: "Job boards", when: "7h ago" },
- { type: "Leadership", tone: "teal", company: "Orion Services", mark: "orion", title: "Head of Sales transition", source: "Public profiles", when: "1d ago" },
+// Illustrative signals - sector descriptors, no company names.
+// Each line is a real-world buying-intent trigger a B2B rep would act on.
+type Tone = "blue" | "teal" | "orange";
+type IconKey = "funding" | "leadership" | "hiring" | "expansion" | "launch" | "sector" | "press";
+
+interface Signal {
+  type: string;
+  tone: Tone;
+  icon: IconKey;
+  sector: string;
+  title: string;
+  source: string;
+  when: string;
+}
+
+const signals: Signal[] = [
+  { type: "Funding", tone: "orange", icon: "funding",
+    sector: "Industrial SaaS · NL",
+    title: "Closed €18M Series B, scaling EMEA sales team",
+    source: "Funding tracker", when: "2h ago" },
+  { type: "Leadership", tone: "teal", icon: "leadership",
+    sector: "Logistics · UK",
+    title: "Hired first VP RevOps, 90-day stack review likely",
+    source: "Public profiles", when: "4h ago" },
+  { type: "Hiring", tone: "blue", icon: "hiring",
+    sector: "Fintech · Benelux",
+    title: "Opened 6 senior AE roles, doubling outbound team",
+    source: "Job boards", when: "1d ago" },
+  { type: "Expansion", tone: "teal", icon: "expansion",
+    sector: "Food processing · NL",
+    title: "New Rotterdam plant announced, controls engineer gap",
+    source: "Company news", when: "5h ago" },
+  { type: "Leadership", tone: "teal", icon: "leadership",
+    sector: "MedTech · DACH",
+    title: "Head of Procurement stepped down, supplier review window",
+    source: "Public profiles", when: "3h ago" },
+  { type: "Launch", tone: "blue", icon: "launch",
+    sector: "B2B SaaS · UK",
+    title: "Launched EU product line, compliance partners needed",
+    source: "Company blog", when: "7h ago" },
+  { type: "Funding", tone: "orange", icon: "funding",
+    sector: "Climate tech · NL",
+    title: "€4.2M seed closed, first sales hire posted same week",
+    source: "Funding tracker", when: "12h ago" },
+  { type: "Sector", tone: "blue", icon: "sector",
+    sector: "Freight · EMEA",
+    title: "Diesel spot rates +18%, margin pressure on mid-market ops",
+    source: "Industry trackers", when: "1d ago" },
+  { type: "Hiring", tone: "blue", icon: "hiring",
+    sector: "Manufacturing · BE",
+    title: "Reopened 2 AE roles after a 6-month freeze",
+    source: "Job boards", when: "6h ago" },
+  { type: "Press", tone: "orange", icon: "press",
+    sector: "Energy · NL",
+    title: "Named in Dutch fast-growth 50, investor call next week",
+    source: "Press wires", when: "9h ago" },
 ];
 
-// Each mark is a set of paletted tiles - gradient base + monogram-style inner shape.
-// Tweaked to feel like real B2B SME / startup logos without reading as a letter.
-const marks: Record<string, { bg: string; fg: string; svg: string }> = {
- acme: {
- bg: "linear-gradient(135deg, #1e3a8a 0%, #2b4fb3 100%)",
- fg: "#fff",
- svg: `<path d="M6 22 L12 6 L18 22 M9 16 H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
- },
- globex: {
- bg: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
- fg: "#fff",
- svg: `<rect x="5" y="13" width="3.2" height="6" rx="1" fill="currentColor"/><rect x="10.4" y="9" width="3.2" height="10" rx="1" fill="currentColor"/><rect x="15.8" y="5" width="3.2" height="14" rx="1" fill="currentColor"/>`,
- },
- initech: {
- bg: "linear-gradient(135deg, #1a2a52 0%, #344ca3 100%)",
- fg: "#fff",
- svg: `<circle cx="9" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="15" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8" fill="none"/>`,
- },
- umbra: {
- bg: "linear-gradient(135deg, #0b1220 0%, #1e293b 100%)",
- fg: "#fff",
- svg: `<path d="M5 15 a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="12" cy="15" r="1.4" fill="currentColor"/>`,
- },
- vertex: {
- bg: "linear-gradient(135deg, #064e3b 0%, #0d9488 100%)",
- fg: "#fff",
- svg: `<path d="M5 18 L12 6 L19 18 Z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/><path d="M8 14 H16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>`,
- },
- pinnacle: {
- bg: "linear-gradient(135deg, #b4530a 0%, #ff8c42 100%)",
- fg: "#fff",
- svg: `<path d="M4 19 L9 9 L12 14 L15 7 L20 19 Z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>`,
- },
- northport: {
- bg: "linear-gradient(135deg, #0e2a4a 0%, #344ca3 100%)",
- fg: "#fff",
- svg: `<path d="M7 6 V18 L17 6 V18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- },
- lumen: {
- bg: "linear-gradient(135deg, #9a3412 0%, #f59e0b 100%)",
- fg: "#fff",
- svg: `<circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M6 6l2 2 M16 16l2 2 M6 18l2-2 M16 8l2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>`,
- },
- cresta: {
- bg: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)",
- fg: "#fff",
- svg: `<path d="M4 16 Q9 6 12 12 T20 8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>`,
- },
- orion: {
- bg: "linear-gradient(135deg, #134e4a 0%, #0d9488 100%)",
- fg: "#fff",
- svg: `<circle cx="7" cy="7" r="1.8" fill="currentColor"/><circle cx="17" cy="10" r="1.8" fill="currentColor"/><circle cx="10" cy="17" r="1.8" fill="currentColor"/><path d="M7 7 L17 10 L10 17" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.6"/>`,
- },
+const toneMap: Record<Tone, string> = {
+  blue: "var(--hooklyne-blue)",
+  teal: "var(--hooklyne-teal)",
+  orange: "var(--hooklyne-orange)",
 };
 
-const toneMap = {
- blue: "var(--hooklyne-blue)",
- teal: "var(--hooklyne-teal)",
- orange: "var(--hooklyne-orange)",
+const toneBg: Record<Tone, string> = {
+  blue: "rgba(52,76,163,0.10)",
+  teal: "rgba(13,148,136,0.10)",
+  orange: "rgba(255,140,66,0.12)",
+};
+
+// Minimal inline SVGs so we don't pull in a dep for a handful of glyphs.
+const iconPaths: Record<IconKey, string> = {
+  funding: `<polyline points="22 7 13.5 15.5 8.5 10.5 2 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16 7 22 7 22 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`,
+  leadership: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="19" x2="19" y1="8" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="22" x2="16" y1="11" y2="11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>`,
+  hiring: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M22 21v-2a4 4 0 0 0-3-3.87" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`,
+  expansion: `<path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>`,
+  launch: `<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`,
+  sector: `<line x1="12" x2="12" y1="20" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="18" x2="18" y1="20" y2="4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="6" x2="6" y1="20" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>`,
+  press: `<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 14h-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15 18h-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 6h8v4h-8V6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>`,
 };
 
 // Duplicate for seamless loop
@@ -81,95 +85,94 @@ const track = [...signals, ...signals];
 ---
 
 <section class="pt-10 pb-6 lg:pt-14 lg:pb-8 relative" data-fade>
- <div class="container max-w-6xl mb-6">
- <div class="flex items-center justify-between flex-wrap gap-3">
- <div class="flex items-center gap-3">
- <span class="relative flex size-2">
- <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-70 animate-ping"></span>
- <span class="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
- </span>
- <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)]">Live signal feed</span>
- </div>
- <p class="text-xs text-[var(--muted-foreground)]/80">
- Seven signal categories, scored for your ICP &middot; 14-day lookback.
- <span class="text-[var(--muted-foreground)]/60">&nbsp;Example output &middot; fictional companies.</span>
- </p>
- </div>
- </div>
+  <div class="container max-w-6xl mb-6">
+    <div class="flex items-center justify-between flex-wrap gap-3">
+      <div class="flex items-center gap-2">
+        <span class="size-1.5 rounded-full bg-emerald-500"></span>
+        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)]">Live signal feed</span>
+      </div>
+      <p class="text-xs text-[var(--muted-foreground)]/80">
+        Seven signal categories, scored for your ICP &middot; 14-day lookback.
+        <span class="text-[var(--muted-foreground)]/60">&nbsp;Illustrative, anonymised by sector.</span>
+      </p>
+    </div>
+  </div>
 
- <div class="signal-ticker-viewport group">
- <div class="signal-ticker-track">
- {track.map((s, i) => (
- <article
- class="signal-pill shrink-0 flex items-center gap-3 rounded-xl px-4 py-3"
- style={`border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-xs);`}
- data-idx={i}
- >
- <span
- class="inline-flex items-center justify-center size-9 rounded-lg shrink-0 relative overflow-hidden"
- style={`background: ${marks[s.mark].bg}; color: ${marks[s.mark].fg}; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), inset 0 -8px 12px rgba(0,0,0,0.08);`}
- aria-hidden="true"
- >
- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" set:html={marks[s.mark].svg} />
- </span>
- <div class="min-w-0">
- <div class="flex items-center gap-2 mb-0.5">
- <span
- class="text-[9px] font-bold uppercase tracking-[0.18em] px-1.5 py-0.5 rounded"
- style={`background: ${toneMap[s.tone as keyof typeof toneMap]}1a; color: ${toneMap[s.tone as keyof typeof toneMap]};`}
- >
- {s.type}
- </span>
- <span class="text-[10px] font-mono text-[var(--muted-foreground)]">{s.when}</span>
- </div>
- <div class="text-[13px] font-semibold text-[var(--heading)] leading-tight whitespace-nowrap">
- {s.company} &middot; <span class="font-normal text-[var(--muted-foreground)]">{s.title}</span>
- </div>
- <div class="text-[10px] text-[var(--muted-foreground)]/70 mt-0.5">Source: {s.source}</div>
- </div>
- </article>
- ))}
- </div>
- </div>
+  <div class="signal-ticker-viewport group">
+    <div class="signal-ticker-track">
+      {track.map((s, i) => (
+        <article
+          class="signal-pill shrink-0 flex items-center gap-3 rounded-xl px-4 py-3"
+          style={`border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-xs);`}
+          data-idx={i}
+        >
+          <span
+            class="inline-flex items-center justify-center size-9 rounded-lg shrink-0"
+            style={`background: ${toneBg[s.tone]}; color: ${toneMap[s.tone]};`}
+            aria-hidden="true"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" set:html={iconPaths[s.icon]} />
+          </span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span
+                class="text-[9px] font-bold uppercase tracking-[0.18em] px-1.5 py-0.5 rounded"
+                style={`background: ${toneBg[s.tone]}; color: ${toneMap[s.tone]};`}
+              >
+                {s.type}
+              </span>
+              <span class="text-[10px] font-mono text-[var(--muted-foreground)]">{s.when}</span>
+              <span class="text-[10px] text-[var(--muted-foreground)]/60">&middot;</span>
+              <span class="text-[10px] text-[var(--muted-foreground)]/80 truncate">{s.sector}</span>
+            </div>
+            <div class="text-[13px] font-semibold text-[var(--heading)] leading-snug whitespace-nowrap">
+              {s.title}
+            </div>
+            <div class="text-[10px] text-[var(--muted-foreground)]/70 mt-0.5">Source: {s.source}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
 </section>
 
 <style>
- .signal-ticker-viewport {
- position: relative;
- overflow: hidden;
- padding-block: 0.5rem;
- -webkit-mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
- mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
- }
+  .signal-ticker-viewport {
+    position: relative;
+    overflow: hidden;
+    padding-block: 0.5rem;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+  }
 
- .signal-ticker-track {
- display: flex;
- gap: 0.75rem;
- width: max-content;
- animation: signal-ticker-scroll 60s linear infinite;
- will-change: transform;
- }
+  .signal-ticker-track {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    animation: signal-ticker-scroll 60s linear infinite;
+    will-change: transform;
+  }
 
- .signal-ticker-viewport:hover .signal-ticker-track {
- animation-play-state: paused;
- }
+  .signal-ticker-viewport:hover .signal-ticker-track {
+    animation-play-state: paused;
+  }
 
- .signal-pill {
- min-width: 280px;
- }
+  .signal-pill {
+    min-width: 340px;
+  }
 
- @media (min-width: 640px) {
- .signal-pill {
- min-width: 320px;
- }
- }
+  @media (min-width: 640px) {
+    .signal-pill {
+      min-width: 380px;
+    }
+  }
 
- @keyframes signal-ticker-scroll {
- from { transform: translateX(0); }
- to { transform: translateX(-50%); }
- }
+  @keyframes signal-ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 
- @media (prefers-reduced-motion: reduce) {
- .signal-ticker-track { animation: none; }
- }
+  @media (prefers-reduced-motion: reduce) {
+    .signal-ticker-track { animation: none; }
+  }
 </style>
