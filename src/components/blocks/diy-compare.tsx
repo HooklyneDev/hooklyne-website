@@ -213,7 +213,7 @@ const TABS: TabDef[] = [
     total: "Minutes per prospect",
     totalSub: "not your voice, not your control, not your learning",
     goodAt: "Off your plate. A good agency brings experienced SDRs, existing infrastructure, and a process. If you have the budget and the patience to onboard them properly, they can book meetings.",
-    footerNote: "If budget is not a constraint and you want outbound off your plate entirely, an agency works. For a small team that wants to own the function and the learning, the math rarely works.",
+    footerNote: "If budget is not a constraint and you want outbound off your plate entirely, an agency works. For a team that wants to own the function and the learning, the math rarely works.",
     steps: [
       {
         step: "1", label: "Onboard the agency",

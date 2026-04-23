@@ -3,7 +3,7 @@ title: "Apollo vs Cognism vs Lusha for Dutch and UK B2B SMEs: an honest breakdow
 description: "Practical comparison of Apollo, Cognism, and Lusha for Dutch and UK B2B teams of 10 to 100 people. What each does well, where they fall short."
 pubDate: 2026-04-22
 authorName: Tim
-authorBio: "Tim co-founded Hooklyne after running outbound for a 15-person Dutch SaaS. Writes about what actually works in B2B sales for small teams."
+authorBio: "Tim co-founded Hooklyne after years running outbound at Dutch B2B companies. Writes about what actually works for SME sales teams."
 type: guide
 readingTime: "11 min"
 image: /blog/apollo-cognism-lusha-hero.jpg
@@ -13,7 +13,7 @@ Most comparison posts are written by the vendors themselves, or by someone tryin
 
 If you run sales at a Dutch or UK company of 10 to 100 people, you have probably looked at Apollo, Cognism, and Lusha. You have probably come away confused about which one to pick. That is because none of them were built for you, and the industry knows it but prices the tools as if they were.
 
-We have watched small teams burn six months and four-figure budgets picking between these three. This is the post we wish they had read first.
+We have watched SME sales teams burn six months and four-figure budgets picking between these three. This is the post we wish they had read first.
 
 ## The short answer
 
@@ -77,7 +77,7 @@ Cognism is what you buy when phone data quality is the constraint that matters m
 
 Cognism also takes GDPR seriously. The platform screens against do-not-call lists in 15-plus countries, runs Privacy Impact Assessments on data sources, and holds ISO 27001 and SOC 2 Type II. If your legal team cares about the lawful basis for B2B contact processing under GDPR, Cognism gives you a defensible answer.
 
-The cost reality, though, is where it falls apart for small teams.
+The cost reality, though, is where it falls apart for SME budgets.
 
 **Platform fee before seats.** Cognism charges a €15,000 base platform fee on the Grow plan, or €25,000 on the Elevate plan (formerly Platinum and Diamond). That is before a single user seat. Per-seat pricing adds roughly €1,500 per user per year on Grow and €2,500 on Elevate. A five-person team on Grow is €22,500 per year. On Elevate, €37,500.
 
@@ -166,7 +166,7 @@ If you are still evaluating and genuinely stuck between Apollo, Cognism, and Lus
 2. Calculate the real annual cost for each tool. Base price times 12, times your team size, plus one realistic outreach tool on top. Apollo: €12,000 to €25,000. Cognism: €40,000 to €80,000. Lusha: €3,000 to €10,000.
 3. Pilot the cheapest tool that matches your primary workflow before you commit.
 
-The worst mistake we see small teams make is buying the premium tool and then only using the Chrome extension. If that is all you are going to use, pay €22.45 for Lusha and put the other €35,000 into a dedicated researcher. Or a research workflow that does what the researcher would do.
+The worst mistake we see SME sales teams make is buying the premium tool and then only using the Chrome extension. If that is all you are going to use, pay €22.45 for Lusha and put the other €35,000 into a dedicated researcher. Or a research workflow that does what the researcher would do.
 
 ---
 
