@@ -74,28 +74,15 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
 
   return (
     <>
-      {/* Full-width liquid-glass trust strip */}
+      {/* Trust strip */}
       <section
         className="relative"
         style={{
-          background:
-            "linear-gradient(145deg, rgba(255,255,255,0.75) 0%, rgba(248,250,253,0.65) 100%)",
+          background: "var(--card)",
           borderTop: "1px solid var(--border)",
           borderBottom: "1px solid var(--border)",
-          boxShadow:
-            "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 -1px 0 0 rgba(52,76,163,0.04) inset, 0 8px 24px -16px rgba(52,76,163,0.12)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
         }}
       >
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-px pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)",
-          }}
-        />
         <div className="container max-w-6xl py-4 md:py-3">
           <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-3 md:gap-0">
             {TRUST_SIGNALS.map((s, i) => {
@@ -134,21 +121,8 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
       <section
         className="relative overflow-hidden text-white"
         data-fade
-        style={{
-          background: `
-            radial-gradient(ellipse 55% 70% at 15% 0%, rgba(52,76,163,0.55), transparent 65%),
-            radial-gradient(ellipse 45% 70% at 100% 100%, rgba(13,148,136,0.30), transparent 65%),
-            radial-gradient(ellipse 40% 70% at 70% 0%, rgba(255,140,66,0.14), transparent 65%),
-            linear-gradient(135deg, var(--hooklyne-navy) 0%, #021f37 100%)
-          `,
-        }}
+        style={{ background: "var(--hooklyne-navy)" }}
       >
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px"
-        style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent)" }}
-      />
-
       <div className="container max-w-5xl py-12 lg:py-16 text-center relative z-10">
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55 mb-4">
           {copy.kicker}

@@ -391,33 +391,13 @@ export const DIYCompare = () => {
           {active.steps.map((s) => (
             <div
               key={s.step}
-              className="group relative flex flex-col h-full p-5 lg:p-7 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              className="group relative flex flex-col h-full p-5 lg:p-7 rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-sm"
               style={{
-                background:
-                  "linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,250,253,0.9) 100%)",
-                border: "1px solid rgba(255,255,255,0.8)",
-                boxShadow:
-                  "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 -1px 0 0 rgba(52,76,163,0.04) inset, 0 0 0 1px rgba(52,76,163,0.06), 0 12px 32px -12px rgba(52,76,163,0.18), 0 2px 8px -2px rgba(15,23,42,0.04)",
-                backdropFilter: "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
+                background: "var(--card)",
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-xs)",
               }}
             >
-              {/* top highlight sheen */}
-              <div
-                className="absolute inset-x-0 top-0 h-px pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)",
-                }}
-              />
-              {/* soft corner glow */}
-              <div
-                className="absolute -top-16 -right-16 size-40 rounded-full pointer-events-none opacity-60"
-                style={{
-                  background: `radial-gradient(circle, ${tone.soft} 0%, transparent 70%)`,
-                }}
-              />
-
               <div className="relative flex items-center justify-between mb-4">
                 <span
                   className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold"
@@ -452,12 +432,10 @@ export const DIYCompare = () => {
           {/* Summary card fills the empty grid slot when step count < 6 */}
           {active.footerNote && (
             <div
-              className="relative flex flex-col justify-center p-5 lg:p-7 rounded-2xl overflow-hidden"
+              className="relative flex flex-col justify-center p-5 lg:p-7 rounded-2xl"
               style={{
-                background:
-                  "linear-gradient(145deg, rgba(255,255,255,0.75) 0%, rgba(248,250,253,0.65) 100%)",
-                border: "1px dashed rgba(52,76,163,0.15)",
-                boxShadow: "0 1px 0 0 rgba(255,255,255,0.9) inset",
+                background: "var(--bg)",
+                border: "1px dashed var(--border-strong)",
               }}
             >
               <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">

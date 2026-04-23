@@ -51,7 +51,7 @@ const values = [
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Proper research. Enough outreach. Pick both.
+          Proper research, without cutting outreach volume.
         </h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
           The research layer most B2B teams can't afford to staff. Delivered as software.
@@ -125,42 +125,23 @@ const values = [
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Founder</p>
-            <div class="relative rounded-2xl overflow-hidden aspect-[4/5]" style="background: linear-gradient(165deg, var(--hooklyne-navy) 0%, #1a2e5f 55%, rgba(13,148,136,0.35) 100%); box-shadow: var(--shadow-lg);">
+            <figure class="relative rounded-2xl overflow-hidden aspect-[4/5]" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-lg);">
+              <img
+                src="/about/tim-wissink.jpg"
+                alt="Tim, founder of Hooklyne"
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
               <div
-                class="absolute inset-0 pointer-events-none opacity-[0.08]"
-                style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 18px 18px;"
+                class="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+                style="background: linear-gradient(180deg, transparent 0%, rgba(2,47,81,0.0) 20%, rgba(2,47,81,0.85) 85%, rgba(2,47,81,0.95) 100%);"
               ></div>
-              <div
-                class="absolute inset-0 pointer-events-none"
-                style="background: radial-gradient(ellipse 70% 50% at 50% 25%, rgba(255,255,255,0.18) 0%, transparent 60%);"
-              ></div>
-
-              <div class="absolute top-5 left-5 right-5 flex items-center justify-between">
-                <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80">
-                  <span class="relative flex size-1.5">
-                    <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
-                    <span class="relative inline-flex size-1.5 rounded-full bg-emerald-400"></span>
-                  </span>
-                  Founder
-                </span>
-                <span class="text-[10px] font-mono uppercase tracking-widest text-white/50">NL / EMEA</span>
-              </div>
-
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[58%] flex items-center justify-center">
-                <div class="relative size-28 md:size-32 rounded-full overflow-hidden" style="border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.45);">
-                  <img src="/about/tim-wissink.jpg" alt="Tim, founder of Hooklyne" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
-                </div>
-              </div>
-
-              <div class="absolute left-5 right-5 bottom-5">
-                <div class="text-2xl font-semibold text-white tracking-tight leading-none">Tim</div>
-                <div class="text-sm text-white/60 mt-1.5">Founder, Hooklyne</div>
-                <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-white/40">
-                  <span>The Netherlands</span>
-                  <span>Est. 2025</span>
-                </div>
-              </div>
-            </div>
+              <figcaption class="absolute left-6 right-6 bottom-6 text-white">
+                <div class="text-2xl font-semibold tracking-tight leading-none">Tim Wissink</div>
+                <div class="text-sm text-white/75 mt-2">Founder, Hooklyne</div>
+              </figcaption>
+            </figure>
           </div>
 
           <div class="lg:col-span-8 lg:pt-12">

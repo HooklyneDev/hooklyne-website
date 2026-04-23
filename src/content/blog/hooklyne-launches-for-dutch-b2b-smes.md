@@ -9,9 +9,9 @@ readingTime: "4 min"
 image: /blog/hooklyne-launch-hero.jpg
 ---
 
-Today we are opening access to Hooklyne, a prospecting workflow built for Dutch and UK B2B teams of 10 to 50 people. The tool takes a company list and ships ready-to-send prospect packages: verified contact, live signal, first outreach drafted in the sender's voice. One portal. Under a minute to review and send.
+We are opening Hooklyne to early users today. If you run sales for a 10 to 50 person Dutch or UK company, this post is for you.
 
-This is the post explaining why it exists, who it is for, and what it does.
+The short version: we built the research layer we kept wishing we had. The longer version is below - why we built it, who we built it for, and what it actually does.
 
 ## Who this is for
 

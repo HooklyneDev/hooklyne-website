@@ -110,7 +110,7 @@ export const HomePricing = () => {
         {/* Founder note */}
         <div className="mt-12 pt-8 border-t border-[var(--border)] max-w-xl mx-auto text-center">
           <p className="text-sm text-[var(--muted-foreground)] leading-relaxed italic">
-            &ldquo;Most teams can&rsquo;t pick between proper research and enough outreach, so they sacrifice both. We built Hooklyne so they don&rsquo;t have to.&rdquo;
+            &ldquo;Most teams can&rsquo;t pick between proper research and enough outreach, so they sacrifice both. Hooklyne is what we built to stop doing that.&rdquo;
           </p>
           <p className="mt-3 text-xs text-[var(--muted-foreground)]">
             Tim · Founder · Hooklyne · The Netherlands
