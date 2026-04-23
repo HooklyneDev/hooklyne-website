@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Factory, Utensils, Zap } from "lucide-react";
+import { Factory, Utensils, Plug } from "lucide-react";
 import { useLang } from "@/lib/use-lang";
 
 const EN = {
@@ -7,7 +7,7 @@ const EN = {
   statements: [
     {
       headline: "Founders doing their own sales.",
-      body: "No ops team. No researcher. No agency budget. You're the GTM function - Hooklyne is the research layer you'd hire if you could.",
+      body: "No ops team, no researcher, no agency budget. You're the GTM function, and Hooklyne is the research layer you'd hire if you could.",
     },
     {
       headline: "Sales reps at 10-75 person companies.",
@@ -42,7 +42,7 @@ const NL = {
   statements: [
     {
       headline: "Founders die zelf verkopen.",
-      body: "Geen ops-team. Geen researcher. Geen agency-budget. Jij bent de GTM-functie - Hooklyne is de onderzoekslaag die je zou inhuren als je kon.",
+      body: "Geen ops-team, geen researcher, geen agency-budget. Jij bent de GTM-functie, en Hooklyne is de onderzoekslaag die je zou inhuren als je kon.",
     },
     {
       headline: "Salesreps bij bedrijven van 10 tot 75 man.",
@@ -73,7 +73,7 @@ const NL = {
 };
 
 const CARD_TONES = ["blue", "teal", "orange"] as const;
-const CARD_ICONS = [Factory, Utensils, Zap];
+const CARD_ICONS = [Factory, Utensils, Plug];
 
 export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
   const detected = useLang();

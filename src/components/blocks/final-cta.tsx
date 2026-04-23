@@ -46,7 +46,7 @@ const VARIANTS: Record<CTAVariant, CTACopy> = {
   },
   pricing: {
     kicker: "Before you pick a plan",
-    heading: "Pilot first. Pay later.",
+    heading: "Pilot first, pay later.",
     body: "Ten fully built prospects before any card goes in. See the output on your market, then choose the tier that fits.",
     primaryLabel: "Start your free pilot",
     secondaryLabel: "See how it works",

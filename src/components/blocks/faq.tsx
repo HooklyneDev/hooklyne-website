@@ -32,7 +32,7 @@ const groups: Group[] = [
       },
       {
         q: "Does Hooklyne use AI?",
-        a: "Hooklyne combines several research and data systems into one workflow. The point isn't which systems. The point is the output lands clean.",
+        a: "Hooklyne combines several research and data systems into one workflow. Point is what shows up in the inbox, not what's under the hood.",
       },
       {
         q: "Will the messages sound like a bot wrote them?",
@@ -187,10 +187,10 @@ export const FAQ = () => {
           <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
             <h1 className="text-4xl md:text-5xl tracking-tight text-[var(--heading)] leading-tight mb-4">
-              Questions, answered straight.
+              Frequently asked, honestly answered.
             </h1>
             <p className="text-[var(--muted-foreground)] text-base max-w-xl mx-auto leading-relaxed">
-              The ones we hear most. Can't find yours? Ask us directly.
+              The ones we hear most. If yours isn't here, ask us directly.
             </p>
           </div>
 
@@ -245,7 +245,7 @@ export const FAQ = () => {
 
           <div className="mt-16 rounded-2xl p-8 text-center" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
             <h3 className="text-xl font-semibold text-[var(--heading)] mb-2">Still wondering something?</h3>
-            <p className="text-sm text-[var(--muted-foreground)] mb-5">Shoot us a message. You'll hear back fast.</p>
+            <p className="text-sm text-[var(--muted-foreground)] mb-5">Message us. We reply the same day, usually within an hour.</p>
             <a
               href="/contact"
               className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check, X, Clock, Database, Wrench, Briefcase, Zap } from "lucide-react";
+import { Check, X, Clock, Database, Wrench, Briefcase, Send } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
@@ -107,7 +107,7 @@ const TABS: TabDef[] = [
       },
       {
         step: "3", label: "Verify the emails yourself",
-        detail: "Most databases show one source. Coverage varies by region. Bounce rates on single-source data typically run 8-15%, which damages sender reputation if you send blind. Most buyers add a verification tool on top.",
+        detail: "Most databases show one source. Coverage varies by region. Bounce rates on single-source data are often high enough to damage sender reputation if you send blind. Most buyers add a verification tool on top.",
         time: "10 min", callout: "Verification is your job, or your sender reputation pays for it", good: false,
       },
       {
@@ -127,7 +127,7 @@ const TABS: TabDef[] = [
     label: "AI outreach tool",
     sub: "Generated emails",
     price: "~€100–500/mo",
-    icon: Zap,
+    icon: Send,
     tone: "amber",
     totalLabel: "Your time",
     total: "~15 min per prospect",
@@ -168,7 +168,7 @@ const TABS: TabDef[] = [
     total: "~90 min per prospect",
     totalSub: "every minute is yours",
     goodAt: "Total control. You make every decision. No subscription cost beyond the tools you already have. For a founder doing 2-3 prospects a week, this is genuinely viable - and many are doing exactly this right now.",
-    footerNote: "Maximum control, minimum leverage. Sustainable for a handful of prospects a week. Breaks the moment you need volume.",
+    footerNote: "Full control, no multiplier. Sustainable for a handful of prospects a week. Breaks the moment you need volume.",
     steps: [
       {
         step: "1", label: "Build the list",
@@ -233,7 +233,7 @@ const TABS: TabDef[] = [
       {
         step: "4", label: "Cancel and lose the pipeline",
         detail: "Stop paying and everything stops. No knowledge transfer, no process you own, no contacts you keep. The meetings booked while you paid are yours. The machine is theirs.",
-        time: "any time", callout: "Leverage is rented, not built", good: false,
+        time: "any time", callout: "The pipeline is rented, not built", good: false,
       },
     ],
   },
@@ -283,7 +283,7 @@ export const DIYCompare = () => {
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">The workflow</p>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            From ICP to inbox. Six simple steps.
+            From ICP to inbox in six steps.
           </h2>
           <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
             Each step does one job a human researcher would do. Together they produce prospect packages your rep can act on in under a minute. Here is the whole flow.
