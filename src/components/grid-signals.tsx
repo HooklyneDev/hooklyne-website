@@ -2,10 +2,13 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const SPACING = 48;
-const MIN_DIST = 80;
 const PULSE_DURATION = 3200;
 const EDGE_PAD = SPACING;
 const ZONE_PAD = 60;
+// Label footprint (px): label is ~9px font, up to ~18 chars + 12px gap from dot.
+const LABEL_REACH = 160;
+const LABEL_HALF_H = 18;
+const DOT_HALF = 14;
 
 const SIGNAL_LABELS = [
  // Funding
@@ -46,6 +49,8 @@ const SIGNAL_LABELS = [
  "Strategic pivot",
 ];
 
+type Rect = { x1: number; y1: number; x2: number; y2: number };
+
 type Pulse = {
  id: number;
  x: number;
@@ -58,9 +63,18 @@ type Pulse = {
 
 let globalId = 0;
 
+const pulseRect = (x: number, y: number, side: "left" | "right"): Rect => {
+ const x1 = side === "right" ? x - DOT_HALF : x - LABEL_REACH;
+ const x2 = side === "right" ? x + LABEL_REACH : x + DOT_HALF;
+ return { x1, y1: y - LABEL_HALF_H, x2, y2: y + LABEL_HALF_H };
+};
+
+const rectsOverlap = (a: Rect, b: Rect) =>
+ a.x1 < b.x2 && a.x2 > b.x1 && a.y1 < b.y2 && a.y2 > b.y1;
+
 export const GridSignals = () => {
  const containerRef = useRef<HTMLDivElement>(null);
- const prevPositions = useRef<{ x: number; y: number }[]>([]);
+ const activeRects = useRef<Map<number, Rect>>(new Map());
  const usedLabels = useRef<string[]>([]);
  const [pulses, setPulses] = useState<Pulse[]>([]);
 
@@ -115,33 +129,38 @@ export const GridSignals = () => {
  dead.push({ x: 0, y: videoMidY, w: width, h: height });
  }
 
- const inDead = (x: number, y: number) =>
- dead.some((z) => x >= z.x && x <= z.x + z.w && y >= z.y && y <= z.y + z.h);
+ // Convert dead zones to Rects for unified overlap testing.
+ const deadRects: Rect[] = dead.map((z) => ({ x1: z.x, y1: z.y, x2: z.x + z.w, y2: z.y + z.h }));
 
  const cols = Math.floor(width / SPACING);
  const minRow = Math.floor(visibleTop / SPACING);
  const maxRow = Math.ceil(visibleBottom / SPACING);
 
- const candidates: { x: number; y: number }[] = [];
+ const active = Array.from(activeRects.current.values());
+
+ type Candidate = { x: number; y: number; labelSide: "left" | "right" };
+ const candidates: Candidate[] = [];
  for (let c = 0; c <= cols; c++) {
  for (let r = minRow; r <= maxRow; r++) {
  const x = c * SPACING;
  const y = r * SPACING;
  if (y < visibleTop || y > visibleBottom) continue;
- if (inDead(x, y)) continue;
- const tooClose = prevPositions.current.some((p) => {
- const dx = x - p.x;
- const dy = y - p.y;
- return Math.sqrt(dx * dx + dy * dy) < MIN_DIST;
- });
- if (tooClose) continue;
- candidates.push({ x, y });
+
+ // Pick label side based on horizontal position (label points away from center).
+ const labelSide: "left" | "right" = x > width * 0.55 ? "left" : "right";
+ const footprint = pulseRect(x, y, labelSide);
+
+ // Reject if this pulse's full footprint (dot + label) hits any dead zone.
+ if (deadRects.some((d) => rectsOverlap(footprint, d))) continue;
+ // Reject if it would overlap any currently-active pulse's footprint.
+ if (active.some((a) => rectsOverlap(footprint, a))) continue;
+
+ candidates.push({ x, y, labelSide });
  }
  }
 
  if (candidates.length === 0) return null;
  const picked = candidates[Math.floor(Math.random() * candidates.length)];
- prevPositions.current = [...prevPositions.current.slice(-4), picked];
 
  const centerLeft = (width - 640) / 2;
  const centerRight = centerLeft + 640;
@@ -152,15 +171,13 @@ export const GridSignals = () => {
  const label = available[Math.floor(Math.random() * available.length)];
  usedLabels.current = [...usedLabels.current.slice(-10), label];
 
- const labelSide: "left" | "right" = picked.x > width * 0.55 ? "left" : "right";
-
  return {
  x: picked.x,
  y: picked.y,
  color: useOrange ? "var(--hooklyne-orange)" : "var(--hooklyne-blue)",
  opacity: inCenter ? 0.22 : 0.5,
  label,
- labelSide,
+ labelSide: picked.labelSide,
  };
  }, []);
 
@@ -168,8 +185,10 @@ export const GridSignals = () => {
  const data = getCandidate();
  if (!data) return null;
  const id = ++globalId;
+ activeRects.current.set(id, pulseRect(data.x, data.y, data.labelSide));
  setPulses((prev) => [...prev, { id, ...data }]);
  setTimeout(() => {
+ activeRects.current.delete(id);
  setPulses((prev) => prev.filter((p) => p.id !== id));
  }, PULSE_DURATION);
  return id;
