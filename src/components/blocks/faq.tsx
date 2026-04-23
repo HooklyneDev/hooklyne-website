@@ -162,7 +162,7 @@ const groups: Group[] = [
       },
       {
         q: "How long does onboarding take?",
-        a: "Under a week. Sender Profile takes ~30 minutes. ICP calibration, one or two passes. Growth and Scale include a kick-off call.",
+        a: "Under a week for a single rep. A bit longer for a team. Sender Profile takes ~30 minutes per voice. ICP calibration, one or two passes. Growth and Scale include a kick-off call and a live training session for the whole team.",
       },
       {
         q: "Do I need to change my CRM or sequencer?",

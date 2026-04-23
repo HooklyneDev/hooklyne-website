@@ -1,6 +1,6 @@
 ---
 title: "Hooklyne launches: prospect research built for Dutch B2B SMEs"
-description: "A B2B prospecting workflow for Dutch teams of 10 to 50 people. Verified contacts, live signals, and first-draft outreach in your rep's voice. From €39 per month."
+description: "A B2B prospecting workflow for Dutch and UK teams of 10 to 100 people. Verified contacts, live signals, and first-draft outreach in your rep's voice. From €39 per month."
 pubDate: 2026-04-02
 authorName: Joey
 authorBio: "Joey co-founded Hooklyne. Dutch-built, made for small EMEA sales teams who want research and outreach in one workflow."
@@ -9,13 +9,13 @@ readingTime: "4 min"
 image: /blog/hooklyne-launch-hero.jpg
 ---
 
-We are opening Hooklyne to early users today. If you run sales for a 10 to 50 person Dutch or UK company, this post is for you.
+We are opening Hooklyne to early users today. If you run sales for a 10 to 100 person Dutch or UK company, this post is for you.
 
 The short version: we built the research layer we kept wishing we had. The longer version is below - why we built it, who we built it for, and what it actually does.
 
 ## Who this is for
 
-Dutch SMEs with 10 to 50 employees and one to three sales reps. No dedicated research team. A real budget, but not the €40,000-a-year platform fee that Cognism and its peers quote to companies your size.
+Dutch SMEs with 10 to 100 employees and anywhere from one to eight sales reps. No dedicated research team, or one that's stretched too thin. A real budget, but not the €40,000-a-year platform fee that Cognism and its peers quote to companies your size.
 
 If your reps are spending three to six hours researching one prospect before writing the first email, you are the team this was built for.
 

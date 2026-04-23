@@ -1,6 +1,6 @@
 ---
 title: "Apollo vs Cognism vs Lusha for Dutch and UK B2B SMEs: an honest breakdown"
-description: "Practical comparison of Apollo, Cognism, and Lusha for Dutch and UK B2B teams of 10 to 50 people. What each does well, where they fall short."
+description: "Practical comparison of Apollo, Cognism, and Lusha for Dutch and UK B2B teams of 10 to 100 people. What each does well, where they fall short."
 pubDate: 2026-04-22
 authorName: Tim
 authorBio: "Tim co-founded Hooklyne after running outbound for a 15-person Dutch SaaS. Writes about what actually works in B2B sales for small teams."
@@ -11,7 +11,7 @@ image: /blog/apollo-cognism-lusha-hero.jpg
 
 Most comparison posts are written by the vendors themselves, or by someone trying to sell you a fourth option. This one is too, in a way. But before we get there, let us do the thing the other comparison posts keep avoiding: actually answer the question.
 
-If you run sales at a Dutch or UK company of 10 to 50 people, you have probably looked at Apollo, Cognism, and Lusha. You have probably come away confused about which one to pick. That is because none of them were built for you, and the industry knows it but prices the tools as if they were.
+If you run sales at a Dutch or UK company of 10 to 100 people, you have probably looked at Apollo, Cognism, and Lusha. You have probably come away confused about which one to pick. That is because none of them were built for you, and the industry knows it but prices the tools as if they were.
 
 We have watched small teams burn six months and four-figure budgets picking between these three. This is the post we wish they had read first.
 
@@ -134,7 +134,7 @@ Lusha is a tool, not a platform. That is fine, as long as you use it like a tool
 
 ## What none of them do
 
-The three databases solve one problem well: they hand you contact information. What they do not do, and what a 10 to 50 person B2B SME actually needs, is everything that happens between "I have a list of 400 companies" and "my rep just sent 40 personalised, well-timed emails".
+The three databases solve one problem well: they hand you contact information. What they do not do, and what a 10 to 100 person B2B SME actually needs, is everything that happens between "I have a list of 400 companies" and "my rep just sent 40 personalised, well-timed emails".
 
 Specifically, none of them do this:
 

@@ -10,8 +10,8 @@ const EN = {
       body: "No ops team, no researcher, no agency budget. You're the GTM function, and Hooklyne is the research layer you'd hire if you could.",
     },
     {
-      headline: "Sales reps at 10-75 person companies.",
-      body: "1 to 3 reps, a CRM, maybe a sequencer. You know your ICP but burn hours researching each prospect. Hooklyne gives those hours back.",
+      headline: "Sales teams at 10 to 100 person companies.",
+      body: "One rep or eight, a CRM, maybe a sequencer. You know your ICP but burn hours researching each prospect. Hooklyne gives those hours back, and scales with you as the team grows.",
     },
     {
       headline: "Teams where one good conversation beats fifty cold emails.",
@@ -45,8 +45,8 @@ const NL = {
       body: "Geen ops-team, geen researcher, geen agency-budget. Jij bent de GTM-functie, en Hooklyne is de onderzoekslaag die je zou inhuren als je kon.",
     },
     {
-      headline: "Salesreps bij bedrijven van 10 tot 75 man.",
-      body: "1 tot 3 reps, een CRM, misschien een sequencer. Je kent je ICP, maar je verbrandt uren met prospect-onderzoek. Hooklyne geeft die uren terug.",
+      headline: "Salesteams bij bedrijven van 10 tot 100 man.",
+      body: "Eén rep of acht, een CRM, misschien een sequencer. Je kent je ICP, maar je verbrandt uren met prospect-onderzoek. Hooklyne geeft die uren terug, en schaalt mee als je team groeit.",
     },
     {
       headline: "Teams waarbij één goed gesprek vijftig koude mails waard is.",
