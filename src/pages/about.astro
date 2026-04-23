@@ -56,20 +56,6 @@ const values = [
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
           The research layer most B2B teams can't afford to staff. Delivered as software.
         </p>
-        <div class="flex flex-wrap items-center justify-center gap-6 mt-8 text-[11px] font-medium text-[var(--muted-foreground)]">
-          <div class="flex items-center gap-1.5">
-            <span class="size-1.5 rounded-full bg-[var(--hooklyne-blue)]"></span>
-            Amsterdam, The Netherlands
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="size-1.5 rounded-full bg-[var(--hooklyne-teal)]"></span>
-            Built for EMEA SMEs
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="size-1.5 rounded-full bg-[var(--hooklyne-orange)]"></span>
-            GDPR-native
-          </div>
-        </div>
       </div>
     </section>
 
@@ -86,8 +72,8 @@ const values = [
 
           <div class="shape-grid grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-3">
             {[
-              { label: "Founder-led", value: "Tim", sub: "Full-time since 2025", tone: "blue" },
-              { label: "Based in", value: "Amsterdam", sub: "The Netherlands", tone: "teal" },
+              { label: "Focus", value: "One product", sub: "No feature creep", tone: "blue" },
+              { label: "Based in", value: "The Netherlands", sub: "Dutch team", tone: "teal" },
               { label: "Built for", value: "Small teams", sub: "10-50 person SMEs", tone: "orange" },
               { label: "Serving", value: "EMEA", sub: "NL and UK first, EN across Europe", tone: "blue" },
             ].map((s, i) => (
@@ -161,8 +147,8 @@ const values = [
               </div>
 
               <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[58%] flex items-center justify-center">
-                <div class="relative size-28 md:size-32 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(8px);">
-                  <span class="text-4xl md:text-5xl font-semibold text-white tracking-tight">T</span>
+                <div class="relative size-28 md:size-32 rounded-full overflow-hidden" style="border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.45);">
+                  <img src="/about/tim-wissink.jpg" alt="Tim, founder of Hooklyne" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
                 </div>
               </div>
 
@@ -170,7 +156,7 @@ const values = [
                 <div class="text-2xl font-semibold text-white tracking-tight leading-none">Tim</div>
                 <div class="text-sm text-white/60 mt-1.5">Founder, Hooklyne</div>
                 <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-white/40">
-                  <span>Amsterdam</span>
+                  <span>The Netherlands</span>
                   <span>Est. 2025</span>
                 </div>
               </div>
