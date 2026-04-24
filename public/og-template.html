@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>OG template - 1200x630</title>
+  <title>OG template - export at 2400x1260, downscale to 1200x630</title>
   <style>
     html, body { margin: 0; padding: 0; background: #0a0a0a; }
     body {
@@ -12,32 +12,34 @@
       font-family: -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif;
     }
 
+    /* Rendered at 2x so a DevTools screenshot is 2400x1260.
+       Downscale to 1200x630 in Preview / Photoshop / Squoosh for a
+       retina-crisp JPG. */
     .banner {
       position: relative;
-      width: 1200px;
-      height: 630px;
+      width: 2400px;
+      height: 1260px;
       background: #022f51;
       overflow: hidden;
       isolation: isolate;
     }
 
-    /* Concentric rings, same math as the hero */
+    /* Concentric rings, same math as the hero (2x values) */
     .rings {
       position: absolute;
       inset: 0;
       pointer-events: none;
       background-image:
-        radial-gradient(circle at 50% 40%, transparent 149px, rgba(52,76,163,0.18) 150px, transparent 151px),
-        radial-gradient(circle at 50% 40%, transparent 249px, rgba(52,76,163,0.15) 250px, transparent 251px),
-        radial-gradient(circle at 50% 40%, transparent 349px, rgba(52,76,163,0.12) 350px, transparent 351px),
-        radial-gradient(circle at 50% 40%, transparent 449px, rgba(52,76,163,0.10) 450px, transparent 451px),
-        radial-gradient(circle at 50% 40%, transparent 549px, rgba(52,76,163,0.08) 550px, transparent 551px),
-        radial-gradient(circle at 50% 40%, transparent 649px, rgba(52,76,163,0.06) 650px, transparent 651px);
+        radial-gradient(circle at 50% 40%, transparent 298px, rgba(52,76,163,0.18) 300px, transparent 302px),
+        radial-gradient(circle at 50% 40%, transparent 498px, rgba(52,76,163,0.15) 500px, transparent 502px),
+        radial-gradient(circle at 50% 40%, transparent 698px, rgba(52,76,163,0.12) 700px, transparent 702px),
+        radial-gradient(circle at 50% 40%, transparent 898px, rgba(52,76,163,0.10) 900px, transparent 902px),
+        radial-gradient(circle at 50% 40%, transparent 1098px, rgba(52,76,163,0.08) 1100px, transparent 1102px),
+        radial-gradient(circle at 50% 40%, transparent 1298px, rgba(52,76,163,0.06) 1300px, transparent 1302px);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 60%, transparent 95%);
               mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 60%, transparent 95%);
     }
 
-    /* Soft center glow */
     .glow {
       position: absolute;
       inset: 0;
@@ -45,7 +47,6 @@
       background: radial-gradient(ellipse 55% 50% at 50% 45%, rgba(52,76,163,0.55) 0%, rgba(52,76,163,0.25) 35%, rgba(52,76,163,0.08) 65%, transparent 85%);
     }
 
-    /* Warm corner accent */
     .warm {
       position: absolute;
       inset: 0;
@@ -53,7 +54,6 @@
       background: radial-gradient(ellipse 35% 50% at 92% 100%, rgba(255,140,66,0.14) 0%, transparent 70%);
     }
 
-    /* Vignette edges so text always reads */
     .vignette {
       position: absolute;
       inset: 0;
@@ -63,13 +63,12 @@
         linear-gradient(to bottom, rgba(2,47,81,0.3) 0%, transparent 15%, transparent 85%, rgba(2,47,81,0.5) 100%);
     }
 
-    /* Grain */
     .grain {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      opacity: 0.05;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
     }
 
     .content {
@@ -80,62 +79,52 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 120px;
+      padding: 0 240px;
     }
 
     .logo {
-      width: 560px;
+      width: 1120px;
       height: auto;
       display: block;
-      margin: 0 auto 36px;
-      filter: drop-shadow(0 8px 40px rgba(0,0,0,0.35));
+      margin: 0 auto 72px;
+      filter: drop-shadow(0 16px 80px rgba(0,0,0,0.35));
     }
 
     .tagline {
       color: rgba(255,255,255,0.92);
-      font-size: 32px;
+      font-size: 64px;
       font-weight: 500;
       letter-spacing: -0.01em;
       line-height: 1.25;
       margin: 0;
-      max-width: 780px;
+      max-width: 1560px;
     }
 
-    .kicker {
-      color: rgba(255,255,255,0.55);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin: 0 0 22px;
-    }
-
-    /* Bottom URL badge */
     .url {
       position: absolute;
-      bottom: 36px;
+      bottom: 72px;
       left: 0;
       right: 0;
       text-align: center;
       color: rgba(255,255,255,0.45);
-      font-size: 14px;
+      font-size: 28px;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    /* Export helper */
     .hint {
       position: fixed;
       top: 12px;
       left: 12px;
       right: 12px;
-      color: #888;
+      color: #ccc;
       font-size: 12px;
       background: #111;
       padding: 10px 14px;
       border-radius: 8px;
       line-height: 1.5;
+      z-index: 999;
     }
     .hint code { color: #eee; background: #222; padding: 1px 5px; border-radius: 3px; }
     @media print { .hint { display: none; } }
@@ -143,7 +132,7 @@
 </head>
 <body>
   <div class="hint">
-    <strong>Export as og-image.jpg</strong> — right-click the banner below → <em>"Take screenshot"</em> (Firefox) OR open DevTools → Cmd+Shift+P → <code>Capture node screenshot</code> on the <code>.banner</code> element. Save as <code>og-image.jpg</code> and replace <code>public/og-image.jpg</code>.
+    <strong>Chrome export:</strong> open DevTools (Cmd+Opt+I) → Cmd+Shift+P → type <code>Capture node screenshot</code> → click anywhere in the <code>.banner</code> element on the page → save the PNG. Open in Preview → Tools → Adjust Size → set width to <code>1200</code> → Export as JPEG (quality ~85) → save as <code>og-image.jpg</code> in <code>public/</code>.
   </div>
 
   <div class="banner">
