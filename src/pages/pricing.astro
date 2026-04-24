@@ -7,7 +7,7 @@ import { HeroGlow } from '@/components/hero-glow';
 <DefaultLayout title="Pricing - Hooklyne" description="Pay for what you use. Every credit is a clear deliverable. Start, Growth, Scale, and Enterprise plans." ctaVariant="pricing">
   <Background>
   <section class="pt-32 lg:pt-44 pb-10 relative">
-    <HeroGlow client:load />
+    <HeroGlow client:load signals={false} />
     <div id="hero-content" class="container max-w-6xl relative z-10">
 
       <!-- Header -->
@@ -16,14 +16,9 @@ import { HeroGlow } from '@/components/hero-glow';
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Simple pricing with transparent credits.</h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">One credit system. Every action priced the same across plans. No per-seat fees on Start and Growth. Switch plans or cancel anytime.</p>
       </div>
-    </div>
-  </section>
 
-  <section class="pb-20">
-    <div class="container max-w-6xl">
-
-      <!-- Free pilot banner -->
-      <div class="rounded-2xl overflow-hidden mb-10" style="background: var(--card); box-shadow: var(--shadow-xs); border: 1px solid var(--border)">
+      <!-- Free pilot banner (kept inside the hero section so the glow reaches behind it) -->
+      <div class="mt-14 rounded-2xl overflow-hidden" style="background: var(--card); box-shadow: var(--shadow-xs); border: 1px solid var(--border)">
         <div class="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center p-6">
           <div class="flex items-center gap-3">
             <div class="flex items-center justify-center size-10 rounded-xl" style="background: rgba(13,148,136,0.12)">
@@ -52,6 +47,11 @@ import { HeroGlow } from '@/components/hero-glow';
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container max-w-6xl">
 
       <!-- Toggle -->
       <div class="flex items-center justify-center gap-3 mb-10">

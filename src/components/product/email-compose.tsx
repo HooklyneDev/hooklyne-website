@@ -7,17 +7,19 @@ import { GraphicShell } from "./graphic-shell";
  * focused moment of "open it, send it, close it".
  */
 
-const SUBJECT = "Saw the Rotterdam expansion - one quick thing";
+const SUBJECT = "Two diagnostics before the new VP Ops starts Monday";
 const BODY: string[] = [
   "Hi Marieke,",
   "",
-  "Congrats on the Series B - saw Axiom added four sales roles in Rotterdam this month.",
+  "Four ops roles opened in Rotterdam since the Series B, and the new VP Ops starts Monday based on his LinkedIn.",
   "",
-  "We helped a Dutch logistics SaaS run the same regional push last year. One angle that landed harder than we expected: the new reps want pipeline on day one, not week four.",
+  "Two things bite Dutch 3PLs at this stage: routing data fragmenting across warehouses, and middle-layer reporting breaking the moment headcount doubles. One post-raise client hit both inside 60 days.",
   "",
-  "Happy to share what we did and the two things we'd skip next time. 15 minutes next Tuesday?",
+  "Happy to send the two diagnostics we'd run first. 15 minutes if you'd rather talk.",
   "",
-  "- Joey",
+  "Best,",
+  "Tim",
+  "Hooklyne",
 ];
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
@@ -110,7 +112,7 @@ export const EmailCompose = () => {
       crumb="Portal / Draft"
       status={phase === "actioned" ? "Actioned" : "Drafting"}
       statusTone={phase === "actioned" ? "teal" : "orange"}
-      ratio="16/9"
+      ratio="2/1"
     >
       <style>{`
         @keyframes ec-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }

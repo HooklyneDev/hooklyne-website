@@ -17,7 +17,7 @@ const rings = [150, 300, 450, 600, 750, 900, 1050]
   )
   .join(", ");
 
-export const HeroGlow = () => (
+export const HeroGlow = ({ signals = true }: { signals?: boolean } = {}) => (
   <>
     <div
       className="hidden sm:block absolute inset-0 pointer-events-none"
@@ -38,12 +38,14 @@ export const HeroGlow = () => (
         WebkitMaskImage: ringMask,
       }}
     />
-    <div
-      className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
-      style={{ zIndex: 4 }}
-    >
-      <GridSignals />
-    </div>
+    {signals && (
+      <div
+        className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ zIndex: 4 }}
+      >
+        <GridSignals />
+      </div>
+    )}
     <div
       className="absolute inset-0 pointer-events-none"
       style={{

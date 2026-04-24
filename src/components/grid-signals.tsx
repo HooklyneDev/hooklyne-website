@@ -59,7 +59,12 @@ type Pulse = {
  opacity: number;
  label: string;
  labelSide: "left" | "right";
+ side: "left" | "right";
 };
+
+const MAX_CONCURRENT = 3;
+const MAX_PER_SIDE = 2;
+const SIDE_GAP = 32;
 
 let globalId = 0;
 
@@ -75,6 +80,7 @@ const rectsOverlap = (a: Rect, b: Rect) =>
 export const GridSignals = () => {
  const containerRef = useRef<HTMLDivElement>(null);
  const activeRects = useRef<Map<number, Rect>>(new Map());
+ const activeSides = useRef<Map<number, "left" | "right">>(new Map());
  const usedLabels = useRef<string[]>([]);
  const [pulses, setPulses] = useState<Pulse[]>([]);
 
@@ -82,113 +88,68 @@ export const GridSignals = () => {
  const el = containerRef.current;
  if (!el) return null;
 
- const rect = el.getBoundingClientRect();
- const { width, height } = rect;
- const vh = window.innerHeight;
-
- const visibleTop = Math.max(0, -rect.top);
- const visibleBottom = Math.min(height, vh - rect.top);
- if (visibleBottom <= visibleTop + SPACING) return null;
-
- // Dead zones in container-local coords
- type Zone = { x: number; y: number; w: number; h: number };
- const dead: Zone[] = [];
-
- // Left + right edges
- dead.push({ x: 0, y: 0, w: EDGE_PAD, h: height });
- dead.push({ x: width - EDGE_PAD, y: 0, w: EDGE_PAD, h: height });
-
- // Navbar + top fade strip
- dead.push({ x: 0, y: visibleTop, w: width, h: 110 });
-
- // Hero content text block
+ // Need hero-content to anchor the tagline-flanking bands. If it's not
+ // on this page, just skip spawning.
  const heroContent = document.getElementById("hero-content");
- if (heroContent) {
- const r = heroContent.getBoundingClientRect();
- dead.push({
- x: r.left - rect.left - ZONE_PAD,
- y: r.top - rect.top - ZONE_PAD,
- w: r.width + ZONE_PAD * 2,
- h: r.height + ZONE_PAD * 2,
- });
- }
+ if (!heroContent) return null;
 
- // Hero video - block its own footprint AND everything full-width below the midpoint
- const heroVideo = document.getElementById("hero-video");
- if (heroVideo) {
- const r = heroVideo.getBoundingClientRect();
- // Element dead zone (with padding)
- dead.push({
- x: r.left - rect.left - ZONE_PAD,
- y: r.top - rect.top - ZONE_PAD,
- w: r.width + ZONE_PAD * 2,
- h: r.height + ZONE_PAD * 2,
- });
- // Full-width cutoff from video midpoint downward - pulses never appear below here
- const videoMidY = r.top - rect.top + r.height * 0.5;
- dead.push({ x: 0, y: videoMidY, w: width, h: height });
- }
+ const rect = el.getBoundingClientRect();
+ const { width } = rect;
+ const hc = heroContent.getBoundingClientRect();
 
- // Convert dead zones to Rects for unified overlap testing.
- const deadRects: Rect[] = dead.map((z) => ({ x1: z.x, y1: z.y, x2: z.x + z.w, y2: z.y + z.h }));
+ // Vertical band: constrain y to roughly the tagline/text block height.
+ const bandTop = hc.top - rect.top - 8;
+ const bandBottom = hc.bottom - rect.top + 8;
+ if (bandBottom <= bandTop + SPACING) return null;
 
- const cols = Math.floor(width / SPACING);
- const minRow = Math.floor(visibleTop / SPACING);
- const maxRow = Math.ceil(visibleBottom / SPACING);
+ // Horizontal bands: left = [EDGE_PAD, hc.left - gap], right = [hc.right + gap, width - EDGE_PAD].
+ const leftMin = EDGE_PAD;
+ const leftMax = hc.left - rect.left - SIDE_GAP;
+ const rightMin = hc.right - rect.left + SIDE_GAP;
+ const rightMax = width - EDGE_PAD;
 
+ // Per-side concurrent cap. If one side is full, only generate candidates for the other.
+ const sides = Array.from(activeSides.current.values());
+ const leftCount = sides.filter((s) => s === "left").length;
+ const rightCount = sides.filter((s) => s === "right").length;
+ const allowLeft = leftCount < MAX_PER_SIDE && leftMax - leftMin >= DOT_HALF * 2;
+ const allowRight = rightCount < MAX_PER_SIDE && rightMax - rightMin >= DOT_HALF * 2;
+ if (!allowLeft && !allowRight) return null;
+
+ const minRow = Math.floor(bandTop / SPACING);
+ const maxRow = Math.ceil(bandBottom / SPACING);
  const active = Array.from(activeRects.current.values());
 
- type Candidate = { x: number; y: number; labelSide: "left" | "right" };
+ type Candidate = { x: number; y: number; labelSide: "left" | "right"; side: "left" | "right" };
  const candidates: Candidate[] = [];
- for (let c = 0; c <= cols; c++) {
- for (let r = minRow; r <= maxRow; r++) {
- const x = c * SPACING;
- const y = r * SPACING;
- if (y < visibleTop || y > visibleBottom) continue;
-
- // Pick label side based on horizontal position (label points away from center).
- const labelSide: "left" | "right" = x > width * 0.55 ? "left" : "right";
- const footprint = pulseRect(x, y, labelSide);
-
- // Reject if this pulse's full footprint (dot + label) hits any dead zone.
- if (deadRects.some((d) => rectsOverlap(footprint, d))) continue;
- // Reject if it would overlap any currently-active pulse's footprint.
- if (active.some((a) => rectsOverlap(footprint, a))) continue;
-
- candidates.push({ x, y, labelSide });
- }
- }
-
- // Fallback: if label-footprint check killed everything, retry with dot-only
- // footprint so we always produce at least one candidate where possible.
- let pool = candidates;
- if (pool.length === 0) {
- const dotOnly: Candidate[] = [];
  const dotFootprint = (x: number, y: number): Rect => ({
  x1: x - DOT_HALF, y1: y - DOT_HALF, x2: x + DOT_HALF, y2: y + DOT_HALF,
  });
- for (let c = 0; c <= cols; c++) {
+
+ const pushBand = (xMin: number, xMax: number, side: "left" | "right") => {
+ const cMin = Math.ceil(xMin / SPACING);
+ const cMax = Math.floor(xMax / SPACING);
+ // Labels on left-side dots point outward (left); right-side dots point outward (right).
+ const labelSide: "left" | "right" = side;
+ for (let c = cMin; c <= cMax; c++) {
  for (let r = minRow; r <= maxRow; r++) {
  const x = c * SPACING;
  const y = r * SPACING;
- if (y < visibleTop || y > visibleBottom) continue;
+ if (y < bandTop || y > bandBottom) continue;
  const fp = dotFootprint(x, y);
- if (deadRects.some((d) => rectsOverlap(fp, d))) continue;
  if (active.some((a) => rectsOverlap(fp, a))) continue;
- const labelSide: "left" | "right" = x > width * 0.55 ? "left" : "right";
- dotOnly.push({ x, y, labelSide });
+ candidates.push({ x, y, labelSide, side });
  }
  }
- pool = dotOnly;
- }
+ };
 
- if (pool.length === 0) return null;
- const picked = pool[Math.floor(Math.random() * pool.length)];
+ if (allowLeft) pushBand(leftMin, leftMax, "left");
+ if (allowRight) pushBand(rightMin, rightMax, "right");
 
- const centerLeft = (width - 640) / 2;
- const centerRight = centerLeft + 640;
- const inCenter = picked.x >= centerLeft && picked.x <= centerRight;
- const useOrange = !inCenter && Math.random() > 0.5;
+ if (candidates.length === 0) return null;
+ const picked = candidates[Math.floor(Math.random() * candidates.length)];
+
+ const useOrange = Math.random() > 0.6;
 
  const available = SIGNAL_LABELS.filter((l) => !usedLabels.current.slice(-6).includes(l));
  const label = available[Math.floor(Math.random() * available.length)];
@@ -198,20 +159,24 @@ export const GridSignals = () => {
  x: picked.x,
  y: picked.y,
  color: useOrange ? "var(--hooklyne-orange)" : "var(--hooklyne-blue)",
- opacity: inCenter ? 0.22 : 0.5,
+ opacity: 0.5,
  label,
  labelSide: picked.labelSide,
+ side: picked.side,
  };
  }, []);
 
  const spawnPulse = useCallback(() => {
+ if (activeRects.current.size >= MAX_CONCURRENT) return null;
  const data = getCandidate();
  if (!data) return null;
  const id = ++globalId;
  activeRects.current.set(id, pulseRect(data.x, data.y, data.labelSide));
+ activeSides.current.set(id, data.side);
  setPulses((prev) => [...prev, { id, ...data }]);
  setTimeout(() => {
  activeRects.current.delete(id);
+ activeSides.current.delete(id);
  setPulses((prev) => prev.filter((p) => p.id !== id));
  }, PULSE_DURATION);
  return id;

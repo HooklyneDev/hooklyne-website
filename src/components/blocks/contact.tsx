@@ -72,7 +72,7 @@ export const Contact = () => {
           <button
             type="button"
             onClick={() => scrollToForm("Pilot")}
-            className="group relative text-left rounded-2xl p-7 flex flex-col justify-between min-h-[200px] transition-all hover:-translate-y-0.5 overflow-hidden"
+            className="group relative text-left rounded-2xl p-5 flex flex-col gap-3 min-h-0 transition-all hover:-translate-y-0.5 overflow-hidden"
             style={{
               background: `
                 radial-gradient(ellipse 60% 40% at 30% 0%, rgba(255,140,66,0.14), transparent 65%),
@@ -92,7 +92,7 @@ export const Contact = () => {
                 Ten fully built prospects. No payment. We ask for 20 minutes of honest feedback in return.
               </p>
             </div>
-            <span className="mt-6 text-sm font-semibold text-[var(--hooklyne-orange)] group-hover:opacity-80 transition-opacity">
+            <span className="text-sm font-semibold text-[var(--hooklyne-orange)] group-hover:opacity-80 transition-opacity">
               Request a pilot →
             </span>
           </button>
@@ -100,7 +100,7 @@ export const Contact = () => {
           <button
             type="button"
             onClick={() => scrollToForm("Demo")}
-            className="group text-left rounded-2xl p-7 flex flex-col justify-between min-h-[200px] transition-all hover:-translate-y-0.5"
+            className="group text-left rounded-2xl p-5 flex flex-col gap-3 min-h-0 transition-all hover:-translate-y-0.5"
             style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-md)" }}
           >
             <div>
@@ -110,7 +110,7 @@ export const Contact = () => {
                 We show the portal live, walk through a real prospect package, and answer your questions.
               </p>
             </div>
-            <span className="mt-6 text-sm font-semibold text-[var(--hooklyne-blue)] group-hover:opacity-80 transition-opacity">
+            <span className="text-sm font-semibold text-[var(--hooklyne-blue)] group-hover:opacity-80 transition-opacity">
               Book a slot →
             </span>
           </button>
