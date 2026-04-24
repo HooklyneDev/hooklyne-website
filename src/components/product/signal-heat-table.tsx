@@ -9,10 +9,10 @@ import { GraphicShell } from "./graphic-shell";
 
 type Trend = "Rising" | "Stable" | "Cooling";
 
-const ROWS: { company: string; contact: string; heat: number; trend: Trend; date: string }[] = [
-  { company: "Innocent Drinks", contact: "Rebecca Clarke", heat: 38.0, trend: "Rising", date: "11 Apr 2026" },
-  { company: "Eneco", contact: "Laura Smits", heat: 24.0, trend: "Rising", date: "10 Apr 2026" },
-  { company: "DPD Netherlands", contact: "Mark van den Berg", heat: 16.0, trend: "Stable", date: "9 Apr 2026" },
+const ROWS: { company: string; contact: string; heat: number; trend: Trend; date: string; isNew?: boolean }[] = [
+  { company: "Innocent Drinks", contact: "Rebecca Clarke", heat: 38.0, trend: "Rising", date: "Today", isNew: true },
+  { company: "Eneco", contact: "Laura Smits", heat: 24.0, trend: "Rising", date: "Today", isNew: true },
+  { company: "DPD Netherlands", contact: "Mark van den Berg", heat: 16.0, trend: "Stable", date: "Today", isNew: true },
   { company: "Vattenfall", contact: "Sarah Mitchell", heat: 12.0, trend: "Rising", date: "8 Apr 2026" },
   { company: "Dachser Netherlands", contact: "Thomas Reiter", heat: 6.0, trend: "Cooling", date: "7 Apr 2026" },
   { company: "Siemens Netherlands", contact: "Erik Janssen", heat: 3.0, trend: "Stable", date: "6 Apr 2026" },
@@ -40,7 +40,7 @@ export const SignalHeatTable = () => {
   }, []);
 
   return (
-    <GraphicShell crumb="Portal / Prospect Signals" status="Live" statusTone="teal" ratio="3/2">
+    <GraphicShell crumb="Portal / Prospect Signals" status="Live" statusTone="teal" ratio="16/9">
       <style>{`
         @keyframes sh-row { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes sh-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -120,7 +120,7 @@ export const SignalHeatTable = () => {
               <svg className="size-3.5 sm:size-4" style={{ color: "var(--muted-foreground)" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
             </div>
             <div className="min-w-0">
-              <p className="text-base sm:text-lg font-semibold leading-none" style={{ color: "var(--heading)" }}>0</p>
+              <p className="text-base sm:text-lg font-semibold leading-none" style={{ color: "var(--hooklyne-teal)" }}>3</p>
               <p className="text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>New signals</p>
             </div>
           </div>
@@ -146,7 +146,14 @@ export const SignalHeatTable = () => {
                 }}
               >
                 <div className="min-w-0 pr-2">
-                  <p className="font-semibold truncate" style={{ color: "var(--heading)" }}>{r.company}</p>
+                  <div className="flex items-center gap-1.5">
+                    <p className="font-semibold truncate" style={{ color: "var(--heading)" }}>{r.company}</p>
+                    {r.isNew && (
+                      <span className="text-[7px] sm:text-[8px] font-bold uppercase tracking-wider px-1 py-0.5 rounded shrink-0" style={{ background: "rgba(13,148,136,0.14)", color: "var(--hooklyne-teal)" }}>
+                        New
+                      </span>
+                    )}
+                  </div>
                   <p className="text-[9px] sm:text-[10px] truncate" style={{ color: "var(--muted-foreground)" }}>{r.contact}</p>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2 pr-2">

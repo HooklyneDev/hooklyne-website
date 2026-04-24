@@ -46,9 +46,9 @@ const values = [
     }
   })} />
   <Background>
-    <section class="pt-32 lg:pt-44 pb-14 lg:pb-20 relative" data-fade>
-      <HeroGlow client:load />
-      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+    <section class="pt-32 lg:pt-44 pb-16 lg:pb-24 relative" data-fade>
+      <HeroGlow client:load signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10 mb-14 lg:mb-20">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           Proper research, without cutting outreach volume.
@@ -57,10 +57,8 @@ const values = [
           The research layer most B2B teams can't afford to staff. Delivered as software.
         </p>
       </div>
-    </section>
 
-    <section class="pb-16 lg:pb-24 relative">
-      <div class="container max-w-5xl">
+      <div class="container max-w-5xl relative z-10">
         <div class="about-shape rounded-2xl p-5 md:p-7 relative overflow-hidden" style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
           <div class="flex items-center justify-between mb-5">
             <div class="flex items-center gap-2">

@@ -135,7 +135,7 @@ export const PortalShot = ({
               alt={label}
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 w-full h-full object-cover object-top"
+              className="absolute inset-0 w-full h-full object-contain object-center"
             />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">

@@ -132,7 +132,7 @@ export const FindCompaniesFlow = () => {
       crumb={step === 0 ? "Prospecting / Find me companies" : step === 1 ? "Prospecting / Select" : "Prospecting / Contacts"}
       status={step === 0 ? "Drafting" : step === 1 ? "6 found" : "Verifying"}
       statusTone={step === 0 ? "blue" : step === 1 ? "teal" : "orange"}
-      ratio="3/2"
+      ratio="2/1"
     >
       <style>{`
         @keyframes fc-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
