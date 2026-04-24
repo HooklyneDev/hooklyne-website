@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { UserCircle, ChevronDown, Globe } from "lucide-react";
+import { ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
@@ -181,9 +181,8 @@ export const Navbar = () => {
             </div>
             <a
               href="https://portal.hooklyne.com"
-              className="inline-flex items-center gap-1.5 h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
+              className="inline-flex items-center h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
             >
-              <UserCircle className="size-4 shrink-0" />
               Log in
             </a>
             <a href="/contact">
@@ -272,10 +271,9 @@ export const Navbar = () => {
               </div>
               <a
                 href="https://portal.hooklyne.com"
-                className="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
+                className="flex items-center justify-center h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <UserCircle className="size-4 shrink-0" />
                 Log in
               </a>
               <a href="/contact" onClick={() => setIsMenuOpen(false)}>
