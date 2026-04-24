@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { UserCircle, ChevronDown } from "lucide-react";
+import { UserCircle, ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
@@ -25,6 +25,8 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [pathname, setPathname] = useState("");
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setPathname(window.location.pathname);
@@ -32,6 +34,17 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!langOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [langOpen]);
 
   const isActive = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog"));
 
@@ -124,22 +137,46 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <div
-              className="inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--card)] p-0.5 text-[11px] font-semibold"
-              aria-label="Language"
-            >
-              <span
-                className="px-2 py-1 rounded-md text-white"
-                style={{ backgroundColor: "var(--hooklyne-navy)" }}
+            <div ref={langRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setLangOpen((v) => !v)}
+                aria-label="Language"
+                aria-haspopup="menu"
+                aria-expanded={langOpen}
+                className="inline-flex items-center justify-center size-9 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
               >
-                EN
-              </span>
-              <span
-                className="px-2 py-1 text-[var(--muted-foreground)]/60 cursor-not-allowed select-none"
-                aria-disabled="true"
-              >
-                NL
-              </span>
+                <Globe className="size-4" />
+              </button>
+              {langOpen && (
+                <div
+                  className="absolute top-full right-0 mt-2 min-w-[160px] rounded-xl py-1.5 z-50"
+                  style={{
+                    background: "var(--card)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-lg)",
+                  }}
+                  role="menu"
+                >
+                  <button
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked="true"
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
+                  >
+                    English
+                  </button>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    aria-disabled="true"
+                    disabled
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--muted-foreground)]/60 cursor-not-allowed"
+                  >
+                    Nederlands <span className="text-[10px] font-normal">(soon)</span>
+                  </button>
+                </div>
+              )}
             </div>
             <a
               href="https://portal.hooklyne.com"
@@ -225,21 +262,11 @@ export const Navbar = () => {
               );
             })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
-              <div
-                className="self-start inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--card)] p-0.5 text-[11px] font-semibold"
-                aria-label="Language"
-              >
-                <span
-                  className="px-2 py-1 rounded-md text-white"
-                  style={{ backgroundColor: "var(--hooklyne-navy)" }}
-                >
-                  EN
-                </span>
-                <span
-                  className="px-2 py-1 text-[var(--muted-foreground)]/60 cursor-not-allowed select-none"
-                  aria-disabled="true"
-                >
-                  NL
+              <div className="flex items-center gap-2 text-sm text-[var(--foreground)]/80">
+                <Globe className="size-4" />
+                <span className="font-medium text-[var(--hooklyne-blue)]">English</span>
+                <span className="text-[var(--muted-foreground)]/60">
+                  / Nederlands <span className="text-[10px]">(soon)</span>
                 </span>
               </div>
               <a
