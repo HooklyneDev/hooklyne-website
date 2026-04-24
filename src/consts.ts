@@ -41,7 +41,7 @@ export const SITE_METADATA = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Hooklyne - Proper research. Enough outreach. Pick both.",
+        alt: "Hooklyne - B2B prospect research for SME sales teams",
       },
     ],
   },
