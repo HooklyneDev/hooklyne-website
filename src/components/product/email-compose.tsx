@@ -17,7 +17,9 @@ const BODY: string[] = [
   "",
   "Happy to send the two diagnostics we'd run first. 15 minutes if you'd rather talk.",
   "",
-  "- Joey",
+  "Best,",
+  "Tim",
+  "Hooklyne",
 ];
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
