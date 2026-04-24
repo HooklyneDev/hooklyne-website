@@ -29,7 +29,7 @@ export const Hero = () => {
     .join(", ");
 
   return (
-    <section className="pt-20 pb-0 lg:pt-32 relative">
+    <section className="pt-28 pb-0 lg:pt-32 relative">
 
       {/* ── Mobile: breathing circle ───────────────────────────────── */}
       <div className="sm:hidden absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
