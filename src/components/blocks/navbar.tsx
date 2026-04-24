@@ -144,7 +144,7 @@ export const Navbar = () => {
                 aria-label="Language"
                 aria-haspopup="menu"
                 aria-expanded={langOpen}
-                className="inline-flex items-center justify-center size-9 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
+                className="inline-flex items-center justify-center size-9 rounded-lg text-[var(--hooklyne-navy)]/70 hover:text-[var(--hooklyne-blue)] transition-colors"
               >
                 <Globe className="size-4" />
               </button>
