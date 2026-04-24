@@ -178,7 +178,7 @@ export const EmailCompose = () => {
                 NL · EN auto
               </span>
               <span>·</span>
-              <span>Sender profile: Joey</span>
+              <span>Sender profile: Hooklyne Example</span>
               <span className="hidden sm:inline">·</span>
               <span className="hidden sm:inline">Under 60s</span>
             </div>
