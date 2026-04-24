@@ -217,16 +217,98 @@ const profileTabs = [
           </p>
         </div>
 
-        <div class="rounded-3xl overflow-hidden" style="background: var(--card); border: 1px solid var(--border);">
-          {packageBlocks.map((b, i) => (
-            <div class={`p-7 md:p-9 ${i < packageBlocks.length - 1 ? 'border-b border-[var(--border)]' : ''}`}>
-              <div class="flex items-center gap-2.5 mb-2">
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {packageBlocks.map((b) => (
+            <div class="package-card rounded-2xl p-6 md:p-7 flex flex-col" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="flex items-center gap-2.5 mb-3">
                 <span class="text-[11px] font-mono tabular-nums text-[var(--muted-foreground)]">{b.step}</span>
                 <span class="h-3 w-px bg-[var(--border)]"></span>
                 <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hooklyne-blue)]">{b.tag}</span>
               </div>
-              <h3 class="text-xl md:text-[22px] font-semibold text-[var(--heading)] mb-2 leading-snug tracking-tight max-w-3xl">{b.title}</h3>
-              <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl">{b.body}</p>
+              <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] mb-2 leading-snug tracking-tight">{b.title}</h3>
+              <p class="text-[15px] text-[var(--muted-foreground)] leading-relaxed mb-5">{b.body}</p>
+
+              {b.step === "01" && (
+                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="size-9 rounded-lg flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">AL</div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-[13px] font-semibold text-[var(--heading)] truncate">Axiom Logistics</p>
+                      <p class="text-[11px] text-[var(--muted-foreground)] truncate">Logistics &middot; Venlo &middot; 240 FTE</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
+                      <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-teal);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-teal);"></span></span>
+                      Live
+                    </span>
+                  </div>
+                  <div class="text-[12px] leading-relaxed text-[var(--heading)] border-l-2 pl-3" style="border-color: var(--hooklyne-blue);">
+                    3.2 MW rooftop array going live at Venlo DC next month. Pushing ~6% of EBIT from a single energy swing.
+                  </div>
+                </div>
+              )}
+
+              {b.step === "02" && (
+                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="size-9 rounded-full flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">MV</div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-[13px] font-semibold text-[var(--heading)] truncate">Marieke de Vries</p>
+                      <p class="text-[11px] text-[var(--muted-foreground)] truncate">Head of Operations &middot; m.devries@axiom.nl</p>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-1.5">
+                    {["SMTP", "Catch-all", "Role", "Deliverable"].map((v) => (
+                      <div class="flex items-center gap-1.5 text-[11px] font-medium text-[var(--heading)]">
+                        <svg class="size-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--hooklyne-teal);"><path d="M20 6 9 17l-5-5" /></svg>
+                        {v}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {b.step === "03" && (
+                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-1.5">
+                      <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-orange);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-orange);"></span></span>
+                      <span class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--hooklyne-orange);">Live signal &middot; 3d ago</span>
+                    </div>
+                    <span class="text-[10px] font-mono tabular-nums text-[var(--muted-foreground)]">#SIG-0412</span>
+                  </div>
+                  <p class="text-[13px] font-semibold leading-snug text-[var(--heading)] mb-3">3.2 MW rooftop solar array going live at Venlo DC next month</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Fit</span>
+                    <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: var(--border);">
+                      <div class="h-full rounded-full" style="width: 92%; background: linear-gradient(to right, var(--hooklyne-blue), var(--hooklyne-teal));"></div>
+                    </div>
+                    <span class="text-[11px] font-bold tabular-nums" style="color: var(--hooklyne-teal);">92</span>
+                  </div>
+                </div>
+              )}
+
+              {b.step === "04" && (
+                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                  <div class="flex items-baseline gap-2 pb-2 mb-2 border-b" style="border-color: var(--border);">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">To</span>
+                    <span class="text-[12px] font-medium text-[var(--heading)] truncate">m.devries@axiom.nl</span>
+                  </div>
+                  <div class="flex items-baseline gap-2 pb-2.5 mb-2.5 border-b" style="border-color: var(--border);">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">Sub</span>
+                    <span class="text-[12px] font-semibold text-[var(--heading)] truncate">The 3.2 MW rooftop at Venlo - how you're planning to use it</span>
+                  </div>
+                  <p class="text-[12px] leading-relaxed text-[var(--muted-foreground)] line-clamp-2 mb-3">
+                    Saw the announcement on the 3.2 MW rooftop array going live at Venlo next month. Congrats, that's a serious step.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] text-[var(--muted-foreground)]">NL &middot; EN auto &middot; under 60s</span>
+                    <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded" style="background: var(--hooklyne-navy); color: white;">
+                      Send
+                      <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
