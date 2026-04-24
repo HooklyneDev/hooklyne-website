@@ -133,7 +133,7 @@ const stages = [
     })),
   })} />
   <Background>
-    <section class="pt-32 lg:pt-44 pb-16 lg:pb-24 relative" data-fade>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:load />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
@@ -208,21 +208,7 @@ const stages = [
   </Background>
 
   <Background variant="bottom">
-    <section class="pt-20 lg:pt-28 pb-10 lg:pb-14" data-fade>
-      <div class="container max-w-4xl text-center">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-5">
-          Most prospecting tools give you one ask and a list.
-        </h2>
-        <p class="text-lg text-[var(--muted-foreground)] leading-relaxed mb-4">
-          Generic messages. Unverified emails. Your sender reputation quietly burned.
-        </p>
-        <p class="text-xl md:text-2xl font-medium italic text-[var(--heading)]">
-          We do it differently. The workflow is the product.
-        </p>
-      </div>
-    </section>
-
-    <section class="pb-16 lg:pb-24 relative" data-fade>
+    <section class="pt-12 lg:pt-16 pb-12 lg:pb-16 relative" data-fade>
       <div class="container max-w-5xl">
         <div class="hiw-pipeline rounded-2xl p-5 md:p-6 relative overflow-hidden" style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
           <div class="flex items-center justify-between mb-4">
@@ -241,8 +227,9 @@ const stages = [
               { n: 1, top: "1.2B", label: "pages read", tone: "navy" },
               { n: 2, top: "20+", label: "verifiers", tone: "navy" },
               { n: 3, top: "7", label: "signal types", tone: "teal" },
-              { n: 4, top: "4", label: "reasoning passes", tone: "teal" },
-              { n: 5, top: "<60s", label: "to send", tone: "orange" },
+              { n: 4, top: "12+", label: "live citations", tone: "teal" },
+              { n: 5, top: "4", label: "reasoning passes", tone: "teal" },
+              { n: 6, top: "<60s", label: "to send", tone: "orange" },
             ].map((s, i) => (
               <>
                 <div class="pipeline-node flex-1 flex md:flex-col items-center md:items-center gap-3 md:gap-1 px-2 py-2 relative">
@@ -254,7 +241,7 @@ const stages = [
                     <span class="text-[10px] md:text-[11px] text-[var(--muted-foreground)] whitespace-nowrap md:mt-0.5">{s.label}</span>
                   </div>
                 </div>
-                {i < 4 && (
+                {i < 5 && (
                   <div class="pipeline-connector hidden md:flex items-center shrink-0" aria-hidden="true">
                     <div class="relative h-px w-10 lg:w-14 bg-[var(--border-strong)]/50 overflow-hidden">
                       <div class="pipeline-tracer absolute top-1/2 -translate-y-1/2 h-[2px] w-5 rounded-full" style={`background: linear-gradient(90deg, transparent 0%, var(--hooklyne-blue) 50%, transparent 100%); animation-delay: ${i * 0.6}s;`}></div>
@@ -276,8 +263,8 @@ const stages = [
       </div>
     </section>
 
-    <section class="py-14 lg:py-20">
-      <div class="container max-w-6xl flex flex-col gap-20 lg:gap-24">
+    <section class="pt-4 pb-12 lg:pt-6 lg:pb-16">
+      <div class="container max-w-6xl flex flex-col gap-16 lg:gap-20">
         {stages.map((s, i) => (
           <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
             <div>
@@ -309,6 +296,30 @@ const stages = [
                   ))}
                 </div>
               )}
+
+              {s.n === 4 && (
+                <div class="mt-6 rounded-2xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+                  <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-teal)] mb-2">After the reply</p>
+                  <p class="text-sm font-semibold text-[var(--heading)] mb-1.5">Meeting Prep, on demand.</p>
+                  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-3">
+                    When the reply comes in, request a brief. Five minutes later you walk in knowing what they just raised, what their contact said publicly last quarter, and three openers that fit the meeting type.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    {["Cold", "Warm", "Inbound", "Follow-up", "Conference", "Post-conference", "Pitch"].map((t) => (
+                      <span class="text-[10px] font-medium px-2 py-1 rounded-full" style="background: var(--background); border: 1px solid var(--border); color: var(--heading);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {s.n === 6 && (
+                <div class="mt-6">
+                  <a href="/product" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
+                    See the screens in the portal
+                    <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </a>
+                </div>
+              )}
             </div>
 
             <div>
@@ -330,25 +341,34 @@ const stages = [
       </div>
     </section>
 
-    <section class="pt-10 pb-20 lg:pt-12 lg:pb-28" data-fade>
+    <section class="pt-6 pb-16 lg:pt-8 lg:pb-24" data-fade>
       <div class="container max-w-4xl">
         <div
-          class="relative rounded-3xl p-8 md:p-12 overflow-hidden"
+          class="relative rounded-3xl p-8 md:p-12 overflow-hidden text-center"
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);"
         >
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">After the reply</p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Meeting Prep, on demand.
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            This is the workflow. See it in the product.
           </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6 max-w-2xl">
-            When the reply comes in, request a brief. Five minutes later you walk in knowing what they just raised, what their contact said publicly last quarter, and three openers that fit the meeting type. Every claim traces to a URL.
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
+            Six stages behind one prospect card. Review in under a minute, send from your own inbox.
           </p>
-          <div class="flex flex-wrap gap-2">
-            {["Cold", "Warm", "Inbound", "Follow-up", "Conference", "Post-conference", "Pitch"].map((t) => (
-              <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background: var(--card); border: 1px solid var(--border); color: var(--heading);">{t}</span>
-            ))}
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/contact"
+              class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+            >
+              Start your free pilot
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="/product"
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+            >
+              See the screens
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
           </div>
-          <p class="mt-5 text-xs font-medium text-[var(--muted-foreground)]">Seven meeting types.</p>
         </div>
       </div>
     </section>
@@ -378,6 +398,7 @@ const stages = [
   .pipeline-node:nth-child(5) .pipeline-dot { animation-delay: 1.2s; }
   .pipeline-node:nth-child(7) .pipeline-dot { animation-delay: 1.8s; }
   .pipeline-node:nth-child(9) .pipeline-dot { animation-delay: 2.4s; }
+  .pipeline-node:nth-child(11) .pipeline-dot { animation-delay: 3.0s; }
 
   @keyframes pipeline-node-pulse {
     0%, 70%, 100% { transform: scale(1); filter: brightness(1); }
