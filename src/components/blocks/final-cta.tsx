@@ -123,6 +123,23 @@ export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
         data-fade
         style={{ background: "var(--hooklyne-navy)" }}
       >
+        {/* Subtle light wash - soft blue lead from the top, warm hint from behind */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 80% at 50% 0%, rgba(52,76,163,0.45) 0%, rgba(52,76,163,0.18) 45%, transparent 80%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 40% 60% at 85% 100%, rgba(255,140,66,0.10) 0%, transparent 70%)",
+          }}
+        />
       <div className="container max-w-5xl py-12 lg:py-16 text-center relative z-10">
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55 mb-4">
           {copy.kicker}
