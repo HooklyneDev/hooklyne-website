@@ -427,6 +427,64 @@ const profileTabs = [
           ))}
         </div>
 
+        <div class="mt-10 text-center">
+          <a href="/how-it-works" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
+            See what runs behind each path
+            <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24" data-fade>
+      <div class="container max-w-6xl">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signals</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            The right moment, not every moment.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Every signal scored twice: matters to them, matters to you. Only the ones that pass both land in your inbox.
+          </p>
+        </div>
+
+        <SignalHeatTable client:visible />
+
+        <div class="mt-12">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">What we watch</p>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            {signalSources.map((s) => (
+              <span class="text-sm font-medium px-4 py-2 rounded-full" style="background: var(--card); border: 1px solid var(--border); color: var(--foreground)">{s}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Live. Not weekly.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">When something moves, you know. Not next Monday.</p>
+          </div>
+          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Deeper than news.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Company pages watched directly. New roles, quiet launches, careers-page expansions - before the press catches up.</p>
+          </div>
+          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Signal, not noise.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Grouped by company, ranked by heat. Move to leads, dismiss, keep tracking.</p>
+          </div>
+          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Track, don't forget.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Flip tracking on for any lead. When something new happens - a hire, a launch, a funding round - you are first to know. Not next Monday.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="/how-it-works#stage-3" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
+            See how signals are detected and scored
+            <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -472,160 +530,19 @@ const profileTabs = [
       </div>
     </section>
 
-    <section class="py-16 lg:py-24" data-fade>
+    <section class="pt-14 pb-16 lg:pt-20 lg:pb-24" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signals</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Your voice</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            The right moment, not every moment.
+            Set it once. Sound like you forever. In both languages.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Every signal scored twice: matters to them, matters to you. Only the ones that pass both land in your inbox.
+            Five tabs turn a generic draft into something your rep would actually send, in native Dutch or natural English.
           </p>
         </div>
 
-        <SignalHeatTable client:visible />
-
-        <div class="mt-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">What we watch</p>
-          <div class="flex flex-wrap items-center justify-center gap-2">
-            {signalSources.map((s) => (
-              <span class="text-sm font-medium px-4 py-2 rounded-full" style="background: var(--card); border: 1px solid var(--border); color: var(--foreground)">{s}</span>
-            ))}
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Live. Not weekly.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">When something moves, you know. Not next Monday.</p>
-          </div>
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Deeper than news.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Company pages watched directly. New roles, quiet launches, careers-page expansions - before the press catches up.</p>
-          </div>
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Signal, not noise.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Grouped by company, ranked by heat. Move to leads, dismiss, keep tracking.</p>
-          </div>
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Track, don't forget.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Flip tracking on for any lead. When something new happens - a hire, a launch, a funding round - you are first to know. Not next Monday.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-14 lg:py-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-2xl mb-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Intelligence</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Read the news. Then act on it.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Sector stories picked for your market, matched to prospects in your pipeline.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-5">
-          <div class="rounded-2xl p-7" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Sector news</p>
-            <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">What's moving this week.</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Picked for your sector, ranked for relevance, written for a salesperson not an analyst.
-            </p>
-          </div>
-          <div class="rounded-2xl p-7" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-2">Match to leads</p>
-            <h3 class="text-lg font-semibold text-[var(--heading)] mb-2">News with a name on it.</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Pick up to 25 leads. Each one gets the most relevant story with a ready outreach angle. Copy, send.
-            </p>
-          </div>
-        </div>
-
-        <p class="text-center text-sm italic text-[var(--muted-foreground)] mt-8">
-          The gap between reading news and doing something with it.
-        </p>
-      </div>
-    </section>
-
-    <section class="py-16 lg:py-24" data-fade>
-      <div class="container max-w-6xl">
-        <div class="grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Meeting Prep</p>
-            <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-              Walk in knowing more than they expected.
-            </h2>
-            <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
-              Full brief in about five minutes. Live sources. Every fact traceable.
-            </p>
-
-            <div class="space-y-5">
-              <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">How to run it</p>
-                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Fill company, contact, meeting type. Hit generate. Brief in your inbox in ~5 minutes.</p>
-              </div>
-
-              <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">Meeting types</p>
-                <div class="flex flex-wrap gap-1.5">
-                  {["Cold outreach", "Warm intro", "Inbound", "Follow-up", "Conference", "Post-conference", "Pitch"].map((t) => (
-                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: rgba(52,76,163,0.06); color: var(--hooklyne-blue)">{t}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <p class="text-sm font-semibold text-[var(--heading)] mb-2">In the brief</p>
-                <ul class="space-y-2">
-                  {[
-                    "Recent moves: news, hires, funding, launches",
-                    "What the contact said publicly in the last 90 days",
-                    "How their business actually works",
-                    "Angles your pitch should lean on",
-                    "Every claim sourced and clickable",
-                  ].map((b) => (
-                    <li class="flex items-start gap-2.5 text-sm text-[var(--muted-foreground)]">
-                      <svg class="size-3.5 shrink-0 mt-1 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:sticky lg:top-28">
-            <PortalShot
-              client:visible
-              label="Meeting brief"
-              src="/screens/stage-review.png"
-              ratio="3/2"
-              crumb="Portal / Meeting Prep"
-              status="Ready"
-              statusTone="teal"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-14 lg:py-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Sender Profile</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Set it once. Sound like you forever.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            The five tabs that turn a generic draft into something your rep would actually send.
-          </p>
-        </div>
-
-        <div class="rounded-2xl overflow-hidden mb-10" style="background: var(--card); box-shadow: var(--shadow-md)">
+        <div class="rounded-2xl overflow-hidden mb-8" style="background: var(--card); box-shadow: var(--shadow-md)">
           <div class="flex border-b border-[var(--border)] overflow-x-auto">
             {profileTabs.map((t) => (
               <div class="flex items-center gap-2 px-4 sm:px-5 py-3 text-xs font-semibold whitespace-nowrap text-[var(--muted-foreground)]">
@@ -656,21 +573,29 @@ const profileTabs = [
           </div>
         </div>
 
-        <p class="text-center text-sm italic text-[var(--muted-foreground)] max-w-2xl mx-auto">
-          A completion bar keeps you honest. Fill every tab once. Every message inherits your voice from that moment.
-        </p>
-      </div>
-    </section>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="rounded-2xl p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="size-10 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">NL</div>
+            <div>
+              <p class="text-sm font-semibold text-[var(--heading)] mb-1">Native Dutch</p>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Written, not translated. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it.</p>
+            </div>
+          </div>
+          <div class="rounded-2xl p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="size-10 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">EN</div>
+            <div>
+              <p class="text-sm font-semibold text-[var(--heading)] mb-1">Natural English</p>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Language is picked automatically from the company domain and the contact's location, then locked for that prospect.</p>
+            </div>
+          </div>
+        </div>
 
-    <section class="pt-10 pb-16 lg:pt-12 lg:pb-20" data-fade>
-      <div class="container max-w-4xl text-center">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Bilingual</p>
-        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
-          Native Dutch. Natural English.
-        </h2>
-        <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto">
-          Not translated. Written. Language is picked automatically from the company domain and the contact's location, then locked for that prospect. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it.
-        </p>
+        <div class="text-center">
+          <a href="/how-it-works#stage-5" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
+            See how the message is drafted across four reasoning passes
+            <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
