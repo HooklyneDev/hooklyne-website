@@ -113,7 +113,8 @@ export const GridSignals = () => {
  });
  }
 
- // Hero video - block its own footprint AND everything full-width below the midpoint
+ // Hero video - block its own footprint AND everything full-width below the midpoint.
+ // Used on the home hero where the video bleeds into the section below.
  const heroVideo = document.getElementById("hero-video");
  if (heroVideo) {
  const r = heroVideo.getBoundingClientRect();
@@ -127,6 +128,19 @@ export const GridSignals = () => {
  // Full-width cutoff from video midpoint downward - pulses never appear below here
  const videoMidY = r.top - rect.top + r.height * 0.5;
  dead.push({ x: 0, y: videoMidY, w: width, h: height });
+ }
+
+ // Hero panel - rectangular dead zone only (no full-width cutoff).
+ // Used on interior-page heroes where a content panel sits below the headline.
+ const heroPanel = document.getElementById("hero-panel");
+ if (heroPanel) {
+ const r = heroPanel.getBoundingClientRect();
+ dead.push({
+ x: r.left - rect.left - ZONE_PAD,
+ y: r.top - rect.top - ZONE_PAD,
+ w: r.width + ZONE_PAD * 2,
+ h: r.height + ZONE_PAD * 2,
+ });
  }
 
  // Convert dead zones to Rects for unified overlap testing.
