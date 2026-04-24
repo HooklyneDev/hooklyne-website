@@ -11,26 +11,26 @@ const packageBlocks = [
   {
     step: "01",
     tag: "The company",
-    title: "A fit. Not a guess.",
-    body: "What they do, what just changed, why it's worth your time. Fresh from the live web, not a scraped homepage.",
+    title: "Who they are and what changed this month",
+    body: "Read from the live web the morning we send, not pulled from a database that was scraped last year. Includes the one line you'd actually lead with.",
   },
   {
     step: "02",
     tag: "The decision-maker",
-    title: "Verified, or not shipped.",
-    body: "Name, role, email, phone where we have it. Checked across 20+ providers with four deliverability layers: SMTP, catch-all, role, deliverable. If it's not clean, it doesn't land.",
+    title: "A contact we'd stake our own cold outreach on",
+    body: "Name, role, email, phone where we have it, checked across 20+ providers with four deliverability layers (SMTP, catch-all, role, deliverable). Anything that doesn't clear the bar is held back.",
   },
   {
     step: "03",
     tag: "The hook",
-    title: "A real reason to write today.",
-    body: "A live signal from the last 14 days. Scored for their business and for what you sell. Only the real ones come through.",
+    title: "A real thing that happened in the last 14 days",
+    body: "Funding, hiring, product launch, exec move, facility change. Scored against what you sell so a generic news mention doesn't end up in your inbox as a signal.",
   },
   {
     step: "04",
     tag: "The message",
-    title: "In your voice. Ready to send.",
-    body: "An email and a LinkedIn invite, anchored to the signal. Drafted across four reasoning passes. Nothing templated.",
+    title: "Email + LinkedIn invite written in your voice",
+    body: "Drafted against your past outreach across four reasoning passes, anchored to the hook above. Nothing templated, no slot-filling. Edit a line or send as-is.",
   },
 ];
 
@@ -219,16 +219,14 @@ const profileTabs = [
 
         <div class="rounded-3xl overflow-hidden" style="background: var(--card); border: 1px solid var(--border);">
           {packageBlocks.map((b, i) => (
-            <div class={`grid md:grid-cols-[auto_1fr] gap-6 md:gap-10 p-7 md:p-9 ${i < packageBlocks.length - 1 ? 'border-b border-[var(--border)]' : ''}`}>
-              <div class="flex md:block items-baseline gap-3">
-                <span class="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--hooklyne-blue)]/20 tabular-nums">{b.step}</span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] md:hidden">{b.tag}</span>
+            <div class={`p-7 md:p-9 ${i < packageBlocks.length - 1 ? 'border-b border-[var(--border)]' : ''}`}>
+              <div class="flex items-center gap-2.5 mb-2">
+                <span class="text-[11px] font-mono tabular-nums text-[var(--muted-foreground)]">{b.step}</span>
+                <span class="h-3 w-px bg-[var(--border)]"></span>
+                <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hooklyne-blue)]">{b.tag}</span>
               </div>
-              <div>
-                <span class="hidden md:inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-2">{b.tag}</span>
-                <h3 class="text-xl md:text-2xl font-semibold text-[var(--heading)] mb-2 leading-tight tracking-tight">{b.title}</h3>
-                <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl">{b.body}</p>
-              </div>
+              <h3 class="text-xl md:text-[22px] font-semibold text-[var(--heading)] mb-2 leading-snug tracking-tight max-w-3xl">{b.title}</h3>
+              <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl">{b.body}</p>
             </div>
           ))}
         </div>
