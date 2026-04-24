@@ -46,9 +46,9 @@ const values = [
     }
   })} />
   <Background>
-    <section class="pt-32 lg:pt-44 pb-16 lg:pb-24 relative" data-fade>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:load signals={false} />
-      <div id="hero-content" class="container max-w-4xl text-center relative z-10 mb-14 lg:mb-20">
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           Proper research, without cutting outreach volume.
@@ -56,40 +56,6 @@ const values = [
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
           The research layer most B2B teams can't afford to staff. Delivered as software.
         </p>
-      </div>
-
-      <div class="container max-w-5xl relative z-10">
-        <div class="about-shape rounded-2xl p-5 md:p-7 relative overflow-hidden" style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
-          <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-2">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hooklyne-blue)]">What we do</span>
-            </div>
-            <span class="text-[10px] font-mono text-[var(--muted-foreground)] hidden sm:block">EMEA B2B</span>
-          </div>
-
-          <div class="shape-grid grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-3">
-            {[
-              { label: "Built for", value: "SME sales teams", sub: "10 to 100 person companies", tone: "orange" },
-              { label: "Languages", value: "Dutch and English", sub: "Native, not translated", tone: "teal" },
-              { label: "Coverage", value: "EMEA", sub: "NL and UK first, DACH and Nordics", tone: "blue" },
-              { label: "Compliance", value: "GDPR-first", sub: "EU data, EU providers", tone: "blue" },
-            ].map((s, i) => (
-              <div class="shape-cell relative flex flex-col gap-1.5 md:px-4 md:border-l md:border-[var(--border)] md:first:border-l-0 md:first:pl-0">
-                <div class="flex items-center gap-1.5">
-                  <span class={`shape-dot size-1.5 rounded-full shape-dot-${i}`} style={`background: var(--hooklyne-${s.tone});`}></span>
-                  <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">{s.label}</span>
-                </div>
-                <div class="text-base md:text-lg font-semibold text-[var(--heading)] tracking-tight leading-none">{s.value}</div>
-                <div class="text-[11px] text-[var(--muted-foreground)]">{s.sub}</div>
-              </div>
-            ))}
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-[var(--border)] flex items-center justify-end flex-wrap gap-2">
-            <span class="text-[11px] text-[var(--muted-foreground)]">KVK 99990512</span>
-          </div>
-        </div>
       </div>
     </section>
   </Background>
@@ -169,80 +135,6 @@ const values = [
     </section>
 
     <section class="py-20 lg:py-28" data-fade>
-      <div class="container max-w-5xl">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">What it looks like</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            One prospect. One screen. Ready to send.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Verified contact, live signal, drafted message. Everything a researcher would hand you, without hiring one.
-          </p>
-        </div>
-
-        <div class="relative rounded-2xl overflow-hidden" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xl);">
-          <div class="grid md:grid-cols-5 gap-0">
-            <div class="md:col-span-2 p-6 md:p-7" style="background: linear-gradient(180deg, var(--background) 0%, var(--card) 100%); border-right: 1px solid var(--border);">
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)]">Company</span>
-                <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
-                  <span class="size-1 rounded-full bg-[var(--hooklyne-teal)]"></span>
-                  9/10 fit
-                </span>
-              </div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="size-10 rounded-lg flex items-center justify-center text-white text-sm font-bold" style="background: linear-gradient(135deg, #1e3a8a 0%, #2b4fb3 100%);">AB</div>
-                <div>
-                  <div class="text-sm font-semibold text-[var(--heading)]">Acme B.V.</div>
-                  <div class="text-[11px] text-[var(--muted-foreground)]">Industrial OEM · NL · 85 staff</div>
-                </div>
-              </div>
-              <div class="rounded-lg p-3 mb-4" style="background: rgba(255,140,66,0.08); border: 1px solid rgba(255,140,66,0.22);">
-                <div class="flex items-center gap-1.5 mb-1">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/></svg>
-                  <span class="text-[9px] font-bold uppercase tracking-[0.18em]" style="color: var(--hooklyne-orange);">Signal · 2h ago</span>
-                </div>
-                <p class="text-[12px] font-semibold text-[var(--heading)] leading-snug">Raised €12M Series B</p>
-                <p class="text-[11px] text-[var(--muted-foreground)] mt-0.5">Expansion plans named in release</p>
-              </div>
-              <div class="flex items-center gap-2.5">
-                <div class="size-8 rounded-full flex items-center justify-center text-[11px] font-semibold text-white" style="background: var(--hooklyne-navy);">MJ</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-[12px] font-semibold text-[var(--heading)] truncate">Marieke Jansen</div>
-                  <div class="text-[10px] text-[var(--muted-foreground)]">VP Operations</div>
-                </div>
-                <span class="inline-flex items-center gap-1 text-[9px] font-semibold px-1.5 py-0.5 rounded" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  Verified
-                </span>
-              </div>
-            </div>
-
-            <div class="md:col-span-3 p-6 md:p-7">
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-blue)]">Draft · in your voice</span>
-                <span class="text-[10px] font-mono text-[var(--muted-foreground)]">4 passes · QC</span>
-              </div>
-              <div class="space-y-2.5 text-[13px] text-[var(--foreground)] leading-relaxed">
-                <p><span class="text-[var(--muted-foreground)]">Subject:</span> Operations scale-up after the Series B</p>
-                <p class="pt-2 border-t border-[var(--border)]">Hi Marieke,</p>
-                <p>Saw the Series B news. Scaling ops after a raise that size usually means process debt surfaces fast.</p>
-                <p>We help Dutch OEMs find and brief the right decision-makers at companies on the edge of their ICP, in about a minute per prospect. Worth a short call?</p>
-                <p class="text-[var(--muted-foreground)]">- Tim</p>
-              </div>
-              <div class="flex items-center justify-end gap-2 mt-5 pt-4 border-t border-[var(--border)]">
-                <button class="text-[11px] font-semibold px-3 py-1.5 rounded-md text-[var(--muted-foreground)] hover:bg-[var(--card-hover)]" disabled>Edit</button>
-                <button class="text-[11px] font-semibold px-3 py-1.5 rounded-md text-white btn-shine" style="background: var(--hooklyne-navy);" disabled>Send</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="text-center text-xs italic text-[var(--muted-foreground)] mt-6">Example output. Fictional prospect.</p>
-      </div>
-    </section>
-
-    <section class="py-20 lg:py-28" data-fade>
       <div class="container max-w-6xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">What we care about</p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-12 leading-[1.1] max-w-2xl">
@@ -262,47 +154,35 @@ const values = [
       </div>
     </section>
 
-    <section class="py-20 lg:py-28" data-fade>
-      <div class="container max-w-6xl">
+    <section class="pt-6 pb-16 lg:pt-8 lg:pb-24" data-fade>
+      <div class="container max-w-4xl">
         <div
-          class="rounded-3xl p-10 lg:p-14"
+          class="relative rounded-3xl p-8 md:p-12 overflow-hidden text-center"
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);"
         >
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Who we serve</p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-tight">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
             Dutch and UK SMEs first. EN across EMEA.
           </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6 max-w-2xl">
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
             We start close to home because we speak both languages natively and know the buyers. English-speaking teams elsewhere in EMEA are welcome. GDPR-compliant by design.
           </p>
-          <div class="inline-flex items-center gap-2 text-sm" style="color: var(--muted-foreground);">
-            <span class="text-xs font-semibold uppercase tracking-widest">KVK</span>
-            <span class="font-mono text-sm text-[var(--heading)]">99990512</span>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/contact"
+              class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+            >
+              Start your free pilot
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="/how-it-works"
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+            >
+              See how it works
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Directional, not committed roadmap. If pilots plan or Q3 integration dates shift, update these three lines. */}
-    <section class="pt-4 pb-20 lg:pt-6 lg:pb-28" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-orange)] mb-3">Where we are going</p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6 leading-tight">
-            Small steps, shipped often.
-          </h2>
-          <ul class="flex flex-col gap-3">
-            {[
-              "Pilots running with Dutch and UK SMEs through Q2 2026.",
-              "Integrations with HubSpot and Pipedrive shipping in Q3.",
-              "Next market expansion: DACH. Dutch speakers already covered.",
-            ].map((line) => (
-              <li class="flex items-start gap-3 text-base text-[var(--muted-foreground)] leading-relaxed">
-                <span class="mt-[9px] flex-none w-1.5 h-1.5 rounded-full" style="background: var(--hooklyne-blue);"></span>
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>
