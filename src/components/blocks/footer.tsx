@@ -1,10 +1,28 @@
 export const Footer = () => (
-  <footer className="relative bg-[var(--hooklyne-navy)]">
+  <footer className="relative overflow-hidden bg-[var(--hooklyne-navy)]">
     {/* subtle top hairline separating from the CTA above */}
     <div
       aria-hidden="true"
       className="absolute inset-x-0 top-0 h-px pointer-events-none"
       style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)" }}
+    />
+
+    {/* soft bottom glow - subtle gradient warmth near the base */}
+    <div
+      aria-hidden="true"
+      className="absolute inset-x-0 bottom-0 h-64 pointer-events-none"
+      style={{
+        background:
+          "radial-gradient(ellipse 70% 100% at 50% 100%, rgba(52,76,163,0.35) 0%, rgba(52,76,163,0.15) 35%, transparent 70%)",
+      }}
+    />
+    <div
+      aria-hidden="true"
+      className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+      style={{
+        background:
+          "linear-gradient(to top, rgba(255,140,66,0.08) 0%, transparent 100%)",
+      }}
     />
 
     <div className="container relative z-10 pt-14 pb-10 lg:pt-16 lg:pb-12">
