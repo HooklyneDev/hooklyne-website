@@ -10,18 +10,18 @@ export const Footer = () => (
     {/* soft bottom glow - subtle gradient warmth near the base */}
     <div
       aria-hidden="true"
-      className="absolute inset-x-0 bottom-0 h-64 pointer-events-none"
+      className="absolute inset-x-0 bottom-0 h-[32rem] pointer-events-none"
       style={{
         background:
-          "radial-gradient(ellipse 70% 100% at 50% 100%, rgba(52,76,163,0.35) 0%, rgba(52,76,163,0.15) 35%, transparent 70%)",
+          "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(52,76,163,0.42) 0%, rgba(52,76,163,0.20) 40%, rgba(52,76,163,0.08) 70%, transparent 95%)",
       }}
     />
     <div
       aria-hidden="true"
-      className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+      className="absolute inset-x-0 bottom-0 h-56 pointer-events-none"
       style={{
         background:
-          "linear-gradient(to top, rgba(255,140,66,0.08) 0%, transparent 100%)",
+          "linear-gradient(to top, rgba(255,140,66,0.10) 0%, rgba(255,140,66,0.04) 50%, transparent 100%)",
       }}
     />
 
