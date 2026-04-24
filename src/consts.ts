@@ -38,15 +38,15 @@ export const SITE_METADATA = {
     siteName: "Hooklyne",
     images: [
       {
-        url: "/favicon/web-app-manifest-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "Hooklyne",
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Hooklyne - Proper research. Enough outreach. Pick both.",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     creator: "@hooklyne",
   },
   icons: {
