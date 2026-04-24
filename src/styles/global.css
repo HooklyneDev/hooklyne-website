@@ -106,11 +106,10 @@
   transform: translateX(-120%);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
 }
 .btn-shine:hover::after {
   opacity: 1;
-  animation: btn-glare-hover 1.6s ease-in-out infinite alternate;
+  animation: btn-glare-hover 1.2s ease-in-out 0s infinite alternate;
 }
 @keyframes btn-glare-hover {
   from { transform: translateX(-120%); }
