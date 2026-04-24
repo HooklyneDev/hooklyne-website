@@ -207,7 +207,7 @@ const profileTabs = [
 
     <section class="pt-10 pb-10 lg:pt-14 lg:pb-12" data-fade>
       <div class="container max-w-6xl">
-        <div class="max-w-2xl mb-10 lg:mb-12">
+        <div class="max-w-2xl mb-8 lg:mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The package</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
             Four things have to be right before you hit send.
@@ -219,17 +219,17 @@ const profileTabs = [
 
         <div class="grid md:grid-cols-2 gap-4 md:gap-5">
           {packageBlocks.map((b) => (
-            <div class="package-card rounded-2xl p-6 md:p-7 flex flex-col" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="flex items-center gap-2.5 mb-3">
+            <div class="package-card rounded-2xl p-5 md:p-6 flex flex-col" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="flex items-center gap-2.5 mb-2.5">
                 <span class="text-[11px] font-mono tabular-nums text-[var(--muted-foreground)]">{b.step}</span>
                 <span class="h-3 w-px bg-[var(--border)]"></span>
                 <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hooklyne-blue)]">{b.tag}</span>
               </div>
-              <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] mb-2 leading-snug tracking-tight">{b.title}</h3>
-              <p class="text-[15px] text-[var(--muted-foreground)] leading-relaxed mb-5">{b.body}</p>
+              <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] mb-1.5 leading-snug tracking-tight">{b.title}</h3>
+              <p class="text-[15px] text-[var(--muted-foreground)] leading-relaxed mb-4">{b.body}</p>
 
               {b.step === "01" && (
-                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center gap-3 mb-3">
                     <div class="size-9 rounded-lg flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">AL</div>
                     <div class="min-w-0 flex-1">
@@ -248,7 +248,7 @@ const profileTabs = [
               )}
 
               {b.step === "02" && (
-                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center gap-3 mb-3">
                     <div class="size-9 rounded-full flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">MV</div>
                     <div class="min-w-0 flex-1">
@@ -268,7 +268,7 @@ const profileTabs = [
               )}
 
               {b.step === "03" && (
-                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-1.5">
                       <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-orange);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-orange);"></span></span>
@@ -288,7 +288,7 @@ const profileTabs = [
               )}
 
               {b.step === "04" && (
-                <div class="mt-auto rounded-xl p-4" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-baseline gap-2 pb-2 mb-2 border-b" style="border-color: var(--border);">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">To</span>
                     <span class="text-[12px] font-medium text-[var(--heading)] truncate">m.devries@axiom.nl</span>
