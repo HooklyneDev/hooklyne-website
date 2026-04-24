@@ -6,8 +6,8 @@ const PULSE_DURATION = 3200;
 const EDGE_PAD = SPACING;
 const ZONE_PAD = 24;
 // Label footprint (px): label is ~9px font, up to ~18 chars + 12px gap from dot.
-const LABEL_REACH = 160;
-const LABEL_HALF_H = 18;
+const LABEL_REACH = 110;
+const LABEL_HALF_H = 14;
 const DOT_HALF = 14;
 
 const SIGNAL_LABELS = [
@@ -159,8 +159,31 @@ export const GridSignals = () => {
  }
  }
 
- if (candidates.length === 0) return null;
- const picked = candidates[Math.floor(Math.random() * candidates.length)];
+ // Fallback: if label-footprint check killed everything, retry with dot-only
+ // footprint so we always produce at least one candidate where possible.
+ let pool = candidates;
+ if (pool.length === 0) {
+ const dotOnly: Candidate[] = [];
+ const dotFootprint = (x: number, y: number): Rect => ({
+ x1: x - DOT_HALF, y1: y - DOT_HALF, x2: x + DOT_HALF, y2: y + DOT_HALF,
+ });
+ for (let c = 0; c <= cols; c++) {
+ for (let r = minRow; r <= maxRow; r++) {
+ const x = c * SPACING;
+ const y = r * SPACING;
+ if (y < visibleTop || y > visibleBottom) continue;
+ const fp = dotFootprint(x, y);
+ if (deadRects.some((d) => rectsOverlap(fp, d))) continue;
+ if (active.some((a) => rectsOverlap(fp, a))) continue;
+ const labelSide: "left" | "right" = x > width * 0.55 ? "left" : "right";
+ dotOnly.push({ x, y, labelSide });
+ }
+ }
+ pool = dotOnly;
+ }
+
+ if (pool.length === 0) return null;
+ const picked = pool[Math.floor(Math.random() * pool.length)];
 
  const centerLeft = (width - 640) / 2;
  const centerRight = centerLeft + 640;
