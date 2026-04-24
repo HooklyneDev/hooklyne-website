@@ -29,7 +29,7 @@ type TabDef = {
   sub: string;
   price?: string;
   icon: LucideIcon;
-  tone: "teal" | "orange" | "amber";
+  tone: "teal" | "orange" | "amber" | "slate" | "rose";
   totalLabel: string;
   total: string;
   totalSub: string;
@@ -163,7 +163,7 @@ const TABS: TabDef[] = [
     sub: "Multi-tool, manual",
     price: "~€50–150/mo",
     icon: Wrench,
-    tone: "amber",
+    tone: "slate",
     totalLabel: "Your time",
     total: "~90 min per prospect",
     totalSub: "every minute is yours",
@@ -208,7 +208,7 @@ const TABS: TabDef[] = [
     sub: "Fully outsourced",
     price: "€2,500+/mo",
     icon: Briefcase,
-    tone: "orange",
+    tone: "rose",
     totalLabel: "Your time",
     total: "Minutes per prospect",
     totalSub: "not your voice, not your control, not your learning",
@@ -243,6 +243,8 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
   teal:   { bg: "rgba(13,148,136,0.10)",  border: "rgba(13,148,136,0.30)",  fg: "var(--hooklyne-teal)",   soft: "rgba(13,148,136,0.08)"  },
   orange: { bg: "rgba(255,140,66,0.10)",  border: "rgba(255,140,66,0.30)",  fg: "var(--hooklyne-orange)", soft: "rgba(255,140,66,0.08)"  },
   amber:  { bg: "rgba(245,158,11,0.10)",  border: "rgba(245,158,11,0.30)",  fg: "#b45309",                soft: "rgba(245,158,11,0.08)"  },
+  slate:  { bg: "rgba(100,116,139,0.10)", border: "rgba(100,116,139,0.30)", fg: "#475569",                soft: "rgba(100,116,139,0.08)" },
+  rose:   { bg: "rgba(225,29,72,0.08)",   border: "rgba(225,29,72,0.28)",   fg: "#be123c",                soft: "rgba(225,29,72,0.07)"   },
 };
 
 const NUDGE_ORDER: TabKey[] = ["database", "aioutreach", "diy", "agency"];
@@ -430,7 +432,7 @@ export const DIYCompare = () => {
             </div>
           ))}
           {/* Summary card fills the empty grid slot when step count < 6 */}
-          {active.footerNote && (
+          {active.footerNote && active.steps.length < 6 && (
             <div
               className="relative flex flex-col justify-center p-5 lg:p-7 rounded-2xl"
               style={{
@@ -444,6 +446,19 @@ export const DIYCompare = () => {
             </div>
           )}
         </div>
+
+        {/* Full-width footer line when all 6 slots are filled */}
+        {active.footerNote && active.steps.length >= 6 && (
+          <div
+            className="mt-4 px-4 py-3 rounded-xl flex items-start gap-2.5"
+            style={{ background: tone.soft, border: `1px dashed ${tone.border}` }}
+          >
+            <Clock className="size-3.5 shrink-0 mt-0.5" style={{ color: tone.fg }} />
+            <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">
+              {active.footerNote}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
