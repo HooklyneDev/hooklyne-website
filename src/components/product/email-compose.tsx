@@ -7,15 +7,17 @@ import { GraphicShell } from "./graphic-shell";
  * focused moment of "open it, send it, close it".
  */
 
-const SUBJECT = "Two diagnostics before the new VP Ops starts Monday";
+const SUBJECT = "The 3.2 MW rooftop at Venlo - how you're planning to use it";
 const BODY: string[] = [
   "Hi Marieke,",
   "",
-  "Four ops roles opened in Rotterdam since the Series B, and the new VP Ops starts Monday based on his LinkedIn.",
+  "Saw the announcement on the 3.2 MW rooftop array going live at the Venlo DC next month. Congrats, that's a serious step.",
   "",
-  "Two things bite Dutch 3PLs at this stage: routing data fragmenting across warehouses, and middle-layer reporting breaking the moment headcount doubles. One post-raise client hit both inside 60 days.",
+  "The question we keep seeing at this scale: how much of that production actually offsets your load in real time versus getting sold back at wholesale. Most Dutch operators we talk to are leaving 18-30% on the table in the first year because the forecasting and charging windows aren't tied to the DC's shift pattern.",
   "",
-  "Happy to send the two diagnostics we'd run first. 15 minutes if you'd rather talk.",
+  "We help teams close that gap with an energy management layer that sits between your PV inverters, the grid contract, and the forklift and cold-storage load. Two operators in your range cut net energy spend by ~22% inside six months.",
+  "",
+  "Worth a 20-minute look before the array goes live? Happy to send a one-pager first.",
   "",
   "Best,",
   "Tim",
@@ -141,12 +143,12 @@ export const EmailCompose = () => {
                 <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" style={{ color: "var(--hooklyne-teal)" }}>Verified</span>
               </div>
               <p className="text-[10px] sm:text-[11px] truncate" style={{ color: "var(--muted-foreground)" }}>
-                VP Sales, Axiom Logistics · m.devries@axiom.nl
+                Head of Operations, Axiom Logistics · m.devries@axiom.nl
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-1.5 shrink-0">
-              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,140,66,0.10)", color: "var(--hooklyne-orange)" }}>Hook: Series B</span>
-              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(52,76,163,0.08)", color: "var(--hooklyne-blue)" }}>Rotterdam</span>
+              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,140,66,0.10)", color: "var(--hooklyne-orange)" }}>Hook: 3.2 MW solar</span>
+              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(52,76,163,0.08)", color: "var(--hooklyne-blue)" }}>Venlo DC</span>
             </div>
           </div>
 
