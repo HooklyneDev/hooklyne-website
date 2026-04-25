@@ -142,17 +142,17 @@ const stages = [
     })),
   })} />
   <Background topStop="85%">
-    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+    <section class="pt-28 sm:pt-32 lg:pt-44 pb-10 sm:pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:load />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-4 sm:mb-5">
           A research workflow. Not a chatbot.
         </h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed mb-8">
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed mb-6 sm:mb-8">
           Six stages working together. Each one does what a good researcher would do, continuously, so your rep never has to.
         </p>
-        <div class="flex flex-wrap items-center justify-center gap-4 mb-14 lg:mb-16">
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-10 sm:mb-14 lg:mb-16">
           <a
             href="/contact"
             class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
@@ -204,13 +204,13 @@ const stages = [
   </Background>
 
   <Background variant="bottom">
-    <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
-      <div class="container max-w-6xl flex flex-col gap-20 lg:gap-28">
+    <section class="pt-10 sm:pt-12 lg:pt-16 pb-10 sm:pb-12 lg:pb-16">
+      <div class="container max-w-6xl flex flex-col gap-14 sm:gap-20 lg:gap-28">
         {stages.map((s, i) => (
-          <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
-            <div>
-              <div class="inline-flex items-center gap-2 mb-5">
-                <span class="inline-flex items-center justify-center size-9 rounded-xl text-sm font-bold text-white" style="background: var(--hooklyne-navy);">
+          <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
+            <div class="min-w-0">
+              <div class="inline-flex items-center flex-wrap gap-2 mb-4 sm:mb-5">
+                <span class="inline-flex items-center justify-center size-8 sm:size-9 rounded-xl text-sm font-bold text-white" style="background: var(--hooklyne-navy);">
                   {s.n}
                 </span>
                 <span class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">{s.key}</span>
@@ -221,10 +221,10 @@ const stages = [
                   </span>
                 )}
               </div>
-              <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-5 leading-[1.1]">
+              <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4 sm:mb-5 leading-[1.15] sm:leading-[1.1]">
                 {s.title}
               </h2>
-              <p class="text-lg text-[var(--muted-foreground)] leading-relaxed max-w-lg">
+              <p class="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-lg">
                 {s.body}
               </p>
 
@@ -274,11 +274,11 @@ const stages = [
             </div>
 
             <div>
-              {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" />}
-              {s.n === 2 && <VerificationWaterfall client:visible ratio="5/4" />}
-              {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" />}
+              {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
+              {s.n === 2 && <VerificationWaterfall client:visible ratio="5/4" tabletRatio="16/9" mobileRatio="1/1" />}
+              {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
               {s.n === 4 && <ResearchBrief />}
-              {s.n === 5 && <EmailCompose client:visible ratio="4/3" />}
+              {s.n === 5 && <EmailCompose client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
               {s.n === 6 && (
                 <PortalShot
                   label={s.shot.label}
@@ -296,13 +296,13 @@ const stages = [
       </div>
     </section>
 
-    <section class="pt-6 pb-16 lg:pt-8 lg:pb-24" data-fade>
+    <section class="pt-4 pb-12 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-24" data-fade>
       <div class="container max-w-4xl">
         <div
-          class="relative rounded-3xl p-8 md:p-12 overflow-hidden text-center"
+          class="relative rounded-3xl p-6 sm:p-8 md:p-12 overflow-hidden text-center"
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);"
         >
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             This is the workflow. See it in the product.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
