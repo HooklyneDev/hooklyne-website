@@ -3,115 +3,140 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   return [
-    { params: { slug: "home" }, props: { eyebrow: "Hooklyne", title: "Not more. Smarter.", body: "Verified contacts, live signals, and first-draft outreach in your rep's voice. From €39 a month.", accent: "blue" } },
-    { params: { slug: "product" }, props: { eyebrow: "Product", title: "Every prospect, fully packaged.", body: "A verified contact, a live reason to reach out, and a first message in your voice. Every time.", accent: "navy" } },
-    { params: { slug: "how-it-works" }, props: { eyebrow: "How it works", title: "A research workflow. Not a chatbot.", body: "Six stages working together. Each one does what a good researcher would do, continuously.", accent: "blue" } },
-    { params: { slug: "pricing" }, props: { eyebrow: "Pricing", title: "Pay for what you use.", body: "Every credit is a clear deliverable. Start, Growth, Scale, Enterprise. From €39 a month.", accent: "teal" } },
-    { params: { slug: "about" }, props: { eyebrow: "About", title: "Proper research, without cutting volume.", body: "The research layer most B2B teams can't afford to staff. So we built it.", accent: "navy" } },
-    { params: { slug: "faq" }, props: { eyebrow: "FAQ", title: "Frequently asked, honestly answered.", body: "How verification works, what we charge, why we don't sell data, and what's actually in your inbox.", accent: "blue" } },
-    { params: { slug: "contact" }, props: { eyebrow: "Contact", title: "Start your free pilot.", body: "Ten fully built prospect packages. Verified contacts, live signals, drafts in your voice.", accent: "orange" } },
-    { params: { slug: "blog" }, props: { eyebrow: "Blog", title: "Field notes from the team.", body: "Founder notes, product updates, and field-tested takes on B2B prospect research.", accent: "blue" } },
+    { params: { slug: "home" }, props: { tagline: "Not more. Smarter.", sub: "B2B prospect research for SME sales teams." } },
+    { params: { slug: "product" }, props: { tagline: "Every prospect, fully packaged.", sub: "Verified contact. Live signal. First message in your voice." } },
+    { params: { slug: "how-it-works" }, props: { tagline: "Six stages. One prospect package.", sub: "Discovery, verification, signals, research, drafting, delivery." } },
+    { params: { slug: "pricing" }, props: { tagline: "Pay for what you use.", sub: "From €39 a month. Every credit is a clear deliverable." } },
+    { params: { slug: "about" }, props: { tagline: "The research layer most B2B teams can't staff.", sub: "So we built it." } },
+    { params: { slug: "faq" }, props: { tagline: "Honest answers, not marketing.", sub: "How verification works, what we charge, what's in your inbox." } },
+    { params: { slug: "contact" }, props: { tagline: "Start your free pilot.", sub: "Ten fully built prospect packages. No card, no commitment." } },
+    { params: { slug: "blog" }, props: { tagline: "Field notes from the team.", sub: "Founder notes, product updates, B2B prospect research takes." } },
   ];
 }
 
-const { eyebrow, title, body, accent } = Astro.props as { eyebrow: string; title: string; body: string; accent: string };
-
-const accentColor = {
-  navy: "#022f51",
-  blue: "#344ca3",
-  teal: "#0d9488",
-  orange: "#ff8c42",
-}[accent] || "#344ca3";
+const { tagline, sub } = Astro.props as { tagline: string; sub: string };
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex,nofollow" />
-    <title>OG: {title}</title>
+    <title>OG: {tagline}</title>
     <style>
-      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Regular.ttf") format("truetype"); font-weight: 400; }
-      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Medium.ttf") format("truetype"); font-weight: 500; }
-      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-SemiBold.ttf") format("truetype"); font-weight: 600; }
-      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Bold.ttf") format("truetype"); font-weight: 700; }
-      html, body { margin: 0; padding: 0; background: #0a0e1a; }
-      body { font-family: "DM Sans", system-ui, sans-serif; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Regular.ttf") format("truetype"); font-weight: 400; font-display: block; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Medium.ttf") format("truetype"); font-weight: 500; font-display: block; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-SemiBold.ttf") format("truetype"); font-weight: 600; font-display: block; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Bold.ttf") format("truetype"); font-weight: 700; font-display: block; }
+      html, body { margin: 0; padding: 0; }
+      body { font-family: "DM Sans", system-ui, sans-serif; background: #022f51; }
       .canvas {
         width: 1200px;
         height: 630px;
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, #022f51 0%, #344ca3 100%);
+        background:
+          radial-gradient(ellipse 900px 600px at 50% 50%, #0a3f6b 0%, #022f51 55%, #011d33 100%);
         color: white;
-        padding: 80px 90px;
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 80px;
       }
-      .glow {
+      /* concentric rings, very subtle */
+      .rings {
         position: absolute;
-        width: 800px;
-        height: 800px;
+        top: 50%;
+        left: 50%;
+        width: 1100px;
+        height: 1100px;
+        transform: translate(-50%, -50%);
+        opacity: 0.08;
+        pointer-events: none;
+      }
+      .rings::before, .rings::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: 1px solid rgba(255,255,255,0.6);
         border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.4;
+        transform: translate(-50%, -50%);
       }
-      .glow-1 { background: var(--accent); top: -200px; right: -200px; }
-      .glow-2 { background: #344ca3; bottom: -300px; left: -200px; opacity: 0.3; }
-      .top { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
-      .logo { display: flex; align-items: center; gap: 14px; }
-      .logo-mark {
-        width: 44px; height: 44px; border-radius: 10px;
-        background: white; display: flex; align-items: center; justify-content: center;
-        font-weight: 700; color: #022f51; font-size: 24px; letter-spacing: -0.5px;
+      .ring-1 { width: 380px; height: 380px; }
+      .ring-2 { width: 620px; height: 620px; }
+      .ring-3 { width: 880px; height: 880px; }
+      .ring-4 { width: 1140px; height: 1140px; }
+      .ring {
+        position: absolute;
+        top: 50%; left: 50%;
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
       }
-      .logo-text { font-size: 24px; font-weight: 600; letter-spacing: -0.5px; }
-      .eyebrow {
-        font-size: 13px; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 3px; color: var(--accent); padding: 8px 14px;
-        border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
+      .logo {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 36px;
       }
-      .main { position: relative; z-index: 2; max-width: 1000px; }
-      h1 {
-        font-size: 68px; font-weight: 600; line-height: 1.05; letter-spacing: -2px;
-        margin: 0 0 28px 0; color: white;
+      .logo svg { height: 96px; width: auto; display: block; }
+      .tagline {
+        position: relative;
+        z-index: 2;
+        font-size: 52px;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+        text-align: center;
+        margin: 0 0 20px 0;
+        max-width: 1000px;
+        color: #ffffff;
       }
-      p {
-        font-size: 24px; line-height: 1.4; color: rgba(255,255,255,0.72);
-        margin: 0; max-width: 900px;
+      .sub {
+        position: relative;
+        z-index: 2;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: -0.2px;
+        text-align: center;
+        margin: 0;
+        max-width: 880px;
+        color: rgba(255,255,255,0.72);
       }
-      .bottom {
-        display: flex; justify-content: space-between; align-items: center;
-        position: relative; z-index: 2;
+      .url {
+        position: absolute;
+        bottom: 48px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+        z-index: 2;
       }
-      .url { font-size: 18px; color: rgba(255,255,255,0.55); font-weight: 500; }
-      .badge {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-size: 14px; color: rgba(255,255,255,0.7);
-      }
-      .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 12px rgba(52,211,153,0.6); }
     </style>
   </head>
   <body>
-    <div class="canvas" style={`--accent: ${accentColor};`}>
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-      <div class="top">
-        <div class="logo">
-          <div class="logo-mark">H</div>
-          <div class="logo-text">Hooklyne</div>
-        </div>
-        <div class="eyebrow">{eyebrow}</div>
+    <div class="canvas">
+      <div class="rings">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="ring ring-4"></div>
       </div>
-      <div class="main">
-        <h1>{title}</h1>
-        <p>{body}</p>
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 944.35 175.55"><path fill="#fff" d="M32.28,66.23c.52,8.76,3.49,17.11,8.54,24.16,5.07,7.01,11.94,12.28,19.87,15.26,4.46,1.71,10.68,2.85,15.49,2.85h40.63c4.46,0,7.2-3.5,7.87-6.73.75-3.58-.55-7.01-3.42-8.96l-27.89-18.77c-1.83-1.25-4.11-1.7-6.28-1.25-2.21.5-4.18,1.89-5.4,3.86-2.39,3.91-1.25,9.04,2.58,11.67l4.35,3-13.57.03c-6.39,0-12.43-2.5-17.47-7.25-5.86-5.49-8.84-13.28-8.84-23.17-.03-7.14,1.71-17.1,10.13-24.1,4.84-4.06,10.41-6.12,16.58-6.12h67.82c3.61,0,6.52-2.96,6.46-6.56l-.06-4.11c-.06-3.53-2.93-6.36-6.46-6.36h-68.09c-22.63.01-41.44,18.57-42.83,42.24-.1,1.84-.15,3.5-.15,5.24s.05,3.38.15,5.08Z"/><path fill="#fff" d="M197.71,90.29c-.52-8.76-3.49-17.11-8.54-24.16-5.07-7.01-11.94-12.28-19.87-15.26-4.46-1.71-10.68-2.85-15.49-2.85h-40.63c-4.46,0-7.2,3.5-7.87,6.73-.75,3.58.55,7.01,3.42,8.96l27.89,18.77c1.83,1.25,4.11,1.7,6.28,1.25,2.21-.5,4.18-1.89,5.4-3.86,2.39-3.91,1.25-9.04-2.58-11.67l-4.35-3,13.57-.03c6.39,0,12.43,2.5,17.47,7.25,5.86,5.49,8.84,13.28,8.84,23.17.03,7.14-1.71,17.1-10.13,24.1-4.84,4.06-10.41,6.12-16.58,6.12h-67c-3.61,0-6.52,2.96-6.46,6.56l.06,4.11c.06,3.53,2.93,6.36,6.46,6.36h67.27c22.63-.01,41.44-18.57,42.83-42.24.1-1.84.15-3.5.15-5.24s-.05-3.38-.15-5.08Z"/><path fill="#fff" d="M237.44,130.92V27.52h19.94v103.41h-19.94ZM254.73,86.17v-16.1h51.26v16.1h-51.26ZM302.59,130.92V27.52h19.94v103.41h-19.94Z"/><path fill="#fff" d="M372.85,132.7c-7.19,0-13.62-1.65-19.28-4.95-5.66-3.3-10.14-7.88-13.44-13.74-3.3-5.86-4.95-12.58-4.95-20.16s1.65-14.6,4.95-20.46c3.3-5.86,7.8-10.44,13.52-13.74,5.71-3.3,12.16-4.95,19.35-4.95s13.59,1.65,19.2,4.95c5.61,3.3,10.07,7.85,13.37,13.66,3.3,5.81,4.95,12.61,4.95,20.39s-1.65,14.45-4.95,20.31c-3.3,5.86-7.78,10.44-13.44,13.74-5.66,3.3-12.09,4.95-19.28,4.95ZM372.85,115.41c3.15,0,6.03-.81,8.64-2.44,2.61-1.62,4.73-4.06,6.35-7.31s2.44-7.24,2.44-11.97-.79-8.84-2.36-12.04c-1.58-3.2-3.65-5.61-6.2-7.24-2.56-1.62-5.42-2.44-8.57-2.44s-6.2.81-8.86,2.44-4.78,4.04-6.35,7.24c-1.58,3.2-2.36,7.22-2.36,12.04s.76,8.72,2.29,11.97c1.53,3.25,3.62,5.69,6.28,7.31,2.66,1.63,5.56,2.44,8.72,2.44Z"/><path fill="#fff" d="M460.84,132.7c-7.19,0-13.62-1.65-19.28-4.95-5.66-3.3-10.14-7.88-13.44-13.74-3.3-5.86-4.95-12.58-4.95-20.16s1.65-14.6,4.95-20.46c3.3-5.86,7.8-10.44,13.52-13.74,5.71-3.3,12.16-4.95,19.35-4.95s13.59,1.65,19.2,4.95c5.61,3.3,10.07,7.85,13.37,13.66,3.3,5.81,4.95,12.61,4.95,20.39s-1.65,14.45-4.95,20.31c-3.3,5.86-7.78,10.44-13.44,13.74-5.66,3.3-12.09,4.95-19.28,4.95ZM460.84,115.41c3.15,0,6.03-.81,8.64-2.44,2.61-1.62,4.73-4.06,6.35-7.31s2.44-7.24,2.44-11.97-.79-8.84-2.36-12.04c-1.58-3.2-3.65-5.61-6.2-7.24-2.56-1.62-5.42-2.44-8.57-2.44s-6.2.81-8.86,2.44-4.78,4.04-6.35,7.24c-1.58,3.2-2.36,7.22-2.36,12.04s.76,8.72,2.29,11.97c1.53,3.25,3.62,5.69,6.28,7.31,2.66,1.63,5.56,2.44,8.72,2.44Z"/><path fill="#fff" d="M511.16,130.92V24.56h19.94v106.36h-19.94ZM559.91,130.92l-31.76-40.77,28.51-33.68h23.64l-36.78,41.95-.15-15.81,41.36,48.3h-24.82Z"/><path fill="#fff" d="M597.38,130.92V24.56h19.94v106.36h-19.94Z"/><path fill="#fff" d="M724.59,130.92V56.47h17.58l1.33,12.26c2.36-4.33,5.64-7.76,9.82-10.27,4.19-2.51,9.18-3.77,14.99-3.77,6.2,0,11.42,1.31,15.66,3.91,4.23,2.61,7.48,6.38,9.75,11.3,2.26,4.93,3.4,10.93,3.4,18.02v42.99h-19.94v-41.21c0-5.81-1.28-10.29-3.84-13.44-2.56-3.15-6.45-4.73-11.67-4.73-3.25,0-6.18.79-8.79,2.36-2.61,1.58-4.65,3.82-6.13,6.72-1.48,2.91-2.22,6.48-2.22,10.71v39.59h-19.94Z"/><path fill="#fff" d="M847.89,132.7c-7.49,0-14.11-1.62-19.87-4.87s-10.24-7.76-13.44-13.52c-3.2-5.76-4.8-12.38-4.8-19.87s1.6-14.62,4.8-20.53c3.2-5.91,7.66-10.58,13.37-14.03,5.71-3.45,12.36-5.17,19.94-5.17s13.84,1.62,19.35,4.87c5.51,3.25,9.8,7.61,12.85,13.07,3.05,5.47,4.58,11.74,4.58,18.83,0,.99-.03,2.09-.07,3.32-.05,1.23-.12,2.49-.22,3.77h-60.27v-12.26h40.48c-.3-4.63-1.99-8.37-5.1-11.23-3.1-2.86-6.92-4.28-11.45-4.28-3.45,0-6.57.81-9.38,2.44-2.81,1.63-5.05,3.99-6.72,7.09-1.68,3.1-2.51,7.02-2.51,11.74v4.28c0,4.04.76,7.56,2.29,10.56,1.53,3.01,3.67,5.34,6.43,7.02,2.76,1.68,5.96,2.51,9.6,2.51s6.77-.76,9.08-2.29c2.31-1.53,4.11-3.57,5.39-6.13h20.24c-1.28,4.63-3.57,8.84-6.87,12.63-3.3,3.79-7.29,6.75-11.96,8.86-4.68,2.12-9.92,3.18-15.73,3.18Z"/><polygon fill="#fff" points="711.94 56.45 666.66 161.87 645.84 161.87 662.02 125.25 629.97 56.45 651.23 56.45 672.19 103.63 690.98 56.45 711.94 56.45"/></svg>
       </div>
-      <div class="bottom">
-        <div class="url">www.hooklyne.com</div>
-        <div class="badge"><span class="dot"></span>Live since February 2026</div>
-      </div>
+      <h1 class="tagline">{tagline}</h1>
+      <p class="sub">{sub}</p>
+      <div class="url">hooklyne.com</div>
     </div>
   </body>
 </html>
