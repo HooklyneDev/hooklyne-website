@@ -167,11 +167,11 @@ export const Hero = () => {
       <div id="hero-content" className="relative z-10 container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
 
         <a
-          href="/contact"
+          href={lang === "nl" ? "/nl/contact" : "/contact"}
           className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--heading)] hover:border-[var(--hooklyne-blue)] transition-colors"
           style={{ animation: "hero-fade-up 0.5s ease both", animationDelay: "0ms" }}
         >
-          For B2B founders and sales reps
+          {t.pill}
           <ArrowRight className="size-3.5" />
         </a>
 
@@ -179,14 +179,14 @@ export const Hero = () => {
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.15] sm:leading-[1.1] max-w-3xl"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "90ms" }}
         >
-          Find the prospects actually worth reaching out to.
+          {t.headline}
         </h1>
 
         <p
           className="text-base md:text-lg text-[var(--muted-foreground)] max-w-xl leading-relaxed px-2 sm:px-0"
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "200ms" }}
         >
-          A research workflow that finds fitting companies, verifies decision-makers across 20+ data providers, watches for live buying signals, and drafts first outreach in your rep's voice.
+          {t.sub}
         </p>
 
         <div
@@ -194,16 +194,16 @@ export const Hero = () => {
           style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "310ms" }}
         >
           <Button asChild className="h-11 px-6 text-sm font-semibold rounded-lg group btn-shine" style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}>
-            <a href="/contact">
-              Start your free pilot
+            <a href={lang === "nl" ? "/nl/contact" : "/contact"}>
+              {t.cta}
               <ArrowRight className="ml-1.5 size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
           </Button>
           <a
-            href="/how-it-works"
+            href={lang === "nl" ? "/nl/how-it-works" : "/how-it-works"}
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
-            See how it works
+            {t.secondary}
             <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>

@@ -26,7 +26,7 @@ const NL_ITEMS: NavItem[] = [
   { label: "Hoe het werkt", href: "/nl/how-it-works" },
   { label: "Tarieven", href: "/nl/pricing" },
   {
-    label: "Bronnen",
+    label: "Resources",
     children: [
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/nl/faq" },
