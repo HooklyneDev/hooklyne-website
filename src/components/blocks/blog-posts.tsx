@@ -33,7 +33,9 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
                   <div className="relative p-2">
                     <img
                       src={post.data.image}
-                      alt=""
+                      alt={post.data.title}
+                      loading="lazy"
+                      decoding="async"
                       className="aspect-video w-full rounded-xl object-cover"
                     />
                     <span

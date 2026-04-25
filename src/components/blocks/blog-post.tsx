@@ -53,7 +53,9 @@ const BlogPost = ({
           >
             <img
               src={image}
-              alt=""
+              alt={title}
+              loading="eager"
+              decoding="async"
               className="aspect-video w-full object-cover"
             />
           </div>
