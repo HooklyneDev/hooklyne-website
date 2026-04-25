@@ -175,12 +175,12 @@ const stages = [
           class="relative rounded-2xl px-4 py-4 lg:px-6 lg:py-5 overflow-hidden"
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); box-shadow: var(--shadow-lg); border: 1px solid var(--border);"
         >
-          <div class="flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-0">
+          <div class="hidden md:flex items-center gap-0">
             {stages.map((s, i) => (
               <>
                 <a
                   href={`#stage-${s.n}`}
-                  class="group flex-1 flex items-center gap-2.5 px-2 py-2 md:justify-center rounded-lg hover:bg-[var(--background)] transition-colors"
+                  class="group flex-1 flex items-center gap-2.5 px-2 py-2 justify-center rounded-lg hover:bg-[var(--background)] transition-colors"
                 >
                   <span class="inline-flex items-center justify-center size-7 shrink-0 rounded-full text-[11px] font-bold text-white transition-transform duration-200 group-hover:scale-110" style="background: var(--hooklyne-navy);">
                     {s.n}
@@ -188,12 +188,25 @@ const stages = [
                   <span class="text-[12px] md:text-[13px] font-semibold text-[var(--heading)] whitespace-nowrap tracking-tight group-hover:text-[var(--hooklyne-blue)] transition-colors">{s.key}</span>
                 </a>
                 {i < stages.length - 1 && (
-                  <div class="shrink-0 flex items-center justify-center md:px-1">
-                    <svg class="hidden md:block text-[var(--border-strong)]" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 5 H13 M9 1 L13 5 L9 9"/></svg>
-                    <svg class="md:hidden text-[var(--border-strong)] rotate-90" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 5 H13 M9 1 L13 5 L9 9"/></svg>
+                  <div class="shrink-0 flex items-center justify-center px-1">
+                    <svg class="text-[var(--border-strong)]" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 5 H13 M9 1 L13 5 L9 9"/></svg>
                   </div>
                 )}
               </>
+            ))}
+          </div>
+
+          <div class="md:hidden grid grid-cols-3 gap-1.5">
+            {stages.map((s) => (
+              <a
+                href={`#stage-${s.n}`}
+                class="group flex flex-col items-center justify-center gap-1 px-1.5 py-2.5 rounded-lg bg-[var(--background)] hover:bg-[var(--card-hover)] transition-colors min-w-0"
+              >
+                <span class="inline-flex items-center justify-center size-6 shrink-0 rounded-full text-[10px] font-bold text-white" style="background: var(--hooklyne-navy);">
+                  {s.n}
+                </span>
+                <span class="text-[11px] font-semibold text-[var(--heading)] tracking-tight truncate max-w-full">{s.key}</span>
+              </a>
             ))}
           </div>
         </div>
