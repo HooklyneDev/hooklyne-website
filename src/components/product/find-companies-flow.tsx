@@ -310,7 +310,7 @@ export const FindCompaniesFlow = () => {
         </div>
 
         <div className="flex items-center justify-between pt-2 text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>
-          <span>⚡ Leads land in My Leads · Companies tracked in Signals</span>
+          <span>Leads land in My Leads · Companies tracked in Signals</span>
           <span>
             {step === 0 && "Describe your ICP"}
             {step === 1 && "Ranked by signal strength"}
