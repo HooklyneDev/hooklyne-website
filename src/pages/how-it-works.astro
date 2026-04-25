@@ -4,6 +4,9 @@ import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { PortalShot } from '@/components/portal-shot';
 import { ResearchBrief } from '@/components/research-brief';
+import { FindCompaniesFlow } from '@/components/product/find-companies-flow';
+import { SignalHeatTable } from '@/components/product/signal-heat-table';
+import { EmailCompose } from '@/components/product/email-compose';
 import { ArrowRight } from 'lucide-react';
 
 const stages = [
@@ -196,7 +199,7 @@ const stages = [
 
   <Background variant="bottom">
     <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
-      <div class="container max-w-6xl flex flex-col gap-16 lg:gap-20">
+      <div class="container max-w-6xl flex flex-col gap-12 lg:gap-16">
         {stages.map((s, i) => (
           <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
             <div>
@@ -255,9 +258,11 @@ const stages = [
             </div>
 
             <div>
-              {s.n === 4 ? (
-                <ResearchBrief />
-              ) : (
+              {s.n === 1 && <FindCompaniesFlow client:visible />}
+              {s.n === 3 && <SignalHeatTable client:visible />}
+              {s.n === 4 && <ResearchBrief />}
+              {s.n === 5 && <EmailCompose client:visible />}
+              {(s.n === 2 || s.n === 6) && (
                 <PortalShot
                   label={s.shot.label}
                   describe={s.shot.describe}
