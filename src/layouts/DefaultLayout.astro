@@ -5,12 +5,13 @@ import { FinalCTA } from '@/components/blocks/final-cta';
 import { Navbar } from '@/components/blocks/navbar';
 import { CookieBar } from '@/components/blocks/cookie-bar';
 
-const { title, description, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
+const { title, description, image, ogType, publishedTime, modifiedTime, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
+const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
 ---
 
-<html lang="en">
+<html lang={lang}>
     <head>
-        <BaseHead title={title} description={description} />
+        <BaseHead title={title} description={description} image={image} ogType={ogType} publishedTime={publishedTime} modifiedTime={modifiedTime} />
     </head>
     <body class={`h-screen antialiased`}
     >

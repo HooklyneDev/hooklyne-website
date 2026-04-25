@@ -4,6 +4,7 @@ import { render } from 'astro:content';
 
 import { BlogPost } from '@/components/blocks/blog-post';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { SITE_URL } from '@/consts';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -15,11 +16,36 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { title, description, pubDate, updatedDate, heroImage } = post.data;
+const { title, description, pubDate, updatedDate, image, authorName } = post.data;
 const { Content } = await render(post);
 
+const canonicalUrl = `${SITE_URL}/blog/${post.id}`;
+const blogPostingSchema = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	headline: title,
+	description,
+	image: image ? new URL(image, SITE_URL).toString() : `${SITE_URL}/og-image.jpg`,
+	datePublished: pubDate.toISOString(),
+	dateModified: (updatedDate ?? pubDate).toISOString(),
+	author: { "@type": authorName ? "Person" : "Organization", name: authorName ?? "Hooklyne" },
+	publisher: {
+		"@type": "Organization",
+		name: "Hooklyne",
+		logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.svg` },
+	},
+	mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+};
 ---
-<DefaultLayout>
+<DefaultLayout
+	title={`${title} | Hooklyne Blog`}
+	description={description}
+	image={image}
+	ogType="article"
+	publishedTime={pubDate.toISOString()}
+	modifiedTime={(updatedDate ?? pubDate).toISOString()}
+>
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(blogPostingSchema)} />
 	<div class="py-28 lg:pt-44 lg:pb-32">
 		<BlogPost post={post} client:only='react' >
 			<Content />
