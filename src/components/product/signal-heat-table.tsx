@@ -110,7 +110,7 @@ export const SignalHeatTable = () => {
   const selectedRow = selected ? ROWS.find((r) => r.company === selected) ?? null : null;
 
   return (
-    <GraphicShell crumb="Portal / Prospect Signals" status="Live" statusTone="teal" ratio="16/9">
+    <GraphicShell crumb="Portal / Prospect Signals" status="Live" statusTone="teal" ratio="2/1">
       <style>{`
         @keyframes sh-row { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes sh-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
