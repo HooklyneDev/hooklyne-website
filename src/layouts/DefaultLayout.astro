@@ -4,6 +4,7 @@ import { Footer } from '@/components/blocks/footer';
 import { FinalCTA } from '@/components/blocks/final-cta';
 import { Navbar } from '@/components/blocks/navbar';
 import { CookieBar } from '@/components/blocks/cookie-bar';
+import { LangSuggest } from '@/components/blocks/lang-suggest';
 
 const { title, description, image, ogType, publishedTime, modifiedTime, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
 const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
@@ -20,6 +21,7 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
         {!hideFinalCTA && <FinalCTA variant={ctaVariant} client:visible />}
         <Footer />
         <CookieBar client:idle />
+        <LangSuggest client:idle />
     </body>
     <script is:inline>
       (function () {

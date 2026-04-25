@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLang, switchLangUrl } from "@/lib/use-lang";
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
 
@@ -47,6 +48,12 @@ export const Navbar = () => {
   }, [langOpen]);
 
   const isActive = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog"));
+
+  const lang = useLang();
+  const handleSwitch = (next: "en" | "nl") => {
+    setLangOpen(false);
+    if (next !== lang) switchLangUrl(next);
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:pt-5 flex justify-center pointer-events-none">
@@ -147,7 +154,7 @@ export const Navbar = () => {
                 className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
               >
                 <Globe className="size-4" />
-                <span className="text-xs font-semibold">EN</span>
+                <span className="text-xs font-semibold">{lang === "nl" ? "NL" : "EN"}</span>
               </button>
               {langOpen && (
                 <div
@@ -162,19 +169,30 @@ export const Navbar = () => {
                   <button
                     type="button"
                     role="menuitemradio"
-                    aria-checked="true"
-                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
+                    aria-checked={lang === "en"}
+                    onClick={() => handleSwitch("en")}
+                    className={cn(
+                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors",
+                      lang === "en"
+                        ? "text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
+                        : "text-[var(--foreground)] hover:bg-[var(--card-hover)]",
+                    )}
                   >
                     English
                   </button>
                   <button
                     type="button"
-                    role="menuitem"
-                    aria-disabled="true"
-                    disabled
-                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--muted-foreground)]/60 cursor-not-allowed"
+                    role="menuitemradio"
+                    aria-checked={lang === "nl"}
+                    onClick={() => handleSwitch("nl")}
+                    className={cn(
+                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors",
+                      lang === "nl"
+                        ? "text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
+                        : "text-[var(--foreground)] hover:bg-[var(--card-hover)]",
+                    )}
                   >
-                    Nederlands <span className="text-[10px] font-normal">(soon)</span>
+                    Nederlands
                   </button>
                 </div>
               )}
@@ -262,12 +280,29 @@ export const Navbar = () => {
               );
             })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-sm text-[var(--foreground)]/80">
-                <Globe className="size-4" />
-                <span className="font-medium text-[var(--hooklyne-blue)]">English</span>
-                <span className="text-[var(--muted-foreground)]/60">
-                  / Nederlands <span className="text-[10px]">(soon)</span>
-                </span>
+              <div className="flex items-center gap-2 text-sm">
+                <Globe className="size-4 text-[var(--foreground)]/80" />
+                <button
+                  type="button"
+                  onClick={() => { setIsMenuOpen(false); handleSwitch("en"); }}
+                  className={cn(
+                    "font-medium transition-colors",
+                    lang === "en" ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]",
+                  )}
+                >
+                  English
+                </button>
+                <span className="text-[var(--muted-foreground)]/40">/</span>
+                <button
+                  type="button"
+                  onClick={() => { setIsMenuOpen(false); handleSwitch("nl"); }}
+                  className={cn(
+                    "font-medium transition-colors",
+                    lang === "nl" ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]",
+                  )}
+                >
+                  Nederlands
+                </button>
               </div>
               <a
                 href="https://portal.hooklyne.com"
