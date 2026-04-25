@@ -17,9 +17,9 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
     >
         <Navbar client:only='react' />
         <main><slot /></main>
-        {!hideFinalCTA && <FinalCTA variant={ctaVariant} client:load />}
+        {!hideFinalCTA && <FinalCTA variant={ctaVariant} client:visible />}
         <Footer />
-        <CookieBar client:load />
+        <CookieBar client:idle />
     </body>
     <script is:inline>
       (function () {

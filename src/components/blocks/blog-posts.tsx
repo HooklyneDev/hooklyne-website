@@ -31,15 +31,18 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
               >
                 {post.data.image && (
                   <div className="relative p-2">
-                    <img
-                      src={post.data.image}
-                      alt={post.data.title}
-                      loading="lazy"
-                      decoding="async"
-                      width={800}
-                      height={450}
-                      className="aspect-video w-full rounded-xl object-cover"
-                    />
+                    <picture>
+                      <source srcSet={post.data.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
+                      <img
+                        src={post.data.image}
+                        alt={post.data.title}
+                        loading="lazy"
+                        decoding="async"
+                        width={800}
+                        height={450}
+                        className="aspect-video w-full rounded-xl object-cover"
+                      />
+                    </picture>
                     <span
                       className="absolute top-4 right-4 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em]"
                       style={{ background: tagStyle.bg, color: tagStyle.fg }}
