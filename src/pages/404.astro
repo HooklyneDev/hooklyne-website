@@ -4,33 +4,56 @@ import { ArrowLeft } from "lucide-react";
 import { Background } from "@/components/background";
 import { Button } from "@/components/ui/button";
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
+
+const isNL = Astro.url.pathname.startsWith("/nl");
+const t = isNL ? {
+  title: "404: Niet gevonden | Hooklyne",
+  desc: "Sorry, de pagina die je zoekt bestaat niet.",
+  eyebrow: "404",
+  headline: "Pagina niet gevonden.",
+  body: "De pagina die je zoekt is verhuisd of heeft nooit bestaan. Ga terug naar de homepage, of neem contact op als je hier via een gebroken link belandde.",
+  back: "Terug naar home",
+  contact: "Contact opnemen",
+  homeHref: "/nl",
+  contactHref: "/nl/contact",
+} : {
+  title: "404: Not Found | Hooklyne",
+  desc: "Sorry, the page you're looking for doesn't exist.",
+  eyebrow: "404",
+  headline: "Page not found.",
+  body: "The page you're after has moved or never existed. Head back home, or get in touch if you got here from a broken link.",
+  back: "Back to home",
+  contact: "Contact support",
+  homeHref: "/",
+  contactHref: "/contact",
+};
 ---
 
-<DefaultLayout title="404: Not Found | Hooklyne" description="Sorry, the page you're looking for doesn't exist.">
+<DefaultLayout title={t.title} description={t.desc}>
   <Background>
     <section class="pt-32 lg:pt-40 pb-20">
       <div class="container max-w-3xl text-center">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">404</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Page not found.</h1>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">{t.eyebrow}</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">{t.headline}</h1>
         <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-10">
-          The page you're after has moved or never existed. Head back home, or get in touch if you got here from a broken link.
+          {t.body}
         </p>
 
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <a href="/">
+          <a href={t.homeHref}>
             <Button
               className="text-sm font-semibold rounded-lg px-5 py-2.5 h-auto btn-shine"
               style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}
             >
               <ArrowLeft className="size-4 mr-1.5" />
-              Back to home
+              {t.back}
             </Button>
           </a>
           <a
-            href="/contact"
+            href={t.contactHref}
             class="inline-flex items-center gap-1.5 h-10 px-5 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
           >
-            Contact support
+            {t.contact}
           </a>
         </div>
       </div>

@@ -34,10 +34,10 @@ const NL = {
     { label: "Hoe het werkt", href: "/nl/how-it-works" },
     { label: "Tarieven", href: "/nl/pricing" },
   ]},
-  resourcesCol: { title: "Bronnen", links: [
+  resourcesCol: { title: "Resources", links: [
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/nl/faq" },
-    { label: "Support", href: "/resources/support" },
+    { label: "Support", href: "/nl/resources/support" },
   ]},
   companyCol: { title: "Bedrijf", links: [
     { label: "Over ons", href: "/nl/about" },
@@ -45,9 +45,9 @@ const NL = {
     { label: "Inloggen", href: "https://portal.hooklyne.com" },
   ]},
   legalCol: { title: "Juridisch", links: [
-    { label: "Privacy", href: "/privacy" },
-    { label: "Cookies", href: "/cookies" },
-    { label: "Disclaimer", href: "/disclaimer" },
+    { label: "Privacy", href: "/nl/privacy" },
+    { label: "Cookies", href: "/nl/cookies" },
+    { label: "Disclaimer", href: "/nl/disclaimer" },
   ]},
   rights: "Alle rechten voorbehouden.",
 };

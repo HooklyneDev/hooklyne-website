@@ -1,0 +1,264 @@
+---
+import { Background } from '@/components/background';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
+---
+
+<DefaultLayout
+  title="Support - Hooklyne"
+  description="Hulp bij Hooklyne. Bereik het team, vind antwoorden, en leer hoe je meer uit je prospect-onderzoek haalt."
+  ctaVariant="home"
+>
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-10">
+      <div class="container max-w-5xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Resources</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Support.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+          Echte mensen, heldere antwoorden. Kies de route die bij je past.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-14">
+      <div class="container max-w-5xl">
+        <div class="grid gap-4 md:grid-cols-3">
+
+          <a
+            href="/nl/faq"
+            class="group rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+          >
+            <span
+              class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
+              style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);"
+            >
+              <BookOpen className="size-5" />
+            </span>
+            <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Bekijk de FAQ</h2>
+            <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
+              De snelste antwoorden over credits, tarieven, data en hoe een pilot werkt.
+            </p>
+            <span class="text-[12px] font-semibold text-[var(--hooklyne-blue)] inline-flex items-center gap-1">
+              Lees de FAQ
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+
+          <a
+            href="#message-form"
+            class="group rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+          >
+            <span
+              class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
+              style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);"
+            >
+              <Mail className="size-5" />
+            </span>
+            <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Stuur ons een bericht</h2>
+            <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
+              Iets dat niet werkt, of een vraag die alleen een mens kan beantwoorden. We reageren binnen één werkdag.
+            </p>
+            <span class="text-[12px] font-semibold inline-flex items-center gap-1" style="color: var(--hooklyne-teal);">
+              Open het formulier
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+
+          <a
+            href="/nl/contact"
+            class="group rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+          >
+            <span
+              class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
+              style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);"
+            >
+              <MessageCircle className="size-5" />
+            </span>
+            <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Praat met iemand</h2>
+            <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
+              Loop door het product, bereken een pilot, of krijg een antwoord op maat voor je team. Boek een korte call.
+            </p>
+            <span class="text-[12px] font-semibold inline-flex items-center gap-1" style="color: var(--hooklyne-orange);">
+              Boek een call
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="message-form" class="pb-14 scroll-mt-24">
+      <div class="container max-w-2xl">
+        <div class="mb-6">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">Stuur een bericht</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-3">Vertel ons wat je nodig hebt.</h2>
+          <p class="text-sm md:text-base text-[var(--muted-foreground)] leading-relaxed">
+            Komt binnen in onze support-inbox. Echte mensen lezen het. De meeste antwoorden binnen vier uur.
+          </p>
+        </div>
+
+        <form
+          id="support-form"
+          action="/api/contact"
+          method="POST"
+          class="rounded-2xl p-6 md:p-8 space-y-5"
+          style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+        >
+          <input type="hidden" name="subject" value="Nieuw support-bericht via hooklyne.com" />
+          <input type="hidden" name="from_name" value="Hooklyne website" />
+          {/* Honeypot anti-spam. Bots fill it, humans do not. */}
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" aria-hidden="true" tabindex="-1" />
+
+          <div>
+            <label for="sf-name" class="block text-[12px] font-semibold text-[var(--heading)] mb-1.5">Naam</label>
+            <input
+              id="sf-name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              class="w-full px-3.5 py-2.5 text-sm rounded-lg transition-colors"
+              style="background: var(--bg); border: 1px solid var(--border); color: var(--text);"
+              placeholder="Je naam"
+            />
+          </div>
+
+          <div>
+            <label for="sf-email" class="block text-[12px] font-semibold text-[var(--heading)] mb-1.5">Mailadres</label>
+            <input
+              id="sf-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="w-full px-3.5 py-2.5 text-sm rounded-lg transition-colors"
+              style="background: var(--bg); border: 1px solid var(--border); color: var(--text);"
+              placeholder="jij@bedrijf.nl"
+            />
+          </div>
+
+          <div>
+            <label for="sf-topic" class="block text-[12px] font-semibold text-[var(--heading)] mb-1.5">Onderwerp</label>
+            <select
+              id="sf-topic"
+              name="topic"
+              class="w-full px-3.5 py-2.5 text-sm rounded-lg transition-colors"
+              style="background: var(--bg); border: 1px solid var(--border); color: var(--text);"
+            >
+              <option>Algemene vraag</option>
+              <option>Iets werkt niet</option>
+              <option>Facturatie of credits</option>
+              <option>Pilot-aanvraag</option>
+              <option>Anders</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="sf-message" class="block text-[12px] font-semibold text-[var(--heading)] mb-1.5">Bericht</label>
+            <textarea
+              id="sf-message"
+              name="message"
+              required
+              rows="6"
+              class="w-full px-3.5 py-2.5 text-sm rounded-lg transition-colors resize-y"
+              style="background: var(--bg); border: 1px solid var(--border); color: var(--text);"
+              placeholder="Vertel wat er aan de hand is, wat je hebt geprobeerd, en wat je verwachtte."
+            ></textarea>
+          </div>
+
+          <div class="flex items-center justify-between gap-4 pt-1">
+            <p class="text-[11px] text-[var(--muted-foreground)] leading-relaxed">
+              Door te versturen ga je akkoord met onze <a href="/privacy" class="underline underline-offset-2 hover:text-[var(--hooklyne-blue)]">privacyverklaring</a>.
+            </p>
+            <button
+              type="submit"
+              id="sf-submit"
+              class="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed shrink-0"
+              style="background-color: var(--hooklyne-navy);"
+            >
+              <span id="sf-submit-label">Verstuur bericht</span>
+            </button>
+          </div>
+
+          <div
+            id="sf-success"
+            class="hidden rounded-lg p-3.5 text-sm"
+            style="background: rgba(13,148,136,0.10); border: 1px solid rgba(13,148,136,0.30); color: var(--hooklyne-teal);"
+          >
+            Bericht verstuurd. We reageren binnen één werkdag op het opgegeven mailadres.
+          </div>
+          <div
+            id="sf-error"
+            class="hidden rounded-lg p-3.5 text-sm"
+            style="background: rgba(255,140,66,0.10); border: 1px solid rgba(255,140,66,0.30); color: var(--hooklyne-orange);"
+          >
+            Er ging iets mis. Mail rechtstreeks naar <a href="mailto:contact@hooklyne.com" class="underline underline-offset-2">contact@hooklyne.com</a>.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-3xl">
+        <div
+          class="rounded-2xl p-6 md:p-8 text-center"
+          style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"
+        >
+          <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--muted-foreground)] mb-3">Reactietijden</p>
+          <p class="text-sm text-[var(--heading)] leading-relaxed mb-1">
+            Support wordt door het team behandeld, geen ticket-wachtrij.
+          </p>
+          <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+            Werkdagen, Amsterdam-tijd. De meeste antwoorden binnen vier uur, nooit later dan één werkdag.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script is:inline>
+      (() => {
+        const form = document.getElementById("support-form");
+        if (!form) return;
+        const submitBtn = document.getElementById("sf-submit");
+        const submitLabel = document.getElementById("sf-submit-label");
+        const success = document.getElementById("sf-success");
+        const errorBox = document.getElementById("sf-error");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          success.classList.add("hidden");
+          errorBox.classList.add("hidden");
+          submitBtn.disabled = true;
+          submitLabel.textContent = "Versturen...";
+
+          const data = new FormData(form);
+          try {
+            const res = await fetch(form.action, {
+              method: "POST",
+              body: data,
+              headers: { Accept: "application/json" },
+            });
+            const json = await res.json();
+            if (res.ok && json.success) {
+              form.reset();
+              success.classList.remove("hidden");
+              submitLabel.textContent = "Verstuur bericht";
+            } else {
+              throw new Error(json.message || "Request failed");
+            }
+          } catch (err) {
+            errorBox.classList.remove("hidden");
+            submitLabel.textContent = "Verstuur bericht";
+          } finally {
+            submitBtn.disabled = false;
+          }
+        });
+      })();
+    </script>
+
+  </Background>
+</DefaultLayout>

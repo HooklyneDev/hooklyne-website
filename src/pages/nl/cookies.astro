@@ -1,0 +1,98 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+
+const lastUpdated = "25 april 2026";
+---
+
+<DefaultLayout title="Cookiebeleid | Hooklyne" description="Welke cookies Hooklyne gebruikt, wat elke doet en hoe je ze beheert. Strikte EU-regels, gewone taal, geen dark patterns.">
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-20">
+      <div class="container max-w-4xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Juridisch</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Cookiebeleid.</h1>
+        <p class="text-sm text-[var(--muted-foreground)] mb-12">Laatst bijgewerkt: {lastUpdated}</p>
+
+        <div class="space-y-10 text-[var(--foreground)]">
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Wat zijn cookies?</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Cookies zijn kleine tekstbestanden die in je browser worden opgeslagen als je een website bezoekt. Ze helpen de site informatie te onthouden, zodat alles correct en consistent werkt.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Welke cookies we gebruiken</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-5">
+              We gebruiken functionele cookies die nodig zijn om de site en het portaal te laten werken, en analytics-cookies (Google Analytics en Microsoft Clarity) om te begrijpen hoe bezoekers de site gebruiken. Analytics-cookies worden alleen geplaatst als je cookies accepteert. We gebruiken geen advertentie-cookies of cross-site tracking.
+            </p>
+
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)]">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-[var(--card)] border-b border-[var(--border)]">
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Naam</th>
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Doel</th>
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Duur</th>
+                    <th class="text-left px-4 py-3 font-semibold text-[var(--heading)]">Type</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[var(--border)]">
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">hooklyne_cookies</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Slaat je cookievoorkeur op (geaccepteerd of geweigerd)</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Permanent</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Functioneel</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">hooklyne_demo</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Schakelt demomodus in het portaal in voor gemachtigde gebruikers</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">24 uur</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Functioneel</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">Sessie-cookies</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Houdt je ingelogd in het portaal tijdens je sessie</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Sessie</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Functioneel</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">_ga, _ga_*</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Google Analytics - onderscheidt gebruikers en sessies om sitegebruik te meten. Alleen geplaatst met jouw toestemming.</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">2 jaar / sessie</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Analytics</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">_clck, _clsk</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Microsoft Clarity - registreert geanonimiseerde interacties (klikken, scrollen, muisbewegingen) om de site te verbeteren. Geen toetsaanslagen op invoervelden. Alleen geplaatst met jouw toestemming.</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">1 jaar / sessie</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Analytics</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Jouw keuze</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed mb-3">
+              Bij je eerste bezoek vragen we of je cookies accepteert. Weiger je, dan slaan we alleen je voorkeur op. Er worden geen analytics-cookies geplaatst. Weigeren heeft geen invloed op je ervaring op de marketingsite, maar sommige portaal-functies hebben sessie-cookies nodig om te werken.
+            </p>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Je kunt cookies op elk moment wissen via je browserinstellingen. Voor uitleg, kijk op <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener noreferrer" class="text-[var(--hooklyne-blue)] hover:opacity-80">allaboutcookies.org</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Vragen</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Mail naar <a href="mailto:privacy@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">privacy@hooklyne.com</a>.
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

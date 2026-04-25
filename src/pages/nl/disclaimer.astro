@@ -1,0 +1,78 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+
+const lastUpdated = "18 april 2026";
+---
+
+<DefaultLayout title="Disclaimer | Hooklyne" description="Disclaimer voor de website en dienst van Hooklyne. Wat we beloven, wat niet, en de aansprakelijkheidsgrenzen voor B2B prospect-onderzoek.">
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-20">
+      <div class="container max-w-4xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Juridisch</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Disclaimer.</h1>
+        <p class="text-sm text-[var(--muted-foreground)] mb-12">Laatst bijgewerkt: {lastUpdated}</p>
+
+        <div class="space-y-10">
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Accuratesse van informatie</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              We doen ons best om de informatie op deze website actueel en correct te houden, maar geven geen garanties over volledigheid of juistheid. Tarieven, functies en beschikbaarheid kunnen zonder kennisgeving wijzigen. De meest actuele informatie is altijd beschikbaar door rechtstreeks contact met ons op te nemen.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Informatie over de dienst</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Beschrijvingen van onze dienst, inclusief signaalbronnen, verificatiemethoden en outreach-mogelijkheden, geven de algemene werking van de dienst weer. Individuele resultaten variëren afhankelijk van sector, doelmarkt, ICP-kwaliteit en hoe de outreach door de klant wordt uitgevoerd. We garanderen geen specifieke uitkomsten zoals reactiepercentages, geboekte meetings of gegenereerde omzet.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Accuratesse van prospect-data</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Contactgegevens via onze dienst komen uit externe zakelijke databronnen en publiek beschikbare bronnen. Hoewel we verificatiestappen toepassen om de accuratesse te verbeteren, kunnen we niet garanderen dat alle contactgegevens op het moment van gebruik actueel of correct zijn. We adviseren contacten te verifiëren voordat je belangrijke berichten verstuurt.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Geen juridisch of compliance-advies</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Niets op deze website vormt juridisch advies. Klanten zijn zelf verantwoordelijk om ervoor te zorgen dat hun gebruik van Hooklyne's dienst, inclusief de verstuurde outreach, voldoet aan de geldende wetten, waaronder de AVG, de Telecommunicatiewet en sectorspecifieke regelgeving. We adviseren een juridisch adviseur te raadplegen bij twijfel.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Externe links</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Deze site kan linken naar websites van derden. We zijn niet verantwoordelijk voor de inhoud, privacypraktijken of beschikbaarheid van die sites.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Beperking van aansprakelijkheid</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Voor zover wettelijk toegestaan is Hooklyne niet aansprakelijk voor directe of indirecte schade die voortvloeit uit het gebruik van deze website of onze dienst, inclusief schade door vertrouwen op onjuiste prospect-data, mislukte outreach of serviceonderbrekingen.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Toepasselijk recht</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Deze disclaimer valt onder Nederlands recht. Geschillen over het gebruik van deze website of onze dienst zijn onderworpen aan de exclusieve bevoegdheid van de bevoegde rechtbanken in Nederland.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Contact</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Voor vragen over deze disclaimer, mail naar <a href="mailto:legal@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">legal@hooklyne.com</a>.
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

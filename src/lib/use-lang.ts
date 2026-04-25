@@ -27,6 +27,11 @@ const NL_AVAILABLE = new Set<string>([
   "/nl/product",
   "/nl/about",
   "/nl/contact",
+  "/nl/privacy",
+  "/nl/cookies",
+  "/nl/disclaimer",
+  "/nl/resources",
+  "/nl/resources/support",
 ]);
 
 /**

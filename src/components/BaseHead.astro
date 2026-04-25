@@ -113,6 +113,11 @@ const imageURL = new URL(finalImage, Astro.url);
     "/nl/product",
     "/nl/about",
     "/nl/contact",
+    "/nl/privacy",
+    "/nl/cookies",
+    "/nl/disclaimer",
+    "/nl/resources",
+    "/nl/resources/support",
   ]);
   if (!NL_AVAILABLE.has(nlPath)) return null;
   const enUrl = new URL(enPath, Astro.site).toString();

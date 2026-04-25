@@ -34,12 +34,12 @@ The reference voice baseline is in `src/components/blocks/built-for.tsx` (NL str
 | `/about` | ✅ | ✅ | 2026-04-25 | Standalone NL version at `/nl/about` |
 | `/blog` | ✅ | ❌ | - | Hub page; blog **posts** are EN-only by design - write Dutch posts separately for Dutch SEO |
 | `/blog/*` | ✅ | n/a | - | Posts are EN-first. Don't transcreate. Original Dutch posts get their own slugs |
-| `/privacy` | ✅ | ❌ | - | Stable legal copy - safe to translate any time |
-| `/cookies` | ✅ | ❌ | - | Stable legal copy |
-| `/disclaimer` | ✅ | ❌ | - | Stable legal copy |
-| `/resources` | ✅ | ❌ | - | |
-| `/resources/support` | ✅ | ❌ | - | |
-| `/404` | ✅ | ❌ | - | One-time, never changes |
+| `/privacy` | ✅ | ✅ | 2026-04-25 | Full Dutch translation including AVG terminology |
+| `/cookies` | ✅ | ✅ | 2026-04-25 | Cookie table localised |
+| `/disclaimer` | ✅ | ✅ | 2026-04-25 | Dutch legal phrasing, AVG referenced |
+| `/resources` | ✅ | ✅ | 2026-04-25 | Hub card translated |
+| `/resources/support` | ✅ | ✅ | 2026-04-25 | Form labels + topic options + auto JS labels translated |
+| `/404` | ✅ | ✅ | 2026-04-25 | Single file detects `/nl/*` via Astro.url and switches inline |
 
 ---
 
