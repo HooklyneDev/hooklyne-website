@@ -10,12 +10,12 @@ import { GraphicShell } from "./graphic-shell";
 const PROVIDERS = [
   { name: "Hunter", code: "HU" },
   { name: "Apollo", code: "AP" },
-  { name: "ZoomInfo", code: "ZI" },
-  { name: "Lusha", code: "LU" },
-  { name: "Snov", code: "SN" },
   { name: "Dropcontact", code: "DC" },
-  { name: "Kaspr", code: "KA" },
   { name: "RocketReach", code: "RR" },
+  { name: "Kaspr", code: "KA" },
+  { name: "Snov", code: "SN" },
+  { name: "Findymail", code: "FM" },
+  { name: "Datagma", code: "DG" },
 ];
 
 const LAYERS = [

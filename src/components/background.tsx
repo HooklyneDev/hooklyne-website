@@ -27,7 +27,7 @@ export const Background = ({
       )}
       style={{
         background: isTop
-          ? `linear-gradient(to bottom, var(--background) 0%, var(--card) 10%, var(--card) ${topStop}, var(--background) 100%)`
+          ? `linear-gradient(to bottom, var(--background) 0%, var(--card) 10%, var(--card) ${topStop}, var(--background) 130%)`
           : "linear-gradient(to bottom, var(--background) 0%, var(--card) 100%)",
         minHeight: isTop ? undefined : "60vh",
       }}
