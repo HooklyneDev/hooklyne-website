@@ -6,6 +6,7 @@ import { PortalShot } from '@/components/portal-shot';
 import { SignalHeatTable } from '@/components/product/signal-heat-table';
 import { FindCompaniesFlow } from '@/components/product/find-companies-flow';
 import { EmailCompose } from '@/components/product/email-compose';
+import { VerificationWaterfall } from '@/components/product/verification-waterfall';
 
 const packageBlocks = [
   {
@@ -433,6 +434,35 @@ const profileTabs = [
           </a>
         </div>
 
+      </div>
+    </section>
+
+    <section class="py-12 lg:py-16" data-fade>
+      <div class="container max-w-6xl">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verification</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            20+ providers. Four layers. One verdict.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            No single database has more than ~40% of any market. We waterfall across 20+, then run four deliverability layers. If it can't clear the bar, it doesn't ship.
+          </p>
+        </div>
+
+        <VerificationWaterfall client:visible ratio="2/1" />
+
+        <ul class="grid sm:grid-cols-3 gap-3 mt-10 max-w-4xl mx-auto">
+          {[
+            "20+ contact data providers, picked best-per-region",
+            "Four checks: SMTP, catch-all, role, deliverable",
+            "Held back if any layer fails - your sender reputation stays clean",
+          ].map((f) => (
+            <li class="flex items-start gap-2.5 text-sm text-[var(--foreground)]">
+              <svg class="size-4 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              {f}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 

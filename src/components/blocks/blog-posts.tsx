@@ -37,7 +37,7 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
                       className="aspect-video w-full rounded-xl object-cover"
                     />
                     <span
-                      className="absolute top-4 left-4 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em]"
+                      className="absolute top-4 right-4 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em]"
                       style={{ background: tagStyle.bg, color: tagStyle.fg }}
                     >
                       {TYPE_LABEL[type]}
