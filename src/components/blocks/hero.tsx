@@ -24,15 +24,38 @@ export const Hero = () => {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-  /* Force-play the hero video. Browsers occasionally ignore the HTML
-     autoplay attribute on first visit (no buffer yet, autoplay policy);
-     calling play() after mount covers those edge cases. */
+  /* Hero video playback. Three things going on:
+     1. Respect prefers-reduced-motion: skip autoplay entirely, show poster.
+     2. Force-play after canplay: browsers occasionally ignore the HTML
+        autoplay attribute on first visit (no buffer yet, autoplay policy).
+     3. Pause when scrolled out of view: saves CPU/battery on mobile. */
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      v.removeAttribute("autoplay");
+      v.pause();
+      return;
+    }
+
     const tryPlay = () => v.play().catch(() => { /* user-gesture required, give up silently */ });
     if (v.readyState >= 3) tryPlay();
     else v.addEventListener("canplay", tryPlay, { once: true });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      });
+    }, { threshold: 0.15 });
+    io.observe(v);
+
+    return () => {
+      io.disconnect();
+      v.removeEventListener("canplay", tryPlay);
+    };
   }, []);
 
   const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";

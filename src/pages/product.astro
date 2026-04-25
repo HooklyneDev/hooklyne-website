@@ -228,9 +228,20 @@ const breadcrumb = breadcrumbList([
                 (function () {
                   var v = document.getElementById('product-hero-video');
                   if (!v) return;
-                  var tryPlay = function () { v.play().catch(function () { /* user-gesture required, ignore */ }); };
+                  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                  if (reduceMotion) { v.removeAttribute('autoplay'); v.pause(); return; }
+                  var tryPlay = function () { v.play().catch(function () {}); };
                   if (v.readyState >= 3) tryPlay();
                   else v.addEventListener('canplay', tryPlay, { once: true });
+                  if ('IntersectionObserver' in window) {
+                    var io = new IntersectionObserver(function (entries) {
+                      entries.forEach(function (e) {
+                        if (e.isIntersecting) v.play().catch(function () {});
+                        else v.pause();
+                      });
+                    }, { threshold: 0.15 });
+                    io.observe(v);
+                  }
                 })();
               </script>
             </div>
