@@ -27,9 +27,10 @@ const LAYERS = [
 
 type Phase = "ingest" | "providers" | "layers" | "verified";
 
-type Props = { ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" };
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 
-export const VerificationWaterfall = ({ ratio = "2/1" }: Props = {}) => {
+export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio }: Props = {}) => {
   const [phase, setPhase] = useState<Phase>("ingest");
   const [providerIdx, setProviderIdx] = useState(0);
   const [layerIdx, setLayerIdx] = useState(0);
@@ -106,7 +107,7 @@ export const VerificationWaterfall = ({ ratio = "2/1" }: Props = {}) => {
 
   return (
     <div ref={rootRef}>
-      <GraphicShell crumb="Portal / Contact verification" ratio={ratio}>
+      <GraphicShell crumb="Portal / Contact verification" ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio}>
         <style>{`
           @keyframes vw-tick { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
           @keyframes vw-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }

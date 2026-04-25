@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 /**
  * Browser-chrome wrapper used by all product-page animated graphics.
@@ -24,11 +24,17 @@ const RATIO_PB: Record<"16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" |
   "5/4": "80%",
 };
 
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+
 type Props = {
   crumb: string;
   status?: string;
   statusTone?: Tone;
-  ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+  ratio?: Ratio;
+  /** Optional override for sub-md viewports. */
+  mobileRatio?: Ratio;
+  /** Optional override for md..lg viewports. */
+  tabletRatio?: Ratio;
   children: ReactNode;
   className?: string;
 };
@@ -38,10 +44,18 @@ export const GraphicShell = ({
   status,
   statusTone = "teal",
   ratio = "16/9",
+  mobileRatio,
+  tabletRatio,
   children,
   className,
 }: Props) => {
   const chip = status ? TONE[statusTone] : null;
+  const reactId = useId().replace(/[:]/g, "");
+  const stageClass = `gs-stage-${reactId}`;
+  const responsiveCss =
+    mobileRatio || tabletRatio
+      ? `${mobileRatio ? `@media (max-width: 767px){.${stageClass}{padding-bottom:${RATIO_PB[mobileRatio]} !important;}}` : ""}${tabletRatio ? `@media (min-width: 768px) and (max-width: 1023px){.${stageClass}{padding-bottom:${RATIO_PB[tabletRatio]} !important;}}` : ""}`
+      : null;
   return (
     <div className={`relative w-full rounded-2xl overflow-visible ${className ?? ""}`}>
       <div
@@ -98,8 +112,9 @@ export const GraphicShell = ({
           )}
         </div>
 
+        {responsiveCss && <style>{responsiveCss}</style>}
         <div
-          className="relative border border-t-0 rounded-b-2xl overflow-hidden"
+          className={`relative border border-t-0 rounded-b-2xl overflow-hidden ${stageClass}`}
           style={{
             paddingBottom: RATIO_PB[ratio],
             borderColor: "var(--border)",
