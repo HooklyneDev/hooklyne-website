@@ -32,8 +32,8 @@ export const WhatYouGet = ({ lang }: { lang?: "en" | "nl" }) => {
             }}
           >
             <img
-              src="/home/hooklyne-research-layer-b2b-prospecting.webp"
-              alt="Hooklyne prospect detail: verified contact, signal summary, and drafted outreach ready to send"
+              src="/home/dashboard.jpg"
+              alt="Hooklyne dashboard: daily focus actions, signal heat for top prospects, and market intel headlines"
               className="w-full h-auto block"
               loading="lazy"
             />
