@@ -26,8 +26,9 @@ const BODY: string[] = [
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
 
-type EmailComposeProps = { ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" };
-export const EmailCompose = ({ ratio = "2/1" }: EmailComposeProps = {}) => {
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type EmailComposeProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
+export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailComposeProps = {}) => {
   const [phase, setPhase] = useState<Phase>("typing-subject");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState<string[]>([""]);
@@ -116,6 +117,8 @@ export const EmailCompose = ({ ratio = "2/1" }: EmailComposeProps = {}) => {
       status={phase === "actioned" ? "Actioned" : "Drafting"}
       statusTone={phase === "actioned" ? "teal" : "orange"}
       ratio={ratio}
+      mobileRatio={mobileRatio}
+      tabletRatio={tabletRatio}
     >
       <style>{`
         @keyframes ec-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }

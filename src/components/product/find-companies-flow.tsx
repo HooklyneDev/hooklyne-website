@@ -67,8 +67,9 @@ const CONF: Record<Conf, { label: string; bg: string; fg: string; icon: string }
   low: { label: "Low confidence", bg: "rgba(220,38,38,0.12)", fg: "#b91c1c", icon: "arrow" },
 };
 
-type FindCompaniesFlowProps = { ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" };
-export const FindCompaniesFlow = ({ ratio = "2/1" }: FindCompaniesFlowProps = {}) => {
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
+export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: FindCompaniesFlowProps = {}) => {
   const [step, setStep] = useState(0);
   const [typed, setTyped] = useState("");
   const [reduced, setReduced] = useState(false);
@@ -134,6 +135,8 @@ export const FindCompaniesFlow = ({ ratio = "2/1" }: FindCompaniesFlowProps = {}
       status={step === 0 ? "Drafting" : step === 1 ? "6 found" : "Verifying"}
       statusTone={step === 0 ? "blue" : step === 1 ? "teal" : "orange"}
       ratio={ratio}
+      mobileRatio={mobileRatio}
+      tabletRatio={tabletRatio}
     >
       <style>{`
         @keyframes fc-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }

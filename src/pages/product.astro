@@ -210,7 +210,7 @@ const profileTabs = [
       <div class="container max-w-6xl">
         <div class="max-w-2xl mb-8 lg:mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The package</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             Four things have to be right before you hit send.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
@@ -320,10 +320,10 @@ const profileTabs = [
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The portal</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             Open, review, send.
           </h2>
-          <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+          <p class="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed">
             Built for one moment: prospect in, message out. Under a minute.
           </p>
           <div class="inline-flex items-center gap-2 mt-5 px-3 py-1.5 rounded-full text-[11px] font-semibold" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal); border: 1px solid rgba(13,148,136,0.25);">
@@ -332,7 +332,7 @@ const profileTabs = [
           </div>
         </div>
 
-        <EmailCompose client:visible />
+        <EmailCompose client:visible tabletRatio="3/2" mobileRatio="3/2" />
 
         <ul class="grid md:grid-cols-2 gap-3 mt-12 max-w-4xl mx-auto">
           {[
@@ -356,7 +356,7 @@ const profileTabs = [
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Dashboard</p>
-            <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
               Start the day knowing where to go.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-8">
@@ -396,11 +396,11 @@ const profileTabs = [
       </div>
     </section>
 
-    <section class="py-12 lg:py-16" data-fade>
+    <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Prospecting</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             Four ways in, same package out.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
@@ -409,7 +409,7 @@ const profileTabs = [
         </div>
 
         <div class="mb-10">
-          <FindCompaniesFlow client:visible />
+          <FindCompaniesFlow client:visible tabletRatio="3/2" mobileRatio="4/3" />
         </div>
 
         <div class="grid gap-4 md:grid-cols-2">
@@ -437,11 +437,11 @@ const profileTabs = [
       </div>
     </section>
 
-    <section class="py-12 lg:py-16" data-fade>
+    <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verification</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             20+ providers. Four layers. One verdict.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
@@ -449,7 +449,7 @@ const profileTabs = [
           </p>
         </div>
 
-        <VerificationWaterfall client:visible ratio="2/1" />
+        <VerificationWaterfall client:visible ratio="2/1" tabletRatio="4/3" mobileRatio="1/1" />
 
         <ul class="grid sm:grid-cols-3 gap-3 mt-10 max-w-4xl mx-auto">
           {[
@@ -466,11 +466,11 @@ const profileTabs = [
       </div>
     </section>
 
-    <section class="py-12 lg:py-16" data-fade>
+    <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signals</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             The right moment, not every moment.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
@@ -478,7 +478,7 @@ const profileTabs = [
           </p>
         </div>
 
-        <SignalHeatTable client:visible />
+        <SignalHeatTable client:visible tabletRatio="3/2" mobileRatio="4/3" />
 
         <div class="mt-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">What we watch</p>
@@ -522,7 +522,7 @@ const profileTabs = [
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="lg:order-2">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">My Leads</p>
-            <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
               Your pipeline. Without the spreadsheet.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
@@ -564,7 +564,7 @@ const profileTabs = [
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Your voice</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             Set it once. Sound like you forever. In both languages.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
