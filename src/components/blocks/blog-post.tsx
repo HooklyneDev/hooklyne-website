@@ -56,6 +56,9 @@ const BlogPost = ({
               alt={title}
               loading="eager"
               decoding="async"
+              fetchPriority="high"
+              width={1600}
+              height={900}
               className="aspect-video w-full object-cover"
             />
           </div>

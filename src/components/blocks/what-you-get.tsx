@@ -36,6 +36,9 @@ export const WhatYouGet = ({ lang }: { lang?: "en" | "nl" }) => {
               alt="Hooklyne dashboard: daily focus actions, signal heat for top prospects, and market intel headlines"
               className="w-full h-auto block"
               loading="lazy"
+              decoding="async"
+              width={1600}
+              height={990}
             />
           </div>
 
