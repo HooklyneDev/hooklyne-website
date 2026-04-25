@@ -36,6 +36,8 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
                       alt={post.data.title}
                       loading="lazy"
                       decoding="async"
+                      width={800}
+                      height={450}
                       className="aspect-video w-full rounded-xl object-cover"
                     />
                     <span

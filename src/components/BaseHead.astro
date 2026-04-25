@@ -31,14 +31,7 @@ const imageURL = new URL(finalImage, Astro.url);
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 
-<!-- Preconnect to Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- Load Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
-<!-- Preload local fonts -->
+<!-- Preload self-hosted DM Sans (only fonts actually used) -->
 <link
   rel="preload"
   href="/fonts/dm-sans/DMSans-Regular.ttf"
