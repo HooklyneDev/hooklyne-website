@@ -54,7 +54,7 @@ const breadcrumb = breadcrumbList([
   })} />
   <Background>
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
-      <HeroGlow client:load signals={false} />
+      <HeroGlow client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
@@ -99,13 +99,18 @@ const breadcrumb = breadcrumbList([
           <div class="lg:col-span-4">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Founder</p>
             <figure class="relative rounded-2xl overflow-hidden aspect-[4/5]" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-lg);">
-              <img
-                src="/about/tim-wissink.jpg"
-                alt="Tim, founder of Hooklyne"
-                loading="lazy"
-                decoding="async"
-                class="absolute inset-0 w-full h-full object-cover"
-              />
+              <picture>
+                <source srcset="/about/tim-wissink.webp" type="image/webp" />
+                <img
+                  src="/about/tim-wissink.jpg"
+                  alt="Tim, founder of Hooklyne"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="529"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </picture>
               <div
                 class="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
                 style="background: linear-gradient(180deg, transparent 0%, rgba(2,47,81,0.0) 20%, rgba(2,47,81,0.85) 85%, rgba(2,47,81,0.95) 100%);"

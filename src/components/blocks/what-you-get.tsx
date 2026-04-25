@@ -31,15 +31,18 @@ export const WhatYouGet = ({ lang }: { lang?: "en" | "nl" }) => {
                 "0 20px 60px -20px rgba(52,76,163,0.25), 0 0 100px 0 rgba(52,76,163,0.15), var(--shadow-xl)",
             }}
           >
-            <img
-              src="/home/dashboard.jpg"
-              alt="Hooklyne dashboard: daily focus actions, signal heat for top prospects, and market intel headlines"
-              className="w-full h-auto block"
-              loading="lazy"
-              decoding="async"
-              width={1600}
-              height={990}
-            />
+            <picture>
+              <source srcSet="/home/dashboard.webp" type="image/webp" />
+              <img
+                src="/home/dashboard.jpg"
+                alt="Hooklyne dashboard: daily focus actions, signal heat for top prospects, and market intel headlines"
+                className="w-full h-auto block"
+                loading="lazy"
+                decoding="async"
+                width={1600}
+                height={990}
+              />
+            </picture>
           </div>
 
           {/* Right: text */}

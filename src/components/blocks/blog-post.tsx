@@ -51,16 +51,19 @@ const BlogPost = ({
             className="mb-12 overflow-hidden rounded-2xl"
             style={{ border: "1px solid var(--border)" }}
           >
-            <img
-              src={image}
-              alt={title}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              width={1600}
-              height={900}
-              className="aspect-video w-full object-cover"
-            />
+            <picture>
+              <source srcSet={image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
+              <img
+                src={image}
+                alt={title}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                width={1600}
+                height={900}
+                className="aspect-video w-full object-cover"
+              />
+            </picture>
           </div>
         )}
 
