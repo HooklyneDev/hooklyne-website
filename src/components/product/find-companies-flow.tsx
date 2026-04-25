@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
+import { useLang } from "@/lib/use-lang";
 
 /**
  * Find me companies - mirrors the real 3-step flow in the portal.
@@ -9,67 +10,101 @@ import { GraphicShell } from "./graphic-shell";
  * Loops through the steps. Copy matches the portal exactly.
  */
 
-const PROMPT =
+const PROMPT_EN =
   "Dutch food brands and meal kit operators expanding their ambient product range - sauces, snacks, and bakery components";
+const PROMPT_NL =
+  "Nederlandse foodmerken en maaltijdbox-operators die hun ambient productlijn uitbreiden - sauzen, snacks en bakery-componenten";
 
-const COMPANIES = [
-  {
-    n: 1,
-    name: "Ekomenu",
-    domain: "ekomenu.nl",
-    size: "50-200",
-    city: "Utrecht",
+const COMPANIES_EN = [
+  { n: 1, name: "Ekomenu", domain: "ekomenu.nl", size: "50-200", city: "Utrecht",
     body: "Dutch organic meal kit company delivering weekly boxes to 80,000+ households. Expanding range with seasonal and plant-based components.",
-    signal: "Active NPD programme, recent tender for ambient sauce and grain components. IFS and BIO certification required.",
-  },
-  {
-    n: 2,
-    name: "Marley Spoon",
-    domain: "marleyspoon.com",
-    size: "200-500",
-    city: "Amsterdam",
+    signal: "Active NPD programme, recent tender for ambient sauce and grain components. IFS and BIO certification required." },
+  { n: 2, name: "Marley Spoon", domain: "marleyspoon.com", size: "200-500", city: "Amsterdam",
     body: "International meal kit operator with NL and UK operations. Known for premium positioning and chef-designed recipes.",
-    signal: "Sourcing new ambient components for expanded autumn/winter menu. Procurement team recently posted 2 supplier RFPs.",
-  },
-  {
-    n: 3,
-    name: "Stach Food",
-    domain: "stach-food.nl",
-    size: "50-200",
-    city: "Amsterdam",
+    signal: "Sourcing new ambient components for expanded autumn/winter menu. Procurement team recently posted 2 supplier RFPs." },
+  { n: 3, name: "Stach Food", domain: "stach-food.nl", size: "50-200", city: "Amsterdam",
     body: "Food-to-go operator with 37 locations across offices, stations and city centres in the Benelux.",
-    signal: "Rapid location growth signals supplier consolidation - NPD partner for ambient snacks and meal components needed.",
-  },
+    signal: "Rapid location growth signals supplier consolidation - NPD partner for ambient snacks and meal components needed." },
+];
+
+const COMPANIES_NL = [
+  { n: 1, name: "Ekomenu", domain: "ekomenu.nl", size: "50-200", city: "Utrecht",
+    body: "Nederlandse biologische maaltijdboxleverancier met wekelijkse boxen voor 80.000+ huishoudens. Breidt het assortiment uit met seizoens- en plantaardige componenten.",
+    signal: "Actief NPD-programma, recente tender voor ambient sauzen en graanproducten. IFS- en BIO-certificering vereist." },
+  { n: 2, name: "Marley Spoon", domain: "marleyspoon.com", size: "200-500", city: "Amsterdam",
+    body: "Internationale maaltijdbox-operator met operaties in NL en UK. Bekend om premium positionering en chef-ontworpen recepten.",
+    signal: "Op zoek naar nieuwe ambient componenten voor het uitgebreide herfst/winter-menu. Procurement plaatste recent 2 RFPs." },
+  { n: 3, name: "Stach Food", domain: "stach-food.nl", size: "50-200", city: "Amsterdam",
+    body: "Food-to-go operator met 37 vestigingen op kantoren, stations en in stadscentra in de Benelux.",
+    signal: "Snelle locatiegroei wijst op leveranciersconsolidatie - NPD-partner gezocht voor ambient snacks en maaltijdcomponenten." },
 ];
 
 type Conf = "high" | "medium" | "low";
-const CONTACTS: { role: string; conf: Conf; body: string }[] = [
-  {
-    role: "Category Manager",
-    conf: "high",
-    body: "Directly responsible for sourcing ambient and organic components for the weekly box. Most likely decision-maker for new supplier onboarding.",
-  },
-  {
-    role: "Head of Procurement",
-    conf: "medium",
-    body: "Oversees all supplier relationships and commercial terms. Signs off on new supplier approvals. Worth contacting in parallel.",
-  },
-  {
-    role: "Operations Director",
-    conf: "low",
-    body: "Manages fulfilment and logistics rather than sourcing. Could be a gatekeeper but unlikely to be the primary contact.",
-  },
+const CONTACTS_EN: { role: string; conf: Conf; body: string }[] = [
+  { role: "Category Manager", conf: "high",
+    body: "Directly responsible for sourcing ambient and organic components for the weekly box. Most likely decision-maker for new supplier onboarding." },
+  { role: "Head of Procurement", conf: "medium",
+    body: "Oversees all supplier relationships and commercial terms. Signs off on new supplier approvals. Worth contacting in parallel." },
+  { role: "Operations Director", conf: "low",
+    body: "Manages fulfilment and logistics rather than sourcing. Could be a gatekeeper but unlikely to be the primary contact." },
 ];
 
-const CONF: Record<Conf, { label: string; bg: string; fg: string; icon: string }> = {
+const CONTACTS_NL: { role: string; conf: Conf; body: string }[] = [
+  { role: "Category Manager", conf: "high",
+    body: "Direct verantwoordelijk voor de sourcing van ambient en biologische componenten voor de wekelijkse box. Meest waarschijnlijke beslisser voor het onboarden van nieuwe leveranciers." },
+  { role: "Head of Procurement", conf: "medium",
+    body: "Eindverantwoordelijk voor leveranciersrelaties en commerciële voorwaarden. Tekent nieuwe leveranciers af. Goed om parallel te benaderen." },
+  { role: "Operations Director", conf: "low",
+    body: "Beheert fulfilment en logistiek, geen sourcing. Kan een gatekeeper zijn maar is waarschijnlijk niet de primaire contactpersoon." },
+];
+
+const CONF_EN: Record<Conf, { label: string; bg: string; fg: string; icon: string }> = {
   high: { label: "High confidence", bg: "rgba(13,148,136,0.14)", fg: "var(--hooklyne-teal)", icon: "check" },
   medium: { label: "Medium confidence", bg: "rgba(255,140,66,0.14)", fg: "var(--hooklyne-orange)", icon: "tilde" },
   low: { label: "Low confidence", bg: "rgba(220,38,38,0.12)", fg: "#b91c1c", icon: "arrow" },
 };
 
+const CONF_NL: Record<Conf, { label: string; bg: string; fg: string; icon: string }> = {
+  high: { label: "Hoge zekerheid", bg: "rgba(13,148,136,0.14)", fg: "var(--hooklyne-teal)", icon: "check" },
+  medium: { label: "Gemiddelde zekerheid", bg: "rgba(255,140,66,0.14)", fg: "var(--hooklyne-orange)", icon: "tilde" },
+  low: { label: "Lage zekerheid", bg: "rgba(220,38,38,0.12)", fg: "#b91c1c", icon: "arrow" },
+};
+
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: FindCompaniesFlowProps = {}) => {
+  const lang = useLang();
+  const PROMPT = lang === "nl" ? PROMPT_NL : PROMPT_EN;
+  const COMPANIES = lang === "nl" ? COMPANIES_NL : COMPANIES_EN;
+  const CONTACTS = lang === "nl" ? CONTACTS_NL : CONTACTS_EN;
+  const CONF = lang === "nl" ? CONF_NL : CONF_EN;
+  const t = lang === "nl" ? {
+    crumbDescribe: "Prospecten / Vind bedrijven",
+    crumbSelect: "Prospecten / Selectie",
+    crumbContacts: "Prospecten / Contacten",
+    statusDrafting: "Opstellen",
+    statusFound: "6 gevonden",
+    statusVerifying: "Verifiëren",
+    stepDescribe: "Beschrijf je ICP",
+    stepSelect: "Selectie",
+    stepContacts: "Contacten",
+    rankedBy: "Gerangschikt op signaalsterkte",
+    confidenceLine: "Hoog · Gemiddeld · Lage zekerheid",
+    landsIn: "Leads belanden in My Leads · Bedrijven gevolgd in Signalen",
+  } : {
+    crumbDescribe: "Prospecting / Find me companies",
+    crumbSelect: "Prospecting / Select",
+    crumbContacts: "Prospecting / Contacts",
+    statusDrafting: "Drafting",
+    statusFound: "6 found",
+    statusVerifying: "Verifying",
+    stepDescribe: "Describe your ICP",
+    stepSelect: "Select",
+    stepContacts: "Contacts",
+    rankedBy: "Ranked by signal strength",
+    confidenceLine: "High · Medium · Low confidence",
+    landsIn: "Leads land in My Leads · Companies tracked in Signals",
+  };
   const [step, setStep] = useState(0);
   const [typed, setTyped] = useState("");
   const [reduced, setReduced] = useState(false);
@@ -131,8 +166,8 @@ export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: F
   return (
     <div ref={rootRef}>
     <GraphicShell
-      crumb={step === 0 ? "Prospecting / Find me companies" : step === 1 ? "Prospecting / Select" : "Prospecting / Contacts"}
-      status={step === 0 ? "Drafting" : step === 1 ? "6 found" : "Verifying"}
+      crumb={step === 0 ? t.crumbDescribe : step === 1 ? t.crumbSelect : t.crumbContacts}
+      status={step === 0 ? t.statusDrafting : step === 1 ? t.statusFound : t.statusVerifying}
       statusTone={step === 0 ? "blue" : step === 1 ? "teal" : "orange"}
       ratio={ratio}
       mobileRatio={mobileRatio}
@@ -164,8 +199,8 @@ export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: F
         <div className="flex items-center gap-1 sm:gap-2 rounded-xl px-2 py-1.5 sm:px-3 sm:py-2 mb-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
           {[
             { n: 1, label: "Find" },
-            { n: 2, label: "Select" },
-            { n: 3, label: "Contacts" },
+            { n: 2, label: t.stepSelect },
+            { n: 3, label: t.stepContacts },
           ].map((s, i) => {
             const done = step > i;
             const active = step === i;
@@ -314,11 +349,11 @@ export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: F
         </div>
 
         <div className="flex items-center justify-between pt-2 text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>
-          <span>Leads land in My Leads · Companies tracked in Signals</span>
+          <span>{t.landsIn}</span>
           <span>
-            {step === 0 && "Describe your ICP"}
-            {step === 1 && "Ranked by signal strength"}
-            {step === 2 && "High · Medium · Low confidence"}
+            {step === 0 && t.stepDescribe}
+            {step === 1 && t.rankedBy}
+            {step === 2 && t.confidenceLine}
           </span>
         </div>
       </div>

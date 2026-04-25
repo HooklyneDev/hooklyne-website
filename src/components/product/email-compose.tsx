@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
+import { useLang } from "@/lib/use-lang";
 
 /**
  * Portal hero - full-width email draft that types itself out and then
@@ -7,8 +8,8 @@ import { GraphicShell } from "./graphic-shell";
  * focused moment of "open it, send it, close it".
  */
 
-const SUBJECT = "The 3.2 MW rooftop at Venlo - how you're planning to use it";
-const BODY: string[] = [
+const SUBJECT_EN = "The 3.2 MW rooftop at Venlo - how you're planning to use it";
+const BODY_EN: string[] = [
   "Hi Marieke,",
   "",
   "Saw the announcement on the 3.2 MW rooftop array going live at the Venlo DC next month. Congrats, that's a serious step.",
@@ -24,11 +25,56 @@ const BODY: string[] = [
   "Hooklyne",
 ];
 
+const SUBJECT_NL = "Het 3,2 MW zonnedak in Venlo - hoe jullie het willen inzetten";
+const BODY_NL: string[] = [
+  "Hoi Marieke,",
+  "",
+  "Zag de aankondiging van het 3,2 MW zonnedak dat volgende maand live gaat op DC Venlo. Gefeliciteerd, serieuze stap.",
+  "",
+  "De vraag die we op deze schaal steeds zien: hoeveel van die productie compenseert echt jullie verbruik in real time, en hoeveel wordt teruggeleverd tegen groothandelsprijzen. De meeste Nederlandse operators laten 18-30% liggen in het eerste jaar omdat forecasting- en laadvensters niet aansluiten op het ploegenpatroon van het DC.",
+  "",
+  "We helpen teams dat gat dichten met een energy management-laag tussen de PV-omvormers, het netcontract, en de heftruck- en koelhuislast. Twee operators in jullie range schoven de netto energiekosten ~22% omlaag binnen zes maanden.",
+  "",
+  "20 minuten ervoor uittrekken voordat het dak live gaat? Ik stuur eerst een one-pager als dat helpt.",
+  "",
+  "Groet,",
+  "Tim",
+  "Hooklyne",
+];
+
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type EmailComposeProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailComposeProps = {}) => {
+  const lang = useLang();
+  const SUBJECT = lang === "nl" ? SUBJECT_NL : SUBJECT_EN;
+  const BODY = lang === "nl" ? BODY_NL : BODY_EN;
+  const t = lang === "nl" ? {
+    crumb: "Portaal / Concept",
+    actioned: "Verzonden",
+    drafting: "Opstellen",
+    verified: "Geverifieerd",
+    role: "Head of Operations, Axiom Logistics · m.devries@axiom.nl",
+    hookTag: "Hook: 3,2 MW zonnedak",
+    venloTag: "Venlo DC",
+    subjectLabel: "Onderwerp",
+    senderProfile: "Sender profile: Hooklyne Voorbeeld",
+    under60: "Binnen 60s",
+    markActioned: "Markeer als verzonden",
+  } : {
+    crumb: "Portal / Draft",
+    actioned: "Actioned",
+    drafting: "Drafting",
+    verified: "Verified",
+    role: "Head of Operations, Axiom Logistics · m.devries@axiom.nl",
+    hookTag: "Hook: 3.2 MW solar",
+    venloTag: "Venlo DC",
+    subjectLabel: "Subject",
+    senderProfile: "Sender profile: Hooklyne Example",
+    under60: "Under 60s",
+    markActioned: "Mark as actioned",
+  };
   const [phase, setPhase] = useState<Phase>("typing-subject");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState<string[]>([""]);
@@ -113,8 +159,8 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailC
   return (
     <div ref={rootRef}>
     <GraphicShell
-      crumb="Portal / Draft"
-      status={phase === "actioned" ? "Actioned" : "Drafting"}
+      crumb={t.crumb}
+      status={phase === "actioned" ? t.actioned : t.drafting}
       statusTone={phase === "actioned" ? "teal" : "orange"}
       ratio={ratio}
       mobileRatio={mobileRatio}
@@ -144,20 +190,20 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailC
                   <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-teal)" }} />
                   <span className="relative inline-flex rounded-full size-1.5" style={{ background: "var(--hooklyne-teal)" }} />
                 </span>
-                <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" style={{ color: "var(--hooklyne-teal)" }}>Verified</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" style={{ color: "var(--hooklyne-teal)" }}>{t.verified}</span>
               </div>
               <p className="text-[10px] sm:text-[11px] truncate" style={{ color: "var(--muted-foreground)" }}>
-                Head of Operations, Axiom Logistics · m.devries@axiom.nl
+                {t.role}
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-1.5 shrink-0">
-              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,140,66,0.10)", color: "var(--hooklyne-orange)" }}>Hook: 3.2 MW solar</span>
-              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(52,76,163,0.08)", color: "var(--hooklyne-blue)" }}>Venlo DC</span>
+              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,140,66,0.10)", color: "var(--hooklyne-orange)" }}>{t.hookTag}</span>
+              <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded" style={{ background: "rgba(52,76,163,0.08)", color: "var(--hooklyne-blue)" }}>{t.venloTag}</span>
             </div>
           </div>
 
           <div className="px-3 sm:px-4 py-1.5 sm:py-2 border-b flex items-baseline gap-2 sm:gap-3" style={{ borderColor: "var(--border)" }}>
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest w-12 shrink-0" style={{ color: "var(--muted-foreground)" }}>Subject</span>
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest w-12 shrink-0" style={{ color: "var(--muted-foreground)" }}>{t.subjectLabel}</span>
             <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>
               {subject}
               {typingSubject && <span className="ec-caret inline-block w-[2px] h-[11px] sm:h-[13px] align-middle ml-0.5" style={{ background: "var(--hooklyne-orange)" }} />}
@@ -182,9 +228,9 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailC
                 NL · EN auto
               </span>
               <span>·</span>
-              <span>Sender profile: Hooklyne Example</span>
+              <span>{t.senderProfile}</span>
               <span className="hidden sm:inline">·</span>
-              <span className="hidden sm:inline">Under 60s</span>
+              <span className="hidden sm:inline">{t.under60}</span>
             </div>
             {phase === "actioned" ? (
               <span
@@ -192,7 +238,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailC
                 style={{ background: "rgba(13,148,136,0.14)", color: "var(--hooklyne-teal)" }}
               >
                 <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                Actioned
+                {t.actioned}
               </span>
             ) : (
               <span
@@ -202,7 +248,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailC
                   color: phase === "review" ? "white" : "var(--hooklyne-orange)",
                 }}
               >
-                Mark as actioned
+                {t.markActioned}
               </span>
             )}
           </div>
