@@ -2,7 +2,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 
-const lastUpdated = "18 April 2026";
+const lastUpdated = "25 April 2026";
 ---
 
 <DefaultLayout title="Cookie Policy | Hooklyne" description="The cookies Hooklyne uses, what each one does, and how to control them. Strict EU rules, plain English, no dark patterns.">
@@ -25,7 +25,7 @@ const lastUpdated = "18 April 2026";
           <section>
             <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Cookies we use</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed mb-5">
-              We use functional cookies required to operate the site and portal, and analytics cookies (Google Analytics) to understand how visitors use the site. Analytics cookies are only set if you accept cookies. We do not use advertising cookies or cross-site tracking.
+              We use functional cookies required to operate the site and portal, and analytics cookies (Google Analytics and Microsoft Clarity) to understand how visitors use the site. Analytics cookies are only set if you accept cookies. We do not use advertising cookies or cross-site tracking.
             </p>
 
             <div class="rounded-2xl overflow-hidden border border-[var(--border)]">
@@ -61,6 +61,12 @@ const lastUpdated = "18 April 2026";
                     <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">_ga, _ga_*</td>
                     <td class="px-4 py-3 text-[var(--muted-foreground)]">Google Analytics - distinguishes users and sessions to measure site usage. Only set with your consent.</td>
                     <td class="px-4 py-3 text-[var(--muted-foreground)]">2 years / session</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Analytics</td>
+                  </tr>
+                  <tr class="bg-[var(--card)]">
+                    <td class="px-4 py-3 font-mono text-xs text-[var(--heading)]">_clck, _clsk</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">Microsoft Clarity - records anonymised session interactions (clicks, scrolls, mouse movement) to help us improve the site. No keystroke logging on input fields. Only set with your consent.</td>
+                    <td class="px-4 py-3 text-[var(--muted-foreground)]">1 year / session</td>
                     <td class="px-4 py-3 text-[var(--muted-foreground)]">Analytics</td>
                   </tr>
                 </tbody>
