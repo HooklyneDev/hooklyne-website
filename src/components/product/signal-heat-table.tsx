@@ -201,7 +201,7 @@ export const SignalHeatTable = () => {
         </div>
 
         <div className="relative flex-1 min-h-0 rounded-lg overflow-hidden" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-          <div className="grid items-center px-2.5 sm:px-3 py-1.5 sm:py-2 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider border-b" style={{ gridTemplateColumns: "1.5fr 1fr 0.8fr 0.5fr 0.8fr", color: "var(--muted-foreground)", borderColor: "var(--border)", background: "var(--background)" }}>
+          <div className="grid items-center grid-cols-[1.5fr_1fr_0.8fr] sm:grid-cols-[1.5fr_1fr_0.8fr_0.5fr_0.8fr] px-2.5 sm:px-3 py-1.5 sm:py-2 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider border-b" style={{ color: "var(--muted-foreground)", borderColor: "var(--border)", background: "var(--background)" }}>
             <div>Company</div>
             <div>Heat</div>
             <div>Trend</div>
@@ -227,9 +227,8 @@ export const SignalHeatTable = () => {
                         }
                       : undefined
                   }
-                  className={`sh-row ${clickable ? "sh-rowbtn" : ""} grid items-center px-2.5 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-[11px] ${i < ROWS.length - 1 ? "border-b" : ""}`}
+                  className={`sh-row ${clickable ? "sh-rowbtn" : ""} grid items-center grid-cols-[1.5fr_1fr_0.8fr] sm:grid-cols-[1.5fr_1fr_0.8fr_0.5fr_0.8fr] px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] ${i < ROWS.length - 1 ? "border-b" : ""}`}
                   style={{
-                    gridTemplateColumns: "1.5fr 1fr 0.8fr 0.5fr 0.8fr",
                     animationDelay: mounted && !reduced ? `${i * 0.08}s` : "0s",
                     borderColor: "var(--border)",
                   }}
