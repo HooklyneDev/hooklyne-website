@@ -13,19 +13,22 @@ const TONE: Record<Tone, { bg: string; fg: string; dot: string }> = {
   navy: { bg: "rgba(2,47,81,0.10)", fg: "var(--hooklyne-navy)", dot: "var(--hooklyne-navy)" },
 };
 
-const RATIO_PB: Record<"16/9" | "3/2" | "2/1" | "5/2" | "21/9", string> = {
+const RATIO_PB: Record<"16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4", string> = {
   "16/9": "56.25%",
+  "4/3": "75%",
   "3/2": "66.66%",
   "2/1": "50%",
   "5/2": "40%",
   "21/9": "42.857%",
+  "1/1": "100%",
+  "5/4": "80%",
 };
 
 type Props = {
   crumb: string;
   status?: string;
   statusTone?: Tone;
-  ratio?: "16/9" | "3/2" | "2/1" | "5/2" | "21/9";
+  ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
   children: ReactNode;
   className?: string;
 };
