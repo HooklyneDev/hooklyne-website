@@ -149,7 +149,7 @@ const profileTabs = [
     }
   })} />
   <Background>
-    <section class="pt-28 pb-12 lg:pt-44 lg:pb-16 relative">
+    <section class="pt-28 pb-12 md:pt-36 md:pb-14 lg:pt-44 lg:pb-16 relative">
       <HeroGlow client:load />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4" data-fade>Product</p>
@@ -205,7 +205,7 @@ const profileTabs = [
       </div>
     </section>
 
-    <section class="pt-10 pb-10 lg:pt-14 lg:pb-12" data-fade>
+    <section class="pt-10 pb-10 md:pt-12 md:pb-12 lg:pt-14 lg:pb-12" data-fade>
       <div class="container max-w-6xl">
         <div class="max-w-2xl mb-8 lg:mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The package</p>
@@ -229,7 +229,7 @@ const profileTabs = [
               <p class="text-[15px] text-[var(--muted-foreground)] leading-relaxed mb-4">{b.body}</p>
 
               {b.step === "01" && (
-                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center gap-3 mb-3">
                     <div class="size-9 rounded-lg flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">AL</div>
                     <div class="min-w-0 flex-1">
@@ -248,7 +248,7 @@ const profileTabs = [
               )}
 
               {b.step === "02" && (
-                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center gap-3 mb-3">
                     <div class="size-9 rounded-full flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">MV</div>
                     <div class="min-w-0 flex-1">
@@ -268,7 +268,7 @@ const profileTabs = [
               )}
 
               {b.step === "03" && (
-                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-1.5">
                       <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-orange);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-orange);"></span></span>
@@ -288,7 +288,7 @@ const profileTabs = [
               )}
 
               {b.step === "04" && (
-                <div class="mt-auto rounded-xl p-3.5" style="background: var(--background); border: 1px solid var(--border);">
+                <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-baseline gap-2 pb-2 mb-2 border-b" style="border-color: var(--border);">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">To</span>
                     <span class="text-[12px] font-medium text-[var(--heading)] truncate">m.devries@axiom.nl</span>
@@ -315,7 +315,7 @@ const profileTabs = [
       </div>
     </section>
 
-    <section class="py-12 lg:py-16" data-fade>
+    <section class="py-12 md:py-14 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The portal</p>
@@ -413,7 +413,7 @@ const profileTabs = [
 
         <div class="grid gap-4 md:grid-cols-2">
           {prospectingModes.map((m) => (
-            <div class="rounded-2xl bg-[var(--card)] p-6 flex flex-col" style="box-shadow: var(--shadow-xs)">
+            <div class="rounded-2xl bg-[var(--card)] p-4 sm:p-6 flex flex-col" style="box-shadow: var(--shadow-xs)">
               <div class="flex items-center gap-3 mb-3">
                 <span class="text-xs font-bold tracking-widest text-[var(--hooklyne-blue)]/60">{m.n}</span>
                 <h3 class="text-base font-semibold text-[var(--heading)]">{m.title}</h3>
@@ -460,19 +460,19 @@ const profileTabs = [
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
             <p class="text-sm font-semibold text-[var(--heading)] mb-2">Live. Not weekly.</p>
             <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">When something moves, you know. Not next Monday.</p>
           </div>
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
             <p class="text-sm font-semibold text-[var(--heading)] mb-2">Deeper than news.</p>
             <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Company pages watched directly. New roles, quiet launches, careers-page expansions - before the press catches up.</p>
           </div>
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
             <p class="text-sm font-semibold text-[var(--heading)] mb-2">Signal, not noise.</p>
             <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Grouped by company, ranked by heat. Move to leads, dismiss, keep tracking.</p>
           </div>
-          <div class="rounded-2xl p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
             <p class="text-sm font-semibold text-[var(--heading)] mb-2">Track, don't forget.</p>
             <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Flip tracking on for any lead. When something new happens - a hire, a launch, a funding round - you are first to know. Not next Monday.</p>
           </div>
@@ -545,14 +545,14 @@ const profileTabs = [
         <div class="rounded-2xl overflow-hidden mb-8" style="background: var(--card); box-shadow: var(--shadow-md)">
           <div class="flex border-b border-[var(--border)] overflow-x-auto">
             {profileTabs.map((t) => (
-              <div class="flex items-center gap-2 px-4 sm:px-5 py-3 text-xs font-semibold whitespace-nowrap text-[var(--muted-foreground)]">
+              <div class="flex items-center gap-2 px-3 sm:px-5 py-3 text-xs font-semibold whitespace-nowrap text-[var(--muted-foreground)]">
                 <span class="text-[10px] font-mono tracking-wider text-[var(--hooklyne-blue)]/60">{t.n}</span>
                 <span class="text-[var(--muted-foreground)]/60">·</span>
                 {t.title}
               </div>
             ))}
           </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 p-6 lg:p-7">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 p-4 sm:p-6 lg:p-7">
             {profileTabs.map((t) => (
               <div class="rounded-xl p-4 lg:p-5" style="background: var(--background); border: 1px solid var(--border)">
                 <div class="flex items-baseline gap-2 mb-2">
@@ -574,14 +574,14 @@ const profileTabs = [
         </div>
 
         <div class="grid md:grid-cols-2 gap-4 mb-8">
-          <div class="rounded-2xl p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="rounded-2xl p-4 sm:p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
             <div class="size-10 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">NL</div>
             <div>
               <p class="text-sm font-semibold text-[var(--heading)] mb-1">Native Dutch</p>
               <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Written, not translated. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it.</p>
             </div>
           </div>
-          <div class="rounded-2xl p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="rounded-2xl p-4 sm:p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
             <div class="size-10 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">EN</div>
             <div>
               <p class="text-sm font-semibold text-[var(--heading)] mb-1">Natural English</p>
