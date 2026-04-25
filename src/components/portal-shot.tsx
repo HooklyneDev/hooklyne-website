@@ -45,6 +45,8 @@ type Props = {
   overlays?: Overlay[];
   /** Optional actual screenshot src. If provided the placeholder content is hidden. */
   src?: string;
+  /** How the screenshot fills the frame. "contain" letterboxes, "cover" fills edge-to-edge and may crop. */
+  fit?: "contain" | "cover";
   className?: string;
 };
 
@@ -77,6 +79,7 @@ export const PortalShot = ({
   ratio = "16/9",
   overlays = [],
   src,
+  fit = "contain",
   className,
 }: Props) => {
   const crumbText = crumb ?? ((url ? url.replace(/^portal\.hooklyne\.com\/?/, "").split("/").filter(Boolean).join(" / ") : "") || "Portal");
@@ -135,7 +138,7 @@ export const PortalShot = ({
               alt={label}
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 w-full h-full object-contain object-center"
+              className={cn("absolute inset-0 w-full h-full", fit === "cover" ? "object-cover object-top" : "object-contain object-center")}
             />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">

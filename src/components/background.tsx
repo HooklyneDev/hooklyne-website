@@ -6,12 +6,15 @@ type BackgroundProps = {
   variant?: "top" | "bottom";
   className?: string;
   animated?: boolean;
+  /** Where the top variant's solid card area ends before fading to background. Default 78%. */
+  topStop?: string;
 };
 
 export const Background = ({
   children,
   variant = "top",
   className,
+  topStop = "78%",
 }: BackgroundProps) => {
   const isTop = variant === "top";
 
@@ -24,7 +27,7 @@ export const Background = ({
       )}
       style={{
         background: isTop
-          ? "linear-gradient(to bottom, var(--background) 0%, var(--card) 10%, var(--card) 78%, var(--background) 100%)"
+          ? `linear-gradient(to bottom, var(--background) 0%, var(--card) 10%, var(--card) ${topStop}, var(--background) 100%)`
           : "linear-gradient(to bottom, var(--background) 0%, var(--card) 100%)",
         minHeight: isTop ? undefined : "60vh",
       }}
