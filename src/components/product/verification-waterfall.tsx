@@ -106,7 +106,7 @@ export const VerificationWaterfall = ({ ratio = "2/1" }: Props = {}) => {
 
   return (
     <div ref={rootRef}>
-      <GraphicShell crumb="Portal / Contact verification" status={phase === "verified" ? "Verified" : "Verifying"} statusTone={phase === "verified" ? "teal" : "blue"} ratio={ratio}>
+      <GraphicShell crumb="Portal / Contact verification" ratio={ratio}>
         <style>{`
           @keyframes vw-tick { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
           @keyframes vw-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
