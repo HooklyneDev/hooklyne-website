@@ -61,7 +61,7 @@ const values = [
   </Background>
 
   <Background variant="bottom">
-    <section class="py-20 lg:py-28" data-fade>
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
       <div class="container max-w-6xl">
         <div class="max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Why we built this</p>
@@ -86,7 +86,7 @@ const values = [
       </div>
     </section>
 
-    <section class="py-20 lg:py-28" data-fade>
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
       <div class="container max-w-6xl">
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div class="lg:col-span-4">
@@ -137,7 +137,7 @@ const values = [
       </div>
     </section>
 
-    <section class="py-20 lg:py-28" data-fade>
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
       <div class="container max-w-6xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">What we care about</p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-12 leading-[1.1] max-w-2xl">
@@ -153,6 +153,66 @@ const values = [
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10 lg:mb-12">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Company</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            The boring details. On the page, not buried.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Who we are, where we are, and what we won't do with your data.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="size-1.5 rounded-full" style="background: var(--hooklyne-blue);"></span>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hooklyne-blue)]">Registered</p>
+            </div>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 text-sm">
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Name</dt>
+              <dd class="text-[var(--heading)] font-medium">Hooklyne</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">KVK</dt>
+              <dd class="text-[var(--heading)] font-medium font-mono tabular-nums">99990512</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Country</dt>
+              <dd class="text-[var(--heading)] font-medium">Netherlands</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Live since</dt>
+              <dd class="text-[var(--heading)] font-medium">February 2026</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Founder</dt>
+              <dd class="text-[var(--heading)] font-medium">Tim Wissink</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Pilot</dt>
+              <dd class="text-[var(--heading)] font-medium">3 Dutch teams</dd>
+            </dl>
+          </div>
+
+          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="size-1.5 rounded-full" style="background: var(--hooklyne-teal);"></span>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em]" style="color: var(--hooklyne-teal);">Posture</p>
+            </div>
+            <ul class="space-y-3.5 text-sm leading-relaxed">
+              {[
+                { t: "EU-based, GDPR-compliant by design.", b: "Data stays in the EU. We process what's needed for outreach research, nothing more." },
+                { t: "We don't sell or share contact data.", b: "What's verified for your account stays in your account. No data brokerage, ever." },
+                { t: "Your inbox, your domain.", b: "We don't run sequences for you. Sending happens from your mailbox so the relationship stays yours." },
+                { t: "Nothing ships unverified.", b: "If a contact can't clear all four deliverability layers, it's held back. Your sender reputation matters more than the volume." },
+              ].map((p) => (
+                <li class="flex items-start gap-3">
+                  <svg class="size-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--hooklyne-teal);"><path d="M20 6 9 17l-5-5"/></svg>
+                  <div>
+                    <p class="font-semibold text-[var(--heading)]">{p.t}</p>
+                    <p class="text-[var(--muted-foreground)] mt-0.5">{p.b}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
