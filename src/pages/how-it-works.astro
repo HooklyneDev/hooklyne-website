@@ -258,10 +258,10 @@ const stages = [
             </div>
 
             <div>
-              {s.n === 1 && <FindCompaniesFlow client:visible />}
-              {s.n === 3 && <SignalHeatTable client:visible />}
+              {s.n === 1 && <FindCompaniesFlow client:visible ratio="3/2" />}
+              {s.n === 3 && <SignalHeatTable client:visible ratio="3/2" />}
               {s.n === 4 && <ResearchBrief />}
-              {s.n === 5 && <EmailCompose client:visible />}
+              {s.n === 5 && <EmailCompose client:visible ratio="3/2" />}
               {(s.n === 2 || s.n === 6) && (
                 <PortalShot
                   label={s.shot.label}
