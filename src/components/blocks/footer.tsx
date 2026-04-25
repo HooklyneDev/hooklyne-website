@@ -118,9 +118,10 @@ export const Footer = () => {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <a
-              href="#"
+              href="https://x.com/Hooklyne"
+              target="_blank"
               aria-label="Hooklyne on X"
-              rel="noopener me"
+              rel="noopener noreferrer me"
               className="inline-flex size-8 items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-colors"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -128,9 +129,10 @@ export const Footer = () => {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/company/hooklyne"
+              target="_blank"
               aria-label="Hooklyne on LinkedIn"
-              rel="noopener me"
+              rel="noopener noreferrer me"
               className="inline-flex size-8 items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-colors"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
