@@ -67,7 +67,7 @@ const CONF: Record<Conf, { label: string; bg: string; fg: string; icon: string }
   low: { label: "Low confidence", bg: "rgba(220,38,38,0.12)", fg: "#b91c1c", icon: "arrow" },
 };
 
-type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: FindCompaniesFlowProps = {}) => {
   const [step, setStep] = useState(0);
