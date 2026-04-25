@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
+import { useLang } from "@/lib/use-lang";
 
 /**
  * Verification waterfall - animates the journey of a contact email through
@@ -18,12 +19,21 @@ const PROVIDERS = [
   { name: "Datagma", code: "DG" },
 ];
 
-const LAYERS = [
+const LAYERS_EN = [
   { key: "smtp", label: "SMTP", desc: "Mailbox accepts" },
   { key: "catchall", label: "Catch-all", desc: "Not a wildcard" },
   { key: "role", label: "Role", desc: "Personal, not info@" },
   { key: "deliverable", label: "Deliverable", desc: "Reputation clean" },
 ];
+
+const LAYERS_NL = [
+  { key: "smtp", label: "SMTP", desc: "Mailbox accepteert" },
+  { key: "catchall", label: "Catch-all", desc: "Geen wildcard" },
+  { key: "role", label: "Role", desc: "Persoonlijk, geen info@" },
+  { key: "deliverable", label: "Deliverable", desc: "Reputatie schoon" },
+];
+
+const LAYERS = LAYERS_EN; // referenced in lengths; actual labels picked at render
 
 type Phase = "ingest" | "providers" | "layers" | "verified";
 
@@ -31,6 +41,35 @@ type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "
 type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 
 export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio }: Props = {}) => {
+  const lang = useLang();
+  const layersRender = lang === "nl" ? LAYERS_NL : LAYERS_EN;
+  const t = lang === "nl" ? {
+    crumb: "Portaal / Contactverificatie",
+    verified: "Geverifieerd",
+    verifying: "Verifiëren",
+    role: "Head of Operations",
+    providersChecked: "Providers gecheckt",
+    matched: "match",
+    layersTitle: "4 deliverability-lagen",
+    passed: "geslaagd",
+    ingest: "Kandidaat ingelezen · m.devries@axiom.nl",
+    providers: "Kruisreferentie over 20+ providers",
+    layers: "Deliverability-checks draaien",
+    cleared: "Door alle 4 lagen · veilig om te versturen",
+  } : {
+    crumb: "Portal / Contact verification",
+    verified: "Verified",
+    verifying: "Verifying",
+    role: "Head of Operations",
+    providersChecked: "Providers checked",
+    matched: "matched",
+    layersTitle: "4 deliverability layers",
+    passed: "passed",
+    ingest: "Ingesting candidate · m.devries@axiom.nl",
+    providers: "Cross-referencing 20+ providers",
+    layers: "Running deliverability checks",
+    cleared: "Cleared all 4 layers · safe to send",
+  };
   const [phase, setPhase] = useState<Phase>("ingest");
   const [providerIdx, setProviderIdx] = useState(0);
   const [layerIdx, setLayerIdx] = useState(0);
@@ -107,7 +146,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
 
   return (
     <div ref={rootRef}>
-      <GraphicShell crumb="Portal / Contact verification" ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio}>
+      <GraphicShell crumb={t.crumb} ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio}>
         <style>{`
           @keyframes vw-tick { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
           @keyframes vw-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
@@ -134,7 +173,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
                 Marieke de Vries
               </p>
               <p className="text-[10px] sm:text-[11px] truncate" style={{ color: "var(--muted-foreground)" }}>
-                Head of Operations · m.devries@axiom.nl
+                {t.role} · m.devries@axiom.nl
               </p>
             </div>
             {phase === "verified" ? (
@@ -145,7 +184,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
                 <svg className="size-2.5 sm:size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 6 9 17l-5-5" />
                 </svg>
-                Verified
+                {t.verified}
               </span>
             ) : (
               <span
@@ -156,7 +195,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
                   <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-blue)" }} />
                   <span className="relative inline-flex rounded-full size-1.5" style={{ background: "var(--hooklyne-blue)" }} />
                 </span>
-                Verifying
+                {t.verifying}
               </span>
             )}
           </div>
@@ -165,10 +204,10 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
           <div className="rounded-lg flex flex-col min-h-0 flex-1" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
             <div className="flex items-center justify-between px-2.5 sm:px-3 py-1.5 border-b" style={{ borderColor: "var(--border)" }}>
               <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest" style={{ color: "var(--muted-foreground)" }}>
-                Providers checked
+                {t.providersChecked}
               </p>
               <p className="text-[10px] sm:text-[11px] font-bold tabular-nums" style={{ color: phase === "verified" ? "var(--hooklyne-teal)" : "var(--hooklyne-blue)" }}>
-                {totalChecked}/20+ <span style={{ color: "var(--muted-foreground)", fontWeight: 500 }}>· {matchedCount} matched</span>
+                {totalChecked}/20+ <span style={{ color: "var(--muted-foreground)", fontWeight: 500 }}>· {matchedCount} {t.matched}</span>
               </p>
             </div>
             <div className="flex-1 overflow-hidden grid grid-cols-2 gap-x-2 gap-y-1 px-2.5 sm:px-3 py-2">
@@ -208,14 +247,14 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
           <div className="rounded-lg p-2 sm:p-2.5" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest" style={{ color: "var(--muted-foreground)" }}>
-                4 deliverability layers
+                {t.layersTitle}
               </p>
               <p className="text-[10px] sm:text-[11px] font-bold tabular-nums" style={{ color: phase === "verified" ? "var(--hooklyne-teal)" : "var(--muted-foreground)" }}>
-                {Math.min(layerIdx, LAYERS.length)}/4 passed
+                {Math.min(layerIdx, LAYERS.length)}/4 {t.passed}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-              {LAYERS.map((l, i) => {
+              {layersRender.map((l, i) => {
                 const passed = i < layerIdx;
                 return (
                   <div
@@ -265,11 +304,11 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
           {/* Footer verdict */}
           <div className="flex items-center justify-between text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>
             <span>
-              {phase === "ingest" && "Ingesting candidate · m.devries@axiom.nl"}
-              {phase === "providers" && "Cross-referencing 20+ providers"}
-              {phase === "layers" && "Running deliverability checks"}
+              {phase === "ingest" && t.ingest}
+              {phase === "providers" && t.providers}
+              {phase === "layers" && t.layers}
               {phase === "verified" && (
-                <span style={{ color: "var(--hooklyne-teal)", fontWeight: 600 }}>Cleared all 4 layers · safe to send</span>
+                <span style={{ color: "var(--hooklyne-teal)", fontWeight: 600 }}>{t.cleared}</span>
               )}
             </span>
             <span className="font-mono tabular-nums">v.4.{Math.min(providerIdx, 9)}</span>

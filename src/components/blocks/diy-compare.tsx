@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Check, X, Clock, Database, Wrench, Briefcase, Send } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useLang } from "@/lib/use-lang";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
   <span
@@ -38,7 +39,7 @@ type TabDef = {
   steps: Step[];
 };
 
-const TABS: TabDef[] = [
+const EN_TABS: TabDef[] = [
   {
     key: "hooklyne",
     label: "Hooklyne",
@@ -239,6 +240,157 @@ const TABS: TabDef[] = [
   },
 ];
 
+const NL_TABS: TabDef[] = [
+  {
+    key: "hooklyne",
+    label: "Hooklyne",
+    sub: "Hele werkstroom",
+    price: "€39–299/mnd",
+    icon: Wrench,
+    tone: "teal",
+    totalLabel: "Jouw tijd",
+    total: "<60s om te bekijken en versturen",
+    totalSub: "de rest doen wij",
+    steps: [
+      { step: "1", label: "Beschrijf het bedrijfstype",
+        detail: "Gewone taal, geen filter-rasters. We draaien een semantische match over miljarden pagina's en geven een gerangschikte lijst terug. Beste match bovenaan, gescoord tegen jouw ICP.",
+        time: "2 min", callout: "Een gerangschikte shortlist, geen rij-dump", good: true },
+      { step: "2", label: "Kies het contact dat je wilt bereiken",
+        detail: "Per bedrijf zie je beschikbare rollen. Jij kiest welke past. Wij draaien een waterval over 20+ contactproviders met vier verificatie-lagen - want geen enkele database dekt meer dan 40% van een markt.",
+        time: "30 sec", callout: "Jij kiest de rol. Wij verifiëren het adres.", good: true },
+      { step: "3", label: "Belandt in My Leads met een aanleiding",
+        detail: "Elke prospect komt binnen met een signaal: fundingronde, hire, leiderschapswissel, launch. Dubbel gescoord - één keer voor het bedrijf, één keer voor wat jij verkoopt. Alleen wat door beide komt, bereikt jou.",
+        time: "auto", callout: "Een reden om contact te zoeken, geen kale naam.", good: true },
+      { step: "4", label: "Volledige mail, in jouw stem geschreven",
+        detail: "Vier reasoning-passes: hook, invalshoek, stem, kwaliteitscheck. Leest alsof je rep het schreef nadat-ie het onderzoek had gedaan.",
+        time: "auto", callout: "Niet generiek. NL of EN, vast voor die prospect.", good: true },
+      { step: "5", label: "Volg signalen op die lead",
+        detail: "Volg elke lead voor doorlopende signalen: nieuwe funding, teamveranderingen, persvermeldingen. Je krijgt een seintje als het moment verandert - niet als de kalender dat zegt.",
+        time: "toggle", callout: "Vang ook het volgende moment, niet alleen het eerste.", good: true },
+      { step: "6", label: "Vraag een meeting brief aan",
+        detail: "Klaar voor het gesprek? Vraag een live-onderzochte brief aan. Elke claim is te herleiden naar een echte URL. Loop voorbereid naar binnen.",
+        time: "op aanvraag", callout: "Elke claim met bron. Geen verzonnen feiten.", good: true },
+    ],
+  },
+  {
+    key: "database",
+    label: "Contactdatabase",
+    sub: "Rijen, filters, exports",
+    price: "~€100–300/mnd",
+    icon: Database,
+    tone: "orange",
+    totalLabel: "Jouw tijd",
+    total: "~45 min per prospect",
+    totalSub: "onderzoek en schrijven blijven jouw klus",
+    goodAt: "Snel, vertrouwd, goedkoop per rij. Goed als je je ICP scherp kent en gewoon contacten wilt trekken om door je eigen proces te draaien.",
+    footerNote: "Database-prijs + verificatietool + jouw tijd. De rijen zijn goedkoop. Het werk eromheen niet.",
+    steps: [
+      { step: "1", label: "Bouw de filterquery",
+        detail: "Kies sector, omvang, regio, seniority, functie. Sla de view op. De lijst ververst tegen de database.",
+        time: "5 min", callout: "Snel een lijst bouwen als je de filters kent", good: true },
+      { step: "2", label: "Exporteer de rijen",
+        detail: "Download CSV of duw naar je CRM. Je krijgt naam, functie, bedrijf, mail, telefoon waar beschikbaar.",
+        time: "instant", callout: "Standaardformaat, werkt met je bestaande tools", good: true },
+      { step: "3", label: "Verifieer zelf de mailadressen",
+        detail: "De meeste databases tonen één bron. Dekking varieert per regio. Bouncerates op single-source data zijn vaak hoog genoeg om je sender reputation te schaden als je blind verstuurt. De meeste kopers zetten er een verificatietool bovenop.",
+        time: "10 min", callout: "Verificatie is jouw klus, of je sender reputation betaalt", good: false },
+      { step: "4", label: "Onderzoek elke prospect",
+        detail: "De rij vertelt wat ze doen, niet wat er deze week speelt. Je checkt LinkedIn, nieuws, fundingsites zelf om een aanleiding te vinden.",
+        time: "15 min", callout: "De database weet niet wat er sinds de laatste update is veranderd", good: false },
+      { step: "5", label: "Schrijf de mail",
+        detail: "Vanaf nul of vanuit een template. Geen auto-personalisatie, geen voice match, geen hook-met-signaal - dat doe jij allemaal.",
+        time: "15 min", callout: "Elke mail is jouw schrijftijd", good: false },
+    ],
+  },
+  {
+    key: "aioutreach",
+    label: "AI-outreach tool",
+    sub: "Gegenereerde mails",
+    price: "~€100–500/mnd",
+    icon: Send,
+    tone: "amber",
+    totalLabel: "Jouw tijd",
+    total: "~15 min per prospect",
+    totalSub: "snelheid is echt, onderzoek niet",
+    goodAt: "Volume. Heb je een schone lijst en wil je snel veel mails versturen met basale personalisatie, dan leveren deze tools. Ze hebben snelle workflows voor eenmaal-ingesteld, vele-keren-verstuurd.",
+    footerNote: "Snel met versturen. Niet gebouwd voor onderzoek. Bij een scherp ICP en een vooraf geverifieerde lijst is dit een verzendlaag - geen prospecting-laag.",
+    steps: [
+      { step: "1", label: "Upload je lijst en zet variabelen op",
+        detail: "Importeer contacten, koppel velden. Zet de variabelen die de AI invult - voornaam, bedrijf, een veld dat je van LinkedIn schraapt, een pijn die je gokt.",
+        time: "10 min", callout: "Met een schone lijst is de setup snel", good: true },
+      { step: "2", label: "Schrijf de template met AI-invullingen",
+        detail: "De meeste tools genereren een basismail en laten de AI personaliseren per prospect. De personalisatie haalt uit je variabelen en wat het model is meegegeven.",
+        time: "5 min", callout: "De AI onderzoekt de prospect niet. Het werkt met wat jij gaf.", good: false },
+      { step: "3", label: "Campagne loopt op planning",
+        detail: "Warm-up, pacing, deliverability. Dit deel doen ze goed.",
+        time: "auto", callout: "Verzendinfra is volwassen", good: true },
+      { step: "4", label: "Reageer op de antwoorden",
+        detail: "Sommige mails komen aan. Sommige bouncen (hangt van je lijstkwaliteit af). Sommige worden als generiek geflagd. Wie reageert, komt terug zonder context van waarom ze zijn gemaild.",
+        time: "doorlopend", callout: "Generieke personalisatie leest als generiek. Reactiepercentages weerspiegelen dat.", good: false },
+    ],
+  },
+  {
+    key: "diy",
+    label: "DIY-stack",
+    sub: "Meerdere tools, handmatig",
+    price: "~€50–150/mnd",
+    icon: Wrench,
+    tone: "slate",
+    totalLabel: "Jouw tijd",
+    total: "~90 min per prospect",
+    totalSub: "elke minuut is van jou",
+    goodAt: "Volledige controle. Jij beslist alles. Geen abonnementskosten boven de tools die je al hebt. Voor een founder met 2-3 prospects per week is dit echt werkbaar - en velen doen precies dit nu.",
+    footerNote: "Volle controle, geen multiplier. Houdbaar voor een handvol prospects per week. Breekt op het moment dat je volume nodig hebt.",
+    steps: [
+      { step: "1", label: "Bouw de lijst",
+        detail: "LinkedIn Sales Navigator-zoekopdracht, exporteren naar spreadsheet. Of een database-export, of een scrape. Je kiest de bedrijven en mensen handmatig.",
+        time: "10 min", callout: "Jij bepaalt de shortlist volledig", good: true },
+      { step: "2", label: "Vind en verifieer het mailadres",
+        detail: "Probeer een pattern-matcher of een gratis email-finder. Draai het door een verificatietool. Handmatig, traag en wisselend per provider.",
+        time: "15 min", callout: "De blinde vlek van één provider wordt jouw blinde vlek", good: false },
+      { step: "3", label: "Onderzoek de prospect",
+        detail: "Open de website, hun LinkedIn, recent nieuws. Scan funding-sites. Lees de laatste drie posts van de CEO. Maak aantekeningen.",
+        time: "20 min", callout: "Hier gaat het meeste van je tijd in zitten. Elke prospect. Elke week.", good: false },
+      { step: "4", label: "Schrijf de mail in een AI-chat",
+        detail: "Plak je onderzoek in ChatGPT of Claude. Vraag een eerste concept. Herschrijf omdat het generiek klinkt. Herschrijf nog eens omdat er een feit is verzonnen. Plak terug in je sequencer.",
+        time: "20 min", callout: "De AI weet niet dat het 2026 is. Hallucinaties gebeuren als je ze niet vangt.", good: false },
+      { step: "5", label: "Verstuur en volg handmatig",
+        detail: "Verstuur uit je inbox of plak in een sequencer. Update een spreadsheet. Hoop dat je opvolgt.",
+        time: "5 min", callout: "Tracking is een tab die je vergeet te checken", good: false },
+      { step: "6", label: "Doe het volgende week opnieuw",
+        detail: "Het werk stapelt niet. Elke prospect begint vanaf nul.",
+        time: "doorlopend", callout: "Jouw tijd is het product", good: false },
+    ],
+  },
+  {
+    key: "agency",
+    label: "Outbound-agency",
+    sub: "Volledig uitbesteed",
+    price: "€2.500+/mnd",
+    icon: Briefcase,
+    tone: "rose",
+    totalLabel: "Jouw tijd",
+    total: "Minuten per prospect",
+    totalSub: "niet jouw stem, niet jouw controle, niet jouw leerproces",
+    goodAt: "Van je bord. Een goede agency brengt ervaren SDRs, infra en een proces. Heb je het budget en het geduld om ze goed in te werken, dan kunnen ze meetings boeken.",
+    footerNote: "Is budget geen probleem en wil je outbound volledig van je bord, dan werkt een agency. Voor een team dat de functie en het leren wil bezitten, klopt de rekensom zelden.",
+    steps: [
+      { step: "1", label: "Werk de agency in",
+        detail: "Strategie-calls, ICP-documenten, persona-workshops, messaging-reviews. Ze leren jouw business kennen. Dure weken kalendertijd voordat er één prospect is benaderd.",
+        time: "wk 1-2", callout: "Inwerken duurt weken. Budget loopt direct.", good: false },
+      { step: "2", label: "Ze runnen campagnes in hun stem",
+        detail: "Hun SDRs schrijven de mails. Ze versturen vanuit hun domeinen of die van jou. Je beoordeelt concepten, soms wekelijks, soms maandelijks. Je staat een stap af van wat de deur uit gaat.",
+        time: "wk 3+", callout: "De stem in de inbox is niet die van je rep", good: false },
+      { step: "3", label: "Bekijk resultaten in een rapport",
+        detail: "Ze leveren een dashboard. Geboekte meetings, verzonden mails, response rate. Je leert de cijfers. Je leert niet wat werkt, waarom, of hoe je het kunt herhalen als de agency vertrekt.",
+        time: "maandelijks", callout: "Het leerproces blijft bij de agency", good: false },
+      { step: "4", label: "Stop en verlies de pipeline",
+        detail: "Stop met betalen, alles stopt. Geen kennisoverdracht, geen proces dat van jou is, geen contacten die blijven. De geboekte meetings zijn van jou. De machine van hen.",
+        time: "altijd", callout: "De pipeline wordt gehuurd, niet gebouwd", good: false },
+    ],
+  },
+];
+
 const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; soft: string }> = {
   teal:   { bg: "rgba(13,148,136,0.10)",  border: "rgba(13,148,136,0.30)",  fg: "var(--hooklyne-teal)",   soft: "rgba(13,148,136,0.08)"  },
   orange: { bg: "rgba(255,140,66,0.10)",  border: "rgba(255,140,66,0.30)",  fg: "var(--hooklyne-orange)", soft: "rgba(255,140,66,0.08)"  },
@@ -250,6 +402,21 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
 const NUDGE_ORDER: TabKey[] = ["database", "aioutreach", "diy", "agency"];
 
 export const DIYCompare = () => {
+  const lang = useLang();
+  const TABS = lang === "nl" ? NL_TABS : EN_TABS;
+  const labels = lang === "nl" ? {
+    eyebrow: "De werkstroom",
+    headline: "Van ICP naar inbox in zes stappen.",
+    sub: "Elke stap doet één klus die een echte researcher zou doen. Samen leveren ze prospect-pakketten waar je rep binnen een minuut iets mee kan. Hier is de hele flow.",
+    compareWith: "Vergelijk met",
+    estCost: "geschatte toolkosten",
+  } : {
+    eyebrow: "The workflow",
+    headline: "{labels.headline}",
+    sub: "{labels.sub}",
+    compareWith: "Compare with",
+    estCost: "est. tool cost",
+  };
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
   const [nudgeIdx, setNudgeIdx] = useState(0);
@@ -283,18 +450,18 @@ export const DIYCompare = () => {
       <div className="container max-w-6xl">
         {/* Header */}
         <div className="max-w-3xl mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">The workflow</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">{labels.eyebrow}</p>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            From ICP to inbox in six steps.
+            {labels.headline}
           </h2>
           <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Each step does one job a human researcher would do. Together they produce prospect packages your rep can act on in under a minute. Here is the whole flow.
+            {labels.sub}
           </p>
         </div>
 
         {/* Tab label */}
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">Compare with</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">{labels.compareWith}</span>
           <span className="flex-1 h-px" style={{ background: "var(--border)" }} />
         </div>
 
@@ -382,7 +549,7 @@ export const DIYCompare = () => {
             {active.price && (
               <div className="flex items-baseline gap-1.5 md:shrink-0 pt-1.5 md:pt-0 border-t md:border-t-0" style={{ borderColor: tone.border }}>
                 <span className="text-[11px] font-semibold tabular-nums" style={{ color: tone.fg }}>{active.price}</span>
-                <span className="text-[10px] text-[var(--muted-foreground)]">est. tool cost</span>
+                <span className="text-[10px] text-[var(--muted-foreground)]">{labels.estCost}</span>
               </div>
             )}
           </div>
