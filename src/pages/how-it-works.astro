@@ -15,6 +15,7 @@ const stages = [
     key: "Discovery",
     title: "Describe it. We find it.",
     body: "Tell us who you sell to in plain words. We read billions of pages semantically and surface the companies that actually fit. Not a filter grid. A language-level match.",
+    facts: ["1.2B pages indexed", "Semantic match, not SIC codes", "Plain-language input"],
     shot: {
       label: "Discovery workspace",
       describe: "Portal: a plain-language description field, live results grid with fit scores and quick-add buttons.",
@@ -32,6 +33,7 @@ const stages = [
     key: "Verification",
     title: "The contact, verified before you see it.",
     body: "We check 20+ providers and four deliverability layers per email. If it can't be verified, it never ships. Your domain reputation stays clean.",
+    facts: ["20+ providers", "4 deliverability layers", "Held if not verified"],
     shot: {
       label: "Verification waterfall",
       describe: "Portal: contact card with live provider attempts and a final deliverability score.",
@@ -67,6 +69,7 @@ const stages = [
     key: "Research",
     title: "Every fact, sourced. No made-up facts.",
     body: "Live web research, not stale training data. Every claim traces back to a real URL you can click. Walk into the meeting without a single invented detail.",
+    facts: ["Live web pull", "12 citations average", "Every claim sourced"],
     shot: {
       label: "Research brief",
       describe: "Portal: a prospect brief with numbered citations linking to live sources.",
@@ -84,6 +87,7 @@ const stages = [
     key: "Drafting",
     title: "Reads like your rep wrote it.",
     body: "Every draft is reasoned through four times before it reaches you. Hook first, then angle, then voice, then a final quality check. Generic stops here.",
+    facts: ["4 reasoning passes", "Voice from your past emails", "NL · EN auto"],
     shot: {
       label: "Draft with voice match",
       describe: "Portal: drafted email on the left, voice-match panel on the right showing cadence, openers, sign-off.",
@@ -101,6 +105,7 @@ const stages = [
     key: "Delivery",
     title: "One screen. Ready to send.",
     body: "Company, contact, signal, hook, email, LinkedIn - all on one card. Review, edit, accept, send from your own inbox. Under a minute per prospect.",
+    facts: ["Send from your inbox", "Your own domain", "NL · EN auto"],
     shot: {
       label: "Prospect card",
       describe: "Portal: single prospect card open with Company / Contact / Signal / Hook / Email / LinkedIn sections.",
@@ -221,6 +226,16 @@ const stages = [
               <p class="text-lg text-[var(--muted-foreground)] leading-relaxed max-w-lg">
                 {s.body}
               </p>
+
+              {s.facts && (
+                <div class="mt-5 flex flex-wrap gap-1.5">
+                  {s.facts.map((f) => (
+                    <span class="text-[11px] font-semibold px-2.5 py-1 rounded-md tracking-tight" style="background: var(--card); border: 1px solid var(--border); color: var(--heading);">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {s.sources && (
                 <div class="mt-6 flex flex-wrap gap-2">
