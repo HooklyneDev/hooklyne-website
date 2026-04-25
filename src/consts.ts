@@ -38,7 +38,7 @@ export const SITE_METADATA = {
     siteName: "Hooklyne",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og/home.jpg",
         width: 1200,
         height: 630,
         alt: "Hooklyne - B2B prospect research for SME sales teams",
