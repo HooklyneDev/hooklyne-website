@@ -7,6 +7,7 @@ import { ResearchBrief } from '@/components/research-brief';
 import { FindCompaniesFlow } from '@/components/product/find-companies-flow';
 import { SignalHeatTable } from '@/components/product/signal-heat-table';
 import { EmailCompose } from '@/components/product/email-compose';
+import { VerificationWaterfall } from '@/components/product/verification-waterfall';
 import { ArrowRight } from 'lucide-react';
 
 const stages = [
@@ -274,10 +275,11 @@ const stages = [
 
             <div>
               {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" />}
+              {s.n === 2 && <VerificationWaterfall client:visible ratio="4/3" />}
               {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" />}
               {s.n === 4 && <ResearchBrief />}
               {s.n === 5 && <EmailCompose client:visible ratio="4/3" />}
-              {(s.n === 2 || s.n === 6) && (
+              {s.n === 6 && (
                 <PortalShot
                   label={s.shot.label}
                   describe={s.shot.describe}
