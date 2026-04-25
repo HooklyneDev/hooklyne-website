@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<DefaultLayout title="Blog | Hooklyne" description="Founder notes, product updates, and field-tested takes on B2B prospect research from the Hooklyne team.">
+<DefaultLayout title="Blog | Hooklyne" description="Founder notes, product updates, and field-tested takes on B2B prospect research from the Hooklyne team." image="/og/blog.jpg">
 	<Background>
 		<BlogPosts posts={posts} client:only='react' />
 	</Background>

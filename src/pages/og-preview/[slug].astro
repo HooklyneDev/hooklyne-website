@@ -1,0 +1,117 @@
+---
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: "home" }, props: { eyebrow: "Hooklyne", title: "Not more. Smarter.", body: "Verified contacts, live signals, and first-draft outreach in your rep's voice. From €39 a month.", accent: "blue" } },
+    { params: { slug: "product" }, props: { eyebrow: "Product", title: "Every prospect, fully packaged.", body: "A verified contact, a live reason to reach out, and a first message in your voice. Every time.", accent: "navy" } },
+    { params: { slug: "how-it-works" }, props: { eyebrow: "How it works", title: "A research workflow. Not a chatbot.", body: "Six stages working together. Each one does what a good researcher would do, continuously.", accent: "blue" } },
+    { params: { slug: "pricing" }, props: { eyebrow: "Pricing", title: "Pay for what you use.", body: "Every credit is a clear deliverable. Start, Growth, Scale, Enterprise. From €39 a month.", accent: "teal" } },
+    { params: { slug: "about" }, props: { eyebrow: "About", title: "Proper research, without cutting volume.", body: "The research layer most B2B teams can't afford to staff. So we built it.", accent: "navy" } },
+    { params: { slug: "faq" }, props: { eyebrow: "FAQ", title: "Frequently asked, honestly answered.", body: "How verification works, what we charge, why we don't sell data, and what's actually in your inbox.", accent: "blue" } },
+    { params: { slug: "contact" }, props: { eyebrow: "Contact", title: "Start your free pilot.", body: "Ten fully built prospect packages. Verified contacts, live signals, drafts in your voice.", accent: "orange" } },
+    { params: { slug: "blog" }, props: { eyebrow: "Blog", title: "Field notes from the team.", body: "Founder notes, product updates, and field-tested takes on B2B prospect research.", accent: "blue" } },
+  ];
+}
+
+const { eyebrow, title, body, accent } = Astro.props as { eyebrow: string; title: string; body: string; accent: string };
+
+const accentColor = {
+  navy: "#022f51",
+  blue: "#344ca3",
+  teal: "#0d9488",
+  orange: "#ff8c42",
+}[accent] || "#344ca3";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>OG: {title}</title>
+    <style>
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Regular.ttf") format("truetype"); font-weight: 400; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Medium.ttf") format("truetype"); font-weight: 500; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-SemiBold.ttf") format("truetype"); font-weight: 600; }
+      @font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans/DMSans-Bold.ttf") format("truetype"); font-weight: 700; }
+      html, body { margin: 0; padding: 0; background: #0a0e1a; }
+      body { font-family: "DM Sans", system-ui, sans-serif; }
+      .canvas {
+        width: 1200px;
+        height: 630px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #022f51 0%, #344ca3 100%);
+        color: white;
+        padding: 80px 90px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .glow {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.4;
+      }
+      .glow-1 { background: var(--accent); top: -200px; right: -200px; }
+      .glow-2 { background: #344ca3; bottom: -300px; left: -200px; opacity: 0.3; }
+      .top { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+      .logo { display: flex; align-items: center; gap: 14px; }
+      .logo-mark {
+        width: 44px; height: 44px; border-radius: 10px;
+        background: white; display: flex; align-items: center; justify-content: center;
+        font-weight: 700; color: #022f51; font-size: 24px; letter-spacing: -0.5px;
+      }
+      .logo-text { font-size: 24px; font-weight: 600; letter-spacing: -0.5px; }
+      .eyebrow {
+        font-size: 13px; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 3px; color: var(--accent); padding: 8px 14px;
+        border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
+      }
+      .main { position: relative; z-index: 2; max-width: 1000px; }
+      h1 {
+        font-size: 68px; font-weight: 600; line-height: 1.05; letter-spacing: -2px;
+        margin: 0 0 28px 0; color: white;
+      }
+      p {
+        font-size: 24px; line-height: 1.4; color: rgba(255,255,255,0.72);
+        margin: 0; max-width: 900px;
+      }
+      .bottom {
+        display: flex; justify-content: space-between; align-items: center;
+        position: relative; z-index: 2;
+      }
+      .url { font-size: 18px; color: rgba(255,255,255,0.55); font-weight: 500; }
+      .badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 14px; color: rgba(255,255,255,0.7);
+      }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 12px rgba(52,211,153,0.6); }
+    </style>
+  </head>
+  <body>
+    <div class="canvas" style={`--accent: ${accentColor};`}>
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+      <div class="top">
+        <div class="logo">
+          <div class="logo-mark">H</div>
+          <div class="logo-text">Hooklyne</div>
+        </div>
+        <div class="eyebrow">{eyebrow}</div>
+      </div>
+      <div class="main">
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
+      <div class="bottom">
+        <div class="url">www.hooklyne.com</div>
+        <div class="badge"><span class="dot"></span>Live since February 2026</div>
+      </div>
+    </div>
+  </body>
+</html>

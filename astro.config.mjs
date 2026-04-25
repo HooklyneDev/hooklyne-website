@@ -23,7 +23,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !page.includes("/resources/support"),
+      filter: (page) => !page.includes("/resources/support") && !page.includes("/og-preview/"),
     }),
     react(),
   ],
