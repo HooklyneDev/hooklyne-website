@@ -12,7 +12,7 @@ const ITEMS: NavItem[] = [
   {
     label: "Resources",
     children: [
-      { label: "News", href: "/resources/news" },
+      { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
       { label: "Support", href: "/resources/support" },
     ],

@@ -8,6 +8,11 @@
       "has": [{ "type": "host", "value": "hooklyne.com" }],
       "destination": "https://www.hooklyne.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/resources/news",
+      "destination": "/blog",
+      "permanent": true
     }
   ]
 }

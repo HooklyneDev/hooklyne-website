@@ -1,7 +1,7 @@
 ---
 title: "Apollo vs Cognism vs Lusha for Dutch and UK B2B SMEs: an honest breakdown"
 description: "Practical comparison of Apollo, Cognism, and Lusha for Dutch and UK B2B teams of 10 to 100 people. What each does well, where they fall short."
-pubDate: 2026-04-22
+pubDate: 2026-04-10
 authorName: Tim
 authorBio: "Tim co-founded Hooklyne after years running outbound at Dutch B2B companies. Writes about what actually works for SME sales teams."
 type: guide

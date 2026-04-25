@@ -1,7 +1,7 @@
 ---
 title: "Building your own AI lead-gen agent: what breaks at scale"
 description: "DIY AI prospecting agents work in a demo and stall in production. The data, signal, voice and compliance gaps that quietly kill them after month one."
-pubDate: 2026-04-25
+pubDate: 2026-04-19
 authorName: Tim
 authorBio: "Tim co-founded Hooklyne after years running outbound at Dutch B2B companies. Writes about what actually works for SME sales teams."
 type: guide
