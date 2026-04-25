@@ -4,6 +4,7 @@ import { Background } from '@/components/background';
 import { Hero } from '@/components/blocks/hero';
 import SignalTicker from '@/components/blocks/signal-ticker.astro';
 import { DIYCompare } from '@/components/blocks/diy-compare';
+import { VerificationWaterfall } from '@/components/product/verification-waterfall';
 import { WhatYouGet } from '@/components/blocks/what-you-get';
 import { WaysToStart } from '@/components/blocks/ways-to-start';
 import { BuiltFor } from '@/components/blocks/built-for';
@@ -47,6 +48,21 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </Background>
 
   <Background variant="bottom">
+    <section class="pt-16 pb-8 lg:pt-24 lg:pb-12" data-fade>
+      <div class="container max-w-6xl">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verification</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            20+ providers. Four layers. One verdict.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            No single database covers more than ~40% of any market. We waterfall across 20+, then run four deliverability checks. If it can't clear the bar, it doesn't ship.
+          </p>
+        </div>
+        <VerificationWaterfall client:visible ratio="2/1" />
+      </div>
+    </section>
+
     <WhatYouGet />
     <WaysToStart client:visible />
     <BuiltFor client:visible />
