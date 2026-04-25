@@ -19,7 +19,7 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
         <Navbar client:only='react' />
         <main><slot /></main>
         {!hideFinalCTA && <FinalCTA variant={ctaVariant} client:visible />}
-        <Footer />
+        <Footer client:only='react' />
         <CookieBar client:idle />
         <LangSuggest client:idle />
     </body>

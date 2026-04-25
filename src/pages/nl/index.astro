@@ -1,14 +1,20 @@
 ---
+import { SITE_DESCRIPTION_NL } from '../../consts';
 import { Background } from '@/components/background';
+import { Hero } from '@/components/blocks/hero';
+import SignalTicker from '@/components/blocks/signal-ticker.astro';
+import { DIYCompare } from '@/components/blocks/diy-compare';
+import { VerificationWaterfall } from '@/components/product/verification-waterfall';
+import { WhatYouGet } from '@/components/blocks/what-you-get';
+import { WaysToStart } from '@/components/blocks/ways-to-start';
+import { BuiltFor } from '@/components/blocks/built-for';
+import { HomePricing } from '@/components/blocks/home-pricing';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { ArrowRight } from 'lucide-react';
-
-const description = "B2B leadgeneratie en koude acquisitie voor het MKB. Geverifieerde contacten, live signalen en een eerste mail in de stem van je rep. AVG-proof, vanaf €39 per maand.";
 ---
 
 <DefaultLayout
-  title="Hooklyne | B2B prospect-onderzoek voor Nederlandse MKB-salesteams"
-  description={description}
+  title="Hooklyne | B2B leadgeneratie voor Nederlandse MKB-salesteams"
+  description={SITE_DESCRIPTION_NL}
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
@@ -17,122 +23,54 @@ const description = "B2B leadgeneratie en koude acquisitie voor het MKB. Geverif
     "name": "Hooklyne",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
+    "inLanguage": "nl-NL",
     "description": "B2B leadgeneratie en prospect-onderzoek voor MKB-salesteams. Geverifieerde contacten, live koopsignalen, eerste mail in de stem van je rep. AVG-proof.",
     "url": "https://www.hooklyne.com/nl",
-    "inLanguage": "nl-NL",
     "offers": {
       "@type": "Offer",
       "price": "39",
-      "priceCurrency": "EUR"
-    }
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "39",
+        "priceCurrency": "EUR",
+        "billingIncrement": 1,
+        "unitText": "MONTH"
+      }
+    },
+    "featureList": [
+      "B2B prospect-onderzoek",
+      "Signaal-gedreven outreach",
+      "E-mailverificatie",
+      "Bedrijfs-discovery",
+      "Gepersonaliseerde drafting in Nederlands en Engels"
+    ]
   })} />
-
   <Background>
-    <section class="pt-32 lg:pt-40 pb-12">
-      <div class="container max-w-4xl text-center">
-        <a
-          href="/contact"
-          class="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-1.5 text-sm font-medium text-[var(--heading)] hover:border-[var(--hooklyne-blue)] transition-colors mb-6"
-        >
-          Voor B2B-founders en sales reps
-          <ArrowRight className="size-3.5" />
-        </a>
+    <Hero client:load />
+    <SignalTicker />
+    <DIYCompare client:visible />
+  </Background>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6 max-w-3xl mx-auto">
-          Leadgeneratie voor het MKB. Zonder de ruis.
-        </h1>
-
-        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Vind de prospects die echt de moeite waard zijn. Wij doen het onderzoek: passende bedrijven, geverifieerde beslissers via 20+ databronnen, live koopsignalen, en een eerste mail in de stem van je rep. Jij verstuurt vanuit je eigen inbox.
-        </p>
-
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="/contact"
-            class="h-11 px-6 inline-flex items-center justify-center text-sm font-semibold rounded-lg group btn-shine"
-            style="background-color: var(--hooklyne-navy); color: #ffffff;"
-          >
-            Start je gratis pilot
-            <ArrowRight className="ml-1.5 size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="/how-it-works"
-            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
-          >
-            Bekijk hoe het werkt
-            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="pb-16 lg:pb-20">
-      <div class="container max-w-5xl">
-        <div class="grid md:grid-cols-3 gap-5">
-          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
-            <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verificatie</p>
-            <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] tracking-tight mb-2">20+ databronnen, één oordeel.</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Geen enkele database dekt meer dan ~40% van een markt. We checken via 20+ bronnen en draaien vier deliverability-tests. Komt het niet door de drempel, dan gaat het niet uit.
-            </p>
-          </div>
-          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
-            <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signalen</p>
-            <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] tracking-tight mb-2">Echte triggers, geen LLM-aannames.</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Funding, leiderschapswissels, vacature-pieken, tech-stack-updates. Gestructureerde signalen uit echte bronnen, niet een AI die op een LinkedIn-post een koopintentie projecteert.
-            </p>
-          </div>
-          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
-            <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Stem</p>
-            <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] tracking-tight mb-2">In de schrijfstijl van je rep.</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              We modelleren de stem op basis van mails die je rep al verstuurd heeft. Geen template, geen herkenbare AI-stijl die elke prospect na vijf mails doorheeft.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pb-16 lg:pb-20">
-      <div class="container max-w-4xl">
-        <div class="rounded-2xl p-8 md:p-10" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Voor wie</p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-4">Gebouwd voor MKB-salesteams.</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-3">
-            B2B-bedrijven van 10 tot 100 personen. Eén rep of acht, een CRM, misschien een sequencer. Je kent je ICP, maar koude acquisitie en prospectie kosten je elke week uren. Hooklyne neemt dat onderzoek over.
-          </p>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Geen agency die in jouw plaats verstuurt. Geen losse database. Volledige prospect-pakketten: contact, signaal, eerste mail. Klaar om vanuit je eigen inbox te versturen. AVG-proof, EU-verwerkt.
+  <Background variant="bottom">
+    <section class="pt-4 pb-8 sm:pt-6 lg:pt-10 lg:pb-12" data-fade>
+      <div class="container max-w-6xl">
+        <div class="text-center max-w-2xl mx-auto mb-8 lg:mb-10 px-2">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verificatie</p>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
+            20+ databronnen. Vier lagen. Eén oordeel.
+          </h2>
+          <p class="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
+            Geen enkele database dekt meer dan ~40% van een markt. We checken via 20+ bronnen, daarna draaien we vier deliverability-tests. Komt het niet door de drempel, dan gaat het niet uit.
           </p>
         </div>
+        <VerificationWaterfall client:visible ratio="5/2" tabletRatio="2/1" mobileRatio="1/1" />
       </div>
     </section>
 
-    <section class="pb-20 lg:pb-28">
-      <div class="container max-w-4xl">
-        <div class="text-center mb-8">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Lezen</p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">Veldnotities van het team.</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-4">
-          <a href="/blog/how-to-find-b2b-prospects-netherlands" class="group block rounded-2xl p-5 transition-colors" style="background: var(--card); border: 1px solid var(--border);">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-2">Gids</p>
-            <h3 class="text-sm font-semibold text-[var(--heading)] leading-tight mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">B2B prospects in Nederland vinden zonder betaalde tools.</h3>
-            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">KvK, Sales Navigator, Google operators. Waar elke route stopt met opschalen.</p>
-          </a>
-          <a href="/blog/build-your-own-ai-lead-generation-agent" class="group block rounded-2xl p-5 transition-colors" style="background: var(--card); border: 1px solid var(--border);">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-2">Gids</p>
-            <h3 class="text-sm font-semibold text-[var(--heading)] leading-tight mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">Zelf een AI lead-gen agent bouwen?</h3>
-            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">Wat er stuk gaat in maand zes, en waar je in een managed dienst eigenlijk voor betaalt.</p>
-          </a>
-          <a href="/blog/apollo-vs-cognism-vs-lusha-dutch-uk-smes" class="group block rounded-2xl p-5 transition-colors" style="background: var(--card); border: 1px solid var(--border);">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-2">Vergelijking</p>
-            <h3 class="text-sm font-semibold text-[var(--heading)] leading-tight mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">Apollo vs Cognism vs Lusha voor MKB.</h3>
-            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">Een eerlijke breakdown voor Nederlandse en Britse B2B-teams van 10 tot 100.</p>
-          </a>
-        </div>
-      </div>
-    </section>
+    <WhatYouGet />
+    <WaysToStart client:visible />
+    <BuiltFor client:visible />
+    <HomePricing client:visible />
   </Background>
 </DefaultLayout>

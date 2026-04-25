@@ -1,138 +1,470 @@
 ---
-import { Background } from '@/components/background';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { breadcrumbList } from "@/lib/seo";
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { breadcrumbList } from '@/lib/seo';
+import { SITE_URL } from '@/consts';
 
-const tiers = [
-  {
-    name: "Start",
-    price: "€39",
-    period: "/maand",
-    blurb: "Voor founders en solo reps die de werkstroom uitproberen.",
-    features: [
-      "1 seat",
-      "10 prospect-pakketten per maand",
-      "Native Nederlands en Engels",
-      "Top-ups voor €0,85 per credit",
-    ],
-  },
-  {
-    name: "Growth",
-    price: "Op aanvraag",
-    period: "",
-    blurb: "Voor teams van 2 tot 5 reps die outbound serieus draaien.",
-    features: [
-      "2 seats",
-      "Hoger maandvolume",
-      "Live training voor het team",
-      "Kickoff-call met onboarding",
-    ],
-    popular: true,
-  },
-  {
-    name: "Scale",
-    price: "Op aanvraag",
-    period: "",
-    blurb: "Voor teams met een gevestigde outbound-motor en pipeline-doelen.",
-    features: [
-      "5 seats",
-      "Volume-gebaseerde tarieven",
-      "Dedicated success-contact",
-      "Custom signaalbronnen mogelijk",
-    ],
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    blurb: "Voor teams met dedicated DPA's, custom integraties of niet-standaard volumes.",
-    features: [
-      "Unlimited seats",
-      "Custom DPA en sub-processor afspraken",
-      "Custom integraties",
-      "Volume-tarieven op maat",
-    ],
-  },
-];
+const breadcrumb = breadcrumbList([
+  { name: 'Home', path: '/nl' },
+  { name: 'Pricing', path: '/nl/pricing' },
+]);
 
 const offerCatalog = {
   "@context": "https://schema.org",
-  "@type": "OfferCatalog",
-  name: "Hooklyne abonnementen",
-  inLanguage: "nl-NL",
-  itemListElement: tiers.map((t) => ({
-    "@type": "Offer",
-    name: t.name,
-    description: t.blurb,
-    price: t.name === "Start" ? "39" : undefined,
-    priceCurrency: "EUR",
-  })),
+  "@type": "Service",
+  name: "Hooklyne",
+  serviceType: "B2B prospect research",
+  provider: { "@type": "Organization", name: "Hooklyne", url: SITE_URL },
+  areaServed: ["NL", "BE", "GB", "LU", "DE", "FR", "IE", "DK", "SE", "NO", "FI"],
+  audience: { "@type": "BusinessAudience", audienceType: "B2B SME sales teams (10-100 people)" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Hooklyne plans",
+    itemListElement: [
+      { "@type": "Offer", name: "Start", price: "39", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Growth", price: "129", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Scale", price: "239", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Enterprise", url: `${SITE_URL}/contact`, category: "custom" },
+    ],
+  },
 };
-
-const breadcrumb = breadcrumbList([
-  { name: "Home", path: "/nl" },
-  { name: "Pricing", path: "/nl/pricing" },
-]);
 ---
-<DefaultLayout
-  title="Pricing | Hooklyne"
-  description="Tarieven voor B2B leadgeneratie en prospectie voor het MKB. Betaal voor wat je gebruikt: elk credit is één geverifieerd contact, één signaal, één opgestelde mail. Vanaf €39 per maand. Maandelijks opzegbaar."
-  image="/og/pricing.jpg"
-  ctaVariant="pricing"
->
+
+<DefaultLayout title="Tarieven | Hooklyne" description="Tarieven voor B2B leadgeneratie en prospectie voor het MKB. Betaal voor wat je gebruikt: elk credit is een duidelijk eindproduct. Vanaf €39 per maand." image="/og/pricing.jpg" ctaVariant="pricing">
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(offerCatalog)} />
   <Background>
-    <section class="pt-32 lg:pt-40 pb-12">
-      <div class="container max-w-5xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4 text-center">Pricing</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4 text-center">Betaal voor wat je gebruikt.</h1>
-        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed text-center">
-          Elk credit is een duidelijk eindproduct: één geverifieerd contact, één signaal, één opgesteld bericht. Geen lange contracten. Maandelijks opzegbaar.
-        </p>
-      </div>
-    </section>
+  <section class="pt-32 lg:pt-44 pb-10 relative">
+    <HeroGlow client:idle signals={false} />
+    <div id="hero-content" class="container max-w-6xl relative z-10">
 
-    <section class="pb-20">
-      <div class="container max-w-6xl">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-          {tiers.map((t) => (
-            <div
-              class="rounded-2xl p-6 md:p-7 flex flex-col"
-              style={`background: var(--card); border: 1px solid ${t.popular ? 'var(--hooklyne-blue)' : 'var(--border)'};`}
-            >
-              <div class="flex items-baseline gap-2 mb-2">
-                <h2 class="text-xl font-semibold text-[var(--heading)] tracking-tight">{t.name}</h2>
-                {t.popular && <span class="text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)]">Meest gekozen</span>}
+      <!-- Header -->
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Pricing</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Simple pricing with transparent credits.</h1>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">One credit system. Every action priced the same across plans. No per-seat fees on Start and Growth. Switch plans or cancel anytime.</p>
+      </div>
+
+      <!-- Free pilot banner (kept inside the hero section so the glow reaches behind it) -->
+      <div class="mt-14 rounded-2xl overflow-hidden" style="background: var(--card); box-shadow: var(--shadow-xs); border: 1px solid var(--border)">
+        <div class="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center size-10 rounded-xl" style="background: rgba(13,148,136,0.12)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7l8 5 8-5-8-5Z"/><path d="m4 12 8 5 8-5"/><path d="m4 17 8 5 8-5"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)]">Free pilot</p>
+              <p class="text-base font-semibold text-[var(--heading)]">Try it before you pay.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 text-sm md:border-l md:border-r md:border-[var(--border)] md:px-6">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">You get</p>
+              <p class="text-[var(--foreground)] leading-relaxed">10 prospect packages, fully built. Portal access. Two weeks of sector news.</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">We ask</p>
+              <p class="text-[var(--foreground)] leading-relaxed">20 minutes of honest feedback. Permission to mention you if it works.</p>
+            </div>
+          </div>
+
+          <a href="/nl/contact" class="inline-flex items-center justify-center gap-1.5 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine whitespace-nowrap" style="background: var(--hooklyne-teal)">
+            Start pilot
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container max-w-6xl">
+
+      <!-- Toggle -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <span class="text-sm font-medium transition-colors" id="label-monthly" style="color: var(--muted-foreground)">Monthly</span>
+        <button
+          id="toggle-btn"
+          class="relative w-12 h-6 rounded-full transition-colors cursor-pointer btn-shine"
+          style="background: var(--hooklyne-navy)"
+          onclick="toggleBilling()"
+          aria-label="Toggle billing period"
+        >
+          <span id="toggle-knob" class="absolute top-0.5 left-0.5 size-5 rounded-full bg-white transition-transform duration-200 shadow-sm" style="transform: translateX(24px)"></span>
+        </button>
+        <span class="text-sm font-medium flex items-center gap-2 transition-colors" id="label-annual" style="color: var(--heading)">
+          Annual
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal)">Save up to €60/mo</span>
+        </span>
+      </div>
+
+      <!-- Plan cards -->
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
+
+        <!-- Start -->
+        <div class="rounded-2xl p-5 flex flex-col relative" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3 mt-1">Start</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-[var(--heading)] price-display" data-monthly="49" data-annual="39">€39</span>
+            <span class="text-sm text-[var(--muted-foreground)] ml-1">/mo</span>
+          </div>
+          <div class="h-5 mb-2">
+            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Save €10/mo on annual</span>
+          </div>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Solo rep. Test and validate your outbound.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
+            <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["100 credits / mo", "1 seat", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0.85/cr</p>
+          <a href="/nl/contact" data-tier="start" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
+            Get started
+          </a>
+        </div>
+
+        <!-- Growth (featured) -->
+        <div class="rounded-2xl p-5 flex flex-col relative text-white" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-xl)">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap" style="background: var(--hooklyne-orange)">
+            Recommended
+          </div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-3 mt-1">Growth</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-white price-display" data-monthly="159" data-annual="129">€129</span>
+            <span class="text-sm text-white/40 ml-1">/mo</span>
+          </div>
+          <div class="h-5 mb-2">
+            <span class="text-xs font-medium save-note text-green-300">Save €30/mo on annual</span>
+          </div>
+          <p class="text-xs leading-relaxed text-white/50 mb-4">1-2 reps. Full pipeline. Everything included.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: rgba(255,255,255,0.08)">
+            <span class="text-2xl font-bold text-blue-300">400</span>
+            <span class="text-xs text-white/40">credits / month</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["400 credits / mo", "2 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "45-min setup + strategy call", "ICP configured with you"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-white/70">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-green-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-white/30 mb-4">Top-up: €0.85/cr</p>
+          <a href="/nl/contact" data-tier="growth" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine bg-white/14 text-white border border-white/22 hover:bg-white/24">
+            Get started
+          </a>
+        </div>
+
+        <!-- Scale -->
+        <div class="rounded-2xl p-5 flex flex-col relative" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3 mt-1">Scale</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-[var(--heading)] price-display" data-monthly="299" data-annual="239">€239</span>
+            <span class="text-sm text-[var(--muted-foreground)] ml-1">/mo</span>
+          </div>
+          <div class="h-5 mb-2">
+            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Save €60/mo on annual</span>
+          </div>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Small sales team. Volume outbound. Up to 5 reps.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
+            <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["800 credits / mo", "5 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Full setup + team training"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0.85/cr</p>
+          <a href="/nl/contact" data-tier="scale" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
+            Get started
+          </a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="rounded-2xl p-5 flex flex-col relative" style="background: var(--card); box-shadow: var(--shadow-xs)">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3 mt-1">Enterprise</p>
+          <div class="mb-1">
+            <span class="text-3xl font-bold text-[var(--heading)]">Custom</span>
+          </div>
+          <div class="h-5 mb-2"></div>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Sales departments. Multi-market. Custom volumes.</p>
+          <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
+            <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">Custom</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credit volume</span>
+          </div>
+          <ul class="flex-1 space-y-2 mb-5">
+            {["Custom credit volume", "Unlimited seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Full setup + team training", "Dedicated account manager"].map((f) => (
+              <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
+                <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: Custom rate</p>
+          <a href="/nl/contact" data-tier="enterprise" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
+            Talk to us
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Three ways to build a prospect -->
+      <div class="mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">Three ways to build a prospect.</h2>
+          <p class="text-sm text-[var(--muted-foreground)]">Every workflow lands in the same place: a prospect package ready to send. Pick the path that matches how you work.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <!-- Path 1 -->
+          <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">1</span>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Discovery-first</p>
+            </div>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from an ICP</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Describe your ideal customer. Get up to 20 ranked companies with signal hooks. Pick one and generate a full prospect package.</p>
+            <div class="mt-auto pt-4 border-t border-[var(--border)]">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[var(--muted-foreground)]">Company discovery</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
               </div>
-              <div class="flex items-baseline gap-1 mb-3">
-                <span class="text-3xl font-semibold text-[var(--heading)]">{t.price}</span>
-                <span class="text-sm text-[var(--muted-foreground)]">{t.period}</span>
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[var(--muted-foreground)]">Contact finding</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">2cr</span>
               </div>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-5">{t.blurb}</p>
-              <ul class="space-y-2 mb-6 flex-1">
-                {t.features.map((f) => (
-                  <li class="text-sm text-[var(--muted-foreground)] flex gap-2">
-                    <span class="text-[var(--hooklyne-blue)] flex-shrink-0">✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/contact"
-                class="block text-center h-10 px-4 inline-flex items-center justify-center text-sm font-semibold rounded-lg"
-                style={`background-color: ${t.popular ? 'var(--hooklyne-navy)' : 'transparent'}; color: ${t.popular ? '#ffffff' : 'var(--hooklyne-navy)'}; border: 1px solid var(--hooklyne-navy);`}
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
+                <span class="text-[var(--heading)]">Total per prospect</span>
+                <span class="text-[var(--hooklyne-navy)]">4cr</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Path 2 -->
+          <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">2</span>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Contact-first</p>
+            </div>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from a known company</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">You already have the target list. We find and verify the right decision-maker, then generate the prospect package.</p>
+            <div class="mt-auto pt-4 border-t border-[var(--border)]">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[var(--muted-foreground)]">Contact finding</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">2cr</span>
+              </div>
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
+                <span class="text-[var(--heading)]">Total per prospect</span>
+                <span class="text-[var(--hooklyne-navy)]">3cr</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Path 3 -->
+          <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">3</span>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Signal-driven</p>
+            </div>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from a signal</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Track target companies daily. When a buying signal fires - hire, news, funding, expansion - a prospect package is ready to send.</p>
+            <div class="mt-auto pt-4 border-t border-[var(--border)]">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[var(--muted-foreground)]">Signal tracking</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">2cr / co / mo</span>
+              </div>
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
+              </div>
+              <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
+                <span class="text-[var(--heading)]">Timing</span>
+                <span class="text-[var(--hooklyne-teal)]">When they're ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credit table -->
+      <div class="rounded-2xl bg-[var(--card)] overflow-hidden mb-12" style="box-shadow: var(--shadow-sm)">
+        <div class="px-6 py-5 border-b border-[var(--border)]">
+          <h2 class="text-base font-semibold text-[var(--heading)]">What each credit gets you.</h2>
+          <p class="text-sm text-[var(--muted-foreground)] mt-1">Every credit maps to a clear deliverable. Browsing, reading signals, and viewing intel are always free.</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-[var(--border)]" style="background: var(--background)">
+                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">Action</th>
+                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)] hidden sm:table-cell">What you get</th>
+                <th class="text-right px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--hooklyne-blue)]">Credits</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Company discovery", "Up to 20 ranked companies, ICP-filtered, with signal hooks", "1cr", false],
+                ["View matched roles", "Up to 3 decision-makers per company", "Included", true],
+                ["Prospect package", "News-hooked email + LinkedIn message, NL or EN, in your voice", "1cr", false],
+                ["Contact finding", "Verified email, triple-checked across 20+ sources", "2cr", false],
+                ["Signal tracking", "Daily sweeps: job posts, news, funding. Scored and ranked.", "2cr / company / mo", false],
+                ["Meeting prep brief", "Company overview, talking points, key people, recent news", "1cr", false],
+                ["Weekly sector briefing", "5-10 articles from your market, scored for relevance", "Included", true],
+                ["Export to CSV", "Full export of your leads and signals", "Included", true],
+              ].map(([action, desc, cost, isFree]) => (
+                <tr class="border-b border-[var(--border)] last:border-0 hover:bg-[var(--card-hover)] transition-colors">
+                  <td class="px-6 py-3.5 font-medium text-[var(--foreground)] whitespace-nowrap">{action}</td>
+                  <td class="px-6 py-3.5 text-[var(--muted-foreground)] hidden sm:table-cell">{desc}</td>
+                  <td class="px-6 py-3.5 text-right">
+                    <span class={`text-sm font-semibold ${isFree ? "text-[var(--hooklyne-teal)]" : "text-[var(--hooklyne-blue)]"}`}>{cost}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FAQ section -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight">Pricing questions.</h2>
+          <p class="text-sm text-[var(--muted-foreground)] mt-2">Everything you need to know before you start.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-2" id="pricing-faq">
+          {[
+            {
+              q: "What is a credit?",
+              a: "A credit is the unit you spend on actions that produce a deliverable. Company discovery costs 1cr (up to 20 ranked companies). A prospect package costs 1cr (news-hooked email + LinkedIn message in your voice). Contact finding costs 2cr (verified email, triple-checked). Signal tracking costs 2cr per company per month. Browsing, reading intel, and exporting are always free."
+            },
+            {
+              q: "What happens when I run out of credits?",
+              a: "You can top up at any time at €0.85 per credit. There are no overage blockers - you just buy more credits when you need them. Your existing data, signals, and contacts remain accessible regardless of credit balance."
+            },
+            {
+              q: "What is signal tracking?",
+              a: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. Additional companies above your limit cost 2cr per company per month."
+            },
+            {
+              q: "Can I switch plans?",
+              a: "Yes, anytime. Monthly plans switch at the next billing date. If you upgrade mid-month, you get prorated credit for the days remaining. Downgrading takes effect at your next renewal."
+            },
+            {
+              q: "What is included in the free pilot?",
+              a: "10 full prospect packages. 1 seat configured with your ICP. Sector news for 2 weeks. Full portal access. Signal tracking, discovery, and meeting prep are visible but locked. We ask for a 20-min feedback call and case study permission in return. No payment needed."
+            },
+            {
+              q: "Is there a contract?",
+              a: "No contract on monthly plans - cancel anytime. Annual plans are a 12-month commitment billed upfront or monthly, with a discount built in. You save up to €60/mo on the Scale plan compared to monthly billing."
+            },
+            {
+              q: "What does 'outreach in your voice' mean?",
+              a: "During setup we collect writing samples and tone inputs from you. Every email and LinkedIn message Hooklyne generates is written to match your style, not a generic template. The prospect package is ready to send or copy-paste directly."
+            },
+            {
+              q: "What does the 45-min setup call include on Growth?",
+              a: "We configure your ICP with you, set up signal tracking for your target market, review your tone profile, and plan the first month of outbound. You leave the call with a working system and a list of first targets already queued."
+            },
+          ].map((item, i) => (
+            <div class="faq-item rounded-xl bg-[var(--card)]" style="box-shadow: var(--shadow-xs)">
+              <button
+                class="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-semibold text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors"
+                onclick={`toggleFaq(${i})`}
+                aria-expanded="false"
+                id={`faq-btn-${i}`}
               >
-                {t.name === "Start" ? "Start gratis pilot" : "Praat met ons"}
-              </a>
+                {item.q}
+                <svg class="size-4 shrink-0 ml-3 transition-transform duration-200 faq-icon" id={`faq-icon-${i}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" id={`faq-answer-${i}`}>
+                <div>
+                  <p class="px-5 pb-4 text-sm text-[var(--muted-foreground)] leading-relaxed">{item.a}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-
-        <p class="text-xs text-[var(--muted-foreground)] text-center mt-10 max-w-2xl mx-auto leading-relaxed">
-          Jaarbetaling scheelt tot €60 per maand. Geen verborgen kosten. Geen lock-in op de lagere abonnementen.
-        </p>
       </div>
-    </section>
+
+    </div>
+  </section>
   </Background>
 </DefaultLayout>
+
+<script>
+  /* ── Billing toggle ─────────────────────────────────────────────── */
+  let isAnnual = true;
+
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const knob = document.getElementById('toggle-knob') as HTMLElement;
+    const labelMonthly = document.getElementById('label-monthly') as HTMLElement;
+    const labelAnnual = document.getElementById('label-annual') as HTMLElement;
+    const priceEls = document.querySelectorAll<HTMLElement>('.price-display');
+    const saveNotes = document.querySelectorAll<HTMLElement>('.save-note');
+
+    knob.style.transform = isAnnual ? 'translateX(24px)' : 'translateX(0)';
+    labelMonthly.style.color = isAnnual ? 'var(--muted-foreground)' : 'var(--heading)';
+    labelAnnual.style.color = isAnnual ? 'var(--heading)' : 'var(--muted-foreground)';
+
+    priceEls.forEach(el => {
+      const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
+      if (val) el.textContent = '€' + val;
+    });
+
+    saveNotes.forEach(el => {
+      el.style.display = isAnnual ? '' : 'none';
+    });
+  }
+
+  (window as any).toggleBilling = toggleBilling;
+
+  /* ── Pricing FAQ accordion ──────────────────────────────────────── */
+  function toggleFaq(index: number) {
+    const answer = document.getElementById('faq-answer-' + index);
+    const icon = document.getElementById('faq-icon-' + index);
+    const btn = document.getElementById('faq-btn-' + index);
+    if (!answer || !icon || !btn) return;
+
+    const isOpen = answer.classList.contains('open');
+
+    // Close all others
+    document.querySelectorAll('.faq-answer').forEach((el, i) => {
+      el.classList.remove('open');
+      const ic = document.getElementById('faq-icon-' + i);
+      const bt = document.getElementById('faq-btn-' + i);
+      if (ic) ic.style.transform = '';
+      if (bt) bt.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      answer.classList.add('open');
+      icon.style.transform = 'rotate(180deg)';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  (window as any).toggleFaq = toggleFaq;
+</script>

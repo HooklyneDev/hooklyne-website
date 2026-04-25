@@ -2,9 +2,28 @@ import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridSignals } from "@/components/grid-signals";
+import { useLang } from "@/lib/use-lang";
+
+const EN = {
+  pill: "For B2B founders and sales reps",
+  headline: "Find the prospects actually worth reaching out to.",
+  sub: "A research workflow that finds fitting companies, verifies decision-makers across 20+ data providers, watches for live buying signals, and drafts first outreach in your rep's voice.",
+  cta: "Start your free pilot",
+  secondary: "See how it works",
+};
+
+const NL = {
+  pill: "Voor B2B-founders en sales reps",
+  headline: "Vind de prospects die echt de moeite waard zijn.",
+  sub: "Een onderzoekswerkstroom die passende bedrijven vindt, beslissers verifieert via 20+ databronnen, live koopsignalen oppikt en de eerste mail opstelt in de stem van je rep.",
+  cta: "Start je gratis pilot",
+  secondary: "Bekijk hoe het werkt",
+};
 
 /* ── Component ──────────────────────────────────────────────────────── */
 export const Hero = () => {
+  const lang = useLang();
+  const t = lang === "nl" ? NL : EN;
   const screenshotRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 

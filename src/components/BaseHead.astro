@@ -105,7 +105,15 @@ const imageURL = new URL(finalImage, Astro.url);
   const isNL = path === "/nl" || path.startsWith("/nl/");
   const enPath = isNL ? path.replace(/^\/nl(\/|$)/, "/").replace(/\/$/, "") || "/" : path;
   const nlPath = isNL ? path : (path === "/" ? "/nl" : `/nl${path}`);
-  const NL_AVAILABLE = new Set(["/nl", "/nl/faq", "/nl/pricing", "/nl/how-it-works", "/nl/product", "/nl/about", "/nl/contact"]);
+  const NL_AVAILABLE = new Set([
+    "/nl",
+    "/nl/faq",
+    "/nl/pricing",
+    "/nl/how-it-works",
+    "/nl/product",
+    "/nl/about",
+    "/nl/contact",
+  ]);
   if (!NL_AVAILABLE.has(nlPath)) return null;
   const enUrl = new URL(enPath, Astro.site).toString();
   const nlUrl = new URL(nlPath, Astro.site).toString();

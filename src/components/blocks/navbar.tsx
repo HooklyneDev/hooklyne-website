@@ -6,7 +6,7 @@ import { useLang, switchLangUrl } from "@/lib/use-lang";
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
 
-const ITEMS: NavItem[] = [
+const EN_ITEMS: NavItem[] = [
   { label: "Product", href: "/product" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
@@ -20,6 +20,24 @@ const ITEMS: NavItem[] = [
   },
   { label: "About", href: "/about" },
 ];
+
+const NL_ITEMS: NavItem[] = [
+  { label: "Product", href: "/nl/product" },
+  { label: "Hoe het werkt", href: "/nl/how-it-works" },
+  { label: "Tarieven", href: "/nl/pricing" },
+  {
+    label: "Bronnen",
+    children: [
+      { label: "Blog", href: "/blog" },
+      { label: "FAQ", href: "/nl/faq" },
+      { label: "Support", href: "/resources/support" },
+    ],
+  },
+  { label: "Over ons", href: "/nl/about" },
+];
+
+const NAV_LABELS_EN = { login: "Log in", bookDemo: "Book a demo" };
+const NAV_LABELS_NL = { login: "Inloggen", bookDemo: "Boek een demo" };
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,9 +65,14 @@ export const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [langOpen]);
 
-  const isActive = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog"));
-
   const lang = useLang();
+  const ITEMS = lang === "nl" ? NL_ITEMS : EN_ITEMS;
+  const labels = lang === "nl" ? NAV_LABELS_NL : NAV_LABELS_EN;
+
+  const isActive = (href: string) =>
+    pathname === href ||
+    (href === "/blog" && pathname.startsWith("/blog"));
+
   const handleSwitch = (next: "en" | "nl") => {
     setLangOpen(false);
     if (next !== lang) switchLangUrl(next);
@@ -201,9 +224,9 @@ export const Navbar = () => {
               href="https://portal.hooklyne.com"
               className="inline-flex items-center h-9 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
             >
-              Log in
+              {labels.login}
             </a>
-            <a href="/contact">
+            <a href={lang === "nl" ? "/nl/contact" : "/contact"}>
               <Button
                 className="text-sm font-semibold rounded-lg px-4 py-2 h-auto btn-shine"
                 style={{
@@ -211,7 +234,7 @@ export const Navbar = () => {
                   color: "#ffffff",
                 }}
               >
-                Book a demo
+                {labels.bookDemo}
               </Button>
             </a>
           </div>
@@ -309,9 +332,9 @@ export const Navbar = () => {
                 className="flex items-center justify-center h-10 px-4 rounded-lg border border-[var(--border)] bg-[var(--card)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Log in
+                {labels.login}
               </a>
-              <a href="/contact" onClick={() => setIsMenuOpen(false)}>
+              <a href={lang === "nl" ? "/nl/contact" : "/contact"} onClick={() => setIsMenuOpen(false)}>
                 <Button
                   className="w-full text-sm font-semibold rounded-lg btn-shine"
                   style={{
@@ -319,7 +342,7 @@ export const Navbar = () => {
                     color: "#ffffff",
                   }}
                 >
-                  Book a demo
+                  {labels.bookDemo}
                 </Button>
               </a>
             </div>

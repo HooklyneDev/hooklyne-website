@@ -5,13 +5,25 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqGroups } from "@/data/faq";
+import { faqGroups, faqGroupsNL } from "@/data/faq";
 import { track } from "@/lib/analytics";
+import { useLang } from "@/lib/use-lang";
 
-const groups = faqGroups;
-
+const HEAD_EN = {
+  eyebrow: "FAQ",
+  headline: "Frequently asked, honestly answered.",
+  sub: "The ones we hear most. If yours isn't here, ask us directly.",
+};
+const HEAD_NL = {
+  eyebrow: "FAQ",
+  headline: "Veelgesteld, eerlijk beantwoord.",
+  sub: "De vragen die we het meest horen. Staat die van jou er niet bij, vraag het ons direct.",
+};
 
 export const FAQ = () => {
+  const lang = useLang();
+  const groups = lang === "nl" ? faqGroupsNL : faqGroups;
+  const head = lang === "nl" ? HEAD_NL : HEAD_EN;
   const [active, setActive] = useState(0);
   const g = groups[active];
 
@@ -20,12 +32,12 @@ export const FAQ = () => {
       <div className="container">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">{head.eyebrow}</p>
             <h1 className="text-4xl md:text-5xl tracking-tight text-[var(--heading)] leading-tight mb-4">
-              Frequently asked, honestly answered.
+              {head.headline}
             </h1>
             <p className="text-[var(--muted-foreground)] text-base max-w-xl mx-auto leading-relaxed">
-              The ones we hear most. If yours isn't here, ask us directly.
+              {head.sub}
             </p>
           </div>
 

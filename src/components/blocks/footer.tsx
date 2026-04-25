@@ -1,13 +1,69 @@
-export const Footer = () => (
+import { useLang } from "@/lib/use-lang";
+
+const EN = {
+  tagline: "Research-grade prospect packages in your rep's voice. Not more. Smarter.",
+  status: "All systems operational",
+  productCol: { title: "Product", links: [
+    { label: "Product", href: "/product" },
+    { label: "How it works", href: "/how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+  ]},
+  resourcesCol: { title: "Resources", links: [
+    { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Support", href: "/resources/support" },
+  ]},
+  companyCol: { title: "Company", links: [
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+    { label: "Log in", href: "https://portal.hooklyne.com" },
+  ]},
+  legalCol: { title: "Legal", links: [
+    { label: "Privacy", href: "/privacy" },
+    { label: "Cookies", href: "/cookies" },
+    { label: "Disclaimer", href: "/disclaimer" },
+  ]},
+  rights: "All rights reserved.",
+};
+
+const NL = {
+  tagline: "Onderzoeksgedreven prospect-pakketten in de stem van je rep. Niet meer. Slimmer.",
+  status: "Alle systemen draaien",
+  productCol: { title: "Product", links: [
+    { label: "Product", href: "/nl/product" },
+    { label: "Hoe het werkt", href: "/nl/how-it-works" },
+    { label: "Tarieven", href: "/nl/pricing" },
+  ]},
+  resourcesCol: { title: "Bronnen", links: [
+    { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/nl/faq" },
+    { label: "Support", href: "/resources/support" },
+  ]},
+  companyCol: { title: "Bedrijf", links: [
+    { label: "Over ons", href: "/nl/about" },
+    { label: "Contact", href: "/nl/contact" },
+    { label: "Inloggen", href: "https://portal.hooklyne.com" },
+  ]},
+  legalCol: { title: "Juridisch", links: [
+    { label: "Privacy", href: "/privacy" },
+    { label: "Cookies", href: "/cookies" },
+    { label: "Disclaimer", href: "/disclaimer" },
+  ]},
+  rights: "Alle rechten voorbehouden.",
+};
+
+export const Footer = () => {
+  const lang = useLang();
+  const t = lang === "nl" ? NL : EN;
+  const cols = [t.productCol, t.resourcesCol, t.companyCol, t.legalCol];
+
+  return (
   <footer className="relative overflow-hidden bg-[var(--hooklyne-navy)]">
-    {/* subtle top hairline separating from the CTA above */}
     <div
       aria-hidden="true"
       className="absolute inset-x-0 top-0 h-px pointer-events-none"
       style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)" }}
     />
-
-    {/* soft bottom glow - subtle gradient warmth near the base */}
     <div
       aria-hidden="true"
       className="absolute inset-x-0 bottom-0 h-[32rem] pointer-events-none"
@@ -28,52 +84,36 @@ export const Footer = () => (
     <div className="container relative z-10 pt-14 pb-10 lg:pt-16 lg:pb-12">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 mb-10">
         <div className="max-w-xs">
-          <a href="/" className="flex items-center gap-2 mb-3">
+          <a href={lang === "nl" ? "/nl" : "/"} className="flex items-center gap-2 mb-3">
             <img src="/logo-white.svg" alt="Hooklyne" width={140} height={28} />
           </a>
           <p className="text-sm text-white/50 leading-relaxed">
-            Research-grade prospect packages in your rep's voice. Not more. Smarter.
+            {t.tagline}
           </p>
           <div className="mt-5 inline-flex items-center gap-2">
             <span className="relative flex size-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
               <span className="relative inline-flex size-2 rounded-full bg-emerald-400"></span>
             </span>
-            <span className="text-xs font-medium text-white/70">All systems operational</span>
+            <span className="text-xs font-medium text-white/70">{t.status}</span>
           </div>
         </div>
 
         <nav className="flex flex-wrap gap-x-10 gap-y-6 text-sm">
-          <div className="flex flex-col gap-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Product</p>
-            <a href="/product" className="text-white/60 hover:text-white transition-colors">Product</a>
-            <a href="/how-it-works" className="text-white/60 hover:text-white transition-colors">How it works</a>
-            <a href="/pricing" className="text-white/60 hover:text-white transition-colors">Pricing</a>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Resources</p>
-            <a href="/blog" className="text-white/60 hover:text-white transition-colors">Blog</a>
-            <a href="/faq" className="text-white/60 hover:text-white transition-colors">FAQ</a>
-            <a href="/resources/support" className="text-white/60 hover:text-white transition-colors">Support</a>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Company</p>
-            <a href="/about" className="text-white/60 hover:text-white transition-colors">About</a>
-            <a href="/contact" className="text-white/60 hover:text-white transition-colors">Contact</a>
-            <a href="https://portal.hooklyne.com" className="text-white/60 hover:text-white transition-colors">Log in</a>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">Legal</p>
-            <a href="/privacy" className="text-white/60 hover:text-white transition-colors">Privacy</a>
-            <a href="/cookies" className="text-white/60 hover:text-white transition-colors">Cookies</a>
-            <a href="/disclaimer" className="text-white/60 hover:text-white transition-colors">Disclaimer</a>
-          </div>
+          {cols.map((col) => (
+            <div key={col.title} className="flex flex-col gap-2">
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">{col.title}</p>
+              {col.links.map((l) => (
+                <a key={l.label + l.href} href={l.href} className="text-white/60 hover:text-white transition-colors">{l.label}</a>
+              ))}
+            </div>
+          ))}
         </nav>
       </div>
 
       <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <p className="text-xs text-white/30">
-          &copy; {new Date().getFullYear()} Hooklyne. All rights reserved.
+          &copy; {new Date().getFullYear()} Hooklyne. {t.rights}
         </p>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
@@ -105,4 +145,5 @@ export const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};

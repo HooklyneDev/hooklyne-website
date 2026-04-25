@@ -71,3 +71,76 @@ export const faqGroups: Group[] = [
     ],
   },
 ];
+
+export const faqGroupsNL: Group[] = [
+  {
+    title: "Hoe Hooklyne werkt",
+    short: "Hoe het werkt",
+    items: [
+      { q: "Wat doet Hooklyne precies?", a: "Een onderzoekswerkstroom die kant-en-klare prospect-pakketten oplevert. Geverifieerde contacten, een live signaal en een eerste mail in jouw stem. Eén portaal. In minder dan een minuut bekijk en verstuur je 'm." },
+      { q: "Is Hooklyne leadgeneratie-software?", a: "Deels. We genereren leads, maar we zijn geen lijstenleverancier. Een leadgeneratie-tool stopt bij een naam en een mailadres. Wij leveren het hele pakket: geverifieerd contact, een actuele koopreden, een opgestelde mail. Voor MKB-teams die liever tien goede prospects benaderen dan duizend slechte." },
+      { q: "Werkt dit voor koude acquisitie?", a: "Ja, en het is precies waar we voor gebouwd zijn. Koude acquisitie werkt alleen als de aanleiding klopt en de mail niet als spam leest. Daarom verifiëren we contacten, scoren we signalen dubbel (relevant voor hen, relevant voor jou) en schrijven we in jouw stem." },
+      { q: "Is dit weer zo'n AI-prospecting tool?", a: "Nee. De meeste zijn één prompt op een database. Hooklyne is zes gespecialiseerde fases die samen werken. Onderzoek eerst, schrijven als laatste." },
+      { q: "Wat is het verschil met een contactdatabase?", a: "Een database geeft je een naam. Hooklyne geeft je een geverifieerd contact, een actuele aanleiding om te bellen en een opgesteld bericht. Databases stoppen bij de regel. Wij leveren het hele pakket." },
+      { q: "Wat is het verschil met een sales agency?", a: "Agencies kosten €2.500+ per maand en nemen het versturen uit jouw handen. Hooklyne kost een fractie daarvan en houdt jou aan het stuur, met het onderzoek al gedaan." },
+      { q: "Gebruikt Hooklyne AI?", a: "Hooklyne combineert verschillende onderzoeks- en datasystemen tot één werkstroom. Wat telt is wat in de inbox terechtkomt, niet wat eronder zit." },
+      { q: "Klinkt het bericht alsof een bot het schreef?", a: "Nee. De stem wordt gekalibreerd via een interview van 30 minuten en tot vijf voorbeeldmails. Elk concept gaat door vier reasoning-passes voordat het bij jou belandt." },
+    ],
+  },
+  {
+    title: "Contacten, signalen en datakwaliteit",
+    short: "Data & signalen",
+    items: [
+      { q: "Hoe vinden jullie contactgegevens?", a: "Een waterval over 20+ contactdataproviders, met de beste bron per regio. Mist de eerste een geverifieerde match, dan probeert de volgende. Tot we een schone hit hebben." },
+      { q: "Waarom niet gewoon één database?", a: "Eén provider dekt zo'n 40% van een markt, en elke provider dekt een andere 40%. Eén database betekent dunne dekking en bouncebakken. 20+ gecombineerd is hoe je de contacten bereikt die er toe doen." },
+      { q: "Hoe worden e-mailadressen geverifieerd?", a: "Vier deliverability-lagen. Drie parallelle checks tijdens de enrichment, plus een laatste deliverability-pass. Catch-alls, spam traps, role accounts, disposables, bekende klagers - geflagd of weggegooid. Komt het niet door de check, dan gaat het niet uit." },
+      { q: "Schaadt verificatie mijn sender reputation?", a: "Nee. Verificatie draait op onze infrastructuur, niet die van jou. Je domein raakt het proben nooit aan." },
+      { q: "Welke signalen volgen jullie?", a: "Zeven bronnen: funding, hiring, leiderschapswissels, launches, pers, expansie, sectornieuws. Elke gevolgde prospect wordt continu in de gaten gehouden." },
+      { q: "Hoe vers zijn de signalen?", a: "Binnen uren. We monitoren ook company en team pages direct - nieuwe rollen, stille launches, uitbreidingen op de careers-pagina - vaak voordat de pers het oppikt." },
+      { q: "Waarom zie ik niet elke nieuwe hire of persbericht?", a: "Elk signaal krijgt twee scores: relevant voor hen, relevant voor jou. Alleen wat door beide komt, belandt in je inbox." },
+      { q: "Hoe accuraat is de data?", a: "We versturen alleen geverifieerde contacten. De viertraps-verificatie houdt de bouncerate ruim onder de 2% industry safe zone." },
+      { q: "Is de data AVG-proof?", a: "Ja. Nederlands gebouwd, EU-first. Elke provider in de waterval werkt onder de AVG. Compliance zit ingebakken, niet erbij geplakt." },
+    ],
+  },
+  {
+    title: "Onderzoek en berichtkwaliteit",
+    short: "Onderzoek",
+    items: [
+      { q: "Hoe voorkomen jullie dat er onzin over mijn prospects wordt verzonnen?", a: "Live webonderzoek, geen trainingsdata. Elke claim is te herleiden naar een actuele URL die je kunt aanklikken. Geen verzonnen quotes, geen verzonnen cijfers, geen verzonnen klanten." },
+      { q: "Kan ik de bronnen achter een meeting brief zien?", a: "Ja. Elke brief toont zijn citaties, klikbaar, zodat je elk feit kunt verifiëren voordat je naar binnen loopt." },
+      { q: "Hoe personaliseren jullie de berichten?", a: "Sender Profile: vijf tabs - bedrijf, stem, voorbeeldmails, producten, regels. Eenmalig invullen (zo'n 30 minuten). Vanaf dat moment erft elk bericht jouw stem via vier reasoning-passes." },
+    ],
+  },
+  {
+    title: "Talen en markten",
+    short: "Talen",
+    items: [
+      { q: "Ondersteunen jullie Nederlandse outreach?", a: "Ja. Native Nederlands, geschreven in de toon die Nederlandse kopers verwachten. Niet vertaald." },
+      { q: "Hoe wordt de taal gekozen?", a: "Automatisch, bij het prospecten. Op basis van het bedrijfsdomein en de locatie van het contact. Zodra een prospect binnen is, ligt de taal vast voor dat pakket." },
+      { q: "Kan ik prospects buiten Nederland targeten?", a: "Ja. Providerselectie wordt afgestemd per regio. Sterke dekking in UK, DACH, Benelux en de Nordics." },
+      { q: "Is Hooklyne alleen voor Nederlandse bedrijven?", a: "Nederlands gebouwd, maar elk EMEA-team dat in het Nederlands of Engels werkt past." },
+    ],
+  },
+  {
+    title: "Credits, abonnementen en facturatie",
+    short: "Credits & plans",
+    items: [
+      { q: "Hoe werkt het credit-systeem?", a: "Prospecten, intelligence en meeting prep gebruiken credits. Beoordelen en bewerken niet. Het dashboard laat zien wat is gebruikt en wat over is. Reset maandelijks." },
+      { q: "Betaal ik voor contacten die jullie niet kunnen verifiëren?", a: "Nee. Alleen geverifieerde hits worden afgerekend. Geen hit, geen kosten." },
+      { q: "Wat als ik halverwege de maand zonder credits zit?", a: "Top-ups op elk plan voor €0,85 per credit. Custom tarieven op Enterprise." },
+      { q: "Kan ik van plan wisselen?", a: "Ja, op elk moment." },
+      { q: "Lange contracten?", a: "Nee. Maandelijks of jaarlijks - jaarlijks scheelt tot €60 per maand. Op elk moment opzegbaar." },
+      { q: "Kosten per seat?", a: "Start 1 seat, Growth 2, Scale 5, Enterprise unlimited." },
+    ],
+  },
+  {
+    title: "Pilots en onboarding",
+    short: "Pilots",
+    items: [
+      { q: "Wat is de gratis pilot?", a: "Tien volledig opgebouwde prospects, gratis. Geverifieerde contacten, live signalen, berichten in jouw stem. We vragen er een feedbackgesprek van 20 minuten voor terug." },
+      { q: "Hoe lang duurt onboarding?", a: "Onder een week voor één rep. Iets langer voor een team. Sender Profile is ~30 minuten per stem. ICP-kalibratie, één of twee passes. Growth en Scale krijgen een kickoff-call en een live training voor het hele team." },
+      { q: "Moet ik mijn CRM of sequencer aanpassen?", a: "Nee. Kopieer pakketten in wat je al gebruikt, of verstuur vanuit je inbox." },
+      { q: "Wie verstuurt de mails?", a: "Jij. Jouw inbox, jouw domein, jouw reputatie." },
+    ],
+  },
+];

@@ -1,4 +1,5 @@
 import { ArrowRight, ShieldCheck, MapPin, FileText, RotateCcw } from "lucide-react";
+import { useLang } from "@/lib/use-lang";
 
 export type CTAVariant = "home" | "how-it-works" | "product" | "about" | "pricing" | "faq";
 
@@ -11,7 +12,7 @@ type CTACopy = {
   secondaryHref: string;
 };
 
-const VARIANTS: Record<CTAVariant, CTACopy> = {
+const EN_VARIANTS: Record<CTAVariant, CTACopy> = {
   home: {
     kicker: "Free pilot",
     heading: "Try 10 prospects, free.",
@@ -62,14 +63,75 @@ const VARIANTS: Record<CTAVariant, CTACopy> = {
   },
 };
 
-const TRUST_SIGNALS = [
+const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
+  home: {
+    kicker: "Gratis pilot",
+    heading: "Probeer 10 prospects, gratis.",
+    body: "Tien volledig opgebouwde prospects. Geverifieerde contacten, echte signalen, berichten in jouw stem. In ruil voor een feedbackgesprek van 20 minuten.",
+    primaryLabel: "Start je gratis pilot",
+    secondaryLabel: "Bekijk tarieven",
+    secondaryHref: "/nl/pricing",
+  },
+  "how-it-works": {
+    kicker: "Zie het werken",
+    heading: "Bekijk de werkstroom op jouw eigen prospects.",
+    body: "We draaien alle zes fases op tien bedrijven die jij kiest. Je beoordeelt de output live en houdt 'm. Geen creditcard, geen verplichting.",
+    primaryLabel: "Start je gratis pilot",
+    secondaryLabel: "Lees de FAQ",
+    secondaryHref: "/nl/faq",
+  },
+  product: {
+    kicker: "Probeer het product",
+    heading: "Draai Hooklyne op tien van jouw bedrijven.",
+    body: "Zie het portaal, de prospect-kaarten en de drafts op echte accounts uit jouw markt. Twintig minuten feedback in ruil.",
+    primaryLabel: "Start je gratis pilot",
+    secondaryLabel: "Bekijk hoe het werkt",
+    secondaryHref: "/nl/how-it-works",
+  },
+  about: {
+    kicker: "Probeer het",
+    heading: "Echt onderzoek, op tien van jouw prospects.",
+    body: "Gebouwd in Nederland voor Nederlandse en Britse B2B-MKB. Probeer het voordat je iets beslist. Tien echte pakketten, gratis.",
+    primaryLabel: "Start je gratis pilot",
+    secondaryLabel: "Lees de FAQ",
+    secondaryHref: "/nl/faq",
+  },
+  pricing: {
+    kicker: "Voordat je een plan kiest",
+    heading: "Eerst pilot, dan betalen.",
+    body: "Tien volledig opgebouwde prospects voordat er een creditcard aan te pas komt. Zie de output op jouw markt, kies dan het abonnement dat past.",
+    primaryLabel: "Start je gratis pilot",
+    secondaryLabel: "Bekijk hoe het werkt",
+    secondaryHref: "/nl/how-it-works",
+  },
+  faq: {
+    kicker: "Nog vragen?",
+    heading: "Het antwoord zit meestal in de output zelf.",
+    body: "Tien prospects, volledig opgebouwd, gratis. Zie de pakketten op jouw accounts. Wat dan nog open ligt, beantwoorden we in het feedbackgesprek.",
+    primaryLabel: "Start je gratis pilot",
+    secondaryLabel: "Bekijk tarieven",
+    secondaryHref: "/nl/pricing",
+  },
+};
+
+const EN_TRUST = [
   { icon: ShieldCheck, label: "GDPR-compliant" },
   { icon: MapPin,      label: "EU-native" },
   { icon: FileText,    label: "No contract, pilot anytime" },
   { icon: RotateCcw,   label: "Cancel whenever" },
 ];
 
+const NL_TRUST = [
+  { icon: ShieldCheck, label: "AVG-proof" },
+  { icon: MapPin,      label: "EU-native" },
+  { icon: FileText,    label: "Geen contract, pilot wanneer je wilt" },
+  { icon: RotateCcw,   label: "Op elk moment opzegbaar" },
+];
+
 export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
+  const lang = useLang();
+  const VARIANTS = lang === "nl" ? NL_VARIANTS : EN_VARIANTS;
+  const TRUST_SIGNALS = lang === "nl" ? NL_TRUST : EN_TRUST;
   const copy = VARIANTS[variant] ?? VARIANTS.home;
 
   return (

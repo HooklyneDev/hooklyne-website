@@ -1,109 +1,354 @@
 ---
-import { Background } from '@/components/background';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { breadcrumbList } from "@/lib/seo";
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { PortalShot } from '@/components/portal-shot';
+import { ResearchBrief } from '@/components/research-brief';
+import { FindCompaniesFlow } from '@/components/product/find-companies-flow';
+import { SignalHeatTable } from '@/components/product/signal-heat-table';
+import { EmailCompose } from '@/components/product/email-compose';
+import { VerificationWaterfall } from '@/components/product/verification-waterfall';
+import { ArrowRight } from 'lucide-react';
 
 const stages = [
   {
-    n: "01",
-    title: "Discovery",
-    body: "Definieer je ICP - sector, omvang, regio, koperprofiel. We bouwen een lijst kandidaat-bedrijven uit KvK, Companies House, LinkedIn en sectorlijsten.",
+    n: 1,
+    key: "Discovery",
+    title: "Describe it. We find it.",
+    body: "Tell us who you sell to in plain words. We read billions of pages semantically and surface the companies that actually fit. Not a filter grid. A language-level match.",
+    facts: ["1.2B pages indexed", "Semantic match, not SIC codes", "Plain-language input"],
+    shot: {
+      label: "Discovery workspace",
+      describe: "Portal: a plain-language description field, live results grid with fit scores and quick-add buttons.",
+      crumb: "Prospecting / Discovery",
+      status: "Reading 1.2B pages",
+      statusTone: "blue" as const,
+      overlays: [
+        { x: 30, y: 28, tag: "DESCRIBE", title: "Dutch industrial OEMs moving to service models", tone: "blue" as const },
+        { x: 72, y: 70, tag: "MATCHED", title: "42 real fits", body: "Not SIC code guesses", tone: "teal" as const, pulse: true },
+      ],
+    },
   },
   {
-    n: "02",
-    title: "Verificatie",
-    body: "Elk contact wordt gecheckt tegen 20+ data-providers. Apollo, Cognism, Lusha, ZoomInfo, Hunter, regionale bronnen. Conflicten worden geflagd voordat we doorgaan.",
+    n: 2,
+    key: "Verification",
+    title: "The contact, verified before you see it.",
+    body: "We check 20+ providers and four deliverability layers per email. If it can't be verified, it never ships. Your domain reputation stays clean.",
+    facts: ["20+ providers", "4 deliverability layers", "Held if not verified"],
+    shot: {
+      label: "Verification waterfall",
+      describe: "Portal: contact card with live provider attempts and a final deliverability score.",
+      crumb: "Prospect / Contact verification",
+      status: "Verified",
+      statusTone: "teal" as const,
+      overlays: [
+        { x: 30, y: 30, tag: "PROVIDER 3/20", title: "Verified match", tone: "teal" as const, pulse: true },
+        { x: 72, y: 72, tag: "EMAIL", title: "Passed 4-layer check", body: "SMTP · Catch-all · Role · Deliverable", tone: "blue" as const },
+      ],
+    },
   },
   {
-    n: "03",
-    title: "Signalen",
-    body: "Gestructureerde triggers uit echte feeds. Funding, hiring, leiderschapswissels, tech-stack-updates, M&A. Geen LLM die op een LinkedIn-post een koopintentie projecteert.",
+    n: 3,
+    key: "Signals",
+    title: "Catch the moment they're ready.",
+    body: "Funding, hiring, leadership, launches, press, expansion, sector news. Every move scored for your ICP and your product. Only the real ones land in your inbox.",
+    sources: ["Funding", "Hiring", "Leadership", "Launches", "Press", "Expansion", "Sector news"],
+    shot: {
+      label: "Signals feed",
+      describe: "Portal: live signal feed with twin scores and a prep-meeting action per row.",
+      crumb: "Signals feed",
+      status: "Live",
+      statusTone: "orange" as const,
+      overlays: [
+        { x: 30, y: 26, tag: "FUNDING", title: "Series B - €12M", body: "9/10 fit for your ICP", tone: "orange" as const, pulse: true },
+        { x: 72, y: 70, tag: "HIRING", title: "New VP Sales", body: "Product relevance 8/10", tone: "blue" as const },
+      ],
+    },
   },
   {
-    n: "04",
-    title: "Onderzoek",
-    body: "Relevante context die je rep direct kan gebruiken. Recente launches, posts van het contact, marktpositie, eerdere fundingrondes, klantenbestand.",
+    n: 4,
+    key: "Research",
+    title: "Every fact, sourced. No made-up facts.",
+    body: "Live web research, not stale training data. Every claim traces back to a real URL you can click. Walk into the meeting without a single invented detail.",
+    facts: ["Live web pull", "12 citations average", "Every claim sourced"],
+    shot: {
+      label: "Research brief",
+      describe: "Portal: a prospect brief with numbered citations linking to live sources.",
+      crumb: "Prospect / Research brief",
+      status: "Pulled 2m ago",
+      statusTone: "teal" as const,
+      overlays: [
+        { x: 30, y: 28, tag: "SOURCED", title: "12 citations", tone: "blue" as const },
+        { x: 72, y: 72, tag: "FRESH", title: "Pulled 2h ago", body: "Live web, not training data", tone: "teal" as const, pulse: true },
+      ],
+    },
   },
   {
-    n: "05",
-    title: "Drafting",
-    body: "Een eerste mail of LinkedIn-bericht in de schrijfstijl van je rep. Niet een system prompt - we modelleren de stem op basis van mails die de rep al verstuurd heeft.",
+    n: 5,
+    key: "Drafting",
+    title: "Reads like your rep wrote it.",
+    body: "Every draft is reasoned through four times before it reaches you. Hook first, then angle, then voice, then a final quality check. Generic stops here.",
+    facts: ["4 reasoning passes", "Voice from your past emails", "NL · EN auto"],
+    shot: {
+      label: "Draft with voice match",
+      describe: "Portal: drafted email on the left, voice-match panel on the right showing cadence, openers, sign-off.",
+      crumb: "Prospect / Draft",
+      status: "Voice matched",
+      statusTone: "blue" as const,
+      overlays: [
+        { x: 30, y: 28, tag: "VOICE", title: "Matched to your cadence", tone: "blue" as const },
+        { x: 72, y: 70, tag: "PASSES", title: "4 reasoning passes", body: "Hook · Angle · Voice · QC", tone: "orange" as const, pulse: true },
+      ],
+    },
   },
   {
-    n: "06",
-    title: "Levering",
-    body: "Het volledige pakket landt in het portaal. Klaar om te beoordelen en te versturen vanuit je eigen inbox. Suppression-lijst wordt automatisch gerespecteerd.",
+    n: 6,
+    key: "Delivery",
+    title: "One screen. Ready to send.",
+    body: "Company, contact, signal, hook, email, LinkedIn - all on one card. Review, edit, accept, send from your own inbox. Under a minute per prospect.",
+    facts: ["Send from your inbox", "Your own domain", "NL · EN auto"],
+    shot: {
+      label: "Prospect card",
+      describe: "Portal: single prospect card open with Company / Contact / Signal / Hook / Email / LinkedIn sections.",
+      crumb: "Leads / Prospect 142",
+      status: "Ready to send",
+      statusTone: "teal" as const,
+      overlays: [
+        { x: 30, y: 28, tag: "REVIEW", title: "<60 seconds", tone: "teal" as const },
+        { x: 72, y: 72, tag: "SEND", title: "Your inbox, your domain", tone: "blue" as const, pulse: true },
+      ],
+    },
   },
 ];
+import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
   { name: "Home", path: "/nl" },
-  { name: "Hoe het werkt", path: "/nl/how-it-works" },
+  { name: "How it works", path: "/nl/how-it-works" },
 ]);
 ---
+
 <DefaultLayout
-  title="Hoe Hooklyne werkt | B2B prospect-onderzoek in zes fases"
-  description="Hoe Hooklyne werkt: de zes-staps werkstroom achter B2B leadgeneratie en koude acquisitie. Van discovery via verificatie en koopsignalen tot een eerste mail in jouw stem."
+  title="Hoe het werkt | Hooklyne"
+  description="Hoe Hooklyne werkt: zes-staps werkstroom voor B2B leadgeneratie en koude acquisitie. Van discovery tot levering."
   image="/og/how-it-works.jpg"
+  ctaVariant="how-it-works"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "Hoe Hooklyne een prospect-pakket bouwt",
-    inLanguage: "nl-NL",
-    description: "De zes-staps onderzoekswerkstroom: discovery, verificatie, signalen, onderzoek, drafting, levering.",
-    step: stages.map((s, i) => ({
+    "name": "How Hooklyne builds a prospect package",
+    "description": "Six stages from plain-language ICP to a ready-to-send prospect package in under a minute of review.",
+    "totalTime": "PT1M",
+    "step": stages.map((s) => ({
       "@type": "HowToStep",
-      position: i + 1,
-      name: s.title,
-      text: s.body,
+      "position": s.n,
+      "name": s.key,
+      "text": s.body,
+      "url": `https://www.hooklyne.com/how-it-works#stage-${s.n}`,
     })),
   })} />
-
-  <Background>
-    <section class="pt-32 lg:pt-40 pb-12">
-      <div class="container max-w-4xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Hoe het werkt</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Zes fases. Eén prospect-pakket.</h1>
-        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
-          Geen black box. Tussen "ik wil deze sector benaderen" en "deze mail kan vandaag de deur uit" zit een werkstroom van zes stappen. Hier staat precies wat ze doen.
+  <Background topStop="85%">
+    <section class="pt-28 sm:pt-32 lg:pt-44 pb-10 sm:pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-4 sm:mb-5">
+          A research workflow. Not a chatbot.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed mb-6 sm:mb-8">
+          Six stages working together. Each one does what a good researcher would do, continuously, so your rep never has to.
         </p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-10 sm:mb-14 lg:mb-16">
+          <a
+            href="/nl/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start your free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="/nl/product"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the product
+            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+
+      <div id="hero-video" class="container max-w-6xl relative z-10">
+        <div
+          class="relative rounded-2xl px-4 py-4 lg:px-6 lg:py-5 overflow-hidden"
+          style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); box-shadow: var(--shadow-lg); border: 1px solid var(--border);"
+        >
+          <div class="hidden md:flex items-center gap-0">
+            {stages.map((s, i) => (
+              <>
+                <a
+                  href={`#stage-${s.n}`}
+                  class="group flex-1 flex items-center gap-2.5 px-2 py-2 justify-center rounded-lg hover:bg-[var(--background)] transition-colors"
+                >
+                  <span class="inline-flex items-center justify-center size-7 shrink-0 rounded-full text-[11px] font-bold text-white transition-transform duration-200 group-hover:scale-110" style="background: var(--hooklyne-navy);">
+                    {s.n}
+                  </span>
+                  <span class="text-[12px] md:text-[13px] font-semibold text-[var(--heading)] whitespace-nowrap tracking-tight group-hover:text-[var(--hooklyne-blue)] transition-colors">{s.key}</span>
+                </a>
+                {i < stages.length - 1 && (
+                  <div class="shrink-0 flex items-center justify-center px-1">
+                    <svg class="text-[var(--border-strong)]" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 5 H13 M9 1 L13 5 L9 9"/></svg>
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
+
+          <div class="md:hidden grid grid-cols-3 gap-1.5">
+            {stages.map((s) => (
+              <a
+                href={`#stage-${s.n}`}
+                class="group flex flex-col items-center justify-center gap-1 px-1.5 py-2.5 rounded-lg bg-[var(--background)] hover:bg-[var(--card-hover)] transition-colors min-w-0"
+              >
+                <span class="inline-flex items-center justify-center size-6 shrink-0 rounded-full text-[10px] font-bold text-white" style="background: var(--hooklyne-navy);">
+                  {s.n}
+                </span>
+                <span class="text-[11px] font-semibold text-[var(--heading)] tracking-tight truncate max-w-full">{s.key}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section class="pb-20">
-      <div class="container max-w-4xl space-y-4">
-        {stages.map((s) => (
-          <div class="rounded-2xl p-6 md:p-8" style="background: var(--card); border: 1px solid var(--border);">
-            <div class="flex items-start gap-5">
-              <div class="text-3xl md:text-4xl font-semibold text-[var(--hooklyne-blue)] tracking-tight flex-shrink-0">{s.n}</div>
-              <div>
-                <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">{s.title}</h2>
-                <p class="text-base text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+  </Background>
+
+  <Background variant="bottom">
+    <section class="pt-10 sm:pt-12 lg:pt-16 pb-10 sm:pb-12 lg:pb-16">
+      <div class="container max-w-6xl flex flex-col gap-14 sm:gap-20 lg:gap-28">
+        {stages.map((s, i) => (
+          <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center min-w-0", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
+            <div class="min-w-0">
+              <div class="inline-flex items-center flex-wrap gap-2 mb-4 sm:mb-5">
+                <span class="inline-flex items-center justify-center size-8 sm:size-9 rounded-xl text-sm font-bold text-white" style="background: var(--hooklyne-navy);">
+                  {s.n}
+                </span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">{s.key}</span>
+                {s.n === 6 && (
+                  <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2 py-1 rounded-full" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/></svg>
+                    Under 60s
+                  </span>
+                )}
               </div>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4 sm:mb-5 leading-[1.15] sm:leading-[1.1]">
+                {s.title}
+              </h2>
+              <p class="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-lg">
+                {s.body}
+              </p>
+
+              {s.facts && (
+                <div class="mt-5 flex flex-wrap gap-1.5">
+                  {s.facts.map((f) => (
+                    <span class="text-[11px] font-semibold px-2.5 py-1 rounded-md tracking-tight" style="background: var(--card); border: 1px solid var(--border); color: var(--heading);">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {s.sources && (
+                <div class="mt-6 flex flex-wrap gap-2">
+                  {s.sources.map((src) => (
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background: var(--card); border: 1px solid var(--border); color: var(--heading);">
+                      {src}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {s.n === 4 && (
+                <div class="mt-6 rounded-2xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+                  <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-teal)] mb-2">After the reply</p>
+                  <p class="text-sm font-semibold text-[var(--heading)] mb-1.5">Meeting Prep, on demand.</p>
+                  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-3">
+                    When the reply comes in, request a brief. Five minutes later you walk in knowing what they just raised, what their contact said publicly last quarter, and three openers that fit the meeting type.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    {["Cold", "Warm", "Inbound", "Follow-up", "Conference", "Post-conference", "Pitch"].map((t) => (
+                      <span class="text-[10px] font-medium px-2 py-1 rounded-full" style="background: var(--background); border: 1px solid var(--border); color: var(--heading);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {s.n === 6 && (
+                <div class="mt-6">
+                  <a href="/nl/product" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
+                    See the screens in the portal
+                    <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div class="min-w-0">
+              {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
+              {s.n === 2 && <VerificationWaterfall client:visible ratio="5/4" tabletRatio="16/9" mobileRatio="1/1" />}
+              {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
+              {s.n === 4 && <ResearchBrief />}
+              {s.n === 5 && <EmailCompose client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
+              {s.n === 6 && (
+                <PortalShot
+                  label={s.shot.label}
+                  src="/how-it-works/prospect-card.jpg"
+                  fit="contain"
+                  ratio="3/2"
+                  crumb={s.shot.crumb}
+                  status={s.shot.status}
+                  statusTone={s.shot.statusTone}
+                />
+              )}
             </div>
           </div>
         ))}
       </div>
     </section>
 
-    <section class="pb-24">
+    <section class="pt-4 pb-12 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-24" data-fade>
       <div class="container max-w-4xl">
-        <div class="rounded-2xl p-8 md:p-10 text-center" style="background: var(--card); border: 1px solid var(--border);">
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-3">Liever zelf zien hoe het eruitziet?</h2>
-          <p class="text-base text-[var(--muted-foreground)] mb-6 max-w-xl mx-auto leading-relaxed">
-            Tien volledig opgebouwde prospect-pakketten in de gratis pilot. Geen creditcard, geen verplichting.
+        <div
+          class="relative rounded-3xl p-6 sm:p-8 md:p-12 overflow-hidden text-center"
+          style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);"
+        >
+          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
+            This is the workflow. See it in the product.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
+            Six stages behind one prospect card. Review in under a minute, send from your own inbox.
           </p>
-          <a
-            href="/contact"
-            class="h-11 px-6 inline-flex items-center justify-center text-sm font-semibold rounded-lg"
-            style="background-color: var(--hooklyne-navy); color: #ffffff;"
-          >
-            Start je gratis pilot
-          </a>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/nl/contact"
+              class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+            >
+              Start your free pilot
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="/nl/product"
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+            >
+              See the screens
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
+
   </Background>
 </DefaultLayout>
+

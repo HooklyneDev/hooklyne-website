@@ -1,6 +1,23 @@
 ---
-import { Background } from '@/components/background';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { ArrowRight } from 'lucide-react';
+
+const values = [
+  {
+    title: "Verkopen blijft mensenwerk.",
+    body: "De wereld is digitaal. Kopen niet. Software hoort jou ruimte te geven voor het gesprek, niet het over te nemen. De relatie is van de rep, niet van de tool.",
+  },
+  {
+    title: "Kwaliteit boven volume.",
+    body: "Vijftig echte hooks zijn meer waard dan vijfhonderd zwakke. Elke keer.",
+  },
+  {
+    title: "Outreach waar je je naam onder zet.",
+    body: "Generieke outreach verbrandt je sender reputation snel. Vier reasoning-passes, een kwaliteitscheck, en is het niet klaar, dan gaat het niet uit.",
+  },
+];
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -8,68 +25,233 @@ const breadcrumb = breadcrumbList([
   { name: "Over ons", path: "/nl/about" },
 ]);
 ---
+
 <DefaultLayout
   title="Over Hooklyne | Wie we zijn en waarom we het bouwen"
   description="Waarom we Hooklyne hebben gebouwd, wie erachter zit, en hoe we kijken naar B2B prospect-onderzoek voor het MKB."
   image="/og/about.jpg"
+  ctaVariant="about"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    inLanguage: "nl-NL",
-    name: "Over Hooklyne",
-    description: "B2B prospect-onderzoek voor Nederlandse en Britse MKB-salesteams.",
-    url: "https://www.hooklyne.com/nl/about",
+    "inLanguage": "nl-NL",
+    "name": "Over Hooklyne",
+    "url": "https://www.hooklyne.com/nl/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Hooklyne",
+      "url": "https://www.hooklyne.com",
+      "foundingLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "NL" } },
+      "areaServed": ["NL", "BE", "GB", "LU"],
+      "founder": { "@type": "Person", "name": "Tim", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Hooklyne" } },
+      "identifier": { "@type": "PropertyValue", "propertyID": "KVK", "value": "99990512" }
+    }
   })} />
-
   <Background>
-    <section class="pt-32 lg:pt-40 pb-12">
-      <div class="container max-w-3xl">
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Over ons</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">De onderzoekslaag die de meeste B2B-teams niet zelf kunnen bemensen.</h1>
-        <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-          Dus die hebben we gebouwd.
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Echt onderzoek, zonder volume in te leveren.
+        </h1>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+          De onderzoekslaag die de meeste B2B-teams niet zelf kunnen bemensen. Dus die hebben we gebouwd.
         </p>
       </div>
     </section>
+  </Background>
 
-    <section class="pb-20">
-      <div class="container max-w-3xl space-y-8 text-[var(--foreground)]">
-        <div>
-          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Waarom Hooklyne bestaat</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-3">
-            We deden zelf outbound bij Nederlandse B2B-bedrijven. Elke week dezelfde uren kwijt aan prospect-onderzoek en koude acquisitie. Dezelfde vermoeide patronen in elke mail. Dezelfde frustratie dat één database er steeds 40% naast zat.
+  <Background variant="bottom">
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Waarom we dit bouwden</p>
+        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
+          Zeven tabbladen, één prospect, geen tijd.
+        </h2>
+        <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
+          <p>
+            We komen uit internationale B2B-sales. De meeste van die jaren waren we bezig met schakelen tussen abonnementen - één tool voor bedrijfsdata, één voor contacten, één voor signalen, een CRM die met geen enkele praatte. De werkstroom leefde in zeven tabbladen.
           </p>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            We probeerden Apollo. We probeerden Cognism. We probeerden ChatGPT met enrichment-API's eraan. Alles werkte op tien prospects. Niets werkte op honderd. Dus bouwden we de werkstroom die we zelf wilden hebben - de onderzoekslaag die je zou inhuren als je kon.
+          <p>
+            Elke week kostte uren met informatie van het ene naar het andere systeem schuiven, alleen om één prospect te briefen. We probeerden elke shortcut. We betaalden voor tools die we twee keer gebruikten. Toen we naar agencies keken, kwamen de offertes hoger uit dan het maandelijkse quotum dat ze konden leveren.
+          </p>
+          <p>
+            Er was niet genoeg tijd om het in-house te doen, en niet genoeg budget om het uit te besteden. Dus stopten we met eromheen werken en begonnen we te bouwen wat we wilden hebben.
+          </p>
+          <p class="text-[var(--heading)] font-medium text-lg">
+            Eén plek. Eén prospect. Alle context die een researcher je zou geven. In minder dan een minuut bekeken.
           </p>
         </div>
-
-        <div>
-          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Hoe we denken over outreach</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-3">
-            Niet meer mails. Betere mails. Eén goed gesprek is meer waard dan vijftig koude touches die je reputatie schaden. Dat betekent: het onderzoek doet er meer toe dan het schrijven, het signaal doet er meer toe dan het volume, en de stem van de rep doet er meer toe dan welke template dan ook.
-          </p>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            We noemen onze data-providers niet bij naam. De werkstroom is het product. De leveranciers eronder zijn de keuken. Wij vinden dat kopers het bord moeten beoordelen, niet de voorraadkast.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Waar we zitten</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Nederland. EU-first verwerking. AVG-compliant. Native in Nederlands en Engels. Onze klanten zijn vooral B2B-bedrijven van 10 tot 100 personen in Nederland, België, het VK en breder EMEA.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Contact</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Vragen, partnerships of een gesprek over of dit voor jouw team werkt: <a href="/contact" class="text-[var(--hooklyne-blue)] hover:opacity-80">/contact</a>. Of mail rechtstreeks naar contact@hooklyne.com.
-          </p>
         </div>
       </div>
     </section>
+
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Founder</p>
+            <figure class="relative rounded-2xl overflow-hidden aspect-[4/5]" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-lg);">
+              <picture>
+                <source srcset="/about/tim-wissink.webp" type="image/webp" />
+                <img src="/about/tim-wissink.jpg" alt="Tim, founder van Hooklyne" loading="lazy" decoding="async" width="800" height="529" class="absolute inset-0 w-full h-full object-cover" />
+              </picture>
+              <div class="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none" style="background: linear-gradient(180deg, transparent 0%, rgba(2,47,81,0.0) 20%, rgba(2,47,81,0.85) 85%, rgba(2,47,81,0.95) 100%);"></div>
+              <figcaption class="absolute left-6 right-6 bottom-6 text-white">
+                <div class="text-2xl font-semibold tracking-tight leading-none">Tim Wissink</div>
+                <div class="text-sm text-white/75 mt-2">Founder, Hooklyne</div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="lg:col-span-8 lg:pt-12">
+            <p class="text-3xl md:text-4xl lg:text-[2.75rem] text-[var(--heading)] leading-[1.25] tracking-tight font-medium">
+              "Verkopen blijft mensenwerk. Software hoort jou ruimte te geven voor het gesprek, niet te proberen het over te nemen."
+            </p>
+            <div class="mt-8 flex items-center gap-4">
+              <div class="h-px flex-1 bg-[var(--border)]"></div>
+              <div class="text-xs uppercase tracking-[0.25em] text-[var(--muted-foreground)]">Tim, founder</div>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-6 text-sm">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] mb-1">Achtergrond</div>
+                <div class="text-[var(--heading)] font-medium">10+ jaar internationale B2B-sales</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] mb-1">Live sinds</div>
+                <div class="text-[var(--heading)] font-medium">Februari 2026</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] mb-1">In pilot met</div>
+                <div class="text-[var(--heading)] font-medium">3 Nederlandse teams</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-6xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Waar we om geven</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-12 leading-[1.1] max-w-2xl">
+          Drie regels die we opschrijven en aanhouden.
+        </h2>
+        <div class="divide-y divide-[var(--border)]">
+          {values.map((v, i) => (
+            <div class="grid grid-cols-[auto_1fr] gap-6 md:gap-12 py-8 first:pt-0 last:pb-0">
+              <div class="font-mono text-sm text-[var(--muted-foreground)] pt-1">0{i + 1}</div>
+              <div>
+                <h3 class="text-xl md:text-2xl font-semibold text-[var(--heading)] mb-2 leading-tight tracking-tight">{v.title}</h3>
+                <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl">{v.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10 lg:mb-12">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Bedrijf</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            De saaie details. Op de pagina, niet weggestopt.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Wie we zijn, waar we zitten, en wat we niet met je data doen.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="size-1.5 rounded-full" style="background: var(--hooklyne-blue);"></span>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hooklyne-blue)]">Geregistreerd</p>
+            </div>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 text-sm">
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Naam</dt>
+              <dd class="text-[var(--heading)] font-medium">Hooklyne</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">KVK</dt>
+              <dd class="text-[var(--heading)] font-medium font-mono tabular-nums">99990512</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Land</dt>
+              <dd class="text-[var(--heading)] font-medium">Nederland</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Live sinds</dt>
+              <dd class="text-[var(--heading)] font-medium">Februari 2026</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Founder</dt>
+              <dd class="text-[var(--heading)] font-medium">Tim Wissink</dd>
+              <dt class="text-xs uppercase tracking-widest text-[var(--muted-foreground)] pt-1">Pilot</dt>
+              <dd class="text-[var(--heading)] font-medium">3 Nederlandse teams</dd>
+            </dl>
+          </div>
+
+          <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="size-1.5 rounded-full" style="background: var(--hooklyne-teal);"></span>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em]" style="color: var(--hooklyne-teal);">Houding</p>
+            </div>
+            <ul class="space-y-3.5 text-sm leading-relaxed">
+              {[
+                { t: "EU-gevestigd, AVG-proof.", b: "Data blijft in de EU. We verwerken wat nodig is voor outreach-onderzoek, niets meer." },
+                { t: "We verkopen of delen geen contactdata.", b: "Wat geverifieerd is voor jouw account, blijft in jouw account. Geen data-brokerage. Nooit." },
+                { t: "Jouw inbox, jouw domein.", b: "We runnen geen sequences voor je. Versturen gebeurt vanuit jouw mailbox, zodat de relatie van jou blijft." },
+                { t: "Niets gaat ongeverifieerd uit.", b: "Komt een contact niet door alle vier de deliverability-lagen, dan houden we het tegen. Jouw sender reputation telt zwaarder dan het volume." },
+              ].map((p) => (
+                <li class="flex items-start gap-3">
+                  <svg class="size-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--hooklyne-teal);"><path d="M20 6 9 17l-5-5"/></svg>
+                  <div>
+                    <p class="font-semibold text-[var(--heading)]">{p.t}</p>
+                    <p class="text-[var(--muted-foreground)] mt-0.5">{p.b}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-4xl">
+        <div class="relative rounded-3xl p-8 md:p-12 overflow-hidden text-center" style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Voor wie</p>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            Nederlands en Brits MKB eerst. EN door heel EMEA.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
+            We beginnen dichtbij huis omdat we beide talen native spreken en de kopers kennen. Engelstalige teams elders in EMEA zijn welkom. AVG-proof.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="/nl/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
+              Start je gratis pilot
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+            <a href="/nl/how-it-works" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+              Bekijk hoe het werkt
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </Background>
 </DefaultLayout>
+
+<style>
+  .shape-dot { box-shadow: 0 0 0 0 currentColor; animation: shape-dot-pulse 6s ease-in-out infinite; }
+  .shape-dot-0 { animation-delay: 0s; }
+  .shape-dot-1 { animation-delay: 1.5s; }
+  .shape-dot-2 { animation-delay: 3s; }
+  .shape-dot-3 { animation-delay: 4.5s; }
+  @keyframes shape-dot-pulse {
+    0%, 80%, 100% { transform: scale(1); opacity: 1; }
+    5% { transform: scale(1.6); opacity: 0.8; }
+    10% { transform: scale(1); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .shape-dot { animation: none; } }
+</style>
