@@ -42,6 +42,50 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
       })();
     </script>
     <script is:inline>
+      /* ── GA4 click delegation: tiers, cal.com, outbound ────────────── */
+      (function () {
+        function track(event, params) {
+          if (!window.__ga_loaded || typeof window.gtag !== 'function') return;
+          try { window.gtag('event', event, params || {}); } catch (e) {}
+        }
+        function findAnchor(node) {
+          while (node && node !== document.body) {
+            if (node.tagName === 'A' || node.tagName === 'BUTTON') return node;
+            node = node.parentElement;
+          }
+          return null;
+        }
+        document.addEventListener('click', function (e) {
+          var el = findAnchor(e.target);
+          if (!el) return;
+
+          var tier = el.getAttribute('data-tier');
+          if (tier) {
+            track('pricing_tier_click', { tier: tier, location: el.getAttribute('data-location') || 'pricing' });
+            return;
+          }
+
+          var trackName = el.getAttribute('data-track');
+          if (trackName) {
+            track(trackName, { label: el.getAttribute('data-label') || el.textContent?.trim().slice(0, 50) || '' });
+            return;
+          }
+
+          if (el.tagName !== 'A') return;
+          var href = el.getAttribute('href') || '';
+          if (!href) return;
+
+          if (href.indexOf('cal.com') !== -1 || href.indexOf('calendar.app') !== -1) {
+            track('cal_link_click', { href: href });
+            return;
+          }
+          if (/^https?:\/\//.test(href) && href.indexOf(location.host) === -1) {
+            track('outbound_link_click', { href: href, host: new URL(href).host });
+          }
+        }, { capture: true });
+      })();
+    </script>
+    <script is:inline>
       /* ── Scroll-reveal IntersectionObserver ────────────────────────── */
       (function () {
         var io = new IntersectionObserver(function (entries) {

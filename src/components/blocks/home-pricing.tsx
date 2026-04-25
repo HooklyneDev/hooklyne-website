@@ -100,6 +100,8 @@ export const HomePricing = () => {
           </a>
           <a
             href="/contact"
+            data-track="nav_cta_click"
+            data-label="home_pricing_pilot"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
             Or start a free pilot

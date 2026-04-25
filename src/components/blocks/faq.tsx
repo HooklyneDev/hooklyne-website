@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { faqGroups } from "@/data/faq";
+import { track } from "@/lib/analytics";
 
 const groups = faqGroups;
 
@@ -60,7 +61,19 @@ export const FAQ = () => {
             </div>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-2" key={active}>
+          <Accordion
+            type="single"
+            collapsible
+            className="space-y-2"
+            key={active}
+            onValueChange={(v) => {
+              if (v) {
+                const idx = parseInt(v.split("-item-")[1] || "0", 10);
+                const qa = g.items[idx];
+                if (qa) track("faq_open", { group: g.short, question: qa.q.slice(0, 60) });
+              }
+            }}
+          >
             {g.items.map((qa, i) => (
               <AccordionItem
                 key={i}

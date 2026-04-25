@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { track } from "@/lib/analytics";
 
 type Interest = "" | "Pilot" | "Demo" | "Question";
 type Status = "idle" | "loading" | "success" | "error";
@@ -47,6 +48,10 @@ export const Contact = () => {
       });
       const json = await res.json();
       if (!res.ok || !json.success) throw new Error(json?.message || "Failed");
+      const submittedInterest = (data.get("interest_choice") as string) || interest || "Unspecified";
+      track("contact_form_submit", { interest: submittedInterest });
+      if (submittedInterest === "Pilot") track("pilot_request");
+      else if (submittedInterest === "Demo") track("demo_request");
       form.reset();
       setInterest("");
       setStatus("success");
