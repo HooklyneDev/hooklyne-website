@@ -1,0 +1,36 @@
+# Hooklyne
+
+> Hooklyne is a B2B prospect research service for Dutch and UK SMEs. We deliver outreach-ready prospect packages: verified decision-maker contacts cross-referenced across 20+ data providers, live buying-signal detection, and first-draft outreach written in the rep's own voice. Plans start at €39 per month. Based in the Netherlands, EU-processed, GDPR-compliant.
+
+The product is built for B2B teams of 10 to 100 people, primarily in the Netherlands, UK, and EMEA. Positioning: "Not more, smarter." We replace the in-house research time and stitched-together tool stack (Apollo + Clay + ChatGPT + a sequencer) with a managed workflow.
+
+## Product
+
+- [Product overview](https://www.hooklyne.com/product): What's in a prospect package, the dashboard, the outputs reps get.
+- [How it works](https://www.hooklyne.com/how-it-works): The six-stage research workflow - discovery, verification, signals, research, drafting, delivery.
+- [Pricing](https://www.hooklyne.com/pricing): Four tiers (Start €39/mo, Growth, Scale, Enterprise) with monthly and annual options. ~25% annual discount.
+- [Contact and pilot](https://www.hooklyne.com/contact): Free pilot - ten fully-built prospect packages, no card, no commitment.
+
+## Company
+
+- [About](https://www.hooklyne.com/about): Why we built Hooklyne, the team, our positioning.
+- [FAQ](https://www.hooklyne.com/faq): Common objections answered - data quality, suppression lists, why not just use Apollo, what credits cover.
+
+## Blog
+
+- [Apollo vs Cognism vs Lusha for Dutch and UK B2B SMEs](https://www.hooklyne.com/blog/apollo-vs-cognism-vs-lusha-dutch-uk-smes): Honest comparison of the three big B2B databases for SME teams of 10-100.
+- [Building your own AI lead-gen agent: what breaks at scale](https://www.hooklyne.com/blog/build-your-own-ai-lead-generation-agent): Why DIY ChatGPT/Claude prospecting agents work in a demo and stall in production. Seven failure modes.
+- [How to find B2B prospects in the Netherlands without paid tools](https://www.hooklyne.com/blog/how-to-find-b2b-prospects-netherlands): Free routes via KvK, LinkedIn Sales Navigator, Google operators, and association directories. Where each stops scaling.
+- [Hooklyne launches for Dutch B2B SMEs](https://www.hooklyne.com/blog/hooklyne-launches-for-dutch-b2b-smes): Why we built it.
+
+## Legal
+
+- [Privacy Policy](https://www.hooklyne.com/privacy): GDPR handling, EU-based processing, sub-processor list available on request.
+- [Cookie Policy](https://www.hooklyne.com/cookies): Functional and analytics cookies (Google Analytics, Microsoft Clarity, opt-in only).
+- [Disclaimer](https://www.hooklyne.com/disclaimer): Service limits and liability boundaries.
+
+## Optional
+
+- [Sitemap](https://www.hooklyne.com/sitemap-index.xml): Full URL index.
+- [Full content](https://www.hooklyne.com/llms-full.txt): Concatenated text of the most important pages.
+- [Support](https://www.hooklyne.com/resources/support): Customer support entry point.

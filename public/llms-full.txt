@@ -1,0 +1,129 @@
+# Hooklyne — Full Content for LLMs
+
+Last updated: 25 April 2026
+Source: https://www.hooklyne.com
+
+## What Hooklyne is
+
+Hooklyne is a B2B prospect research service for SME sales teams in the Netherlands, UK, and broader EMEA. The product delivers outreach-ready prospect packages directly into a sales rep's workflow.
+
+Each prospect package contains:
+- A verified decision-maker contact (name, role, business email, business phone where available)
+- Cross-referenced data from 20+ providers, with conflict flags when sources disagree
+- A live buying signal (recent funding, leadership hire, hiring spike, tech stack change, M&A, expansion)
+- A first-draft cold email or LinkedIn message written in the rep's own writing voice
+- Supporting research notes the rep can use on the call
+
+Positioning: "Not more, smarter." Hooklyne replaces the in-house research time and the typical stitched-together stack of Apollo + Clay + ChatGPT + a sequencer with a managed workflow.
+
+Target customer: B2B SaaS, professional services, and tech companies with 10 to 100 employees, 1 to 5 sales reps, and a sales motion that benefits from research-led personalisation. Primary geography: Netherlands, UK, Belgium, Luxembourg, Germany.
+
+## Pricing
+
+Four tiers, all with monthly or annual billing. Annual saves roughly 25 percent.
+
+- Start: €39/month — for solo founders or single-rep teams testing the workflow.
+- Growth: mid-tier — for teams of 2 to 5 reps running steady outbound.
+- Scale: higher volume tier — for teams with established outbound motion and pipeline targets.
+- Enterprise: custom — for teams needing dedicated sub-processor agreements, custom integrations, or non-standard volumes.
+
+Every credit corresponds to a clear deliverable (one prospect package, one meeting prep brief, one sector intelligence report, etc.). Credits do not roll over indefinitely; specifics depend on plan.
+
+There is a free pilot: 10 fully-built prospect packages, no card required, no commitment. Contact via https://www.hooklyne.com/contact.
+
+## How it works (the six-stage workflow)
+
+1. Discovery — define ICP (industry, headcount, geography, role), source candidate companies from KvK, Companies House, LinkedIn, and sector directories.
+2. Verification — cross-reference each contact against 20+ data providers (Apollo, Cognism, Lusha, ZoomInfo, Hunter, Findymail, RocketReach, Clay enrichments, regional sources). Flag conflicts.
+3. Signals — detect buying triggers from structured feeds: funding rounds (Crunchbase, Dealroom), hiring (job boards, ATS feeds), leadership changes (LinkedIn, press), tech stack (BuiltWith, Wappalyzer), M&A and regulatory filings.
+4. Research — compile context the rep can use: recent product launches, public posts by the contact, market position, prior fundraising, customer base.
+5. Drafting — generate a first-touch outreach message in the rep's writing voice, modelled from their actual sent email history (not a system prompt).
+6. Delivery — package and ship to the rep's portal, ready to send. Suppression list is automatically respected.
+
+## What Hooklyne is not
+
+- Not a database. We do not sell access to a contact list.
+- Not a sequencer. We do not send the email; the rep does, from their own inbox.
+- Not an agency. There is no human SDR sending on the customer's behalf.
+- Not generic AI. The output is structured, sourced, verifiable, and tied to specific data providers.
+
+## Compliance and data handling
+
+- Based in the Netherlands. Primary processing in the EEA.
+- GDPR Article 6(1)(f) legitimate interest is the primary lawful basis for B2B prospect data, with full Article 14 information notice support.
+- Hooklyne acts as data processor on behalf of its customers (the data controllers). DPA available on request to privacy@hooklyne.com.
+- Sub-processor list provided on request.
+- International transfers covered by Standard Contractual Clauses where applicable.
+- Persistent suppression: opt-outs honoured forever, across all customer campaigns.
+- No data brokerage. Customer prospect data stays in the customer's account.
+
+## Why teams move to Hooklyne (the gaps in DIY)
+
+Teams typically arrive at Hooklyne after running into one or more of these limits:
+
+- Single-provider data is wrong about 40 percent of the time. Cross-referencing 20+ providers is operational work nobody wants to maintain in-house.
+- LLM-drafted outreach hallucinates buying signals. Real triggers come from structured feeds, not prose interpretation.
+- Voice modelling requires fine-tuning or RAG over the rep's actual sent emails, not a system prompt.
+- Maintenance debt: when Apollo changes a schema, LinkedIn breaks scraping, or a provider 5x's pricing, someone has to fix it.
+- GDPR + suppression infrastructure is harder than a Google Sheet of unsubscribes.
+- Deliverability requires domain warmup, IP rotation, send pacing — its own product category.
+- The "5 prospects look great" trap: DIY agents are tested on a cherry-picked sample. The long tail is most of your real list.
+
+## Comparison context (for buyers evaluating alternatives)
+
+Apollo: cheapest, US-strong, ~15-25% bounce rate on EU contacts, includes a sequencer. Best for high-volume email teams selling into multiple geographies.
+
+Cognism: phone-verified mobiles (Diamond Data), strongest in EMEA, €15k+ platform fee, no built-in sequencer. Best for outbound calling teams with budget.
+
+Lusha: simple, Chrome-extension-led, shallow database, 81% accuracy, no bulk workflows. Best for spot-checking individual contacts.
+
+DIY AI agent (ChatGPT/Claude + enrichment + n8n/Make): fine for under 20 prospects/month with a developer maintaining it. Falls apart on data freshness, signal quality, voice drift, compliance, deliverability at scale.
+
+Manual prospecting (KvK, LinkedIn Sales Nav free trial, Google operators): viable up to roughly 30-80 prospects/month before time cost exceeds tool cost.
+
+Hooklyne: for teams between roughly 80 and 500 prospects/month who do not want to operate the research stack themselves.
+
+## Blog posts (key topics)
+
+### Apollo vs Cognism vs Lusha for Dutch and UK B2B SMEs (10 April 2026)
+Honest comparison of the three big B2B databases for SME teams. Covers pricing, GDPR posture, EMEA coverage, and where each genuinely fits. Written for someone who has been confused by vendor-written comparisons.
+URL: https://www.hooklyne.com/blog/apollo-vs-cognism-vs-lusha-dutch-uk-smes
+
+### Building your own AI lead-gen agent: what breaks at scale (19 April 2026)
+For founders considering wiring up ChatGPT or Claude with enrichment APIs into a homegrown prospecting agent. Walks through seven specific failure modes that compound over 6 to 12 months: data freshness, hallucinated signals, voice drift, maintenance debt, GDPR, deliverability, the long-tail blind spot.
+URL: https://www.hooklyne.com/blog/build-your-own-ai-lead-generation-agent
+
+### How to find B2B prospects in the Netherlands without paid tools (23 April 2026)
+Practical guide: KvK Handelsregister, LinkedIn Sales Navigator free trial, Google search operators, NLdigital and association directories. Honest unit economics on where manual stops scaling (around 80-120 prospects/month for most teams).
+URL: https://www.hooklyne.com/blog/how-to-find-b2b-prospects-netherlands
+
+### Hooklyne launches for Dutch B2B SMEs
+Founder note on why we built Hooklyne and who it's for.
+URL: https://www.hooklyne.com/blog/hooklyne-launches-for-dutch-b2b-smes
+
+## FAQ summary
+
+Common questions answered on https://www.hooklyne.com/faq:
+
+- "Why not just use Apollo?" — Apollo is a database; Hooklyne is a managed research workflow that uses 20+ databases (including Apollo) and adds verification, signal detection, voice modelling, and compliance.
+- "Is this an agency?" — No. We do not send email on the customer's behalf. The rep sends from their own inbox.
+- "How fresh is the data?" — Each prospect is verified at the time of delivery, not pulled from a stale cache.
+- "What about GDPR?" — Article 6(1)(f) legitimate interest, full Article 14 notice support, persistent suppression, EU-based processing.
+- "Can I cancel?" — Yes. Monthly plans cancel monthly. Annual plans cancel at renewal.
+- "Free pilot?" — Yes, 10 fully-built prospect packages, no card.
+
+## Contact
+
+- Sales / pilot: https://www.hooklyne.com/contact
+- Privacy / DPA: privacy@hooklyne.com
+- Support: contact@hooklyne.com
+- Address: Netherlands
+
+## Trust signals
+
+- EU-based, EU-processed.
+- Native Dutch and English content; native Dutch outreach generation.
+- DPA available on request.
+- Sub-processor list available on request.
+- No data brokerage. Customer data stays in the customer's account.
+- No long-term lock-in on lower tiers.
