@@ -120,13 +120,20 @@ const stages = [
     },
   },
 ];
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "How it works", path: "/how-it-works" },
+]);
 ---
 
 <DefaultLayout
-  title="How it works - Hooklyne"
+  title="How it works | Hooklyne"
   description="Six stages, one prospect package. From discovery to delivery, here's the workflow behind every Hooklyne output."
   ctaVariant="how-it-works"
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
