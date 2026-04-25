@@ -2,9 +2,38 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
+import { breadcrumbList } from '@/lib/seo';
+import { SITE_URL } from '@/consts';
+
+const breadcrumb = breadcrumbList([
+  { name: 'Home', path: '/' },
+  { name: 'Pricing', path: '/pricing' },
+]);
+
+const offerCatalog = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Hooklyne",
+  serviceType: "B2B prospect research",
+  provider: { "@type": "Organization", name: "Hooklyne", url: SITE_URL },
+  areaServed: ["NL", "BE", "GB", "LU", "DE", "FR", "IE", "DK", "SE", "NO", "FI"],
+  audience: { "@type": "BusinessAudience", audienceType: "B2B SME sales teams (10-100 people)" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Hooklyne plans",
+    itemListElement: [
+      { "@type": "Offer", name: "Start", price: "39", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Growth", price: "129", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Scale", price: "239", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Enterprise", url: `${SITE_URL}/contact`, category: "custom" },
+    ],
+  },
+};
 ---
 
-<DefaultLayout title="Pricing - Hooklyne" description="Pay for what you use. Every credit is a clear deliverable. Start, Growth, Scale, and Enterprise plans." ctaVariant="pricing">
+<DefaultLayout title="Pricing | Hooklyne" description="Pay for what you use. Every credit is a clear deliverable. Start, Growth, Scale, and Enterprise plans." ctaVariant="pricing">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(offerCatalog)} />
   <Background>
   <section class="pt-32 lg:pt-44 pb-10 relative">
     <HeroGlow client:load signals={false} />

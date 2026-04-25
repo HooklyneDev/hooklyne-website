@@ -18,13 +18,20 @@ const values = [
     body: "Generic outreach burns sender reputation fast. Four reasoning passes, a quality check, and if it's not ready, it doesn't ship.",
   },
 ];
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 ---
 
 <DefaultLayout
-  title="About - Hooklyne"
+  title="About | Hooklyne"
   description="Why we built Hooklyne, who's behind it, and how we think about B2B prospecting research."
   ctaVariant="about"
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "AboutPage",

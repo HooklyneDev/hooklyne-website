@@ -2,8 +2,15 @@
 import { Background } from '@/components/background';
 import { Contact } from '@/components/blocks/contact';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]);
 ---
-<DefaultLayout title="Contact - Hooklyne" description="Get in touch with the Hooklyne team. Book a demo, start a free pilot, or ask a question." hideFinalCTA={true}>
+<DefaultLayout title="Contact | Hooklyne" description="Get in touch with the Hooklyne team. Book a demo, start a free pilot, or ask a question." hideFinalCTA={true}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <Background>
     <Contact client:load />
   </Background>

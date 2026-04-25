@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import { BlogPost } from '@/components/blocks/blog-post';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { SITE_URL } from '@/consts';
+import { breadcrumbList } from '@/lib/seo';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -36,6 +37,12 @@ const blogPostingSchema = {
 	},
 	mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
 };
+
+const breadcrumb = breadcrumbList([
+	{ name: 'Home', path: '/' },
+	{ name: 'Blog', path: '/blog' },
+	{ name: title, path: `/blog/${post.id}` },
+]);
 ---
 <DefaultLayout
 	title={`${title} | Hooklyne Blog`}
@@ -46,6 +53,7 @@ const blogPostingSchema = {
 	modifiedTime={(updatedDate ?? pubDate).toISOString()}
 >
 	<script type="application/ld+json" is:inline set:html={JSON.stringify(blogPostingSchema)} />
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
 	<div class="py-28 lg:pt-44 lg:pb-32">
 		<BlogPost post={post} client:only='react' >
 			<Content />

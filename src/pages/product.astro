@@ -124,13 +124,20 @@ const profileTabs = [
     ],
   },
 ];
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Product", path: "/product" },
+]);
 ---
 
 <DefaultLayout
-  title="Product - Hooklyne"
+  title="Product | Hooklyne"
   description="Verified prospect packages, live signals, meeting prep briefs, and sector intelligence. All in one portal."
   ctaVariant="product"
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Product",
