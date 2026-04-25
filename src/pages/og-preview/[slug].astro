@@ -3,7 +3,7 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   return [
-    { params: { slug: "home" }, props: { tagline: "Not more. Smarter.", sub: "B2B prospect research for SME sales teams." } },
+    { params: { slug: "home" }, props: { tagline: "B2B prospect research for SME sales teams.", sub: "Not more. Smarter." } },
     { params: { slug: "product" }, props: { tagline: "Every prospect, fully packaged.", sub: "Verified contact. Live signal. First message in your voice." } },
     { params: { slug: "how-it-works" }, props: { tagline: "Six stages. One prospect package.", sub: "Discovery, verification, signals, research, drafting, delivery." } },
     { params: { slug: "pricing" }, props: { tagline: "Pay for what you use.", sub: "From €39 a month. Every credit is a clear deliverable." } },
