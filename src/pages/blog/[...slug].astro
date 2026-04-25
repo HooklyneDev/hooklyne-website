@@ -20,13 +20,17 @@ const post = Astro.props;
 const { title, description, pubDate, updatedDate, image, authorName } = post.data;
 const { Content } = await render(post);
 
+/* Per-post OG: /og/blog-{slug}.jpg if generated, else generic /og/blog.jpg.
+   Distinct from `image` (the in-page hero), which is bigger and unbranded. */
+const ogImage = `/og/blog-${post.id}.jpg`;
+
 const canonicalUrl = `${SITE_URL}/blog/${post.id}`;
 const blogPostingSchema = {
 	"@context": "https://schema.org",
 	"@type": "BlogPosting",
 	headline: title,
 	description,
-	image: image ? new URL(image, SITE_URL).toString() : `${SITE_URL}/og-image.jpg`,
+	image: image ? new URL(image, SITE_URL).toString() : `${SITE_URL}${ogImage}`,
 	datePublished: pubDate.toISOString(),
 	dateModified: (updatedDate ?? pubDate).toISOString(),
 	author: { "@type": authorName ? "Person" : "Organization", name: authorName ?? "Hooklyne" },
@@ -47,7 +51,7 @@ const breadcrumb = breadcrumbList([
 <DefaultLayout
 	title={`${title} | Hooklyne Blog`}
 	description={description}
-	image={image}
+	image={ogImage}
 	ogType="article"
 	publishedTime={pubDate.toISOString()}
 	modifiedTime={(updatedDate ?? pubDate).toISOString()}
