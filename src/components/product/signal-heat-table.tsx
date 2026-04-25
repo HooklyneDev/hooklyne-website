@@ -93,8 +93,9 @@ const TREND: Record<Trend, { bg: string; fg: string }> = {
 
 const MAX_HEAT = 38;
 
-type SignalHeatTableProps = { ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" };
-export const SignalHeatTable = ({ ratio = "2/1" }: SignalHeatTableProps = {}) => {
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
+export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio }: SignalHeatTableProps = {}) => {
   const [mounted, setMounted] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
@@ -111,7 +112,7 @@ export const SignalHeatTable = ({ ratio = "2/1" }: SignalHeatTableProps = {}) =>
   const selectedRow = selected ? ROWS.find((r) => r.company === selected) ?? null : null;
 
   return (
-    <GraphicShell crumb="Portal / Prospect Signals" status="Live" statusTone="teal" ratio={ratio}>
+    <GraphicShell crumb="Portal / Prospect Signals" status="Live" statusTone="teal" ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio}>
       <style>{`
         @keyframes sh-row { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes sh-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
