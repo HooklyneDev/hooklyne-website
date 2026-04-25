@@ -207,7 +207,7 @@ const stages = [
     <section class="pt-10 sm:pt-12 lg:pt-16 pb-10 sm:pb-12 lg:pb-16">
       <div class="container max-w-6xl flex flex-col gap-14 sm:gap-20 lg:gap-28">
         {stages.map((s, i) => (
-          <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
+          <div id={`stage-${s.n}`} data-fade class:list={["scroll-mt-28 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center min-w-0", i % 2 === 1 && "lg:[&>*:first-child]:order-2"]}>
             <div class="min-w-0">
               <div class="inline-flex items-center flex-wrap gap-2 mb-4 sm:mb-5">
                 <span class="inline-flex items-center justify-center size-8 sm:size-9 rounded-xl text-sm font-bold text-white" style="background: var(--hooklyne-navy);">
@@ -273,7 +273,7 @@ const stages = [
               )}
             </div>
 
-            <div>
+            <div class="min-w-0">
               {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
               {s.n === 2 && <VerificationWaterfall client:visible ratio="5/4" tabletRatio="16/9" mobileRatio="1/1" />}
               {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
