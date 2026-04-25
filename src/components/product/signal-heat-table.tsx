@@ -93,7 +93,7 @@ const TREND: Record<Trend, { bg: string; fg: string }> = {
 
 const MAX_HEAT = 38;
 
-type SignalHeatTableProps = { ratio?: "16/9" | "3/2" | "2/1" | "5/2" | "21/9" };
+type SignalHeatTableProps = { ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" };
 export const SignalHeatTable = ({ ratio = "2/1" }: SignalHeatTableProps = {}) => {
   const [mounted, setMounted] = useState(false);
   const [reduced, setReduced] = useState(false);

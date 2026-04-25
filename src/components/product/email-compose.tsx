@@ -26,7 +26,7 @@ const BODY: string[] = [
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
 
-type EmailComposeProps = { ratio?: "16/9" | "3/2" | "2/1" | "5/2" | "21/9" };
+type EmailComposeProps = { ratio?: "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" };
 export const EmailCompose = ({ ratio = "2/1" }: EmailComposeProps = {}) => {
   const [phase, setPhase] = useState<Phase>("typing-subject");
   const [subject, setSubject] = useState("");
