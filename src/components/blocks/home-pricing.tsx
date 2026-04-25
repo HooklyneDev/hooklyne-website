@@ -1,40 +1,62 @@
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLang } from "@/lib/use-lang";
 
-const PLANS = [
-  {
-    name: "Start",
-    from: 39,
-    credits: 100,
-    sub: "Solo rep. Test and validate your outbound.",
-    highlighted: false,
-  },
-  {
-    name: "Growth",
-    from: 129,
-    credits: 400,
-    sub: "1-2 reps. Full pipeline. Everything included.",
-    highlighted: true,
-  },
-  {
-    name: "Scale",
-    from: 239,
-    credits: 800,
-    sub: "Small sales team. Up to 5 reps.",
-    highlighted: false,
-  },
+const EN_PLANS = [
+  { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test and validate your outbound.", highlighted: false },
+  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Full pipeline. Everything included.", highlighted: true },
+  { name: "Scale", from: 239, credits: 800, sub: "Small sales team. Up to 5 reps.", highlighted: false },
 ];
 
+const NL_PLANS = [
+  { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test en valideer je outbound.", highlighted: false },
+  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Volle pipeline. Alles inclusief.", highlighted: true },
+  { name: "Scale", from: 239, credits: 800, sub: "Klein salesteam. Tot 5 reps.", highlighted: false },
+];
+
+const EN_T = {
+  heading: "Simple pricing.",
+  sub: "Simple credit system. Every action priced transparently. Switch plans or cancel anytime.",
+  recommended: "Recommended",
+  from: "from",
+  perMonth: "/mo",
+  creditsLabel: "credits / month",
+  primary: "See full pricing",
+  secondary: "Or start a free pilot",
+  primaryHref: "/pricing",
+  secondaryHref: "/contact",
+  founderQuote: "“Most teams can't pick between proper research and enough outreach, so they sacrifice both. Hooklyne is what we built to stop doing that.”",
+  founderLine: "Tim · Founder · Hooklyne · The Netherlands",
+};
+
+const NL_T = {
+  heading: "Heldere tarieven.",
+  sub: "Eén credit-systeem. Elke actie transparant geprijsd. Op elk moment van plan wisselen of opzeggen.",
+  recommended: "Meest gekozen",
+  from: "vanaf",
+  perMonth: "/mnd",
+  creditsLabel: "credits / mnd",
+  primary: "Bekijk alle tarieven",
+  secondary: "Of start een gratis pilot",
+  primaryHref: "/nl/pricing",
+  secondaryHref: "/nl/contact",
+  founderQuote: "“De meeste teams kunnen niet kiezen tussen goed onderzoek en genoeg outreach, dus leveren ze allebei in. Hooklyne is wat we bouwden om daarmee te stoppen.”",
+  founderLine: "Tim · Founder · Hooklyne · Nederland",
+};
+
 export const HomePricing = () => {
+  const lang = useLang();
+  const PLANS = lang === "nl" ? NL_PLANS : EN_PLANS;
+  const t = lang === "nl" ? NL_T : EN_T;
   return (
     <section className="pt-10 pb-14 lg:pt-12 lg:pb-20" data-fade>
       <div className="container max-w-5xl">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4">
-            Simple pricing.
+            {t.heading}
           </h2>
           <p className="text-sm md:text-base text-[var(--muted-foreground)]">
-            Simple credit system. Every action priced transparently. Switch plans or cancel anytime.
+            {t.sub}
           </p>
         </div>
 
@@ -59,7 +81,7 @@ export const HomePricing = () => {
                     className="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap"
                     style={{ background: "var(--hooklyne-orange)" }}
                   >
-                    Recommended
+                    {t.recommended}
                   </div>
                 )}
 
@@ -68,9 +90,9 @@ export const HomePricing = () => {
                 </p>
 
                 <div className="mb-2 flex items-baseline gap-1">
-                  <span className={cn("text-xs", isFeatured ? "text-white/50" : "text-[var(--muted-foreground)]")}>from</span>
+                  <span className={cn("text-xs", isFeatured ? "text-white/50" : "text-[var(--muted-foreground)]")}>{t.from}</span>
                   <span className={cn("text-3xl font-bold", isFeatured ? "text-white" : "text-[var(--heading)]")}>€{p.from}</span>
-                  <span className={cn("text-sm", isFeatured ? "text-white/50" : "text-[var(--muted-foreground)]")}>/mo</span>
+                  <span className={cn("text-sm", isFeatured ? "text-white/50" : "text-[var(--muted-foreground)]")}>{t.perMonth}</span>
                 </div>
 
                 <div
@@ -78,7 +100,7 @@ export const HomePricing = () => {
                   style={{ background: isFeatured ? "rgba(255,255,255,0.08)" : "var(--background)" }}
                 >
                   <span className={cn("text-lg font-bold", isFeatured ? "text-blue-300" : "text-[var(--hooklyne-blue)]")}>{p.credits}</span>
-                  <span className={cn("text-xs", isFeatured ? "text-white/50" : "text-[var(--muted-foreground)]")}>credits / month</span>
+                  <span className={cn("text-xs", isFeatured ? "text-white/50" : "text-[var(--muted-foreground)]")}>{t.creditsLabel}</span>
                 </div>
 
                 <p className={cn("text-sm leading-relaxed", isFeatured ? "text-white/70" : "text-[var(--muted-foreground)]")}>
@@ -91,20 +113,20 @@ export const HomePricing = () => {
 
         <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="/pricing"
+            href={t.primaryHref}
             className="inline-flex items-center gap-1.5 h-11 px-6 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine group"
             style={{ background: "var(--hooklyne-navy)" }}
           >
-            See full pricing
+            {t.primary}
             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
           <a
-            href="/contact"
+            href={t.secondaryHref}
             data-track="nav_cta_click"
             data-label="home_pricing_pilot"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
-            Or start a free pilot
+            {t.secondary}
             <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>
@@ -112,10 +134,10 @@ export const HomePricing = () => {
         {/* Founder note */}
         <div className="mt-12 pt-8 border-t border-[var(--border)] max-w-xl mx-auto text-center">
           <p className="text-sm text-[var(--muted-foreground)] leading-relaxed italic">
-            &ldquo;Most teams can&rsquo;t pick between proper research and enough outreach, so they sacrifice both. Hooklyne is what we built to stop doing that.&rdquo;
+            {t.founderQuote}
           </p>
           <p className="mt-3 text-xs text-[var(--muted-foreground)]">
-            Tim · Founder · Hooklyne · The Netherlands
+            {t.founderLine}
           </p>
         </div>
 

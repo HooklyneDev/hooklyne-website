@@ -4,18 +4,112 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { track } from "@/lib/analytics";
+import { useLang } from "@/lib/use-lang";
 
 type Interest = "" | "Pilot" | "Demo" | "Question";
 type Status = "idle" | "loading" | "success" | "error";
 
-const SUBMIT_LABEL: Record<Interest, string> = {
-  "": "Send message",
-  Pilot: "Start my free pilot",
-  Demo: "Book my demo",
-  Question: "Send message",
+const EN = {
+  submit: { "": "Send message", Pilot: "Start my free pilot", Demo: "Book my demo", Question: "Send message" } as Record<Interest, string>,
+  eyebrow: "Contact",
+  headline: "Let's talk.",
+  sub: "Book a demo, start a free pilot, or ask a question. Most replies inside four hours, never more than one business day.",
+  pilotEyebrow: "10 prospects, free",
+  pilotTitle: "Start a free pilot",
+  pilotBody: "Ten fully built prospects. No payment. We ask for 20 minutes of honest feedback in return.",
+  pilotCta: "Request a pilot →",
+  pilotBadge: "Recommended",
+  demoEyebrow: "20 minutes",
+  demoTitle: "Book a demo",
+  demoBody: "We show the portal live, walk through a real prospect package, and answer your questions.",
+  demoCta: "Book a slot →",
+  successTitleSuffix: ". Message received.",
+  successTitlePrefix: "Thanks",
+  successBody: "You'll hear back from a real person within one business day. Most replies inside four hours.",
+  successAgain: "Send another message",
+  formTitle: "Send a message",
+  formSub: "Four fields, nothing more. Real humans read every one.",
+  name: "Name",
+  namePh: "First and last name",
+  company: "Company",
+  companyPh: "Company name",
+  email: "Work email",
+  emailPh: "me@company.com",
+  interestLabel: "What are you after?",
+  pickOne: "Pick one",
+  optPilot: "Free pilot - 10 prospects built for us",
+  optDemo: "Live demo of the portal",
+  optQuestion: "Just a question",
+  message: "Message",
+  optional: "(optional)",
+  messagePh: "Tell us about your team, your ICP, or just say hi.",
+  privacy: "We only use your details to reply. See our",
+  privacyLink: "privacy policy",
+  sending: "Sending...",
+  errorPrefix: "Something went wrong. Email",
+  errorSuffix: "directly and we'll pick it up from there.",
+  preferEmail: "Prefer email? Write to us at",
+  basedIn: "Based in the Netherlands, reachable across EMEA.",
+  subjects: {
+    Pilot: "Pilot request from hooklyne.com",
+    Demo: "Demo request from hooklyne.com",
+    Question: "Question from hooklyne.com",
+    "": "New message from hooklyne.com",
+  } as Record<Interest, string>,
+};
+
+const NL = {
+  submit: { "": "Verstuur bericht", Pilot: "Start mijn gratis pilot", Demo: "Boek mijn demo", Question: "Verstuur bericht" } as Record<Interest, string>,
+  eyebrow: "Contact",
+  headline: "Laten we praten.",
+  sub: "Boek een demo, start een gratis pilot, of stel een vraag. De meeste antwoorden binnen vier uur, nooit langer dan één werkdag.",
+  pilotEyebrow: "10 prospects, gratis",
+  pilotTitle: "Start een gratis pilot",
+  pilotBody: "Tien volledig opgebouwde prospects. Geen betaling. We vragen er 20 minuten eerlijke feedback voor terug.",
+  pilotCta: "Vraag een pilot aan →",
+  pilotBadge: "Meest gekozen",
+  demoEyebrow: "20 minuten",
+  demoTitle: "Boek een demo",
+  demoBody: "We laten het portaal live zien, lopen door een echt prospect-pakket en beantwoorden je vragen.",
+  demoCta: "Boek een slot →",
+  successTitleSuffix: ". Bericht ontvangen.",
+  successTitlePrefix: "Bedankt",
+  successBody: "Je hoort binnen één werkdag van een echte persoon. De meeste antwoorden binnen vier uur.",
+  successAgain: "Verstuur nog een bericht",
+  formTitle: "Verstuur een bericht",
+  formSub: "Vier velden, meer niet. Echte mensen lezen elk bericht.",
+  name: "Naam",
+  namePh: "Voor- en achternaam",
+  company: "Bedrijf",
+  companyPh: "Bedrijfsnaam",
+  email: "Zakelijk mailadres",
+  emailPh: "ik@bedrijf.nl",
+  interestLabel: "Waar ben je naar op zoek?",
+  pickOne: "Kies een optie",
+  optPilot: "Gratis pilot - 10 prospects voor ons gebouwd",
+  optDemo: "Live demo van het portaal",
+  optQuestion: "Gewoon een vraag",
+  message: "Bericht",
+  optional: "(optioneel)",
+  messagePh: "Vertel iets over je team, je ICP, of zeg gewoon hoi.",
+  privacy: "We gebruiken je gegevens alleen om te reageren. Zie onze",
+  privacyLink: "privacyverklaring",
+  sending: "Versturen...",
+  errorPrefix: "Er ging iets mis. Mail",
+  errorSuffix: "rechtstreeks, dan pakken we het van daar op.",
+  preferEmail: "Liever mailen? Schrijf naar",
+  basedIn: "Gevestigd in Nederland, bereikbaar door heel EMEA.",
+  subjects: {
+    Pilot: "Pilot-aanvraag via hooklyne.com",
+    Demo: "Demo-aanvraag via hooklyne.com",
+    Question: "Vraag via hooklyne.com",
+    "": "Nieuw bericht via hooklyne.com",
+  } as Record<Interest, string>,
 };
 
 export const Contact = () => {
+  const lang = useLang();
+  const t = lang === "nl" ? NL : EN;
   const [interest, setInterest] = useState<Interest>("");
   const [status, setStatus] = useState<Status>("idle");
   const [firstName, setFirstName] = useState("");
@@ -64,12 +158,12 @@ export const Contact = () => {
     <section className="pt-32 pb-20 lg:pt-40 lg:pb-28">
       <div className="container max-w-5xl">
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Contact</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">{t.eyebrow}</p>
           <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-[var(--heading)] mb-4">
-            Let's talk.
+            {t.headline}
           </h1>
           <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-            Book a demo, start a free pilot, or ask a question. Most replies inside four hours, never more than one business day.
+            {t.sub}
           </p>
         </div>
 
@@ -88,17 +182,17 @@ export const Contact = () => {
             }}
           >
             <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-[0.2em] px-2 py-0.5 rounded-full" style={{ background: "rgba(255,140,66,0.14)", color: "var(--hooklyne-orange)" }}>
-              Recommended
+              {t.pilotBadge}
             </span>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-orange)] mb-3">10 prospects, free</p>
-              <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">Start a free pilot</h2>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--hooklyne-orange)] mb-3">{t.pilotEyebrow}</p>
+              <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">{t.pilotTitle}</h2>
               <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                Ten fully built prospects. No payment. We ask for 20 minutes of honest feedback in return.
+                {t.pilotBody}
               </p>
             </div>
             <span className="text-sm font-semibold text-[var(--hooklyne-orange)] group-hover:opacity-80 transition-opacity">
-              Request a pilot →
+              {t.pilotCta}
             </span>
           </button>
 
@@ -109,14 +203,14 @@ export const Contact = () => {
             style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-md)" }}
           >
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">20 minutes</p>
-              <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">Book a demo</h2>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-3">{t.demoEyebrow}</p>
+              <h2 className="text-2xl font-semibold text-[var(--heading)] mb-2 tracking-tight">{t.demoTitle}</h2>
               <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                We show the portal live, walk through a real prospect package, and answer your questions.
+                {t.demoBody}
               </p>
             </div>
             <span className="text-sm font-semibold text-[var(--hooklyne-blue)] group-hover:opacity-80 transition-opacity">
-              Book a slot →
+              {t.demoCta}
             </span>
           </button>
         </div>
@@ -135,35 +229,29 @@ export const Contact = () => {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               </div>
               <h2 className="text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">
-                Thanks{firstName ? `, ${firstName}` : ""}. Message received.
+                {t.successTitlePrefix}{firstName ? `, ${firstName}` : ""}{t.successTitleSuffix}
               </h2>
               <p className="text-sm text-[var(--muted-foreground)] max-w-md mx-auto leading-relaxed mb-6">
-                You'll hear back from a real person within one business day. Most replies inside four hours.
+                {t.successBody}
               </p>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
                 className="text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity"
               >
-                Send another message
+                {t.successAgain}
               </button>
             </div>
           ) : (
             <>
-              <h2 className="text-xl font-semibold text-[var(--heading)] mb-1">Send a message</h2>
-              <p className="text-sm text-[var(--muted-foreground)] mb-7">Four fields, nothing more. Real humans read every one.</p>
+              <h2 className="text-xl font-semibold text-[var(--heading)] mb-1">{t.formTitle}</h2>
+              <p className="text-sm text-[var(--muted-foreground)] mb-7">{t.formSub}</p>
               <form ref={formRef} onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-5">
                 <input
                   type="hidden"
                   name="subject"
                   value={
-                    interest === "Pilot"
-                      ? "Pilot request from hooklyne.com"
-                      : interest === "Demo"
-                      ? "Demo request from hooklyne.com"
-                      : interest === "Question"
-                      ? "Question from hooklyne.com"
-                      : "New message from hooklyne.com"
+                    t.subjects[interest]
                   }
                 />
                 <input type="hidden" name="from_name" value="Hooklyne website" />
@@ -178,19 +266,19 @@ export const Contact = () => {
                 />
 
                 <div className="space-y-2">
-                  <Label htmlFor="cf-name">Name</Label>
-                  <Input id="cf-name" name="name" placeholder="First and last name" required autoComplete="name" />
+                  <Label htmlFor="cf-name">{t.name}</Label>
+                  <Input id="cf-name" name="name" placeholder={t.namePh} required autoComplete="name" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="cf-company">Company</Label>
-                  <Input id="cf-company" name="company" placeholder="Company name" required autoComplete="organization" />
+                  <Label htmlFor="cf-company">{t.company}</Label>
+                  <Input id="cf-company" name="company" placeholder={t.companyPh} required autoComplete="organization" />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="cf-email">Work email</Label>
-                  <Input id="cf-email" name="email" type="email" placeholder="me@company.com" required autoComplete="email" />
+                  <Label htmlFor="cf-email">{t.email}</Label>
+                  <Input id="cf-email" name="email" type="email" placeholder={t.emailPh} required autoComplete="email" />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="cf-interest">What are you after?</Label>
+                  <Label htmlFor="cf-interest">{t.interestLabel}</Label>
                   <select
                     id="cf-interest"
                     name="interest_choice"
@@ -199,28 +287,28 @@ export const Contact = () => {
                     required
                     className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
                   >
-                    <option value="" disabled>Pick one</option>
-                    <option value="Pilot">Free pilot - 10 prospects built for us</option>
-                    <option value="Demo">Live demo of the portal</option>
-                    <option value="Question">Just a question</option>
+                    <option value="" disabled>{t.pickOne}</option>
+                    <option value="Pilot">{t.optPilot}</option>
+                    <option value="Demo">{t.optDemo}</option>
+                    <option value="Question">{t.optQuestion}</option>
                   </select>
                 </div>
                 <div className="md:col-span-2 space-y-2">
                   <Label htmlFor="cf-message">
-                    Message <span className="text-[var(--muted-foreground)] font-normal">(optional)</span>
+                    {t.message} <span className="text-[var(--muted-foreground)] font-normal">{t.optional}</span>
                   </Label>
                   <Textarea
                     id="cf-message"
                     name="message"
-                    placeholder="Tell us about your team, your ICP, or just say hi."
+                    placeholder={t.messagePh}
                     className="min-h-[120px] resize-none"
                   />
                 </div>
 
                 <div className="md:col-span-2 flex items-center justify-between flex-wrap gap-4 pt-1">
                   <p className="text-xs text-[var(--muted-foreground)] max-w-md">
-                    We only use your details to reply. See our{" "}
-                    <a href="/privacy" className="underline hover:text-[var(--heading)]">privacy policy</a>.
+                    {t.privacy}{" "}
+                    <a href="/privacy" className="underline hover:text-[var(--heading)]">{t.privacyLink}</a>.
                   </p>
                   <Button
                     size="lg"
@@ -229,7 +317,7 @@ export const Contact = () => {
                     className="btn-shine disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{ backgroundColor: "var(--hooklyne-navy)", color: "#ffffff" }}
                   >
-                    {status === "loading" ? "Sending..." : SUBMIT_LABEL[interest]}
+                    {status === "loading" ? t.sending : t.submit[interest]}
                   </Button>
                 </div>
 
@@ -242,11 +330,11 @@ export const Contact = () => {
                       color: "var(--hooklyne-orange)",
                     }}
                   >
-                    Something went wrong. Email{" "}
+                    {t.errorPrefix}{" "}
                     <a href="mailto:contact@hooklyne.com" className="underline underline-offset-2 font-medium">
                       contact@hooklyne.com
                     </a>{" "}
-                    directly and we'll pick it up from there.
+                    {t.errorSuffix}
                   </div>
                 )}
               </form>
@@ -256,7 +344,7 @@ export const Contact = () => {
 
         <div className="mt-10 text-center">
           <p className="text-sm text-[var(--muted-foreground)]">
-            Prefer email? Write to us at{" "}
+            {t.preferEmail}{" "}
             <a
               href="mailto:contact@hooklyne.com"
               className="text-[var(--hooklyne-blue)] font-medium hover:opacity-80 transition-opacity"
@@ -264,7 +352,7 @@ export const Contact = () => {
               contact@hooklyne.com
             </a>
           </p>
-          <p className="text-xs text-[var(--muted-foreground)] mt-2">Based in the Netherlands, reachable across EMEA.</p>
+          <p className="text-xs text-[var(--muted-foreground)] mt-2">{t.basedIn}</p>
         </div>
       </div>
     </section>
