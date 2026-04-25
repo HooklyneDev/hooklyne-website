@@ -6,6 +6,7 @@ import { GridSignals } from "@/components/grid-signals";
 /* ── Component ──────────────────────────────────────────────────────── */
 export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   /* Scroll tilt */
   useEffect(() => {
@@ -21,6 +22,17 @@ export const Hero = () => {
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  /* Force-play the hero video. Browsers occasionally ignore the HTML
+     autoplay attribute on first visit (no buffer yet, autoplay policy);
+     calling play() after mount covers those edge cases. */
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const tryPlay = () => v.play().catch(() => { /* user-gesture required, give up silently */ });
+    if (v.readyState >= 3) tryPlay();
+    else v.addEventListener("canplay", tryPlay, { once: true });
   }, []);
 
   const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
@@ -208,7 +220,8 @@ export const Hero = () => {
             style={{ borderColor: "var(--border)", position: "relative", paddingBottom: "56.7%", overflow: "hidden" }}
           >
             <video
-              autoPlay muted loop playsInline
+              ref={videoRef}
+              autoPlay muted loop playsInline preload="auto"
               poster="/home/hooklyne-research-layer-b2b-prospecting.webp"
               style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "center center", display: "block", background: "var(--card)" }}
             >
