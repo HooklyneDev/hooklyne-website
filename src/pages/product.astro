@@ -221,23 +221,23 @@ const profileTabs = [
         <div class="grid md:grid-cols-2 gap-4 md:gap-5">
           {packageBlocks.map((b) => (
             <div class="package-card rounded-2xl p-5 md:p-6 flex flex-col" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="flex items-center gap-2.5 mb-2.5">
+              <div class="flex items-center flex-wrap gap-x-2.5 gap-y-1 mb-2.5">
                 <span class="text-[11px] font-mono tabular-nums text-[var(--muted-foreground)]">{b.step}</span>
                 <span class="h-3 w-px bg-[var(--border)]"></span>
                 <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hooklyne-blue)]">{b.tag}</span>
               </div>
-              <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] mb-1.5 leading-snug tracking-tight">{b.title}</h3>
-              <p class="text-[15px] text-[var(--muted-foreground)] leading-relaxed mb-4">{b.body}</p>
+              <h3 class="text-base sm:text-lg md:text-xl font-semibold text-[var(--heading)] mb-1.5 leading-snug tracking-tight">{b.title}</h3>
+              <p class="text-[14px] sm:text-[15px] text-[var(--muted-foreground)] leading-relaxed mb-4">{b.body}</p>
 
               {b.step === "01" && (
                 <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
-                  <div class="flex items-center gap-3 mb-3">
-                    <div class="size-9 rounded-lg flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">AL</div>
+                  <div class="flex items-center gap-2 sm:gap-3 mb-3">
+                    <div class="size-8 sm:size-9 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">AL</div>
                     <div class="min-w-0 flex-1">
                       <p class="text-[13px] font-semibold text-[var(--heading)] truncate">Axiom Logistics</p>
                       <p class="text-[11px] text-[var(--muted-foreground)] truncate">Logistics &middot; Venlo &middot; 240 FTE</p>
                     </div>
-                    <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
+                    <span class="shrink-0 inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
                       <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-teal);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-teal);"></span></span>
                       Live
                     </span>
@@ -250,8 +250,8 @@ const profileTabs = [
 
               {b.step === "02" && (
                 <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
-                  <div class="flex items-center gap-3 mb-3">
-                    <div class="size-9 rounded-full flex items-center justify-center text-[11px] font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">MV</div>
+                  <div class="flex items-center gap-2 sm:gap-3 mb-3">
+                    <div class="size-8 sm:size-9 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">MV</div>
                     <div class="min-w-0 flex-1">
                       <p class="text-[13px] font-semibold text-[var(--heading)] truncate">Marieke de Vries</p>
                       <p class="text-[11px] text-[var(--muted-foreground)] truncate">Head of Operations &middot; m.devries@axiom.nl</p>
@@ -270,12 +270,12 @@ const profileTabs = [
 
               {b.step === "03" && (
                 <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
-                  <div class="flex items-center justify-between mb-3">
-                    <div class="flex items-center gap-1.5">
-                      <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-orange);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-orange);"></span></span>
-                      <span class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--hooklyne-orange);">Live signal &middot; 3d ago</span>
+                  <div class="flex items-center justify-between gap-2 mb-3">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                      <span class="relative flex size-1.5 shrink-0"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-orange);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-orange);"></span></span>
+                      <span class="text-[10px] font-bold uppercase tracking-wider truncate" style="color: var(--hooklyne-orange);">Live signal &middot; 3d ago</span>
                     </div>
-                    <span class="text-[10px] font-mono tabular-nums text-[var(--muted-foreground)]">#SIG-0412</span>
+                    <span class="text-[10px] font-mono tabular-nums text-[var(--muted-foreground)] shrink-0">#SIG-0412</span>
                   </div>
                   <p class="text-[13px] font-semibold leading-snug text-[var(--heading)] mb-3">3.2 MW rooftop solar array going live at Venlo DC next month</p>
                   <div class="flex items-center gap-2">
@@ -301,9 +301,9 @@ const profileTabs = [
                   <p class="text-[12px] leading-relaxed text-[var(--muted-foreground)] line-clamp-2 mb-3">
                     Saw the announcement on the 3.2 MW rooftop array going live at Venlo next month. Congrats, that's a serious step.
                   </p>
-                  <div class="flex items-center justify-between">
-                    <span class="text-[10px] text-[var(--muted-foreground)]">NL &middot; EN auto &middot; under 60s</span>
-                    <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded" style="background: var(--hooklyne-navy); color: white;">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-[10px] text-[var(--muted-foreground)] truncate min-w-0">NL &middot; EN auto &middot; under 60s</span>
+                    <span class="shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded" style="background: var(--hooklyne-navy); color: white;">
                       Send
                       <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
                     </span>
@@ -332,7 +332,7 @@ const profileTabs = [
           </div>
         </div>
 
-        <EmailCompose client:visible tabletRatio="3/2" mobileRatio="3/2" />
+        <EmailCompose client:visible tabletRatio="3/2" mobileRatio="1/1" />
 
         <ul class="grid md:grid-cols-2 gap-3 mt-12 max-w-4xl mx-auto">
           {[
@@ -409,7 +409,7 @@ const profileTabs = [
         </div>
 
         <div class="mb-10">
-          <FindCompaniesFlow client:visible tabletRatio="3/2" mobileRatio="4/3" />
+          <FindCompaniesFlow client:visible tabletRatio="3/2" mobileRatio="1/1" />
         </div>
 
         <div class="grid gap-4 md:grid-cols-2">
@@ -478,7 +478,7 @@ const profileTabs = [
           </p>
         </div>
 
-        <SignalHeatTable client:visible tabletRatio="3/2" mobileRatio="4/3" />
+        <SignalHeatTable client:visible tabletRatio="3/2" mobileRatio="1/1" />
 
         <div class="mt-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">What we watch</p>
