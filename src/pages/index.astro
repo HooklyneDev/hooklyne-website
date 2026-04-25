@@ -48,18 +48,18 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </Background>
 
   <Background variant="bottom">
-    <section class="pt-16 pb-8 lg:pt-24 lg:pb-12" data-fade>
+    <section class="pt-12 pb-8 sm:pt-14 lg:pt-24 lg:pb-12" data-fade>
       <div class="container max-w-6xl">
-        <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="text-center max-w-2xl mx-auto mb-8 lg:mb-10 px-2">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verification</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
             20+ providers. Four layers. One verdict.
           </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+          <p class="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             No single database covers more than ~40% of any market. We waterfall across 20+, then run four deliverability checks. If it can't clear the bar, it doesn't ship.
           </p>
         </div>
-        <VerificationWaterfall client:visible ratio="5/2" />
+        <VerificationWaterfall client:visible ratio="5/2" tabletRatio="2/1" mobileRatio="4/3" />
       </div>
     </section>
 
