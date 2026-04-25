@@ -48,7 +48,7 @@ const COPY = {
       },
       {
         title: "Begin met een contact.",
-        body: "Een naam of lijst. Hooklyne verifieert het e-mailadres en schrijft de outreach in jouw stijl.",
+        body: "Een naam of lijst. Hooklyne verifieert het mailadres en schrijft de outreach in je stem.",
         input: "Naam + LinkedIn",
       },
     ],

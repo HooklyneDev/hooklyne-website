@@ -14,8 +14,8 @@ const EN = {
 
 const NL = {
   pill: "Voor B2B-founders en sales reps",
-  headline: "Vind de prospects die echt de moeite waard zijn.",
-  sub: "Een onderzoekswerkstroom die passende bedrijven vindt, beslissers verifieert via 20+ databronnen, live koopsignalen oppikt en de eerste mail opstelt in de stem van je rep.",
+  headline: "Vind de prospects die er echt toe doen.",
+  sub: "Wij vinden de bedrijven die passen, verifiëren beslissers via 20+ databronnen en pikken live koopsignalen op. De eerste mail schrijven we in de stem van je rep.",
   cta: "Start je gratis pilot",
   secondary: "Bekijk hoe het werkt",
 };
