@@ -1,6 +1,8 @@
 ---
 // Illustrative signals - sector descriptors, no company names.
 // Each line is a real-world buying-intent trigger a B2B rep would act on.
+const isNL = Astro.url.pathname === "/nl" || Astro.url.pathname.startsWith("/nl/");
+
 type Tone = "blue" | "teal" | "orange";
 type IconKey = "funding" | "leadership" | "hiring" | "expansion" | "launch" | "sector" | "press";
 
@@ -14,7 +16,7 @@ interface Signal {
   when: string;
 }
 
-const signals: Signal[] = [
+const signalsEN: Signal[] = [
   { type: "Funding", tone: "orange", icon: "funding",
     sector: "Industrial SaaS · NL",
     title: "Closed €18M Series B, scaling EMEA sales team",
@@ -57,6 +59,64 @@ const signals: Signal[] = [
     source: "Press wires", when: "9h ago" },
 ];
 
+const signalsNL: Signal[] = [
+  { type: "Funding", tone: "orange", icon: "funding",
+    sector: "Industriële SaaS · NL",
+    title: "€18M Series B rond, EMEA-salesteam wordt opgeschaald",
+    source: "Funding tracker", when: "2u geleden" },
+  { type: "Leiderschap", tone: "teal", icon: "leadership",
+    sector: "Logistiek · UK",
+    title: "Eerste VP RevOps aangenomen, stack-review binnen 90 dagen waarschijnlijk",
+    source: "Publieke profielen", when: "4u geleden" },
+  { type: "Hiring", tone: "blue", icon: "hiring",
+    sector: "Fintech · Benelux",
+    title: "6 senior AE-rollen geopend, outbound-team verdubbelt",
+    source: "Vacaturesites", when: "1d geleden" },
+  { type: "Expansie", tone: "teal", icon: "expansion",
+    sector: "Voedingsmiddelen · NL",
+    title: "Nieuwe Rotterdamse fabriek aangekondigd, gat in controls engineering",
+    source: "Bedrijfsnieuws", when: "5u geleden" },
+  { type: "Leiderschap", tone: "teal", icon: "leadership",
+    sector: "MedTech · DACH",
+    title: "Head of Procurement opgestapt, leveranciersreview-window open",
+    source: "Publieke profielen", when: "3u geleden" },
+  { type: "Launch", tone: "blue", icon: "launch",
+    sector: "B2B SaaS · UK",
+    title: "EU-productlijn gelanceerd, compliance-partners gezocht",
+    source: "Bedrijfsblog", when: "7u geleden" },
+  { type: "Funding", tone: "orange", icon: "funding",
+    sector: "Klimaattechniek · NL",
+    title: "€4,2M seed rond, eerste sales hire dezelfde week geplaatst",
+    source: "Funding tracker", when: "12u geleden" },
+  { type: "Sector", tone: "blue", icon: "sector",
+    sector: "Vracht · EMEA",
+    title: "Dieselprijzen +18%, marge-druk op mid-market operaties",
+    source: "Sectorbronnen", when: "1d geleden" },
+  { type: "Hiring", tone: "blue", icon: "hiring",
+    sector: "Maakindustrie · BE",
+    title: "2 AE-rollen heropend na een vacature-stop van 6 maanden",
+    source: "Vacaturesites", when: "6u geleden" },
+  { type: "Pers", tone: "orange", icon: "press",
+    sector: "Energie · NL",
+    title: "Genoemd in Nederlandse fast-growth 50, investor-call volgende week",
+    source: "Persberichten", when: "9u geleden" },
+];
+
+const signals = isNL ? signalsNL : signalsEN;
+const labels = isNL ? {
+  feed: "Live signaalfeed",
+  meta: "Zeven signaalcategorieën, gescoord op jouw ICP",
+  lookback: "14 dagen terugblik.",
+  illustrative: "Illustratief, geanonimiseerd per sector.",
+  source: "Bron:",
+} : {
+  feed: "Live signal feed",
+  meta: "Seven signal categories, scored for your ICP",
+  lookback: "14-day lookback.",
+  illustrative: "Illustrative, anonymised by sector.",
+  source: "Source:",
+};
+
 const toneMap: Record<Tone, string> = {
   blue: "var(--hooklyne-blue)",
   teal: "var(--hooklyne-teal)",
@@ -92,11 +152,11 @@ const track = [...signals, ...signals];
           <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-70 animate-ping"></span>
           <span class="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
         </span>
-        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)]">Live signal feed</span>
+        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)]">{labels.feed}</span>
       </div>
       <p class="text-xs text-[var(--muted-foreground)]/80">
-        Seven signal categories, scored for your ICP &middot; 14-day lookback.
-        <span class="text-[var(--muted-foreground)]/60">&nbsp;Illustrative, anonymised by sector.</span>
+        {labels.meta} &middot; {labels.lookback}
+        <span class="text-[var(--muted-foreground)]/60">&nbsp;{labels.illustrative}</span>
       </p>
     </div>
   </div>
@@ -131,7 +191,7 @@ const track = [...signals, ...signals];
             <div class="text-[13px] font-semibold text-[var(--heading)] leading-snug whitespace-nowrap">
               {s.title}
             </div>
-            <div class="text-[10px] text-[var(--muted-foreground)]/70 mt-0.5">Source: {s.source}</div>
+            <div class="text-[10px] text-[var(--muted-foreground)]/70 mt-0.5">{labels.source} {s.source}</div>
           </div>
         </article>
       ))}

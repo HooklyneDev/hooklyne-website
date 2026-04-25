@@ -11,116 +11,116 @@ import { VerificationWaterfall } from '@/components/product/verification-waterfa
 const packageBlocks = [
   {
     step: "01",
-    tag: "The company",
-    title: "Read this morning, not scraped last year",
-    body: "Live web pull on the day we send, with the one line you'd actually lead with. No recycled homepage blurbs, no funding round that closed in 2023.",
+    tag: "Het bedrijf",
+    title: "Vanochtend gelezen, niet vorig jaar gescraped",
+    body: "Live van het web op de dag dat we versturen, met de ene zin waar je daadwerkelijk mee zou openen. Geen hergebruikte homepage-tekst, geen fundingronde uit 2023.",
   },
   {
     step: "02",
-    tag: "The decision-maker",
-    title: "It won't bounce, and they're the right person",
-    body: "Name, role, email, phone where we have it. Four deliverability checks (SMTP, catch-all, role, deliverable) across 20+ providers. If it doesn't clear the bar, we hold it.",
+    tag: "De beslisser",
+    title: "Bouncet niet, en dit is de juiste persoon",
+    body: "Naam, functie, mail, telefoon waar we 'm hebben. Vier deliverability-checks (SMTP, catch-all, role, deliverable) over 20+ providers. Komt het niet door de drempel, dan houden we het tegen.",
   },
   {
     step: "03",
-    tag: "The hook",
-    title: "A real reason to write this week, not just news",
-    body: "Funding, hiring, launch, exec move, facility change from the last 14 days. Scored against what you sell, so \"Series A announced\" only lands if it matters for you.",
+    tag: "De aanleiding",
+    title: "Een echte reden om deze week te schrijven, niet zomaar nieuws",
+    body: "Funding, hiring, launches, leiderschapswissels, uitbreidingen uit de laatste 14 dagen. Gescoord tegen wat jij verkoopt, dus \"Series A aangekondigd\" landt alleen als het er voor jou toe doet.",
   },
   {
     step: "04",
-    tag: "The message",
-    title: "Written in your voice so you edit, not rewrite",
-    body: "Email and LinkedIn invite drafted against your past outreach in four reasoning passes, anchored to the hook above. Send as-is or change one line.",
+    tag: "De mail",
+    title: "Geschreven in je stem, dus jij editeert, niet herschrijft",
+    body: "Mail en LinkedIn-bericht opgesteld tegen je eerdere outreach via vier reasoning-passes, verankerd aan de aanleiding hierboven. Versturen zoals het is, of één regel aanpassen.",
   },
 ];
 
 const prospectingModes = [
   {
     n: "01",
-    title: "Find me companies",
-    body: "Describe your ICP. Get ranked fits with three decision-makers each.",
+    title: "Vind bedrijven voor mij",
+    body: "Beschrijf je ICP. Krijg gerangschikte matches met drie beslissers per bedrijf.",
   },
   {
     n: "02",
-    title: "I know the company",
-    body: "Paste the domain. Get three matched decision-makers and the angle for each.",
+    title: "Ik ken het bedrijf",
+    body: "Plak het domein. Krijg drie passende beslissers en de invalshoek per persoon.",
   },
   {
     n: "03",
-    title: "I know who to reach",
-    body: "Paste a name or LinkedIn URL. Get verified email, fresh context, draft outreach.",
+    title: "Ik weet wie ik wil bereiken",
+    body: "Plak een naam of LinkedIn-URL. Krijg geverifieerd mailadres, verse context, een opgestelde mail.",
   },
   {
     n: "04",
-    title: "Find similar",
+    title: "Vergelijkbare bedrijven",
     soon: true,
-    body: "Upload your best customers. Get the next 50 that share the shape, not the label.",
+    body: "Upload je beste klanten. Krijg de volgende 50 die in vorm lijken, niet alleen in label.",
   },
 ];
 
 const signalSources = [
   "Funding",
-  "Leadership",
+  "Leiderschap",
   "Hiring",
   "Launches",
-  "Press",
-  "Expansion",
-  "Sector news",
+  "Pers",
+  "Expansie",
+  "Sectornieuws",
 ];
 
 const profileTabs = [
   {
     n: "01",
-    title: "Company & Value Prop",
-    body: "What you sell, to whom, and why you. The facts every email rests on.",
+    title: "Bedrijf & waardepropositie",
+    body: "Wat je verkoopt, aan wie, en waarom jij. De feiten waar elke mail op rust.",
     fields: [
-      "Company name",
-      "Your name",
-      "What we do - the elevator pitch",
-      "Differentiators - why you over alternatives",
-      "Ideal customer - size, role, sector, geography",
-      "Operating regions",
+      "Bedrijfsnaam",
+      "Jouw naam",
+      "Wat we doen - de elevator pitch",
+      "Onderscheidende kant - waarom jij boven de rest",
+      "Ideale klant - omvang, rol, sector, regio",
+      "Werkgebieden",
     ],
   },
   {
     n: "02",
-    title: "Voice & Tone",
-    body: "How you sound on the page. Briefed like you'd brief a ghostwriter.",
+    title: "Stem & toon",
+    body: "Hoe jij klinkt op papier. Gebriefd zoals je een ghostwriter zou briefen.",
     fields: [
-      "Communication style - how you actually write",
-      "Tone keywords - 3 to 5 words that define you",
-      "Signature - name, title, phone, LinkedIn",
+      "Schrijfstijl - hoe jij eigenlijk schrijft",
+      "Toon-keywords - 3 tot 5 woorden die jou definiëren",
+      "Handtekening - naam, functie, telefoon, LinkedIn",
     ],
   },
   {
     n: "03",
-    title: "Example Emails",
-    body: "Up to five past emails you were proud to send. The calibration fuel.",
+    title: "Voorbeeldmails",
+    body: "Tot vijf eerdere mails waar je trots op was. De brandstof voor de kalibratie.",
     fields: [
-      "Example email 1 - required",
-      "Example emails 2 to 5 - optional, Dutch or English",
-      "Subjects, bodies, sign-offs - kept verbatim",
+      "Voorbeeldmail 1 - vereist",
+      "Voorbeeldmails 2 tot 5 - optioneel, Nederlands of Engels",
+      "Onderwerpen, inhoud, afsluitingen - één-op-één bewaard",
     ],
   },
   {
     n: "04",
-    title: "Products & Services",
-    body: "So the right product meets the right signal in the first paragraph.",
+    title: "Producten & diensten",
+    body: "Zodat het juiste product de juiste aanleiding raakt in de eerste alinea.",
     fields: [
-      "Product name - what it solves",
-      "One per line, written like a sales sheet",
-      "Pricing, MOQs, timelines where useful",
+      "Productnaam - wat het oplost",
+      "Eén per regel, geschreven als een sales-sheet",
+      "Prijs, MOQ, doorlooptijden waar nuttig",
     ],
   },
   {
     n: "05",
-    title: "Rules & Context",
-    body: "House style and the things we never say. Applied to every draft.",
+    title: "Regels & context",
+    body: "Huisstijl en wat we nooit zeggen. Toegepast op elk concept.",
     fields: [
-      "Do-not rules - hard nos, one per line",
-      "Word count cap - per channel",
-      "Additional context - sector focus, priorities, caveats",
+      "Niet-doen-regels - harde no's, één per regel",
+      "Woord-limit - per kanaal",
+      "Extra context - sectorfocus, prioriteiten, kanttekeningen",
     ],
   },
 ];
@@ -143,9 +143,10 @@ const breadcrumb = breadcrumbList([
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Hooklyne",
-    "description": "Verified prospect packages, live signals, meeting prep briefs, and sector intelligence in one portal.",
+    "description": "Geverifieerde prospect-pakketten, live signalen, meeting prep briefs en sector intelligence. Alles in één portaal.",
+    "inLanguage": "nl-NL",
     "brand": { "@type": "Brand", "name": "Hooklyne" },
-    "url": "https://www.hooklyne.com/product",
+    "url": "https://www.hooklyne.com/nl/product",
     "category": "B2B prospect research software",
     "audience": { "@type": "BusinessAudience", "audienceType": "B2B SMEs 10-100 people" },
     "offers": {
@@ -154,7 +155,7 @@ const breadcrumb = breadcrumbList([
       "lowPrice": "39",
       "highPrice": "299",
       "offerCount": 4,
-      "url": "https://www.hooklyne.com/pricing"
+      "url": "https://www.hooklyne.com/nl/pricing"
     }
   })} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
@@ -178,10 +179,10 @@ const breadcrumb = breadcrumbList([
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4" data-fade>Product</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-6" data-fade data-delay="1">
-          Every prospect, fully packaged.
+          Elke prospect, volledig samengesteld.
         </h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed" data-fade data-delay="2">
-          A verified contact, a live reason to reach out, and a first message in your voice. Every time.
+          Een geverifieerd contact, een actuele reden om contact te zoeken, en een eerste mail in je stem. Elke keer.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4" data-fade data-delay="3">
           <a
@@ -189,14 +190,14 @@ const breadcrumb = breadcrumbList([
             class="inline-flex items-center gap-1.5 h-11 px-6 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine group"
             style="background: var(--hooklyne-navy)"
           >
-            Start your free pilot
+            Start je gratis pilot
             <svg class="size-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
           <a
             href="/nl/how-it-works"
             class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
-            See how it works
+            Bekijk hoe het werkt
             <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
@@ -253,12 +254,12 @@ const breadcrumb = breadcrumbList([
     <section class="pt-10 pb-10 md:pt-12 md:pb-12 lg:pt-14 lg:pb-12" data-fade>
       <div class="container max-w-6xl">
         <div class="max-w-2xl mb-8 lg:mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The package</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Het pakket</p>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            Four things have to be right before you hit send.
+            Vier dingen moeten kloppen voordat je op verzenden klikt.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            If one is off, the outreach dies. Here's what we check so it doesn't.
+            Klopt één ding niet, dan strandt de mail. Dit checken we zodat dat niet gebeurt.
           </p>
         </div>
 
@@ -279,7 +280,7 @@ const breadcrumb = breadcrumbList([
                     <div class="size-8 sm:size-9 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">AL</div>
                     <div class="min-w-0 flex-1">
                       <p class="text-[13px] font-semibold text-[var(--heading)] truncate">Axiom Logistics</p>
-                      <p class="text-[11px] text-[var(--muted-foreground)] truncate">Logistics &middot; Venlo &middot; 240 FTE</p>
+                      <p class="text-[11px] text-[var(--muted-foreground)] truncate">Logistiek &middot; Venlo &middot; 240 FTE</p>
                     </div>
                     <span class="shrink-0 inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
                       <span class="relative flex size-1.5"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-teal);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-teal);"></span></span>
@@ -287,7 +288,7 @@ const breadcrumb = breadcrumbList([
                     </span>
                   </div>
                   <div class="text-[12px] leading-relaxed text-[var(--heading)] border-l-2 pl-3" style="border-color: var(--hooklyne-blue);">
-                    3.2 MW rooftop array going live at Venlo DC next month. Pushing ~6% of EBIT from a single energy swing.
+                    3,2 MW dak-array gaat volgende maand live in DC Venlo. ~6% van de EBIT verschuift door één energie-beweging.
                   </div>
                 </div>
               )}
@@ -317,11 +318,11 @@ const breadcrumb = breadcrumbList([
                   <div class="flex items-center justify-between gap-2 mb-3">
                     <div class="flex items-center gap-1.5 min-w-0">
                       <span class="relative flex size-1.5 shrink-0"><span class="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style="background: var(--hooklyne-orange);"></span><span class="relative inline-flex rounded-full size-1.5" style="background: var(--hooklyne-orange);"></span></span>
-                      <span class="text-[10px] font-bold uppercase tracking-wider truncate" style="color: var(--hooklyne-orange);">Live signal &middot; 3d ago</span>
+                      <span class="text-[10px] font-bold uppercase tracking-wider truncate" style="color: var(--hooklyne-orange);">Live signaal &middot; 3d geleden</span>
                     </div>
                     <span class="text-[10px] font-mono tabular-nums text-[var(--muted-foreground)] shrink-0">#SIG-0412</span>
                   </div>
-                  <p class="text-[13px] font-semibold leading-snug text-[var(--heading)] mb-3">3.2 MW rooftop solar array going live at Venlo DC next month</p>
+                  <p class="text-[13px] font-semibold leading-snug text-[var(--heading)] mb-3">3,2 MW zonnedak gaat volgende maand live in DC Venlo</p>
                   <div class="flex items-center gap-2">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Fit</span>
                     <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: var(--border);">
@@ -335,20 +336,20 @@ const breadcrumb = breadcrumbList([
               {b.step === "04" && (
                 <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-baseline gap-2 pb-2 mb-2 border-b min-w-0" style="border-color: var(--border);">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">To</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">Aan</span>
                     <span class="text-[12px] font-medium text-[var(--heading)] truncate min-w-0 flex-1">m.devries@axiom.nl</span>
                   </div>
                   <div class="flex items-baseline gap-2 pb-2.5 mb-2.5 border-b min-w-0" style="border-color: var(--border);">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">Sub</span>
-                    <span class="text-[12px] font-semibold text-[var(--heading)] truncate min-w-0 flex-1">The 3.2 MW rooftop at Venlo - how you're planning to use it</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] w-10 shrink-0">Onderwerp</span>
+                    <span class="text-[12px] font-semibold text-[var(--heading)] truncate min-w-0 flex-1">Het 3,2 MW zonnedak in Venlo - hoe jullie het willen inzetten</span>
                   </div>
                   <p class="text-[12px] leading-relaxed text-[var(--muted-foreground)] line-clamp-2 mb-3">
-                    Saw the announcement on the 3.2 MW rooftop array going live at Venlo next month. Congrats, that's a serious step.
+                    Zag de aankondiging van het 3,2 MW zonnedak dat volgende maand live gaat in Venlo. Gefeliciteerd, serieuze stap.
                   </p>
                   <div class="flex items-center justify-between gap-2">
-                    <span class="text-[10px] text-[var(--muted-foreground)] truncate min-w-0">NL &middot; EN auto &middot; under 60s</span>
+                    <span class="text-[10px] text-[var(--muted-foreground)] truncate min-w-0">NL &middot; EN auto &middot; binnen 60s</span>
                     <span class="shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded" style="background: var(--hooklyne-navy); color: white;">
-                      Send
+                      Verstuur
                       <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
                     </span>
                   </div>
@@ -363,16 +364,16 @@ const breadcrumb = breadcrumbList([
     <section class="py-12 md:py-14 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">The portal</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Het portaal</p>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            Open, review, send.
+            Open, bekijk, verstuur.
           </h2>
           <p class="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Built for one moment: prospect in, message out. Under a minute.
+            Gebouwd voor één moment: prospect in, mail uit. Binnen een minuut.
           </p>
           <div class="inline-flex items-center gap-2 mt-5 px-3 py-1.5 rounded-full text-[11px] font-semibold" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal); border: 1px solid rgba(13,148,136,0.25);">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg>
-            Most prospects reviewed in under a minute
+            De meeste prospects binnen een minuut bekeken
           </div>
         </div>
 
@@ -380,11 +381,11 @@ const breadcrumb = breadcrumbList([
 
         <ul class="grid md:grid-cols-2 gap-3 mt-12 max-w-4xl mx-auto">
           {[
-            "Every prospect on one screen. No digging.",
-            "Edit in place, or accept as drafted.",
-            "Send from your inbox, or paste into your sequencer.",
-            "Dutch or English, picked automatically from the prospect.",
-            "Tuned once. Sharper every week.",
+            "Elke prospect op één scherm. Geen graafwerk.",
+            "Bewerk ter plekke, of accepteer zoals opgesteld.",
+            "Verstuur vanuit je inbox, of plak in je sequencer.",
+            "Nederlands of Engels, automatisch gekozen op basis van de prospect.",
+            "Eenmalig afgesteld. Elke week scherper.",
           ].map((f) => (
             <li class="flex items-start gap-2.5 text-sm text-[var(--foreground)]">
               <svg class="size-4 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -401,17 +402,17 @@ const breadcrumb = breadcrumbList([
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Dashboard</p>
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-              Start the day knowing where to go.
+              Begin de dag met weten waar je heen moet.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-8">
-              Not a blank wall of numbers. A clear instruction for today.
+              Geen muur van cijfers. Een heldere instructie voor vandaag.
             </p>
 
             <div class="space-y-4">
               {[
-                { t: "Daily focus", b: "Two priority actions, ranked and angled. Start here." },
-                { t: "Signal heat", b: "Your hottest five prospects. Rising, stable, cooling." },
-                { t: "Market intel", b: "Six headlines you can use in today's meeting." },
+                { t: "Focus van de dag", b: "Twee prioriteitsacties, gerangschikt en met invalshoek. Begin hier." },
+                { t: "Signaalwarmte", b: "Je vijf heetste prospects. Stijgend, stabiel, koelend." },
+                { t: "Marktinformatie", b: "Zes nieuwskoppen die je in het gesprek van vandaag kunt gebruiken." },
               ].map((f) => (
                 <div class="flex gap-3">
                   <div class="size-1.5 rounded-full bg-[var(--hooklyne-orange)] mt-2 shrink-0"></div>
@@ -443,12 +444,12 @@ const breadcrumb = breadcrumbList([
     <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Prospecting</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Prospecten</p>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            Four ways in, same package out.
+            Vier ingangen, hetzelfde pakket eruit.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Start from an ICP, a domain, a name, or your best customers. Every path lands on a ready-to-send card.
+            Begin met een ICP, een domein, een naam of je beste klanten. Elk pad eindigt op een verzendklare kaart.
           </p>
         </div>
 
@@ -463,7 +464,7 @@ const breadcrumb = breadcrumbList([
                 <span class="text-xs font-bold tracking-widest text-[var(--hooklyne-blue)]/60">{m.n}</span>
                 <h3 class="text-base font-semibold text-[var(--heading)]">{m.title}</h3>
                 {m.soon && (
-                  <span class="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full" style="background: rgba(255,140,66,0.12); color: var(--hooklyne-orange)">Soon</span>
+                  <span class="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full" style="background: rgba(255,140,66,0.12); color: var(--hooklyne-orange)">Binnenkort</span>
                 )}
               </div>
               <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{m.body}</p>
@@ -473,7 +474,7 @@ const breadcrumb = breadcrumbList([
 
         <div class="mt-10 text-center">
           <a href="/nl/how-it-works" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
-            See what runs behind each path
+            Zie wat er achter elk pad draait
             <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
@@ -484,12 +485,12 @@ const breadcrumb = breadcrumbList([
     <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verification</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Verificatie</p>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            20+ providers. Four layers. One verdict.
+            20+ databronnen. Vier lagen. Eén oordeel.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            No single database has more than ~40% of any market. We waterfall across 20+, then run four deliverability layers. If it can't clear the bar, it doesn't ship.
+            Geen enkele database dekt meer dan ~40% van een markt. We checken via 20+, daarna draaien we vier deliverability-lagen. Komt het niet door de drempel, dan gaat het niet uit.
           </p>
         </div>
 
@@ -497,9 +498,9 @@ const breadcrumb = breadcrumbList([
 
         <ul class="grid sm:grid-cols-3 gap-3 mt-10 max-w-4xl mx-auto">
           {[
-            "20+ contact data providers, picked best-per-region",
-            "Four checks: SMTP, catch-all, role, deliverable",
-            "Held back if any layer fails - your sender reputation stays clean",
+            "20+ contactdata-providers, beste per regio gekozen",
+            "Vier checks: SMTP, catch-all, role, deliverable",
+            "Tegengehouden als één laag faalt - je sender reputation blijft schoon",
           ].map((f) => (
             <li class="flex items-start gap-2.5 text-sm text-[var(--foreground)]">
               <svg class="size-4 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -513,19 +514,19 @@ const breadcrumb = breadcrumbList([
     <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signals</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Signalen</p>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            The right moment, not every moment.
+            Het juiste moment, niet elk moment.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Every signal scored twice: matters to them, matters to you. Only the ones that pass both land in your inbox.
+            Elk signaal krijgt twee scores: relevant voor hen, relevant voor jou. Alleen wat door beide komt, belandt in je inbox.
           </p>
         </div>
 
         <SignalHeatTable client:visible tabletRatio="3/2" mobileRatio="1/1" />
 
         <div class="mt-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">What we watch</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-4 text-center">Wat we volgen</p>
           <div class="flex flex-wrap items-center justify-center gap-2">
             {signalSources.map((s) => (
               <span class="text-sm font-medium px-4 py-2 rounded-full" style="background: var(--card); border: 1px solid var(--border); color: var(--foreground)">{s}</span>
@@ -535,26 +536,26 @@ const breadcrumb = breadcrumbList([
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
           <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Live. Not weekly.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">When something moves, you know. Not next Monday.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Live. Niet wekelijks.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Beweegt er iets, dan weet je het. Niet volgende maandag.</p>
           </div>
           <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Deeper than news.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Company pages watched directly. New roles, quiet launches, careers-page expansions - before the press catches up.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Dieper dan nieuws.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">We kijken direct mee op bedrijfspagina's. Nieuwe rollen, stille launches, careers-page-uitbreidingen - voordat de pers het oppikt.</p>
           </div>
           <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Signal, not noise.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Grouped by company, ranked by heat. Move to leads, dismiss, keep tracking.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Signaal, geen ruis.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Gegroepeerd per bedrijf, gerangschikt op warmte. Verplaats naar leads, sluit weg, blijf volgen.</p>
           </div>
           <div class="rounded-2xl p-4 sm:p-6" style="background: var(--card); box-shadow: var(--shadow-xs)">
-            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Track, don't forget.</p>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Flip tracking on for any lead. When something new happens - a hire, a launch, a funding round - you are first to know. Not next Monday.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] mb-2">Volg, vergeet niet.</p>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Zet tracking aan voor elke lead. Gebeurt er iets nieuws - een hire, een launch, een fundingronde - dan weet jij het als eerste. Niet volgende maandag.</p>
           </div>
         </div>
 
         <div class="mt-10 text-center">
           <a href="/how-it-works#stage-3" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
-            See how signals are detected and scored
+            Zie hoe signalen worden gedetecteerd en gescoord
             <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
@@ -567,18 +568,18 @@ const breadcrumb = breadcrumbList([
           <div class="lg:order-2">
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">My Leads</p>
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-              Your pipeline. Without the spreadsheet.
+              Je pipeline. Zonder spreadsheet.
             </h2>
             <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
-              Every prospect tracked, every state visible, one click from your next action.
+              Elke prospect gevolgd, elke status zichtbaar, één klik verwijderd van je volgende actie.
             </p>
             <ul class="space-y-3">
               {[
-                "Company, role, domain, status, date - all in one row.",
-                "Colour-coded status: Ready, Processing, Tracking, Approved.",
-                "Expand for brief, contact, outreach angle.",
-                "Filter and sort. No CSV needed.",
-                "One click to Meeting Prep, pre-filled.",
+                "Bedrijf, functie, domein, status, datum - alles in één regel.",
+                "Kleurgecodeerde status: Klaar, Verwerken, Volgen, Goedgekeurd.",
+                "Klap open voor brief, contact, invalshoek voor de outreach.",
+                "Filter en sorteer. Geen CSV nodig.",
+                "Eén klik naar Meeting Prep, voor-ingevuld.",
               ].map((f) => (
                 <li class="flex items-start gap-2.5 text-sm text-[var(--foreground)]">
                   <svg class="size-4 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -607,12 +608,12 @@ const breadcrumb = breadcrumbList([
     <section class="pt-12 pb-14 lg:pt-16 lg:pb-20" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Your voice</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Je stem</p>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            Set it once. Sound like you forever. In both languages.
+            Eenmalig instellen. Voor altijd in jouw stem. In beide talen.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Five tabs turn a generic draft into something your rep would actually send, in native Dutch or natural English.
+            Vijf tabs maken van een generiek concept iets dat je rep daadwerkelijk zou versturen, in native Nederlands of natuurlijk Engels.
           </p>
         </div>
 
@@ -651,22 +652,22 @@ const breadcrumb = breadcrumbList([
           <div class="rounded-2xl p-4 sm:p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
             <div class="size-10 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">NL</div>
             <div>
-              <p class="text-sm font-semibold text-[var(--heading)] mb-1">Native Dutch</p>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Written, not translated. Dutch-to-Dutch reads differently than Dutch-to-UK, and the output knows it.</p>
+              <p class="text-sm font-semibold text-[var(--heading)] mb-1">Native Nederlands</p>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Geschreven, niet vertaald. NL-naar-NL leest anders dan NL-naar-UK, en de output weet het.</p>
             </div>
           </div>
           <div class="rounded-2xl p-4 sm:p-6 flex items-start gap-4" style="background: var(--card); border: 1px solid var(--border);">
             <div class="size-10 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">EN</div>
             <div>
-              <p class="text-sm font-semibold text-[var(--heading)] mb-1">Natural English</p>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">Language is picked automatically from the company domain and the contact's location, then locked for that prospect.</p>
+              <p class="text-sm font-semibold text-[var(--heading)] mb-1">Natuurlijk Engels</p>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">De taal wordt automatisch gekozen op basis van het bedrijfsdomein en de locatie van het contact, en daarna vast voor die prospect.</p>
             </div>
           </div>
         </div>
 
         <div class="text-center">
           <a href="/how-it-works#stage-5" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
-            See how the message is drafted across four reasoning passes
+            Zie hoe de mail wordt opgesteld via vier reasoning-passes
             <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>

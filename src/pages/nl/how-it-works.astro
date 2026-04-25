@@ -14,9 +14,9 @@ const stages = [
   {
     n: 1,
     key: "Discovery",
-    title: "Describe it. We find it.",
-    body: "Tell us who you sell to in plain words. We read billions of pages semantically and surface the companies that actually fit. Not a filter grid. A language-level match.",
-    facts: ["1.2B pages indexed", "Semantic match, not SIC codes", "Plain-language input"],
+    title: "Beschrijf het. Wij vinden het.",
+    body: "Vertel in gewone taal aan wie je verkoopt. Wij lezen miljarden pagina's semantisch en halen de bedrijven naar boven die echt passen. Geen filter-raster. Een match op taalniveau.",
+    facts: ["1,2 mld pagina's geïndexeerd", "Semantische match, geen SBI-codes", "Gewone-taal invoer"],
     shot: {
       label: "Discovery workspace",
       describe: "Portal: a plain-language description field, live results grid with fit scores and quick-add buttons.",
@@ -31,10 +31,10 @@ const stages = [
   },
   {
     n: 2,
-    key: "Verification",
-    title: "The contact, verified before you see it.",
-    body: "We check 20+ providers and four deliverability layers per email. If it can't be verified, it never ships. Your domain reputation stays clean.",
-    facts: ["20+ providers", "4 deliverability layers", "Held if not verified"],
+    key: "Verificatie",
+    title: "Het contact, geverifieerd voordat jij het ziet.",
+    body: "We checken 20+ providers en vier deliverability-lagen per mail. Komt het er niet door, dan gaat het niet uit. Je domeinreputatie blijft schoon.",
+    facts: ["20+ providers", "4 deliverability-lagen", "Tegengehouden als niet geverifieerd"],
     shot: {
       label: "Verification waterfall",
       describe: "Portal: contact card with live provider attempts and a final deliverability score.",
@@ -49,10 +49,10 @@ const stages = [
   },
   {
     n: 3,
-    key: "Signals",
-    title: "Catch the moment they're ready.",
-    body: "Funding, hiring, leadership, launches, press, expansion, sector news. Every move scored for your ICP and your product. Only the real ones land in your inbox.",
-    sources: ["Funding", "Hiring", "Leadership", "Launches", "Press", "Expansion", "Sector news"],
+    key: "Signalen",
+    title: "Vang het moment dat ze klaar zijn.",
+    body: "Funding, hiring, leiderschap, launches, pers, expansie, sectornieuws. Elke beweging gescoord tegen jouw ICP en jouw product. Alleen de echte landen in je inbox.",
+    sources: ["Funding", "Hiring", "Leiderschap", "Launches", "Pers", "Expansie", "Sectornieuws"],
     shot: {
       label: "Signals feed",
       describe: "Portal: live signal feed with twin scores and a prep-meeting action per row.",
@@ -67,10 +67,10 @@ const stages = [
   },
   {
     n: 4,
-    key: "Research",
-    title: "Every fact, sourced. No made-up facts.",
-    body: "Live web research, not stale training data. Every claim traces back to a real URL you can click. Walk into the meeting without a single invented detail.",
-    facts: ["Live web pull", "12 citations average", "Every claim sourced"],
+    key: "Onderzoek",
+    title: "Elk feit met bron. Geen verzonnen onzin.",
+    body: "Live webonderzoek, geen stoffige trainingsdata. Elke claim is te herleiden naar een echte URL die je kunt aanklikken. Loop het gesprek in zonder één verzonnen detail.",
+    facts: ["Live van het web", "Gemiddeld 12 bronnen", "Elke claim met bron"],
     shot: {
       label: "Research brief",
       describe: "Portal: a prospect brief with numbered citations linking to live sources.",
@@ -85,10 +85,10 @@ const stages = [
   },
   {
     n: 5,
-    key: "Drafting",
-    title: "Reads like your rep wrote it.",
-    body: "Every draft is reasoned through four times before it reaches you. Hook first, then angle, then voice, then a final quality check. Generic stops here.",
-    facts: ["4 reasoning passes", "Voice from your past emails", "NL · EN auto"],
+    key: "Schrijven",
+    title: "Leest alsof je rep het schreef.",
+    body: "Elk concept gaat vier keer door reasoning voordat het bij jou belandt. Eerst de hook, dan de invalshoek, dan de stem, dan een laatste kwaliteitscheck. Generiek stopt hier.",
+    facts: ["4 reasoning-passes", "Stem uit je eerdere mails", "NL · EN auto"],
     shot: {
       label: "Draft with voice match",
       describe: "Portal: drafted email on the left, voice-match panel on the right showing cadence, openers, sign-off.",
@@ -103,10 +103,10 @@ const stages = [
   },
   {
     n: 6,
-    key: "Delivery",
-    title: "One screen. Ready to send.",
-    body: "Company, contact, signal, hook, email, LinkedIn - all on one card. Review, edit, accept, send from your own inbox. Under a minute per prospect.",
-    facts: ["Send from your inbox", "Your own domain", "NL · EN auto"],
+    key: "Levering",
+    title: "Eén scherm. Klaar om te versturen.",
+    body: "Bedrijf, contact, signaal, hook, mail, LinkedIn - alles op één kaart. Bekijk, bewerk, accepteer, verstuur vanuit je eigen inbox. Binnen een minuut per prospect.",
+    facts: ["Versturen uit je inbox", "Je eigen domein", "NL · EN auto"],
     shot: {
       label: "Prospect card",
       describe: "Portal: single prospect card open with Company / Contact / Signal / Hook / Email / LinkedIn sections.",
@@ -138,41 +138,42 @@ const breadcrumb = breadcrumbList([
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How Hooklyne builds a prospect package",
-    "description": "Six stages from plain-language ICP to a ready-to-send prospect package in under a minute of review.",
+    "name": "Hoe Hooklyne een prospect-pakket bouwt",
+    "description": "Zes fases van een ICP in plain language tot een verzendklaar prospect-pakket, in minder dan een minuut beoordeeld.",
+    "inLanguage": "nl-NL",
     "totalTime": "PT1M",
     "step": stages.map((s) => ({
       "@type": "HowToStep",
       "position": s.n,
       "name": s.key,
       "text": s.body,
-      "url": `https://www.hooklyne.com/how-it-works#stage-${s.n}`,
+      "url": `https://www.hooklyne.com/nl/how-it-works#stage-${s.n}`,
     })),
   })} />
   <Background topStop="85%">
     <section class="pt-28 sm:pt-32 lg:pt-44 pb-10 sm:pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:idle />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How it works</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Hoe het werkt</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-4 sm:mb-5">
-          A research workflow. Not a chatbot.
+          Een onderzoekswerkstroom. Geen chatbot.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed mb-6 sm:mb-8">
-          Six stages working together. Each one does what a good researcher would do, continuously, so your rep never has to.
+          Zes fases die samenwerken. Elke fase doet wat een goede researcher zou doen, continu, zodat je rep dat niet hoeft.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4 mb-10 sm:mb-14 lg:mb-16">
           <a
             href="/nl/contact"
             class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
           >
-            Start your free pilot
+            Start je gratis pilot
             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
           <a
             href="/nl/product"
             class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
-            See the product
+            Bekijk het product
             <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>
@@ -238,7 +239,7 @@ const breadcrumb = breadcrumbList([
                 {s.n === 6 && (
                   <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2 py-1 rounded-full" style="background: rgba(13,148,136,0.12); color: var(--hooklyne-teal);">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/></svg>
-                    Under 60s
+                    Binnen 60s
                   </span>
                 )}
               </div>
@@ -271,13 +272,13 @@ const breadcrumb = breadcrumbList([
 
               {s.n === 4 && (
                 <div class="mt-6 rounded-2xl p-5" style="background: var(--card); border: 1px solid var(--border);">
-                  <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-teal)] mb-2">After the reply</p>
-                  <p class="text-sm font-semibold text-[var(--heading)] mb-1.5">Meeting Prep, on demand.</p>
+                  <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-teal)] mb-2">Na het antwoord</p>
+                  <p class="text-sm font-semibold text-[var(--heading)] mb-1.5">Meeting Prep, op aanvraag.</p>
                   <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-3">
-                    When the reply comes in, request a brief. Five minutes later you walk in knowing what they just raised, what their contact said publicly last quarter, and three openers that fit the meeting type.
+                    Komt het antwoord binnen, vraag een brief aan. Vijf minuten later loop je naar binnen met wat ze net hebben opgehaald, wat hun contact vorig kwartaal publiek zei, en drie openers die bij dit gesprek passen.
                   </p>
                   <div class="flex flex-wrap gap-1.5">
-                    {["Cold", "Warm", "Inbound", "Follow-up", "Conference", "Post-conference", "Pitch"].map((t) => (
+                    {["Koud", "Warm", "Inbound", "Follow-up", "Beurs", "Na de beurs", "Pitch"].map((t) => (
                       <span class="text-[10px] font-medium px-2 py-1 rounded-full" style="background: var(--background); border: 1px solid var(--border); color: var(--heading);">{t}</span>
                     ))}
                   </div>
@@ -287,7 +288,7 @@ const breadcrumb = breadcrumbList([
               {s.n === 6 && (
                 <div class="mt-6">
                   <a href="/nl/product" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
-                    See the screens in the portal
+                    Zie de schermen in het portaal
                     <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </a>
                 </div>
@@ -324,24 +325,24 @@ const breadcrumb = breadcrumbList([
           style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);"
         >
           <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
-            This is the workflow. See it in the product.
+            Dit is de werkstroom. Zie hoe het werkt in het product.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
-            Six stages behind one prospect card. Review in under a minute, send from your own inbox.
+            Zes fases achter één prospect-kaart. Binnen een minuut beoordeeld, verzonden vanuit je eigen inbox.
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4">
             <a
               href="/nl/contact"
               class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
             >
-              Start your free pilot
+              Start je gratis pilot
               <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
             <a
               href="/nl/product"
               class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
             >
-              See the screens
+              Zie de schermen
               <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
           </div>

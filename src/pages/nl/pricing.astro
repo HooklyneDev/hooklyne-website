@@ -17,15 +17,15 @@ const offerCatalog = {
   serviceType: "B2B prospect research",
   provider: { "@type": "Organization", name: "Hooklyne", url: SITE_URL },
   areaServed: ["NL", "BE", "GB", "LU", "DE", "FR", "IE", "DK", "SE", "NO", "FI"],
-  audience: { "@type": "BusinessAudience", audienceType: "B2B SME sales teams (10-100 people)" },
+  audience: { "@type": "BusinessAudience", audienceType: "B2B MKB-salesteams (10-100 personen)" },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Hooklyne plans",
     itemListElement: [
-      { "@type": "Offer", name: "Start", price: "39", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
-      { "@type": "Offer", name: "Growth", price: "129", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
-      { "@type": "Offer", name: "Scale", price: "239", priceCurrency: "EUR", url: `${SITE_URL}/pricing`, category: "annual billing" },
-      { "@type": "Offer", name: "Enterprise", url: `${SITE_URL}/contact`, category: "custom" },
+      { "@type": "Offer", name: "Start", price: "39", priceCurrency: "EUR", url: `${SITE_URL}/nl/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Growth", price: "129", priceCurrency: "EUR", url: `${SITE_URL}/nl/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Scale", price: "239", priceCurrency: "EUR", url: `${SITE_URL}/nl/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Enterprise", url: `${SITE_URL}/nl/contact`, category: "custom" },
     ],
   },
 };
@@ -41,9 +41,9 @@ const offerCatalog = {
 
       <!-- Header -->
       <div class="text-center max-w-2xl mx-auto">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Pricing</p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Simple pricing with transparent credits.</h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">One credit system. Every action priced the same across plans. No per-seat fees on Start and Growth. Switch plans or cancel anytime.</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Tarieven</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Heldere tarieven, transparante credits.</h1>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">Eén credit-systeem. Elke actie kost hetzelfde, ongeacht je abonnement. Geen seat-kosten op Start en Growth. Op elk moment van plan wisselen of opzeggen.</p>
       </div>
 
       <!-- Free pilot banner (kept inside the hero section so the glow reaches behind it) -->
@@ -54,19 +54,19 @@ const offerCatalog = {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7l8 5 8-5-8-5Z"/><path d="m4 12 8 5 8-5"/><path d="m4 17 8 5 8-5"/></svg>
             </div>
             <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)]">Free pilot</p>
-              <p class="text-base font-semibold text-[var(--heading)]">Try it before you pay.</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)]">Gratis pilot</p>
+              <p class="text-base font-semibold text-[var(--heading)]">Probeer het voordat je betaalt.</p>
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-6 text-sm md:border-l md:border-r md:border-[var(--border)] md:px-6">
             <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">You get</p>
-              <p class="text-[var(--foreground)] leading-relaxed">10 prospect packages, fully built. Portal access. Two weeks of sector news.</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">Jij krijgt</p>
+              <p class="text-[var(--foreground)] leading-relaxed">10 volledig opgebouwde prospect-pakketten. Toegang tot het portaal. Twee weken sectornieuws.</p>
             </div>
             <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">We ask</p>
-              <p class="text-[var(--foreground)] leading-relaxed">20 minutes of honest feedback. Permission to mention you if it works.</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">Wij vragen</p>
+              <p class="text-[var(--foreground)] leading-relaxed">20 minuten eerlijke feedback. Toestemming om je te noemen als het werkt.</p>
             </div>
           </div>
 
@@ -84,7 +84,7 @@ const offerCatalog = {
 
       <!-- Toggle -->
       <div class="flex items-center justify-center gap-3 mb-10">
-        <span class="text-sm font-medium transition-colors" id="label-monthly" style="color: var(--muted-foreground)">Monthly</span>
+        <span class="text-sm font-medium transition-colors" id="label-monthly" style="color: var(--muted-foreground)">Maandelijks</span>
         <button
           id="toggle-btn"
           class="relative w-12 h-6 rounded-full transition-colors cursor-pointer btn-shine"
@@ -95,8 +95,8 @@ const offerCatalog = {
           <span id="toggle-knob" class="absolute top-0.5 left-0.5 size-5 rounded-full bg-white transition-transform duration-200 shadow-sm" style="transform: translateX(24px)"></span>
         </button>
         <span class="text-sm font-medium flex items-center gap-2 transition-colors" id="label-annual" style="color: var(--heading)">
-          Annual
-          <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal)">Save up to €60/mo</span>
+          Jaarlijks
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal)">Bespaar tot €60/maand</span>
         </span>
       </div>
 
@@ -111,31 +111,31 @@ const offerCatalog = {
             <span class="text-sm text-[var(--muted-foreground)] ml-1">/mo</span>
           </div>
           <div class="h-5 mb-2">
-            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Save €10/mo on annual</span>
+            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Bespaar €10/maand op jaarbasis</span>
           </div>
-          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Solo rep. Test and validate your outbound.</p>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Solo rep. Test en valideer je outbound.</p>
           <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
             <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
-            <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credits / mnd</span>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
-            {["100 credits / mo", "1 seat", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs"].map((f) => (
+            {["100 credits / mnd", "1 seat", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktupdate", "Meeting prep briefs"].map((f) => (
               <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
                 <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 {f}
               </li>
             ))}
           </ul>
-          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0.85/cr</p>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0,85/cr</p>
           <a href="/nl/contact" data-tier="start" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
-            Get started
+            Aan de slag
           </a>
         </div>
 
         <!-- Growth (featured) -->
         <div class="rounded-2xl p-5 flex flex-col relative text-white" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-xl)">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap" style="background: var(--hooklyne-orange)">
-            Recommended
+            Meest gekozen
           </div>
           <p class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-3 mt-1">Growth</p>
           <div class="mb-1">
@@ -143,24 +143,24 @@ const offerCatalog = {
             <span class="text-sm text-white/40 ml-1">/mo</span>
           </div>
           <div class="h-5 mb-2">
-            <span class="text-xs font-medium save-note text-green-300">Save €30/mo on annual</span>
+            <span class="text-xs font-medium save-note text-green-300">Bespaar €30/maand op jaarbasis</span>
           </div>
-          <p class="text-xs leading-relaxed text-white/50 mb-4">1-2 reps. Full pipeline. Everything included.</p>
+          <p class="text-xs leading-relaxed text-white/50 mb-4">1-2 reps. Volle pipeline. Alles inclusief.</p>
           <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: rgba(255,255,255,0.08)">
             <span class="text-2xl font-bold text-blue-300">400</span>
-            <span class="text-xs text-white/40">credits / month</span>
+            <span class="text-xs text-white/40">credits / mnd</span>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
-            {["400 credits / mo", "2 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "45-min setup + strategy call", "ICP configured with you"].map((f) => (
+            {["400 credits / mnd", "2 seats", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktupdate", "Meeting prep briefs", "45-min setup + strategiegesprek", "ICP samen met jou ingesteld"].map((f) => (
               <li class="flex items-start gap-2 text-xs text-white/70">
                 <svg class="size-3.5 shrink-0 mt-0.5 text-green-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 {f}
               </li>
             ))}
           </ul>
-          <p class="text-xs text-white/30 mb-4">Top-up: €0.85/cr</p>
+          <p class="text-xs text-white/30 mb-4">Top-up: €0,85/cr</p>
           <a href="/nl/contact" data-tier="growth" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine bg-white/14 text-white border border-white/22 hover:bg-white/24">
-            Get started
+            Aan de slag
           </a>
         </div>
 
@@ -172,24 +172,24 @@ const offerCatalog = {
             <span class="text-sm text-[var(--muted-foreground)] ml-1">/mo</span>
           </div>
           <div class="h-5 mb-2">
-            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Save €60/mo on annual</span>
+            <span class="text-xs font-medium save-note text-[var(--hooklyne-teal)]">Bespaar €60/maand op jaarbasis</span>
           </div>
-          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Small sales team. Volume outbound. Up to 5 reps.</p>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Klein salesteam. Volume outbound. Tot 5 reps.</p>
           <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
             <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
-            <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credits / mnd</span>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
-            {["800 credits / mo", "5 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Full setup + team training"].map((f) => (
+            {["800 credits / mnd", "5 seats", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktupdate", "Meeting prep briefs", "Volledige setup + teamtraining"].map((f) => (
               <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
                 <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 {f}
               </li>
             ))}
           </ul>
-          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0.85/cr</p>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: €0,85/cr</p>
           <a href="/nl/contact" data-tier="scale" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
-            Get started
+            Aan de slag
           </a>
         </div>
 
@@ -200,22 +200,22 @@ const offerCatalog = {
             <span class="text-3xl font-bold text-[var(--heading)]">Custom</span>
           </div>
           <div class="h-5 mb-2"></div>
-          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Sales departments. Multi-market. Custom volumes.</p>
+          <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">Sales-afdelingen. Meerdere markten. Op maat.</p>
           <div class="flex items-baseline gap-2 rounded-xl px-3 py-2.5 mb-4" style="background: var(--background)">
             <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">Custom</span>
-            <span class="text-xs text-[var(--muted-foreground)]">credit volume</span>
+            <span class="text-xs text-[var(--muted-foreground)]">credit-volume</span>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
-            {["Custom credit volume", "Unlimited seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Full setup + team training", "Dedicated account manager"].map((f) => (
+            {["Custom credit-volume", "Unlimited seats", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktupdate", "Meeting prep briefs", "Volledige setup + teamtraining", "Eigen account manager"].map((f) => (
               <li class="flex items-start gap-2 text-xs text-[var(--muted-foreground)]">
                 <svg class="size-3.5 shrink-0 mt-0.5 text-[var(--hooklyne-teal)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 {f}
               </li>
             ))}
           </ul>
-          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: Custom rate</p>
+          <p class="text-xs text-[var(--muted-foreground)]/60 mb-4">Top-up: Op maat</p>
           <a href="/nl/contact" data-tier="enterprise" data-location="pricing" class="block text-center rounded-lg text-sm font-semibold py-2.5 transition-all btn-shine ring-1 ring-[var(--hooklyne-navy)] text-[var(--heading)] hover:bg-[var(--hooklyne-navy)] hover:text-white">
-            Talk to us
+            Praat met ons
           </a>
         </div>
 
@@ -224,8 +224,8 @@ const offerCatalog = {
       <!-- Three ways to build a prospect -->
       <div class="mb-12">
         <div class="text-center max-w-2xl mx-auto mb-8">
-          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">Three ways to build a prospect.</h2>
-          <p class="text-sm text-[var(--muted-foreground)]">Every workflow lands in the same place: a prospect package ready to send. Pick the path that matches how you work.</p>
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">Drie manieren om een prospect te bouwen.</h2>
+          <p class="text-sm text-[var(--muted-foreground)]">Elke werkstroom eindigt op dezelfde plek: een verzendklaar prospect-pakket. Kies het pad dat past bij hoe jij werkt.</p>
         </div>
 
         <div class="grid gap-4 md:grid-cols-3">
@@ -233,25 +233,25 @@ const offerCatalog = {
           <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
             <div class="flex items-center gap-2 mb-3">
               <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">1</span>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Discovery-first</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Discovery-eerst</p>
             </div>
-            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from an ICP</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Describe your ideal customer. Get up to 20 ranked companies with signal hooks. Pick one and generate a full prospect package.</p>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Begin met een ICP</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Beschrijf je ideale klant. Krijg tot 20 gerangschikte bedrijven met signaal-hooks. Kies er een en bouw een volledig prospect-pakket.</p>
             <div class="mt-auto pt-4 border-t border-[var(--border)]">
               <div class="flex items-center justify-between text-xs mb-1">
-                <span class="text-[var(--muted-foreground)]">Company discovery</span>
+                <span class="text-[var(--muted-foreground)]">Bedrijven-discovery</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
               </div>
               <div class="flex items-center justify-between text-xs mb-1">
-                <span class="text-[var(--muted-foreground)]">Contact finding</span>
+                <span class="text-[var(--muted-foreground)]">Contact zoeken</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">2cr</span>
               </div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="text-[var(--muted-foreground)]">Prospect-pakket</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
               </div>
               <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
-                <span class="text-[var(--heading)]">Total per prospect</span>
+                <span class="text-[var(--heading)]">Totaal per prospect</span>
                 <span class="text-[var(--hooklyne-navy)]">4cr</span>
               </div>
             </div>
@@ -261,21 +261,21 @@ const offerCatalog = {
           <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
             <div class="flex items-center gap-2 mb-3">
               <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">2</span>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Contact-first</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Contact-eerst</p>
             </div>
-            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from a known company</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">You already have the target list. We find and verify the right decision-maker, then generate the prospect package.</p>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Begin met een bekend bedrijf</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Je hebt de targetlijst al. Wij vinden en verifiëren de juiste beslisser en bouwen het prospect-pakket.</p>
             <div class="mt-auto pt-4 border-t border-[var(--border)]">
               <div class="flex items-center justify-between text-xs mb-1">
-                <span class="text-[var(--muted-foreground)]">Contact finding</span>
+                <span class="text-[var(--muted-foreground)]">Contact zoeken</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">2cr</span>
               </div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="text-[var(--muted-foreground)]">Prospect-pakket</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
               </div>
               <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
-                <span class="text-[var(--heading)]">Total per prospect</span>
+                <span class="text-[var(--heading)]">Totaal per prospect</span>
                 <span class="text-[var(--hooklyne-navy)]">3cr</span>
               </div>
             </div>
@@ -285,22 +285,22 @@ const offerCatalog = {
           <div class="rounded-2xl bg-[var(--card)] p-5 flex flex-col relative" style="box-shadow: var(--shadow-xs)">
             <div class="flex items-center gap-2 mb-3">
               <span class="flex items-center justify-center size-7 rounded-full text-xs font-bold text-white" style="background: var(--hooklyne-blue)">3</span>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Signal-driven</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">Signaal-gedreven</p>
             </div>
-            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Start from a signal</h3>
-            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Track target companies daily. When a buying signal fires - hire, news, funding, expansion - a prospect package is ready to send.</p>
+            <h3 class="text-base font-semibold text-[var(--heading)] mb-2">Begin met een signaal</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">Volg target-bedrijven dagelijks. Komt er een koopsignaal binnen - hire, nieuws, funding, expansie - dan staat het prospect-pakket klaar.</p>
             <div class="mt-auto pt-4 border-t border-[var(--border)]">
               <div class="flex items-center justify-between text-xs mb-1">
                 <span class="text-[var(--muted-foreground)]">Signal tracking</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">2cr / co / mo</span>
               </div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="text-[var(--muted-foreground)]">Prospect package</span>
+                <span class="text-[var(--muted-foreground)]">Prospect-pakket</span>
                 <span class="font-semibold text-[var(--hooklyne-blue)]">1cr</span>
               </div>
               <div class="flex items-center justify-between text-sm font-semibold pt-2 border-t border-[var(--border)]">
                 <span class="text-[var(--heading)]">Timing</span>
-                <span class="text-[var(--hooklyne-teal)]">When they're ready</span>
+                <span class="text-[var(--hooklyne-teal)]">Op hún moment</span>
               </div>
             </div>
           </div>
@@ -310,28 +310,28 @@ const offerCatalog = {
       <!-- Credit table -->
       <div class="rounded-2xl bg-[var(--card)] overflow-hidden mb-12" style="box-shadow: var(--shadow-sm)">
         <div class="px-6 py-5 border-b border-[var(--border)]">
-          <h2 class="text-base font-semibold text-[var(--heading)]">What each credit gets you.</h2>
-          <p class="text-sm text-[var(--muted-foreground)] mt-1">Every credit maps to a clear deliverable. Browsing, reading signals, and viewing intel are always free.</p>
+          <h2 class="text-base font-semibold text-[var(--heading)]">Wat je voor één credit krijgt.</h2>
+          <p class="text-sm text-[var(--muted-foreground)] mt-1">Elke credit staat voor een duidelijk eindproduct. Bladeren, signalen lezen en intel bekijken is altijd gratis.</p>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
               <tr class="border-b border-[var(--border)]" style="background: var(--background)">
-                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">Action</th>
-                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)] hidden sm:table-cell">What you get</th>
+                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">Actie</th>
+                <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--muted-foreground)] hidden sm:table-cell">Wat je krijgt</th>
                 <th class="text-right px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--hooklyne-blue)]">Credits</th>
               </tr>
             </thead>
             <tbody>
               {[
-                ["Company discovery", "Up to 20 ranked companies, ICP-filtered, with signal hooks", "1cr", false],
-                ["View matched roles", "Up to 3 decision-makers per company", "Included", true],
-                ["Prospect package", "News-hooked email + LinkedIn message, NL or EN, in your voice", "1cr", false],
-                ["Contact finding", "Verified email, triple-checked across 20+ sources", "2cr", false],
-                ["Signal tracking", "Daily sweeps: job posts, news, funding. Scored and ranked.", "2cr / company / mo", false],
-                ["Meeting prep brief", "Company overview, talking points, key people, recent news", "1cr", false],
-                ["Weekly sector briefing", "5-10 articles from your market, scored for relevance", "Included", true],
-                ["Export to CSV", "Full export of your leads and signals", "Included", true],
+                ["Bedrijven-discovery", "Tot 20 gerangschikte bedrijven, ICP-gefilterd, met signaal-hooks", "1cr", false],
+                ["Bekijk passende rollen", "Tot 3 beslissers per bedrijf", "Inclusief", true],
+                ["Prospect-pakket", "Mail met nieuws-hook + LinkedIn-bericht, NL of EN, in je stem", "1cr", false],
+                ["Contact zoeken", "Geverifieerd mailadres, drievoudig gecheckt over 20+ bronnen", "2cr", false],
+                ["Signal tracking", "Dagelijkse sweeps: vacatures, nieuws, funding. Gescoord en gerangschikt.", "2cr / bedrijf / mnd", false],
+                ["Meeting prep brief", "Bedrijfsoverzicht, talking points, sleutelpersonen, recent nieuws", "1cr", false],
+                ["Wekelijkse marktupdate", "5-10 artikelen uit je markt, gescoord op relevantie", "Inclusief", true],
+                ["Export naar CSV", "Volledige export van je leads en signalen", "Inclusief", true],
               ].map(([action, desc, cost, isFree]) => (
                 <tr class="border-b border-[var(--border)] last:border-0 hover:bg-[var(--card-hover)] transition-colors">
                   <td class="px-6 py-3.5 font-medium text-[var(--foreground)] whitespace-nowrap">{action}</td>
@@ -349,43 +349,43 @@ const offerCatalog = {
       <!-- FAQ section -->
       <div class="mb-12">
         <div class="text-center mb-8">
-          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight">Pricing questions.</h2>
-          <p class="text-sm text-[var(--muted-foreground)] mt-2">Everything you need to know before you start.</p>
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight">Vragen over tarieven.</h2>
+          <p class="text-sm text-[var(--muted-foreground)] mt-2">Alles wat je moet weten voordat je begint.</p>
         </div>
 
         <div class="max-w-3xl mx-auto space-y-2" id="pricing-faq">
           {[
             {
-              q: "What is a credit?",
-              a: "A credit is the unit you spend on actions that produce a deliverable. Company discovery costs 1cr (up to 20 ranked companies). A prospect package costs 1cr (news-hooked email + LinkedIn message in your voice). Contact finding costs 2cr (verified email, triple-checked). Signal tracking costs 2cr per company per month. Browsing, reading intel, and exporting are always free."
+              q: "Wat is een credit?",
+              a: "Een credit is wat je uitgeeft aan acties die een eindproduct opleveren. Bedrijven-discovery kost 1cr (tot 20 gerangschikte bedrijven). Een prospect-pakket kost 1cr (mail met nieuws-hook + LinkedIn-bericht, in je stem). Contact zoeken kost 2cr (geverifieerd mailadres, drievoudig gecheckt). Signal tracking kost 2cr per bedrijf per maand. Bladeren, intel lezen en exporteren is altijd gratis."
             },
             {
-              q: "What happens when I run out of credits?",
-              a: "You can top up at any time at €0.85 per credit. There are no overage blockers - you just buy more credits when you need them. Your existing data, signals, and contacts remain accessible regardless of credit balance."
+              q: "Wat gebeurt er als ik door mijn credits heen ben?",
+              a: "Je kunt op elk moment top-uppen voor €0,85 per credit. Geen blokkades, je koopt gewoon bij wanneer nodig. Je bestaande data, signalen en contacten blijven beschikbaar, ongeacht je credit-saldo."
             },
             {
-              q: "What is signal tracking?",
-              a: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. Additional companies above your limit cost 2cr per company per month."
+              q: "Wat is signal tracking?",
+              a: "Signal tracking volgt een bedrijf dagelijks voor relevante gebeurtenissen: vacatures, nieuws, fundingrondes, leiderschapswissels en meer. Elk signaal wordt gescoord op relevantie voor wat jij verkoopt. Start dekt tot 10 bedrijven, Growth tot 40, Scale tot 100. Enterprise op maat. Extra bedrijven boven je limiet kosten 2cr per bedrijf per maand."
             },
             {
-              q: "Can I switch plans?",
-              a: "Yes, anytime. Monthly plans switch at the next billing date. If you upgrade mid-month, you get prorated credit for the days remaining. Downgrading takes effect at your next renewal."
+              q: "Kan ik van plan wisselen?",
+              a: "Ja, op elk moment. Maandelijkse plannen wisselen op de volgende factuurdatum. Upgrade je halverwege de maand, dan krijg je naar rato credits voor de resterende dagen. Downgrades gaan in bij je volgende verlenging."
             },
             {
-              q: "What is included in the free pilot?",
-              a: "10 full prospect packages. 1 seat configured with your ICP. Sector news for 2 weeks. Full portal access. Signal tracking, discovery, and meeting prep are visible but locked. We ask for a 20-min feedback call and case study permission in return. No payment needed."
+              q: "Wat zit er in de gratis pilot?",
+              a: "10 volledige prospect-pakketten. 1 seat ingericht met je ICP. Sectornieuws voor 2 weken. Volledige toegang tot het portaal. Signal tracking, discovery en meeting prep zijn zichtbaar maar op slot. We vragen een feedbackgesprek van 20 minuten en toestemming voor een case study terug. Geen betaling vereist."
             },
             {
-              q: "Is there a contract?",
-              a: "No contract on monthly plans - cancel anytime. Annual plans are a 12-month commitment billed upfront or monthly, with a discount built in. You save up to €60/mo on the Scale plan compared to monthly billing."
+              q: "Is er een contract?",
+              a: "Geen contract op maandelijkse plannen - op elk moment opzegbaar. Jaarplannen zijn een commitment van 12 maanden, vooraf of maandelijks gefactureerd, met korting ingebouwd. Op Scale bespaar je tot €60 per maand vergeleken met maandelijkse facturatie."
             },
             {
-              q: "What does 'outreach in your voice' mean?",
-              a: "During setup we collect writing samples and tone inputs from you. Every email and LinkedIn message Hooklyne generates is written to match your style, not a generic template. The prospect package is ready to send or copy-paste directly."
+              q: "Wat betekent 'outreach in je stem'?",
+              a: "Tijdens de setup verzamelen we schrijfvoorbeelden en toon-input van jou. Elke mail en elk LinkedIn-bericht dat Hooklyne genereert past bij jouw stijl, niet bij een generieke template. Het prospect-pakket is klaar om te versturen of direct te kopiëren."
             },
             {
-              q: "What does the 45-min setup call include on Growth?",
-              a: "We configure your ICP with you, set up signal tracking for your target market, review your tone profile, and plan the first month of outbound. You leave the call with a working system and a list of first targets already queued."
+              q: "Wat zit er in het 45-min setup-gesprek op Growth?",
+              a: "We richten je ICP samen in, zetten signal tracking op voor je targetmarkt, lopen je toonprofiel door en plannen de eerste maand outbound. Na het gesprek heb je een werkend systeem en een lijst eerste targets klaar."
             },
           ].map((item, i) => (
             <div class="faq-item rounded-xl bg-[var(--card)]" style="box-shadow: var(--shadow-xs)">
