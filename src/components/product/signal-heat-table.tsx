@@ -93,7 +93,7 @@ const TREND: Record<Trend, { bg: string; fg: string }> = {
 
 const MAX_HEAT = 38;
 
-type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio }: SignalHeatTableProps = {}) => {
   const [mounted, setMounted] = useState(false);

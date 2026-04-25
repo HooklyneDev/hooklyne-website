@@ -26,7 +26,7 @@ const BODY: string[] = [
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
 
-type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4";
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type EmailComposeProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
 export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailComposeProps = {}) => {
   const [phase, setPhase] = useState<Phase>("typing-subject");
