@@ -1,0 +1,75 @@
+---
+import { Background } from '@/components/background';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Over ons", path: "/nl/about" },
+]);
+---
+<DefaultLayout
+  title="Over Hooklyne | Wie we zijn en waarom we het bouwen"
+  description="Waarom we Hooklyne hebben gebouwd, wie erachter zit, en hoe we kijken naar B2B prospect-onderzoek voor het MKB."
+  image="/og/about.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    inLanguage: "nl-NL",
+    name: "Over Hooklyne",
+    description: "B2B prospect-onderzoek voor Nederlandse en Britse MKB-salesteams.",
+    url: "https://www.hooklyne.com/nl/about",
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-12">
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Over ons</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">De onderzoekslaag die de meeste B2B-teams niet zelf kunnen bemensen.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+          Dus die hebben we gebouwd.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-3xl space-y-8 text-[var(--foreground)]">
+        <div>
+          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Waarom Hooklyne bestaat</h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-3">
+            We runden zelf outbound bij Nederlandse B2B-bedrijven. Dezelfde tijd elke week verbrand met prospect-onderzoek. Dezelfde vermoeide patronen in elke mail. Dezelfde frustratie dat één database er steeds 40% naast zat.
+          </p>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            We probeerden Apollo. We probeerden Cognism. We probeerden ChatGPT met enrichment-API's eraan. Alles werkte op tien prospects. Niets werkte op honderd. Dus bouwden we de werkstroom die we zelf wilden hebben.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Hoe we denken over outreach</h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-3">
+            Niet meer mails. Betere mails. Eén goed gesprek is meer waard dan vijftig koude touches die je reputatie schaden. Dat betekent: het onderzoek doet er meer toe dan het schrijven, het signaal doet er meer toe dan het volume, en de stem van de rep doet er meer toe dan welke template dan ook.
+          </p>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            We noemen onze data-providers niet bij naam. De werkstroom is het product. De leveranciers eronder zijn de keuken. Wij vinden dat kopers het bord moeten beoordelen, niet de voorraadkast.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Waar we zitten</h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Nederland. EU-first verwerking. AVG-compliant. Native in Nederlands en Engels. Onze klanten zijn vooral B2B-bedrijven van 10 tot 100 personen in Nederland, België, het VK en breder EMEA.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-3">Contact</h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Vragen, partnerships of een gesprek over of dit voor jouw team werkt: <a href="/contact" class="text-[var(--hooklyne-blue)] hover:opacity-80">/contact</a>. Of mail rechtstreeks naar contact@hooklyne.com.
+          </p>
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

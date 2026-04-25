@@ -1,0 +1,80 @@
+---
+import { Background } from '@/components/background';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Contact", path: "/nl/contact" },
+]);
+---
+<DefaultLayout
+  title="Contact | Hooklyne"
+  description="Neem contact op met het Hooklyne-team. Boek een demo, start een gratis pilot of stel een vraag."
+  image="/og/contact.jpg"
+  hideFinalCTA={true}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    inLanguage: "nl-NL",
+    name: "Contact - Hooklyne",
+    url: "https://www.hooklyne.com/nl/contact",
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-12">
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Contact</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Praat met ons.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+          Een gratis pilot, een demo, of gewoon een vraag. We reageren meestal binnen één werkdag.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-3xl">
+        <form action="/api/contact" method="POST" class="space-y-5 rounded-2xl p-7 md:p-9" style="background: var(--card); border: 1px solid var(--border);">
+          <input type="hidden" name="botcheck" value="" style="display:none;" />
+          <input type="hidden" name="from_name" value="Hooklyne contactformulier" />
+          <input type="hidden" name="subject" value="Nieuwe inzending via /nl/contact" />
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="text-sm font-medium text-[var(--heading)]">Naam</span>
+              <input type="text" name="name" required class="mt-1 block w-full h-10 px-3 rounded-lg text-sm" style="background: var(--background); border: 1px solid var(--border); color: var(--foreground);" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-[var(--heading)]">Bedrijf</span>
+              <input type="text" name="company" class="mt-1 block w-full h-10 px-3 rounded-lg text-sm" style="background: var(--background); border: 1px solid var(--border); color: var(--foreground);" />
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="text-sm font-medium text-[var(--heading)]">Zakelijk e-mailadres</span>
+            <input type="email" name="email" required class="mt-1 block w-full h-10 px-3 rounded-lg text-sm" style="background: var(--background); border: 1px solid var(--border); color: var(--foreground);" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-medium text-[var(--heading)]">Wat speelt er?</span>
+            <textarea name="message" rows="5" required class="mt-1 block w-full px-3 py-2 rounded-lg text-sm" style="background: var(--background); border: 1px solid var(--border); color: var(--foreground);"></textarea>
+          </label>
+
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            We gebruiken je gegevens alleen om te reageren. Zie de <a href="/privacy" class="text-[var(--hooklyne-blue)] hover:opacity-80">privacyverklaring</a>.
+          </p>
+
+          <button type="submit" class="h-11 px-6 inline-flex items-center justify-center text-sm font-semibold rounded-lg" style="background-color: var(--hooklyne-navy); color: #ffffff;">
+            Stuur bericht
+          </button>
+        </form>
+
+        <p class="text-sm text-[var(--muted-foreground)] mt-6 leading-relaxed">
+          Liever direct mailen? <a href="mailto:contact@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">contact@hooklyne.com</a>. Privacy- of AVG-vragen: <a href="mailto:privacy@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">privacy@hooklyne.com</a>.
+        </p>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

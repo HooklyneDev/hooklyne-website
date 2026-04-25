@@ -19,7 +19,15 @@ function readFromDom(): Lang {
  * are translated. Anything not in this set falls back to /nl when
  * switching en -> nl. See DOCS/i18n-sync-tracker.md for the canonical list.
  */
-const NL_AVAILABLE = new Set<string>(["/nl"]);
+const NL_AVAILABLE = new Set<string>([
+  "/nl",
+  "/nl/faq",
+  "/nl/pricing",
+  "/nl/how-it-works",
+  "/nl/product",
+  "/nl/about",
+  "/nl/contact",
+]);
 
 /**
  * Navigate to the equivalent URL in the other language.

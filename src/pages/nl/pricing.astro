@@ -1,0 +1,138 @@
+---
+import { Background } from '@/components/background';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { breadcrumbList } from "@/lib/seo";
+
+const tiers = [
+  {
+    name: "Start",
+    price: "€39",
+    period: "/maand",
+    blurb: "Voor founders en solo reps die de werkstroom uitproberen.",
+    features: [
+      "1 seat",
+      "10 prospect-pakketten per maand",
+      "Native Nederlands en Engels",
+      "Top-ups voor €0,85 per credit",
+    ],
+  },
+  {
+    name: "Growth",
+    price: "Op aanvraag",
+    period: "",
+    blurb: "Voor teams van 2 tot 5 reps die outbound serieus draaien.",
+    features: [
+      "2 seats",
+      "Hoger maandvolume",
+      "Live training voor het team",
+      "Kickoff-call met onboarding",
+    ],
+    popular: true,
+  },
+  {
+    name: "Scale",
+    price: "Op aanvraag",
+    period: "",
+    blurb: "Voor teams met een gevestigde outbound-motor en pipeline-doelen.",
+    features: [
+      "5 seats",
+      "Volume-gebaseerde tarieven",
+      "Dedicated success-contact",
+      "Custom signaalbronnen mogelijk",
+    ],
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    period: "",
+    blurb: "Voor teams met dedicated DPA's, custom integraties of niet-standaard volumes.",
+    features: [
+      "Unlimited seats",
+      "Custom DPA en sub-processor afspraken",
+      "Custom integraties",
+      "Volume-tarieven op maat",
+    ],
+  },
+];
+
+const offerCatalog = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "Hooklyne abonnementen",
+  inLanguage: "nl-NL",
+  itemListElement: tiers.map((t) => ({
+    "@type": "Offer",
+    name: t.name,
+    description: t.blurb,
+    price: t.name === "Start" ? "39" : undefined,
+    priceCurrency: "EUR",
+  })),
+};
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Pricing", path: "/nl/pricing" },
+]);
+---
+<DefaultLayout
+  title="Pricing | Hooklyne"
+  description="Betaal voor wat je gebruikt. Elk credit is een duidelijk eindproduct. Start, Growth, Scale en Enterprise. Vanaf €39 per maand."
+  image="/og/pricing.jpg"
+  ctaVariant="pricing"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(offerCatalog)} />
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-12">
+      <div class="container max-w-5xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4 text-center">Pricing</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4 text-center">Betaal voor wat je gebruikt.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed text-center">
+          Elk credit is een duidelijk eindproduct: één geverifieerd contact, één signaal, één opgesteld bericht. Geen lange contracten. Maandelijks opzegbaar.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-6xl">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          {tiers.map((t) => (
+            <div
+              class="rounded-2xl p-6 md:p-7 flex flex-col"
+              style={`background: var(--card); border: 1px solid ${t.popular ? 'var(--hooklyne-blue)' : 'var(--border)'};`}
+            >
+              <div class="flex items-baseline gap-2 mb-2">
+                <h2 class="text-xl font-semibold text-[var(--heading)] tracking-tight">{t.name}</h2>
+                {t.popular && <span class="text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)]">Meest gekozen</span>}
+              </div>
+              <div class="flex items-baseline gap-1 mb-3">
+                <span class="text-3xl font-semibold text-[var(--heading)]">{t.price}</span>
+                <span class="text-sm text-[var(--muted-foreground)]">{t.period}</span>
+              </div>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-5">{t.blurb}</p>
+              <ul class="space-y-2 mb-6 flex-1">
+                {t.features.map((f) => (
+                  <li class="text-sm text-[var(--muted-foreground)] flex gap-2">
+                    <span class="text-[var(--hooklyne-blue)] flex-shrink-0">✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/contact"
+                class="block text-center h-10 px-4 inline-flex items-center justify-center text-sm font-semibold rounded-lg"
+                style={`background-color: ${t.popular ? 'var(--hooklyne-navy)' : 'transparent'}; color: ${t.popular ? '#ffffff' : 'var(--hooklyne-navy)'}; border: 1px solid var(--hooklyne-navy);`}
+              >
+                {t.name === "Start" ? "Start gratis pilot" : "Praat met ons"}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-xs text-[var(--muted-foreground)] text-center mt-10 max-w-2xl mx-auto leading-relaxed">
+          Jaarbetaling scheelt tot €60 per maand. Geen verborgen kosten. Geen lock-in op de lagere abonnementen.
+        </p>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

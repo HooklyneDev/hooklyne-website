@@ -1,0 +1,109 @@
+---
+import { Background } from '@/components/background';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { breadcrumbList } from "@/lib/seo";
+
+const stages = [
+  {
+    n: "01",
+    title: "Discovery",
+    body: "Definieer je ICP - sector, omvang, regio, koperprofiel. We bouwen een lijst kandidaat-bedrijven uit KvK, Companies House, LinkedIn en sectorlijsten.",
+  },
+  {
+    n: "02",
+    title: "Verificatie",
+    body: "Elk contact wordt gecheckt tegen 20+ data-providers. Apollo, Cognism, Lusha, ZoomInfo, Hunter, regionale bronnen. Conflicten worden geflagd voordat we doorgaan.",
+  },
+  {
+    n: "03",
+    title: "Signalen",
+    body: "Gestructureerde triggers uit echte feeds. Funding, hiring, leiderschapswissels, tech-stack-updates, M&A. Geen LLM die op een LinkedIn-post een koopintentie projecteert.",
+  },
+  {
+    n: "04",
+    title: "Onderzoek",
+    body: "Relevante context die je rep direct kan gebruiken. Recente launches, posts van het contact, marktpositie, eerdere fundingrondes, klantenbestand.",
+  },
+  {
+    n: "05",
+    title: "Drafting",
+    body: "Een eerste mail of LinkedIn-bericht in de schrijfstijl van je rep. Niet een system prompt - we modelleren de stem op basis van mails die de rep al verstuurd heeft.",
+  },
+  {
+    n: "06",
+    title: "Levering",
+    body: "Het volledige pakket landt in het portaal. Klaar om te beoordelen en te versturen vanuit je eigen inbox. Suppression-lijst wordt automatisch gerespecteerd.",
+  },
+];
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Hoe het werkt", path: "/nl/how-it-works" },
+]);
+---
+<DefaultLayout
+  title="Hoe Hooklyne werkt | B2B prospect-onderzoek in zes fases"
+  description="Zes fases, één prospect-pakket. Van discovery tot levering: de werkstroom achter elke Hooklyne-output."
+  image="/og/how-it-works.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Hoe Hooklyne een prospect-pakket bouwt",
+    inLanguage: "nl-NL",
+    description: "De zes-staps onderzoekswerkstroom: discovery, verificatie, signalen, onderzoek, drafting, levering.",
+    step: stages.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.body,
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-40 pb-12">
+      <div class="container max-w-4xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Hoe het werkt</p>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Zes fases. Eén prospect-pakket.</h1>
+        <p class="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+          Geen black box. Hier staat precies wat er gebeurt tussen "ik wil deze sector benaderen" en "deze mail kan vandaag de deur uit."
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-4xl space-y-4">
+        {stages.map((s) => (
+          <div class="rounded-2xl p-6 md:p-8" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-start gap-5">
+              <div class="text-3xl md:text-4xl font-semibold text-[var(--hooklyne-blue)] tracking-tight flex-shrink-0">{s.n}</div>
+              <div>
+                <h2 class="text-xl md:text-2xl font-semibold text-[var(--heading)] tracking-tight mb-2">{s.title}</h2>
+                <p class="text-base text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="container max-w-4xl">
+        <div class="rounded-2xl p-8 md:p-10 text-center" style="background: var(--card); border: 1px solid var(--border);">
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-3">Liever zelf zien hoe het eruitziet?</h2>
+          <p class="text-base text-[var(--muted-foreground)] mb-6 max-w-xl mx-auto leading-relaxed">
+            Tien volledig opgebouwde prospect-pakketten in de gratis pilot. Geen creditcard, geen verplichting.
+          </p>
+          <a
+            href="/contact"
+            class="h-11 px-6 inline-flex items-center justify-center text-sm font-semibold rounded-lg"
+            style="background-color: var(--hooklyne-navy); color: #ffffff;"
+          >
+            Start je gratis pilot
+          </a>
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

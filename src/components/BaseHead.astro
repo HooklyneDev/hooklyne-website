@@ -98,6 +98,24 @@ const imageURL = new URL(finalImage, Astro.url);
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- hreflang: tell Google which pages are NL alternates of EN.
+     Only emit for pages that have a real NL counterpart. -->
+{(() => {
+  const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+  const isNL = path === "/nl" || path.startsWith("/nl/");
+  const enPath = isNL ? path.replace(/^\/nl(\/|$)/, "/").replace(/\/$/, "") || "/" : path;
+  const nlPath = isNL ? path : (path === "/" ? "/nl" : `/nl${path}`);
+  const NL_AVAILABLE = new Set(["/nl", "/nl/faq", "/nl/pricing", "/nl/how-it-works", "/nl/product", "/nl/about", "/nl/contact"]);
+  if (!NL_AVAILABLE.has(nlPath)) return null;
+  const enUrl = new URL(enPath, Astro.site).toString();
+  const nlUrl = new URL(nlPath, Astro.site).toString();
+  return [
+    <link rel="alternate" hreflang="en" href={enUrl} />,
+    <link rel="alternate" hreflang="nl" href={nlUrl} />,
+    <link rel="alternate" hreflang="x-default" href={enUrl} />,
+  ];
+})()}
+
 <!-- Primary Meta Tags -->
 <title>{finalTitle}</title>
 <meta name="title" content={finalTitle} />
