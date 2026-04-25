@@ -26,7 +26,8 @@ const BODY: string[] = [
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
 
-export const EmailCompose = () => {
+type EmailComposeProps = { ratio?: "16/9" | "3/2" | "2/1" | "5/2" | "21/9" };
+export const EmailCompose = ({ ratio = "2/1" }: EmailComposeProps = {}) => {
   const [phase, setPhase] = useState<Phase>("typing-subject");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState<string[]>([""]);
@@ -114,7 +115,7 @@ export const EmailCompose = () => {
       crumb="Portal / Draft"
       status={phase === "actioned" ? "Actioned" : "Drafting"}
       statusTone={phase === "actioned" ? "teal" : "orange"}
-      ratio="2/1"
+      ratio={ratio}
     >
       <style>{`
         @keyframes ec-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }

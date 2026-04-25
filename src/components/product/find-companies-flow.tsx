@@ -67,7 +67,8 @@ const CONF: Record<Conf, { label: string; bg: string; fg: string; icon: string }
   low: { label: "Low confidence", bg: "rgba(220,38,38,0.12)", fg: "#b91c1c", icon: "arrow" },
 };
 
-export const FindCompaniesFlow = () => {
+type FindCompaniesFlowProps = { ratio?: "16/9" | "3/2" | "2/1" | "5/2" | "21/9" };
+export const FindCompaniesFlow = ({ ratio = "2/1" }: FindCompaniesFlowProps = {}) => {
   const [step, setStep] = useState(0);
   const [typed, setTyped] = useState("");
   const [reduced, setReduced] = useState(false);
@@ -132,7 +133,7 @@ export const FindCompaniesFlow = () => {
       crumb={step === 0 ? "Prospecting / Find me companies" : step === 1 ? "Prospecting / Select" : "Prospecting / Contacts"}
       status={step === 0 ? "Drafting" : step === 1 ? "6 found" : "Verifying"}
       statusTone={step === 0 ? "blue" : step === 1 ? "teal" : "orange"}
-      ratio="2/1"
+      ratio={ratio}
     >
       <style>{`
         @keyframes fc-caret { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
