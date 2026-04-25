@@ -75,9 +75,33 @@ export const Footer = () => (
         <p className="text-xs text-white/30">
           &copy; {new Date().getFullYear()} Hooklyne. All rights reserved.
         </p>
-        <p className="text-xs text-white/30">
-          KVK: <span className="text-white/40">99990512</span>
-        </p>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <a
+              href="#"
+              aria-label="Hooklyne on X"
+              rel="noopener me"
+              className="inline-flex size-8 items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2H21.5l-7.39 8.443L23 22h-6.828l-5.347-6.99L4.7 22H1.44l7.91-9.04L1 2h6.99l4.83 6.39L18.244 2Zm-1.197 18h1.812L7.05 4H5.117l11.93 16Z"/>
+              </svg>
+            </a>
+            <a
+              href="#"
+              aria-label="Hooklyne on LinkedIn"
+              rel="noopener me"
+              className="inline-flex size-8 items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM6.999 20.452H3.673V9h3.326v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.728v20.544C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.272V1.728C24 .774 23.2 0 22.225 0Z"/>
+              </svg>
+            </a>
+          </div>
+          <p className="text-xs text-white/30">
+            KVK: <span className="text-white/40">99990512</span>
+          </p>
+        </div>
       </div>
     </div>
   </footer>
