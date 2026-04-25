@@ -17,9 +17,9 @@ function readFromDom(): Lang {
 /**
  * Paths that have a real NL translation. Add to this list as more pages
  * are translated. Anything not in this set falls back to /nl when
- * switching en -> nl.
+ * switching en -> nl. See DOCS/i18n-sync-tracker.md for the canonical list.
  */
-const NL_AVAILABLE = new Set<string>(["/", "/nl"]);
+const NL_AVAILABLE = new Set<string>(["/nl"]);
 
 /**
  * Navigate to the equivalent URL in the other language.

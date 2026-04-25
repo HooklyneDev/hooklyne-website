@@ -38,7 +38,7 @@ Blog/docs: skip for v1.
 
 - **Approach first, confirm, then build**
 - Never hardcode colors - always CSS vars
-- EN + NL translations on every page (inline pattern, no i18n library)
+- EN + NL translations on every page (inline pattern via `useLang`, no i18n library). NL is **transcreation, not translation** - rewrite the idea in native Dutch B2B MKB voice (10-50 employees), use 'je' not 'u', short sentences, drop English idioms. Loanwords OK only where standard (sales, outreach, signal, prospect, pipeline, lead). Every copy change ships EN + NL in the **same commit** - no "I'll do NL after." See `DOCS/i18n-sync-tracker.md` for which pages are paired.
 - No em dashes ever - use ` - ` or rewrite the sentence
 - No AI-style writing: no "delve", "dive into", "unleash", "seamlessly", "robust", "leverage", "cutting-edge", "game-changing", "revolutionize", "transformative", "unlock", "empower", "elevate". Write like a direct person, not a press release.
 - No typical AI design patterns: no purple/violet gradient hero blobs, no sparkle/star icons as decorative filler, no "magical" positioning language, no floating card stacks as fake social proof, no infinite scroll testimonial carousels with avatar grids. Design should feel product-led and B2B credible.
