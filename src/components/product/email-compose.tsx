@@ -160,7 +160,7 @@ export const EmailCompose = () => {
             </span>
           </div>
 
-          <div className="px-3 sm:px-4 py-2 sm:py-3 flex-1 text-[11px] sm:text-[13px] leading-relaxed overflow-hidden min-h-0" style={{ color: "var(--foreground)" }}>
+          <div className="px-3 sm:px-4 py-2 sm:py-3 flex-1 text-[12px] sm:text-[13px] leading-relaxed overflow-hidden min-h-0" style={{ color: "var(--foreground)" }}>
             {body.map((line, i) => (
               <p key={i} className="min-h-[1em]">
                 {line}

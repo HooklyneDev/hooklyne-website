@@ -255,7 +255,7 @@ export const FindCompaniesFlow = () => {
                       <span className="text-[9px] sm:text-[10px] font-bold" style={{ color: "var(--muted-foreground)" }}>#{c.n}</span>
                       <span className="text-[11px] sm:text-[13px] font-semibold" style={{ color: "var(--heading)" }}>{c.name}</span>
                       <span className="text-[9px] sm:text-[10px] truncate" style={{ color: "var(--hooklyne-blue)" }}>{c.domain}</span>
-                      <span className="text-[8px] sm:text-[9px] px-1 py-0.5 rounded" style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--muted-foreground)" }}>{c.size}</span>
+                      <span className="text-[9px] px-1 py-0.5 rounded" style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--muted-foreground)" }}>{c.size}</span>
                       <span className="text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>{c.city}</span>
                     </div>
                     <p className="text-[10px] sm:text-[11px] leading-snug mb-1 sm:mb-1.5 line-clamp-1 sm:line-clamp-2" style={{ color: "var(--foreground)" }}>{c.body}</p>
@@ -280,7 +280,7 @@ export const FindCompaniesFlow = () => {
                   <span className="text-[9px] sm:text-[10px]" style={{ color: "var(--hooklyne-blue)" }}>ekomenu.nl</span>
                 </div>
               </div>
-              <div className="flex-1 grid grid-cols-3 gap-1.5 sm:gap-2 min-h-0">
+              <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2 min-h-0">
                 {CONTACTS.map((c, i) => {
                   const conf = CONF[c.conf];
                   return (
