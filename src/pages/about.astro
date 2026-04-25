@@ -2,22 +2,53 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MessagesSquare, Target, PenLine, Calendar, Mail, Compass } from 'lucide-react';
 
 const values = [
   {
+    icon: MessagesSquare,
     title: "Selling is still personal.",
-    body: "The world is digital. Buying still isn't. Software should free you up for the conversation, not try to handle it for you. The relationship is the rep's, not the tool's.",
+    body: "Buying decisions still come down to one person picking up the phone. Software should free you up for that conversation, not pretend to replace it. The relationship is your rep's, not the tool's.",
   },
   {
+    icon: Target,
     title: "Quality over volume.",
-    body: "Fifty real hooks beat five hundred weak ones. Every time.",
+    body: "Fifty real hooks beat five hundred weak ones. We'd rather ship ten prospects you'd actually be proud to send than a hundred you'd be embarrassed by.",
   },
   {
+    icon: PenLine,
     title: "Outreach you'd sign your name to.",
-    body: "Generic outreach burns sender reputation fast. Four reasoning passes, a quality check, and if it's not ready, it doesn't ship.",
+    body: "Generic outreach burns sender reputation fast. Four reasoning passes, a quality check, and if it's not ready, it doesn't ship. Even if that means we ship fewer.",
   },
 ];
+
+const pillars = [
+  {
+    icon: Calendar,
+    title: "Founder-led onboarding.",
+    body: "Your first ICP setup runs through Tim, not a junior. 30 minutes on a call. We learn what you sell, who you sell to, and how you actually talk to them.",
+  },
+  {
+    icon: Mail,
+    title: "Direct team access.",
+    body: "One Slack channel or email thread per customer. Replies inside four hours during business days. No ticket queue, no script, no chat-bot triage.",
+  },
+  {
+    icon: Compass,
+    title: "Your sector shapes the defaults.",
+    body: "The first ten prospects in your pilot calibrate the system to your market. We keep tuning until the output reads like your rep wrote it after doing the research.",
+  },
+];
+
+const replaced = [
+  "Apollo / Cognism / Lusha",
+  "Clay or Findymail",
+  "ChatGPT or Claude",
+  "A spreadsheet of signals",
+  "A second sequencer for warm-up",
+  "The hour you spent writing each email",
+];
+
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -28,7 +59,7 @@ const breadcrumb = breadcrumbList([
 
 <DefaultLayout
   title="About | Hooklyne"
-  description="Why we built Hooklyne, who's behind it, and how we think about B2B prospecting research."
+  description="A small Dutch team building B2B prospect research for SMEs. Founder-led pilots, direct access, your sector shapes the defaults."
   image="/og/about.jpg"
   ctaVariant="about"
 >
@@ -46,7 +77,7 @@ const breadcrumb = breadcrumbList([
       "areaServed": ["NL", "BE", "GB", "LU"],
       "founder": {
         "@type": "Person",
-        "name": "Tim",
+        "name": "Tim Wissink",
         "jobTitle": "Founder",
         "worksFor": { "@type": "Organization", "name": "Hooklyne" }
       },
@@ -59,10 +90,10 @@ const breadcrumb = breadcrumbList([
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">About</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Proper research, without cutting outreach volume.
+          A small team that does the research itself.
         </h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-          The research layer most B2B teams can't afford to staff. So we built it.
+          Until we grow, you get us. The people who built the workflow run your pilot, set up your ICP, and answer the phone when something breaks.
         </p>
       </div>
     </section>
@@ -71,25 +102,100 @@ const breadcrumb = breadcrumbList([
   <Background variant="bottom">
     <section class="py-14 md:py-16 lg:py-20" data-fade>
       <div class="container max-w-6xl">
-        <div class="max-w-3xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Why we built this</p>
-        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
-          Seven tabs, one prospect, no time.
-        </h2>
-        <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
-          <p>
-            We come from international B2B sales. Most of those years were spent moving between subscriptions - one tool for company data, another for contacts, another for signals, a CRM that didn't talk to any of them. The workflow lived in seven tabs.
-          </p>
-          <p>
-            Every week meant hours shuffling information from one place to the next, just to brief a single prospect. We tried every shortcut. We paid for tools we used twice. When we looked at agencies, the quotes came back higher than the monthly quota delivered.
-          </p>
-          <p>
-            There wasn't enough time to do it all in-house, and there wasn't budget to hand it off. So we stopped working around it and started building the thing we wished existed.
-          </p>
-          <p class="text-[var(--heading)] font-medium text-lg">
-            One place. One prospect. All the context a researcher would hand you. Under a minute to review.
+        <div class="grid lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-start">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Why we built this</p>
+            <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
+              Ten years of doing the job. Built from every limit we hit.
+            </h2>
+            <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
+              <p>
+                Hooklyne wasn't built in a vacuum. Ten-plus years of running outbound at international B2B companies came first - selling, being sold to, hiring SDRs, firing agencies, and trying every tool the market threw at us.
+              </p>
+              <p>
+                Most of those years went into moving information between subscriptions: one tool for company data, another for contacts, another for signals, a CRM that didn't talk to any of them. The workflow lived in seven tabs. Every week, hours of shuffling rows just to brief one prospect.
+              </p>
+              <p>
+                We kept a list of every limitation. Bounce rates from single-source databases. AI agents that hallucinated buying signals. Templates that read as templates. Agency quotes higher than the quota they promised. ChatGPT drafts that needed rewriting twice before they sounded like us.
+              </p>
+              <p>
+                Hooklyne is what happens when you stop working around those limits and build a complete tool for the sales rep instead - the rep who has to actually open the inbox on Monday morning, not the buyer signing the SaaS contract.
+              </p>
+              <p class="text-[var(--heading)] font-medium text-lg">
+                One place. One prospect. All the context a researcher would hand you. Under a minute to review.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:pt-12">
+            <div class="rounded-2xl p-6 md:p-7" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hooklyne-orange)] mb-4">What we replaced</p>
+              <ul class="space-y-2.5">
+                {replaced.map((r) => (
+                  <li class="flex items-center gap-2.5 text-sm text-[var(--muted-foreground)]">
+                    <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--hooklyne-orange);"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                    <span class="line-through">{r}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="my-5 h-px" style="background: var(--border);"></div>
+              <div class="flex items-center gap-2.5 text-sm font-semibold text-[var(--heading)]">
+                <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--hooklyne-teal);"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>One Hooklyne portal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10 lg:mb-12">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">How we work with you</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            While we're small, you get direct access.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Three pilots in. We're not a SaaS support queue yet, and we don't pretend to be. The founder runs your setup, the team answers your messages, and the output is shaped by you, not by an average customer that doesn't exist.
           </p>
         </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {pillars.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div class="rounded-2xl p-6 md:p-7 flex flex-col" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xs);">
+                <span class="inline-flex items-center justify-center size-10 rounded-xl mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <Icon className="size-5" />
+                </span>
+                <h3 class="text-lg font-semibold text-[var(--heading)] tracking-tight mb-2 leading-snug">{p.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{p.body}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div class="mt-8 rounded-2xl p-5 md:p-6 flex items-center gap-4 md:gap-5" style="background: var(--hooklyne-navy); color: white;">
+          <picture class="shrink-0">
+            <source srcset="/about/tim-wissink.webp" type="image/webp" />
+            <img
+              src="/about/tim-wissink.jpg"
+              alt="Tim Wissink, founder of Hooklyne"
+              loading="lazy"
+              decoding="async"
+              width="80"
+              height="80"
+              class="size-14 md:size-16 rounded-full object-cover"
+              style="border: 2px solid rgba(255,255,255,0.18);"
+            />
+          </picture>
+          <div class="min-w-0">
+            <p class="text-sm md:text-base font-medium leading-snug mb-1">
+              "Every pilot still goes through me. That stays true until we hire, and probably a while after."
+            </p>
+            <p class="text-xs text-white/65">Tim Wissink &middot; Founder, Hooklyne</p>
+          </div>
         </div>
       </div>
     </section>
@@ -153,19 +259,26 @@ const breadcrumb = breadcrumbList([
     <section class="py-14 md:py-16 lg:py-20" data-fade>
       <div class="container max-w-6xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">What we care about</p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-12 leading-[1.1] max-w-2xl">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-10 leading-[1.1] max-w-2xl">
           Three rules we write down and keep.
         </h2>
-        <div class="divide-y divide-[var(--border)]">
-          {values.map((v, i) => (
-            <div class="grid grid-cols-[auto_1fr] gap-6 md:gap-12 py-8 first:pt-0 last:pb-0">
-              <div class="font-mono text-sm text-[var(--muted-foreground)] pt-1">0{i + 1}</div>
-              <div>
-                <h3 class="text-xl md:text-2xl font-semibold text-[var(--heading)] mb-2 leading-tight tracking-tight">{v.title}</h3>
-                <p class="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl">{v.body}</p>
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {values.map((v, i) => {
+            const Icon = v.icon;
+            return (
+              <div class="rounded-2xl p-6 md:p-7 flex flex-col h-full" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xs);">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="font-mono text-xs text-[var(--muted-foreground)]">0{i + 1}</span>
+                  <span class="h-3 w-px bg-[var(--border)]"></span>
+                  <span class="inline-flex items-center justify-center size-7 rounded-lg" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                    <Icon className="size-4" />
+                  </span>
+                </div>
+                <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] mb-2 leading-snug tracking-tight">{v.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{v.body}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -265,24 +378,3 @@ const breadcrumb = breadcrumbList([
 
   </Background>
 </DefaultLayout>
-
-<style>
-  .shape-dot {
-    box-shadow: 0 0 0 0 currentColor;
-    animation: shape-dot-pulse 6s ease-in-out infinite;
-  }
-  .shape-dot-0 { animation-delay: 0s; }
-  .shape-dot-1 { animation-delay: 1.5s; }
-  .shape-dot-2 { animation-delay: 3s; }
-  .shape-dot-3 { animation-delay: 4.5s; }
-
-  @keyframes shape-dot-pulse {
-    0%, 80%, 100% { transform: scale(1); opacity: 1; }
-    5% { transform: scale(1.6); opacity: 0.8; }
-    10% { transform: scale(1); opacity: 1; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .shape-dot { animation: none; }
-  }
-</style>
