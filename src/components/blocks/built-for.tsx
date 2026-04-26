@@ -42,27 +42,27 @@ const NL = {
   statements: [
     {
       headline: "Founders die zelf verkopen.",
-      body: "Geen ops-team, geen researcher, geen agency-budget. Jij bent de GTM-functie, en Hooklyne is de onderzoekslaag die je zou inhuren als je kon.",
+      body: "Geen ops-team. Geen researcher. Geen agency-budget. Jij bent de GTM-functie. Hooklyne is de onderzoekslaag die je zou inhuren, als je kon.",
     },
     {
-      headline: "Salesteams bij bedrijven van 10 tot 100 man.",
-      body: "Eén rep of acht, een CRM, misschien een sequencer. Je kent je ICP, maar je verbrandt uren met prospect-onderzoek. Hooklyne geeft die uren terug, en schaalt mee als je team groeit.",
+      headline: "Salesteams bij bedrijven van 10 tot 100.",
+      body: "Eén rep of acht. Een CRM, misschien een sequencer. Je kent je ICP, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat over en groeit mee.",
     },
     {
-      headline: "Teams waarbij één goed gesprek vijftig koude mails waard is.",
-      body: "Complexe aanbiedingen. Weloverwogen kopers. Niche ICPs. Waar spray-and-pray je reputatie schaadt en de mail de reply moet verdienen.",
+      headline: "Teams waar één goed gesprek vijftig koude mails waard is.",
+      body: "Complexe propositie. Kritische kopers. Niche ICP. Waar spray-and-pray je reputatie sloopt en de mail de reply moet verdienen.",
     },
   ],
   cards: [
     {
       sector: "B2B engineering",
       signal: "Uitbreiding fabriek aangekondigd.",
-      opener: "Zag de uitbreiding in Rotterdam. Benieuwd of jullie controls engineers extern inhuren of intern opbouwen.",
+      opener: "Zag de uitbreiding in Rotterdam. Benieuwd of jullie controls engineers extern inhuren of zelf opleiden.",
     },
     {
       sector: "B2B food",
-      signal: "Nieuwe Head of Procurement-rol geplaatst.",
-      opener: "Meestal een signaal voor een leveranciersreview. De moeite waard om kort kennis te maken voordat de nieuwe lead start?",
+      signal: "Nieuwe Head of Procurement-rol open.",
+      opener: "Meestal een signaal voor een leveranciersreview. Korte kennismaking voor de nieuwe lead start?",
     },
     {
       sector: "B2B energy",
