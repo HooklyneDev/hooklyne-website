@@ -212,11 +212,11 @@
   --bg-glow-corner: rgba(13, 148, 136, 0.04);
 
   /* Liquid glass */
-  --glass-bg:          rgba(241, 245, 249, 0.72);
-  --glass-bg-scrolled: rgba(241, 245, 249, 0.88);
-  --glass-border:      rgba(255, 255, 255, 0.70);
-  --glass-highlight:   rgba(255, 255, 255, 0.90);
-  --glass-shadow:      0 8px 32px rgba(2, 47, 81, 0.10), 0 2px 8px rgba(2, 47, 81, 0.06);
+  --glass-bg:          rgba(255, 255, 255, 0.45);
+  --glass-bg-scrolled: rgba(255, 255, 255, 0.62);
+  --glass-border:      rgba(255, 255, 255, 0.55);
+  --glass-highlight:   rgba(255, 255, 255, 0.95);
+  --glass-shadow:      0 8px 32px rgba(2, 47, 81, 0.08), 0 2px 8px rgba(2, 47, 81, 0.05);
 
   --font-dm-sans: "DM Sans", sans-serif;
 
