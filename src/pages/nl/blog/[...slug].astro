@@ -1,0 +1,65 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+import { BlogPost } from '@/components/blocks/blog-post';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { SITE_URL } from '@/consts';
+import { breadcrumbList } from '@/lib/seo';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog_nl');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog_nl'>;
+
+const post = Astro.props;
+const { title, description, pubDate, updatedDate, image, authorName } = post.data;
+const { Content } = await render(post);
+
+const ogImage = `/og/blog-${post.id}.jpg`;
+
+const canonicalUrl = `${SITE_URL}/nl/blog/${post.id}`;
+const blogPostingSchema = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	inLanguage: "nl-NL",
+	headline: title,
+	description,
+	image: image ? new URL(image, SITE_URL).toString() : `${SITE_URL}${ogImage}`,
+	datePublished: pubDate.toISOString(),
+	dateModified: (updatedDate ?? pubDate).toISOString(),
+	author: { "@type": authorName ? "Person" : "Organization", name: authorName ?? "Hooklyne" },
+	publisher: {
+		"@type": "Organization",
+		name: "Hooklyne",
+		logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.svg` },
+	},
+	mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+};
+
+const breadcrumb = breadcrumbList([
+	{ name: 'Home', path: '/nl' },
+	{ name: 'Blog', path: '/nl/blog' },
+	{ name: title, path: `/nl/blog/${post.id}` },
+]);
+---
+<DefaultLayout
+	title={`${title} | Hooklyne Blog`}
+	description={description}
+	image={ogImage}
+	ogType="article"
+	publishedTime={pubDate.toISOString()}
+	modifiedTime={(updatedDate ?? pubDate).toISOString()}
+>
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(blogPostingSchema)} />
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+	<div class="py-28 lg:pt-44 lg:pb-32">
+		<BlogPost post={post} client:only='react' >
+			<Content />
+		</BlogPost>
+	</div>
+</DefaultLayout>

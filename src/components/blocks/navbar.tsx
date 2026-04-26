@@ -28,7 +28,7 @@ const NL_ITEMS: NavItem[] = [
   {
     label: "Resources",
     children: [
-      { label: "Blog", href: "/blog" },
+      { label: "Blog", href: "/nl/blog" },
       { label: "FAQ", href: "/nl/faq" },
       { label: "Support", href: "/nl/resources/support" },
     ],

@@ -32,6 +32,7 @@ const NL_AVAILABLE = new Set<string>([
   "/nl/disclaimer",
   "/nl/resources",
   "/nl/resources/support",
+  "/nl/blog",
 ]);
 
 /**
