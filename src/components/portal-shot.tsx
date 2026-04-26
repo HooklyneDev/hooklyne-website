@@ -125,7 +125,7 @@ export const PortalShot = ({
 
         {/* Shot */}
         <div
-          className="relative border border-t-0 rounded-b-2xl"
+          className="glass-off relative border border-t-0 rounded-b-2xl"
           style={{
             paddingBottom: RATIO_PB[ratio],
             borderColor: "var(--border)",

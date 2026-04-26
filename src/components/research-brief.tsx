@@ -53,7 +53,7 @@ export const ResearchBrief = () => {
 
         {/* Body */}
         <div
-          className="relative border border-t-0 rounded-b-2xl p-6 lg:p-8"
+          className="glass-off relative border border-t-0 rounded-b-2xl p-6 lg:p-8"
           style={{
             borderColor: "var(--border)",
             background: `radial-gradient(ellipse 60% 40% at 30% 20%, rgba(52,76,163,0.10), transparent 60%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(13,148,136,0.06), transparent 60%), linear-gradient(135deg, var(--card) 0%, var(--card-hover) 100%)`,

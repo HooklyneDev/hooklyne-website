@@ -116,7 +116,7 @@ export const GraphicShell = ({
 
         {responsiveCss && <style>{responsiveCss}</style>}
         <div
-          className={`relative border border-t-0 rounded-b-2xl overflow-hidden ${stageClass}`}
+          className={`glass-off relative border border-t-0 rounded-b-2xl overflow-hidden ${stageClass}`}
           style={{
             paddingBottom: RATIO_PB[ratio],
             borderColor: "var(--border)",
