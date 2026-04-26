@@ -27,7 +27,7 @@ const EN = {
 };
 
 const NL = {
-  tagline: "Onderzoeksgedreven prospectpakketten in de stem van je rep. Niet meer. Slimmer.",
+  tagline: "Onderzoeksgedreven prospectpakketten in de stem van je vertegenwoordiger. Niet meer. Slimmer.",
   status: "Alles draait soepel",
   productCol: { title: "Product", links: [
     { label: "Product", href: "/nl/product" },

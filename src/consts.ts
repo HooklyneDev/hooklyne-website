@@ -9,7 +9,7 @@ export const SITE_DESCRIPTION =
 export const SITE_TITLE_NL =
   "Prospectonderzoek voor Nederlandse en Britse B2B-teams | Hooklyne";
 export const SITE_DESCRIPTION_NL =
-  "Geverifieerde contacten, live signalen en een eerste conceptmail voor Nederlandse, Britse en EMEA B2B-teams van 10 tot 100 personen. Native in het Nederlands en Engels. Vanaf €39 per maand.";
+  "Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 20+ databronnen en real-time koopsignalen volgt voor Nederlandse, Britse en EMEA B2B-teams van 10 tot 100 personen. Native in Nederlands en Engels, vanaf €39 per maand.";
 
 export const SITE_METADATA = {
   title: {

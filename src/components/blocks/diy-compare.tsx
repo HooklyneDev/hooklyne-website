@@ -262,7 +262,7 @@ const NL_TABS: TabDef[] = [
         detail: "Elke prospect komt binnen met een signaal: fundingronde, hire, leiderschapswissel, launch. Dubbel gescoord - één keer voor het bedrijf, één keer voor wat jij verkoopt. Alleen wat door beide komt, bereikt jou.",
         time: "auto", callout: "Een reden om contact te zoeken, geen kale naam.", good: true },
       { step: "4", label: "Volledige mail, in jouw stem geschreven",
-        detail: "Vier reasoning-passes: hook, invalshoek, stem, kwaliteitscheck. Leest alsof je rep het schreef nadat-ie het onderzoek had gedaan.",
+        detail: "Vier reasoning-passes: hook, invalshoek, stem, kwaliteitscheck. Leest alsof je vertegenwoordiger het zelf schreef, nadat hij het onderzoek had gedaan.",
         time: "auto", callout: "Niet generiek. NL of EN, vast voor die prospect.", good: true },
       { step: "5", label: "Volg signalen op die lead",
         detail: "Volg elke lead voor doorlopende signalen: nieuwe funding, teamveranderingen, persvermeldingen. Je krijgt een seintje als het moment verandert - niet als de kalender dat zegt.",
