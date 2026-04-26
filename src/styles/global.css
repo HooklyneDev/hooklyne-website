@@ -396,7 +396,7 @@
   [style*="background-color: var(--card)"]:not(.glass-off),
   [style*="background-color:var(--card)"]:not(.glass-off) {
     background-color: rgba(255, 255, 255, 0.78) !important;
-    border-color: var(--glass-border) !important;
+    border-color: rgba(2, 47, 81, 0.08) !important;
     box-shadow:
       var(--shadow-sm),
       inset 0 1px 0 var(--glass-highlight) !important;
