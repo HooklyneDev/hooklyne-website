@@ -377,6 +377,40 @@
   [class*="border"] {
     @apply border-border;
   }
+
+  /* ─────────────────────────────────────────────────────────────
+     Liquid glass — applies to all card surfaces site-wide.
+     Catches both usage patterns:
+       1. Tailwind class:  bg-[var(--card)]
+       2. Inline style:    style="background: var(--card)"
+     Backdrop-filter is desktop-only (md+) for mobile perf;
+     mobile falls back to a lightly tinted opaque white.
+     Opt-out with the .glass-off class on the element.
+     ───────────────────────────────────────────────────────────── */
+  .glass-surface,
+  .bg-\[var\(--card\)\]:not(.glass-off),
+  [style*="background: var(--card)"]:not(.glass-off),
+  [style*="background:var(--card)"]:not(.glass-off),
+  [style*="background-color: var(--card)"]:not(.glass-off),
+  [style*="background-color:var(--card)"]:not(.glass-off) {
+    background-color: rgba(255, 255, 255, 0.78) !important;
+    box-shadow:
+      var(--shadow-sm),
+      inset 0 1px 0 var(--glass-highlight);
+  }
+
+  @media (min-width: 768px) {
+    .glass-surface,
+    .bg-\[var\(--card\)\]:not(.glass-off),
+    [style*="background: var(--card)"]:not(.glass-off),
+    [style*="background:var(--card)"]:not(.glass-off),
+    [style*="background-color: var(--card)"]:not(.glass-off),
+    [style*="background-color:var(--card)"]:not(.glass-off) {
+      background-color: rgba(255, 255, 255, 0.62) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+  }
 }
 
 @keyframes portal-float {
