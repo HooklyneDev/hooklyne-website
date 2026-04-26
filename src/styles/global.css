@@ -389,12 +389,17 @@
      ───────────────────────────────────────────────────────────── */
   .glass-surface,
   .bg-card:not(.glass-off),
+  .bg-popover:not(.glass-off),
+  .bg-muted:not(.glass-off):not(.h-1):not(.h-1\.5):not(.h-2),
   .bg-white:not(.glass-off):not(button):not(svg *),
   .bg-\[var\(--card\)\]:not(.glass-off),
+  .bg-\[var\(--background\)\]:not(.glass-off),
   [style*="background: var(--card)"]:not(.glass-off),
   [style*="background:var(--card)"]:not(.glass-off),
   [style*="background-color: var(--card)"]:not(.glass-off),
-  [style*="background-color:var(--card)"]:not(.glass-off) {
+  [style*="background-color:var(--card)"]:not(.glass-off),
+  [style*="background: var(--background)"]:not(.glass-off),
+  [style*="background:var(--background)"]:not(.glass-off) {
     background-color: rgba(255, 255, 255, 0.78) !important;
     border-color: rgba(2, 47, 81, 0.08) !important;
     box-shadow:
@@ -405,12 +410,17 @@
   @media (min-width: 768px) {
     .glass-surface,
     .bg-card:not(.glass-off),
+    .bg-popover:not(.glass-off),
+    .bg-muted:not(.glass-off):not(.h-1):not(.h-1\.5):not(.h-2),
     .bg-white:not(.glass-off):not(button):not(svg *),
     .bg-\[var\(--card\)\]:not(.glass-off),
+    .bg-\[var\(--background\)\]:not(.glass-off),
     [style*="background: var(--card)"]:not(.glass-off),
     [style*="background:var(--card)"]:not(.glass-off),
     [style*="background-color: var(--card)"]:not(.glass-off),
-    [style*="background-color:var(--card)"]:not(.glass-off) {
+    [style*="background-color:var(--card)"]:not(.glass-off),
+    [style*="background: var(--background)"]:not(.glass-off),
+    [style*="background:var(--background)"]:not(.glass-off) {
       background-color: rgba(255, 255, 255, 0.62) !important;
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
