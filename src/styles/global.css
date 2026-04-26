@@ -399,7 +399,8 @@
   [style*="background-color: var(--card)"]:not(.glass-off),
   [style*="background-color:var(--card)"]:not(.glass-off),
   [style*="background: var(--background)"]:not(.glass-off),
-  [style*="background:var(--background)"]:not(.glass-off) {
+  [style*="background:var(--background)"]:not(.glass-off),
+  [style*="var(--card-hover)"]:not(.glass-off) {
     background-image: none !important;
     background-color: rgba(255, 255, 255, 0.85) !important;
     border-color: rgba(2, 47, 81, 0.08) !important;
