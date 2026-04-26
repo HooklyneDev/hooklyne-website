@@ -121,11 +121,12 @@ export const Navbar = () => {
                     {/* Dropdown */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 hidden group-hover:block">
                       <div
-                        className="min-w-[160px] rounded-xl py-1.5"
+                        className="min-w-[160px] rounded-xl py-1.5 backdrop-blur-xl backdrop-saturate-[180%]"
                         style={{
-                          background: "var(--card)",
-                          border: "1px solid var(--border)",
-                          boxShadow: "var(--shadow-lg)",
+                          background: "rgba(255, 255, 255, 0.62)",
+                          border: "1px solid var(--glass-border)",
+                          boxShadow: `var(--glass-shadow), inset 0 1px 0 var(--glass-highlight)`,
+                          WebkitBackdropFilter: "blur(20px) saturate(180%)",
                         }}
                       >
                         {link.children.map((c) => (
@@ -181,11 +182,12 @@ export const Navbar = () => {
               </button>
               {langOpen && (
                 <div
-                  className="absolute top-full right-0 mt-2 min-w-[160px] rounded-xl py-1.5 z-50"
+                  className="absolute top-full right-0 mt-2 min-w-[160px] rounded-xl py-1.5 z-50 backdrop-blur-xl backdrop-saturate-[180%]"
                   style={{
-                    background: "var(--card)",
-                    border: "1px solid var(--border)",
-                    boxShadow: "var(--shadow-lg)",
+                    background: "rgba(255, 255, 255, 0.62)",
+                    border: "1px solid var(--glass-border)",
+                    boxShadow: `var(--glass-shadow), inset 0 1px 0 var(--glass-highlight)`,
+                    WebkitBackdropFilter: "blur(20px) saturate(180%)",
                   }}
                   role="menu"
                 >

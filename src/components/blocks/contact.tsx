@@ -171,7 +171,7 @@ export const Contact = () => {
           <button
             type="button"
             onClick={() => scrollToForm("Pilot")}
-            className="group relative text-left rounded-2xl p-5 flex flex-col gap-3 min-h-0 transition-all hover:-translate-y-0.5 overflow-hidden"
+            className="glass-off group relative text-left rounded-2xl p-5 flex flex-col gap-3 min-h-0 transition-all hover:-translate-y-0.5 overflow-hidden"
             style={{
               background: `
                 radial-gradient(ellipse 60% 40% at 30% 0%, rgba(255,140,66,0.14), transparent 65%),
