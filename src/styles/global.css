@@ -447,8 +447,23 @@ body {
 }
 body {
   position: relative;
-  background-color: var(--background);
+  background-color: #eef2f7;
   color: var(--foreground);
+  min-height: 100vh;
+}
+/* Soft, fixed page gradient. Uses pseudo-element so it never tiles
+   with scroll and never produces a harsh seam under glass cards. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 0%,    rgba(52, 76, 163, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 70% at 85% 100%,  rgba(13, 148, 136, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 30%,  rgba(255, 140, 66, 0.03) 0%, transparent 60%),
+    linear-gradient(180deg, #f3f6fa 0%, #eaeff5 100%);
 }
 
 /* Blog article prose. Matches site typography and CSS vars. */
