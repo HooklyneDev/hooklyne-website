@@ -444,6 +444,12 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* Promote to its own compositor layer so the gradient doesn't
+     repaint on every scroll frame. Eliminates flicker on fast
+     scroll across all browsers. */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
   background:
     radial-gradient(ellipse 65% 50% at 8% 5%,    rgba(52, 76, 163, 0.18) 0%, transparent 65%),
     radial-gradient(ellipse 75% 60% at 95% 95%,  rgba(255, 140, 66, 0.22) 0%, transparent 65%),
