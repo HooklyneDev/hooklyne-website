@@ -83,7 +83,7 @@ const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
   product: {
     kicker: "Probeer het product",
     heading: "Hooklyne op tien van je eigen targets.",
-    body: "Klik door het portaal, bekijk de prospect-kaarten en lees de drafts op echte accounts uit jouw markt. In ruil vragen we twintig minuten feedback.",
+    body: "Klik door het portaal, bekijk de prospectkaarten en lees de drafts op echte accounts uit jouw markt. In ruil vragen we twintig minuten feedback.",
     primaryLabel: "Start je gratis pilot",
     secondaryLabel: "Zie hoe het werkt",
     secondaryHref: "/nl/hoe-het-werkt",
