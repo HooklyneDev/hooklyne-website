@@ -31,7 +31,7 @@ const EN_T = {
 
 const NL_T = {
   heading: "Heldere prijzen.",
-  sub: "Eén credit-systeem. Elke actie transparant geprijsd. Op elk moment van plan wisselen of opzeggen.",
+  sub: "Eén credit-systeem. Elke actie transparant geprijsd. Wissel van plan of zeg op wanneer je wilt.",
   recommended: "Meest gekozen",
   from: "vanaf",
   perMonth: "/mnd",
@@ -40,7 +40,7 @@ const NL_T = {
   secondary: "Of start een gratis pilot",
   primaryHref: "/nl/prijzen",
   secondaryHref: "/nl/contact",
-  founderQuote: "“De meeste teams kunnen niet kiezen tussen goed onderzoek en genoeg outreach, dus leveren ze allebei in. Hooklyne is wat we bouwden om daarmee te stoppen.”",
+  founderQuote: "“De meeste teams moeten kiezen tussen goed onderzoek en genoeg outreach. En leveren dus op allebei in. Hooklyne is gebouwd om die keuze weg te nemen.”",
   founderLine: "Tim · Founder · Hooklyne · Nederland",
 };
 
