@@ -7,6 +7,30 @@ This is the reference for writing native Dutch on Hooklyne. Read it before touch
 
 ---
 
+## Register: pro-formal, flowing, not fragment-heavy
+
+Hooklyne sells to MKB sales leaders, not consumers. The right voice is **professional Dutch B2B** — closer to Adyen / Unit4 / Keylane than to WeTransfer. **Use single flowing sentences with comma-separated clauses where the EN does, not period-chopped fragments.** Fragments work for headers and slogans; bodies should breathe like a confident sentence.
+
+**Reference template** (Hero sub):
+> Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 20+ databronnen, real-time koopsignalen volgt en eerste outreach opstelt in de stem van jouw vertegenwoordiger.
+
+That's the bar. Verb-led parallel clauses. Information-dense. Pure Dutch terms where they exist.
+
+## Word choice — pure Dutch where Dutch has the word
+
+| ❌ Loanword we'd been using | ✅ Native Dutch term |
+|---|---|
+| beslissers | besluitvormers |
+| rep | vertegenwoordiger |
+| live (signaal) | real-time (signaal) |
+| werkstroom | workflow (yes, the loanword reads more native here) |
+| sales rep | vertegenwoordiger |
+| signal feed | signaalfeed (compound) |
+
+**Loanwords kept** where Dutch B2B SaaS uses them naturally: workflow, outreach, prospect, ICP, AVG, MKB, B2B, credits, seats, pipeline, deliverability, hook, sender profile, sales (as adjective in compounds like sales-team).
+
+---
+
 ## Reference brands
 
 When in doubt, look at how these Dutch B2B SaaS sites write. They are the bar.
