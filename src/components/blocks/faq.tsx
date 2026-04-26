@@ -16,8 +16,8 @@ const HEAD_EN = {
 };
 const HEAD_NL = {
   eyebrow: "FAQ",
-  headline: "Veelgestelde vragen. Eerlijke antwoorden.",
-  sub: "De vragen die we het vaakst horen. Staat die van jou er niet tussen, mail ons.",
+  headline: "Veelgestelde vragen, eerlijk beantwoord.",
+  sub: "De vragen die we het vaakst horen; staat de jouwe er niet tussen, mail ons dan direct.",
 };
 
 export const FAQ = () => {

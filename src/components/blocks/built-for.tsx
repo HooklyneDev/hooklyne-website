@@ -42,15 +42,15 @@ const NL = {
   statements: [
     {
       headline: "Founders die zelf verkopen.",
-      body: "Geen ops-team. Geen researcher. Geen agency-budget. Jij bent de GTM-functie. Hooklyne is de onderzoekslaag die je zou inhuren, als je kon.",
+      body: "Geen ops-team, geen researcher, geen agency-budget: jij bent de GTM-functie en Hooklyne is de onderzoekslaag die je zou inhuren als je kon.",
     },
     {
       headline: "Salesteams bij bedrijven van 10 tot 100.",
-      body: "Eén rep of acht. Een CRM, misschien een sequencer. Je kent je ICP, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat over en groeit mee.",
+      body: "Eén vertegenwoordiger of acht, een CRM, misschien een sequencer. Je kent je ICP, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
     },
     {
       headline: "Teams waar één goed gesprek vijftig koude mails waard is.",
-      body: "Complexe propositie. Kritische kopers. Niche ICP. Waar spray-and-pray je reputatie sloopt en de mail de reply moet verdienen.",
+      body: "Complexe proposities, kritische kopers en niche-ICP's, waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
     },
   ],
   cards: [

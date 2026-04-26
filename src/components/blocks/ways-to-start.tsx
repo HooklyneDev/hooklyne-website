@@ -33,29 +33,29 @@ const COPY = {
   nl: {
     eyebrow: "Zo begin je",
     heading: "Drie ingangen. Eén pipeline.",
-    sub: "Kies het pad dat past bij wat je al hebt. Elk pad eindigt in My Leads. Klaar om te versturen.",
+    sub: "Kies de ingang die past bij wat je al hebt; elk pad eindigt in My Leads, klaar om te versturen.",
     inputLabel: "Nodig",
     rows: [
       {
         title: "Begin met een beschrijving.",
-        body: "Beschrijf wie je wilt bereiken. Wij zoeken. Wij sorteren op signaal. En vinden het juiste contact bij elk bedrijf.",
+        body: "Beschrijf wie je wilt bereiken; wij zoeken, sorteren op signaalsterkte en vinden het juiste contact bij elk bedrijf.",
         input: "Alleen een beschrijving",
       },
       {
         title: "Begin met een bedrijf.",
-        body: "Naam en domein. We tonen drie beslissers die het best passen. Jij kiest.",
+        body: "Geef ons naam en domein, en wij tonen de drie best passende besluitvormers waaruit jij kiest.",
         input: "Bedrijf + domein",
       },
       {
         title: "Begin met een contact.",
-        body: "Eén naam, of een lijst. Wij verifiëren het mailadres. En schrijven de outreach in je toon.",
+        body: "Eén naam of een hele lijst, en wij verifiëren elk mailadres en schrijven de outreach in de stem van je vertegenwoordiger.",
         input: "Naam + LinkedIn",
       },
     ],
     soon: {
       label: "Binnenkort",
       title: "Vergelijkbare bedrijven.",
-      body: "Upload je beste klanten. Wij vinden lookalikes op grootte, sector en koopsignalen.",
+      body: "Upload je beste klanten en wij vinden lookalikes op basis van grootte, sector en koopsignalen.",
       input: "Een klantenlijst",
     },
   },

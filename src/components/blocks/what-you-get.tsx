@@ -8,8 +8,8 @@ const EN = {
 
 const NL = {
   eyebrow: "Wat je krijgt",
-  headline: "Elke prospect. Compleet op één kaart.",
-  subline: "Geverifieerd contact. Gescoord signaal. Opgestelde mail. Klaar om te beoordelen en de deur uit te sturen.",
+  headline: "Elke prospect, compleet samengesteld.",
+  subline: "Geverifieerd contact, gescoord signaal en een opgestelde mail, allemaal op één kaart en klaar om te beoordelen en te versturen.",
 };
 
 export const WhatYouGet = ({ lang }: { lang?: "en" | "nl" }) => {
