@@ -29,6 +29,19 @@ That's the bar. Verb-led parallel clauses. Information-dense. Pure Dutch terms w
 
 **Loanwords kept** where Dutch B2B SaaS uses them naturally: workflow, outreach, prospect, ICP, AVG, MKB, B2B, credits, seats, pipeline, deliverability, hook, sender profile, sales (as adjective in compounds like sales-team).
 
+**Important:** sometimes the Dutch loanword reads more native than the literal Dutch translation. Don't force a Dutch word just because one exists — if Dutch B2B SaaS sites (Mollie, Adyen, Spotler) actually say `workflow` instead of `werkstroom`, follow that.
+
+| ❌ Forced Dutch | ✅ Loanword that reads native |
+|---|---|
+| werkstroom | workflow |
+| onderzoekswerkstroom | onderzoeksworkflow |
+| afzenderprofiel | sender profile |
+| reputatie van afzender | sender reputation |
+| afleverbaarheid | deliverability |
+| pijplijn | pipeline |
+| zitplaatsen | seats |
+| leadkanaal | pipeline |
+
 ---
 
 ## Reference brands

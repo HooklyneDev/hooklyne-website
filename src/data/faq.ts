@@ -83,7 +83,7 @@ export const faqGroupsNL: Group[] = [
       { q: "Is dit weer zo'n AI-prospecting tool?", a: "Nee. De meeste AI-tools zijn één prompt op één database, terwijl Hooklyne zes gespecialiseerde fases combineert die samenwerken: eerst onderzoek, dan pas schrijven." },
       { q: "Wat is het verschil met een contactdatabase?", a: "Een database geeft je een naam, terwijl Hooklyne je een geverifieerd contact, een actuele aanleiding én een opgestelde mail levert. Databases stoppen bij de regel; wij leveren het hele pakket." },
       { q: "Wat is het verschil met een sales agency?", a: "Een agency kost €2.500+ per maand en haalt het versturen uit jouw handen. Hooklyne kost een fractie daarvan en houdt jou aan het stuur, met het onderzoek al gedaan." },
-      { q: "Gebruikt Hooklyne AI?", a: "Hooklyne combineert verschillende onderzoeks- en datasystemen tot één werkstroom. Wat telt is wat in de inbox terechtkomt, niet wat eronder draait." },
+      { q: "Gebruikt Hooklyne AI?", a: "Hooklyne combineert verschillende onderzoeks- en datasystemen tot één workflow. Wat telt is wat in de inbox terechtkomt, niet wat eronder draait." },
       { q: "Klinkt het bericht alsof een bot het schreef?", a: "Nee. We kalibreren je stem op basis van een interview van 30 minuten en tot vijf voorbeeldmails, en elk concept gaat door vier reasoning-passes voor het bij jou belandt." },
     ],
   },
@@ -99,7 +99,7 @@ export const faqGroupsNL: Group[] = [
       { q: "Hoe vers zijn de signalen?", a: "Binnen uren. We monitoren ook direct mee op bedrijfs- en teampagina's, zodat we nieuwe rollen, stille launches en uitbreidingen op de careers-pagina vaak oppikken voor de pers ze publiceert." },
       { q: "Waarom zie ik niet elke nieuwe hire of persbericht?", a: "Elk signaal krijgt twee scores, een voor relevantie aan hun kant en een voor jouw kant. Alleen signalen die door beide checks komen, belanden in jouw inbox." },
       { q: "Hoe goed is de data?", a: "We versturen alleen geverifieerde contacten, en de viertraps-verificatie houdt de bouncerate ruim onder de 2% safe zone die in de markt gangbaar is." },
-      { q: "Is de data AVG-proof?", a: "Ja. Hooklyne is in Nederland gebouwd en EU-first opgezet; elke provider in de waterval werkt onder de AVG en compliance is van begin af aan ingebakken in de werkstroom, niet er bovenop geplakt." },
+      { q: "Is de data AVG-proof?", a: "Ja. Hooklyne is in Nederland gebouwd en EU-first opgezet; elke provider in de waterval werkt onder de AVG en compliance is van begin af aan ingebakken in de workflow, niet er bovenop geplakt." },
     ],
   },
   {

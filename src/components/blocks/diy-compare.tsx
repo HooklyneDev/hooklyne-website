@@ -244,7 +244,7 @@ const NL_TABS: TabDef[] = [
   {
     key: "hooklyne",
     label: "Hooklyne",
-    sub: "Hele werkstroom",
+    sub: "Hele workflow",
     price: "€39–299/mnd",
     icon: Wrench,
     tone: "teal",
@@ -405,7 +405,7 @@ export const DIYCompare = () => {
   const lang = useLang();
   const TABS = lang === "nl" ? NL_TABS : EN_TABS;
   const labels = lang === "nl" ? {
-    eyebrow: "De werkstroom",
+    eyebrow: "De workflow",
     headline: "Van ICP naar inbox in zes stappen.",
     sub: "Elke stap doet één klus die een echte researcher zou doen. Samen leveren ze prospect-pakketten waar je rep binnen een minuut mee aan de slag kan.",
     compareWith: "Vergelijk met",
