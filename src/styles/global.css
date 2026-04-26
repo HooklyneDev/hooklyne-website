@@ -388,19 +388,24 @@
      Opt-out with the .glass-off class on the element.
      ───────────────────────────────────────────────────────────── */
   .glass-surface,
+  .bg-card:not(.glass-off),
+  .bg-white:not(.glass-off):not(button):not(svg *),
   .bg-\[var\(--card\)\]:not(.glass-off),
   [style*="background: var(--card)"]:not(.glass-off),
   [style*="background:var(--card)"]:not(.glass-off),
   [style*="background-color: var(--card)"]:not(.glass-off),
   [style*="background-color:var(--card)"]:not(.glass-off) {
     background-color: rgba(255, 255, 255, 0.78) !important;
+    border-color: var(--glass-border) !important;
     box-shadow:
       var(--shadow-sm),
-      inset 0 1px 0 var(--glass-highlight);
+      inset 0 1px 0 var(--glass-highlight) !important;
   }
 
   @media (min-width: 768px) {
     .glass-surface,
+    .bg-card:not(.glass-off),
+    .bg-white:not(.glass-off):not(button):not(svg *),
     .bg-\[var\(--card\)\]:not(.glass-off),
     [style*="background: var(--card)"]:not(.glass-off),
     [style*="background:var(--card)"]:not(.glass-off),
