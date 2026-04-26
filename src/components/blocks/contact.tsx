@@ -70,7 +70,7 @@ const NL = {
   pilotBadge: "Meest gekozen",
   demoEyebrow: "20 minuten",
   demoTitle: "Boek een demo",
-  demoBody: "We laten het portaal live zien. Lopen door een echt prospect-pakket. En beantwoorden je vragen.",
+  demoBody: "We laten het portaal live zien. Lopen door een echt prospectpakket. En beantwoorden je vragen.",
   demoCta: "Boek een slot →",
   successTitleSuffix: ". Bericht binnen.",
   successTitlePrefix: "Bedankt",

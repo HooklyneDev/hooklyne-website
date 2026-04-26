@@ -77,7 +77,7 @@ export const faqGroupsNL: Group[] = [
     title: "Hoe Hooklyne werkt",
     short: "Hoe het werkt",
     items: [
-      { q: "Wat doet Hooklyne precies?", a: "Een onderzoeksworkflow die kant-en-klare prospect-pakketten oplevert, met een geverifieerd contact, een real-time koopsignaal en een eerste mail in jouw stem; alles in één portaal en binnen een minuut te beoordelen en te versturen." },
+      { q: "Wat doet Hooklyne precies?", a: "Een onderzoeksworkflow die kant-en-klare prospectpakketten oplevert, met een geverifieerd contact, een real-time koopsignaal en een eerste mail in jouw stem; alles in één portaal en binnen een minuut te beoordelen en te versturen." },
       { q: "Is Hooklyne leadgeneratie-software?", a: "Deels: we leveren leads, maar geen platte lijst. Een leadgeneratie-tool stopt bij een naam en een mailadres, terwijl wij het hele pakket leveren met een geverifieerd contact, een actuele aanleiding en een opgestelde mail. Voor MKB-teams die liever tien goede prospects benaderen dan duizend slechte." },
       { q: "Werkt dit voor koude acquisitie?", a: "Daar is Hooklyne voor gebouwd. Koude acquisitie werkt alleen als de aanleiding klopt en de mail niet als spam leest, dus verifiëren we elk contact, scoren we elk signaal dubbel (relevant voor hen, relevant voor jou) en schrijven we in jouw eigen toon." },
       { q: "Is dit weer zo'n AI-prospecting tool?", a: "Nee. De meeste AI-tools zijn één prompt op één database, terwijl Hooklyne zes gespecialiseerde fases combineert die samenwerken: eerst onderzoek, dan pas schrijven." },
@@ -137,7 +137,7 @@ export const faqGroupsNL: Group[] = [
     title: "Pilots en onboarding",
     short: "Pilots",
     items: [
-      { q: "Wat is de gratis pilot?", a: "Tien volledig opgebouwde prospect-pakketten, gratis, met geverifieerde contacten, real-time signalen en berichten in jouw stem. We vragen er een feedbackgesprek van 20 minuten voor terug." },
+      { q: "Wat is de gratis pilot?", a: "Tien volledig opgebouwde prospectpakketten, gratis, met geverifieerde contacten, real-time signalen en berichten in jouw stem. We vragen er een feedbackgesprek van 20 minuten voor terug." },
       { q: "Hoe lang duurt onboarding?", a: "Onder een week voor één rep, iets langer voor een heel team. Het Sender Profile kost ongeveer 30 minuten per stem, en de ICP-kalibratie vraagt een of twee passes. Growth en Scale krijgen een kickoff-call en een live training voor het hele team." },
       { q: "Moet ik mijn CRM of sequencer aanpassen?", a: "Nee. Je kopieert pakketten in wat je al gebruikt, of verstuurt direct vanuit je inbox." },
       { q: "Wie verstuurt de mails?", a: "Jij. Jouw inbox, jouw domein, jouw reputatie." },

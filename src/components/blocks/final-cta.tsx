@@ -67,7 +67,7 @@ const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
   home: {
     kicker: "Gratis pilot",
     heading: "Probeer het op tien van je eigen targets.",
-    body: "Wij bouwen tien complete prospect-pakketten voor jouw markt, met geverifieerde contacten, real-time koopsignalen en een eerste mail in de stem van je vertegenwoordiger. Geen creditcard nodig. In ruil vragen we een feedbackgesprek van 20 minuten.",
+    body: "Wij bouwen tien complete prospectpakketten voor jouw markt, met geverifieerde contacten, real-time koopsignalen en een eerste mail in de stem van je vertegenwoordiger. Geen creditcard nodig. In ruil vragen we een feedbackgesprek van 20 minuten.",
     primaryLabel: "Start je gratis pilot",
     secondaryLabel: "Bekijk prijzen",
     secondaryHref: "/nl/prijzen",
@@ -99,7 +99,7 @@ const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
   pricing: {
     kicker: "Voor je een abonnement kiest",
     heading: "Eerst pilot, dan betalen.",
-    body: "Je krijgt tien complete prospect-pakketten voordat een creditcard nodig is. Bekijk de output op jouw markt en kies daarna het abonnement dat bij je past.",
+    body: "Je krijgt tien complete prospectpakketten voordat een creditcard nodig is. Bekijk de output op jouw markt en kies daarna het abonnement dat bij je past.",
     primaryLabel: "Start je gratis pilot",
     secondaryLabel: "Zie hoe het werkt",
     secondaryHref: "/nl/hoe-het-werkt",
@@ -107,7 +107,7 @@ const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
   faq: {
     kicker: "Nog vragen?",
     heading: "De output spreekt voor zich.",
-    body: "Tien complete prospect-pakketten op je eigen accounts, helemaal gratis. Vragen die daarna nog overblijven, beantwoorden we in het feedbackgesprek na afloop.",
+    body: "Tien complete prospectpakketten op je eigen accounts, helemaal gratis. Vragen die daarna nog overblijven, beantwoorden we in het feedbackgesprek na afloop.",
     primaryLabel: "Start je gratis pilot",
     secondaryLabel: "Bekijk prijzen",
     secondaryHref: "/nl/prijzen",

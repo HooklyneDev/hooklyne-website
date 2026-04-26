@@ -407,7 +407,7 @@ export const DIYCompare = () => {
   const labels = lang === "nl" ? {
     eyebrow: "De workflow",
     headline: "Van ICP naar inbox in zes stappen.",
-    sub: "Elke stap doet één klus die een echte researcher zou doen. Samen leveren ze prospect-pakketten waar je rep binnen een minuut mee aan de slag kan.",
+    sub: "Elke stap voert een taak uit zoals een menselijke onderzoeker. Samen leveren ze prospectpakketten waarmee je vertegenwoordiger direct kan starten. Hier is het proces.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
   } : {
