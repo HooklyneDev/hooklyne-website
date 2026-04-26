@@ -47,6 +47,17 @@ const imageURL = new URL(finalImage, Astro.url);
   crossorigin="anonymous"
 />
 
+{/* Preload the hero video poster on home pages so the LCP image is discovered immediately */}
+{(Astro.url.pathname === "/" || Astro.url.pathname === "/nl" || Astro.url.pathname === "/nl/") && (
+  <link
+    rel="preload"
+    as="image"
+    href="/home/hooklyne-research-layer-b2b-prospecting.webp"
+    fetchpriority="high"
+    type="image/webp"
+  />
+)}
+
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#022f51" />
 <meta name="format-detection" content="telephone=no" />

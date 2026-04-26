@@ -27,20 +27,27 @@ export const Hero = () => {
   const screenshotRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  /* Scroll tilt */
+  /* Scroll tilt - batched with paint via rAF to avoid forced reflows */
   useEffect(() => {
     const el = screenshotRef.current;
     if (!el) return;
+    let ticking = false;
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh   = window.innerHeight;
       const prog = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.9)));
       const deg  = 26 * (1 - prog);
       el.style.transform = `perspective(900px) rotateX(${deg}deg)`;
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
     };
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   /* Hero video playback. Three things going on:
