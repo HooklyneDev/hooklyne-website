@@ -5,6 +5,8 @@ import { FinalCTA } from '@/components/blocks/final-cta';
 import { Navbar } from '@/components/blocks/navbar';
 import { CookieBar } from '@/components/blocks/cookie-bar';
 import { LangSuggest } from '@/components/blocks/lang-suggest';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 const { title, description, image, ogType, publishedTime, modifiedTime, hideFinalCTA, ctaVariant = 'home' } = Astro.props;
 const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
@@ -22,6 +24,8 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
         <Footer client:only='react' />
         <CookieBar client:idle />
         <LangSuggest client:idle />
+        <Analytics />
+        <SpeedInsights />
     </body>
     <script is:inline>
       (function () {
