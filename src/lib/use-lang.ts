@@ -22,10 +22,10 @@ function readFromDom(): Lang {
 const NL_AVAILABLE = new Set<string>([
   "/nl",
   "/nl/faq",
-  "/nl/pricing",
-  "/nl/how-it-works",
+  "/nl/prijzen",
+  "/nl/hoe-het-werkt",
   "/nl/product",
-  "/nl/about",
+  "/nl/over-ons",
   "/nl/contact",
   "/nl/privacy",
   "/nl/cookies",
@@ -36,7 +36,7 @@ const NL_AVAILABLE = new Set<string>([
 
 /**
  * Navigate to the equivalent URL in the other language.
- * /pricing <-> /nl/pricing. Keeps hash and query when a translation exists.
+ * /pricing <-> /nl/prijzen. Keeps hash and query when a translation exists.
  */
 export function switchLangUrl(next: Lang) {
   if (typeof window === "undefined") return;

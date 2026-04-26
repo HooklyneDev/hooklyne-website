@@ -23,8 +23,8 @@ const EN_ITEMS: NavItem[] = [
 
 const NL_ITEMS: NavItem[] = [
   { label: "Product", href: "/nl/product" },
-  { label: "Hoe het werkt", href: "/nl/how-it-works" },
-  { label: "Tarieven", href: "/nl/pricing" },
+  { label: "Hoe het werkt", href: "/nl/hoe-het-werkt" },
+  { label: "Prijzen", href: "/nl/prijzen" },
   {
     label: "Resources",
     children: [
@@ -33,7 +33,7 @@ const NL_ITEMS: NavItem[] = [
       { label: "Support", href: "/nl/resources/support" },
     ],
   },
-  { label: "Over ons", href: "/nl/about" },
+  { label: "Over ons", href: "/nl/over-ons" },
 ];
 
 const NAV_LABELS_EN = { login: "Log in", bookDemo: "Book a demo" };

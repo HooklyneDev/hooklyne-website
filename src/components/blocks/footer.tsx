@@ -31,8 +31,8 @@ const NL = {
   status: "Alles draait soepel",
   productCol: { title: "Product", links: [
     { label: "Product", href: "/nl/product" },
-    { label: "Hoe het werkt", href: "/nl/how-it-works" },
-    { label: "Tarieven", href: "/nl/pricing" },
+    { label: "Hoe het werkt", href: "/nl/hoe-het-werkt" },
+    { label: "Prijzen", href: "/nl/prijzen" },
   ]},
   resourcesCol: { title: "Resources", links: [
     { label: "Blog", href: "/blog" },
@@ -40,7 +40,7 @@ const NL = {
     { label: "Support", href: "/nl/resources/support" },
   ]},
   companyCol: { title: "Bedrijf", links: [
-    { label: "Over ons", href: "/nl/about" },
+    { label: "Over ons", href: "/nl/over-ons" },
     { label: "Contact", href: "/nl/contact" },
     { label: "Inloggen", href: "https://portal.hooklyne.com" },
   ]},

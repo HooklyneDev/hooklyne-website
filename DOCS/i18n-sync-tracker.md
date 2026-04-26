@@ -26,12 +26,12 @@ The reference voice baseline is in `src/components/blocks/built-for.tsx` (NL str
 |---|---|---|---|---|
 | `/` | ✅ | ⚠️ | 2026-04-25 | Standalone NL landing at `/nl`, not a 1:1 mirror. NL strings exist in some child components (`what-you-get`, `built-for`); others still EN-only |
 | `/nl` | n/a | ✅ | 2026-04-25 | Dutch landing page |
-| `/product` | ✅ | ✅ | 2026-04-25 | Standalone NL version at `/nl/product` |
-| `/how-it-works` | ✅ | ✅ | 2026-04-25 | Standalone NL version at `/nl/how-it-works` with HowTo schema |
-| `/pricing` | ✅ | ✅ | 2026-04-25 | Standalone NL version at `/nl/pricing` with OfferCatalog schema |
-| `/faq` | ✅ | ✅ | 2026-04-25 | Standalone NL version at `/nl/faq` with full FAQPage schema in Dutch |
-| `/contact` | ✅ | ✅ | 2026-04-25 | NL form posts to same `/api/contact` endpoint |
-| `/about` | ✅ | ✅ | 2026-04-25 | Standalone NL version at `/nl/about` |
+| `/product` | ✅ | ✅ | 2026-04-26 | NL: `/nl/product` (same word) |
+| `/how-it-works` | ✅ | ✅ | 2026-04-26 | NL: `/nl/hoe-het-werkt` with HowTo schema |
+| `/pricing` | ✅ | ✅ | 2026-04-26 | NL: `/nl/prijzen` with OfferCatalog schema |
+| `/faq` | ✅ | ✅ | 2026-04-25 | NL: `/nl/faq` (loanword) with full FAQPage schema in Dutch |
+| `/contact` | ✅ | ✅ | 2026-04-25 | NL: `/nl/contact` (same word). Form posts to same `/api/contact` endpoint |
+| `/about` | ✅ | ✅ | 2026-04-26 | NL: `/nl/over-ons`. Hero + sections rewritten natively (Mollie/AFAS-inspired) |
 | `/blog` | ✅ | ❌ | - | Hub page; blog **posts** are EN-only by design - write Dutch posts separately for Dutch SEO |
 | `/blog/*` | ✅ | n/a | - | Posts are EN-first. Don't transcreate. Original Dutch posts get their own slugs |
 | `/privacy` | ✅ | ✅ | 2026-04-25 | Full Dutch translation including AVG terminology |

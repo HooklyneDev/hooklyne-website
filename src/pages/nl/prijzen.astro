@@ -7,7 +7,7 @@ import { SITE_URL } from '@/consts';
 
 const breadcrumb = breadcrumbList([
   { name: 'Home', path: '/nl' },
-  { name: 'Pricing', path: '/nl/pricing' },
+  { name: 'Prijzen', path: '/nl/prijzen' },
 ]);
 
 const offerCatalog = {
@@ -22,16 +22,16 @@ const offerCatalog = {
     "@type": "OfferCatalog",
     name: "Hooklyne plans",
     itemListElement: [
-      { "@type": "Offer", name: "Start", price: "39", priceCurrency: "EUR", url: `${SITE_URL}/nl/pricing`, category: "annual billing" },
-      { "@type": "Offer", name: "Growth", price: "129", priceCurrency: "EUR", url: `${SITE_URL}/nl/pricing`, category: "annual billing" },
-      { "@type": "Offer", name: "Scale", price: "239", priceCurrency: "EUR", url: `${SITE_URL}/nl/pricing`, category: "annual billing" },
+      { "@type": "Offer", name: "Start", price: "39", priceCurrency: "EUR", url: `${SITE_URL}/nl/prijzen`, category: "annual billing" },
+      { "@type": "Offer", name: "Growth", price: "129", priceCurrency: "EUR", url: `${SITE_URL}/nl/prijzen`, category: "annual billing" },
+      { "@type": "Offer", name: "Scale", price: "239", priceCurrency: "EUR", url: `${SITE_URL}/nl/prijzen`, category: "annual billing" },
       { "@type": "Offer", name: "Enterprise", url: `${SITE_URL}/nl/contact`, category: "custom" },
     ],
   },
 };
 ---
 
-<DefaultLayout title="Tarieven | Hooklyne" description="Tarieven voor B2B leadgeneratie en prospectie voor het MKB. Betaal voor wat je gebruikt: elk credit is een duidelijk eindproduct. Vanaf €39 per maand." image="/og/pricing.jpg" ctaVariant="pricing">
+<DefaultLayout title="Prijzen | Hooklyne" description="Prijzen voor B2B leadgeneratie en prospectie voor het MKB. Betaal voor wat je gebruikt: elk credit is een duidelijk eindproduct. Vanaf €39 per maand." image="/og/pricing.jpg" ctaVariant="pricing">
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(offerCatalog)} />
   <Background>
@@ -41,8 +41,8 @@ const offerCatalog = {
 
       <!-- Header -->
       <div class="text-center max-w-2xl mx-auto">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Tarieven</p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Heldere tarieven, transparante credits.</h1>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Prijzen</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Heldere prijzen, transparante credits.</h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">Eén credit-systeem. Elke actie kost hetzelfde, ongeacht je abonnement. Geen seat-kosten op Start en Growth. Op elk moment van plan wisselen of opzeggen.</p>
       </div>
 
@@ -349,7 +349,7 @@ const offerCatalog = {
       <!-- FAQ section -->
       <div class="mb-12">
         <div class="text-center mb-8">
-          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight">Vragen over tarieven.</h2>
+          <h2 class="text-2xl font-semibold text-[var(--heading)] tracking-tight">Vragen over prijzen.</h2>
           <p class="text-sm text-[var(--muted-foreground)] mt-2">Alles wat je moet weten voordat je begint.</p>
         </div>
 

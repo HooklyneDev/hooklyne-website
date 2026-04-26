@@ -15,9 +15,9 @@ const EN = {
 const NL = {
   pill: "Voor B2B-founders en sales reps",
   headline: "Vind de prospects die er echt toe doen.",
-  sub: "Wij vinden de bedrijven die passen, verifiëren beslissers via 20+ databronnen en pikken live koopsignalen op. De eerste mail schrijven we in de stem van je rep.",
+  sub: "Wij doen het zoekwerk. Wij verifiëren de beslissers. Wij pikken de signalen op. De eerste mail schrijven we in jouw toon. Jij verstuurt 'm zelf.",
   cta: "Start je gratis pilot",
-  secondary: "Bekijk hoe het werkt",
+  secondary: "Zie hoe het werkt",
 };
 
 /* ── Component ──────────────────────────────────────────────────────── */
@@ -200,7 +200,7 @@ export const Hero = () => {
             </a>
           </Button>
           <a
-            href={lang === "nl" ? "/nl/how-it-works" : "/how-it-works"}
+            href={lang === "nl" ? "/nl/hoe-het-werkt" : "/how-it-works"}
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors group"
           >
             {t.secondary}

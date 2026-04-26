@@ -8,35 +8,35 @@ const values = [
   {
     icon: MessagesSquare,
     title: "Verkopen blijft mensenwerk.",
-    body: "Een koopbeslissing eindigt nog steeds bij iemand die de telefoon oppakt. Software hoort jou ruimte te geven voor dat gesprek, niet net doen alsof het 'm zelf voert. De relatie is van je rep, niet van de tool.",
+    body: "Een koop eindigt bij iemand die ja zegt. Software hoort je tijd vrij te maken voor dat gesprek. Niet doen alsof zij het voert. De relatie is van je rep. Niet van de tool.",
   },
   {
     icon: Target,
-    title: "Kwaliteit boven volume.",
-    body: "Vijftig echte hooks zijn meer waard dan vijfhonderd zwakke. Liever tien prospects waar je trots op bent dan honderd waar je je voor schaamt.",
+    title: "Liever scherp dan veel.",
+    body: "Vijftig goede hooks doen meer dan vijfhonderd zwakke. Liever tien prospects waar je trots op bent dan honderd waar je liever niet aan denkt.",
   },
   {
     icon: PenLine,
     title: "Outreach waar je je naam onder zet.",
-    body: "Generieke mails verbranden je sender reputation in een week. Vier reasoning-passes, een kwaliteitscheck, en is het niet klaar, dan gaat het niet uit. Ook al levert dat minder volume op.",
+    body: "Generieke mails branden je sender reputation in een week op. Vier reasoning-passes en een kwaliteitscheck. Is het niet af, dan gaat het niet uit. Ook als dat minder volume kost.",
   },
 ];
 
 const pillars = [
   {
     icon: Calendar,
-    title: "De founder onboardt je zelf.",
-    body: "Je eerste ICP-setup loopt via Tim, niet via een junior. Dertig minuten op een call. We leren wat je verkoopt, aan wie, en hoe je rep daar normaal over praat.",
+    title: "Tim doet je onboarding zelf.",
+    body: "Je eerste ICP-setup gaat via Tim. Geen junior. 30 minuten samen op een call. We brengen in kaart wat je verkoopt, aan wie, en hoe je rep er normaal over praat.",
   },
   {
     icon: Mail,
-    title: "Direct contact met het team.",
-    body: "Eén Slack-kanaal of mailthread per klant. Antwoord binnen vier uur op werkdagen. Geen ticketqueue, geen script, geen chatbot die je doorverwijst.",
+    title: "Direct contact. Geen wachtrij.",
+    body: "Eén Slack-kanaal of mailthread per klant. Antwoord binnen vier uur op werkdagen. Geen ticketsysteem. Geen script. Geen chatbot ertussen.",
   },
   {
     icon: Compass,
-    title: "Jouw sector vormt de defaults.",
-    body: "De eerste tien prospects in je pilot kalibreren het systeem op jouw markt. We blijven bijstellen tot de output leest alsof je rep het zelf schreef na een uur onderzoek.",
+    title: "Jouw markt bepaalt de standaard.",
+    body: "De eerste tien prospects in je pilot stellen het systeem af op jouw sector. We schaven door tot de output leest als je rep. Niet als een tool.",
   },
 ];
 
@@ -44,7 +44,7 @@ const replaced = [
   "Apollo / Cognism / Lusha",
   "Clay of Findymail",
   "ChatGPT of Claude",
-  "Een spreadsheet met signalen",
+  "Een spreadsheet vol signalen",
   "Een tweede sequencer voor warm-up",
   "Het uur dat je per mail kwijt was",
 ];
@@ -53,13 +53,13 @@ import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
   { name: "Home", path: "/nl" },
-  { name: "Over ons", path: "/nl/about" },
+  { name: "Over ons", path: "/nl/over-ons" },
 ]);
 ---
 
 <DefaultLayout
-  title="Over Hooklyne | Klein Nederlands team, hands-on bij elke pilot"
-  description="Een klein Nederlands team dat B2B prospect-onderzoek voor het MKB bouwt. Tien jaar zelf gedaan, opgebouwd uit elke limiet die we tegenkwamen. De founder runt elke pilot."
+  title="Over Hooklyne | Klein Nederlands team, eigen mensen aan de lijn"
+  description="Klein Nederlands team. Tien jaar zelf in sales gedaan, daarna pas gebouwd. Hooklyne is gemaakt voor de rep die maandagochtend de inbox opent."
   image="/og/about.jpg"
   ctaVariant="about"
 >
@@ -69,7 +69,7 @@ const breadcrumb = breadcrumbList([
     "@type": "AboutPage",
     "inLanguage": "nl-NL",
     "name": "Over Hooklyne",
-    "url": "https://www.hooklyne.com/nl/about",
+    "url": "https://www.hooklyne.com/nl/over-ons",
     "mainEntity": {
       "@type": "Organization",
       "name": "Hooklyne",
@@ -86,10 +86,10 @@ const breadcrumb = breadcrumbList([
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Over ons</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Een klein team dat het onderzoek zelf doet.
+          Klein team. Eigen mensen aan de lijn.
         </h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-          Tot we groeien, krijg je ons. De mensen die de werkstroom hebben gebouwd, runnen je pilot, zetten je ICP op, en pakken op als er iets stuk is.
+          Wij zijn de mensen die Hooklyne hebben gebouwd. Wij doen je onboarding. Wij draaien je pilot. En als er iets stuk is, pakken wij op.
         </p>
       </div>
     </section>
@@ -102,23 +102,23 @@ const breadcrumb = breadcrumbList([
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Waarom we dit bouwden</p>
             <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-8 leading-tight">
-              Tien jaar zelf gedaan. Gebouwd uit elke limiet die we raakten.
+              Tien jaar in sales gedaan. Toen pas gebouwd.
             </h2>
             <div class="space-y-5 text-base text-[var(--muted-foreground)] leading-relaxed">
               <p>
-                We hebben zelf gedaan wat jij nu doet. Tien-plus jaar outbound bij internationale B2B-bedrijven kwam eerst - verkopen, verkocht worden, SDRs aannemen, agencies opzeggen, en elke tool proberen die de markt erop gooide.
+                We deden tien jaar wat jij nu doet. B2B-sales internationaal. Verkopen, gepitcht worden, SDRs aannemen, agencies opzeggen, en vrijwel elke tool die op de markt kwam een keer proberen.
               </p>
               <p>
-                Het meeste van die jaren ging op aan informatie tussen abonnementen schuiven: één tool voor bedrijfsdata, één voor contacten, één voor signalen, een CRM die met geen enkele praatte. De werkstroom leefde in zeven tabbladen. Elke week uren met rijen schuiven om één prospect te briefen.
+                De meeste tijd ging op aan data tussen tabbladen schuiven. Eén tool voor bedrijven. Eén voor contacten. Eén voor signalen. Een CRM die met geen van allen praatte. Zeven tabbladen om één prospect te briefen.
               </p>
               <p>
-                We hielden een lijst bij van elke limiet. Bouncerates op single-source databases. AI-agents die koopsignalen verzonnen. Templates die als templates leesbaar waren. Agency-offertes hoger dan het quotum dat ze beloofden. ChatGPT-concepten die twee herschrijfrondes nodig hadden om als ons te klinken.
+                We hielden alles bij wat misging. Bounces uit single-source databases. AI-agents die koopsignalen verzonnen. Templates die je er meteen uithaalde. Agency-offertes hoger dan het quotum dat ze beloofden te leveren. ChatGPT-mails die twee herschrijfrondes nodig hadden voordat ze als ons klonken.
               </p>
               <p>
-                Hooklyne is wat je krijgt als je stopt met om die limieten heen werken en in plaats daarvan een complete tool bouwt voor de sales rep - degene die op maandagochtend de inbox moet openen, niet de buyer die het SaaS-contract tekent.
+                Hooklyne is daar het antwoord op. Geen losse tools die je zelf aan elkaar plakt. Eén werkstroom die af is. Voor de rep die maandagochtend de inbox opent. Niet voor de buyer die het contract tekent.
               </p>
               <p class="text-[var(--heading)] font-medium text-lg">
-                Eén plek. Eén prospect. Alle context die een researcher je zou geven. In minder dan een minuut bekeken.
+                Eén plek. Eén prospect. Alle context die een researcher je zou aanleveren. Binnen een minuut bekeken.
               </p>
             </div>
           </div>
@@ -150,10 +150,10 @@ const breadcrumb = breadcrumbList([
         <div class="max-w-3xl mb-10 lg:mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Hoe we met je samenwerken</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Klein zijn betekent dat jij direct contact krijgt.
+            Klein zijn heeft zo zijn voordelen.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Drie pilots verder. We zijn nog geen SaaS-supportwachtrij en doen ook niet alsof. De founder zet je systeem op, het team beantwoordt je berichten, en de output wordt gevormd door jou - niet door een gemiddelde klant die niet bestaat.
+            Drie pilots draaien. We zijn nog geen support-organisatie en doen ook niet alsof. De founder zet je systeem op. Het team antwoordt op je berichten. En jij bepaalt waar de output heen schuift. Geen gemiddelde klant die niet bestaat.
           </p>
         </div>
 
@@ -171,7 +171,6 @@ const breadcrumb = breadcrumbList([
             );
           })}
         </div>
-
       </div>
     </section>
 
@@ -195,7 +194,7 @@ const breadcrumb = breadcrumbList([
 
           <div class="lg:col-span-8 lg:pt-12">
             <p class="text-3xl md:text-4xl lg:text-[2.75rem] text-[var(--heading)] leading-[1.25] tracking-tight font-medium">
-              "Verkopen blijft mensenwerk. Software hoort je ruimte te geven voor het gesprek. Niet om het over te nemen."
+              "Verkopen blijft mensenwerk. Software hoort je tijd vrij te maken voor het gesprek. Niet om het over te nemen."
             </p>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-px flex-1 bg-[var(--border)]"></div>
@@ -224,7 +223,7 @@ const breadcrumb = breadcrumbList([
       <div class="container max-w-6xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Waar we om geven</p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-10 leading-[1.1] max-w-2xl">
-          Drie regels die we opschrijven en aanhouden.
+          Drie regels. We schrijven ze op en houden ze aan.
         </h2>
         <div class="grid md:grid-cols-3 gap-4 md:gap-5">
           {values.map((v, i) => {
@@ -252,10 +251,10 @@ const breadcrumb = breadcrumbList([
         <div class="max-w-3xl mb-10 lg:mb-12">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Bedrijf</p>
           <h2 class="text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            De saaie details. Op de pagina, niet weggestopt.
+            De saaie details. Open en bloot.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Wie we zijn, waar we zitten, en wat we niet met je data doen.
+            Wie we zijn. Waar we zitten. En wat we niet met je data doen.
           </p>
         </div>
 
@@ -288,10 +287,10 @@ const breadcrumb = breadcrumbList([
             </div>
             <ul class="space-y-3.5 text-sm leading-relaxed">
               {[
-                { t: "EU-gevestigd, AVG-proof.", b: "Data blijft in de EU. We verwerken wat nodig is voor outreach-onderzoek, niets meer." },
-                { t: "We verkopen of delen geen contactdata.", b: "Wat geverifieerd is voor je account, blijft in je account. Geen data-brokerage. Nooit." },
-                { t: "Je inbox, je domein.", b: "We runnen geen sequences voor je. Versturen gebeurt vanuit je mailbox, zodat de relatie bij jou blijft." },
-                { t: "Niets gaat ongeverifieerd uit.", b: "Komt een contact niet door alle vier de deliverability-lagen, dan houden we het tegen. Je sender reputation telt zwaarder dan het volume." },
+                { t: "EU-gevestigd. AVG-proof.", b: "Data blijft in de EU. We verwerken wat we nodig hebben voor het onderzoek. Meer niet." },
+                { t: "We verkopen of delen geen contactdata.", b: "Wat voor jouw account is geverifieerd, blijft daar. Geen brokerage. Nooit." },
+                { t: "Jouw inbox. Jouw domein.", b: "We versturen niets vanuit ons systeem. Mails gaan vanuit jouw mailbox de deur uit. Zo blijft de relatie bij jou." },
+                { t: "Niets gaat ongeverifieerd uit.", b: "Komt een contact niet door alle vier de checks, dan blijft het hangen. Jouw sender reputation telt voor ons zwaarder dan het volume." },
               ].map((p) => (
                 <li class="flex items-start gap-3">
                   <svg class="size-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--hooklyne-teal);"><path d="M20 6 9 17l-5-5"/></svg>
@@ -312,17 +311,17 @@ const breadcrumb = breadcrumbList([
         <div class="relative rounded-3xl p-8 md:p-12 overflow-hidden text-center" style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
           <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Voor wie</p>
           <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
-            Nederlands en Brits MKB eerst. EN door heel EMEA.
+            Nederlands en Brits MKB eerst. Engels door heel EMEA.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
-            We beginnen dichtbij huis omdat we beide talen native spreken en de kopers kennen. Engelstalige teams elders in EMEA zijn welkom. AVG-proof.
+            We beginnen dichtbij huis. Beide talen native. Kopers die we kennen. Engelstalige teams elders in EMEA zijn welkom. AVG-proof. EU-verwerkt.
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4">
             <a href="/nl/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
               Start je gratis pilot
               <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
-            <a href="/nl/how-it-works" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+            <a href="/nl/hoe-het-werkt" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
               Bekijk hoe het werkt
               <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>

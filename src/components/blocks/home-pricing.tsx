@@ -9,9 +9,9 @@ const EN_PLANS = [
 ];
 
 const NL_PLANS = [
-  { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test en valideer je outbound.", highlighted: false },
-  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Volle pipeline. Alles inclusief.", highlighted: true },
-  { name: "Scale", from: 239, credits: 800, sub: "Klein salesteam. Tot 5 reps.", highlighted: false },
+  { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test je outbound.", highlighted: false },
+  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Volle pipeline. Alles erin.", highlighted: true },
+  { name: "Scale", from: 239, credits: 800, sub: "Tot 5 reps. Volume aan.", highlighted: false },
 ];
 
 const EN_T = {
@@ -30,15 +30,15 @@ const EN_T = {
 };
 
 const NL_T = {
-  heading: "Heldere tarieven.",
+  heading: "Heldere prijzen.",
   sub: "Eén credit-systeem. Elke actie transparant geprijsd. Op elk moment van plan wisselen of opzeggen.",
   recommended: "Meest gekozen",
   from: "vanaf",
   perMonth: "/mnd",
   creditsLabel: "credits / mnd",
-  primary: "Bekijk alle tarieven",
+  primary: "Bekijk alle prijzen",
   secondary: "Of start een gratis pilot",
-  primaryHref: "/nl/pricing",
+  primaryHref: "/nl/prijzen",
   secondaryHref: "/nl/contact",
   founderQuote: "“De meeste teams kunnen niet kiezen tussen goed onderzoek en genoeg outreach, dus leveren ze allebei in. Hooklyne is wat we bouwden om daarmee te stoppen.”",
   founderLine: "Tim · Founder · Hooklyne · Nederland",

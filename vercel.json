@@ -13,6 +13,21 @@
       "source": "/resources/news",
       "destination": "/blog",
       "permanent": true
+    },
+    {
+      "source": "/nl/about",
+      "destination": "/nl/over-ons",
+      "permanent": true
+    },
+    {
+      "source": "/nl/how-it-works",
+      "destination": "/nl/hoe-het-werkt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/pricing",
+      "destination": "/nl/prijzen",
+      "permanent": true
     }
   ]
 }

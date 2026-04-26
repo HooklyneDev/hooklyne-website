@@ -127,7 +127,7 @@ export const faqGroupsNL: Group[] = [
     items: [
       { q: "Hoe werkt het credit-systeem?", a: "Prospecten, intelligence en meeting prep gebruiken credits. Beoordelen en bewerken niet. Het dashboard laat zien wat is gebruikt en wat over is. Reset maandelijks." },
       { q: "Betaal ik voor contacten die jullie niet kunnen verifiëren?", a: "Nee. Alleen geverifieerde hits worden afgerekend. Geen hit, geen kosten." },
-      { q: "Wat als ik halverwege de maand zonder credits zit?", a: "Top-ups op elk plan voor €0,85 per credit. Custom tarieven op Enterprise." },
+      { q: "Wat als ik halverwege de maand zonder credits zit?", a: "Top-ups op elk plan voor €0,85 per credit. Custom prijzen op Enterprise." },
       { q: "Kan ik van plan wisselen?", a: "Ja, op elk moment." },
       { q: "Lange contracten?", a: "Nee. Maandelijks of jaarlijks - jaarlijks scheelt tot €60 per maand. Op elk moment opzegbaar." },
       { q: "Kosten per seat?", a: "Start 1 seat, Growth 2, Scale 5, Enterprise unlimited." },
