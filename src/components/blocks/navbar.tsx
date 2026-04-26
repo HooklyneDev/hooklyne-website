@@ -123,7 +123,7 @@ export const Navbar = () => {
                       <div
                         className="min-w-[160px] rounded-xl py-1.5 backdrop-blur-xl backdrop-saturate-[180%]"
                         style={{
-                          background: "rgba(255, 255, 255, 0.82)",
+                          background: "#ffffff",
                           border: "1px solid var(--glass-border)",
                           boxShadow: `var(--glass-shadow), inset 0 1px 0 var(--glass-highlight)`,
                           WebkitBackdropFilter: "blur(20px) saturate(180%)",
@@ -184,7 +184,7 @@ export const Navbar = () => {
                 <div
                   className="absolute top-full right-0 mt-2 min-w-[160px] rounded-xl py-1.5 z-50 backdrop-blur-xl backdrop-saturate-[180%]"
                   style={{
-                    background: "rgba(255, 255, 255, 0.62)",
+                    background: "#ffffff",
                     border: "1px solid var(--glass-border)",
                     boxShadow: `var(--glass-shadow), inset 0 1px 0 var(--glass-highlight)`,
                     WebkitBackdropFilter: "blur(20px) saturate(180%)",
