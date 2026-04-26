@@ -402,32 +402,11 @@
   [style*="background:var(--background)"]:not(.glass-off),
   [style*="var(--card-hover)"]:not(.glass-off) {
     background-image: none !important;
-    background-color: rgba(255, 255, 255, 0.85) !important;
-    border-color: rgba(2, 47, 81, 0.08) !important;
+    background-color: #ffffff !important;
+    border-color: rgba(15, 23, 42, 0.06) !important;
     box-shadow:
-      0 1px 2px rgba(2, 47, 81, 0.04),
-      0 4px 16px rgba(2, 47, 81, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
-  }
-
-  @media (min-width: 768px) {
-    .glass-surface,
-    .bg-card:not(.glass-off),
-    .bg-popover:not(.glass-off),
-    .bg-muted:not(.glass-off):not(.h-1):not(.h-1\.5):not(.h-2),
-    .bg-white:not(.glass-off):not(button):not(svg *),
-    .bg-\[var\(--card\)\]:not(.glass-off),
-    .bg-\[var\(--background\)\]:not(.glass-off),
-    [style*="background: var(--card)"]:not(.glass-off),
-    [style*="background:var(--card)"]:not(.glass-off),
-    [style*="background-color: var(--card)"]:not(.glass-off),
-    [style*="background-color:var(--card)"]:not(.glass-off),
-    [style*="background: var(--background)"]:not(.glass-off),
-    [style*="background:var(--background)"]:not(.glass-off) {
-      background-color: rgba(255, 255, 255, 0.70) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-      backdrop-filter: blur(20px) saturate(180%) !important;
-    }
+      0 1px 2px rgba(15, 23, 42, 0.03),
+      0 4px 12px rgba(15, 23, 42, 0.04) !important;
   }
 }
 
@@ -448,12 +427,14 @@ body {
 }
 body {
   position: relative;
-  background-color: #eef2f7;
+  background-color: #f5f6f9;
   color: var(--foreground);
   min-height: 100vh;
 }
-/* Soft, fixed page gradient. Uses pseudo-element so it never tiles
-   with scroll and never produces a harsh seam under glass cards. */
+/* Portal-style soft page wash. Fixed pseudo-element so the gradient
+   never tiles with scroll and never produces a hard seam under cards.
+   Stops are very low opacity so cards always feel like they sit on a
+   single calm surface, with faint warm/cool glows giving life. */
 body::before {
   content: "";
   position: fixed;
@@ -461,10 +442,10 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 90% 60% at 15% 0%,    rgba(52, 76, 163, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 70% at 85% 100%,  rgba(13, 148, 136, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 100% 30%,  rgba(255, 140, 66, 0.03) 0%, transparent 60%),
-    linear-gradient(180deg, #f3f6fa 0%, #eaeff5 100%);
+    radial-gradient(ellipse 70% 50% at 12% 8%,   rgba(52, 76, 163, 0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 65% 55% at 92% 88%,  rgba(255, 140, 66, 0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 40% at 88% 18%,  rgba(244, 114, 182, 0.03) 0%, transparent 65%),
+    linear-gradient(180deg, #f7f8fb 0%, #eef1f6 100%);
 }
 
 /* Blog article prose. Matches site typography and CSS vars. */
