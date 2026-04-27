@@ -5,7 +5,7 @@ import { HeroGlow } from '@/components/hero-glow';
 import { DIYCompare } from '@/components/blocks/diy-compare';
 import { HeadToHead } from '@/components/blocks/head-to-head';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, Search, FileText } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Search, FileText, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -31,7 +31,18 @@ const breakdowns = [
   },
 ];
 
+const pains = [
+  "Bouncerates vreten aan je sender-domein.",
+  "Sequences lezen generiek. Reactiepercentages laten dat zien.",
+  "Het signaal dat je vorige week nodig had, staat in een ander tabblad.",
+  "Je doet zelf prospect-onderzoek in plaats van verkopen.",
+];
+
 const faq = [
+  {
+    q: "Wat als Hooklyne niet werkt voor ons team?",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects volledig opgebouwd, zonder kaart en zonder verplichting. Levert de output geen replies op die je anders niet had gekregen, dan stop je. Liever eerlijke feedback dan een klant die geen fit is.",
+  },
   {
     q: "Ik betaal al voor Apollo. Waarom zou ik een tool toevoegen?",
     a: "Niet toevoegen. De meeste pilots vervangen Apollo volledig op het MKB-segment, waar de Apollo-dekking het dunst is en het onderzoeksgedreven model van Hooklyne het meeste oplevert. Een pilot draait op tien prospects, gratis, voordat er iets verandert.",
@@ -105,6 +116,41 @@ const faq = [
             Bekijk de vergelijking
             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">Je kwam hier waarschijnlijk omdat</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Klopt iets daarvan, dan is de rest van deze pagina voor jou.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Gratis pilot, zonder kaart</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het op tien van je eigen prospects.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig onderzochte prospectpakketten. Zonder betaling, zonder contract. Wij vragen twintig minuten eerlijke feedback achteraf - meer niet.</p>
+            <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Vraag een pilot aan
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
