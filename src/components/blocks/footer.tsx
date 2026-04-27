@@ -1,7 +1,7 @@
 import { useLang } from "@/lib/use-lang";
 
 const EN = {
-  tagline: "Research-grade prospect packages in your rep's voice. Not more. Smarter.",
+  tagline: "The right prospect. The right moment. The right message.",
   status: "All systems operational",
   productCol: { title: "Product", links: [
     { label: "Product", href: "/product" },
@@ -28,8 +28,8 @@ const EN = {
 };
 
 const NL = {
-  tagline: "Onderzoeksgedreven prospectpakketten in de stem van je vertegenwoordiger. Niet meer. Slimmer.",
-  status: "Alles draait soepel",
+  tagline: "Het juiste contact. Het juiste moment. De juiste boodschap.",
+  status: "Alle systemen operationeel",
   productCol: { title: "Product", links: [
     { label: "Product", href: "/nl/product" },
     { label: "Hoe het werkt", href: "/nl/hoe-het-werkt" },
@@ -92,7 +92,18 @@ export const Footer = () => {
           <p className="text-sm text-white/50 leading-relaxed">
             {t.tagline}
           </p>
-          <div className="mt-5 inline-flex items-center gap-2">
+          <div className="mt-4 inline-flex items-center gap-1.5">
+            <span aria-hidden="true" className="inline-flex flex-col w-3.5 h-2.5 rounded-[1px] overflow-hidden ring-1 ring-white/20">
+              <span className="flex-1" style={{ background: "#AE1C28" }} />
+              <span className="flex-1" style={{ background: "#FFFFFF" }} />
+              <span className="flex-1" style={{ background: "#21468B" }} />
+            </span>
+            <p className="text-xs text-white/40">
+              {lang === "nl" ? "Gemaakt in Nederland" : "Made in the Netherlands"}
+            </p>
+          </div>
+
+          <div className="mt-3 inline-flex items-center gap-2">
             <span className="relative flex size-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
               <span className="relative inline-flex size-2 rounded-full bg-emerald-400"></span>
@@ -125,15 +136,6 @@ export const Footer = () => {
               {i < t.legalCol.links.length - 1 && <span className="text-white/15">·</span>}
             </span>
           ))}
-          <span className="hidden sm:inline text-white/15">·</span>
-          <p className="inline-flex items-center gap-1.5 text-xs text-white/40">
-            <span aria-hidden="true" className="inline-flex flex-col w-3.5 h-2.5 rounded-[1px] overflow-hidden ring-1 ring-white/20">
-              <span className="flex-1" style={{ background: "#AE1C28" }} />
-              <span className="flex-1" style={{ background: "#FFFFFF" }} />
-              <span className="flex-1" style={{ background: "#21468B" }} />
-            </span>
-            {lang === "nl" ? "Gemaakt in Nederland" : "Made in the Netherlands"}
-          </p>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">

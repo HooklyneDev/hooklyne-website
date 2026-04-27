@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Factory, Utensils, Plug } from "lucide-react";
+import { Rocket, Factory, Users } from "lucide-react";
 import { useLang } from "@/lib/use-lang";
 
 const EN = {
@@ -14,25 +14,25 @@ const EN = {
       body: "One rep or eight, a CRM, maybe a sequencer. You know your ICP but burn hours researching each prospect. Hooklyne gives those hours back, and scales with you as the team grows.",
     },
     {
-      headline: "Teams where one good conversation beats fifty cold emails.",
-      body: "Complex offers. Considered buyers. Niche ICPs. Where spray-and-pray damages your reputation and the email needs to earn the reply.",
+      headline: "Teams where one good meeting beats fifty cold emails.",
+      body: "Complex offers. Considered buyers. Niche ICPs. Where spray-and-pray damages your reputation and every email needs to earn its reply.",
     },
   ],
   cards: [
     {
-      sector: "B2B engineering",
-      signal: "Factory expansion announced.",
-      opener: "Saw the Rotterdam expansion. Curious whether you're sourcing controls engineers externally or building inline.",
+      sector: "B2B SaaS",
+      signal: "Series A closed - €8M. SDR headcount 3x in 6 weeks.",
+      opener: "Saw the raise and the SDR wave coming with it. Most teams hit tooling gaps around week 6. Worth 15 minutes before you reach that point?",
     },
     {
-      sector: "B2B food",
-      signal: "New Head of Procurement role posted.",
-      opener: "Usually signals a supplier review. Worth a 15-minute intro before the new lead starts?",
+      sector: "B2B industrial",
+      signal: "ISO certification renewed. Head of Procurement open.",
+      opener: "Renewal plus an open procurement lead usually means a supplier review is coming. Three similar manufacturers went through it recently - happy to share what they did.",
     },
     {
-      sector: "B2B energy",
-      signal: "Renewables share at 34% in latest filing.",
-      opener: "We work with three operators at similar thresholds. A few things typically break first at that point.",
+      sector: "B2B HR tech",
+      signal: "80 employees added in 3 months. No HR system on stack.",
+      opener: "80 hires in 3 months with nothing on the HR stack is a burning window. Two teams at a similar stage hit compliance issues before month 6. Worth a short call?",
     },
   ],
 };
@@ -49,31 +49,31 @@ const NL = {
       body: "Een vertegenwoordiger of acht, een CRM, misschien een sequencer. Je kent je ideaal klantprofiel, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
     },
     {
-      headline: "Teams waar een goed gesprek vijftig koude mails waard is.",
-      body: "Complexe proposities, kritische kopers en niche-klantprofielen, waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
+      headline: "Teams waarbij een goed gesprek meer oplevert dan vijftig koude mails.",
+      body: "Complexe proposities, kritische kopers en niche-klantprofielen. Waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
     },
   ],
   cards: [
     {
-      sector: "B2B engineering",
-      signal: "Uitbreiding fabriek aangekondigd.",
-      opener: "Zag de uitbreiding in Rotterdam. Benieuwd of jullie controls engineers extern inhuren of zelf opleiden.",
+      sector: "B2B SaaS",
+      signal: "Series A afgerond - €8M. SDR-headcount 3x in 6 weken.",
+      opener: "Zag de raise en de SDR-golf die ermee meekomt. De meeste teams lopen rond week 6 tegen tooling-problemen aan. Kwartier voor je dat punt raakt?",
     },
     {
-      sector: "B2B food",
-      signal: "Nieuwe Head of Procurement-rol open.",
-      opener: "Meestal een signaal voor een leveranciersreview. Korte kennismaking voor de nieuwe lead start?",
+      sector: "B2B industrie",
+      signal: "ISO-certificering verlengd. Head of Procurement open.",
+      opener: "Verlenging plus een open inkooprol betekent vaak een leveranciersreview. Drie vergelijkbare fabrikanten zijn er recent doorheen gegaan - ik deel graag wat ze deden.",
     },
     {
-      sector: "B2B energy",
-      signal: "Aandeel hernieuwbaar op 34% in laatste rapportage.",
-      opener: "We werken met drie operators rond dezelfde drempel. Een paar dingen breken op dat punt meestal als eerste.",
+      sector: "B2B HR-tech",
+      signal: "80 medewerkers in 3 maanden. Geen HR-systeem op de stack.",
+      opener: "Tachtig hires in 3 maanden zonder HR-systeem is een brandend raam. Twee teams op vergelijkbare schaal liepen voor maand 6 al tegen complianceproblemen aan. Kort gesprek waard?",
     },
   ],
 };
 
 const CARD_TONES = ["blue", "teal", "orange"] as const;
-const CARD_ICONS = [Factory, Utensils, Plug];
+const CARD_ICONS = [Rocket, Factory, Users];
 
 export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
   const detected = useLang();

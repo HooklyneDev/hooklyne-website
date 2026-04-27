@@ -30,7 +30,7 @@ const EN_T = {
 };
 
 const NL_T = {
-  heading: "Heldere prijzen.",
+  heading: "Eenvoudige prijzen.",
   sub: "Eén transparant credit-systeem waarin elke actie hetzelfde kost, ongeacht je abonnement. Wissel van plan of zeg op wanneer je wilt.",
   recommended: "Meest gekozen",
   from: "vanaf",

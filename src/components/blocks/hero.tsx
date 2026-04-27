@@ -7,7 +7,7 @@ import { useLang } from "@/lib/use-lang";
 const EN = {
   pill: "For B2B founders and sales reps",
   headline: "Find the prospects actually worth reaching out to.",
-  sub: "A research workflow that finds fitting companies, verifies decision-makers across 20+ data providers, watches for live buying signals, and drafts first outreach in your rep's voice.",
+  sub: "A research workflow that finds fitting companies, verifies decision-makers across 21 data providers, watches for live buying signals, and drafts first outreach in your rep's voice.",
   cta: "Start your free pilot",
   secondary: "See how it works",
 };
@@ -15,7 +15,7 @@ const EN = {
 const NL = {
   pill: "Voor B2B-founders en sales reps",
   headline: "Vind de prospects die er echt toe doen.",
-  sub: "Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 20+ databronnen, real-time koopsignalen volgt en eerste outreach opstelt in de stem van jouw vertegenwoordiger.",
+  sub: "Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 21 databronnen, real-time koopsignalen volgt en eerste outreach opstelt in de schrijfstijl van jouw vertegenwoordiger.",
   cta: "Start je gratis pilot",
   secondary: "Zie hoe het werkt",
 };

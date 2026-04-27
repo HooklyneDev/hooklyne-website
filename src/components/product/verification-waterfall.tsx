@@ -4,7 +4,7 @@ import { useLang } from "@/lib/use-lang";
 
 /**
  * Verification waterfall - animates the journey of a contact email through
- * 20+ providers and 4 deliverability layers. Sells the claim: nothing
+ * 21 providers and 4 deliverability layers. Sells the claim: nothing
  * unverified ever ships.
  */
 
@@ -53,7 +53,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
     layersTitle: "4 deliverability-lagen",
     passed: "geslaagd",
     ingest: "Kandidaat ingelezen · m.devries@axiom.nl",
-    providers: "Kruisreferentie over 20+ providers",
+    providers: "Kruisreferentie over 21 providers",
     layers: "Deliverability-checks draaien",
     cleared: "Door alle 4 lagen · veilig om te versturen",
   } : {
@@ -66,7 +66,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
     layersTitle: "4 deliverability layers",
     passed: "passed",
     ingest: "Ingesting candidate · m.devries@axiom.nl",
-    providers: "Cross-referencing 20+ providers",
+    providers: "Cross-referencing 21 providers",
     layers: "Running deliverability checks",
     cleared: "Cleared all 4 layers · safe to send",
   };
@@ -207,7 +207,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
                 {t.providersChecked}
               </p>
               <p className="text-[10px] sm:text-[11px] font-bold tabular-nums" style={{ color: phase === "verified" ? "var(--hooklyne-teal)" : "var(--hooklyne-blue)" }}>
-                {totalChecked}/20+ <span style={{ color: "var(--muted-foreground)", fontWeight: 500 }}>· {matchedCount} {t.matched}</span>
+                {totalChecked}/21 <span style={{ color: "var(--muted-foreground)", fontWeight: 500 }}>· {matchedCount} {t.matched}</span>
               </p>
             </div>
             <div className="flex-1 overflow-hidden grid grid-cols-2 gap-x-2 gap-y-1 px-2.5 sm:px-3 py-2">

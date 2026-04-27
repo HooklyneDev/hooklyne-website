@@ -33,8 +33,8 @@ const stages = [
     n: 2,
     key: "Verification",
     title: "The contact, verified before you see it.",
-    body: "We check 20+ providers and four deliverability layers per email. If it can't be verified, it never ships. Your domain reputation stays clean.",
-    facts: ["20+ providers", "4 deliverability layers", "Held if not verified"],
+    body: "We check 21 providers and four deliverability layers per email. If it can't be verified, it never ships. Your domain reputation stays clean.",
+    facts: ["21 providers", "4 deliverability layers", "Held if not verified"],
     shot: {
       label: "Verification waterfall",
       describe: "Portal: contact card with live provider attempts and a final deliverability score.",
@@ -42,7 +42,7 @@ const stages = [
       status: "Verified",
       statusTone: "teal" as const,
       overlays: [
-        { x: 30, y: 30, tag: "PROVIDER 3/20", title: "Verified match", tone: "teal" as const, pulse: true },
+        { x: 30, y: 30, tag: "PROVIDER 3/21", title: "Verified match", tone: "teal" as const, pulse: true },
         { x: 72, y: 72, tag: "EMAIL", title: "Passed 4-layer check", body: "SMTP · Catch-all · Role · Deliverable", tone: "blue" as const },
       ],
     },

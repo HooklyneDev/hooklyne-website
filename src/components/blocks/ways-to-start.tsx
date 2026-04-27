@@ -33,7 +33,7 @@ const COPY = {
   nl: {
     eyebrow: "Zo begin je",
     heading: "Drie ingangen. Eén pipeline.",
-    sub: "Kies de ingang die past bij wat je al hebt; elk pad eindigt in My Leads, klaar om te versturen.",
+    sub: "Kies de ingang die past bij wat je al hebt. Elk pad eindigt in Mijn Leads, klaar om te versturen.",
     inputLabel: "Nodig",
     rows: [
       {

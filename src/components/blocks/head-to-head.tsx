@@ -36,7 +36,7 @@ const APOLLO_EN: Profile = {
     {
       dimension: "Contact database size",
       competitor: "270M+ contacts (largest single source)",
-      hooklyne: "Waterfall across 20+ providers",
+      hooklyne: "Waterfall across 21 providers",
       verdict: "competitor",
       note: "Apollo wins on raw row count. Hooklyne wins on per-row verification.",
     },
@@ -109,7 +109,7 @@ const APOLLO_NL: Profile = {
     {
       dimension: "Omvang contactdatabase",
       competitor: "270M+ contacten (grootste enkele bron)",
-      hooklyne: "Waterval over 20+ providers",
+      hooklyne: "Waterval over 21 providers",
       verdict: "competitor",
       note: "Apollo wint op aantal rijen. Hooklyne wint op verificatie per rij.",
     },
@@ -189,7 +189,7 @@ const COGNISM_EN: Profile = {
     {
       dimension: "European data depth",
       competitor: "Diamond Verified, large EU dataset",
-      hooklyne: "Waterfall across 20+ providers (incl. Cognism-class sources)",
+      hooklyne: "Waterfall across 21 providers (incl. Cognism-class sources)",
       verdict: "competitor",
       note: "Cognism has invested heavily in EU coverage. Hooklyne uses similar sources but does not match Cognism's exclusive verified mobile dataset.",
     },
@@ -263,7 +263,7 @@ const COGNISM_NL: Profile = {
     {
       dimension: "Europese datadiepte",
       competitor: "Diamond Verified, grote EU-dataset",
-      hooklyne: "Waterval over 20+ providers (incl. vergelijkbare bronnen)",
+      hooklyne: "Waterval over 21 providers (incl. vergelijkbare bronnen)",
       verdict: "competitor",
       note: "Cognism heeft fors geïnvesteerd in EU-dekking. Hooklyne gebruikt vergelijkbare bronnen maar evenaart de exclusieve geverifieerde mobile-dataset niet.",
     },
@@ -355,7 +355,7 @@ const LUSHA_EN: Profile = {
     {
       dimension: "Email verification",
       competitor: "Single-source verification",
-      hooklyne: "4 layers across 20+ providers",
+      hooklyne: "4 layers across 21 providers",
       verdict: "hooklyne",
     },
     {
@@ -428,7 +428,7 @@ const LUSHA_NL: Profile = {
     {
       dimension: "E-mailverificatie",
       competitor: "Single-source verificatie",
-      hooklyne: "4 lagen over 20+ providers",
+      hooklyne: "4 lagen over 21 providers",
       verdict: "hooklyne",
     },
     {
