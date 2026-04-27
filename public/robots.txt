@@ -3,6 +3,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /og-preview/
 
 # Explicit allowlist for AI crawlers and answer engines.
 # Listed separately so future restrictions are easy to add per-bot.

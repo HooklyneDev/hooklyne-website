@@ -112,9 +112,20 @@ export const Footer = () => {
       </div>
 
       <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <p className="text-xs text-white/30">
-          &copy; {new Date().getFullYear()} Hooklyne. {t.rights}
-        </p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <p className="text-xs text-white/30">
+            &copy; {new Date().getFullYear()} Hooklyne. {t.rights}
+          </p>
+          <span className="hidden sm:inline text-white/15">·</span>
+          <p className="inline-flex items-center gap-1.5 text-xs text-white/40">
+            <span aria-hidden="true" className="inline-flex flex-col w-3.5 h-2.5 rounded-[1px] overflow-hidden ring-1 ring-white/20">
+              <span className="flex-1" style={{ background: "#AE1C28" }} />
+              <span className="flex-1" style={{ background: "#FFFFFF" }} />
+              <span className="flex-1" style={{ background: "#21468B" }} />
+            </span>
+            {lang === "nl" ? "Gemaakt in Nederland" : "Made in the Netherlands"}
+          </p>
+        </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <a

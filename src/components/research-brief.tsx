@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { useLang } from "@/lib/use-lang";
 
 /**
  * ResearchBrief - bespoke mock of a sourced research brief.
@@ -7,12 +8,51 @@ import { ExternalLink } from "lucide-react";
  * Everything inside is fictional, labelled as example output.
  */
 
-export const ResearchBrief = () => {
-  const sources = [
-    { n: 1, label: "Funding tracker", host: "trackers / funding-db",  meta: "Pulled 2h ago" },
-    { n: 2, label: "Company blog",    host: "acme.example / blog",     meta: "Pulled 3h ago" },
-    { n: 3, label: "Industry trackers", host: "trackers / sector-index", meta: "Pulled 6h ago" },
-  ];
+export const ResearchBrief = ({ lang: langProp }: { lang?: "en" | "nl" } = {}) => {
+  const detected = useLang();
+  const lang = langProp ?? detected;
+  const isNL = lang === "nl";
+
+  const t = isNL ? {
+    crumb: "Prospect / Research-brief",
+    sourced: "Onderbouwd",
+    company: "Acme B.V.",
+    sector: "Industriële OEM · Rotterdam",
+    briefVer: "Brief · v3",
+    whyNow: "Waarom nu",
+    p1Pre: "€12M Series B opgehaald, geleid door een Nederlands groeifonds",
+    p1Mid: " met de opbrengst gereserveerd voor een nieuwe service-model productlijn gepland voor Q2",
+    p2Pre: "Sectorale vrachttarieven zijn 18% omhoog kwartaal-op-kwartaal, wat marges drukt op hun huidige pay-as-you-go-prijsmodel",
+    p2Post: " - dat geeft echte druk om eerder over te stappen op het service-model.",
+    sourcesTitle: "Bronnen · 3",
+    sourcesNote: "Elke claim controleerbaar",
+    disclaimer: "Voorbeeld · fictief bedrijf",
+    sources: [
+      { n: 1, label: "Funding tracker",  host: "trackers / funding-db",   meta: "2u geleden" },
+      { n: 2, label: "Bedrijfsblog",     host: "acme.example / blog",     meta: "3u geleden" },
+      { n: 3, label: "Sectorbronnen",    host: "trackers / sector-index", meta: "6u geleden" },
+    ],
+  } : {
+    crumb: "Prospect / Research brief",
+    sourced: "Sourced",
+    company: "Acme B.V.",
+    sector: "Industrial OEM · Rotterdam",
+    briefVer: "Brief · v3",
+    whyNow: "Why now",
+    p1Pre: "Closed a €12M Series B led by a Dutch growth fund",
+    p1Mid: " with proceeds earmarked for a new service-model product line scheduled for Q2",
+    p2Pre: "Sector freight rates are up 18% quarter-over-quarter, which compresses margins on their current pay-as-you-go pricing",
+    p2Post: " - creating real pressure to move to the service model sooner.",
+    sourcesTitle: "Sources · 3",
+    sourcesNote: "Every claim citable",
+    disclaimer: "Example output · fictional company",
+    sources: [
+      { n: 1, label: "Funding tracker",   host: "trackers / funding-db",   meta: "Pulled 2h ago" },
+      { n: 2, label: "Company blog",      host: "acme.example / blog",     meta: "Pulled 3h ago" },
+      { n: 3, label: "Industry trackers", host: "trackers / sector-index", meta: "Pulled 6h ago" },
+    ],
+  };
+  const sources = t.sources;
 
   return (
     <div className="relative w-full rounded-2xl overflow-visible">
@@ -37,7 +77,7 @@ export const ResearchBrief = () => {
           <div className="flex-1 flex items-center gap-1.5 text-[11px] font-medium truncate" style={{ color: "var(--muted-foreground)" }}>
             <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--hooklyne-blue)" }}>Hooklyne</span>
             <span style={{ opacity: 0.4 }}>/</span>
-            <span className="truncate" style={{ color: "var(--heading)" }}>Prospect / Research brief</span>
+            <span className="truncate" style={{ color: "var(--heading)" }}>{t.crumb}</span>
           </div>
           <div
             className="shrink-0 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold"
@@ -47,7 +87,7 @@ export const ResearchBrief = () => {
               <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-teal)" }} />
               <span className="relative inline-flex rounded-full size-1.5" style={{ background: "var(--hooklyne-teal)" }} />
             </span>
-            Sourced
+            {t.sourced}
           </div>
         </div>
 
@@ -74,32 +114,32 @@ export const ResearchBrief = () => {
                 </svg>
               </div>
               <div>
-                <div className="text-[13px] font-semibold text-[var(--heading)] leading-tight">Acme B.V.</div>
-                <div className="text-[11px] text-[var(--muted-foreground)]">Industrial OEM &middot; Rotterdam</div>
+                <div className="text-[13px] font-semibold text-[var(--heading)] leading-tight">{t.company}</div>
+                <div className="text-[11px] text-[var(--muted-foreground)]">{t.sector}</div>
               </div>
             </div>
             <span className="text-[9px] font-mono uppercase tracking-widest text-[var(--muted-foreground)]/70">
-              Brief &middot; v3
+              {t.briefVer}
             </span>
           </div>
 
           {/* Why-now line */}
           <div className="mb-4 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] px-2 py-1 rounded" style={{ background: "rgba(255,140,66,0.12)", color: "var(--hooklyne-orange)" }}>
-            <span>Why now</span>
+            <span>{t.whyNow}</span>
           </div>
 
           {/* Brief copy with inline citations */}
           <div className="space-y-3 text-[13px] leading-relaxed text-[var(--heading)]">
             <p>
-              Closed a €12M Series B led by a Dutch growth fund
+              {t.p1Pre}
               <Cite n={1} />
-              with proceeds earmarked for a new service-model product line scheduled for Q2
+              {t.p1Mid}
               <Cite n={2} />.
             </p>
             <p>
-              Sector freight rates are up 18% quarter-over-quarter, which compresses margins on their current pay-as-you-go pricing
+              {t.p2Pre}
               <Cite n={3} />
-              - creating real pressure to move to the service model sooner.
+              {t.p2Post}
             </p>
           </div>
 
@@ -107,9 +147,9 @@ export const ResearchBrief = () => {
           <div className="mt-6 pt-4 border-t border-dashed border-[var(--border)]">
             <div className="flex items-center justify-between mb-3">
               <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
-                Sources &middot; 3
+                {t.sourcesTitle}
               </div>
-              <div className="text-[10px] text-[var(--muted-foreground)]/70">Every claim citable</div>
+              <div className="text-[10px] text-[var(--muted-foreground)]/70">{t.sourcesNote}</div>
             </div>
             <ul className="space-y-2">
               {sources.map((s) => (
@@ -141,7 +181,7 @@ export const ResearchBrief = () => {
 
           {/* Fictional disclaimer */}
           <p className="mt-4 text-[9px] uppercase tracking-[0.2em] text-[var(--muted-foreground)]/60">
-            Example output &middot; fictional company
+            {t.disclaimer}
           </p>
         </div>
       </div>

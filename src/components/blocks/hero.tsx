@@ -136,9 +136,12 @@ export const Hero = () => {
         }}
       />
 
-      {/* ── Grain texture ─────────────────────────────────────────── */}
+      {/* ── Grain texture: desktop only.
+            feTurbulence is GPU-cheap on desktop but expensive on
+            lower-end mobile, and at 4.5% opacity it doesn't add much
+            on a small viewport anyway. */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="hidden md:block absolute inset-0 w-full h-full pointer-events-none"
         style={{ zIndex: 2, opacity: 0.045 }}
         xmlns="http://www.w3.org/2000/svg"
       >

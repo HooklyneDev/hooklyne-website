@@ -56,6 +56,11 @@ const EN = {
     Question: "Question from hooklyne.com",
     "": "New message from hooklyne.com",
   } as Record<Interest, string>,
+  errName: "Please tell us your name.",
+  errCompany: "Which company are you with?",
+  errEmail: "We need an email to reply to.",
+  errEmailFormat: "That doesn't look like a valid email address.",
+  errInterest: "Pick one so we know how to help.",
 };
 
 const NL = {
@@ -105,6 +110,11 @@ const NL = {
     Question: "Vraag via hooklyne.com",
     "": "Nieuw bericht via hooklyne.com",
   } as Record<Interest, string>,
+  errName: "Vul je naam in.",
+  errCompany: "Voor welk bedrijf werk je?",
+  errEmail: "We hebben een mailadres nodig om te reageren.",
+  errEmailFormat: "Dit lijkt geen geldig mailadres.",
+  errInterest: "Kies een optie zodat we weten hoe we kunnen helpen.",
 };
 
 export const Contact = () => {
@@ -113,7 +123,23 @@ export const Contact = () => {
   const [interest, setInterest] = useState<Interest>("");
   const [status, setStatus] = useState<Status>("idle");
   const [firstName, setFirstName] = useState("");
+  const [errors, setErrors] = useState<Partial<Record<"name" | "company" | "email" | "interest_choice", string>>>({});
   const formRef = useRef<HTMLFormElement>(null);
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const validate = (data: FormData) => {
+    const next: typeof errors = {};
+    const name = ((data.get("name") as string) || "").trim();
+    const company = ((data.get("company") as string) || "").trim();
+    const email = ((data.get("email") as string) || "").trim();
+    const choice = (data.get("interest_choice") as string) || interest;
+    if (!name) next.name = t.errName;
+    if (!company) next.company = t.errCompany;
+    if (!email) next.email = t.errEmail;
+    else if (!EMAIL_RE.test(email)) next.email = t.errEmailFormat;
+    if (!choice) next.interest_choice = t.errInterest;
+    return next;
+  };
 
   const scrollToForm = (preset: Interest) => {
     setInterest(preset);
@@ -126,10 +152,20 @@ export const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (status === "loading") return;
-    setStatus("loading");
 
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    const fieldErrors = validate(data);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      // Focus the first errored field for accessibility.
+      const firstErr = Object.keys(fieldErrors)[0];
+      form.querySelector<HTMLElement>(`[name="${firstErr}"]`)?.focus();
+      return;
+    }
+    setErrors({});
+    setStatus("loading");
 
     const fullName = (data.get("name") as string) || "";
     setFirstName(fullName.trim().split(/\s+/)[0] || fullName);
@@ -267,15 +303,54 @@ export const Contact = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="cf-name">{t.name}</Label>
-                  <Input id="cf-name" name="name" placeholder={t.namePh} required autoComplete="name" />
+                  <Input
+                    id="cf-name"
+                    name="name"
+                    placeholder={t.namePh}
+                    autoComplete="name"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "cf-name-err" : undefined}
+                    onBlur={(e) => {
+                      if (!e.currentTarget.value.trim()) setErrors((p) => ({ ...p, name: t.errName }));
+                      else setErrors((p) => { const { name, ...r } = p; return r; });
+                    }}
+                  />
+                  {errors.name && <p id="cf-name-err" className="text-xs text-[var(--destructive)] mt-1">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="cf-company">{t.company}</Label>
-                  <Input id="cf-company" name="company" placeholder={t.companyPh} required autoComplete="organization" />
+                  <Input
+                    id="cf-company"
+                    name="company"
+                    placeholder={t.companyPh}
+                    autoComplete="organization"
+                    aria-invalid={!!errors.company}
+                    aria-describedby={errors.company ? "cf-company-err" : undefined}
+                    onBlur={(e) => {
+                      if (!e.currentTarget.value.trim()) setErrors((p) => ({ ...p, company: t.errCompany }));
+                      else setErrors((p) => { const { company, ...r } = p; return r; });
+                    }}
+                  />
+                  {errors.company && <p id="cf-company-err" className="text-xs text-[var(--destructive)] mt-1">{errors.company}</p>}
                 </div>
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="cf-email">{t.email}</Label>
-                  <Input id="cf-email" name="email" type="email" placeholder={t.emailPh} required autoComplete="email" />
+                  <Input
+                    id="cf-email"
+                    name="email"
+                    type="email"
+                    placeholder={t.emailPh}
+                    autoComplete="email"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "cf-email-err" : undefined}
+                    onBlur={(e) => {
+                      const v = e.currentTarget.value.trim();
+                      if (!v) setErrors((p) => ({ ...p, email: t.errEmail }));
+                      else if (!EMAIL_RE.test(v)) setErrors((p) => ({ ...p, email: t.errEmailFormat }));
+                      else setErrors((p) => { const { email, ...r } = p; return r; });
+                    }}
+                  />
+                  {errors.email && <p id="cf-email-err" className="text-xs text-[var(--destructive)] mt-1">{errors.email}</p>}
                 </div>
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="cf-interest">{t.interestLabel}</Label>
@@ -283,8 +358,12 @@ export const Contact = () => {
                     id="cf-interest"
                     name="interest_choice"
                     value={interest}
-                    onChange={(e) => setInterest(e.target.value as Interest)}
-                    required
+                    onChange={(e) => {
+                      setInterest(e.target.value as Interest);
+                      if (e.target.value) setErrors((p) => { const { interest_choice, ...r } = p; return r; });
+                    }}
+                    aria-invalid={!!errors.interest_choice}
+                    aria-describedby={errors.interest_choice ? "cf-interest-err" : undefined}
                     className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
                   >
                     <option value="" disabled>{t.pickOne}</option>
@@ -292,6 +371,7 @@ export const Contact = () => {
                     <option value="Demo">{t.optDemo}</option>
                     <option value="Question">{t.optQuestion}</option>
                   </select>
+                  {errors.interest_choice && <p id="cf-interest-err" className="text-xs text-[var(--destructive)] mt-1">{errors.interest_choice}</p>}
                 </div>
                 <div className="md:col-span-2 space-y-2">
                   <Label htmlFor="cf-message">
