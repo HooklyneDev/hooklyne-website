@@ -31,7 +31,7 @@ Elk in Nederland geregistreerd bedrijf staat in het [KvK Handelsregister](https:
 - Een schone lijst bouwen van bijvoorbeeld alle Nederlandse SaaS-bedrijven in Noord-Holland met 10 tot 50 medewerkers
 - Verifiëren dat een bedrijf werkelijk bestaat en actief is
 - De geregistreerde naam, adres en KvK-nummer ophalen voor compliance en facturatie
-- Bedrijven spotten die in de laatste 12 maanden zijn opgericht (founder-led ICP-signaal)
+- Bedrijven spotten die in de laatste 12 maanden zijn opgericht (founder-led ideaal klantprofiel-signaal)
 
 **Praktische werkstroom:**
 1. Ga naar [Handelsregister geavanceerd zoeken](https://www.kvk.nl/zoeken/)
@@ -48,7 +48,7 @@ Voor een lijst van 30 doelbedrijven die je diep wilt onderzoeken, is KvK uitstek
 
 ### 2. LinkedIn (gratis + Sales Navigator-trial)
 
-LinkedIn is waar de mensen zijn. Specifiek: de besluitvormers in jouw ICP.
+LinkedIn is waar de mensen zijn. Specifiek: de besluitvormers in jouw ideaal klantprofiel.
 
 **Waar 'ie goed voor is:**
 - Zoeken op functietitel, bedrijfsomvang, regio en recente activiteit
@@ -188,7 +188,7 @@ Voor alle duidelijkheid: we vinden niet dat elk team een tool moet kopen. De han
 - Je hebt **minder dan 30 prospects per maand** (de tijdkosten liggen onder de toolkosten)
 - Je verkoopt aan **een strakke TAM van onder 200 bedrijven** (je kunt handmatig kiezen en hebt nooit bulk nodig)
 - Je bent **de founder die handgepicktee outreach** doet aan droom-accounts (de tijd die je in de prospect investeert is zelf onderdeel van de deal)
-- Je **test een nieuwe markt of ICP** en moet leren wat werkt voor je betaalt voor schaal
+- Je **test een nieuwe markt of ideaal klantprofiel** en moet leren wat werkt voor je betaalt voor schaal
 
 Voor iedereen anders kost de handmatige route uiteindelijk meer dan ze bespaart.
 
@@ -196,7 +196,7 @@ Voor iedereen anders kost de handmatige route uiteindelijk meer dan ze bespaart.
 
 Ben je een Nederlands MKB dat deze maand B2B-outbound start, dan is dit de volgorde:
 
-- [ ] **Definieer eerst je ICP.** Sector, headcount, regio, rol van de koper. Zonder dit helpt geen tool.
+- [ ] **Definieer eerst je ideaal klantprofiel.** Sector, headcount, regio, rol van de koper. Zonder dit helpt geen tool.
 - [ ] **Begin met KvK of NLdigital** om een lijst van 50 doelbedrijven te bouwen. Gratis, snel, accuraat op bedrijfsniveau.
 - [ ] **Pak de LinkedIn Sales Navigator-trial** voor 30 dagen. Vind de werkelijke persoon bij elk bedrijf. Sla op als lijst.
 - [ ] **Gebruik Google operators** om te verifiëren dat elke prospect een recent signaal heeft dat het waard is te noemen. Zo niet, laat vallen.

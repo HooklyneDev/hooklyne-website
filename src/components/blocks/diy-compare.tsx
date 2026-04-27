@@ -253,7 +253,7 @@ const NL_TABS: TabDef[] = [
     totalSub: "de rest doen wij",
     steps: [
       { step: "1", label: "Beschrijf het bedrijfstype",
-        detail: "Gewone taal, geen filter-rasters. We draaien een semantische match over miljarden pagina's en geven een gerangschikte lijst terug. Beste match bovenaan, gescoord tegen jouw ICP.",
+        detail: "Gewone taal, geen filter-rasters. We draaien een semantische match over miljarden pagina's en geven een gerangschikte lijst terug. Beste match bovenaan, gescoord tegen jouw ideaal klantprofiel.",
         time: "2 min", callout: "Een gerangschikte shortlist, geen rij-dump", good: true },
       { step: "2", label: "Kies het contact dat je wilt bereiken",
         detail: "Per bedrijf zie je beschikbare rollen. Jij kiest welke past. Wij draaien een waterval over 20+ contactproviders met vier verificatie-lagen - want geen enkele database dekt meer dan 40% van een markt.",
@@ -282,7 +282,7 @@ const NL_TABS: TabDef[] = [
     totalLabel: "Jouw tijd",
     total: "~45 min per prospect",
     totalSub: "onderzoek en schrijven blijven jouw klus",
-    goodAt: "Snel, vertrouwd, goedkoop per rij. Goed als je je ICP scherp kent en gewoon contacten wilt trekken om door je eigen proces te draaien.",
+    goodAt: "Snel, vertrouwd, goedkoop per rij. Goed als je je ideaal klantprofiel scherp kent en gewoon contacten wilt trekken om door je eigen proces te draaien.",
     footerNote: "Database-prijs + verificatietool + jouw tijd. De rijen zijn goedkoop. Het werk eromheen niet.",
     steps: [
       { step: "1", label: "Bouw de filterquery",
@@ -313,7 +313,7 @@ const NL_TABS: TabDef[] = [
     total: "~15 min per prospect",
     totalSub: "snelheid is echt, onderzoek niet",
     goodAt: "Volume. Heb je een schone lijst en wil je snel veel mails versturen met basale personalisatie, dan leveren deze tools. Ze hebben snelle workflows voor eenmaal-ingesteld, vele-keren-verstuurd.",
-    footerNote: "Snel met versturen. Niet gebouwd voor onderzoek. Bij een scherp ICP en een vooraf geverifieerde lijst is dit een verzendlaag - geen prospecting-laag.",
+    footerNote: "Snel met versturen. Niet gebouwd voor onderzoek. Bij een scherp ideaal klantprofiel en een vooraf geverifieerde lijst is dit een verzendlaag - geen prospecting-laag.",
     steps: [
       { step: "1", label: "Upload je lijst en zet variabelen op",
         detail: "Importeer contacten, koppel velden. Zet de variabelen die de AI invult - voornaam, bedrijf, een veld dat je van LinkedIn schraapt, een pijn die je gokt.",
@@ -376,7 +376,7 @@ const NL_TABS: TabDef[] = [
     footerNote: "Is budget geen probleem en wil je outbound volledig van je bord, dan werkt een agency. Voor een team dat de functie en het leren wil bezitten, klopt de rekensom zelden.",
     steps: [
       { step: "1", label: "Werk de agency in",
-        detail: "Strategie-calls, ICP-documenten, persona-workshops, messaging-reviews. Ze leren jouw business kennen. Dure weken kalendertijd voordat er één prospect is benaderd.",
+        detail: "Strategie-calls, klantprofiel-documenten, persona-workshops, messaging-reviews. Ze leren jouw business kennen. Dure weken kalendertijd voordat er één prospect is benaderd.",
         time: "wk 1-2", callout: "Inwerken duurt weken. Budget loopt direct.", good: false },
       { step: "2", label: "Ze runnen campagnes in hun stem",
         detail: "Hun SDRs schrijven de mails. Ze versturen vanuit hun domeinen of die van jou. Je beoordeelt concepten, soms wekelijks, soms maandelijks. Je staat een stap af van wat de deur uit gaat.",
@@ -406,13 +406,13 @@ export const DIYCompare = () => {
   const TABS = lang === "nl" ? NL_TABS : EN_TABS;
   const labels = lang === "nl" ? {
     eyebrow: "De workflow",
-    headline: "Van ICP naar inbox in zes stappen.",
+    headline: "Van ideaal klantprofiel naar inbox in zes stappen.",
     sub: "Elke stap voert een taak uit zoals een menselijke onderzoeker. Samen leveren ze prospectpakketten waarmee je vertegenwoordiger direct kan starten. Hier is het proces.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
   } : {
     eyebrow: "The workflow",
-    headline: "From ICP to inbox in six steps.",
+    headline: "From ideaal klantprofiel to inbox in six steps.",
     sub: "Each step does one job a human researcher would do. Together they produce prospect packages your rep can act on in under a minute. Here is the whole flow.",
     compareWith: "Compare with",
     estCost: "est. tool cost",

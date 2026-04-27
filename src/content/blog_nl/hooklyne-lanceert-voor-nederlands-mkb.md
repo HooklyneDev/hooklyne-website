@@ -35,7 +35,7 @@ Hooklyne dicht dat gat.
 
 Zes fases in één portaal. Elk pakket bevat:
 
-- **Semantische ICP-zoekopdracht.** Beschrijf het bedrijf dat je wilt bereiken in je eigen woorden ("een Nederlandse industriële OEM die richting service-modellen beweegt") en krijg een gerangschikte lijst terug. Geen filter-raster, maar een gerangschikte lijst gescoord tegen je beschrijving.
+- **Semantische ideaal klantprofiel-zoekopdracht.** Beschrijf het bedrijf dat je wilt bereiken in je eigen woorden ("een Nederlandse industriële OEM die richting service-modellen beweegt") en krijg een gerangschikte lijst terug. Geen filter-raster, maar een gerangschikte lijst gescoord tegen je beschrijving.
 - **Geverifieerd contact.** Een waterval over 20+ dataproviders met de beste bron per regio. Vier deliverability-lagen, zodat mails alleen worden verzonden als ze werkelijk veilig zijn om te versturen.
 - **Real-time signaal.** Zeven bronnen continu in de gaten gehouden: funding, hiring, leiderschapswissels, launches, pers, expansie en sectornieuws. Dubbel gescoord, één keer voor relevantie aan hun kant en één keer voor relevantie aan jouw kant.
 - **Research brief.** Elke claim is te herleiden naar een URL die je kunt aanklikken. Geen verzonnen quotes, geen verzonnen klanten, geen verzonnen cijfers.

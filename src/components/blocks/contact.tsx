@@ -91,7 +91,7 @@ const NL = {
   optQuestion: "Gewoon een vraag",
   message: "Bericht",
   optional: "(optioneel)",
-  messagePh: "Vertel iets over je team, je ICP, of zeg gewoon hoi.",
+  messagePh: "Vertel iets over je team, je ideaal klantprofiel, of zeg gewoon hoi.",
   privacy: "We gebruiken je gegevens alleen om te reageren; meer staat in onze",
   privacyLink: "privacyverklaring",
   sending: "Versturen...",

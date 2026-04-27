@@ -109,7 +109,7 @@ Op schaal is de long tail de meeste van je lijst. Je ziet het niet tot 200 mails
 
 We verkopen niet dat je nooit je eigen AI lead-generatie agent moet bouwen. We verkopen eerlijkheid over wanneer het werkt:
 
-- **Je hebt minder dan 20 hoog-waardevolle prospects per maand.** Een founder die handgepicktee outbound doet aan een strakke ICP. Een senior AE die een target-account-lijst bewerkt. Het volume is laag genoeg dat de long tail niet bijt.
+- **Je hebt minder dan 20 hoog-waardevolle prospects per maand.** Een founder die handgepicktee outbound doet aan een strakke ideaal klantprofiel. Een senior AE die een target-account-lijst bewerkt. Het volume is laag genoeg dat de long tail niet bijt.
 - **Je bent een developer die hier plezier aan beleeft.** Als de stack onderhouden een hobby is en geen belasting, is de rekensom anders.
 - **Je TAM is onder 200 bedrijven.** Je onderzoekt elk bedrijf één keer, stuurt een paar touches, en hebt nooit ongoing schaal nodig.
 - **Je doet eenmalig onderzoek, niet outbound.** Account intelligence, marktmapping en concurrentieonderzoek zijn prima LLM-toepassingen die de meeste faalmodes hierboven niet hebben.

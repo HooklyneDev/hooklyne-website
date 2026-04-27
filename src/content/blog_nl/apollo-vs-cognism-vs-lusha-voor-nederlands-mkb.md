@@ -43,7 +43,7 @@ Past niets daarvan bij je situatie, dan staat de vierde optie aan het einde van 
 
 Prijzen per april 2026. Cognism-prijzen gevalideerd via Salesmotion, Factors en Coldreach, omdat Cognism niet publiek prijst.
 
-Alle drie zullen je vertellen dat hun database de grootste, meest accurate en meest compliant is. Negeer dat. Elke B2B-database heeft ongeveer dezelfde ruwe dekking voor een goed gedefinieerde Europese ICP. Wat verschilt: wat ze ermee doen, voor wie ze zijn gebouwd, en wat je er omheen moet bouwen.
+Alle drie zullen je vertellen dat hun database de grootste, meest accurate en meest compliant is. Negeer dat. Elke B2B-database heeft ongeveer dezelfde ruwe dekking voor een goed gedefinieerde Europese ideaal klantprofiel. Wat verschilt: wat ze ermee doen, voor wie ze zijn gebouwd, en wat je er omheen moet bouwen.
 
 ## Apollo: sterk in mail, zwak in de rest
 
@@ -89,7 +89,7 @@ Lusha is gebouwd rond de Chrome-extensie. Een rep ziet een LinkedIn-profiel, kli
 - Snelle individuele contact-lookups: rep ziet profiel, krijgt contact, gaat verder
 - Lage instapprijs voor een of twee gebruikers
 - Brede internationale dekking, al is die oppervlakkig
-- Eenvoudig te onboarden, geen ICP-setup vereist
+- Eenvoudig te onboarden, geen ideaal klantprofiel-setup vereist
 
 **Waar Lusha tekortschiet:**
 - Geen bulkflows of campagnetooling: je werkt prospect-per-prospect

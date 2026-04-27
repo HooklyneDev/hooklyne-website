@@ -46,11 +46,11 @@ const NL = {
     },
     {
       headline: "Salesteams bij bedrijven van 10 tot 100.",
-      body: "Eén vertegenwoordiger of acht, een CRM, misschien een sequencer. Je kent je ICP, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
+      body: "Eén vertegenwoordiger of acht, een CRM, misschien een sequencer. Je kent je ideaal klantprofiel, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
     },
     {
       headline: "Teams waar één goed gesprek vijftig koude mails waard is.",
-      body: "Complexe proposities, kritische kopers en niche-ICP's, waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
+      body: "Complexe proposities, kritische kopers en niche-klantprofielen, waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
     },
   ],
   cards: [
