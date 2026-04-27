@@ -97,7 +97,7 @@ Lusha is gebouwd rond de Chrome-extensie. Een rep ziet een LinkedIn-profiel, kli
 - Mail-accuratesse rond 81 procent — slechter dan Cognism, beter dan Apollo
 - Geen AVG-onderscheid: standaard compliance, geen Europese focus
 
-Voor één rep die LinkedIn-profielen wil verrijken, werkt Lusha. Voor een team dat outbound op schaal draait, is het te oppervlakkig.
+Voor een rep die LinkedIn-profielen wil verrijken, werkt Lusha. Voor een team dat outbound op schaal draait, is het te oppervlakkig.
 
 ## De vierde optie
 

@@ -13,7 +13,7 @@ Elke founder met wie we in 2026 spreken heeft hetzelfde geprobeerd: ChatGPT plus
 
 Dan komt kwartaal twee, en de hele stack stopt stilletjes met werken.
 
-Deze post is voor de founder, sales lead of solo SDR die één weekend-project verwijderd is van zijn eigen AI lead-generatie agent. We gaan je niet vertellen dat het een slecht idee is. Voor sommige teams is het de juiste keuze. We gaan je vertellen wat er werkelijk stuk gaat, omdat we er zelf een hebben gebouwd en hem hebben omgezet in Hooklyne.
+Deze post is voor de founder, sales lead of solo SDR die een weekend-project verwijderd is van zijn eigen AI lead-generatie agent. We gaan je niet vertellen dat het een slecht idee is. Voor sommige teams is het de juiste keuze. We gaan je vertellen wat er werkelijk stuk gaat, omdat we er zelf een hebben gebouwd en hem hebben omgezet in Hooklyne.
 
 ## De korte versie
 
@@ -26,7 +26,7 @@ Heb je 100 of meer prospects per maand, of moet dezelfde agent 12 maanden blijve
 Het basisrecept is goed gedocumenteerd:
 
 1. Trek een lijst bedrijven uit een directory of scrape (LinkedIn Sales Navigator-export, Apollo-export, Crunchbase API)
-2. Verrijk elk bedrijf met één of twee providers (Clay, Apollo, ZoomInfo)
+2. Verrijk elk bedrijf met een of twee providers (Clay, Apollo, ZoomInfo)
 3. Stuur elke regel door een LLM met een research-prompt (Claude, GPT-4, Gemini)
 4. Laat de LLM een gepersonaliseerde eerste mail schrijven
 5. Push naar je sequencer (Instantly, Smartlead, Lemlist)
@@ -37,11 +37,11 @@ Hierover liegt niemand. De demo werkt echt.
 
 ## Waar de DIY-agent stilletjes faalt
 
-### 1. Eén dataprovider zit er ongeveer 40 procent naast
+### 1. Een dataprovider zit er ongeveer 40 procent naast
 
 Elke B2B-contactdatabase zit ergens fout. Apollo heeft verouderde mailadressen voor Europees mid-market. Cognism heeft dunne dekking buiten enterprise. ZoomInfo overpresenteert AVG-compliant EU-data. Clay aggregeert er meerdere maar erft elke blinde vlek.
 
-Een solo agent op één provider matcht zo'n 60 procent van je doelgroep met bruikbare data. Voor een demo van 10 namen is dat prima. Op een lijst van 500 betaal je voor verrijking van 300 contacten die zullen bouncen, genegeerd worden of überhaupt nooit de juiste persoon waren.
+Een solo agent op een provider matcht zo'n 60 procent van je doelgroep met bruikbare data. Voor een demo van 10 namen is dat prima. Op een lijst van 500 betaal je voor verrijking van 300 contacten die zullen bouncen, genegeerd worden of überhaupt nooit de juiste persoon waren.
 
 De oplossing is niet een betere provider kiezen. Het is 5 tot 20 providers tegen elkaar uitspelen op elke regel, terugvallen waar de primaire mist, en conflicten signaleren voordat je verstuurt. Dat werk staat in geen enkele demo en niemand wil het onderhouden.
 
@@ -74,10 +74,10 @@ Wat in jouw DIY-stack zal breken, ongeveer in deze volgorde:
 - Apollo verandert een CSV-veldnaam. Je downstream-parser breekt stilletjes.
 - LinkedIn werkt anti-scraping bij. Je enrichment-fallback gaat dood.
 - Een modelversie wordt deprecated. Je prompt regresseert op outputs die je voorheen goed vond.
-- Je enrichment-vendor verhoogt zijn prijs met 5x. Je unit-economics keren over één nacht om.
+- Je enrichment-vendor verhoogt zijn prijs met 5x. Je unit-economics keren over een nacht om.
 - Een feestdag valt, drie reps klagen over output-kwaliteit, en je realiseert je dat niemand de agent eigenaar is.
 
-Geen van deze is onoplosbaar. Elk kost 2 tot 6 uur diagnose en fix. Over 12 maanden compoundt dat tot ongeveer een engineer-maand per jaar voor een agent die 50 prospects per week produceert. Bij €100k volledig belaste engineer-kosten is dat de prijs van een managed dienst voordat je één deal hebt gesloten.
+Geen van deze is onoplosbaar. Elk kost 2 tot 6 uur diagnose en fix. Over 12 maanden compoundt dat tot ongeveer een engineer-maand per jaar voor een agent die 50 prospects per week produceert. Bij €100k volledig belaste engineer-kosten is dat de prijs van een managed dienst voordat je een deal hebt gesloten.
 
 ### 5. AVG en spam-wetgeving zijn niet optioneel
 
@@ -111,7 +111,7 @@ We verkopen niet dat je nooit je eigen AI lead-generatie agent moet bouwen. We v
 
 - **Je hebt minder dan 20 hoog-waardevolle prospects per maand.** Een founder die handgepicktee outbound doet aan een strakke ideaal klantprofiel. Een senior AE die een target-account-lijst bewerkt. Het volume is laag genoeg dat de long tail niet bijt.
 - **Je bent een developer die hier plezier aan beleeft.** Als de stack onderhouden een hobby is en geen belasting, is de rekensom anders.
-- **Je TAM is onder 200 bedrijven.** Je onderzoekt elk bedrijf één keer, stuurt een paar touches, en hebt nooit ongoing schaal nodig.
+- **Je TAM is onder 200 bedrijven.** Je onderzoekt elk bedrijf een keer, stuurt een paar touches, en hebt nooit ongoing schaal nodig.
 - **Je doet eenmalig onderzoek, niet outbound.** Account intelligence, marktmapping en concurrentieonderzoek zijn prima LLM-toepassingen die de meeste faalmodes hierboven niet hebben.
 
 Voor iedereen anders is de berekening: wil je in de business van een prospectie-agent runnen zitten, of in de business van verkopen.
@@ -134,7 +134,7 @@ Die bundel is wat het verschil maakt tussen een agent die in een demo werkt en e
 Voor je een weekend besteedt aan je eigen AI lead-generatie agent, run deze checklist:
 
 - [ ] **Volume.** Hoeveel prospects per maand? Onder 20: bouw 'm. Boven 100: niet doen.
-- [ ] **Tijdshorizon.** Run je dit nog over 12 maanden? Zo ja, reken op één engineer-maand per jaar onderhoud.
+- [ ] **Tijdshorizon.** Run je dit nog over 12 maanden? Zo ja, reken op een engineer-maand per jaar onderhoud.
 - [ ] **Compliance-blootstelling.** Verkoop je aan EU-MKB? Zo ja, is de AVG-laag niet optioneel en moeilijker dan hij eruitziet.
 - [ ] **Stem.** Maakt outreach in de werkelijke schrijfstijl van je rep uit? Zo ja, system prompts brengen je daar niet.
 - [ ] **Deliverability-budget.** Wil je je primaire domein riskeren? Zo nee, heb je warmup-infrastructuur nodig.
@@ -145,6 +145,6 @@ Vink je minder dan twee aan, bouw 'm. Vink je drie of meer aan, dan kost de in-h
 
 [Hooklyne](/nl) is wat je bouwt als je de output van een DIY AI-agent wilt zonder de zeven faalmodes hierboven. Wij doen het gekruiste-data-werk, de gestructureerde signaaldetectie, de stem-modeling, de compliance, en de deliverability-laag, en leveren outreach-klare prospectpakketten terug aan je reps in hun eigen schrijfstijl.
 
-Heb je je eigen versie al gebouwd en loop je tegen één van de dingen in deze post aan, [start dan een pilot](/nl/contact). Wij vertellen eerlijk of je DIY-stack goed genoeg is om te houden, of dat overstappen naar een managed dienst voor jouw nummers werkelijk zin heeft.
+Heb je je eigen versie al gebouwd en loop je tegen een van de dingen in deze post aan, [start dan een pilot](/nl/contact). Wij vertellen eerlijk of je DIY-stack goed genoeg is om te houden, of dat overstappen naar een managed dienst voor jouw nummers werkelijk zin heeft.
 
 We hebben de [pleidooi tegen Apollo, Cognism of Lusha kiezen](/nl/blog/apollo-vs-cognism-vs-lusha-voor-nederlands-mkb) in een aparte post geschreven. De DIY-route is de vierde optie die mensen steeds vaker proberen. Dit is wat we erover hebben geleerd, omdat we er zelf een hebben gebouwd.

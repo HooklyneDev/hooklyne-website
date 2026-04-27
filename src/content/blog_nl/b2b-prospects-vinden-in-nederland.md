@@ -64,7 +64,7 @@ LinkedIn is waar de mensen zijn. Specifiek: de besluitvormers in jouw ideaal kla
 
 **Waar 'ie ophoudt te schalen:**
 - De gratis trial eindigt na 30 dagen. Daarna is Sales Navigator €99 per maand. Nuttig, maar niet meer gratis.
-- LinkedIn rate-limit't bulk-scraping agressief. Je krijgt waarschuwingen, dan beperkingen, dan een tijdelijke ban. Iedereen die je "onbeperkt LinkedIn-scraping" verkoopt voor €19 per maand is één update verwijderd van breken.
+- LinkedIn rate-limit't bulk-scraping agressief. Je krijgt waarschuwingen, dan beperkingen, dan een tijdelijke ban. Iedereen die je "onbeperkt LinkedIn-scraping" verkoopt voor €19 per maand is een update verwijderd van breken.
 - Mailadressen zijn het moeilijke deel. LinkedIn toont je geen mails. Elke flow die "mails uit LinkedIn exporteert" gebruikt een third-party verrijking (Apollo, RocketReach, ContactOut), en accuratesse varieert sterk per regio.
 
 Voor Nederlandse en Britse contacten zit de mail-match-rate uit alleen-LinkedIn-verrijking tussen 40 en 65 procent. De andere 35 tot 60 procent van je lijst is onbruikbaar zonder een tweede provider.
@@ -163,7 +163,7 @@ Na ongeveer 6 tot 8 weken handmatig prospecten gebeuren er drie dingen, in deze 
 
 **2. De signalen drogen op.** Je hebt de voor de hand liggende triggers (recente funding, nieuwe hires) op je initiële lijst binnen een maand uitgeput. Daarna staan de prospects daar zonder nieuwe reden om contact op te nemen. Of je spamt ze met re-touches, of je laat ze vallen.
 
-**3. De stem vlakt af.** Wanneer één persoon 50 mails per week onderzoekt en schrijft, herhalen de patronen zich. Tegen maand twee begint elke mail hetzelfde te klinken. Reply-rates dalen, en je merkt het pas een maand later omdat het volume het verbergt.
+**3. De stem vlakt af.** Wanneer een persoon 50 mails per week onderzoekt en schrijft, herhalen de patronen zich. Tegen maand twee begint elke mail hetzelfde te klinken. Reply-rates dalen, en je merkt het pas een maand later omdat het volume het verbergt.
 
 Dit zijn geen problemen die je oplost met betere discipline. Dit zijn problemen die compounden tot je outbound stopt of er een systeem omheen bouwt.
 
