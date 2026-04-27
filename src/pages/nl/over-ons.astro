@@ -162,8 +162,8 @@ const breadcrumb = breadcrumbList([
             const Icon = p.icon;
             return (
               <div class="rounded-2xl p-6 md:p-7 flex flex-col" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xs);">
-                <span class="inline-flex items-center justify-center size-10 rounded-xl mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                  <Icon className="size-5" />
+                <span class="block mb-4" style="color: var(--hooklyne-blue);">
+                  <Icon className="size-7" />
                 </span>
                 <h3 class="text-lg font-semibold text-[var(--heading)] tracking-tight mb-2 leading-snug">{p.title}</h3>
                 <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{p.body}</p>
@@ -233,8 +233,8 @@ const breadcrumb = breadcrumbList([
                 <div class="flex items-center gap-3 mb-4">
                   <span class="font-mono text-xs text-[var(--muted-foreground)]">0{i + 1}</span>
                   <span class="h-3 w-px bg-[var(--border)]"></span>
-                  <span class="inline-flex items-center justify-center size-7 rounded-lg" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                    <Icon className="size-4" />
+                  <span style="color: var(--hooklyne-teal);">
+                    <Icon className="size-5" />
                   </span>
                 </div>
                 <h3 class="text-lg md:text-xl font-semibold text-[var(--heading)] mb-2 leading-snug tracking-tight">{v.title}</h3>

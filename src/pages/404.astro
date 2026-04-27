@@ -1,5 +1,5 @@
 ---
-import { ArrowLeft, ArrowRight, Compass, FileText, Sparkles, BookOpen, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Compass, FileText, Tag, BookOpen, MessageCircle } from "lucide-react";
 
 import { Background } from "@/components/background";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ const t = isNL ? {
   popular: [
     { icon: Compass, label: "Hoe het werkt", href: "/nl/hoe-het-werkt", desc: "Zes fases, een prospectkaart." },
     { icon: FileText, label: "Product",        href: "/nl/product",      desc: "Bekijk de hele workflow." },
-    { icon: Sparkles, label: "Prijzen",        href: "/nl/prijzen",      desc: "Een credit-systeem, vier abonnementen." },
+    { icon: Tag, label: "Prijzen",        href: "/nl/prijzen",      desc: "Een credit-systeem, vier abonnementen." },
     { icon: BookOpen, label: "Blog",           label2: "Over ons",       href: "/nl/blog",         desc: "Founder-notities en gidsen." },
     { icon: MessageCircle, label: "FAQ",       href: "/nl/faq",          desc: "Vijf veelgestelde vragen." },
     { icon: ArrowRight, label: "Contact",      href: "/nl/contact",      desc: "Boek een demo of pilot." },
@@ -37,7 +37,7 @@ const t = isNL ? {
   popular: [
     { icon: Compass, label: "How it works", href: "/how-it-works", desc: "Six stages, one prospect card." },
     { icon: FileText, label: "Product",     href: "/product",      desc: "See the whole workflow." },
-    { icon: Sparkles, label: "Pricing",     href: "/pricing",      desc: "One credit system, four plans." },
+    { icon: Tag, label: "Pricing",     href: "/pricing",      desc: "One credit system, four plans." },
     { icon: BookOpen, label: "Blog",        href: "/blog",         desc: "Founder notes and guides." },
     { icon: MessageCircle, label: "FAQ",    href: "/faq",          desc: "Five common questions." },
     { icon: ArrowRight, label: "Contact",   href: "/contact",      desc: "Book a demo or pilot." },
@@ -88,8 +88,8 @@ const t = isNL ? {
               style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xs);"
             >
               <div class="flex items-center justify-between gap-2">
-                <div class="inline-flex items-center justify-center size-9 rounded-lg" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                  <p.icon className="size-4" />
+                <div style="color: var(--hooklyne-blue);">
+                  <p.icon className="size-5" />
                 </div>
                 <ArrowRight className="size-4 text-[var(--muted-foreground)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--hooklyne-blue)]" />
               </div>
