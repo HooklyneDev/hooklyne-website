@@ -55,7 +55,7 @@ const NL = {
 export const Footer = () => {
   const lang = useLang();
   const t = lang === "nl" ? NL : EN;
-  const cols = [t.productCol, t.resourcesCol, t.companyCol, t.legalCol];
+  const cols = [t.productCol, t.resourcesCol, t.companyCol];
 
   return (
   <footer className="relative overflow-hidden bg-[var(--hooklyne-navy)]">
