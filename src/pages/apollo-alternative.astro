@@ -1,0 +1,173 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { DIYCompare } from '@/components/blocks/diy-compare';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, ShieldCheck, Search, FileText } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Apollo alternative", path: "/apollo-alternative" },
+]);
+
+const breakdowns = [
+  {
+    icon: Search,
+    title: "Built to research, not to send.",
+    body: "Apollo is a sending engine on top of a US-first contact database. Hooklyne is a research workflow that produces the prospect package before anything goes out. If your bottleneck is volume, Apollo is fine. If your bottleneck is reply rate, the volume tool is the problem.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "European coverage, four-layer verification.",
+    body: "Apollo's NL, BE, and DACH coverage runs thinner than its US numbers because the source mix is wrong for European SMEs. We waterfall across 20+ providers and run four deliverability checks (SMTP, catch-all, role, deliverable) before a contact ships, so the cold email actually clears the bar.",
+  },
+  {
+    icon: FileText,
+    title: "A signal layer Apollo doesn't have.",
+    body: "Funding, hiring, leadership change, expansion, launch, sector and press signals scored against your ICP. Each prospect arrives with a why-now reason that an Apollo CSV can't tell you, sourced and citable so the email writes itself in the rep's voice.",
+  },
+];
+
+const faq = [
+  {
+    q: "I already pay for Apollo. Why would I add another tool?",
+    a: "You wouldn't add. Most pilots replace Apollo entirely on the small mid-market side, where Apollo's density is weakest and where Hooklyne's research-first model has the most lift. Pilots run on ten prospects, free, before any switch.",
+  },
+  {
+    q: "Is Apollo's data better than Hooklyne's?",
+    a: "Apollo has more rows. Hooklyne has fewer rows, scored harder. For US enterprise, Apollo wins on coverage. For Dutch and UK SMEs, Apollo's verification fail-rate runs roughly 12-25% on cold lists; ours is closer to 3-5% because we waterfall across 20+ providers instead of relying on a single database.",
+  },
+  {
+    q: "Does Hooklyne send the email or just write it?",
+    a: "Hooklyne stops at the drafted message in your inbox. You send from your own sender, your own domain, your own warmed reputation. We don't run the sending layer on purpose - that's where bulk tools chew up your domain.",
+  },
+  {
+    q: "What about GDPR?",
+    a: "We're built in the Netherlands, no scraping, every claim sourced and citable. Contacts come from public profiles and verified provider data, not behavioural data harvested from logged-in sessions. No dark patterns, no lookalike audiences.",
+  },
+  {
+    q: "Apollo is cheap per row. Is Hooklyne the same?",
+    a: "No. Apollo is priced for volume, Hooklyne is priced for outcome. One Hooklyne credit produces a fully researched, verified, message-ready prospect. Most teams replace Apollo and a separate ChatGPT or agency line item with one Hooklyne plan and come out lower total cost.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Apollo alternative for European SMEs | Hooklyne"
+  description="Hooklyne is a research-grade Apollo alternative built for Dutch and UK SMEs. Verified contacts across 20+ providers, signal-driven outreach, drafted in your rep's voice. No spray, no scraping."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Apollo alternative for European SMEs",
+    "description": "Hooklyne is the research-grade Apollo alternative for Dutch and UK B2B SMEs.",
+    "url": "https://www.hooklyne.com/apollo-alternative",
+    "inLanguage": "en"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Apollo alternative</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          An Apollo alternative built for European SMEs.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Apollo is a sending engine. Hooklyne is a research workflow. Verified contacts across 20+ providers, scored signals, and outreach drafted in your rep's voice - shipped as one package per prospect.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start a free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#compare"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the comparison
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Where Apollo breaks for SMEs</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Three things Apollo wasn't built for.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Apollo is a fine fit for US enterprise teams running high-volume outbound on a wide TAM. Below 50 FTE in NL, BE, DACH and UK, the model leaks where it counts.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {breakdowns.map((b) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <b.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">
+                {b.title}
+              </h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                {b.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div id="compare">
+      <DIYCompare client:visible />
+    </div>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">Switching FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            Common questions about leaving Apollo.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

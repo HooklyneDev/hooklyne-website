@@ -28,6 +28,11 @@
       "source": "/nl/pricing",
       "destination": "/nl/prijzen",
       "permanent": true
+    },
+    {
+      "source": "/nl/apollo-alternative",
+      "destination": "/nl/apollo-alternatief",
+      "permanent": true
     }
   ]
 }

@@ -114,8 +114,23 @@ const imageURL = new URL(finalImage, Astro.url);
 {(() => {
   const path = Astro.url.pathname.replace(/\/$/, "") || "/";
   const isNL = path === "/nl" || path.startsWith("/nl/");
-  const enPath = isNL ? path.replace(/^\/nl(\/|$)/, "/").replace(/\/$/, "") || "/" : path;
-  const nlPath = isNL ? path : (path === "/" ? "/nl" : `/nl${path}`);
+  // Resolve mapped slugs (e.g. /apollo-alternative <-> /nl/apollo-alternatief)
+  // before falling back to the simple /nl prefix scheme.
+  const SLUG_EN_TO_NL = {
+    "/about": "/nl/over-ons",
+    "/how-it-works": "/nl/hoe-het-werkt",
+    "/pricing": "/nl/prijzen",
+    "/apollo-alternative": "/nl/apollo-alternatief",
+  };
+  const SLUG_NL_TO_EN = Object.fromEntries(
+    Object.entries(SLUG_EN_TO_NL).map(([en, nl]) => [nl, en])
+  );
+  const enPath = isNL
+    ? (SLUG_NL_TO_EN[path] ?? (path.replace(/^\/nl(\/|$)/, "/").replace(/\/$/, "") || "/"))
+    : path;
+  const nlPath = isNL
+    ? path
+    : (SLUG_EN_TO_NL[path] ?? (path === "/" ? "/nl" : `/nl${path}`));
   const NL_AVAILABLE = new Set([
     "/nl",
     "/nl/faq",
@@ -130,6 +145,7 @@ const imageURL = new URL(finalImage, Astro.url);
     "/nl/resources",
     "/nl/resources/support",
     "/nl/blog",
+    "/nl/apollo-alternatief",
   ]);
   if (!NL_AVAILABLE.has(nlPath)) return null;
   const enUrl = new URL(enPath, Astro.site).toString();

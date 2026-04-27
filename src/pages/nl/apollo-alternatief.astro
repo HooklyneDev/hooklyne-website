@@ -1,0 +1,173 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { DIYCompare } from '@/components/blocks/diy-compare';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, ShieldCheck, Search, FileText } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Apollo-alternatief", path: "/nl/apollo-alternatief" },
+]);
+
+const breakdowns = [
+  {
+    icon: Search,
+    title: "Gebouwd om te onderzoeken, niet om te versturen.",
+    body: "Apollo is een verzendmotor bovenop een Amerikaans-georiënteerde contactdatabase. Hooklyne is een onderzoeksworkflow die het prospectpakket samenstelt voordat er iets de deur uitgaat. Loop je vast op volume, dan past Apollo. Loop je vast op antwoordpercentage, dan is het verzendvolume niet de oplossing.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Europese dekking, vier verificatielagen.",
+    body: "De Apollo-dekking voor NL, BE en DACH is dunner dan de Amerikaanse cijfers, omdat de bronmix is gebouwd voor de VS. Wij waterfallen over 20+ providers en draaien vier deliverability-checks (SMTP, catch-all, role en deliverable) voordat een contact wordt vrijgegeven, zodat je cold mail de inbox ook daadwerkelijk haalt.",
+  },
+  {
+    icon: FileText,
+    title: "Een signaallaag die Apollo niet heeft.",
+    body: "Funding, hiring, leiderschapswisselingen, expansie, productlanceringen, sectorbewegingen en persmomenten, gescoord op jouw ideaal klantprofiel. Elke prospect arriveert met een waarom-nu-reden die een Apollo-CSV niet kan leveren, onderbouwd en citeerbaar zodat de mail zichzelf bijna schrijft - in de stem van de vertegenwoordiger.",
+  },
+];
+
+const faq = [
+  {
+    q: "Ik betaal al voor Apollo. Waarom zou ik een tool toevoegen?",
+    a: "Niet toevoegen. De meeste pilots vervangen Apollo volledig op het MKB-segment, waar de Apollo-dekking het dunst is en het onderzoeksgedreven model van Hooklyne het meeste oplevert. Een pilot draait op tien prospects, gratis, voordat er iets verandert.",
+  },
+  {
+    q: "Is de data van Apollo beter dan die van Hooklyne?",
+    a: "Apollo heeft meer rijen. Hooklyne heeft minder rijen, scherper gescoord. Voor Amerikaanse enterprise wint Apollo op coverage. Voor Nederlandse en Britse MKB-doelgroepen ligt het verificatie-uitvalpercentage van Apollo op koude lijsten rond de 12 tot 25 procent; bij ons is dat 3 tot 5 procent, omdat we waterfallen over 20+ providers in plaats van leunen op één database.",
+  },
+  {
+    q: "Verstuurt Hooklyne de mail of stelt het hem alleen op?",
+    a: "Hooklyne stopt bij het concept in jouw eigen inbox. Versturen doe je vanaf je eigen sender, je eigen domein en je eigen reputatie. Wij draaien de verzendlaag bewust niet - dat is precies waar bulk-tools je domein opbranden.",
+  },
+  {
+    q: "Hoe zit het met de AVG?",
+    a: "Hooklyne is in Nederland gebouwd, zonder scraping en met een citeerbare bron achter elke claim. Contacten komen uit publieke profielen en geverifieerde provider-data, niet uit gedragsdata van ingelogde sessies. Geen dark patterns en geen lookalike-audiences.",
+  },
+  {
+    q: "Apollo is goedkoop per regel. Geldt dat ook voor Hooklyne?",
+    a: "Nee. Apollo is geprijsd op volume, Hooklyne op uitkomst. Eén Hooklyne-credit levert een volledig onderzochte, geverifieerde en verstuurklare prospect op. De meeste teams vervangen Apollo plus een aparte ChatGPT- of agency-uitgave door één Hooklyne-abonnement, en komen onder de streep lager uit.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Apollo-alternatief voor het Nederlandse MKB | Hooklyne"
+  description="Hooklyne is een onderzoeksgedreven Apollo-alternatief voor Nederlandse en Britse MKB-teams. Geverifieerde contacten over 20+ providers, signaalgedreven outreach, opgesteld in de stem van je vertegenwoordiger. Geen spray, geen scraping."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Apollo-alternatief voor het Nederlandse MKB",
+    "description": "Hooklyne is het onderzoeksgedreven Apollo-alternatief voor Nederlandse en Britse B2B-MKB-teams.",
+    "url": "https://www.hooklyne.com/nl/apollo-alternatief",
+    "inLanguage": "nl"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Apollo-alternatief</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Een Apollo-alternatief voor het Nederlandse MKB.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Apollo is een verzendmotor. Hooklyne is een onderzoeksworkflow. Geverifieerde contacten over 20+ providers, gescoorde signalen en outreach in de stem van je vertegenwoordiger - geleverd als één pakket per prospect.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/nl/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start een gratis pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#vergelijk"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            Bekijk de vergelijking
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Waar Apollo voor MKB breekt</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Drie dingen waar Apollo niet voor is gebouwd.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Voor Amerikaanse enterprise-teams die op grote schaal outbound draaien op een brede TAM is Apollo prima. Onder de 50 FTE in NL, BE, DACH en UK lekt het model precies daar waar het er toe doet.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {breakdowns.map((b) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <b.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">
+                {b.title}
+              </h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                {b.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div id="vergelijk">
+      <DIYCompare client:visible />
+    </div>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">Veelgestelde vragen</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            Vragen over de overstap vanaf Apollo.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

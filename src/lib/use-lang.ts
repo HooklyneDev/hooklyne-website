@@ -33,7 +33,19 @@ const NL_AVAILABLE = new Set<string>([
   "/nl/resources",
   "/nl/resources/support",
   "/nl/blog",
+  "/nl/apollo-alternatief",
 ]);
+
+/** EN slug -> NL slug for pages where the slug differs by language. */
+const EN_TO_NL_SLUG: Record<string, string> = {
+  "/about": "/nl/over-ons",
+  "/how-it-works": "/nl/hoe-het-werkt",
+  "/pricing": "/nl/prijzen",
+  "/apollo-alternative": "/nl/apollo-alternatief",
+};
+const NL_TO_EN_SLUG: Record<string, string> = Object.fromEntries(
+  Object.entries(EN_TO_NL_SLUG).map(([en, nl]) => [nl, en])
+);
 
 /**
  * Navigate to the equivalent URL in the other language.
@@ -47,13 +59,23 @@ export function switchLangUrl(next: Lang) {
 
   let newPath: string;
   if (next === "nl") {
-    // en -> nl: prepend /nl, but only if a Dutch version exists.
-    const candidate = pathname === "/" ? "/nl" : `/nl${pathname}`;
-    newPath = NL_AVAILABLE.has(candidate) ? candidate : "/nl";
+    // en -> nl: try the slug map first, then fall back to /nl prefix.
+    const mapped = EN_TO_NL_SLUG[pathname];
+    if (mapped) {
+      newPath = mapped;
+    } else {
+      const candidate = pathname === "/" ? "/nl" : `/nl${pathname}`;
+      newPath = NL_AVAILABLE.has(candidate) ? candidate : "/nl";
+    }
   } else {
-    // nl -> en: strip /nl prefix
-    newPath = pathname.replace(/^\/nl(\/|$)/, "/") || "/";
-    if (newPath !== "/" && newPath.endsWith("/")) newPath = newPath.slice(0, -1);
+    // nl -> en: try the slug map first, then strip /nl prefix.
+    const mapped = NL_TO_EN_SLUG[pathname];
+    if (mapped) {
+      newPath = mapped;
+    } else {
+      newPath = pathname.replace(/^\/nl(\/|$)/, "/") || "/";
+      if (newPath !== "/" && newPath.endsWith("/")) newPath = newPath.slice(0, -1);
+    }
   }
   window.location.href = newPath + search + hash;
 }
