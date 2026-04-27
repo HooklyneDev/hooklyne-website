@@ -4,66 +4,36 @@ import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { ArrowRight, Clock } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
+import { byCategory, comingSoonGuides } from "@/data/guides";
 
 const breadcrumb = breadcrumbList([
   { name: "Home", path: "/" },
-  { name: "Compare", path: "/compare" },
+  { name: "Guides", path: "/compare" },
 ]);
 
-const alternatives = [
-  {
-    badge: "Competitor alternative",
-    name: "Apollo alternative",
-    description: "Apollo is a sending engine on top of a US-first database. Hooklyne is the research layer underneath - verified contacts, scored signals, drafted message. See where each tool wins.",
-    href: "/apollo-alternative",
-    cta: "Read comparison",
-  },
-  {
-    badge: "Competitor alternative",
-    name: "Cognism alternative",
-    description: "Cognism leads on phone-verified mobile numbers. Hooklyne leads on signal depth, European research workflow, and prospect packages built in your rep's voice. See the trade-offs.",
-    href: "/cognism-alternative",
-    cta: "Read comparison",
-  },
-  {
-    badge: "Competitor alternative",
-    name: "Lusha alternative",
-    description: "Lusha surfaces contacts fast. Hooklyne surfaces contacts with a why-now buying signal and a drafted message ready to send in under a minute. See what the difference earns you.",
-    href: "/lusha-alternative",
-    cta: "Read comparison",
-  },
-];
+const alternatives = byCategory("alternative");
+const compliance   = byCategory("compliance");
+const verticals    = byCategory("vertical"); // live verticals (when they exist)
+const comingSoon   = comingSoonGuides;
 
-const useCases = [
-  {
-    badge: "Compliance",
-    name: "GDPR-compliant prospecting",
-    description: "What GDPR actually requires for B2B outreach, where most tools fall short without knowing it, and how Hooklyne is built for it from the ground up.",
-    href: "/gdpr-prospecting",
-    cta: "Read the guide",
-  },
-];
-
-const comingSoon = [
-  { name: "For B2B SaaS teams", tag: "Vertical" },
-  { name: "For logistics and freight", tag: "Vertical" },
-  { name: "For agencies", tag: "Vertical" },
-  { name: "For fintech and financial services", tag: "Vertical" },
-  { name: "For industrial and manufacturing", tag: "Vertical" },
+const sections = [
+  { title: "Competitor alternatives", items: alternatives },
+  { title: "Guides",                  items: compliance },
+  ...(verticals.length ? [{ title: "By industry", items: verticals }] : []),
 ];
 ---
 
 <DefaultLayout
-  title="Hooklyne compared - Apollo, Cognism, Lusha and more | Hooklyne"
-  description="Hooklyne compared to Apollo, Cognism, Lusha and other B2B prospecting tools. Honest side-by-side breakdowns for European SMEs. See where Hooklyne wins and where it doesn't."
+  title="Hooklyne guides — comparisons, compliance and prospecting | Hooklyne"
+  description="Hooklyne compared to Apollo, Cognism, Lusha and other B2B prospecting tools. GDPR compliance guides, industry-specific prospecting. Honest resources for European SMEs."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Hooklyne compared - Apollo, Cognism, Lusha and more",
-    "description": "Honest side-by-side comparisons of Hooklyne vs the B2B prospecting tools European SME sales teams use most.",
+    "name": "Hooklyne guides — comparisons, compliance and prospecting",
+    "description": "Comparisons, compliance guides and industry-specific prospecting resources for European B2B SMEs.",
     "url": "https://www.hooklyne.com/compare",
     "inLanguage": "en"
   })} />
@@ -72,87 +42,70 @@ const comingSoon = [
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:idle signals={false} />
       <div class="container max-w-4xl text-center relative z-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Comparisons</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Guides</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          How Hooklyne stacks up.
+          Research before you decide.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-          Honest comparisons with the B2B prospecting tools European sales teams use most. Where Hooklyne wins, where it doesn't, and who each tool is actually built for.
+          Honest comparisons with the B2B prospecting tools European sales teams use most, plus compliance and industry guides. Where Hooklyne wins, where it doesn't, and who each tool is built for.
         </p>
       </div>
     </section>
 
     <section class="pb-16 lg:pb-24">
-      <div class="container max-w-5xl">
+      <div class="container max-w-5xl space-y-16">
 
-        <!-- Competitor alternatives -->
-        <div class="mb-16">
-          <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Competitor alternatives</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {alternatives.map((item) => (
-              <a
-                href={item.href}
-                class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                style="background: var(--card); border: 1px solid var(--border);"
-              >
-                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">{item.badge}</span>
-                <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.name}</h3>
-                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.description}</p>
-                <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
-                  {item.cta}
-                  <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </span>
-              </a>
-            ))}
+        {sections.map(({ title, items }) => (
+          <div>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">{title}</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {items.map((item) => (
+                <a
+                  href={item.en.slug}
+                  class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                  style="background: var(--card); border: 1px solid var(--border);"
+                >
+                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">
+                    {item.category === "alternative" ? "Alternative" : item.category === "compliance" ? "Compliance" : "Industry"}
+                  </span>
+                  <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.en.label}</h3>
+                  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.en.description}</p>
+                  <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
+                    {item.en.cta}
+                    <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
 
-        <!-- Use-case guides -->
-        <div class="mb-16">
-          <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Guides</h2>
-          <div class="grid sm:grid-cols-2 gap-4">
-            {useCases.map((item) => (
-              <a
-                href={item.href}
-                class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                style="background: var(--card); border: 1px solid var(--border);"
-              >
-                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">{item.badge}</span>
-                <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.name}</h3>
-                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.description}</p>
-                <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
-                  {item.cta}
-                  <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </span>
-              </a>
-            ))}
+        {comingSoon.length > 0 && (
+          <div>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Coming soon</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {comingSoon.map((item) => (
+                <div
+                  class="rounded-2xl p-6 opacity-50"
+                  style="background: var(--card); border: 1px solid var(--border);"
+                >
+                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">
+                    {item.category === "vertical" ? "Industry" : item.category}
+                  </span>
+                  <p class="text-sm font-medium text-[var(--heading)]">{item.en.label}</p>
+                  <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
+                    <Clock className="size-3" />
+                    In progress
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <!-- Coming soon -->
-        <div>
-          <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Coming soon</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {comingSoon.map((item) => (
-              <div
-                class="rounded-2xl p-6 opacity-50"
-                style="background: var(--card); border: 1px solid var(--border);"
-              >
-                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">{item.tag}</span>
-                <p class="text-sm font-medium text-[var(--heading)]">{item.name}</p>
-                <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
-                  <Clock className="size-3" />
-                  In progress
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
 
       </div>
     </section>
 
-    <!-- Bottom CTA -->
     <section class="pb-24 lg:pb-32">
       <div class="container max-w-3xl text-center">
         <div class="rounded-2xl px-8 py-12" style="background: var(--card); border: 1px solid var(--border);">
