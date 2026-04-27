@@ -412,7 +412,7 @@ export const DIYCompare = () => {
     estCost: "geschatte toolkosten",
   } : {
     eyebrow: "The workflow",
-    headline: "From ideaal klantprofiel to inbox in six steps.",
+    headline: "From ICP to inbox in six steps.",
     sub: "Each step does one job a human researcher would do. Together they produce prospect packages your rep can act on in under a minute. Here is the whole flow.",
     compareWith: "Compare with",
     estCost: "est. tool cost",

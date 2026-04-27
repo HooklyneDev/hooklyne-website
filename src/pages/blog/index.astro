@@ -43,7 +43,7 @@ const posts = (await getCollection('blog')).sort(
 					</div>
 				</div>
 			) : (
-				<BlogPosts posts={posts} client:only='react' />
+				<BlogPosts posts={posts} lang="en" client:only='react' />
 			)}
 		</div>
 	</Background>
