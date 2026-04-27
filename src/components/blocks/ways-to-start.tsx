@@ -48,7 +48,7 @@ const COPY = {
       },
       {
         title: "Begin met een contact.",
-        body: "Eén naam of een hele lijst, en wij verifiëren elk mailadres en schrijven de outreach in de stem van je vertegenwoordiger.",
+        body: "Eén naam of een hele lijst, en wij verifiëren elk mailadres en schrijven de outreach in de stem van je salesmedewerker.",
         input: "Naam + LinkedIn",
       },
     ],

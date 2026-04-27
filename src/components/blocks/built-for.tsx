@@ -46,7 +46,7 @@ const NL = {
     },
     {
       headline: "Salesteams bij bedrijven van 10 tot 100.",
-      body: "Een vertegenwoordiger of acht, een CRM, misschien een sequencer. Je kent je ideaal klantprofiel, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
+      body: "Een salesmedewerker of acht, een CRM, misschien een sequencer. Je kent je ideaal klantprofiel, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
     },
     {
       headline: "Teams waarbij een goed gesprek meer oplevert dan vijftig koude mails.",

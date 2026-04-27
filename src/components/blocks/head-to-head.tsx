@@ -140,7 +140,7 @@ const APOLLO_NL: Profile = {
     {
       dimension: "Outreach-personalisatie",
       competitor: "Variabelen ingevuld vanuit je data",
-      hooklyne: "4 reasoning-passes, voice-match per vertegenwoordiger",
+      hooklyne: "4 reasoning-passes, voice-match per salesmedewerker",
       verdict: "hooklyne",
     },
     {
@@ -276,7 +276,7 @@ const COGNISM_NL: Profile = {
     {
       dimension: "Outreach-opstelling",
       competitor: "Niet inbegrepen (integratie met sequencer)",
-      hooklyne: "Opgesteld in de stem van je vertegenwoordiger, 4 reasoning-passes",
+      hooklyne: "Opgesteld in de stem van je salesmedewerker, 4 reasoning-passes",
       verdict: "hooklyne",
     },
     {
@@ -422,7 +422,7 @@ const LUSHA_NL: Profile = {
     {
       dimension: "Opgestelde outreach",
       competitor: "Niet inbegrepen",
-      hooklyne: "Opgesteld in de stem van je vertegenwoordiger, 4 reasoning-passes",
+      hooklyne: "Opgesteld in de stem van je salesmedewerker, 4 reasoning-passes",
       verdict: "hooklyne",
     },
     {
@@ -465,7 +465,7 @@ const LUSHA_NL: Profile = {
     },
   ],
   whenCompetitorWins:
-    "Lusha is de juiste keus voor een solo SDR of recruiter die in LinkedIn leeft, op het moment prospect en geen volledige onderzoeksworkflow nodig heeft. Voor een MKB-salesteam dat outbound als echte motion bouwt, stopt de contact-only output van Lusha precies daar waar de vertegenwoordiger nog werk te doen heeft.",
+    "Lusha is de juiste keus voor een solo SDR of recruiter die in LinkedIn leeft, op het moment prospect en geen volledige onderzoeksworkflow nodig heeft. Voor een MKB-salesteam dat outbound als echte motion bouwt, stopt de contact-only output van Lusha precies daar waar de salesmedewerker nog werk te doen heeft.",
 };
 
 type Props = {

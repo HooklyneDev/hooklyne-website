@@ -262,7 +262,7 @@ const NL_TABS: TabDef[] = [
         detail: "Elke prospect komt binnen met een signaal: fundingronde, hire, leiderschapswissel, launch. Twee keer gescoord - een keer voor het bedrijf, een keer voor wat jij verkoopt. Alleen wat door beide komt, bereikt jou.",
         time: "auto", callout: "Een aanleiding, niet alleen een naam.", good: true },
       { step: "4", label: "Volledige mail, in jouw schrijfstijl",
-        detail: "Vier reasoning-passes: hook, invalshoek, schrijfstijl, kwaliteitscheck. Klinkt als je vertegenwoordiger, niet als een tool.",
+        detail: "Vier reasoning-passes: hook, invalshoek, schrijfstijl, kwaliteitscheck. Klinkt als je salesmedewerker, niet als een tool.",
         time: "auto", callout: "Niet generiek. NL of EN, afgestemd op die prospect.", good: true },
       { step: "5", label: "Volg signalen van die lead",
         detail: "Houd elke lead in de gaten voor doorlopende signalen: nieuwe funding, teamveranderingen, persvermeldingen. Je krijgt een signaal als het moment verandert - niet als de kalender dat zegt.",
@@ -407,13 +407,13 @@ export const DIYCompare = () => {
   const labels = lang === "nl" ? {
     eyebrow: "De workflow",
     headline: "Van ideaal klantprofiel naar inbox in zes stappen.",
-    sub: "Zes stappen. Elk doet wat een researcher handmatig een uur zou kosten. Het resultaat is een prospectpakket dat je vertegenwoordiger in minder dan een minuut beoordeelt en verstuurt.",
+    sub: "Zes stappen, volledig automatisch. Je salesmedewerker krijgt een compleet pakket: contact gevonden, context klaar, outreach geschreven. Beoordelen en versturen in minder dan een minuut.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
   } : {
     eyebrow: "The workflow",
     headline: "From ICP to inbox in six steps.",
-    sub: "Six steps. Each one does what a researcher would take an hour to do by hand. The output is a prospect package your rep can review and send in under a minute.",
+    sub: "Six steps, fully automated. The rep gets a complete prospect package - contact found, context built, outreach drafted. Review and send in under a minute.",
     compareWith: "Compare with",
     estCost: "est. tool cost",
   };

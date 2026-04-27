@@ -67,7 +67,7 @@ const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
   home: {
     kicker: "Gratis pilot",
     heading: "Probeer het op tien van je eigen targets.",
-    body: "Wij bouwen tien complete prospectpakketten voor jouw markt, met geverifieerde contacten, real-time koopsignalen en een eerste mail in de stem van je vertegenwoordiger. Geen creditcard nodig. In ruil vragen we een feedbackgesprek van 20 minuten.",
+    body: "Wij bouwen tien complete prospectpakketten voor jouw markt, met geverifieerde contacten, real-time koopsignalen en een eerste mail in de stem van je salesmedewerker. Geen creditcard nodig. In ruil vragen we een feedbackgesprek van 20 minuten.",
     primaryLabel: "Start je gratis pilot",
     secondaryLabel: "Bekijk prijzen",
     secondaryHref: "/nl/prijzen",
