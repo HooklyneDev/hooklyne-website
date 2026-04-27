@@ -1,0 +1,252 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, TrendingUp, Users, Zap, Layers, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Industries", path: "/industries" },
+  { name: "B2B SaaS prospecting", path: "/saas-prospecting" },
+]);
+
+const pains = [
+  "Your ICP buys 40 tools. Cold email about a 41st goes straight to the bin.",
+  "A funding round hits your feed the day after everyone else already emailed the CEO.",
+  "You're reaching the right company but the wrong role - or one level too low.",
+  "The hiring signal that would tell you they're in a stack review is buried in noise.",
+];
+
+const signals = [
+  {
+    icon: TrendingUp,
+    title: "Funding rounds.",
+    body: "Series A and B are the most reliable SaaS buying windows. A raise means headcount plans, stack reviews, and a leadership team that just got asked by a board to show process and scale. The window is roughly six to ten weeks post-announcement - after that, everyone has already called.",
+  },
+  {
+    icon: Users,
+    title: "RevOps, SDR, and VP Sales hires.",
+    body: "A new Head of RevOps almost always precedes a tooling review. New SDR headcount means the current stack needs to scale. A VP of Sales at a 20-40 person company often resets the outbound motion entirely. These are higher-signal than 'they visited your pricing page'.",
+  },
+  {
+    icon: Zap,
+    title: "Tech stack changes.",
+    body: "A company that just moved off HubSpot, dropped a data tool, or announced a new integration is in active evaluation mode. Stack signals surface in job descriptions ('must have experience with X'), LinkedIn posts from ops team members, and press releases about new partnerships.",
+  },
+  {
+    icon: Layers,
+    title: "Headcount inflection points.",
+    body: "25 to 50 employees is the inflection where informal processes break. 50 to 100 is where sales ops becomes a real function. Companies crossing these thresholds are buying things they couldn't justify six months earlier - and the budget is often already allocated.",
+  },
+];
+
+const hooklynePoints = [
+  {
+    icon: Target,
+    title: "Right contact, right seniority.",
+    body: "Whether you need the CTO, VP of Engineering, Head of RevOps, or the SDR lead depends on your offer. Hooklyne surfaces the three best-matched contacts at each company, verified across 21 providers, rather than returning a list and leaving the judgement to you.",
+  },
+  {
+    icon: Clock,
+    title: "Timing to the signal, not the sequence.",
+    body: "Hooklyne scores each prospect against live signals: funding, hiring, expansion, stack changes. The first message goes out when there is a reason that belongs in the opening line - not when a sequence reaches day seven.",
+  },
+  {
+    icon: MessageSquare,
+    title: "A message a CTO would actually read.",
+    body: "SaaS buyers get cold email for a living. Hooklyne drafts the first message in your rep's voice, referencing the specific signal that makes this prospect relevant right now. Generic loses. Relevant and timed wins.",
+  },
+];
+
+const faq = [
+  {
+    q: "SaaS companies already use so many tools. Is there real appetite?",
+    a: "Yes - but only in the right window. A SaaS company that just raised, just hired a RevOps lead, or just crossed 50 people is actively buying. The same company three months after the stack settled is not. Hooklyne surfaces companies in the buying window, not just companies that match the ICP.",
+  },
+  {
+    q: "The decision-maker I need keeps changing. How does Hooklyne handle that?",
+    a: "Leadership churn is highest in growth-stage SaaS. Hooklyne waterfalls across 21 providers and runs four deliverability checks before shipping any contact, so you're not emailing someone who left six months ago. When a contact changes, the signal around that hire is often the buying signal too.",
+  },
+  {
+    q: "We sell to SaaS companies in the Netherlands specifically. Does coverage hold?",
+    a: "Dutch SaaS coverage is thin in US-first databases. Hooklyne builds its output from a waterfall across 21 providers including European-first sources, so Dutch and Benelux SaaS coverage is meaningfully better than what you get from a single US-built database.",
+  },
+  {
+    q: "What if Hooklyne doesn't produce replies from SaaS buyers?",
+    a: "Pilot first. Ten prospects from your actual SaaS ICP, fully built, no card required. If the output doesn't earn replies you wouldn't have gotten with your current approach, you stop. We'd rather have honest feedback than a customer who isn't a fit.",
+  },
+];
+---
+
+<DefaultLayout
+  title="B2B SaaS prospecting: timing, signals, and the right contact | Hooklyne"
+  description="How to prospect into B2B SaaS companies: the signals that open a buying window, how to find the right seniority, and why timing beats volume for SaaS buyers. Practical guide for B2B sales teams."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "B2B SaaS prospecting guide",
+    "description": "How to find the buying window in B2B SaaS companies and reach the right decision-maker.",
+    "url": "https://www.hooklyne.com/saas-prospecting",
+    "inLanguage": "en"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">B2B SaaS prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          SaaS buyers don't ignore cold outreach. They ignore bad timing.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          SaaS companies buy in windows. A fresh funding round, a new RevOps hire, a headcount milestone - each one opens a brief period where the right message at the right seniority lands. This guide covers what those signals look like and how to reach them before the window closes.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start a free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#signals"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the signals
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">You probably came here because</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real SaaS prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your SaaS ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
+            <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Request a pilot
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How SaaS companies buy</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Four signals that open a SaaS buying window.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            SaaS buyers are not permanently closed to new tools. They are closed to bad timing. These are the signals that indicate an active window, not just a plausible ICP fit.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {signals.map((s) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <s.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for SaaS teams</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Built for the way SaaS companies actually buy.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Signal scoring, contact verification across 21 providers, and a drafted first message that references the reason this prospect is relevant right now.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {hooklynePoints.map((h) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                <h.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            SaaS prospecting questions, answered.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

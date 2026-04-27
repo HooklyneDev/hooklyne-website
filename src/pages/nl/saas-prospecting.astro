@@ -1,0 +1,252 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, TrendingUp, Users, Zap, Layers, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Branches", path: "/nl/industries" },
+  { name: "B2B SaaS prospecting", path: "/nl/saas-prospecting" },
+]);
+
+const pains = [
+  "Je ICP koopt veertig tools. Een koude mail over de eenenveertigste verdwijnt direct.",
+  "Een fundingrondje verschijnt in je feed op de dag dat iedereen al gemaild heeft.",
+  "Je bereikt het juiste bedrijf, maar de verkeerde rol of een niveau te laag.",
+  "De hire die aangeeft dat er een stack-review aankomt, gaat verloren in het LinkedIn-lawaai.",
+];
+
+const signals = [
+  {
+    icon: TrendingUp,
+    title: "Financieringsrondes.",
+    body: "Series A en B zijn de betrouwbaarste koopvensters voor SaaS-tools. Een raise betekent uitbreidingsplannen, stack-reviews en een leadership team dat aan een board moet laten zien dat processen schalen. Het venster is ruwweg zes tot tien weken na de aankondiging - daarna heeft iedereen al gebeld.",
+  },
+  {
+    icon: Users,
+    title: "RevOps-, SDR- en VP Sales-aannamen.",
+    body: "Een nieuwe Head of RevOps gaat bijna altijd gepaard met een tooling-review. Nieuw SDR-headcount betekent dat de huidige stack moet meegroeien. Een VP of Sales bij een bedrijf van 20-40 mensen zet de outbound-motion vaak helemaal opnieuw. Betere signalen dan 'ze hebben je pricingpagina bezocht'.",
+  },
+  {
+    icon: Zap,
+    title: "Wijzigingen in de tech-stack.",
+    body: "Een bedrijf dat net van HubSpot af is, een datatool heeft laten vallen of een nieuwe integratiepartner heeft aangekondigd, is actief aan het evalueren. Stack-signalen zijn zichtbaar in vacatureteksten ('ervaring met X vereist'), LinkedIn-posts van ops-teamleden en persberichten over nieuwe partnerships.",
+  },
+  {
+    icon: Layers,
+    title: "Groeiversnellingspunten in headcount.",
+    body: "Van 25 naar 50 medewerkers is het punt waarop informele processen breken. Van 50 naar 100 wordt sales ops een echte functie. Bedrijven die deze drempels overschrijden kopen dingen die ze een halfjaar geleden niet konden rechtvaardigen - en het budget is vaak al gereserveerd.",
+  },
+];
+
+const hooklynePoints = [
+  {
+    icon: Target,
+    title: "Juiste contact, juist senioriteits­niveau.",
+    body: "Of je de CTO, VP Engineering, Head of RevOps of de SDR-lead nodig hebt, hangt af van wat je verkoopt. Hooklyne brengt de drie best passende contacten per bedrijf naar boven, geverifieerd over 21 databronnen - in plaats van een lijst teruggeven en het oordeel bij jou te laten.",
+  },
+  {
+    icon: Clock,
+    title: "Timing op het signaal, niet op de sequencer.",
+    body: "Hooklyne scoort elke prospect op live signalen: funding, hiring, uitbreiding, stack-wijzigingen. De eerste mail gaat eruit op het moment dat er een reden is die thuishoort in de openingsregel - niet als dag zeven van een sequence aanbreekt.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Een bericht dat een CTO ook leest.",
+    body: "SaaS-kopers ontvangen koude mails voor hun werk. Hooklyne stelt de eerste mail op in de schrijfstijl van jouw vertegenwoordiger, met een verwijzing naar het specifieke signaal dat deze prospect nu relevant maakt. Generiek verliest. Relevant en op het juiste moment wint.",
+  },
+];
+
+const faq = [
+  {
+    q: "SaaS-bedrijven gebruiken al zoveel tools. Is er wel vraag?",
+    a: "Ja, maar alleen op het juiste moment. Een SaaS-bedrijf dat net geld heeft opgehaald, net een RevOps-lead heeft aangenomen of net vijftig medewerkers heeft bereikt, koopt actief. Hetzelfde bedrijf drie maanden nadat de stack is afgerond, doet dat niet. Hooklyne toont bedrijven in het koopvenster - niet alleen bedrijven die op het ICP lijken.",
+  },
+  {
+    q: "De besluitvormers bij mijn prospects wisselen vaak. Hoe gaat Hooklyne daarmee om?",
+    a: "Verloop is het hoogst bij groeiende SaaS-bedrijven. Hooklyne watervalt over 21 databronnen en voert vier deliverability-checks uit voordat een contact wordt vrijgegeven - zodat je niet mailt naar iemand die al zes maanden weg is. Als een contact verandert, is het signaal rondom die hire bovendien vaak ook het koopsignaal.",
+  },
+  {
+    q: "We verkopen specifiek aan Nederlandse SaaS-bedrijven. Klopt de dekking?",
+    a: "Nederlandse SaaS-dekking is dun in Amerikaans-georiënteerde databases. Hooklyne bouwt zijn output op uit een waterval over 21 providers, inclusief Europees-eerste bronnen. Voor Dutch en Benelux SaaS is de dekking daardoor aanzienlijk beter dan bij een enkele Amerikaans-gebouwde database.",
+  },
+  {
+    q: "Wat als Hooklyne geen replies oplevert bij SaaS-kopers?",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte SaaS-ICP, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Liever eerlijke feedback dan een klant die geen fit is.",
+  },
+];
+---
+
+<DefaultLayout
+  title="B2B SaaS prospecting: timing, signalen en het juiste contact | Hooklyne"
+  description="Hoe je B2B SaaS-bedrijven prospecteert: welke signalen een koopvenster openen, hoe je het juiste senioriteits­niveau vindt en waarom timing meer oplevert dan volume bij SaaS-kopers."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "B2B SaaS prospecting-gids",
+    "description": "Hoe je het koopvenster bij B2B SaaS-bedrijven vindt en de juiste besluitvormer bereikt.",
+    "url": "https://www.hooklyne.com/nl/saas-prospecting",
+    "inLanguage": "nl"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">B2B SaaS prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          SaaS-kopers negeren geen koude mail. Ze negeren slechte timing.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          SaaS-bedrijven kopen in vensters. Een nieuwe financieringsronde, een RevOps-hire, een groeimijlpaal - elk opent een korte periode waarin het juiste bericht op het juiste senioriteits­niveau aankomt. Deze gids behandelt hoe die signalen eruitzien en hoe je er bent voordat het venster sluit.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/nl/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start een gratis pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#signalen"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            Bekijk de signalen
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">Je bent hier waarschijnlijk omdat</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Als een van deze punten herkenbaar is, is de rest van deze pagina voor jou.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Gratis pilot, geen kaart</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte SaaS-prospects.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig opgebouwde prospectpakketten uit jouw SaaS-ICP. Geen betaling, geen contract. Daarna vragen we twintig minuten eerlijke feedback - dat is alles.</p>
+            <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Vraag een pilot aan
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signalen" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe SaaS-bedrijven kopen</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Vier signalen die een SaaS-koopvenster openen.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            SaaS-kopers zijn niet permanent gesloten voor nieuwe tools. Ze zijn gesloten voor slechte timing. Dit zijn de signalen die een actief venster aangeven - niet alleen een plausibele ICP-fit.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {signals.map((s) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <s.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne voor SaaS-teams</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Gebouwd voor de manier waarop SaaS-bedrijven echt kopen.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Signaalscoring, contactverificatie over 21 databronnen en een eerste mail die verwijst naar de reden waarom deze prospect nu relevant is.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {hooklynePoints.map((h) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                <h.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            Vragen over SaaS prospecting, beantwoord.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

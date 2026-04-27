@@ -41,6 +41,11 @@ const NL_AVAILABLE = new Set<string>([
   "/nl/guides",
   "/nl/compliance",
   "/nl/industries",
+  "/nl/saas-prospecting",
+  "/nl/logistiek-prospecting",
+  "/nl/bureau-prospecting",
+  "/nl/fintech-prospecting",
+  "/nl/industrie-prospecting",
 ]);
 
 /** EN slug -> NL slug for pages where the slug differs by language. */
@@ -53,6 +58,9 @@ const EN_TO_NL_SLUG: Record<string, string> = {
   "/lusha-alternative": "/nl/lusha-alternatief",
   "/gdpr-prospecting": "/nl/avg-prospecting",
   "/compare": "/nl/vergelijken",
+  "/logistics-prospecting": "/nl/logistiek-prospecting",
+  "/agency-prospecting": "/nl/bureau-prospecting",
+  "/industrial-prospecting": "/nl/industrie-prospecting",
 };
 const NL_TO_EN_SLUG: Record<string, string> = Object.fromEntries(
   Object.entries(EN_TO_NL_SLUG).map(([en, nl]) => [nl, en])

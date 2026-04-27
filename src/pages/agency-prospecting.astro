@@ -1,0 +1,252 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, Users, Star, TrendingUp, Briefcase, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Industries", path: "/industries" },
+  { name: "Agency prospecting", path: "/agency-prospecting" },
+]);
+
+const pains = [
+  "Agency owners can identify a generic cold email from the subject line.",
+  "You're selling to people who sell for a living - and they know every move.",
+  "The new business contact changed three months ago and nobody told you.",
+  "Your best window was right after they won a new client. You found out too late.",
+];
+
+const signals = [
+  {
+    icon: TrendingUp,
+    title: "New client wins and case study announcements.",
+    body: "When an agency announces a new client or publishes a case study, it means capacity is filling up and growth pressure is on. That's when decisions about efficiency, headcount, or new tools get made. Most agencies announce wins on LinkedIn and in trade press within a few weeks of signing.",
+  },
+  {
+    icon: Users,
+    title: "Headcount growth and new business hires.",
+    body: "A Head of New Business hire signals the agency is going on offence. A wave of creative or account hires means client load is growing and support infrastructure needs to catch up. Either signals a business that's actively spending and open to conversations.",
+  },
+  {
+    icon: Star,
+    title: "Awards, rankings, and shortlist appearances.",
+    body: "Agency awards aren't just vanity. Making a Campaign shortlist, winning a WARC effectiveness award, or appearing in an industry ranking usually tracks with a growth phase. It's also a natural hook - something specific enough to reference in a first message without sounding like you Googled them for thirty seconds.",
+  },
+  {
+    icon: Briefcase,
+    title: "Service line expansion.",
+    body: "An agency that just added a new practice - performance, data, sustainability, AI - is in investment mode. New service lines require new tooling, new processes, and sometimes new suppliers. The announcement is usually public, the buying conversation happens quietly in the weeks after.",
+  },
+];
+
+const hooklynePoints = [
+  {
+    icon: Target,
+    title: "Right contact: founder, MD, or head of new business.",
+    body: "At a 15-person agency the founder makes the decision. At a 60-person agency it might be the MD or a Head of Growth. Hooklyne identifies the right seniority for your offer at each agency, verified and ready, rather than surfacing a list and leaving the judgement to you.",
+  },
+  {
+    icon: Clock,
+    title: "Timed to the capacity signal.",
+    body: "Agency buying is opportunistic - it happens when there's a problem to solve or a moment of growth to support. Hooklyne watches for the signals that indicate that moment and puts your outreach there, not on a Tuesday drip cycle.",
+  },
+  {
+    icon: MessageSquare,
+    title: "A message that earns its open.",
+    body: "Agency people read cold email critically. Hooklyne drafts the first message in your rep's writing style, referencing the specific signal that makes this agency relevant right now. A new client win, a service expansion, an award - named specifically, not 'I saw your recent news'.",
+  },
+];
+
+const faq = [
+  {
+    q: "Agencies are expert at filtering sales. How do you break through?",
+    a: "You don't break through - you arrive at the right moment with a relevant reason. A generic message to an agency MD gets deleted before the second line. A message that references their recent client win, names a specific problem that win creates, and connects it to something you actually solve gets read. Hooklyne's job is to find the moment and give you the reason.",
+  },
+  {
+    q: "Agency structures vary so much. How does Hooklyne know who to target?",
+    a: "You define the ICP: size, sector specialism, service type. Hooklyne identifies the right contact seniority at each agency based on your offer. A 10-person creative boutique and a 100-person performance agency have very different decision-making structures - Hooklyne adjusts for that.",
+  },
+  {
+    q: "We sell into digital agencies specifically. Does Hooklyne know that segment?",
+    a: "Yes. Digital agencies are well-represented in the data sources Hooklyne uses - they have active LinkedIn footprints, trade press coverage, and clear signals around client wins and headcount. It's actually one of the easier agency segments to research accurately.",
+  },
+  {
+    q: "What if Hooklyne doesn't produce results with agencies?",
+    a: "Pilot first. Ten prospects from your actual agency ICP, fully built, no card required. If the output doesn't open conversations you wouldn't have had, you stop. Agencies are a segment where relevance is everything - the pilot will tell you quickly whether the signal-to-message approach works for your offer.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Prospecting into agencies and consultancies | Hooklyne"
+  description="How to reach agency owners and MDs: the signals that indicate a buying window, why timing beats persistence for agency buyers, and how to write a message that earns its open."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Agency and consultancy prospecting guide",
+    "description": "How to prospect into agencies and consultancies: signals, timing, and the right contact.",
+    "url": "https://www.hooklyne.com/agency-prospecting",
+    "inLanguage": "en"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Agency prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Selling to agencies means selling to people who sell for a living.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Agency owners and MDs delete cold email faster than almost anyone. Not because they're not buying - they buy plenty. Because generic cold email is easy to spot and easy to ignore. This guide covers the signals that open a real conversation and why timing is the only variable that matters.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start a free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#signals"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the signals
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">You probably came here because</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real agency prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your agency ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
+            <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Request a pilot
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How agencies buy</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Four signals that create a real opening with agency buyers.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Agencies buy when there is pressure - growth pressure, capacity pressure, or a new problem created by a win. These signals tell you when that pressure is on.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {signals.map((s) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <s.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for agency-focused teams</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Built for buyers who will notice if you haven't done the work.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Signal scoring, verified contacts at the right seniority, and a first message that references a real reason - not a sequence step.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {hooklynePoints.map((h) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                <h.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            Agency prospecting questions, answered.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

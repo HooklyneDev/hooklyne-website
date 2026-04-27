@@ -1,0 +1,252 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, Building, MapPin, FileText, Calendar, Search, Shield, Clock, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Industries", path: "/industries" },
+  { name: "Logistics and freight prospecting", path: "/logistics-prospecting" },
+]);
+
+const pains = [
+  "The operations director you need to reach doesn't have a LinkedIn profile.",
+  "Your best signal was a new depot opening - you found it in a news item, a month late.",
+  "You're sending to info@ because the right contact isn't findable in any database.",
+  "Freight and logistics buyers ignore email that doesn't arrive at exactly the right moment.",
+];
+
+const signals = [
+  {
+    icon: Building,
+    title: "Depot and facility expansions.",
+    body: "A new warehouse, distribution centre, or regional hub almost always precedes procurement activity. Planning permissions, company register filings, and trade press announcements are the earliest signals - often weeks before the decision-maker gets a calendar invite about tooling.",
+  },
+  {
+    icon: MapPin,
+    title: "New route wins and contract announcements.",
+    body: "A carrier or freight forwarder that just won a major contract or opened a new lane is in growth mode. That means headcount, new vehicles, and supplier reviews. These announcements appear in trade publications and company press releases before they surface in the broader business press.",
+  },
+  {
+    icon: Calendar,
+    title: "Regulatory and compliance deadlines.",
+    body: "Clean transport regulations, ETS extensions, CSRD reporting deadlines, and cross-border compliance changes all create procurement windows. Logistics companies buying ahead of a deadline are motivated buyers - they have a date and they know the cost of missing it.",
+  },
+  {
+    icon: FileText,
+    title: "Procurement role openings.",
+    body: "A new Head of Procurement, Supply Chain Director, or Fleet Manager posting is a strong short-term signal. The person stepping in typically reviews supplier relationships in their first 90 days. That's the window - before they've settled in and before existing relationships are cemented.",
+  },
+];
+
+const hooklynePoints = [
+  {
+    icon: Search,
+    title: "21-provider waterfall for low-LinkedIn sectors.",
+    body: "Logistics and freight companies are some of the least well-represented in single-source databases. Operations directors and fleet managers rarely maintain public profiles. Hooklyne waterfalls across 21 providers to surface and verify contacts that a LinkedIn-based tool would simply miss.",
+  },
+  {
+    icon: Shield,
+    title: "Signals from trade sources, not just social.",
+    body: "Most prospecting tools watch LinkedIn activity and company news feeds. Hooklyne also pulls from company register filings, trade publications, planning databases, and tender notices - the places where logistics buying signals actually appear first.",
+  },
+  {
+    icon: Clock,
+    title: "Timed to the procurement window.",
+    body: "Logistics buyers are not browsing. They're solving operational problems on tight timelines. Hooklyne scores the signal against your ICP and times the outreach to the window around the trigger - expansion, new contract, compliance deadline - rather than sending on a weekly cadence.",
+  },
+];
+
+const faq = [
+  {
+    q: "Logistics companies barely use LinkedIn. Can you actually find contacts?",
+    a: "That's exactly why the 21-provider waterfall matters most in this sector. Hooklyne doesn't rely on LinkedIn density. It pulls from company registries, business directories, trade association records, and verified provider databases. Operations and procurement contacts in freight and logistics are findable - they're just not on the platforms most tools use as their primary source.",
+  },
+  {
+    q: "These are long sales cycles. Is signal-led outreach worth it for freight?",
+    a: "The cycle is long, but getting in before a competitor is still the difference between being on the shortlist and not being on it at all. The signal - new facility, new contract, new procurement hire - is the opening. Missing it and cold calling six months later is harder, not easier.",
+  },
+  {
+    q: "Do you cover smaller carriers and freight forwarders, not just the big 3PLs?",
+    a: "Yes. Hooklyne is built for 10-100 FTE companies, which covers most independent carriers, regional freight forwarders, and specialist logistics operators. The big 3PLs have procurement departments that run formal RFP processes - the segment where signal-led outreach has the most leverage is the mid-market.",
+  },
+  {
+    q: "What if Hooklyne doesn't work for our logistics ICP?",
+    a: "Pilot first. Ten prospects from your actual target list, fully built, no card required. If the output doesn't open conversations you wouldn't have had otherwise, you stop. We'd rather honest feedback than a customer who isn't a fit.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Prospecting into logistics and freight companies | Hooklyne"
+  description="How to find buyers in logistics and freight: where the signals are, why standard databases miss operations and procurement contacts, and how to time outreach to a real buying window."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Logistics and freight prospecting guide",
+    "description": "How to prospect into logistics and freight companies: signals, contacts, and buying windows.",
+    "url": "https://www.hooklyne.com/logistics-prospecting",
+    "inLanguage": "en"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Logistics and freight prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Logistics buyers are hard to reach. That's the point.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Operations directors and procurement managers in logistics and freight don't spend time on LinkedIn. Their signals are in trade publications, company registries, and planning databases. This guide covers where those signals are and how to reach the right person before the window closes.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start a free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#signals"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            See the signals
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">You probably came here because</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real logistics prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your logistics ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
+            <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Request a pilot
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How logistics companies buy</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Four signals that open a logistics buying window.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Logistics and freight procurement is driven by operational events, not LinkedIn activity. Here is where the real signals are.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {signals.map((s) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <s.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for logistics teams</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Built for sectors with low digital footprint.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Multi-source contact verification, trade-signal coverage, and outreach timed to the operational window - not a weekly drip.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {hooklynePoints.map((h) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                <h.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            Logistics prospecting questions, answered.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

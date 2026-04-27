@@ -186,36 +186,86 @@ export const guides: GuideEntry[] = [
     },
   },
 
-  // ── Verticals (coming soon) ──────────────────────────────────────────────
+  // ── Verticals ────────────────────────────────────────────────────────────
   {
     category: "vertical",
-    status: "coming-soon",
-    en: { label: "For B2B SaaS teams", slug: "/saas-prospecting", description: "", cta: "" },
-    nl: { label: "Voor B2B SaaS-teams", slug: "/nl/saas-prospecting", description: "", cta: "" },
+    status: "live",
+    en: {
+      label: "For B2B SaaS teams",
+      slug: "/saas-prospecting",
+      description: "SaaS companies buy in windows. Funding rounds, RevOps hires, headcount inflections - each one opens a brief period where the right message lands. This guide covers the signals and how to reach them first.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor B2B SaaS-teams",
+      slug: "/nl/saas-prospecting",
+      description: "SaaS-bedrijven kopen in vensters. Financieringsrondes, RevOps-hires, groeimijlpalen - elk opent een korte periode waarin het juiste bericht aankomt. Deze gids behandelt de signalen en hoe je er als eerste bij bent.",
+      cta: "Lees de gids",
+    },
   },
   {
     category: "vertical",
-    status: "coming-soon",
-    en: { label: "For logistics and freight", slug: "/logistics-prospecting", description: "", cta: "" },
-    nl: { label: "Voor logistiek en transport", slug: "/nl/logistiek-prospecting", description: "", cta: "" },
+    status: "live",
+    en: {
+      label: "For logistics and freight",
+      slug: "/logistics-prospecting",
+      description: "Operations directors and procurement managers in logistics don't live on LinkedIn. Their signals are in trade press, company registries, and planning databases. This guide covers where those signals are and how to reach the right person first.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor logistiek en transport",
+      slug: "/nl/logistiek-prospecting",
+      description: "Operationeel directeuren en inkoopmanagers in logistiek brengen geen tijd door op LinkedIn. Hun signalen zitten in vakpublicaties, KVK-registers en planningsdatabases. Deze gids laat zien waar die signalen zijn.",
+      cta: "Lees de gids",
+    },
   },
   {
     category: "vertical",
-    status: "coming-soon",
-    en: { label: "For agencies", slug: "/agency-prospecting", description: "", cta: "" },
-    nl: { label: "Voor bureaus en agencies", slug: "/nl/bureau-prospecting", description: "", cta: "" },
+    status: "live",
+    en: {
+      label: "For agencies and consultancies",
+      slug: "/agency-prospecting",
+      description: "Agency owners delete cold email faster than almost anyone - not because they don't buy, but because generic outreach is easy to spot. This guide covers the signals that create a real opening and why timing is the only variable that matters.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor bureaus en agencies",
+      slug: "/nl/bureau-prospecting",
+      description: "Bureaueigenaren verwijderen koude mails sneller dan bijna iedereen. Niet omdat ze niet kopen - maar omdat generieke outreach makkelijk te spotten is. Deze gids behandelt de signalen die een echte opening creëren.",
+      cta: "Lees de gids",
+    },
   },
   {
     category: "vertical",
-    status: "coming-soon",
-    en: { label: "For fintech and financial services", slug: "/fintech-prospecting", description: "", cta: "" },
-    nl: { label: "Voor fintech en financiële diensten", slug: "/nl/fintech-prospecting", description: "", cta: "" },
+    status: "live",
+    en: {
+      label: "For fintech and financial services",
+      slug: "/fintech-prospecting",
+      description: "Regulated buyers read cold outreach critically. The wrong message isn't just ignored - it creates a negative impression. This guide covers the signals that open a real window and why data provenance matters more here than anywhere else.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor fintech en financiële diensten",
+      slug: "/nl/fintech-prospecting",
+      description: "Gereguleerde kopers lezen koude mail kritisch. Een verkeerd bericht wordt niet alleen genegeerd - het laat een negatieve indruk achter. Deze gids behandelt de signalen die een echt venster openen.",
+      cta: "Lees de gids",
+    },
   },
   {
     category: "vertical",
-    status: "coming-soon",
-    en: { label: "For industrial and manufacturing", slug: "/industrial-prospecting", description: "", cta: "" },
-    nl: { label: "Voor industrie en productie", slug: "/nl/industrie-prospecting", description: "", cta: "" },
+    status: "live",
+    en: {
+      label: "For industrial and manufacturing",
+      slug: "/industrial-prospecting",
+      description: "Plant managers and procurement directors in manufacturing don't maintain public profiles. Their buying signals live in company registries, certification databases, and planning filings. This guide covers where those signals are.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor industrie en productie",
+      slug: "/nl/industrie-prospecting",
+      description: "Productiemanagers en inkoophoofden onderhouden geen publieke profielen. Hun koopsignalen zitten in KVK-registers, certificeringsdatabases en planningsvergunningen. Deze gids behandelt waar die signalen zijn.",
+      cta: "Lees de gids",
+    },
   },
 ];
 

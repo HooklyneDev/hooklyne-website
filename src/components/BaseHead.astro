@@ -125,6 +125,9 @@ const imageURL = new URL(finalImage, Astro.url);
     "/lusha-alternative": "/nl/lusha-alternatief",
     "/gdpr-prospecting": "/nl/avg-prospecting",
     "/compare": "/nl/vergelijken",
+    "/logistics-prospecting": "/nl/logistiek-prospecting",
+    "/agency-prospecting": "/nl/bureau-prospecting",
+    "/industrial-prospecting": "/nl/industrie-prospecting",
   };
   const SLUG_NL_TO_EN = Object.fromEntries(
     Object.entries(SLUG_EN_TO_NL).map(([en, nl]) => [nl, en])
@@ -157,6 +160,11 @@ const imageURL = new URL(finalImage, Astro.url);
     "/nl/guides",
     "/nl/compliance",
     "/nl/industries",
+    "/nl/saas-prospecting",
+    "/nl/logistiek-prospecting",
+    "/nl/bureau-prospecting",
+    "/nl/fintech-prospecting",
+    "/nl/industrie-prospecting",
   ]);
   if (!NL_AVAILABLE.has(nlPath)) return null;
   const enUrl = new URL(enPath, Astro.site).toString();
