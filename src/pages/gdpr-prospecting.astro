@@ -1,0 +1,303 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, ShieldCheck, AlertTriangle, FileSearch, ScrollText, AlertCircle, Gift, Check, X } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "GDPR-compliant prospecting", path: "/gdpr-prospecting" },
+]);
+
+const requirements = [
+  {
+    title: "Lawful basis: legitimate interest, documented.",
+    body: "Cold B2B outreach in the EU runs under legitimate interest, not consent - but only if the basis is documented and the prospect's interests don't override it. Practically: B2B contact at a business address, relevant to their role, with a clear opt-out, is defensible. Personal addresses, scraped behavioural data, or unrelated outreach is not.",
+  },
+  {
+    title: "Source provenance, on demand.",
+    body: "If a prospect asks where you got their details, you have to be able to answer. 'A database somewhere' isn't an answer. Every contact in your outreach should trace back to a public profile, a verified business directory, or a registered data provider with a clear basis for processing.",
+  },
+  {
+    title: "Easy, working opt-out.",
+    body: "Every cold message needs a way out that takes one click and works the first time. Suppression has to apply across senders, sequences, and re-imports. A 'reply UNSUBSCRIBE' line is not enough if you ignore the reply.",
+  },
+  {
+    title: "Data minimisation.",
+    body: "Hold only what you need to make outreach decisions and keep it only as long as necessary. Behavioural data scraped from logged-in sessions, lookalike audiences built from cookies, and shadow profiles enriched from third-party trackers fail this test even if a tool offers them.",
+  },
+  {
+    title: "Country rules on top of the AVG/GDPR baseline.",
+    body: "ePrivacy + national rules add layers. NL: B2B cold mail is permitted under the Telecommunicatiewet provided opt-out and identification rules are met. UK: PECR allows B2B cold email to corporate addresses (sole-trader and partnership addresses are individual subscribers). DE: legitimate-interest interpretation is stricter; double opt-in is the safer default. None of this changes if your tool is hosted in the US.",
+  },
+];
+
+const failures = [
+  {
+    icon: AlertTriangle,
+    title: "Behavioural data scraped from logged-in sessions.",
+    body: "Some tools enrich contacts using browsing history captured from cookies, retargeting pixels, or partner integrations users never knowingly authorised. That's a clear AVG/GDPR risk and the kind of data that's hardest to defend if a regulator asks where it came from.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Single-source databases with no clear lineage.",
+    body: "If a tool can't tell you which source supplied a given contact and when it was last verified, it can't tell a regulator either. 'Our database' isn't a lawful basis.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Mass scraping of LinkedIn or company sites.",
+    body: "Scraping at scale to build B2B lists isn't lawful interest by default. LinkedIn's terms prohibit it; the AVG and GDPR don't bless it. Tools that wrap this in a 'we just enrich, you scrape' fig leaf are putting the legal exposure on you.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Opt-outs that don't propagate.",
+    body: "When a prospect opts out of one campaign but the same tool re-imports them next quarter through a fresh database refresh, the suppression has effectively failed. The AVG doesn't care that the tool refreshed - it cares that the person opted out.",
+  },
+];
+
+const hooklyne = [
+  {
+    icon: ShieldCheck,
+    title: "EU-built, no scraping.",
+    body: "Hooklyne is built and hosted in the Netherlands. We do not scrape LinkedIn, retarget cookies, or ingest behavioural data from logged-in sessions. Contacts come from public profiles and registered data providers operating under their own AVG basis.",
+  },
+  {
+    icon: FileSearch,
+    title: "Sourced citations on every claim.",
+    body: "Every Hooklyne research brief ships with the URLs the claim came from. If a prospect asks where you got their details, the answer is in the same package as the message. Audit-ready by construction, not by paperwork.",
+  },
+  {
+    icon: ScrollText,
+    title: "Suppression that holds.",
+    body: "Opt-outs, bounces, and unsubscribes are kept in your account, applied across future imports and refreshes. A contact you remove stays removed even when the underlying provider refreshes the row a quarter later.",
+  },
+];
+
+const faq = [
+  {
+    q: "Is B2B cold email actually legal in the Netherlands?",
+    a: "Yes. The AVG (the Dutch implementation of GDPR) and the Telecommunicatiewet permit cold B2B email to a business contact at a business address, in a role relevant to your offer, with a working opt-out. Personal addresses, mass scraping, and behavioural targeting are not in the same place.",
+  },
+  {
+    q: "What's the difference between GDPR and AVG?",
+    a: "AVG is GDPR. The AVG (Algemene Verordening Gegevensbescherming) is the Dutch name for the General Data Protection Regulation. The text and the obligations are identical - 'AVG-compliant' and 'GDPR-compliant' mean the same thing in a Dutch business context.",
+  },
+  {
+    q: "Do I need consent before cold-emailing a B2B prospect?",
+    a: "Not under GDPR/AVG, in most B2B cases. The lawful basis is legitimate interest, not consent. You do need to: be able to articulate the legitimate interest, ensure it doesn't override the prospect's interests, identify yourself in the message, and provide a working opt-out. Some EU countries (notably Germany) interpret this stricter; others (notably the UK and NL) more permissively.",
+  },
+  {
+    q: "What records do I need to keep?",
+    a: "At minimum: where each contact came from, when it was added, when it was last verified, what messages went out, and whether a suppression request was received. Hooklyne keeps the source-of-record per contact so you don't have to wire this together yourself.",
+  },
+  {
+    q: "What if a prospect asks 'how did you get my details?'",
+    a: "You answer it. Every Hooklyne contact ships with its source attached - public LinkedIn URL, registered provider, company website page. The answer is one click away from the prospect package, not buried in vendor logs you don't control.",
+  },
+  {
+    q: "What if Hooklyne doesn't work for our team?",
+    a: "Pilot first, contract second. Ten prospects fully built, no card, no commitment. If the output doesn't earn replies you wouldn't have got otherwise, you walk. Same compliance posture during the pilot as in the paid product.",
+  },
+];
+---
+
+<DefaultLayout
+  title="GDPR-compliant B2B prospecting | Hooklyne"
+  description="What GDPR (and AVG) actually require for B2B cold outreach, what most tools get wrong, and how Hooklyne is built to keep your prospecting lawful by default. EU-built, no scraping, sourced citations on every claim."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "GDPR-compliant B2B prospecting",
+    "description": "What GDPR/AVG requires for B2B prospecting and how Hooklyne complies by default.",
+    "url": "https://www.hooklyne.com/gdpr-prospecting",
+    "inLanguage": "en"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">GDPR-compliant prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          B2B prospecting that stays on the right side of GDPR.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Hooklyne is a research-grade prospect workflow built for European B2B SMEs. Built and hosted in the Netherlands, no scraping, every claim shipped with a citeable source. The plain-language guide below covers what GDPR (and AVG) actually require for cold outreach, what most tools get wrong, and how Hooklyne is built to keep you out of the failure modes.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
+            Start a free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a href="#requirements" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+            Read what GDPR actually says
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">You probably came here because</p>
+            </div>
+            <ul class="space-y-2.5">
+              {[
+                "Your lawyer asked which lawful basis you're sending under.",
+                "A prospect replied asking 'how did you get my details?'",
+                "Your current tool can't tell you the source of a given contact.",
+                "You want to do European outbound without a US-shaped grey area.",
+              ].map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages. No payment, no contract. We ask twenty minutes of honest feedback after - that's it.</p>
+            <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Request a pilot
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="requirements" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-4xl">
+        <div class="mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">What GDPR actually requires</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Five things that have to hold for B2B cold outreach to be lawful.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Plain-language summary, not a legal opinion. Read it as the floor, then check with your DPO or counsel before scaling.
+          </p>
+        </div>
+
+        <ol class="space-y-5">
+          {requirements.map((r, i) => (
+            <li class="flex gap-4 rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                {i + 1}
+              </div>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{r.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{r.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em]" style="color: var(--hooklyne-orange);">What most tools get wrong</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
+            Four failure modes a regulator would notice.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            None of these are theoretical. Each is something a buyer can be asked to defend in an enforcement action and would struggle with using a typical US-shaped prospecting stack.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {failures.map((f) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(255,140,66,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);">
+                <f.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{f.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)]">How Hooklyne is built for this</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
+            Compliance posture, not a compliance package.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Hooklyne is built to make the right thing the easy thing - not to sell you a separate audit module on top.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {hooklyne.map((h) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                <h.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">GDPR prospecting questions, answered.</h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p class="text-xs text-[var(--muted-foreground)]/70 text-center mt-8 max-w-2xl mx-auto leading-relaxed">
+          This page is a plain-language guide and not legal advice. National rules add layers and your specific motion may need a DPO or counsel review before scaling.
+        </p>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

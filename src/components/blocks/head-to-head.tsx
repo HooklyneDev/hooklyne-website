@@ -322,16 +322,162 @@ const COGNISM_NL: Profile = {
     "Cognism is de juiste keus voor een sales-organisatie van 50+ FTE met enterprise-inkoop, een zware phone-outbound motion en een juridisch team dat een DPA op briefpapier nodig heeft. Voor de meeste Nederlandse en Britse MKB-teams onder 50 FTE wegen de prijsvloer en de ontbrekende drafted-message-laag zwaarder dan de extra mobiele data.",
 };
 
+const LUSHA_EN: Profile = {
+  competitor: "Lusha",
+  competitorSub: "LinkedIn extension, single-prospect enrichment",
+  hooklyneSub: "Full prospect workflow, package per lead",
+  rows: [
+    {
+      dimension: "Workflow shape",
+      competitor: "Browser extension on top of LinkedIn",
+      hooklyne: "Research workflow, prospect ships as one package",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Speed of single enrichment",
+      competitor: "Click → contact in ≈2 seconds",
+      hooklyne: "Auto research per prospect, ≈90s of your time",
+      verdict: "competitor",
+      note: "Lusha's instant-on-click flow is genuinely fast for one-off enrichment.",
+    },
+    {
+      dimension: "Buying-signal layer",
+      competitor: "Not included",
+      hooklyne: "7 categories, double-scored vs your ICP",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Drafted outreach",
+      competitor: "Not included",
+      hooklyne: "Drafted in your rep's voice, 4 reasoning passes",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Email verification",
+      competitor: "Single-source verification",
+      hooklyne: "4 layers across 20+ providers",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Mobile data",
+      competitor: "Decent EU mobiles via partnerships",
+      hooklyne: "Email + LinkedIn URL primary",
+      verdict: "competitor",
+      note: "Phone-led teams will value Lusha's mobile coverage.",
+    },
+    {
+      dimension: "Entry price",
+      competitor: "Free tier, paid from ≈$10/user/month",
+      hooklyne: "€39/month from the Start plan",
+      verdict: "competitor",
+      note: "Lusha is cheaper at the bottom of the funnel. Hooklyne is priced for the team running outbound, not the individual exploring.",
+    },
+    {
+      dimension: "What it produces",
+      competitor: "A name, a title, a number, an email",
+      hooklyne: "All of that, plus the why-now signal and the message to send",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "How research is done",
+      competitor: "You research, Lusha enriches",
+      hooklyne: "Hooklyne researches, you review",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Best fit",
+      competitor: "Solo SDRs, list-builders, recruiters",
+      hooklyne: "SME sales teams (10–100 FTE) running real outbound",
+      verdict: "tie",
+    },
+  ],
+  whenCompetitorWins:
+    "Lusha is the right call if you're a solo SDR or recruiter who lives in LinkedIn, prospects on the fly, and doesn't need a full research workflow. For an SME sales team building outbound as a real motion, Lusha's contact-only output stops short of what the rep actually needs to send.",
+};
+
+const LUSHA_NL: Profile = {
+  competitor: "Lusha",
+  competitorSub: "LinkedIn-extensie, enrichment per contact",
+  hooklyneSub: "Volledige prospectworkflow, pakket per lead",
+  rows: [
+    {
+      dimension: "Vorm van de workflow",
+      competitor: "Browser-extensie bovenop LinkedIn",
+      hooklyne: "Onderzoeksworkflow, prospect arriveert als pakket",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Snelheid per losse enrichment",
+      competitor: "Klik → contact binnen ≈2 seconden",
+      hooklyne: "Auto-onderzoek per prospect, ≈90s van jouw tijd",
+      verdict: "competitor",
+      note: "De instant-on-click flow van Lusha is voor losse enrichment echt snel.",
+    },
+    {
+      dimension: "Koopsignaallaag",
+      competitor: "Niet inbegrepen",
+      hooklyne: "7 categorieën, dubbel gescoord op je ideaal klantprofiel",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Opgestelde outreach",
+      competitor: "Niet inbegrepen",
+      hooklyne: "Opgesteld in de stem van je vertegenwoordiger, 4 reasoning-passes",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "E-mailverificatie",
+      competitor: "Single-source verificatie",
+      hooklyne: "4 lagen over 20+ providers",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Mobiele data",
+      competitor: "Behoorlijke EU-mobiles via partners",
+      hooklyne: "Mail + LinkedIn-URL primair",
+      verdict: "competitor",
+      note: "Voor phone-gedreven teams is de mobile-dekking van Lusha waardevol.",
+    },
+    {
+      dimension: "Instapprijs",
+      competitor: "Gratis tier, betaald vanaf ≈$10/user/maand",
+      hooklyne: "€39 per maand vanaf het Start-abonnement",
+      verdict: "competitor",
+      note: "Lusha is goedkoper aan de onderkant. Hooklyne is geprijsd voor het team dat outbound draait, niet de individuele verkenner.",
+    },
+    {
+      dimension: "Wat het oplevert",
+      competitor: "Een naam, een functie, een nummer, een mailadres",
+      hooklyne: "Dat, plus het waarom-nu-signaal en het bericht dat de deur uitgaat",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Hoe onderzoek wordt gedaan",
+      competitor: "Jij onderzoekt, Lusha verrijkt",
+      hooklyne: "Hooklyne onderzoekt, jij beoordeelt",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Beste fit",
+      competitor: "Solo SDRs, lijstenbouwers, recruiters",
+      hooklyne: "MKB-salesteams (10–100 FTE) die echt outbound draaien",
+      verdict: "tie",
+    },
+  ],
+  whenCompetitorWins:
+    "Lusha is de juiste keus voor een solo SDR of recruiter die in LinkedIn leeft, op het moment prospect en geen volledige onderzoeksworkflow nodig heeft. Voor een MKB-salesteam dat outbound als echte motion bouwt, stopt de contact-only output van Lusha precies daar waar de vertegenwoordiger nog werk te doen heeft.",
+};
+
 type Props = {
   /** Which competitor to render. Add more profiles as new SEO pages launch. */
-  competitor: "apollo" | "cognism";
+  competitor: "apollo" | "cognism" | "lusha";
   lang?: "en" | "nl";
 };
 
 export const HeadToHead = ({ competitor, lang = "en" }: Props) => {
   const profile = lang === "nl"
-    ? (competitor === "apollo" ? APOLLO_NL : COGNISM_NL)
-    : (competitor === "apollo" ? APOLLO_EN : COGNISM_EN);
+    ? (competitor === "apollo" ? APOLLO_NL : competitor === "cognism" ? COGNISM_NL : LUSHA_NL)
+    : (competitor === "apollo" ? APOLLO_EN : competitor === "cognism" ? COGNISM_EN : LUSHA_EN);
 
   const labels = lang === "nl" ? {
     eyebrow: "Direct vergeleken",

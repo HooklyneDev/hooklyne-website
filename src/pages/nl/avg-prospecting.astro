@@ -1,0 +1,303 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, ShieldCheck, AlertTriangle, FileSearch, ScrollText, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "AVG-conforme prospecting", path: "/nl/avg-prospecting" },
+]);
+
+const requirements = [
+  {
+    title: "Rechtsgrond: gerechtvaardigd belang, gedocumenteerd.",
+    body: "B2B-cold-outreach in Europa draait op gerechtvaardigd belang, niet op toestemming - maar alleen als die grond gedocumenteerd is en de belangen van de prospect niet zwaarder wegen. Praktisch: een B2B-contact op een zakelijk adres, in een rol die past bij jouw aanbod, met een duidelijke opt-out, is verdedigbaar. Privé-adressen, gescrapete gedragsdata of niet-relevante outreach niet.",
+  },
+  {
+    title: "Bronherkomst, op aanvraag.",
+    body: "Vraagt een prospect waar je zijn gegevens vandaan hebt, dan moet je dat kunnen beantwoorden. 'Een database ergens' is geen antwoord. Elk contact in je outreach moet te herleiden zijn naar een publiek profiel, een geregistreerd zakelijk register of een geregistreerde dataprovider met een duidelijke verwerkingsgrond.",
+  },
+  {
+    title: "Werkende, eenvoudige opt-out.",
+    body: "Elke koude mail heeft een uitweg nodig die in één klik werkt - de eerste keer. Onderdrukking moet doorlopen over alle senders, sequences en re-imports. Een 'reply UNSUBSCRIBE'-regel is niet genoeg als je de reply negeert.",
+  },
+  {
+    title: "Dataminimalisatie.",
+    body: "Bewaar alleen wat je nodig hebt om outreach-beslissingen te nemen, en niet langer dan nodig. Gedragsdata gescrapet uit ingelogde sessies, lookalike-audiences gebouwd op cookies en shadow-profielen verrijkt via third-party trackers vallen door deze test - ook als een tool ze aanbiedt.",
+  },
+  {
+    title: "Landelijke regels bovenop de AVG-basis.",
+    body: "ePrivacy en nationale wetten leggen extra lagen op. NL: B2B-cold-mail mag onder de Telecommunicatiewet, mits opt-out en identificatieregels worden nageleefd. UK: PECR staat B2B-cold-mail toe naar zakelijke adressen (ZZP- en V.O.F.-adressen tellen als individuele abonnees). DE: gerechtvaardigd belang wordt strenger uitgelegd, double-opt-in is daar de veiliger default. Niets van dit alles verandert als je tool in de VS gehost wordt.",
+  },
+];
+
+const failures = [
+  {
+    icon: AlertTriangle,
+    title: "Gedragsdata gescrapet uit ingelogde sessies.",
+    body: "Sommige tools verrijken contacten met browsegedrag verzameld via cookies, retargeting-pixels of partner-integraties die gebruikers nooit bewust hebben goedgekeurd. Dat is een duidelijk AVG-risico en het type data dat het lastigst is te verdedigen als een toezichthouder vraagt waar het vandaan kwam.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Single-source databases zonder bronlijn.",
+    body: "Kan een tool je niet vertellen welke bron een specifiek contact heeft geleverd en wanneer het voor het laatst is geverifieerd, dan kan diezelfde tool het de toezichthouder ook niet vertellen. 'Onze database' is geen rechtsgrond.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Massaal scrapen van LinkedIn of bedrijfssites.",
+    body: "Op schaal scrapen om B2B-lijsten te bouwen valt niet automatisch onder gerechtvaardigd belang. De voorwaarden van LinkedIn verbieden het, de AVG zegent het niet. Tools die dit verpakken als 'wij verrijken alleen, jij scrapet' leggen de juridische blootstelling bij jou.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Opt-outs die niet doorlopen.",
+    body: "Wanneer een prospect zich afmeldt voor een campagne, maar dezelfde tool hem het volgende kwartaal opnieuw importeert via een database-refresh, is de onderdrukking effectief gefaald. De AVG geeft niet om de refresh - hij geeft om de afmelding van de persoon.",
+  },
+];
+
+const hooklyne = [
+  {
+    icon: ShieldCheck,
+    title: "Europees gebouwd, geen scraping.",
+    body: "Hooklyne is in Nederland gebouwd en wordt in Europa gehost. Wij scrapen geen LinkedIn, retargeten geen cookies en nemen geen gedragsdata uit ingelogde sessies in. Contacten komen uit publieke profielen en geregistreerde dataproviders die opereren onder hun eigen AVG-grond.",
+  },
+  {
+    icon: FileSearch,
+    title: "Citeerbare bronnen op elke claim.",
+    body: "Elke Hooklyne research-brief levert de URL's mee waar de claim vandaan komt. Vraagt een prospect waar je zijn gegevens vandaan hebt, dan staat het antwoord in hetzelfde pakket als het bericht. Audit-klaar door constructie, niet door papierwerk.",
+  },
+  {
+    icon: ScrollText,
+    title: "Onderdrukking die houdt.",
+    body: "Opt-outs, bounces en uitschrijvingen blijven in jouw account, en gelden over toekomstige imports en refreshes. Een contact dat je verwijdert, blijft verwijderd, ook als de onderliggende provider de rij een kwartaal later ververst.",
+  },
+];
+
+const faq = [
+  {
+    q: "Mag B2B-cold-mail eigenlijk onder de AVG?",
+    a: "Ja. De AVG en de Telecommunicatiewet staan B2B-cold-mail toe naar een zakelijk contact op een zakelijk adres, in een rol die relevant is voor jouw aanbod, met een werkende opt-out. Privé-adressen, massaal scrapen en gedragsmatige targeting vallen niet in dezelfde categorie.",
+  },
+  {
+    q: "Wat is het verschil tussen AVG en GDPR?",
+    a: "AVG is GDPR. De Algemene Verordening Gegevensbescherming is de Nederlandse benaming voor de General Data Protection Regulation. De tekst en verplichtingen zijn identiek - 'AVG-conform' en 'GDPR-conform' betekenen hetzelfde in een Nederlandse zakelijke context.",
+  },
+  {
+    q: "Heb ik toestemming nodig voordat ik een B2B-prospect mag aanschrijven?",
+    a: "In de meeste B2B-gevallen onder de AVG niet. De rechtsgrond is gerechtvaardigd belang, geen toestemming. Wel moet je: het belang kunnen onderbouwen, ervoor zorgen dat het niet zwaarder weegt dan dat van de prospect, jezelf identificeren in het bericht en een werkende opt-out bieden. Sommige Europese landen (zoals Duitsland) interpreteren dit strenger; andere (zoals Nederland en het VK) ruimer.",
+  },
+  {
+    q: "Welke administratie moet ik bijhouden?",
+    a: "Minimaal: waar elk contact vandaan komt, wanneer het is toegevoegd, wanneer het laatst is geverifieerd, welke berichten zijn verstuurd en of er een afmelding is binnengekomen. Hooklyne houdt de bron-administratie per contact bij, zodat je dit niet zelf hoeft te combineren.",
+  },
+  {
+    q: "Wat als een prospect vraagt 'hoe komen jullie aan mijn gegevens?'",
+    a: "Dan beantwoord je dat. Elk Hooklyne-contact wordt geleverd met de bron erbij - publieke LinkedIn-URL, geregistreerde provider, bedrijfswebsite-pagina. Het antwoord is één klik verwijderd van het prospectpakket, niet begraven in vendor-logs die je niet beheert.",
+  },
+  {
+    q: "Wat als Hooklyne niet werkt voor ons team?",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects volledig opgebouwd, zonder kaart en zonder verplichting. Levert de output geen replies op die je anders niet had gekregen, dan stop je. Dezelfde compliance-houding tijdens de pilot als in het betaalde product.",
+  },
+];
+---
+
+<DefaultLayout
+  title="AVG-conforme B2B-prospecting | Hooklyne"
+  description="Wat de AVG (en GDPR) werkelijk vereist voor B2B-cold-outreach, waar de meeste tools de mist in gaan en hoe Hooklyne is gebouwd om je prospecting standaard rechtmatig te houden. Europees gebouwd, geen scraping, citeerbare bronnen op elke claim."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AVG-conforme B2B-prospecting",
+    "description": "Wat de AVG vereist voor B2B-prospecting en hoe Hooklyne standaard voldoet.",
+    "url": "https://www.hooklyne.com/nl/avg-prospecting",
+    "inLanguage": "nl"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">AVG-conforme prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          B2B-prospecting die aan de goede kant van de AVG blijft.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Hooklyne is een onderzoeksgedreven prospectworkflow, gebouwd voor het Europese B2B-MKB. In Nederland gebouwd en gehost, geen scraping, elke claim met een citeerbare bron. De gids hieronder legt in gewone taal uit wat de AVG (en GDPR) werkelijk vereisen voor cold-outreach, waar de meeste tools de mist in gaan en hoe Hooklyne is opgezet om je uit die failure modes te houden.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/nl/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
+            Start een gratis pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a href="#vereisten" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+            Lees wat de AVG echt vraagt
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">Je kwam hier waarschijnlijk omdat</p>
+            </div>
+            <ul class="space-y-2.5">
+              {[
+                "Je jurist vroeg onder welke rechtsgrond je verstuurt.",
+                "Een prospect reageerde met 'hoe komen jullie aan mijn gegevens?'",
+                "Je huidige tool kan de bron van een specifiek contact niet noemen.",
+                "Je wilt Europees outbound draaien, zonder Amerikaans grijs gebied.",
+              ].map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Klopt iets daarvan, dan is de rest van deze pagina voor jou.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Gratis pilot, zonder kaart</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het op tien van je eigen prospects.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig onderzochte prospectpakketten. Zonder betaling, zonder contract. Wij vragen twintig minuten eerlijke feedback achteraf - meer niet.</p>
+            <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Vraag een pilot aan
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vereisten" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-4xl">
+        <div class="mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Wat de AVG werkelijk vereist</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Vijf dingen die moeten kloppen bij rechtmatige B2B-cold-outreach.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Een samenvatting in gewone taal, geen juridisch advies. Lees het als de ondergrens, en check vóór je opschaalt met je DPO of jurist.
+          </p>
+        </div>
+
+        <ol class="space-y-5">
+          {requirements.map((r, i) => (
+            <li class="flex gap-4 rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                {i + 1}
+              </div>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{r.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{r.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em]" style="color: var(--hooklyne-orange);">Waar de meeste tools de mist in gaan</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
+            Vier failure modes die een toezichthouder zou opmerken.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Geen van deze is theoretisch. Elke is iets wat een koper bij een handhavingsactie moet kunnen verdedigen, en wat met een typische Amerikaans gevormde prospect-stack lastig wordt.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+          {failures.map((f) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(255,140,66,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);">
+                <f.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{f.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)]">Hoe Hooklyne hiervoor is gebouwd</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
+            Compliance-houding, geen compliance-pakket.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            Hooklyne is gebouwd om de juiste keuze de makkelijke keuze te maken - niet om een aparte audit-module bovenop het product te verkopen.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {hooklyne.map((h) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
+                <h.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">Veelgestelde vragen</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">Vragen over AVG-prospecting, beantwoord.</h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p class="text-xs text-[var(--muted-foreground)]/70 text-center mt-8 max-w-2xl mx-auto leading-relaxed">
+          Deze pagina is een gids in gewone taal, geen juridisch advies. Nationale regels voegen lagen toe en jouw specifieke motion vraagt voor opschalen om een DPO- of juristen-check.
+        </p>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

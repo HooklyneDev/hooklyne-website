@@ -1,0 +1,203 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HeadToHead } from '@/components/blocks/head-to-head';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, Layers, Workflow, FileText, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Lusha-alternatief", path: "/nl/lusha-alternatief" },
+]);
+
+const pains = [
+  "Je bent de LinkedIn-extensie als workflow ontgroeid.",
+  "Lusha geeft je een contact, maar de mail schrijf je nog steeds zelf.",
+  "Je reactiepercentage stagneert omdat de personalisatie generiek leest.",
+  "Je jongleert Lusha plus een aparte signalen-tab plus een aparte AI-chat.",
+];
+
+const breakdowns = [
+  {
+    icon: Workflow,
+    title: "Een workflow, geen browser-extensie.",
+    body: "Lusha leeft in de LinkedIn-pagina die je toevallig openhebt. Voor een losse enrichment is dat snel en voor solo-prospecten ook prima. Zodra outbound een teamfunctie wordt - één rep of acht, met weeknummers die gehaald moeten worden - breekt het klik-voor-klik-model. Hooklyne is een onderzoeksworkflow die het prospectpakket van begin tot eind oplevert, zodat de vertegenwoordiger beoordeelt en verstuurt in plaats van klikt, kopieert, plakt en schrijft.",
+  },
+  {
+    icon: Layers,
+    title: "Signaal en bericht inbegrepen, niet erbovenop.",
+    body: "Het werk van Lusha eindigt bij het contact. Het waarom-nu-signaal en het bericht dat de deur uitgaat, zijn niet zijn klus - dat blijft over voor je vertegenwoordiger, je CRM-tabbladen en je ChatGPT-venster. Hooklyne levert telkens hetzelfde pakket: geverifieerd contact, gescoord koopsignaal en een opgesteld bericht in de stem van je vertegenwoordiger. Eén scherm in plaats van vier.",
+  },
+  {
+    icon: FileText,
+    title: "Verificatie over 20+ bronnen, geen single-source.",
+    body: "Lusha verifieert tegen de eigen database. Voor de contacten die de database goed kent, werkt dat. Op Nederlandse en Britse MKB-prospects met wisselende dekking betekent single-source verificatie dat je pas na de bounce ontdekt dat het adres niet klopte. Hooklyne waterfallt over 20+ providers en draait vier deliverability-lagen voordat een contact wordt vrijgegeven.",
+  },
+];
+
+const faq = [
+  {
+    q: "Wat als Hooklyne niet werkt voor ons team?",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects volledig opgebouwd, zonder kaart en zonder verplichting. Levert de output geen replies op die je anders niet had gekregen, dan stop je. Liever eerlijke feedback dan een klant die geen fit is.",
+  },
+  {
+    q: "Lusha is goedkoop. Is Hooklyne de upgrade waard?",
+    a: "Ben je een solo SDR met 5-10 prospects per week, dan is Lusha prima. Draai je outbound als team-kanaal, dan zorgt de contact-only output ervoor dat iedereen hetzelfde onderzoeks- en schrijfwerk parallel doet. Hooklyne vervangt dat uur-per-prospect door ≈90s beoordelen per prospect. De rekensom kantelt rond 20-30 prospects per week.",
+  },
+  {
+    q: "Werkt Hooklyne als Chrome-extensie zoals Lusha?",
+    a: "Nee, en dat is bewust. Het extensie-model pakt één prospect tegelijk en vraagt je een keuze te maken voordat er onderzoek heeft plaatsgevonden. Hooklyne keert dat om: onderzoek draait op de achtergrond, prospects verschijnen in My Leads met een signaal eraan vast en jij beslist op basis van het pakket - niet op basis van de rij.",
+  },
+  {
+    q: "We gebruiken Lusha voor mobiele nummers. Doe je dat ook?",
+    a: "Nee. Mail en LinkedIn-URL zijn de hoofdroute. Bij een phone-outbound motion is de mobile-dataset van Lusha een echt voordeel. Bij een mail-gedreven motion betaal je voor mobile-dekking die je nauwelijks gebruikt.",
+  },
+  {
+    q: "We zijn een solo founder. Moeten we gewoon op Lusha blijven?",
+    a: "Voor nu waarschijnlijk wel. De gratis tier en het klik-voor-klik-model van Lusha passen bij een founder met 2-3 prospects per week. Het moment dat outbound een functie wordt waar iemand eigenaar van is - zelfs één fulltime rep - past de workflow-vorm niet meer en begint het tab-jongleren. Spreek ons op dat moment.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Lusha-alternatief voor B2B-salesteams | Hooklyne"
+  description="Hooklyne is het workflow-gedreven Lusha-alternatief. Geverifieerd contact, gescoord signaal en opgesteld bericht per prospect - geen losse enrichment. Gebouwd voor MKB-salesteams die echt outbound draaien."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Lusha-alternatief voor B2B-salesteams",
+    "description": "Hooklyne is het volledige-workflow Lusha-alternatief voor Europese MKB-salesteams.",
+    "url": "https://www.hooklyne.com/nl/lusha-alternatief",
+    "inLanguage": "nl"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Lusha-alternatief</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Het Lusha-alternatief voor teams die de extensie zijn ontgroeid.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Hooklyne is een onderzoeksgedreven prospectworkflow, gebouwd voor het Europese B2B-MKB. Elke prospect arriveert als een pakket - een geverifieerd contact, een gescoord koopsignaal en een opgesteld bericht in de stem van je vertegenwoordiger - klaar om binnen een minuut te beoordelen en versturen. Lusha geeft je een contact. Hooklyne geeft je de prospect, compleet.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/nl/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
+            Start een gratis pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a href="#vergelijk" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+            Bekijk de vergelijking
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">Je kwam hier waarschijnlijk omdat</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Klopt iets daarvan, dan is de rest van deze pagina voor jou.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Gratis pilot, zonder kaart</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het op tien van je eigen prospects.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig onderzochte prospectpakketten. Zonder betaling, zonder contract. Wij vragen twintig minuten eerlijke feedback achteraf - meer niet.</p>
+            <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Vraag een pilot aan
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Waar Lusha stopt</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Drie dingen die Lusha aan jou overlaat.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Lusha is uitstekend in één ding: het verrijken van een contact dat je toch al op LinkedIn open hebt staan. Het werk dat daarna komt - de waarom-nu vinden, het bericht schrijven, op schaal verifiëren of het adres standhoudt - is voor jouw team. Voor solo-prospecten werkt dat. Bij team-outbound lekt het bij de naden.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {breakdowns.map((b) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <b.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div id="vergelijk">
+      <HeadToHead competitor="lusha" lang="nl" />
+    </div>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">Veelgestelde vragen</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">Vragen over de overstap vanaf Lusha.</h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

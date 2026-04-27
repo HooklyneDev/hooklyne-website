@@ -38,6 +38,16 @@
       "source": "/nl/cognism-alternative",
       "destination": "/nl/cognism-alternatief",
       "permanent": true
+    },
+    {
+      "source": "/nl/lusha-alternative",
+      "destination": "/nl/lusha-alternatief",
+      "permanent": true
+    },
+    {
+      "source": "/nl/gdpr-prospecting",
+      "destination": "/nl/avg-prospecting",
+      "permanent": true
     }
   ]
 }
