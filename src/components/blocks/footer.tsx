@@ -116,6 +116,13 @@ export const Footer = () => {
           <p className="text-xs text-white/30">
             &copy; {new Date().getFullYear()} Hooklyne. {t.rights}
           </p>
+          <span className="text-white/15">·</span>
+          {t.legalCol.links.map((l, i) => (
+            <span key={l.href} className="inline-flex items-center gap-x-3">
+              <a href={l.href} className="text-xs text-white/45 hover:text-white/80 transition-colors">{l.label}</a>
+              {i < t.legalCol.links.length - 1 && <span className="text-white/15">·</span>}
+            </span>
+          ))}
           <span className="hidden sm:inline text-white/15">·</span>
           <p className="inline-flex items-center gap-1.5 text-xs text-white/40">
             <span aria-hidden="true" className="inline-flex flex-col w-3.5 h-2.5 rounded-[1px] overflow-hidden ring-1 ring-white/20">
