@@ -3,8 +3,20 @@
 // Each line is a real-world buying-intent trigger a B2B rep would act on.
 const isNL = Astro.url.pathname === "/nl" || Astro.url.pathname.startsWith("/nl/");
 
-type Tone = "blue" | "teal" | "orange";
+type Tone = "orange" | "teal" | "blue" | "emerald" | "rose" | "indigo" | "amber";
 type IconKey = "funding" | "leadership" | "hiring" | "expansion" | "launch" | "sector" | "press";
+
+// One distinct tone per category so the feed reads as seven colours,
+// not three repeating ones.
+const iconToTone: Record<IconKey, Tone> = {
+  funding: "orange",
+  leadership: "teal",
+  hiring: "blue",
+  expansion: "emerald",
+  launch: "rose",
+  sector: "indigo",
+  press: "amber",
+};
 
 interface Signal {
   type: string;
@@ -118,15 +130,23 @@ const labels = isNL ? {
 };
 
 const toneMap: Record<Tone, string> = {
-  blue: "var(--hooklyne-blue)",
-  teal: "var(--hooklyne-teal)",
-  orange: "var(--hooklyne-orange)",
+  orange:  "var(--hooklyne-orange)",
+  teal:    "var(--hooklyne-teal)",
+  blue:    "var(--hooklyne-blue)",
+  emerald: "#059669",
+  rose:    "#e11d48",
+  indigo:  "#4f46e5",
+  amber:   "#b45309",
 };
 
 const toneBg: Record<Tone, string> = {
-  blue: "rgba(52,76,163,0.10)",
-  teal: "rgba(13,148,136,0.10)",
-  orange: "rgba(255,140,66,0.12)",
+  orange:  "rgba(255,140,66,0.12)",
+  teal:    "rgba(13,148,136,0.10)",
+  blue:    "rgba(52,76,163,0.10)",
+  emerald: "rgba(5,150,105,0.10)",
+  rose:    "rgba(225,29,72,0.10)",
+  indigo:  "rgba(79,70,229,0.10)",
+  amber:   "rgba(180,83,9,0.10)",
 };
 
 // Minimal inline SVGs so we don't pull in a dep for a handful of glyphs.
@@ -171,7 +191,7 @@ const track = [...signals, ...signals];
         >
           <span
             class="inline-flex items-center justify-center size-9 rounded-lg shrink-0"
-            style={`background: ${toneBg[s.tone]}; color: ${toneMap[s.tone]};`}
+            style={`background: ${toneBg[iconToTone[s.icon]]}; color: ${toneMap[iconToTone[s.icon]]};`}
             aria-hidden="true"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" set:html={iconPaths[s.icon]} />
@@ -180,7 +200,7 @@ const track = [...signals, ...signals];
             <div class="flex items-center gap-2 mb-0.5">
               <span
                 class="text-[9px] font-bold uppercase tracking-[0.18em] px-1.5 py-0.5 rounded"
-                style={`background: ${toneBg[s.tone]}; color: ${toneMap[s.tone]};`}
+                style={`background: ${toneBg[iconToTone[s.icon]]}; color: ${toneMap[iconToTone[s.icon]]};`}
               >
                 {s.type}
               </span>

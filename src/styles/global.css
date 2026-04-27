@@ -433,34 +433,24 @@ html,
 body {
   scroll-behavior: smooth;
 }
-body {
-  position: relative;
-  background-color: #f5f6f9;
-  color: var(--foreground);
-  min-height: 100vh;
-}
-/* Portal-style soft page wash. Fixed pseudo-element so the gradient
-   never tiles with scroll and never produces a hard seam under cards.
-   Stops are very low opacity so cards always feel like they sit on a
-   single calm surface, with faint warm/cool glows giving life. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  /* Promote to its own compositor layer so the gradient doesn't
-     repaint on every scroll frame. Eliminates flicker on fast
-     scroll across all browsers. */
-  transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
+/* Portal-style soft page wash. Applied directly to html so it scrolls
+   with the document — no fixed pseudo-element, no compositor layer
+   boundary, no double-background seam. Faint warm/cool glows over an
+   off-white linear base. */
+html {
   background:
     radial-gradient(ellipse 65% 50% at 8% 5%,    rgba(52, 76, 163, 0.16) 0%, transparent 65%),
     radial-gradient(ellipse 75% 60% at 95% 95%,  rgba(255, 140, 66, 0.08) 0%, transparent 65%),
     radial-gradient(ellipse 55% 45% at 92% 10%,  rgba(244, 114, 182, 0.05) 0%, transparent 65%),
     radial-gradient(ellipse 50% 40% at 5% 95%,   rgba(13, 148, 136, 0.11) 0%, transparent 65%),
     linear-gradient(180deg, #f6f8fb 0%, #ecf0f5 100%);
+  background-attachment: fixed;
+}
+body {
+  position: relative;
+  background: transparent;
+  color: var(--foreground);
+  min-height: 100vh;
 }
 
 /* Blog article prose. Matches site typography and CSS vars. */
