@@ -56,15 +56,15 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     }
   })} />
   <Background>
-    <Hero lang="en" client:load />
+    <Hero client:load />
     <SignalTicker />
-    <DIYCompare lang="en" client:visible />
+    <DIYCompare client:visible />
   </Background>
 
   <Background variant="bottom">
     <WhatYouGet />
-    <WaysToStart lang="en" client:visible />
-    <BuiltFor lang="en" client:visible />
-    <HomePricing lang="en" client:visible />
+    <WaysToStart client:visible />
+    <BuiltFor client:visible />
+    <HomePricing client:visible />
   </Background>
 </DefaultLayout>
