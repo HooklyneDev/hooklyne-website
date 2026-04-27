@@ -149,26 +149,9 @@ export const Hero = () => {
         <rect width="100%" height="100%" filter="url(#hero-grain)" />
       </svg>
 
-      {/* ── Left + right vignette ─────────────────────────────────── */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          zIndex: 3,
-          background: "linear-gradient(to right, var(--background) 0%, transparent 16%, transparent 84%, var(--background) 100%)",
-        }}
-      />
-
-      {/* ── Bottom fade: dissolves hero effects (grain, rings, blobs)
-             into the clean ticker surface so there's no harsh seam ── */}
-      <div
-        className="absolute left-0 right-0 pointer-events-none"
-        style={{
-          bottom: 0,
-          height: "180px",
-          zIndex: 5,
-          background: "linear-gradient(to bottom, transparent 0%, var(--card) 100%)",
-        }}
-      />
+      {/* Vignette + bottom fade removed: they painted slate/white
+          over the body's gradient wash and produced a visible seam
+          above the signal ticker. Page wash now flows uninterrupted. */}
 
       {/* ── Hero copy ─────────────────────────────────────────────── */}
       <div id="hero-content" className="relative z-10 container flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">

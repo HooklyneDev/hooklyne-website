@@ -457,8 +457,8 @@ body::before {
   backface-visibility: hidden;
   background:
     radial-gradient(ellipse 65% 50% at 8% 5%,    rgba(52, 76, 163, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 75% 60% at 95% 95%,  rgba(255, 140, 66, 0.10) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 45% at 92% 10%,  rgba(244, 114, 182, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 75% 60% at 95% 95%,  rgba(255, 140, 66, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 92% 10%,  rgba(244, 114, 182, 0.05) 0%, transparent 65%),
     radial-gradient(ellipse 50% 40% at 5% 95%,   rgba(13, 148, 136, 0.11) 0%, transparent 65%),
     linear-gradient(180deg, #f6f8fb 0%, #ecf0f5 100%);
 }
