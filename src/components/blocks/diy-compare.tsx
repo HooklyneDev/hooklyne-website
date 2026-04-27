@@ -138,8 +138,8 @@ const EN_TABS: TabDef[] = [
     steps: [
       {
         step: "1", label: "Upload your list and set variables",
-        detail: "You need a contact list first - from a database, a scrape, or a CRM export. The tool doesn't build it. Import those contacts, map the fields, set the variables the AI will fill in: first name, company, a LinkedIn field you scraped, a pain you've guessed at.",
-        time: "10 min", callout: "The list is yours to source. The tool won't build it.", good: true,
+        detail: "You need a contact list first. That means buying one from a database, exporting from your CRM, or running a scrape yourself. The tool does not source it. Import the contacts, map the fields, set the variables the AI will fill in: first name, company, a LinkedIn field, a pain you've assumed.",
+        time: "10 min", callout: "You source the list yourself. The tool starts after that.", good: true,
       },
       {
         step: "2", label: "Write the template with AI fill-ins",
@@ -275,7 +275,7 @@ const NL_TABS: TabDef[] = [
   {
     key: "database",
     label: "Contactdatabase",
-    sub: "Rijen, filters, exports",
+    sub: "Data, filters, exports",
     price: "~€100–300/mnd",
     icon: Database,
     tone: "orange",
@@ -292,7 +292,7 @@ const NL_TABS: TabDef[] = [
         detail: "Download CSV of duw naar je CRM. Je krijgt naam, functie, bedrijf, mail, telefoon waar beschikbaar.",
         time: "instant", callout: "Standaardformaat, werkt met je bestaande tools", good: true },
       { step: "3", label: "Verifieer de mailadressen",
-        detail: "Sommige databases hebben ingebouwde verificatie, andere niet. Dekking en versheid lopen uiteen per regio en database. Bouncerates op single-source data liggen op Europese MKB-doelgroepen vaak zo hoog dat kopers er een tweede verificatietool bovenop zetten voor ze versturen.",
+        detail: "Sommige databases hebben ingebouwde verificatie, andere niet. Per regio en database verschilt de dekking sterk en data veroudert snel. Bouncerates op single-source data liggen op Europese MKB-doelgroepen vaak zo hoog dat kopers er een tweede verificatietool bovenop zetten voor ze versturen.",
         time: "10 min", callout: "Verificatiekwaliteit varieert. Een tweede tool is gebruikelijk.", good: false },
       { step: "4", label: "Onderzoek elke prospect",
         detail: "De data vertelt wat ze doen, niet wat er deze week speelt. Je checkt LinkedIn, nieuws, fundingsites zelf om een aanleiding te vinden.",
@@ -316,8 +316,8 @@ const NL_TABS: TabDef[] = [
     footerNote: "Snel met versturen. Niet gebouwd voor onderzoek. Bij een scherp ideaal klantprofiel en een vooraf geverifieerde lijst is dit een verzendlaag - geen prospecting-laag.",
     steps: [
       { step: "1", label: "Upload je lijst en zet variabelen op",
-        detail: "Je hebt eerst een contactlijst nodig - uit een database, scrape of CRM-export. Het tool bouwt die niet. Importeer de contacten, koppel de velden, stel de variabelen in die de AI invult: voornaam, bedrijf, een LinkedIn-veld, een pijn die je gokt.",
-        time: "10 min", callout: "De lijst moet je zelf aanleveren. Het tool maakt hem niet.", good: true },
+        detail: "Je hebt eerst een contactlijst nodig. Dat betekent er een kopen uit een database, exporteren uit je CRM of zelf scrapen. Het tool doet dat niet. Importeer de contacten, koppel de velden, stel de variabelen in die de AI invult: voornaam, bedrijf, een LinkedIn-veld, een pijn die je aanneemt.",
+        time: "10 min", callout: "De lijst regel je zelf. Het tool begint daarna pas.", good: true },
       { step: "2", label: "Schrijf de template met AI-invullingen",
         detail: "De meeste tools genereren een basismail en laten de AI personaliseren per prospect. De personalisatie haalt uit je variabelen en wat het model is meegegeven.",
         time: "5 min", callout: "De AI onderzoekt de prospect niet. Het werkt met wat jij gaf.", good: false },

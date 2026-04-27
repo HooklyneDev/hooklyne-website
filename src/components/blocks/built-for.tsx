@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Rocket, Factory, Users } from "lucide-react";
+import { Rocket, Truck, Briefcase } from "lucide-react";
 import { useLang } from "@/lib/use-lang";
 
 const EN = {
@@ -21,18 +21,18 @@ const EN = {
   cards: [
     {
       sector: "B2B SaaS",
-      signal: "Series A closed - €8M. SDR headcount 3x in 6 weeks.",
-      opener: "Saw the raise and the SDR wave coming with it. Most teams hit tooling gaps around week 6. Worth 15 minutes before you reach that point?",
+      signal: "Series A closed. Founder still the only seller.",
+      opener: "Saw the raise. When the founder is still sole seller after a Series A, the first two GTM hires usually go wrong. Worth 15 minutes before you post the roles?",
     },
     {
-      sector: "B2B industrial",
-      signal: "ISO certification renewed. Head of Procurement open.",
-      opener: "Renewal plus an open procurement lead usually means a supplier review is coming. Three similar manufacturers went through it recently - happy to share what they did.",
+      sector: "B2B logistics",
+      signal: "New VP Sales joined from a market leader. Three AE roles posted within two weeks.",
+      opener: "New VP plus three open AEs usually means a full tooling reset. Happy to show how similar teams set up their outbound in the first 90 days.",
     },
     {
-      sector: "B2B HR tech",
-      signal: "80 employees added in 3 months. No HR system on stack.",
-      opener: "80 hires in 3 months with nothing on the HR stack is a burning window. Two teams at a similar stage hit compliance issues before month 6. Worth a short call?",
+      sector: "B2B professional services",
+      signal: "Just signed a Tier 1 retailer contract. Compliance headcount doubling.",
+      opener: "Saw the retailer deal. That type of contract creates compliance pressure around month 3 for the vendor side too. Two similar firms ran into it recently - happy to share what they did.",
     },
   ],
 };
@@ -49,31 +49,31 @@ const NL = {
       body: "Een salesmedewerker of acht, een CRM, misschien een sequencer. Je kent je ideaal klantprofiel, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
     },
     {
-      headline: "Teams waarbij een goed gesprek meer oplevert dan vijftig koude mails.",
+      headline: "Teams die liever één goed gesprek voeren dan vijftig koude mails sturen.",
       body: "Complexe proposities, kritische kopers en niche-klantprofielen. Waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
     },
   ],
   cards: [
     {
       sector: "B2B SaaS",
-      signal: "Series A afgerond - €8M. SDR-headcount 3x in 6 weken.",
-      opener: "Zag de raise en de SDR-golf die ermee meekomt. De meeste teams lopen rond week 6 tegen tooling-problemen aan. Kwartier voor je dat punt raakt?",
+      signal: "Series A afgerond. Founder nog steeds de enige seller.",
+      opener: "Zag de raise. Als de founder na een Series A nog steeds solo verkoopt, gaan de eerste twee GTM-hires er vaak naast. Kwartier waard voordat je de rollen post?",
     },
     {
-      sector: "B2B industrie",
-      signal: "ISO-certificering verlengd. Head of Procurement open.",
-      opener: "Verlenging plus een open inkooprol betekent vaak een leveranciersreview. Drie vergelijkbare fabrikanten zijn er recent doorheen gegaan - ik deel graag wat ze deden.",
+      sector: "B2B logistiek",
+      signal: "Nieuwe VP Sales ingestroomd vanuit een marktleider. Drie AE-vacatures binnen twee weken.",
+      opener: "Nieuwe VP plus drie open AE-rollen betekent bijna altijd een volledige tooling-reset. Ik laat graag zien hoe vergelijkbare teams hun outbound in de eerste 90 dagen opzetten.",
     },
     {
-      sector: "B2B HR-tech",
-      signal: "80 medewerkers in 3 maanden. Geen HR-systeem op de stack.",
-      opener: "Tachtig hires in 3 maanden zonder HR-systeem is een brandend raam. Twee teams op vergelijkbare schaal liepen voor maand 6 al tegen complianceproblemen aan. Kort gesprek waard?",
+      sector: "B2B professionele dienstverlening",
+      signal: "Zojuist een Tier 1-retailercontract getekend. Compliance-headcount verdubbelt.",
+      opener: "Zag de retailerdeal. Dat type contract legt ook aan de leverancierskant druk op compliance, meestal rond maand 3. Twee vergelijkbare bedrijven liepen er recent tegenaan - ik deel graag wat ze deden.",
     },
   ],
 };
 
 const CARD_TONES = ["blue", "teal", "orange"] as const;
-const CARD_ICONS = [Rocket, Factory, Users];
+const CARD_ICONS = [Rocket, Truck, Briefcase];
 
 export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
   const detected = useLang();

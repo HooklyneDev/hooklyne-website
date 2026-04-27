@@ -311,7 +311,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio 
                 <span style={{ color: "var(--hooklyne-teal)", fontWeight: 600 }}>{t.cleared}</span>
               )}
             </span>
-            <span className="font-mono tabular-nums">v.4.{Math.min(providerIdx, 9)}</span>
+            <span className="font-mono tabular-nums text-[var(--muted-foreground)]">{providerIdx + 1} / 21</span>
           </div>
         </div>
       </GraphicShell>

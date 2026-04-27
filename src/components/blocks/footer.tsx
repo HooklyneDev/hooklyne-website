@@ -1,7 +1,7 @@
 import { useLang } from "@/lib/use-lang";
 
 const EN = {
-  tagline: "The right prospect. The right moment. The right message.",
+  tagline: "Research. Verify. Reach out.",
   status: "All systems operational",
   productCol: { title: "Product", links: [
     { label: "Product", href: "/product" },
@@ -28,7 +28,7 @@ const EN = {
 };
 
 const NL = {
-  tagline: "Het juiste contact. Het juiste moment. De juiste boodschap.",
+  tagline: "Onderzoek. Verifieer. Bereik.",
   status: "Alle systemen operationeel",
   productCol: { title: "Product", links: [
     { label: "Product", href: "/nl/product" },
