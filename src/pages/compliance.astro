@@ -1,0 +1,91 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { ArrowRight, Clock } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+import { livByCategory, comingSoonByCategory } from "@/data/guides";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Guides", path: "/guides" },
+  { name: "Compliance", path: "/compliance" },
+]);
+
+const live      = livByCategory("compliance");
+const comingSoon = comingSoonByCategory("compliance");
+---
+
+<DefaultLayout
+  title="GDPR and compliance guides for B2B prospecting | Hooklyne"
+  description="What GDPR actually requires for B2B cold outreach, where most tools fall short, and how to run compliant prospecting at scale. Guides for Dutch and UK SMEs."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "GDPR and compliance guides for B2B prospecting",
+    "description": "Compliance guides for B2B outreach — GDPR, AVG and data privacy for European SMEs.",
+    "url": "https://www.hooklyne.com/compliance",
+    "inLanguage": "en"
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">
+          <a href="/guides" class="hover:underline">Guides</a> / Compliance
+        </p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Compliant prospecting.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+          GDPR and AVG guides for B2B outreach. What the rules actually require, where most tools fall short without knowing it, and how to stay on the right side of it.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-24 lg:pb-32">
+      <div class="container max-w-5xl space-y-16">
+        {live.length > 0 && (
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {live.map((item) => (
+              <a
+                href={item.en.slug}
+                class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                style="background: var(--card); border: 1px solid var(--border);"
+              >
+                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">Compliance</span>
+                <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.en.label}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.en.description}</p>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
+                  {item.en.cta}
+                  <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {comingSoon.length > 0 && (
+          <div>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Coming soon</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {comingSoon.map((item) => (
+                <div class="rounded-2xl p-6 opacity-50" style="background: var(--card); border: 1px solid var(--border);">
+                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Compliance</span>
+                  <p class="text-sm font-medium text-[var(--heading)]">{item.en.label}</p>
+                  <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
+                    <Clock className="size-3" /> In progress
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

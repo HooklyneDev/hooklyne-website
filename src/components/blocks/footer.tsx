@@ -11,7 +11,7 @@ const EN = {
   resourcesCol: { title: "Resources", links: [
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
-    { label: "Guides", href: "/compare" },
+    { label: "Guides", href: "/guides" },
     { label: "Support", href: "/resources/support" },
   ]},
   companyCol: { title: "Company", links: [
@@ -38,7 +38,7 @@ const NL = {
   resourcesCol: { title: "Resources", links: [
     { label: "Blog", href: "/nl/blog" },
     { label: "FAQ", href: "/nl/faq" },
-    { label: "Gidsen", href: "/nl/vergelijken" },
+    { label: "Guides", href: "/nl/guides" },
     { label: "Support", href: "/nl/resources/support" },
   ]},
   companyCol: { title: "Bedrijf", links: [

@@ -1,0 +1,74 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { ArrowRight } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+import { categories, livByCategory } from "@/data/guides";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Guides", path: "/guides" },
+]);
+---
+
+<DefaultLayout
+  title="Hooklyne guides — comparisons, compliance and prospecting | Hooklyne"
+  description="Comparisons with Apollo, Cognism and Lusha. GDPR compliance guides. Industry-specific prospecting for European B2B SMEs. All in one place."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Hooklyne guides — comparisons, compliance and prospecting",
+    "description": "Comparisons, compliance guides and industry-specific prospecting resources for European B2B SMEs.",
+    "url": "https://www.hooklyne.com/guides",
+    "inLanguage": "en"
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Guides</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Research before you decide.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+          Comparisons, compliance guides and industry playbooks for European B2B sales teams. Written to help you pick the right tool and run outreach that holds up.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-24 lg:pb-32">
+      <div class="container max-w-5xl">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((cat) => {
+            const liveCount = livByCategory(cat.id).length;
+            return (
+              <a
+                href={cat.en.slug}
+                class="group block rounded-2xl p-7 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                style="background: var(--card); border: 1px solid var(--border);"
+              >
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)]">{cat.en.badge}</span>
+                  {liveCount > 0 && (
+                    <span class="text-[10px] font-medium text-[var(--muted-foreground)] tabular-nums">{liveCount} {liveCount === 1 ? "guide" : "guides"}</span>
+                  )}
+                </div>
+                <h2 class="text-lg font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{cat.en.label}</h2>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-5">{cat.en.description}</p>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
+                  Browse {cat.en.label.toLowerCase()}
+                  <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

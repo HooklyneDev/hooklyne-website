@@ -38,6 +38,9 @@ const NL_AVAILABLE = new Set<string>([
   "/nl/lusha-alternatief",
   "/nl/avg-prospecting",
   "/nl/vergelijken",
+  "/nl/guides",
+  "/nl/compliance",
+  "/nl/industries",
 ]);
 
 /** EN slug -> NL slug for pages where the slug differs by language. */

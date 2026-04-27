@@ -2,44 +2,30 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
-import { ArrowRight, Clock } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
-import { byCategory, comingSoonGuides } from "@/data/guides";
+import { livByCategory } from "@/data/guides";
 
 const breadcrumb = breadcrumbList([
   { name: "Home", path: "/nl" },
-  { name: "Gidsen", path: "/nl/vergelijken" },
+  { name: "Guides", path: "/nl/guides" },
+  { name: "Vergelijken", path: "/nl/vergelijken" },
 ]);
 
-const alternatives = byCategory("alternative");
-const compliance   = byCategory("compliance");
-const verticals    = byCategory("vertical");
-const comingSoon   = comingSoonGuides;
-
-const sections = [
-  { title: "Alternatieven", items: alternatives },
-  { title: "Gidsen",        items: compliance },
-  ...(verticals.length ? [{ title: "Per branche", items: verticals }] : []),
-];
-
-const categoryLabel: Record<string, string> = {
-  alternative: "Alternatief",
-  compliance:  "Compliance",
-  vertical:    "Branche",
-};
+const alternatives = livByCategory("alternative");
 ---
 
 <DefaultLayout
-  title="Hooklyne gidsen — vergelijkingen, compliance en prospecting | Hooklyne"
-  description="Hooklyne vergeleken met Apollo, Cognism, Lusha en andere B2B-prospectingtools. AVG-compliancegidsen, branchespecifieke prospecting. Eerlijke resources voor Europese MKB-bedrijven."
+  title="Hooklyne vergeleken — Apollo, Cognism, Lusha | Hooklyne"
+  description="Hooklyne vergeleken met Apollo, Cognism, Lusha en andere B2B-prospectingtools. Eerlijke vergelijkingen voor Europese MKB-bedrijven. Waar Hooklyne wint en waar niet."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Hooklyne gidsen — vergelijkingen, compliance en prospecting",
-    "description": "Vergelijkingen, compliancegidsen en branchespecifieke prospectingresources voor Europese MKB-bedrijven.",
+    "name": "Hooklyne vergeleken — Apollo, Cognism, Lusha",
+    "description": "Eerlijke vergelijkingen van Hooklyne versus de B2B-prospectingtools die Europese MKB-salesteams het meest gebruiken.",
     "url": "https://www.hooklyne.com/nl/vergelijken",
     "inLanguage": "nl"
   })} />
@@ -48,89 +34,38 @@ const categoryLabel: Record<string, string> = {
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:idle signals={false} />
       <div class="container max-w-4xl text-center relative z-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Gidsen</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">
+          <a href="/nl/guides" class="hover:underline">Guides</a> / Vergelijken
+        </p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Onderzoek voor je beslist.
+          Hoe Hooklyne zich verhoudt.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-          Eerlijke vergelijkingen met de B2B-prospectingtools die Europese salesteams het meest gebruiken, plus compliance- en branchegidsen. Waar Hooklyne wint, waar niet, en voor wie elk tool is gebouwd.
+          Eerlijke vergelijkingen met de B2B-prospectingtools die Europese salesteams het meest gebruiken. Waar Hooklyne wint, waar niet, en voor wie elk tool is gebouwd.
         </p>
       </div>
     </section>
 
-    <section class="pb-16 lg:pb-24">
-      <div class="container max-w-5xl space-y-16">
-
-        {sections.map(({ title, items }) => (
-          <div>
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">{title}</h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {items.map((item) => (
-                <a
-                  href={item.nl.slug}
-                  class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                  style="background: var(--card); border: 1px solid var(--border);"
-                >
-                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">
-                    {categoryLabel[item.category] ?? item.category}
-                  </span>
-                  <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.nl.label}</h3>
-                  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.nl.description}</p>
-                  <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
-                    {item.nl.cta}
-                    <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {comingSoon.length > 0 && (
-          <div>
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Binnenkort</h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {comingSoon.map((item) => (
-                <div
-                  class="rounded-2xl p-6 opacity-50"
-                  style="background: var(--card); border: 1px solid var(--border);"
-                >
-                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">
-                    {categoryLabel[item.category] ?? item.category}
-                  </span>
-                  <p class="text-sm font-medium text-[var(--heading)]">{item.nl.label}</p>
-                  <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
-                    <Clock className="size-3" />
-                    In de maak
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-      </div>
-    </section>
-
     <section class="pb-24 lg:pb-32">
-      <div class="container max-w-3xl text-center">
-        <div class="rounded-2xl px-8 py-12" style="background: var(--card); border: 1px solid var(--border);">
-          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--heading)] mb-3">
-            Niet zeker of Hooklyne past?
-          </h2>
-          <p class="text-[var(--muted-foreground)] mb-8 max-w-xl mx-auto">
-            Tien prospects, volledig uitgewerkt, geen creditcard, geen verplichting. Als de output geen antwoorden oplevert die je anders niet had gekregen, stop je ermee.
-          </p>
-          <a
-            href="/nl/contact"
-            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
-          >
-            Start een gratis pilot
-            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
+      <div class="container max-w-5xl">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {alternatives.map((item) => (
+            <a
+              href={item.nl.slug}
+              class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+              style="background: var(--card); border: 1px solid var(--border);"
+            >
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">Alternatief</span>
+              <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.nl.label}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.nl.description}</p>
+              <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
+                {item.nl.cta}
+                <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </section>
-
   </Background>
 </DefaultLayout>

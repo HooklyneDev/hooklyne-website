@@ -1,20 +1,28 @@
 /**
  * Central config for all SEO guide / comparison pages.
  *
- * To add a new page:
- *  1. Build the .astro page (EN + NL)
- *  2. Add one entry here — set status to "live"
- *  3. Update NL_AVAILABLE in use-lang.ts and BaseHead.astro with the NL slug
- *  4. If the EN and NL slugs differ, add them to EN_TO_NL_SLUG in both files
+ * STRUCTURE:
+ *   /guides (EN) + /nl/guides (NL)  ← top-level hub showing categories
+ *     /compare        ← competitor alternatives
+ *     /compliance     ← GDPR, AVG and compliance guides
+ *     /industries     ← vertical / sector-specific guides
  *
- * The hub page (/compare and /nl/vergelijken) reads from this file automatically.
+ * TO ADD A NEW PAGE:
+ *  1. Build the .astro files (EN + NL)
+ *  2. Add one GuideEntry here — set status: "live"
+ *  3. Add the NL slug to NL_AVAILABLE in use-lang.ts AND BaseHead.astro
+ *  4. If EN and NL slugs differ, add to EN_TO_NL_SLUG in both files too
+ *
+ * TO PROMOTE A COMING-SOON VERTICAL:
+ *  - Change status: "coming-soon" → "live" and fill in description + cta
+ *  - Do steps 1–4 above
  */
 
 export type GuideStatus = "live" | "coming-soon";
-export type GuideCategory = "alternative" | "compliance" | "vertical";
+export type GuideCategoryId = "alternative" | "compliance" | "vertical";
 
 export interface GuideEntry {
-  category: GuideCategory;
+  category: GuideCategoryId;
   status: GuideStatus;
   en: {
     label: string;
@@ -29,6 +37,77 @@ export interface GuideEntry {
     cta: string;
   };
 }
+
+/** Top-level category definitions — drives the /guides hub page. */
+export interface CategoryDef {
+  id: GuideCategoryId;
+  en: {
+    label: string;
+    slug: string;
+    description: string;
+    badge: string;
+  };
+  nl: {
+    label: string;
+    slug: string;
+    description: string;
+    badge: string;
+  };
+}
+
+export const categories: CategoryDef[] = [
+  {
+    id: "alternative",
+    en: {
+      label: "Compare",
+      slug: "/compare",
+      badge: "Comparisons",
+      description:
+        "Side-by-side breakdowns with Apollo, Cognism, Lusha and other tools European sales teams use most. Where each tool wins, where it doesn't.",
+    },
+    nl: {
+      label: "Vergelijken",
+      slug: "/nl/vergelijken",
+      badge: "Vergelijkingen",
+      description:
+        "Eerlijke vergelijkingen met Apollo, Cognism, Lusha en andere tools die Europese salesteams het meest gebruiken. Waar elk tool wint en waar niet.",
+    },
+  },
+  {
+    id: "compliance",
+    en: {
+      label: "Compliance",
+      slug: "/compliance",
+      badge: "Compliance",
+      description:
+        "GDPR, AVG and data privacy guides for B2B outreach. What the rules actually require, where most tools fall short, and how to stay clean.",
+    },
+    nl: {
+      label: "Compliance",
+      slug: "/nl/compliance",
+      badge: "Compliance",
+      description:
+        "AVG, GDPR en privacygidsen voor B2B-outreach. Wat de regels echt vereisen, waar de meeste tools tekortschroeten, en hoe je het goed doet.",
+    },
+  },
+  {
+    id: "vertical",
+    en: {
+      label: "Industries",
+      slug: "/industries",
+      badge: "Industries",
+      description:
+        "Prospecting guides built around how specific sectors buy. SaaS, logistics, agencies, fintech, industrial — each has its own buying motion.",
+    },
+    nl: {
+      label: "Branches",
+      slug: "/nl/industries",
+      badge: "Branches",
+      description:
+        "Prospectinggidsen afgestemd op hoe specifieke sectoren inkopen. SaaS, logistiek, bureaus, fintech, industrie — elk met een eigen aankoopproces.",
+    },
+  },
+];
 
 export const guides: GuideEntry[] = [
   // ── Competitor alternatives ─────────────────────────────────────────────
@@ -111,82 +190,32 @@ export const guides: GuideEntry[] = [
   {
     category: "vertical",
     status: "coming-soon",
-    en: {
-      label: "For B2B SaaS teams",
-      slug: "/saas-prospecting",
-      description: "",
-      cta: "",
-    },
-    nl: {
-      label: "Voor B2B SaaS-teams",
-      slug: "/nl/saas-prospecting",
-      description: "",
-      cta: "",
-    },
+    en: { label: "For B2B SaaS teams", slug: "/saas-prospecting", description: "", cta: "" },
+    nl: { label: "Voor B2B SaaS-teams", slug: "/nl/saas-prospecting", description: "", cta: "" },
   },
   {
     category: "vertical",
     status: "coming-soon",
-    en: {
-      label: "For logistics and freight",
-      slug: "/logistics-prospecting",
-      description: "",
-      cta: "",
-    },
-    nl: {
-      label: "Voor logistiek en transport",
-      slug: "/nl/logistiek-prospecting",
-      description: "",
-      cta: "",
-    },
+    en: { label: "For logistics and freight", slug: "/logistics-prospecting", description: "", cta: "" },
+    nl: { label: "Voor logistiek en transport", slug: "/nl/logistiek-prospecting", description: "", cta: "" },
   },
   {
     category: "vertical",
     status: "coming-soon",
-    en: {
-      label: "For agencies",
-      slug: "/agency-prospecting",
-      description: "",
-      cta: "",
-    },
-    nl: {
-      label: "Voor bureaus en agencies",
-      slug: "/nl/bureau-prospecting",
-      description: "",
-      cta: "",
-    },
+    en: { label: "For agencies", slug: "/agency-prospecting", description: "", cta: "" },
+    nl: { label: "Voor bureaus en agencies", slug: "/nl/bureau-prospecting", description: "", cta: "" },
   },
   {
     category: "vertical",
     status: "coming-soon",
-    en: {
-      label: "For fintech and financial services",
-      slug: "/fintech-prospecting",
-      description: "",
-      cta: "",
-    },
-    nl: {
-      label: "Voor fintech en financiële diensten",
-      slug: "/nl/fintech-prospecting",
-      description: "",
-      cta: "",
-    },
+    en: { label: "For fintech and financial services", slug: "/fintech-prospecting", description: "", cta: "" },
+    nl: { label: "Voor fintech en financiële diensten", slug: "/nl/fintech-prospecting", description: "", cta: "" },
   },
   {
     category: "vertical",
     status: "coming-soon",
-    en: {
-      label: "For industrial and manufacturing",
-      slug: "/industrial-prospecting",
-      description: "",
-      cta: "",
-    },
-    nl: {
-      label: "Voor industrie en productie",
-      slug: "/nl/industrie-prospecting",
-      description: "",
-      cta: "",
-    },
+    en: { label: "For industrial and manufacturing", slug: "/industrial-prospecting", description: "", cta: "" },
+    nl: { label: "Voor industrie en productie", slug: "/nl/industrie-prospecting", description: "", cta: "" },
   },
 ];
 
@@ -195,5 +224,11 @@ export const guides: GuideEntry[] = [
 export const liveGuides = guides.filter((g) => g.status === "live");
 export const comingSoonGuides = guides.filter((g) => g.status === "coming-soon");
 
-export const byCategory = (cat: GuideCategory) =>
+export const byCategory = (cat: GuideCategoryId) =>
+  guides.filter((g) => g.category === cat);
+
+export const livByCategory = (cat: GuideCategoryId) =>
   liveGuides.filter((g) => g.category === cat);
+
+export const comingSoonByCategory = (cat: GuideCategoryId) =>
+  comingSoonGuides.filter((g) => g.category === cat);

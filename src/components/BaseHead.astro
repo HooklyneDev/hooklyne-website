@@ -154,6 +154,9 @@ const imageURL = new URL(finalImage, Astro.url);
     "/nl/lusha-alternatief",
     "/nl/avg-prospecting",
     "/nl/vergelijken",
+    "/nl/guides",
+    "/nl/compliance",
+    "/nl/industries",
   ]);
   if (!NL_AVAILABLE.has(nlPath)) return null;
   const enUrl = new URL(enPath, Astro.site).toString();
