@@ -157,10 +157,10 @@ export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
                     key={i}
                     onClick={() => { setActive(i); setPaused(true); }}
                     aria-label={`Show ${card.sector}`}
-                    className="absolute inset-x-0 text-left rounded-2xl p-5 lg:p-6"
+                    className="glass-off absolute inset-x-0 text-left rounded-2xl p-5 lg:p-6"
                     style={{
                       top: "50%",
-                      background: "var(--card)",
+                      background: "#ffffff",
                       border: `1px solid ${isCenter ? accentBorder : "var(--border)"}`,
                       boxShadow: isCenter ? "var(--shadow-xl)" : "var(--shadow-md)",
                       transform: `translateY(calc(-50% + ${translateY}px)) scale(${scale})`,

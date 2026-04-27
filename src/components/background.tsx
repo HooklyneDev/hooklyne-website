@@ -20,11 +20,7 @@ export const Background = ({
 
   return (
     <div
-      className={cn(
-        "relative w-full overflow-hidden",
-        !isTop && "rounded-t-3xl rounded-b-4xl",
-        className,
-      )}
+      className={cn("relative w-full", className)}
       style={{
         background: "transparent",
         minHeight: isTop ? undefined : "60vh",
