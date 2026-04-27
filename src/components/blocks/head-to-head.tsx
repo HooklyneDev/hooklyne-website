@@ -174,16 +174,164 @@ const APOLLO_NL: Profile = {
     "Apollo is de juiste keus bij high-volume Amerikaanse outbound, een behoefte aan een ingebouwde sender en meer waarde voor aantal rijen dan kwaliteit per prospect. Voor de meeste Nederlandse en Britse MKB-teams onder 50 FTE kost het verificatiegat en de ontbrekende signaallaag meer dan de extra database-omvang oplevert.",
 };
 
+const COGNISM_EN: Profile = {
+  competitor: "Cognism",
+  competitorSub: "Enterprise data, contract-led",
+  hooklyneSub: "SME workflow, plan-priced",
+  rows: [
+    {
+      dimension: "Annual commitment",
+      competitor: "Typically €15k–25k/year platform fee",
+      hooklyne: "€39–239/month, cancel anytime",
+      verdict: "hooklyne",
+      note: "Cognism's contracted pricing is built for enterprise procurement. SMEs feel the gap most.",
+    },
+    {
+      dimension: "European data depth",
+      competitor: "Diamond Verified, large EU dataset",
+      hooklyne: "Waterfall across 20+ providers (incl. Cognism-class sources)",
+      verdict: "competitor",
+      note: "Cognism has invested heavily in EU coverage. Hooklyne uses similar sources but does not match Cognism's exclusive verified mobile dataset.",
+    },
+    {
+      dimension: "Buying-signal layer",
+      competitor: "Bombora intent (extra add-on tier)",
+      hooklyne: "7 signal categories, scored vs your ICP, included",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Outreach drafting",
+      competitor: "Not included (sequencer integration)",
+      hooklyne: "Drafted in your rep's voice, 4 reasoning passes",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Cold-list email verification",
+      competitor: "Verified to single-source",
+      hooklyne: "4-layer verification (SMTP, catch-all, role, deliverable)",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Mobile numbers",
+      competitor: "Diamond Verified mobiles available",
+      hooklyne: "Email + LinkedIn URL primary; mobile not the main path",
+      verdict: "competitor",
+      note: "If your motion is heavy phone outbound, Cognism's verified mobile dataset is a real edge.",
+    },
+    {
+      dimension: "Onboarding",
+      competitor: "Account exec + onboarding manager + training",
+      hooklyne: "Founder-led 30-min call, replies inside 4 hours",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Time to first prospect",
+      competitor: "2–4 weeks from contract signed",
+      hooklyne: "10 prospects in your inbox during the pilot",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "GDPR positioning",
+      competitor: "Strong, well-documented, audit-ready",
+      hooklyne: "EU-built, no scraping, sourced citations",
+      verdict: "tie",
+      note: "Both are credible on compliance; Cognism has more explicit DPA tooling for legal teams that need it.",
+    },
+    {
+      dimension: "Ideal fit",
+      competitor: "Mid-market and enterprise sales orgs (50+ FTE)",
+      hooklyne: "SMEs and small mid-market (10–100 FTE)",
+      verdict: "tie",
+    },
+  ],
+  whenCompetitorWins:
+    "Cognism is the right call if you're a 50+ FTE sales org with enterprise procurement, heavy phone outbound, and a legal team that needs a DPA on letterhead. For most NL and UK SMEs under 50 FTE, the price floor and the missing drafted-message layer cost more than the extra mobile data is worth.",
+};
+
+const COGNISM_NL: Profile = {
+  competitor: "Cognism",
+  competitorSub: "Enterprise data, contract-gedreven",
+  hooklyneSub: "MKB-workflow, abonnementsprijs",
+  rows: [
+    {
+      dimension: "Jaarverplichting",
+      competitor: "Doorgaans €15k–25k platform fee per jaar",
+      hooklyne: "€39–239 per maand, opzegbaar",
+      verdict: "hooklyne",
+      note: "Het contractmodel van Cognism is gebouwd voor enterprise-inkoop. MKB-teams voelen het verschil het sterkst.",
+    },
+    {
+      dimension: "Europese datadiepte",
+      competitor: "Diamond Verified, grote EU-dataset",
+      hooklyne: "Waterval over 20+ providers (incl. vergelijkbare bronnen)",
+      verdict: "competitor",
+      note: "Cognism heeft fors geïnvesteerd in EU-dekking. Hooklyne gebruikt vergelijkbare bronnen maar evenaart de exclusieve geverifieerde mobile-dataset niet.",
+    },
+    {
+      dimension: "Koopsignaallaag",
+      competitor: "Bombora intent (extra add-on)",
+      hooklyne: "7 signaalcategorieën, gescoord op je ideaal klantprofiel, inbegrepen",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Outreach-opstelling",
+      competitor: "Niet inbegrepen (integratie met sequencer)",
+      hooklyne: "Opgesteld in de stem van je vertegenwoordiger, 4 reasoning-passes",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Verificatie koude lijsten",
+      competitor: "Single-source verificatie",
+      hooklyne: "4-lagen verificatie (SMTP, catch-all, role, deliverable)",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Mobiele nummers",
+      competitor: "Diamond Verified mobiles beschikbaar",
+      hooklyne: "Mail + LinkedIn-URL primair; mobiele nummers niet de hoofdroute",
+      verdict: "competitor",
+      note: "Bij een sterke phone-outbound motion is de geverifieerde mobile-dataset van Cognism een echt voordeel.",
+    },
+    {
+      dimension: "Onboarding",
+      competitor: "Account exec + onboarding manager + training",
+      hooklyne: "Founder-led call van 30 minuten, antwoord binnen 4 uur",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "Tijd tot eerste prospect",
+      competitor: "2–4 weken na contractondertekening",
+      hooklyne: "10 prospects in je inbox tijdens de pilot",
+      verdict: "hooklyne",
+    },
+    {
+      dimension: "AVG-positionering",
+      competitor: "Sterk, goed gedocumenteerd, audit-klaar",
+      hooklyne: "Europees gebouwd, geen scraping, citeerbare bronnen",
+      verdict: "tie",
+      note: "Beide zijn geloofwaardig op compliance; Cognism heeft uitgebreidere DPA-tooling voor juridische teams die dat nodig hebben.",
+    },
+    {
+      dimension: "Beste fit",
+      competitor: "Mid-market en enterprise sales-organisaties (50+ FTE)",
+      hooklyne: "MKB en klein mid-market (10–100 FTE)",
+      verdict: "tie",
+    },
+  ],
+  whenCompetitorWins:
+    "Cognism is de juiste keus voor een sales-organisatie van 50+ FTE met enterprise-inkoop, een zware phone-outbound motion en een juridisch team dat een DPA op briefpapier nodig heeft. Voor de meeste Nederlandse en Britse MKB-teams onder 50 FTE wegen de prijsvloer en de ontbrekende drafted-message-laag zwaarder dan de extra mobiele data.",
+};
+
 type Props = {
   /** Which competitor to render. Add more profiles as new SEO pages launch. */
-  competitor: "apollo";
+  competitor: "apollo" | "cognism";
   lang?: "en" | "nl";
 };
 
 export const HeadToHead = ({ competitor, lang = "en" }: Props) => {
   const profile = lang === "nl"
-    ? (competitor === "apollo" ? APOLLO_NL : APOLLO_NL)
-    : (competitor === "apollo" ? APOLLO_EN : APOLLO_EN);
+    ? (competitor === "apollo" ? APOLLO_NL : COGNISM_NL)
+    : (competitor === "apollo" ? APOLLO_EN : COGNISM_EN);
 
   const labels = lang === "nl" ? {
     eyebrow: "Direct vergeleken",
@@ -191,14 +339,14 @@ export const HeadToHead = ({ competitor, lang = "en" }: Props) => {
     headlineSuffix: ", regel voor regel.",
     sub: "Tien dimensies die er werkelijk toe doen, met een eerlijke uitkomst per regel - inclusief waar de concurrent nog wint.",
     dimensionCol: "Dimensie",
-    fairnessTitle: "Wanneer Apollo wint",
+    fairnessTitle: `Wanneer ${profile.competitor} wint`,
   } : {
     eyebrow: "Head to head",
     headlinePrefix: "Hooklyne vs ",
     headlineSuffix: ", row by row.",
     sub: "Ten dimensions that actually matter, an honest verdict per row - including where the competitor still wins.",
     dimensionCol: "Dimension",
-    fairnessTitle: "Where Apollo still wins",
+    fairnessTitle: `Where ${profile.competitor} still wins`,
   };
 
   const verdictBadge = (v: Verdict) => {

@@ -1,0 +1,203 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HeadToHead } from '@/components/blocks/head-to-head';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, ShieldCheck, Wallet, Zap, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Cognism alternative", path: "/cognism-alternative" },
+]);
+
+const pains = [
+  "Your annual quote came in north of €15k and the team is 12 people.",
+  "Procurement is asking why a sales tool needs a mutual NDA and a contract redline.",
+  "The data's good - but you also need the email written, and Cognism doesn't do that.",
+  "You wanted to start in a week, not after onboarding plus training plus integration.",
+];
+
+const breakdowns = [
+  {
+    icon: Wallet,
+    title: "Plan-priced for SMEs, not enterprise contracts.",
+    body: "Cognism is built around a platform fee and an annual contract. For sales orgs above 50 people that math works. For a 12-person team running outbound on top of building product, paying €15k+ before a single email goes out is the wrong commitment shape. Hooklyne is €39 to €239 a month, on a plan you can leave at the end of any month.",
+  },
+  {
+    icon: Zap,
+    title: "Outreach drafted, not just data delivered.",
+    body: "Cognism stops at the row in the database. After that, your team writes the email, scores the signal, and sequences it. That's a separate workflow on top of a separate tool. Hooklyne ships the prospect package complete - verified contact, scored buying signal, and a drafted message in your rep's voice - so the work between data and inbox isn't yours.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "AVG-friendly without the enterprise wrapper.",
+    body: "Cognism is well-positioned on GDPR for legal teams that need a DPA, audit trails, and explicit data lineage. If your motion needs that paperwork, they have it. If you just need to be confident your outreach won't blow up under AVG and you don't need a procurement-grade compliance package, Hooklyne's EU-built, no-scraping, citeable-source approach gets you there at a fraction of the price.",
+  },
+];
+
+const faq = [
+  {
+    q: "What if Hooklyne doesn't work for our team?",
+    a: "Pilot first, contract second. Ten prospects fully built, no card, no commitment. If the output doesn't earn replies you wouldn't have got otherwise, you walk. We'd rather have honest feedback than a customer who isn't a fit.",
+  },
+  {
+    q: "Cognism gave us a mobile number for almost every contact. Does Hooklyne match that?",
+    a: "No - and we're upfront about it. Cognism's Diamond Verified mobile dataset is genuinely strong. Email plus LinkedIn URL is Hooklyne's primary path. If your motion is heavy phone outbound, Cognism wins that comparison. If your motion is email-led, you don't need the mobile data and you're paying for it.",
+  },
+  {
+    q: "Cognism's data feels deeper than Apollo's. Is Hooklyne actually different in that comparison?",
+    a: "Cognism is meaningfully better than Apollo on EU SME data quality - that's true. Hooklyne uses similar source mixes through a 20+ provider waterfall, then adds the layers Cognism doesn't ship: signal scoring, drafted messaging, and verification per provider. The fair framing: Cognism is data-led, Hooklyne is workflow-led.",
+  },
+  {
+    q: "We're under contract with Cognism for another six months. Worth talking now?",
+    a: "Yes. Run the pilot during the existing contract on a different sender to compare like-for-like, and decide on renewal with real data instead of a sales call. The pilot is free either way, and ten prospects ships in your inbox within the first week.",
+  },
+  {
+    q: "What about the AVG / GDPR side? Cognism makes a big deal of it.",
+    a: "Their compliance package is excellent for legal teams that need it. Hooklyne is built in the Netherlands, every claim ships with a citeable source, and we don't scrape. Most SME sales teams don't need a DPA on letterhead - they need to be confident their outreach won't blow up. We get you there.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Cognism alternative for European SMEs | Hooklyne"
+  description="Hooklyne is the SME-priced Cognism alternative. Plan pricing instead of enterprise contracts, with a signal layer and drafted messages built in. EU-built research workflow for 10-100 FTE teams."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cognism alternative for European SMEs",
+    "description": "Hooklyne is the plan-priced Cognism alternative for Dutch and UK B2B SMEs.",
+    "url": "https://www.hooklyne.com/cognism-alternative",
+    "inLanguage": "en"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Cognism alternative</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          The Cognism alternative for SMEs that don't have a procurement team.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Hooklyne is a research-grade prospect workflow built for European B2B SMEs. Each prospect ships as one package - a verified contact, a scored buying signal, and a drafted message in your rep's voice - ready to review and send in under a minute. Cognism is data-led, on an enterprise contract. Hooklyne is workflow-led, on a monthly plan.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
+            Start a free pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a href="#compare" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+            See the comparison
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">You probably came here because</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
+          </div>
+
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages. No payment, no contract. We ask twenty minutes of honest feedback after - that's it.</p>
+            <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Request a pilot
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-6xl">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Where Cognism is the wrong shape</p>
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Three things Cognism prices SMEs out of.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Cognism is a strong product for the buyer it was built for: enterprise sales orgs with procurement, compliance teams, and a phone-led outbound motion. Below 50 FTE in NL, BE and UK, the contract shape and the missing drafted-message layer make the math break.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          {breakdowns.map((b) => (
+            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                <b.icon className="size-5" />
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div id="compare">
+      <HeadToHead competitor="cognism" lang="en" />
+    </div>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">Switching FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">Common questions about leaving Cognism.</h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

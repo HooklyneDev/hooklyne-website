@@ -33,6 +33,11 @@
       "source": "/nl/apollo-alternative",
       "destination": "/nl/apollo-alternatief",
       "permanent": true
+    },
+    {
+      "source": "/nl/cognism-alternative",
+      "destination": "/nl/cognism-alternatief",
+      "permanent": true
     }
   ]
 }
