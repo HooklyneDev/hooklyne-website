@@ -37,6 +37,7 @@ const NL_AVAILABLE = new Set<string>([
   "/nl/cognism-alternatief",
   "/nl/lusha-alternatief",
   "/nl/avg-prospecting",
+  "/nl/vergelijken",
 ]);
 
 /** EN slug -> NL slug for pages where the slug differs by language. */
@@ -48,6 +49,7 @@ const EN_TO_NL_SLUG: Record<string, string> = {
   "/cognism-alternative": "/nl/cognism-alternatief",
   "/lusha-alternative": "/nl/lusha-alternatief",
   "/gdpr-prospecting": "/nl/avg-prospecting",
+  "/compare": "/nl/vergelijken",
 };
 const NL_TO_EN_SLUG: Record<string, string> = Object.fromEntries(
   Object.entries(EN_TO_NL_SLUG).map(([en, nl]) => [nl, en])

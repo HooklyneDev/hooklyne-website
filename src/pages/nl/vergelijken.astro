@@ -1,0 +1,177 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { ArrowRight, Clock } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Vergelijken", path: "/nl/vergelijken" },
+]);
+
+const alternatives = [
+  {
+    badge: "Alternatief",
+    name: "Apollo-alternatief",
+    description: "Apollo is een verzendmotor bovenop een Amerikaans-georiënteerde database. Hooklyne is de onderzoekslaag eronder - geverifieerde contacten, gescoorde signalen, een opgesteld bericht. Zie waar elk tool wint.",
+    href: "/nl/apollo-alternatief",
+    cta: "Lees de vergelijking",
+  },
+  {
+    badge: "Alternatief",
+    name: "Cognism-alternatief",
+    description: "Cognism heeft de sterkste telefonisch geverifieerde database. Hooklyne heeft de sterkste signaaldiepte en een onderzoeksworkflow gebouwd voor Europese SMEs. Zie de afweging.",
+    href: "/nl/cognism-alternatief",
+    cta: "Lees de vergelijking",
+  },
+  {
+    badge: "Alternatief",
+    name: "Lusha-alternatief",
+    description: "Lusha brengt snel contacten naar boven. Hooklyne brengt contacten naar boven met een waarom-nu-signaal en een opgesteld bericht dat in minder dan een minuut klaarstaat. Zie wat het verschil oplevert.",
+    href: "/nl/lusha-alternatief",
+    cta: "Lees de vergelijking",
+  },
+];
+
+const useCases = [
+  {
+    badge: "Compliance",
+    name: "AVG-compliant prospecting",
+    description: "Wat de AVG echt vereist voor B2B-outreach, waar de meeste tools tekortschroeten zonder het te weten, en hoe Hooklyne er van de grond af voor is gebouwd.",
+    href: "/nl/avg-prospecting",
+    cta: "Lees de gids",
+  },
+];
+
+const comingSoon = [
+  { name: "Voor B2B SaaS-teams", tag: "Verticaal" },
+  { name: "Voor logistiek en transport", tag: "Verticaal" },
+  { name: "Voor bureaus en agencies", tag: "Verticaal" },
+  { name: "Voor fintech en financiele diensten", tag: "Verticaal" },
+  { name: "Voor industrie en productie", tag: "Verticaal" },
+];
+---
+
+<DefaultLayout
+  title="Hooklyne vergeleken - Apollo, Cognism, Lusha en meer | Hooklyne"
+  description="Hooklyne vergeleken met Apollo, Cognism, Lusha en andere B2B-prospectingtools. Eerlijke vergelijkingen voor Europese MKB-bedrijven. Zie waar Hooklyne wint en waar niet."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Hooklyne vergeleken - Apollo, Cognism, Lusha en meer",
+    "description": "Eerlijke vergelijkingen van Hooklyne versus de B2B-prospectingtools die Europese MKB-salesteams het meest gebruiken.",
+    "url": "https://www.hooklyne.com/nl/vergelijken",
+    "inLanguage": "nl"
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow client:idle signals={false} />
+      <div class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Vergelijkingen</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Hoe Hooklyne zich verhoudt.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+          Eerlijke vergelijkingen met de B2B-prospectingtools die Europese salesteams het meest gebruiken. Waar Hooklyne wint, waar niet, en voor wie elk tool is gebouwd.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-16 lg:pb-24">
+      <div class="container max-w-5xl">
+
+        <!-- Competitor alternatives -->
+        <div class="mb-16">
+          <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Alternatieven</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {alternatives.map((item) => (
+              <a
+                href={item.href}
+                class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                style="background: var(--card); border: 1px solid var(--border);"
+              >
+                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">{item.badge}</span>
+                <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.name}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.description}</p>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
+                  {item.cta}
+                  <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Use-case guides -->
+        <div class="mb-16">
+          <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Gidsen</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {useCases.map((item) => (
+              <a
+                href={item.href}
+                class="group block rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                style="background: var(--card); border: 1px solid var(--border);"
+              >
+                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)] mb-3">{item.badge}</span>
+                <h3 class="text-base font-semibold text-[var(--heading)] mb-2 group-hover:text-[var(--hooklyne-blue)] transition-colors">{item.name}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">{item.description}</p>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-[var(--hooklyne-blue)]">
+                  {item.cta}
+                  <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Coming soon -->
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Binnenkort</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {comingSoon.map((item) => (
+              <div
+                class="rounded-2xl p-6 opacity-50"
+                style="background: var(--card); border: 1px solid var(--border);"
+              >
+                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">{item.tag}</span>
+                <p class="text-sm font-medium text-[var(--heading)]">{item.name}</p>
+                <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
+                  <Clock className="size-3" />
+                  In de maak
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="pb-24 lg:pb-32">
+      <div class="container max-w-3xl text-center">
+        <div class="rounded-2xl px-8 py-12" style="background: var(--card); border: 1px solid var(--border);">
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--heading)] mb-3">
+            Niet zeker of Hooklyne past?
+          </h2>
+          <p class="text-[var(--muted-foreground)] mb-8 max-w-xl mx-auto">
+            Tien prospects, volledig uitgewerkt, geen creditcard, geen verplichting. Als de output geen antwoorden oplevert die je anders niet had gekregen, stop je ermee.
+          </p>
+          <a
+            href="/nl/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start een gratis pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </Background>
+</DefaultLayout>
