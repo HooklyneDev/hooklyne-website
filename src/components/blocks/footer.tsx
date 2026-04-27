@@ -92,7 +92,7 @@ export const Footer = () => {
           <p className="text-sm text-white/50 leading-relaxed">
             {t.tagline}
           </p>
-          <div className="mt-4 inline-flex items-center gap-1.5">
+          <div className="mt-4 flex items-center gap-1.5">
             <span aria-hidden="true" className="inline-flex flex-col w-3.5 h-2.5 rounded-[1px] overflow-hidden ring-1 ring-white/20">
               <span className="flex-1" style={{ background: "#AE1C28" }} />
               <span className="flex-1" style={{ background: "#FFFFFF" }} />
@@ -103,7 +103,7 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div className="mt-3 inline-flex items-center gap-2">
+          <div className="mt-3 flex items-center gap-2">
             <span className="relative flex size-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
               <span className="relative inline-flex size-2 rounded-full bg-emerald-400"></span>
