@@ -1,6 +1,7 @@
 ---
 title: "How to find B2B prospects in the Netherlands without paid tools"
 description: "Practical guide to sourcing Dutch B2B prospects using KvK, LinkedIn, and free directories. Where each method works, where it stops scaling, and what to do next."
+translationSlug: "b2b-prospects-vinden-in-nederland"
 pubDate: 2026-04-23
 authorName: Tim
 authorBio: "Tim co-founded Hooklyne after years running outbound at Dutch B2B companies. Writes about what actually works for SME sales teams."

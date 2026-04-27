@@ -1,6 +1,7 @@
 ---
-title: "Je eigen AI lead-generatie agent bouwen: wat er stuk gaat op schaal"
+title: "Waarom je eigen AI lead-generatie agent op schaal vastloopt"
 description: "DIY AI-prospectie-agents werken in een demo en stranden in productie. De data-, signaal-, stem- en compliance-gaten die ze stilletjes om zeep helpen."
+translationSlug: "build-your-own-ai-lead-generation-agent"
 pubDate: 2026-04-19
 authorName: Tim
 authorBio: "Tim is medeoprichter van Hooklyne. Schreef hiervoor jarenlang outbound voor Nederlandse B2B-bedrijven."

@@ -1,6 +1,7 @@
 ---
-title: "Koopsignalen in B2B: wat zijn het en hoe gebruik je ze voordat het raam sluit"
+title: "B2B-koopsignalen herkennen en gebruiken voordat het raam sluit"
 description: "Een koopsignaal vertelt je dat een prospect in beweging is. Welke zes signalen het meest oplevert, waarom de meeste teams ze missen, en hoe je op tijd handelt."
+translationSlug: "b2b-buying-signals"
 pubDate: 2026-04-28
 authorName: Tim
 authorBio: "Tim is medeoprichter van Hooklyne. Schreef hiervoor jarenlang outbound voor Nederlandse B2B-bedrijven."

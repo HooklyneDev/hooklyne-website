@@ -1,6 +1,7 @@
 ---
-title: "Apollo vs Cognism vs Lusha voor Nederlands en Brits MKB: een eerlijke vergelijking"
+title: "Apollo vs Cognism vs Lusha voor Nederlands en Brits B2B-MKB, eerlijk vergeleken"
 description: "Praktische vergelijking van Apollo, Cognism en Lusha voor Nederlandse en Britse B2B-teams van 10 tot 100 personen. Wat elk goed doet, en waar ze tekortschieten."
+translationSlug: "apollo-vs-cognism-vs-lusha-dutch-uk-smes"
 pubDate: 2026-04-10
 authorName: Tim
 authorBio: "Tim is medeoprichter van Hooklyne. Schreef hiervoor jarenlang outbound voor Nederlandse B2B-bedrijven."

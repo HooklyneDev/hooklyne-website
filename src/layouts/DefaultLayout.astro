@@ -15,6 +15,7 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
 <html lang={lang}>
     <head>
         <BaseHead title={title} description={description} image={image} ogType={ogType} publishedTime={publishedTime} modifiedTime={modifiedTime} />
+        <slot name="head" />
     </head>
     <body class={`h-screen antialiased`}
     >

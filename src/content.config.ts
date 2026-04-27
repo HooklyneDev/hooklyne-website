@@ -12,6 +12,7 @@ const blogSchema = z.object({
   authorBio: z.string().optional(),
   type: z.enum(["news", "article", "guide"]).default("article"),
   readingTime: z.string().optional(),
+  translationSlug: z.string().optional(),
 });
 
 const blog = defineCollection({

@@ -1,6 +1,7 @@
 ---
 title: "Hoe vind je B2B-prospects in Nederland zonder betaalde tools"
 description: "Praktische gids voor het vinden van Nederlandse B2B-prospects via KvK, LinkedIn en gratis bronnen. Waar elke methode werkt, en waar 'ie ophoudt te schalen."
+translationSlug: "how-to-find-b2b-prospects-netherlands"
 pubDate: 2026-04-23
 authorName: Tim
 authorBio: "Tim is medeoprichter van Hooklyne. Schreef hiervoor jarenlang outbound voor Nederlandse B2B-bedrijven."

@@ -1,6 +1,7 @@
 ---
-title: "Hooklyne lanceert: prospect-onderzoek gebouwd voor Nederlands B2B-MKB"
-description: "Een B2B-prospectie-workflow voor Nederlandse en Britse teams van 10 tot 100 personen. Geverifieerde contacten, real-time signalen en een eerste mail in de stem van je vertegenwoordiger. Vanaf €39 per maand."
+title: "Hooklyne lanceert prospect-onderzoek voor Nederlands en Brits B2B-MKB"
+description: "B2B-prospectie voor Nederlandse en Britse teams. Geverifieerde contacten, echte signalen, eerste concept in jouw schrijfstijl. Vanaf €39 per maand."
+translationSlug: "hooklyne-launches-for-dutch-b2b-smes"
 pubDate: 2026-04-02
 authorName: Joey
 authorBio: "Joey is medeoprichter van Hooklyne. Nederlands gebouwd, gemaakt voor kleine EMEA-salesteams die onderzoek en outreach in een werkstroom willen."

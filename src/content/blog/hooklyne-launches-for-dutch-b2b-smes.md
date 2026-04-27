@@ -1,6 +1,7 @@
 ---
-title: "Hooklyne launches: prospect research built for Dutch B2B SMEs"
-description: "A B2B prospecting workflow for Dutch and UK teams of 10 to 100 people. Verified contacts, live signals, and first-draft outreach in your rep's voice. From €39 per month."
+title: "Hooklyne launches prospect research for Dutch and UK B2B SME sales teams"
+description: "A B2B prospecting workflow for Dutch and UK teams. Verified contacts, live signals, and first-draft outreach in your rep's voice. From €39 per month."
+translationSlug: "hooklyne-lanceert-voor-nederlands-mkb"
 pubDate: 2026-04-02
 authorName: Joey
 authorBio: "Joey co-founded Hooklyne. Dutch-built, made for small EMEA sales teams who want research and outreach in one workflow."

@@ -1,6 +1,7 @@
 ---
-title: "B2B buying signals: what they are and how to use them before the window closes"
-description: "A buying signal tells you a prospect is in motion. This guide covers the six most useful B2B signals, why most teams miss them, and how to act before the moment passes."
+title: "B2B buying signals and how to use them before the window closes"
+description: "A buying signal tells you a prospect is in motion. The six most useful B2B signals, why most teams miss them, and how to act before the window closes."
+translationSlug: "koopsignalen-b2b"
 pubDate: 2026-04-28
 authorName: Tim
 authorBio: "Tim co-founded Hooklyne after years running outbound at Dutch B2B companies. Writes about what actually works for SME sales teams."

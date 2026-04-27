@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { title, description, pubDate, updatedDate, image, authorName } = post.data;
+const { title, description, pubDate, updatedDate, image, authorName, translationSlug } = post.data;
 const { Content } = await render(post);
 
 /* Per-post OG: /og/blog-{slug}.jpg if generated, else generic /og/blog.jpg.
@@ -56,6 +56,13 @@ const breadcrumb = breadcrumbList([
 	publishedTime={pubDate.toISOString()}
 	modifiedTime={(updatedDate ?? pubDate).toISOString()}
 >
+	{translationSlug && (
+		<Fragment slot="head">
+			<link rel="alternate" hreflang="en" href={`${SITE_URL}/blog/${post.id}`} />
+			<link rel="alternate" hreflang="nl" href={`${SITE_URL}/nl/blog/${translationSlug}`} />
+			<link rel="alternate" hreflang="x-default" href={`${SITE_URL}/blog/${post.id}`} />
+		</Fragment>
+	)}
 	<script type="application/ld+json" is:inline set:html={JSON.stringify(blogPostingSchema)} />
 	<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
 	<div class="py-28 lg:pt-44 lg:pb-32">
