@@ -31,21 +31,11 @@ const imageURL = new URL(finalImage, Astro.url);
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 
-<!-- Preload self-hosted DM Sans (only fonts actually used) -->
-<link
-  rel="preload"
-  href="/fonts/dm-sans/DMSans-Regular.ttf"
-  as="font"
-  type="font/ttf"
-  crossorigin="anonymous"
-/>
-<link
-  rel="preload"
-  href="/fonts/dm-sans/DMSans-Bold.ttf"
-  as="font"
-  type="font/ttf"
-  crossorigin="anonymous"
-/>
+<!-- Preload self-hosted DM Sans (WOFF2 - all 4 weights used above the fold) -->
+<link rel="preload" href="/fonts/dm-sans/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/dm-sans/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/dm-sans/DMSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/dm-sans/DMSans-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
 {/* Preload the hero video poster on home pages so the LCP image is discovered immediately */}
 {(Astro.url.pathname === "/" || Astro.url.pathname === "/nl" || Astro.url.pathname === "/nl/") && (
