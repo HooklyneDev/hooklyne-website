@@ -10,7 +10,8 @@ const TYPE_STYLE: Record<string, { bg: string; fg: string }> = {
   guide: { bg: "var(--hooklyne-teal)", fg: "white" },
 };
 
-const BlogPosts = ({ posts }: { posts: any[] }) => {
+const BlogPosts = ({ posts, lang = "en" }: { posts: any[]; lang?: "en" | "nl" }) => {
+  const base = lang === "nl" ? "/nl/blog" : "/blog";
   return (
     <section className="pb-20">
       <div className="container max-w-5xl">
@@ -21,7 +22,7 @@ const BlogPosts = ({ posts }: { posts: any[] }) => {
             return (
               <a
                 key={post.id}
-                href={`/blog/${post.id}`}
+                href={`${base}/${post.id}`}
                 className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
                 style={{
                   background: "var(--card)",
