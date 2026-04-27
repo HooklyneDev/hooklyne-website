@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 /**
  * Prospect Signals - mirrors the real portal screens.
@@ -143,9 +143,9 @@ const TREND: Record<Trend, { bg: string; fg: string }> = {
 const MAX_HEAT = 38;
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
-export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio }: SignalHeatTableProps = {}) => {
-  const lang = useLang();
+type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
+export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: SignalHeatTableProps = {}) => {
+  const lang = useLang(langProp);
   const ROWS = lang === "nl" ? ROWS_NL : ROWS_EN;
   const t = lang === "nl" ? {
     crumb: "Portaal / Prospect-signalen",

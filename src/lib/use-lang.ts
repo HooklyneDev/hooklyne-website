@@ -99,12 +99,31 @@ export function setLang(next: Lang) {
   switchLangUrl(next);
 }
 
-export function useLang(): Lang {
-  const [lang, setState] = useState<Lang>("en");
+/**
+ * Returns the current language.
+ *
+ * Pass `initialLang` when the Astro page already knows the language (i.e.
+ * it was determined server-side from the URL). This ensures the React
+ * component's initial render matches the server-rendered HTML, eliminating
+ * the English flash on Dutch pages.
+ *
+ * Without `initialLang` the hook reads `window.location.pathname`
+ * synchronously in the useState lazy initializer, which fixes the flash
+ * for client:only components (no SSR HTML to mismatch).
+ */
+export function useLang(initialLang?: Lang): Lang {
+  const [lang, setState] = useState<Lang>(() => {
+    // Prop wins: came from Astro's server-side URL check at build time.
+    if (initialLang) return initialLang;
+    // Client-side: read URL synchronously so the first render is correct.
+    if (typeof window !== "undefined") return langFromPath(window.location.pathname);
+    // SSR fallback (only reached when no prop is passed).
+    return "en";
+  });
 
   useEffect(() => {
-    // URL is source of truth.
-    setState(langFromPath(window.location.pathname));
+    // If prop was passed we trust it; still listen for programmatic switches.
+    if (!initialLang) setState(langFromPath(window.location.pathname));
     const handler = () => setState(readFromDom());
     window.addEventListener(EVENT, handler);
     return () => window.removeEventListener(EVENT, handler);

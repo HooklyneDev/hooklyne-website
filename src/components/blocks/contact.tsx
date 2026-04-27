@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { track } from "@/lib/analytics";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 type Interest = "" | "Pilot" | "Demo" | "Question";
 type Status = "idle" | "loading" | "success" | "error";
@@ -117,8 +117,8 @@ const NL = {
   errInterest: "Kies een optie zodat we weten hoe we kunnen helpen.",
 };
 
-export const Contact = () => {
-  const lang = useLang();
+export const Contact = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const t = lang === "nl" ? NL : EN;
   const [interest, setInterest] = useState<Interest>("");
   const [status, setStatus] = useState<Status>("idle");

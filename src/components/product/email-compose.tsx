@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 /**
  * Portal hero - full-width email draft that types itself out and then
@@ -45,9 +45,9 @@ const BODY_NL: string[] = [
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type EmailComposeProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
-export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio }: EmailComposeProps = {}) => {
-  const lang = useLang();
+type EmailComposeProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
+export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: EmailComposeProps = {}) => {
+  const lang = useLang(langProp);
   const SUBJECT = lang === "nl" ? SUBJECT_NL : SUBJECT_EN;
   const BODY = lang === "nl" ? BODY_NL : BODY_EN;
   const t = lang === "nl" ? {

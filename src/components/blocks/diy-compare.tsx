@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Check, X, Clock, Database, Wrench, Briefcase, Send } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
   <span
@@ -401,8 +401,8 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
 
 const NUDGE_ORDER: TabKey[] = ["database", "aioutreach", "diy", "agency"];
 
-export const DIYCompare = () => {
-  const lang = useLang();
+export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const TABS = lang === "nl" ? NL_TABS : EN_TABS;
   const labels = lang === "nl" ? {
     eyebrow: "De workflow",

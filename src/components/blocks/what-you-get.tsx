@@ -13,10 +13,9 @@ const NL = {
   subline: "Geverifieerd contact, gescoord signaal en een opgestelde mail. Alles op één plek, klaar om te beoordelen en te versturen.",
 };
 
-export const WhatYouGet = ({ lang }: { lang?: "en" | "nl" }) => {
-  const detected = useLang();
-  const resolved = lang ?? detected;
-  const t = resolved === "nl" ? NL : EN;
+export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
+  const t = lang === "nl" ? NL : EN;
   const shotRef = useRef<HTMLDivElement>(null);
 
   // Subtle scroll-driven tilt: matches the hero screenshot motion.

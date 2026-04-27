@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { switchLangUrl, useLang } from "@/lib/use-lang";
+import { switchLangUrl, useLang, type Lang } from "@/lib/use-lang";
 
 /* ── Language suggestion banner ────────────────────────────────────────
    SEO-safe: we never auto-redirect on browser language. Google
@@ -31,8 +31,8 @@ function writePref(v: Pref) {
   try { localStorage.setItem(STORAGE_KEY, v); } catch {}
 }
 
-export const LangSuggest = () => {
-  const lang = useLang();
+export const LangSuggest = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const [show, setShow] = useState(false);
   const [browserNL, setBrowserNL] = useState(false);
 

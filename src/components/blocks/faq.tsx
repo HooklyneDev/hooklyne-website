@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { faqGroups, faqGroupsNL } from "@/data/faq";
 import { track } from "@/lib/analytics";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const HEAD_EN = {
   eyebrow: "FAQ",
@@ -20,8 +20,8 @@ const HEAD_NL = {
   sub: "De vragen die we het vaakst horen; staat de jouwe er niet tussen, mail ons dan direct.",
 };
 
-export const FAQ = () => {
-  const lang = useLang();
+export const FAQ = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const groups = lang === "nl" ? faqGroupsNL : faqGroups;
   const head = lang === "nl" ? HEAD_NL : HEAD_EN;
   const [active, setActive] = useState(0);

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLang, switchLangUrl } from "@/lib/use-lang";
+import { useLang, switchLangUrl, type Lang } from "@/lib/use-lang";
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
 
@@ -39,7 +39,7 @@ const NL_ITEMS: NavItem[] = [
 const NAV_LABELS_EN = { login: "Log in", bookDemo: "Book a demo" };
 const NAV_LABELS_NL = { login: "Inloggen", bookDemo: "Boek een demo" };
 
-export const Navbar = () => {
+export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pathname, setPathname] = useState("");
@@ -65,7 +65,7 @@ export const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [langOpen]);
 
-  const lang = useLang();
+  const lang = useLang(langProp);
   const ITEMS = lang === "nl" ? NL_ITEMS : EN_ITEMS;
   const labels = lang === "nl" ? NAV_LABELS_NL : NAV_LABELS_EN;
 

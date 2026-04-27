@@ -1,4 +1,4 @@
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const COPY = {
   en: {
@@ -61,8 +61,8 @@ const COPY = {
   },
 } as const;
 
-export const WaysToStart = () => {
-  const lang = useLang();
+export const WaysToStart = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const t = COPY[lang];
 
   const columns = [

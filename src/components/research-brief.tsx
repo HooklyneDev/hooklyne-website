@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 /**
  * ResearchBrief - bespoke mock of a sourced research brief.
@@ -8,9 +8,8 @@ import { useLang } from "@/lib/use-lang";
  * Everything inside is fictional, labelled as example output.
  */
 
-export const ResearchBrief = ({ lang: langProp }: { lang?: "en" | "nl" } = {}) => {
-  const detected = useLang();
-  const lang = langProp ?? detected;
+export const ResearchBrief = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const isNL = lang === "nl";
 
   const t = isNL ? {

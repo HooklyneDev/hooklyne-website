@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const EN_PLANS = [
   { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test and validate your outbound.", highlighted: false },
@@ -44,8 +44,8 @@ const NL_T = {
   founderLine: "Tim · Founder · Hooklyne · Nederland",
 };
 
-export const HomePricing = () => {
-  const lang = useLang();
+export const HomePricing = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const PLANS = lang === "nl" ? NL_PLANS : EN_PLANS;
   const t = lang === "nl" ? NL_T : EN_T;
   return (

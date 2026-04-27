@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Rocket, Truck, Briefcase } from "lucide-react";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const EN = {
   eyebrow: "Built for",
@@ -75,10 +75,9 @@ const NL = {
 const CARD_TONES = ["blue", "teal", "orange"] as const;
 const CARD_ICONS = [Rocket, Truck, Briefcase];
 
-export const BuiltFor = ({ lang }: { lang?: "en" | "nl" }) => {
-  const detected = useLang();
-  const resolved = lang ?? detected;
-  const t = resolved === "nl" ? NL : EN;
+export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
+  const t = lang === "nl" ? NL : EN;
   const [active, setActive]   = useState(0);
   const [paused, setPaused]   = useState(false);
   const [reduced, setReduced] = useState(false);

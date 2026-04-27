@@ -46,15 +46,15 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     ]
   })} />
   <Background>
-    <Hero client:load />
+    <Hero lang="nl" client:load />
     <SignalTicker />
-    <DIYCompare client:visible />
+    <DIYCompare lang="nl" client:visible />
   </Background>
 
   <Background variant="bottom">
     <WhatYouGet lang="nl" />
-    <WaysToStart client:visible />
-    <BuiltFor client:visible />
-    <HomePricing client:visible />
+    <WaysToStart lang="nl" client:visible />
+    <BuiltFor lang="nl" client:visible />
+    <HomePricing lang="nl" client:visible />
   </Background>
 </DefaultLayout>

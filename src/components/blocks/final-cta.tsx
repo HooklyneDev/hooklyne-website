@@ -1,5 +1,5 @@
 import { ArrowRight, ShieldCheck, MapPin, FileText, RotateCcw } from "lucide-react";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 export type CTAVariant = "home" | "how-it-works" | "product" | "about" | "pricing" | "faq";
 
@@ -128,8 +128,8 @@ const NL_TRUST = [
   { icon: RotateCcw,   label: "Altijd opzegbaar" },
 ];
 
-export const FinalCTA = ({ variant = "home" }: { variant?: CTAVariant }) => {
-  const lang = useLang();
+export const FinalCTA = ({ variant = "home", lang: langProp }: { variant?: CTAVariant; lang?: Lang }) => {
+  const lang = useLang(langProp);
   const VARIANTS = lang === "nl" ? NL_VARIANTS : EN_VARIANTS;
   const TRUST_SIGNALS = lang === "nl" ? NL_TRUST : EN_TRUST;
   const copy = VARIANTS[variant] ?? VARIANTS.home;

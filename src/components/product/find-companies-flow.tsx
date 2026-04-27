@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 /**
  * Find me companies - mirrors the real 3-step flow in the portal.
@@ -71,9 +71,9 @@ const CONF_NL: Record<Conf, { label: string; bg: string; fg: string; icon: strin
 };
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
-export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio }: FindCompaniesFlowProps = {}) => {
-  const lang = useLang();
+type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
+export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: FindCompaniesFlowProps = {}) => {
+  const lang = useLang(langProp);
   const PROMPT = lang === "nl" ? PROMPT_NL : PROMPT_EN;
   const COMPANIES = lang === "nl" ? COMPANIES_NL : COMPANIES_EN;
   const CONTACTS = lang === "nl" ? CONTACTS_NL : CONTACTS_EN;

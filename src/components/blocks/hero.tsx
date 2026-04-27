@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridSignals } from "@/components/grid-signals";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const EN = {
   pill: "For B2B founders and sales reps",
@@ -21,8 +21,8 @@ const NL = {
 };
 
 /* ── Component ──────────────────────────────────────────────────────── */
-export const Hero = () => {
-  const lang = useLang();
+export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const t = lang === "nl" ? NL : EN;
   const screenshotRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);

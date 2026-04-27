@@ -1,4 +1,4 @@
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const EN = {
   tagline: "Research. Verify. Reach out.",
@@ -54,8 +54,8 @@ const NL = {
   rights: "Alle rechten voorbehouden.",
 };
 
-export const Footer = () => {
-  const lang = useLang();
+export const Footer = ({ lang: langProp }: { lang?: Lang } = {}) => {
+  const lang = useLang(langProp);
   const t = lang === "nl" ? NL : EN;
   const cols = [t.productCol, t.resourcesCol, t.companyCol];
 

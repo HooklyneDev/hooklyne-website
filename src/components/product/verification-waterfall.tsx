@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GraphicShell } from "./graphic-shell";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 /**
  * Verification waterfall - animates the journey of a contact email through
@@ -38,10 +38,10 @@ const LAYERS = LAYERS_EN; // referenced in lengths; actual labels picked at rend
 type Phase = "ingest" | "providers" | "layers" | "verified";
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio };
+type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
 
-export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio }: Props = {}) => {
-  const lang = useLang();
+export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: Props = {}) => {
+  const lang = useLang(langProp);
   const layersRender = lang === "nl" ? LAYERS_NL : LAYERS_EN;
   const t = lang === "nl" ? {
     crumb: "Portaal / Contactverificatie",
