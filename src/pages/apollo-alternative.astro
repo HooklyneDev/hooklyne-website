@@ -3,6 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { DIYCompare } from '@/components/blocks/diy-compare';
+import { HeadToHead } from '@/components/blocks/head-to-head';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import { ArrowRight, ShieldCheck, Search, FileText } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
@@ -139,7 +140,7 @@ const faq = [
     </section>
 
     <div id="compare">
-      <DIYCompare client:visible />
+      <HeadToHead competitor="apollo" lang="en" />
     </div>
   </Background>
 
