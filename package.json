@@ -17,7 +17,7 @@
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^8.2.10",
-    "@fontsource/public-sans": "^5.2.7",
+    "@fontsource/be-vietnam-pro": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@nobie-org/tailwindcss-animate": "^1.0.9",
     "@phosphor-icons/react": "^2.1.10",

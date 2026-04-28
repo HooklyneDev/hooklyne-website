@@ -3,46 +3,32 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
-/* ── Public Sans (body + UI) - matches the Hooklyne portal ───────── */
+/* ── Be Vietnam Pro - body + headings ─────────────────────────── */
 @font-face {
-  font-family: "Public Sans";
-  src: url("/fonts/public-sans/PublicSans-300.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Public Sans";
-  src: url("/fonts/public-sans/PublicSans-400.woff2") format("woff2");
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/be-vietnam-pro/BeVietnamPro-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Public Sans";
-  src: url("/fonts/public-sans/PublicSans-500.woff2") format("woff2");
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/be-vietnam-pro/BeVietnamPro-500.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Public Sans";
-  src: url("/fonts/public-sans/PublicSans-600.woff2") format("woff2");
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/be-vietnam-pro/BeVietnamPro-600.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Public Sans";
-  src: url("/fonts/public-sans/PublicSans-700.woff2") format("woff2");
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/be-vietnam-pro/BeVietnamPro-700.woff2") format("woff2");
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Public Sans";
-  src: url("/fonts/public-sans/PublicSans-800.woff2") format("woff2");
-  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -247,17 +233,17 @@
   --glass-highlight:   rgba(255, 255, 255, 0.95);
   --glass-shadow:      0 8px 32px rgba(2, 47, 81, 0.08), 0 2px 8px rgba(2, 47, 81, 0.05);
 
-  --font-public-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-be-vietnam-pro: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
 
-  --font-sans: var(--font-public-sans);
+  --font-sans: var(--font-be-vietnam-pro);
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
 
-  --display-family: var(--font-public-sans);
-  --text-family: var(--font-public-sans);
-  --display-weight: 600;
+  --display-family: var(--font-be-vietnam-pro);
+  --text-family: var(--font-be-vietnam-pro);
+  --display-weight: 700;
   --text-weight: 400;
 }
 
@@ -368,15 +354,17 @@
        "2x more meetings", and any data on a marketing page. */
     font-feature-settings: 'tnum' 1, 'zero' 1;
   }
-  /* Public Sans for everything. */
+  /* Be Vietnam Pro across the board. Headings get heavier weight for
+     proper contrast against the 400 body. */
   h1, h2, h3, h4,
   .hero-headline,
   .section-headline {
     font-family: var(--font-sans);
   }
-  h1, .hero-headline { font-weight: 600; letter-spacing: -0.02em; }
-  h2, .section-headline { font-weight: 600; letter-spacing: -0.015em; }
-  h3 { font-weight: 600; letter-spacing: -0.01em; }
+  h1, .hero-headline { font-weight: 700; letter-spacing: -0.022em; }
+  h2, .section-headline { font-weight: 700; letter-spacing: -0.018em; }
+  h3 { font-weight: 600; letter-spacing: -0.012em; }
+  h4 { font-weight: 600; letter-spacing: -0.008em; }
 
   .font-mono {
     font-family: var(--font-mono), monospace;

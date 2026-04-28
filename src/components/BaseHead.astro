@@ -31,12 +31,11 @@ const imageURL = new URL(finalImage, Astro.url);
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 
-<!-- Preload self-hosted Public Sans (body + headings).
-     Only the weights actually used above the fold. -->
-<link rel="preload" href="/fonts/public-sans/PublicSans-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" href="/fonts/public-sans/PublicSans-500.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" href="/fonts/public-sans/PublicSans-600.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" href="/fonts/public-sans/PublicSans-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<!-- Preload self-hosted Be Vietnam Pro - all 4 weights used above the fold. -->
+<link rel="preload" href="/fonts/be-vietnam-pro/BeVietnamPro-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/be-vietnam-pro/BeVietnamPro-500.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/be-vietnam-pro/BeVietnamPro-600.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/be-vietnam-pro/BeVietnamPro-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
 {/* Preload the hero video poster on home pages so the LCP image is discovered immediately */}
 {(Astro.url.pathname === "/" || Astro.url.pathname === "/nl" || Astro.url.pathname === "/nl/") && (
