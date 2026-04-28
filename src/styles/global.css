@@ -3,39 +3,63 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
+/* ── Public Sans (body + UI) - matches the Hooklyne portal ───────── */
 @font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dm-sans/DMSans-Regular.woff2") format("woff2"),
-       url("/fonts/dm-sans/DMSans-Regular.ttf") format("truetype");
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans/PublicSans-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans/PublicSans-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dm-sans/DMSans-Medium.woff2") format("woff2"),
-       url("/fonts/dm-sans/DMSans-Medium.ttf") format("truetype");
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans/PublicSans-500.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dm-sans/DMSans-SemiBold.woff2") format("woff2"),
-       url("/fonts/dm-sans/DMSans-SemiBold.ttf") format("truetype");
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans/PublicSans-600.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dm-sans/DMSans-Bold.woff2") format("woff2"),
-       url("/fonts/dm-sans/DMSans-Bold.ttf") format("truetype");
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans/PublicSans-700.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans/PublicSans-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Instrument Serif (display only - hero h1 + select section h2) ── */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif/InstrumentSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif/InstrumentSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -238,18 +262,18 @@
   --glass-highlight:   rgba(255, 255, 255, 0.95);
   --glass-shadow:      0 8px 32px rgba(2, 47, 81, 0.08), 0 2px 8px rgba(2, 47, 81, 0.05);
 
-  --font-dm-sans: "DM Sans", sans-serif;
+  --font-public-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-instrument-serif: "Instrument Serif", Georgia, Cambria, "Times New Roman", Times, serif;
 
-  --font-sans:
-    var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-public-sans);
+  --font-serif: var(--font-instrument-serif);
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
 
-  --display-family: var(--font-dm-sans);
-  --text-family: var(--font-dm-sans);
-  --display-weight: 600;
+  --display-family: var(--font-instrument-serif);
+  --text-family: var(--font-public-sans);
+  --display-weight: 400;
   --text-weight: 400;
 }
 
@@ -356,29 +380,38 @@
   .font-text {
     font-family: var(--font-text);
     font-weight: var(--text-weight);
+    /* Tabular numerals + slashed zero. For pricing tables, "100+ companies",
+       "2x more meetings", and any data on a marketing page. */
+    font-feature-settings: 'tnum' 1, 'zero' 1;
   }
-  h1,
-  h2,
+  /* Headings default to Public Sans. Instrument Serif is opt-in via the
+     .font-display class, .hero-headline, .section-headline, or h1.display. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-sans);
+  }
+  h1 { font-weight: 600; letter-spacing: -0.02em; }
+  h2 { font-weight: 600; letter-spacing: -0.015em; }
+  h3 { font-weight: 600; letter-spacing: -0.01em; }
+
+  /* Display moments: serif. Use sparingly — hero h1 + the rare top-of-section
+     headline. Never on body, nav, or CTA buttons. */
+  .hero-headline,
+  .section-headline,
+  h1.display,
   .font-display {
     font-family: var(--font-display);
-    font-weight: var(--display-weight);
-    -webkit-font-feature-settings:
-      "ss02" on,
-      "ss03" on,
-      "ss04" on;
-    -moz-font-feature-settings:
-      "ss02" on,
-      "ss03" on,
-      "ss04" on;
-    -ms-font-feature-settings:
-      "ss02" on,
-      "ss03" on,
-      "ss04" on;
-    font-feature-settings:
-      "ss02" on,
-      "ss03" on,
-      "ss04" on;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
   }
+
+  /* One serif italic accent per page. */
+  .accent-italic {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+  }
+
   .font-mono {
     font-family: var(--font-mono), monospace;
   }
