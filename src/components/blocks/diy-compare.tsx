@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check, X, Clock, Database, Wrench, Briefcase, PaperPlaneTilt } from "@phosphor-icons/react";
+import { Check, X, Clock, Database, Wrench, Briefcase, PaperPlaneTilt, CaretDown } from "@phosphor-icons/react";
 import type { Icon } from "@phosphor-icons/react";
 import { useLang, type Lang } from "@/lib/use-lang";
 
@@ -424,6 +424,9 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
   const [nudgeIdx, setNudgeIdx] = useState(0);
+  /* Mobile-only: which step is expanded. First step opens by default;
+     desktop ignores this state entirely (CSS reveals all steps at md+). */
+  const [openStep, setOpenStep] = useState<string | null>(null);
 
   useEffect(() => {
     if (hasInteracted) return;
@@ -437,6 +440,12 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
   const active = TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
   const isHooklyne = active.key === "hooklyne";
+
+  /* Reset which step is open when the user switches tabs - first step
+     of the new flow opens by default. */
+  useEffect(() => {
+    setOpenStep(active.steps[0]?.step ?? null);
+  }, [tab]);
 
   return (
     <section className="pt-8 pb-14 lg:pt-10 lg:pb-20" data-fade>
@@ -559,49 +568,75 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
           </div>
         </div>
 
-        {/* Steps grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {active.steps.map((s) => (
-            <div
-              key={s.step}
-              className="group relative flex flex-col h-full p-5 lg:p-7 rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-sm"
-              style={{
-                background: "var(--card)",
-                border: "1px solid var(--border)",
-                boxShadow: "var(--shadow-xs)",
-              }}
-            >
-              <div className="relative flex items-center justify-between mb-4">
-                <span
-                  className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold"
-                  style={{
-                    background: isHooklyne ? "var(--hooklyne-navy)" : tone.fg,
-                    color: "#fff",
-                    boxShadow:
-                      "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 10px -2px rgba(15,23,42,0.2)",
-                  }}
+        {/* Steps grid. Mobile: each step is collapsible, only the active one
+            shows detail + callout. md+: full grid, every step always expanded. */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+          {active.steps.map((s) => {
+            const isOpen = openStep === s.step;
+            return (
+              <div
+                key={s.step}
+                className="group relative flex flex-col h-full rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-sm"
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-xs)",
+                }}
+              >
+                {/* Header row - tappable on mobile, decorative on md+ */}
+                <button
+                  type="button"
+                  className="flex items-center gap-3 text-left p-4 md:p-5 lg:p-7 md:pb-3 md:cursor-default"
+                  onClick={() => setOpenStep((prev) => prev === s.step ? null : s.step)}
+                  aria-expanded={isOpen}
+                  aria-controls={`step-${active.key}-${s.step}`}
                 >
-                  {s.step}
-                </span>
-                <span
-                  className="text-[10px] font-mono font-semibold px-2 py-1 rounded"
-                  style={{ background: tone.soft, color: tone.fg }}
+                  <span
+                    className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold shrink-0"
+                    style={{
+                      background: isHooklyne ? "var(--hooklyne-navy)" : tone.fg,
+                      color: "#fff",
+                      boxShadow:
+                        "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 10px -2px rgba(15,23,42,0.2)",
+                    }}
+                  >
+                    {s.step}
+                  </span>
+                  <span className="flex-1 text-[14.5px] md:text-[15px] font-semibold text-[var(--heading)] leading-tight md:hidden">
+                    {s.label}
+                  </span>
+                  <span
+                    className="text-[10px] font-mono font-semibold px-2 py-1 rounded shrink-0"
+                    style={{ background: tone.soft, color: tone.fg }}
+                  >
+                    {s.time}
+                  </span>
+                  <CaretDown
+                    size={16}
+                    weight="regular"
+                    className={`md:hidden shrink-0 text-[var(--muted-foreground)] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {/* Body - hidden when collapsed on mobile, always visible md+ */}
+                <div
+                  id={`step-${active.key}-${s.step}`}
+                  className={`px-4 md:px-5 lg:px-7 pb-4 md:pb-5 lg:pb-7 md:flex md:flex-col md:flex-1 ${isOpen ? "block" : "hidden md:flex"}`}
                 >
-                  {s.time}
-                </span>
+                  <div className="hidden md:block text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
+                  <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
+                  <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
+                    {s.good ? (
+                      <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
+                    ) : (
+                      <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
+                    )}
+                    <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
+                  </div>
+                </div>
               </div>
-              <div className="relative text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
-              <p className="relative text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
-              <div className="relative flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
-                {s.good ? (
-                  <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
-                ) : (
-                  <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
-                )}
-                <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
           {/* Summary card fills the empty grid slot when step count < 6 */}
           {active.footerNote && active.steps.length < 6 && (
             <div
