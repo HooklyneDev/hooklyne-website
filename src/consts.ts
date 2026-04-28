@@ -4,12 +4,12 @@ export const GITHUB_URL = "https://github.com/HooklyneDev";
 export const SITE_TITLE =
   "B2B Prospect Research for Dutch and UK SMEs | Hooklyne";
 export const SITE_DESCRIPTION =
-  "Verified contacts, live signals, and first-draft outreach for Dutch, UK and EMEA B2B teams of 10 to 100. Dutch and English, native. From €39 a month.";
+  "B2B prospect research for Dutch and UK sales teams. Verified contacts, trigger signals, and ready-to-send outreach - in Dutch or English. From €39 a month.";
 
 export const SITE_TITLE_NL =
   "Prospectonderzoek voor Nederlandse en Britse B2B-teams | Hooklyne";
 export const SITE_DESCRIPTION_NL =
-  "Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 20+ databronnen en real-time koopsignalen volgt voor Nederlandse, Britse en EMEA B2B-teams van 10 tot 100 personen. Native in Nederlands en Engels, vanaf €39 per maand.";
+  "B2B prospect-onderzoek voor Nederlandse en Britse salesteams. Geverifieerde contacten, koopsignalen en kant-en-klare mails - in NL of EN. Vanaf €39 per maand.";
 
 export const SITE_METADATA = {
   title: {
