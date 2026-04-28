@@ -71,7 +71,7 @@ export const WaysToStart = ({ lang: langProp }: { lang?: Lang } = {}) => {
   ];
 
   return (
-    <section className="py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-24">
       <div className="container max-w-6xl">
         {/* Header row - left aligned, takes one line */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
