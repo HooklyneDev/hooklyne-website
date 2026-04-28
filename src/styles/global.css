@@ -384,32 +384,25 @@
        "2x more meetings", and any data on a marketing page. */
     font-feature-settings: 'tnum' 1, 'zero' 1;
   }
-  /* Headings default to Public Sans. Instrument Serif is opt-in via the
-     .font-display class, .hero-headline, .section-headline, or h1.display. */
-  h1, h2, h3, h4 {
+  /* All headings use Public Sans. Instrument Serif stays loaded only for
+     short opt-in italic accents via .accent-italic. */
+  h1, h2, h3, h4,
+  .hero-headline,
+  .section-headline {
     font-family: var(--font-sans);
   }
-  h1 { font-weight: 600; letter-spacing: -0.02em; }
-  h2 { font-weight: 600; letter-spacing: -0.015em; }
+  h1, .hero-headline { font-weight: 600; letter-spacing: -0.02em; }
+  h2, .section-headline { font-weight: 600; letter-spacing: -0.015em; }
   h3 { font-weight: 600; letter-spacing: -0.01em; }
 
-  /* Display moments: serif. Use sparingly — hero h1 + the rare top-of-section
-     headline. Never on body, nav, or CTA buttons. */
-  .hero-headline,
-  .section-headline,
-  h1.display,
-  .font-display {
-    font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-  }
-
-  /* One serif italic accent per page. */
+  /* Optional opt-in serif italic for a short accent phrase. Used sparingly. */
   .accent-italic {
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
+  }
+  .font-display {
+    font-family: var(--font-display);
   }
 
   .font-mono {
