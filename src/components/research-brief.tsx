@@ -15,7 +15,7 @@ export const ResearchBrief = ({ lang: langProp }: { lang?: Lang } = {}) => {
   const t = isNL ? {
     crumb: "Prospect / Research-brief",
     sourced: "Onderbouwd",
-    company: "Acme B.V.",
+    company: "Stenfort Industrie B.V.",
     sector: "Industriële OEM · Rotterdam",
     briefVer: "Brief · v3",
     whyNow: "Waarom nu",
@@ -28,13 +28,13 @@ export const ResearchBrief = ({ lang: langProp }: { lang?: Lang } = {}) => {
     disclaimer: "Voorbeeld · fictief bedrijf",
     sources: [
       { n: 1, label: "Funding tracker",  host: "trackers / funding-db",   meta: "2u geleden" },
-      { n: 2, label: "Bedrijfsblog",     host: "acme.example / blog",     meta: "3u geleden" },
+      { n: 2, label: "Bedrijfsblog",     host: "stenfort.example / blog",     meta: "3u geleden" },
       { n: 3, label: "Sectorbronnen",    host: "trackers / sector-index", meta: "6u geleden" },
     ],
   } : {
     crumb: "Prospect / Research brief",
     sourced: "Sourced",
-    company: "Acme B.V.",
+    company: "Stenfort Industrie B.V.",
     sector: "Industrial OEM · Rotterdam",
     briefVer: "Brief · v3",
     whyNow: "Why now",
@@ -47,7 +47,7 @@ export const ResearchBrief = ({ lang: langProp }: { lang?: Lang } = {}) => {
     disclaimer: "Example output · fictional company",
     sources: [
       { n: 1, label: "Funding tracker",   host: "trackers / funding-db",   meta: "Pulled 2h ago" },
-      { n: 2, label: "Company blog",      host: "acme.example / blog",     meta: "Pulled 3h ago" },
+      { n: 2, label: "Company blog",      host: "stenfort.example / blog",     meta: "Pulled 3h ago" },
       { n: 3, label: "Industry trackers", host: "trackers / sector-index", meta: "Pulled 6h ago" },
     ],
   };
