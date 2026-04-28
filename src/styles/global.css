@@ -47,21 +47,6 @@
   font-display: swap;
 }
 
-/* ── Instrument Serif (display only - hero h1 + select section h2) ── */
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif/InstrumentSerif-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif/InstrumentSerif-Italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
 
 /* ── Scroll reveal ─────────────────────────────────────────────────── */
 [data-fade] {
@@ -263,17 +248,16 @@
   --glass-shadow:      0 8px 32px rgba(2, 47, 81, 0.08), 0 2px 8px rgba(2, 47, 81, 0.05);
 
   --font-public-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-instrument-serif: "Instrument Serif", Georgia, Cambria, "Times New Roman", Times, serif;
 
   --font-sans: var(--font-public-sans);
-  --font-serif: var(--font-instrument-serif);
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
 
-  --display-family: var(--font-instrument-serif);
+  --display-family: var(--font-public-sans);
   --text-family: var(--font-public-sans);
-  --display-weight: 400;
+  --display-weight: 600;
   --text-weight: 400;
 }
 
@@ -384,8 +368,7 @@
        "2x more meetings", and any data on a marketing page. */
     font-feature-settings: 'tnum' 1, 'zero' 1;
   }
-  /* All headings use Public Sans. Instrument Serif stays loaded only for
-     short opt-in italic accents via .accent-italic. */
+  /* Public Sans for everything. */
   h1, h2, h3, h4,
   .hero-headline,
   .section-headline {
@@ -394,16 +377,6 @@
   h1, .hero-headline { font-weight: 600; letter-spacing: -0.02em; }
   h2, .section-headline { font-weight: 600; letter-spacing: -0.015em; }
   h3 { font-weight: 600; letter-spacing: -0.01em; }
-
-  /* Optional opt-in serif italic for a short accent phrase. Used sparingly. */
-  .accent-italic {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-  }
-  .font-display {
-    font-family: var(--font-display);
-  }
 
   .font-mono {
     font-family: var(--font-mono), monospace;
