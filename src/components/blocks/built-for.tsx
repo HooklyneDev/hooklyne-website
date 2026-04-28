@@ -114,10 +114,11 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
   return (
     <section className="pt-10 pb-10 lg:pt-12 lg:pb-12" data-fade>
       <div className="container max-w-6xl">
-        <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 
-          {/* Left: text column (60%) */}
-          <div className="lg:col-span-3">
+          {/* Left: text column (60%). On mobile, falls below the cards
+              via Tailwind order classes - cards lead, text follows. */}
+          <div className="lg:col-span-3 order-2 lg:order-1 mt-10 lg:mt-0">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
               {t.eyebrow}
             </p>
@@ -258,8 +259,8 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
             </div>
           </div>
 
-          {/* Mobile: static stack of all 3 cards */}
-          <div className="lg:hidden mt-10 grid gap-3">
+          {/* Mobile: static stack of all 3 cards - shown FIRST on mobile via order class */}
+          <div className="lg:hidden order-1 grid gap-3">
             {t.cards.map((card, i) => {
               const tone = CARD_TONES[i];
               const Icon = CARD_ICONS[i];
