@@ -406,13 +406,17 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
   const TABS = lang === "nl" ? NL_TABS : EN_TABS;
   const labels = lang === "nl" ? {
     eyebrow: "De workflow",
-    headline: "Van ideaal klantprofiel naar inbox in zes stappen.",
+    headline: (
+      <>Van ideaal klantprofiel naar <span className="text-accent">inbox in zes stappen</span>.</>
+    ),
     sub: "Zes stappen, volledig automatisch. Je salesmedewerker krijgt een compleet pakket: contact gevonden, context klaar, eerste bericht geschreven. Beoordelen en versturen in minder dan een minuut.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
   } : {
     eyebrow: "The workflow",
-    headline: "From ICP to inbox in six steps.",
+    headline: (
+      <>From ICP to <span className="text-accent">inbox in six steps</span>.</>
+    ),
     sub: "Six steps, fully automated. The rep gets a complete prospect package - contact found, context built, outreach drafted. Review and send in under a minute.",
     compareWith: "Compare with",
     estCost: "est. tool cost",

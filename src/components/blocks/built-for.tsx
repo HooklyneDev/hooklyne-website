@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Rocket, Truck, Briefcase } from "lucide-react";
 import { useLang, type Lang } from "@/lib/use-lang";
 import { Avatar } from "@/components/avatar";
+import { WavePattern } from "@/components/wave-pattern";
 
 const EN = {
   eyebrow: "Built for",
@@ -100,8 +101,9 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
   }, [reduced, paused]);
 
   return (
-    <section className="pt-10 pb-10 lg:pt-12 lg:pb-12" data-fade>
-      <div className="container max-w-6xl">
+    <section className="relative pt-10 pb-10 lg:pt-12 lg:pb-12 overflow-hidden" data-fade>
+      <WavePattern tone="blue" intensity="medium" uid="builtfor" />
+      <div className="container max-w-6xl relative z-10">
         <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 
           {/* Left: text column (60%) */}

@@ -1,15 +1,19 @@
 import { useEffect, useRef } from "react";
-import { useLang } from "@/lib/use-lang";
+import { useLang, type Lang } from "@/lib/use-lang";
 
 const EN = {
   eyebrow: "What you get",
-  headline: "Every prospect, fully packaged.",
+  headline: (
+    <>Every prospect, <span className="text-accent">fully packaged</span>.</>
+  ),
   subline: "Verified contact, scored signal, drafted message - all in one card, ready to review and send.",
 };
 
 const NL = {
   eyebrow: "Wat je krijgt",
-  headline: "Elke prospect, compleet samengesteld.",
+  headline: (
+    <>Elke prospect, <span className="text-accent">compleet samengesteld</span>.</>
+  ),
   subline: "Geverifieerd contact, gescoord signaal en een opgestelde mail. Alles op één plek, klaar om te beoordelen en te versturen.",
 };
 
