@@ -42,7 +42,7 @@ const NL = {
   statements: [
     {
       headline: "Founders die zelf verkopen.",
-      body: "Geen ops-team, geen researcher, geen agency-budget: jij bent de GTM-functie en Hooklyne is de onderzoekslaag die je zou inhuren als je kon.",
+      body: "Geen ops-team, geen researcher, geen agency-budget. Jij verkoopt zelf en Hooklyne is de onderzoekslaag die je anders zou inhuren.",
     },
     {
       headline: "Salesteams bij bedrijven van 10 tot 100.",
@@ -57,7 +57,7 @@ const NL = {
     {
       sector: "B2B SaaS",
       signal: "Series A afgerond. Founder nog steeds de enige seller.",
-      opener: "Zag de raise. Als de founder na een Series A nog steeds solo verkoopt, gaan de eerste twee GTM-hires er vaak naast. Kwartier waard voordat je de rollen post?",
+      opener: "Zag de ronde. Als de founder na een Series A nog steeds solo verkoopt, gaan de eerste twee salesaanstellingen er vaak naast. Kwartier waard voordat je de vacatures plaatst?",
     },
     {
       sector: "B2B logistiek",

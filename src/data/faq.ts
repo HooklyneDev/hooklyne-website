@@ -84,7 +84,7 @@ export const faqGroupsNL: Group[] = [
       { q: "Wat is het verschil met een contactdatabase?", a: "Een database geeft je een naam, terwijl Hooklyne je een geverifieerd contact, een actuele aanleiding én een opgestelde mail levert. Databases stoppen bij de regel; wij leveren het hele pakket." },
       { q: "Wat is het verschil met een sales agency?", a: "Een agency kost €2.500+ per maand en haalt het versturen uit jouw handen. Hooklyne kost een fractie daarvan en houdt jou aan het stuur, met het onderzoek al gedaan." },
       { q: "Gebruikt Hooklyne AI?", a: "Hooklyne combineert verschillende onderzoeks- en datasystemen tot één workflow. Wat telt is wat in de inbox terechtkomt, niet wat eronder draait." },
-      { q: "Klinkt het bericht alsof een bot het schreef?", a: "Nee. We kalibreren je stem op basis van een interview van 30 minuten en tot vijf voorbeeldmails, en elk concept gaat door vier reasoning-passes voor het bij jou belandt." },
+      { q: "Klinkt het bericht alsof een bot het schreef?", a: "Nee. We kalibreren je stem op basis van een interview van 30 minuten en tot vijf voorbeeldmails, en elk concept gaat door vier controlestappen voor het bij jou belandt." },
     ],
   },
   {
@@ -95,9 +95,9 @@ export const faqGroupsNL: Group[] = [
       { q: "Waarom niet gewoon één database?", a: "Eén provider dekt meestal zo'n 40% van een markt, en elke provider dekt een andere 40%; één database betekent dus dunne dekking en bounces. Door 20+ bronnen te combineren bereik je de contacten die er werkelijk toe doen." },
       { q: "Hoe worden mailadressen geverifieerd?", a: "Vier deliverability-lagen: drie parallelle checks tijdens de enrichment en een laatste deliverability-pass aan het eind. Catch-alls, spam traps, role accounts, disposables en bekende klagers worden geflagd of weggegooid; komt een adres er niet doorheen, dan gaat het niet uit." },
       { q: "Schaadt verificatie mijn sender reputation?", a: "Nee. Verificatie draait op onze infrastructuur en niet op die van jou, dus jouw domein blijft buiten elke probing." },
-      { q: "Welke signalen volgen jullie?", a: "Zeven bronnen: funding, hiring, leiderschapswissels, launches, pers, expansie en sectornieuws. Elke gevolgde prospect wordt continu in de gaten gehouden." },
+      { q: "Welke signalen volgen jullie?", a: "Zeven bronnen: funding, nieuwe aanstellingen, leiderschapswissels, lanceringen, pers, expansie en sectornieuws. Elke gevolgde prospect wordt continu in de gaten gehouden." },
       { q: "Hoe vers zijn de signalen?", a: "Binnen uren. We monitoren ook direct mee op bedrijfs- en teampagina's, zodat we nieuwe rollen, stille launches en uitbreidingen op de careers-pagina vaak oppikken voor de pers ze publiceert." },
-      { q: "Waarom zie ik niet elke nieuwe hire of persbericht?", a: "Elk signaal krijgt twee scores, een voor relevantie aan hun kant en een voor jouw kant. Alleen signalen die door beide checks komen, belanden in jouw inbox." },
+      { q: "Waarom zie ik niet elke nieuwe aanstelling of elk persbericht?", a: "Elk signaal krijgt twee scores, een voor relevantie aan hun kant en een voor jouw kant. Alleen signalen die door beide checks komen, belanden in jouw inbox." },
       { q: "Hoe goed is de data?", a: "We versturen alleen geverifieerde contacten, en de viertraps-verificatie houdt de bouncerate ruim onder de 2% safe zone die in de markt gangbaar is." },
       { q: "Is de data AVG-proof?", a: "Ja. Hooklyne is in Nederland gebouwd en EU-first opgezet; elke provider in de waterval werkt onder de AVG en compliance is van begin af aan ingebakken in de workflow, niet er bovenop geplakt." },
     ],
@@ -108,7 +108,7 @@ export const faqGroupsNL: Group[] = [
     items: [
       { q: "Hoe voorkomen jullie dat er onzin over mijn prospects wordt verzonnen?", a: "We doen live webonderzoek in plaats van te leunen op stoffige trainingsdata, en elke claim is te herleiden naar een actuele URL die je kunt aanklikken. Geen verzonnen quotes, geen verzonnen cijfers, geen verzonnen klanten." },
       { q: "Kan ik de bronnen achter een meeting brief zien?", a: "Ja. Elke brief toont zijn citaties klikbaar in de tekst, zodat je elk feit kunt verifiëren voordat je het gesprek ingaat." },
-      { q: "Hoe personaliseren jullie de berichten?", a: "Via het Sender Profile met vijf tabs: bedrijf, stem, voorbeeldmails, producten en regels. Eenmalig invullen kost zo'n 30 minuten, en vanaf dat moment erft elk bericht jouw toon via vier reasoning-passes." },
+      { q: "Hoe personaliseren jullie de berichten?", a: "Via het Sender Profile met vijf tabs: bedrijf, stem, voorbeeldmails, producten en regels. Eenmalig invullen kost zo'n 30 minuten, en vanaf dat moment erft elk bericht jouw toon via vier controlestappen." },
     ],
   },
   {
