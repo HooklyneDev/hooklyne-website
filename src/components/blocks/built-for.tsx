@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Rocket, Truck, Briefcase } from "lucide-react";
 import { useLang, type Lang } from "@/lib/use-lang";
 import { Avatar } from "@/components/avatar";
-import { WavePattern } from "@/components/wave-pattern";
 
 const EN = {
   eyebrow: "Built for",
@@ -25,19 +24,19 @@ const EN = {
       sector: "B2B SaaS",
       signal: "Series A closed. Founder still the only seller.",
       opener: "Saw the raise. When the founder is still sole seller after a Series A, the first two GTM hires usually go wrong. Worth 15 minutes before you post the roles?",
-      persona: { name: "Mark Janssen", role: "Founder & CEO" },
+      persona: { name: "Mark Janssen", role: "Founder & CEO", image: "/personas/mark-janssen.jpg" },
     },
     {
       sector: "B2B logistics",
       signal: "New VP Sales joined from a market leader. Three AE roles posted within two weeks.",
       opener: "New VP plus three open AEs usually means a full tooling reset. Happy to show how similar teams set up their outbound in the first 90 days.",
-      persona: { name: "Sara de Vries", role: "VP Sales" },
+      persona: { name: "Sara de Vries", role: "VP Sales", image: "/personas/sara-de-vries.jpg" },
     },
     {
       sector: "B2B professional services",
       signal: "Just signed a Tier 1 retailer contract. Compliance headcount doubling.",
       opener: "Saw the retailer deal. That type of contract creates compliance pressure around month 3 for the vendor side too. Two similar firms ran into it recently - happy to share what they did.",
-      persona: { name: "David Aarts", role: "Head of Compliance" },
+      persona: { name: "David Aarts", role: "Head of Compliance", image: "/personas/david-aarts.jpg" },
     },
   ],
 };
@@ -63,19 +62,19 @@ const NL = {
       sector: "B2B SaaS",
       signal: "Series A afgerond. Founder nog steeds de enige seller.",
       opener: "Zag de ronde. Als de founder na een Series A nog steeds solo verkoopt, gaan de eerste twee salesaanstellingen er vaak naast. Kwartier waard voordat je de vacatures plaatst?",
-      persona: { name: "Mark Janssen", role: "Founder & CEO" },
+      persona: { name: "Mark Janssen", role: "Founder & CEO", image: "/personas/mark-janssen.jpg" },
     },
     {
       sector: "B2B logistiek",
       signal: "Nieuwe VP Sales ingestroomd vanuit een marktleider. Drie AE-vacatures binnen twee weken.",
       opener: "Nieuwe VP plus drie open AE-rollen betekent bijna altijd een volledige tooling-reset. Ik laat graag zien hoe vergelijkbare teams hun outbound in de eerste 90 dagen opzetten.",
-      persona: { name: "Sara de Vries", role: "VP Sales" },
+      persona: { name: "Sara de Vries", role: "VP Sales", image: "/personas/sara-de-vries.jpg" },
     },
     {
       sector: "B2B professionele dienstverlening",
       signal: "Zojuist een Tier 1-retailercontract getekend. Compliance-headcount verdubbelt.",
       opener: "Zag de retailerdeal. Dat type contract legt ook aan de leverancierskant druk op compliance, meestal rond maand 3. Twee vergelijkbare bedrijven liepen er recent tegenaan - ik deel graag wat ze deden.",
-      persona: { name: "David Aarts", role: "Head of Compliance" },
+      persona: { name: "David Aarts", role: "Head of Compliance", image: "/personas/david-aarts.jpg" },
     },
   ],
 };
@@ -101,9 +100,8 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
   }, [reduced, paused]);
 
   return (
-    <section className="relative pt-10 pb-10 lg:pt-12 lg:pb-12 overflow-hidden" data-fade>
-      <WavePattern tone="blue" intensity="subtle" uid="builtfor" />
-      <div className="container max-w-6xl relative z-10">
+    <section className="pt-10 pb-10 lg:pt-12 lg:pb-12" data-fade>
+      <div className="container max-w-6xl">
         <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 
           {/* Left: text column (60%) */}
@@ -206,7 +204,7 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
 
                     {/* Recipient persona */}
                     <div className="flex items-center gap-2 mb-2.5">
-                      <Avatar name={card.persona.name} tone={tone} size="sm" />
+                      <Avatar name={card.persona.name} src={card.persona.image} tone={tone} size="sm" ring />
                       <div className="leading-tight">
                         <div className="text-[11.5px] font-semibold text-[var(--heading)]">
                           {card.persona.name}
@@ -261,9 +259,9 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
               return (
                 <div
                   key={i}
-                  className="rounded-xl p-4"
+                  className="glass-off rounded-xl p-4"
                   style={{
-                    background: "var(--card)",
+                    background: "#ffffff",
                     border: "1px solid var(--border)",
                     boxShadow: "var(--shadow-sm)",
                   }}
@@ -287,7 +285,7 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     {card.signal}
                   </p>
                   <div className="flex items-center gap-2 mb-2 pt-2 border-t" style={{ borderColor: "var(--border)" }}>
-                    <Avatar name={card.persona.name} tone={tone} size="sm" />
+                    <Avatar name={card.persona.name} src={card.persona.image} tone={tone} size="sm" ring />
                     <div className="leading-tight">
                       <div className="text-[11.5px] font-semibold text-[var(--heading)]">{card.persona.name}</div>
                       <div className="text-[10.5px] text-[var(--muted-foreground)]">{card.persona.role}</div>
