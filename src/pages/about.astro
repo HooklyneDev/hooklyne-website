@@ -2,11 +2,11 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
-import { ArrowRight, MessagesSquare, Target, PenLine, Calendar, Mail, Compass } from 'lucide-react';
+import { ArrowRight, ChatsCircle, Target, PencilSimpleLine, Calendar, Envelope, Compass } from "@phosphor-icons/react";
 
 const values = [
   {
-    icon: MessagesSquare,
+    icon: ChatsCircle,
     title: "Selling is still personal.",
     body: "Buying decisions still come down to one person picking up the phone. Software should free you up for that conversation, not pretend to replace it. The relationship is your rep's, not the tool's.",
   },
@@ -16,7 +16,7 @@ const values = [
     body: "Fifty real hooks beat five hundred weak ones. We'd rather ship ten prospects you'd actually be proud to send than a hundred you'd be embarrassed by.",
   },
   {
-    icon: PenLine,
+    icon: PencilSimpleLine,
     title: "Outreach you'd sign your name to.",
     body: "Generic outreach burns sender reputation fast. Four reasoning passes, a quality check, and if it's not ready, it doesn't ship. Even if that means we ship fewer.",
   },
@@ -29,7 +29,7 @@ const pillars = [
     body: "Your first ICP setup runs through Tim, not a junior. 30 minutes on a call. We learn what you sell, who you sell to, and how you actually talk to them.",
   },
   {
-    icon: Mail,
+    icon: Envelope,
     title: "Direct team access.",
     body: "One Slack channel or email thread per customer. Replies inside four hours during business days. No ticket queue, no script, no chat-bot triage.",
   },

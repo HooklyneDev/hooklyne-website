@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, MapPin, FileText, RotateCcw } from "lucide-react";
+import { ArrowRight, ShieldCheck, MapPin, FileText, ArrowCounterClockwise } from "@phosphor-icons/react";
 import { useLang, type Lang } from "@/lib/use-lang";
 
 export type CTAVariant = "home" | "how-it-works" | "product" | "about" | "pricing" | "faq";
@@ -118,14 +118,14 @@ const EN_TRUST = [
   { icon: ShieldCheck, label: "GDPR-compliant" },
   { icon: MapPin,      label: "EU-native" },
   { icon: FileText,    label: "No contract, pilot anytime" },
-  { icon: RotateCcw,   label: "Cancel whenever" },
+  { icon: ArrowCounterClockwise,   label: "Cancel whenever" },
 ];
 
 const NL_TRUST = [
   { icon: ShieldCheck, label: "AVG-proof" },
   { icon: MapPin,      label: "EU-gevestigd" },
   { icon: FileText,    label: "Geen contract" },
-  { icon: RotateCcw,   label: "Altijd opzegbaar" },
+  { icon: ArrowCounterClockwise,   label: "Altijd opzegbaar" },
 ];
 
 export const FinalCTA = ({ variant = "home", lang: langProp }: { variant?: CTAVariant; lang?: Lang }) => {

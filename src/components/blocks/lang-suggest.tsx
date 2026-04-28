@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { X } from "@phosphor-icons/react";
 import { switchLangUrl, useLang, type Lang } from "@/lib/use-lang";
 
 /* ── Language suggestion banner ────────────────────────────────────────

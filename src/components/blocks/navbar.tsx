@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Globe } from "lucide-react";
+import { CaretDown, Globe } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { useLang, switchLangUrl, type Lang } from "@/lib/use-lang";
 type NavChild = { label: string; href: string };
@@ -115,7 +115,7 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                       )}
                     >
                       {link.label}
-                      <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                      <CaretDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
                     </button>
 
                     {/* Dropdown */}
@@ -273,7 +273,7 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                       className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--hooklyne-blue)] hover:bg-[var(--hooklyne-blue)]/5 transition-colors"
                     >
                       {link.label}
-                      <ChevronDown className={cn("size-4 transition-transform duration-200", open && "rotate-180")} />
+                      <CaretDown className={cn("size-4 transition-transform duration-200", open && "rotate-180")} />
                     </button>
                     <div className={cn("overflow-hidden transition-all duration-200", open ? "max-h-48" : "max-h-0")}>
                       <div className="pl-3 py-1 flex flex-col gap-1">

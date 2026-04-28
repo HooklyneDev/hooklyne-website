@@ -1,4 +1,4 @@
-import { Check, Minus, X } from "lucide-react";
+import { Check, Minus, X } from "@phosphor-icons/react";
 
 /**
  * HeadToHead — focused 2-column comparison for SEO landing pages

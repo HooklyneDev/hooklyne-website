@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { GridSignals } from "@/components/grid-signals";
 import { useLang, type Lang } from "@/lib/use-lang";

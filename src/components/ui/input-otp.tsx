@@ -1,8 +1,6 @@
 import * as React from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
-import { MinusIcon } from "lucide-react"
-
-import { cn } from "@/lib/utils"
+import { Minus } from "@phosphor-icons/react";import { cn } from "@/lib/utils"
 
 function InputOTP({
   className,
@@ -67,7 +65,7 @@ function InputOTPSlot({
 function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
   return (
     <div data-slot="input-otp-separator" role="separator" {...props}>
-      <MinusIcon />
+      <Minus />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 ---
 import { Background } from '@/components/background';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
+import { Envelope, ChatCircle, BookOpen, ArrowRight } from "@phosphor-icons/react";
 ---
 
 <DefaultLayout
@@ -54,7 +54,7 @@ import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
               class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
               style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);"
             >
-              <Mail className="size-5" />
+              <Envelope className="size-5" />
             </span>
             <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Stuur ons een bericht</h2>
             <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
@@ -75,7 +75,7 @@ import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
               class="inline-flex items-center justify-center size-10 rounded-lg mb-4"
               style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);"
             >
-              <MessageCircle className="size-5" />
+              <ChatCircle className="size-5" />
             </span>
             <h2 class="text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">Praat met iemand</h2>
             <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed flex-1 mb-4">
@@ -196,7 +196,7 @@ import { Mail, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
             class="hidden rounded-lg p-3.5 text-sm"
             style="background: rgba(255,140,66,0.10); border: 1px solid rgba(255,140,66,0.30); color: var(--hooklyne-orange);"
           >
-            Er ging iets mis. Mail rechtstreeks naar <a href="mailto:contact@hooklyne.com" class="underline underline-offset-2">contact@hooklyne.com</a>.
+            Er ging iets mis. Envelope rechtstreeks naar <a href="mailto:contact@hooklyne.com" class="underline underline-offset-2">contact@hooklyne.com</a>.
           </div>
         </form>
       </div>

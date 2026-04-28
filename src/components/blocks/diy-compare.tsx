@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Check, X, Clock, Database, Wrench, Briefcase, Send } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Check, X, Clock, Database, Wrench, Briefcase, PaperPlaneTilt } from "@phosphor-icons/react";
+import type { Icon } from "@phosphor-icons/react";
 import { useLang, type Lang } from "@/lib/use-lang";
 
 const HooklyneMark = ({ className = "" }: { className?: string }) => (
@@ -29,7 +29,7 @@ type TabDef = {
   label: string;
   sub: string;
   price?: string;
-  icon: LucideIcon;
+  icon: Icon;
   tone: "teal" | "orange" | "amber" | "slate" | "rose";
   totalLabel: string;
   total: string;
@@ -128,7 +128,7 @@ const EN_TABS: TabDef[] = [
     label: "AI outreach tool",
     sub: "Generated emails",
     price: "~€100–500/mo",
-    icon: Send,
+    icon: PaperPlaneTilt,
     tone: "amber",
     totalLabel: "Your time",
     total: "≈10 min setup, then ≈30s/prospect",
@@ -307,7 +307,7 @@ const NL_TABS: TabDef[] = [
     label: "AI-outreach tool",
     sub: "Gegenereerde mails",
     price: "~€100–500/mnd",
-    icon: Send,
+    icon: PaperPlaneTilt,
     tone: "amber",
     totalLabel: "Jouw tijd",
     total: "≈10 min setup, daarna ≈30s/prospect",

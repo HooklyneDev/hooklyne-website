@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowSquareOut } from "@phosphor-icons/react";
 import { useLang, type Lang } from "@/lib/use-lang";
 
 /**
@@ -172,7 +172,7 @@ export const ResearchBrief = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     </div>
                   </div>
                   <span className="text-[10px] text-[var(--muted-foreground)] shrink-0">{s.meta}</span>
-                  <ExternalLink className="size-3 text-[var(--muted-foreground)]/60 shrink-0" />
+                  <ArrowSquareOut className="size-3 text-[var(--muted-foreground)]/60 shrink-0" />
                 </li>
               ))}
             </ul>

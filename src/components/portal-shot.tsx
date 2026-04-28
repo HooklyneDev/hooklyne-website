@@ -1,4 +1,4 @@
-import { ImageIcon } from "lucide-react";
+import { Image } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -146,7 +146,7 @@ export const PortalShot = ({
                 className="flex items-center justify-center size-11 rounded-xl mb-3"
                 style={{ background: "var(--card)", border: "1px dashed var(--border-strong)" }}
               >
-                <ImageIcon className="size-5" style={{ color: "var(--muted-foreground)" }} />
+                <Image className="size-5" style={{ color: "var(--muted-foreground)" }} />
               </div>
               <p className="text-sm font-semibold" style={{ color: "var(--heading)" }}>{label}</p>
               {describe && (
