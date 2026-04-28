@@ -20,9 +20,10 @@ const post = Astro.props;
 const { title, description, pubDate, updatedDate, image, authorName, translationSlug } = post.data;
 const { Content } = await render(post);
 
-/* Per-post OG: /og/blog-{slug}.jpg if generated, else generic /og/blog.jpg.
+/* Per-post OG: /og/EN/blog.jpg generic for now. Custom per-post images
+   can be added later by changing this to /og/blog-{post.id}.jpg.
    Distinct from `image` (the in-page hero), which is bigger and unbranded. */
-const ogImage = `/og/blog-${post.id}.jpg`;
+const ogImage = `/og/EN/blog.jpg`;
 
 const canonicalUrl = `${SITE_URL}/blog/${post.id}`;
 const blogPostingSchema = {

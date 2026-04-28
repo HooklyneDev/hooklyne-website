@@ -20,7 +20,7 @@ const post = Astro.props;
 const { title, description, pubDate, updatedDate, image, authorName, translationSlug } = post.data;
 const { Content } = await render(post);
 
-const ogImage = `/og/blog-${post.id}.jpg`;
+const ogImage = `/og/NL/blog.jpg`;
 
 const canonicalUrl = `${SITE_URL}/nl/blog/${post.id}`;
 const blogPostingSchema = {
