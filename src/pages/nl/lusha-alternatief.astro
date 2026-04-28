@@ -4,7 +4,7 @@ import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HeadToHead } from '@/components/blocks/head-to-head';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, Layers, Workflow, FileText, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -21,17 +21,14 @@ const pains = [
 
 const breakdowns = [
   {
-    icon: Workflow,
     title: "Een workflow, geen browser-extensie.",
     body: "Lusha leeft in de LinkedIn-pagina die je toevallig openhebt. Voor een losse enrichment is dat snel en voor solo-prospecten ook prima. Zodra outbound een teamfunctie wordt - één rep of acht, met weeknummers die gehaald moeten worden - breekt het klik-voor-klik-model. Hooklyne is een onderzoeksworkflow die het prospectpakket van begin tot eind oplevert, zodat de salesmedewerker beoordeelt en verstuurt in plaats van klikt, kopieert, plakt en schrijft.",
   },
   {
-    icon: Layers,
     title: "Signaal en bericht inbegrepen, niet erbovenop.",
     body: "Het werk van Lusha eindigt bij het contact. Het waarom-nu-signaal en het bericht dat de deur uitgaat, zijn niet zijn klus - dat blijft over voor je salesmedewerker, je CRM-tabbladen en je ChatGPT-venster. Hooklyne levert telkens hetzelfde pakket: geverifieerd contact, gescoord koopsignaal en een opgesteld bericht in de stem van je salesmedewerker. Eén scherm in plaats van vier.",
   },
   {
-    icon: FileText,
     title: "Verificatie over 21 bronnen, geen single-source.",
     body: "Lusha verifieert tegen de eigen database. Voor de contacten die de database goed kent, werkt dat. Op Nederlandse en Britse MKB-prospects met wisselende dekking betekent single-source verificatie dat je pas na de bounce ontdekt dat het adres niet klopte. Hooklyne waterfallt over 21 providers en draait vier deliverability-lagen voordat een contact wordt vrijgegeven.",
   },
@@ -145,8 +142,8 @@ const faq = [
     </section>
 
     <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Waar Lusha stopt</p>
           <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Drie dingen die Lusha aan jou overlaat.
@@ -156,14 +153,14 @@ const faq = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {breakdowns.map((b) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <b.icon className="size-5" />
+        <div class="space-y-8">
+          {breakdowns.map((b, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
             </div>
           ))}
         </div>

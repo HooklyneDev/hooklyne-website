@@ -4,7 +4,7 @@ import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HeadToHead } from '@/components/blocks/head-to-head';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, Wallet, Zap, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -21,17 +21,14 @@ const pains = [
 
 const breakdowns = [
   {
-    icon: Wallet,
     title: "Abonnementsprijs voor MKB, geen enterprise-contract.",
     body: "Cognism is gebouwd rond een platform fee en een jaarcontract. Voor sales-organisaties boven de 50 FTE klopt die rekensom. Voor een team van twaalf dat outbound draait naast het bouwen van product, is €15k betalen voor de eerste mail de uitgaat de verkeerde commitment-vorm. Hooklyne is €39 tot €239 per maand, op een abonnement dat je elke maand kunt opzeggen.",
   },
   {
-    icon: Zap,
     title: "Outreach opgesteld, niet alleen data geleverd.",
     body: "Cognism stopt bij de rij in de database. Daarna schrijft jouw team de mail, scoort het signaal en zet het in een sequencer. Een aparte werkstroom op een aparte tool. Hooklyne levert het prospectpakket compleet - geverifieerd contact, gescoord koopsignaal en een opgesteld bericht in de stem van je salesmedewerker - zodat het werk tussen data en inbox niet meer van jou is.",
   },
   {
-    icon: ShieldCheck,
     title: "AVG-vriendelijk zonder de enterprise-wikkel.",
     body: "Cognism staat sterk op AVG voor juridische teams die een DPA, audit-trails en expliciete data-lineage nodig hebben. Heeft jouw motion dat papierwerk nodig, dan hebben zij het. Heb je vooral het vertrouwen nodig dat je outreach niet ontploft onder de AVG en geen procurement-grade compliance-pakket, dan brengt Hooklynes Europees gebouwde, scraping-vrije, citeerbare-bronnen-aanpak je daar tegen een fractie van de prijs.",
   },
@@ -145,8 +142,8 @@ const faq = [
     </section>
 
     <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Waar Cognism niet voor MKB is gevormd</p>
           <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Drie dingen waar Cognism het MKB buiten de prijsvloer zet.
@@ -156,14 +153,14 @@ const faq = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {breakdowns.map((b) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <b.icon className="size-5" />
+        <div class="space-y-8">
+          {breakdowns.map((b, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
             </div>
           ))}
         </div>

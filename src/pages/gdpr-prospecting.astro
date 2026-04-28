@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, AlertTriangle, FileSearch, ScrollText, AlertCircle, Gift, Check, X } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -36,42 +36,20 @@ const requirements = [
 
 const failures = [
   {
-    icon: AlertTriangle,
     title: "Behavioural data scraped from logged-in sessions.",
     body: "Some tools enrich contacts using browsing history captured from cookies, retargeting pixels, or partner integrations users never knowingly authorised. That's a clear AVG/GDPR risk and the kind of data that's hardest to defend if a regulator asks where it came from.",
   },
   {
-    icon: AlertTriangle,
     title: "Single-source databases with no clear lineage.",
     body: "If a tool can't tell you which source supplied a given contact and when it was last verified, it can't tell a regulator either. 'Our database' isn't a lawful basis.",
   },
   {
-    icon: AlertTriangle,
     title: "Mass scraping of LinkedIn or company sites.",
     body: "Scraping at scale to build B2B lists isn't lawful interest by default. LinkedIn's terms prohibit it; the AVG and GDPR don't bless it. Tools that wrap this in a 'we just enrich, you scrape' fig leaf are putting the legal exposure on you.",
   },
   {
-    icon: AlertTriangle,
     title: "Opt-outs that don't propagate.",
     body: "When a prospect opts out of one campaign but the same tool re-imports them next quarter through a fresh database refresh, the suppression has effectively failed. The AVG doesn't care that the tool refreshed - it cares that the person opted out.",
-  },
-];
-
-const hooklyne = [
-  {
-    icon: ShieldCheck,
-    title: "EU-built, no scraping.",
-    body: "Hooklyne is built and hosted in the Netherlands. We do not scrape LinkedIn, retarget cookies, or ingest behavioural data from logged-in sessions. Contacts come from public profiles and registered data providers operating under their own AVG basis.",
-  },
-  {
-    icon: FileSearch,
-    title: "Sourced citations on every claim.",
-    body: "Every Hooklyne research brief ships with the URLs the claim came from. If a prospect asks where you got their details, the answer is in the same package as the message. Audit-ready by construction, not by paperwork.",
-  },
-  {
-    icon: ScrollText,
-    title: "Suppression that holds.",
-    body: "Opt-outs, bounces, and unsubscribes are kept in your account, applied across future imports and refreshes. A contact you remove stays removed even when the underlying provider refreshes the row a quarter later.",
   },
 ];
 
@@ -192,7 +170,7 @@ const faq = [
     </section>
 
     <section id="requirements" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-4xl">
+      <div class="container max-w-3xl">
         <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">What GDPR actually requires</p>
           <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
@@ -203,27 +181,25 @@ const faq = [
           </p>
         </div>
 
-        <ol class="space-y-5">
+        <div class="space-y-8">
           {requirements.map((r, i) => (
-            <li class="flex gap-4 rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                {i + 1}
-              </div>
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
               <div>
                 <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{r.title}</h3>
                 <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{r.body}</p>
               </div>
-            </li>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em]" style="color: var(--hooklyne-orange);">What most tools get wrong</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style="color: var(--hooklyne-orange);">What most tools get wrong</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Four failure modes a regulator would notice.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
@@ -231,14 +207,14 @@ const faq = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {failures.map((f) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(255,140,66,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);">
-                <f.icon className="size-5" />
+        <div class="space-y-8">
+          {failures.map((f, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{f.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{f.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{f.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>
@@ -246,27 +222,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)]">How Hooklyne is built for this</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
-            Compliance posture, not a compliance package.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Hooklyne is built to make the right thing the easy thing - not to sell you a separate audit module on top.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklyne.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">How Hooklyne is built for this</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-6">
+          Compliance posture, not a compliance package.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Hooklyne is built and hosted in the Netherlands. We don't scrape LinkedIn, retarget cookies, or ingest behavioural data from logged-in sessions. Every contact comes from a public profile or a registered data provider operating under its own AVG basis. That means we can answer 'where did you get this?' before you need to ask.</p>
+          <p>Every Hooklyne research brief ships with the source URLs behind each claim. If a prospect asks how you found them, the answer is in the same package as the drafted message - not buried in vendor logs you can't access. Audit-ready by construction, not by paperwork added after the fact.</p>
+          <p>Opt-outs, bounces, and unsubscribes stay in your account and apply across future imports and refreshes. A contact you remove stays removed even when the underlying provider refreshes the row a quarter later. The suppression is durable because it has to be - that's the bit most tools get quietly wrong.</p>
         </div>
       </div>
     </section>

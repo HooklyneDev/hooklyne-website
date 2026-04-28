@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, Factory, Calendar, FileText, Users, Search, Shield, Clock, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -13,76 +13,54 @@ const breadcrumb = breadcrumbList([
 ]);
 
 const pains = [
-  "De productiemanager die je nodig hebt, heeft geen LinkedIn-profiel en geen publiek e-mailadres.",
-  "ISO-certificaatverlenging is je beste inkoopvenster - je leest het op hun website, te laat.",
-  "Je stuurt naar info@ omdat de juiste besluitvormer in geen enkele database te vinden is.",
-  "Industriële kopers doen er langer over, maar wie er als eerste is, wint het gesprek.",
+  "De productiemanager die je nodig hebt heeft geen LinkedIn-profiel en geen publiek e-mailadres.",
+  "ISO-certificeringsvernieuwing is je beste inkoopvenster - je ontdekt het van hun website, te laat.",
+  "Je stuurt naar info@ omdat de juiste besluitvormer in geen enkele database staat.",
+  "Industriële kopers bewegen langzaam als een shortlist eenmaal gevormd is - maar je probeert er nog op te komen.",
 ];
 
 const signals = [
   {
-    icon: Factory,
-    title: "Facilitaire uitbreiding en nieuwe vestigingen.",
-    body: "Een nieuwe productielocatie, warehouse of regionaal kantoor gaat bijna altijd gepaard met inkoop: nieuwe apparatuur, nieuwe leveranciers, nieuwe servicecontracten. Omgevingsvergunningen en KVK-wijzigingen verschijnen weken voor een persbericht. Dat is het venster - voor de shortlist al gemaakt is.",
+    title: "Nieuwe vestigingen en facilitaire uitbreiding.",
+    body: "Een nieuwe productielocatie, warehouse of regionaal kantoor gaat bijna altijd gepaard met inkoop: nieuwe apparatuur, nieuwe leveranciers, nieuwe servicecontracten. Omgevingsvergunningen en KVK-wijzigingen verschijnen weken voor een persbericht. Dat is het venster - voordat de shortlist al is gevormd en voordat een voorkeursaanbieder eerste recht van antwoord heeft gekregen. De meeste verkopers horen over facilitaire uitbreiding via nieuwsdekking, op welk moment de eerste leveranciersgesprekken al hebben plaatsgevonden.",
   },
   {
-    icon: Calendar,
-    title: "ISO- en kwaliteitscertificaatverlenging.",
-    body: "ISO 9001, ISO 14001 en branchespecifieke certificeringscycli zijn publiek en voorspelbaar. Een bedrijf dat verlening nadert, beoordeelt leveranciers en processen. Een bedrijf dat net een certificaat heeft behaald of opgewaardeerd, investeert in kwaliteitsinfrastructuur. Beide zijn inkoopvensters - en geen van beide verschijnt in LinkedIn-activiteit.",
+    title: "ISO- en kwaliteitscertificering vernieuwingen.",
+    body: "ISO 9001, ISO 14001 en branchespecifieke certificeringscycli zijn openbaar en voorspelbaar. Een bedrijf dat vernieuwing nadert, beoordeelt leveranciers en processen op hun certificeringsvereisten. Een bedrijf dat net een certificering heeft behaald of opgewaardeerd, investeert in kwaliteitsinfrastructuur en heeft vaak vers budget toegewezen. Geen van beide events is zichtbaar in LinkedIn-activiteit. Beide zijn zichtbaar in certificeringsregisters als je weet waar je moet kijken.",
   },
   {
-    icon: Users,
     title: "Vacatures in inkoop en operations.",
-    body: "Een nieuwe Head of Procurement, operationeel directeur of supply chain manager beoordeelt leveranciersrelaties in de eerste negentig dagen. Dat venster sluit zodra bestaande relaties zijn bevestigd of nieuwe zijn vastgelegd. Een vacature is het signaal - niet het getekende contract.",
+    body: "Een nieuwe Head of Procurement, Operations Director of Supply Chain Manager beoordeelt leveranciersrelaties doorgaans in de eerste negentig dagen - voordat bestaande contracten zijn herbevestigd en voordat interne inertie intreedt. De vacature verschijnt openbaar voordat de hire begint, waardoor je een venster van enkele weken hebt om voor de aankomende besluitvormer te komen voordat zijn inbox vol loopt met bestaande leveranciers.",
   },
   {
-    icon: FileText,
-    title: "Aanbestedingspublicaties en CAPEX-aankondigingen.",
-    body: "Openbare aanbestedingen en CAPEX-aankondigingen in de maakindustrie staan vaak in sectorale databases, inkoopportalen en vakpers voor ze de bredere markt bereiken. Een bedrijf dat een aanbesteding heeft gepubliceerd, koopt actief. De vraag is of jij op de lijst staat.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Search,
-    title: "Waterval over 21 bronnen voor sectoren met lage LinkedIn-dekking.",
-    body: "Productie- en industriebedrijven zijn het slechtst gedekt segment in LinkedIn-gebaseerde databases. Operationeel directeuren, productiemanagers en inkoophoofden onderhouden zelden publieke profielen. Hooklyne watervalt over 21 providers - inclusief KVK, bedrijvengidsen en sectorregisters - en vindt contacten die een sociaal-eerste tool volledig mist.",
-  },
-  {
-    icon: Shield,
-    title: "Signalen uit registers, niet alleen nieuwsfeeds.",
-    body: "De beste industriële signalen staan niet op LinkedIn. Ze zitten in KVK-mutaties, planningsdatabases, certificeringsregisters en aanbestedingsportalen. Hooklyne monitort die bronnen naast standaard nieuwsfeeds, zodat het signaal dat jij krijgt eerder is dan wat concurrenten zien.",
-  },
-  {
-    icon: Clock,
-    title: "Als eerste contact, niet opvolgpoging nummer zes.",
-    body: "Industriële kopers bewegen traag zodra een shortlist gevormd is - maar ze zijn bereikbaar daarvoor. Hooklyne scoort het signaal, verifieert het contact over 21 providers en stelt een openingsbericht op in de schrijfstijl van jouw vertegenwoordiger dat het specifieke event benoemt. Vroeg binnen met een goede reden - dat is het model.",
+    title: "Aanbestedingen en CAPEX-aankondigingen.",
+    body: "Publieke aanbestedingen en CAPEX-aankondigingen in de productie staan vaak in sectordatabases, inkoopportalen en vakpers voordat ze de bredere markt bereiken. Een bedrijf dat een aanbesteding heeft gepubliceerd, is in actieve koopstand met een gedefinieerde tijdlijn en budget. De vraag is of jouw bedrijf op de leverancierslijst staat. Er op komen voordat de formele aanbesteding sluit, is aanzienlijk makkelijker dan winnen van buiten nadat de evaluatie is gestart.",
   },
 ];
 
 const faq = [
   {
-    q: "Industriebedrijven staan nauwelijks in databases. Hoe gaat Hooklyne daarmee om?",
-    a: "Dit is precies waarom de waterval over 21 bronnen hier het meeste oplevert. Hooklyne is niet afhankelijk van LinkedIn-dichtheid of een enkele Amerikaans-gebouwde database. Het haalt uit KVK, bedrijvengidsen, brancheregisters en geverifieerde Europese providers. Productie- en industriecontacten staan in die bronnen - ook als ze onzichtbaar zijn op standaardtools.",
+    q: "Industriële bedrijven staan niet goed in de meeste databases. Hoe gaat Hooklyne daarmee om?",
+    a: "Dat is precies waarom de waterval over 21 bronnen hier het meeste oplevert. Hooklyne is niet afhankelijk van LinkedIn-dichtheid of een enkele Amerikaans-gebouwde database. Het haalt uit KVK, bedrijvengidsen, brancheregisters, sectorspecifieke databases en geverifieerde Europese providers. Productie- en industriecontacten zijn in die bronnen aanwezig - ook als ze onzichtbaar zijn op standaardtools.",
   },
   {
     q: "Dit zijn lange verkooptrajecten. Loont signaalgedreven outreach dan nog?",
-    a: "Het traject is lang, maar het instappunt telt nog steeds. Voor een inkoopbeoordeling zijn voordat de shortlist is gevormd - dat is het verschil tussen overwogen worden en er niet bij zijn. Het signaal verkort het traject niet; het zorgt dat je erin zit voor het zonder jou begint.",
+    a: "Het traject is lang, maar het instappunt telt nog steeds. Er zijn voordat een procurement-review sluit - wanneer de besluitvormer nog bezig is zijn shortlist te vormen - is het verschil tussen overwogen worden en te laat komen. Het signaal verkort de cyclus niet; het zorgt dat je er bent voordat de cyclus zonder jou start.",
   },
   {
-    q: "We verkopen aan kleinere fabrikanten, niet aan de grote spelers. Klopt de dekking?",
-    a: "Ja. Hooklyne is gebouwd voor bedrijven van 10-100 fte, wat het merendeel van de Europese productie-mkb dekt. Grote industriële concerns hebben inkoopafdelingen die formele RFP-processen draaien. Het segment waar signaalgedreven outreach het meeste oplevert, is de middenmarkt: onafhankelijke fabrikanten, specialistische componenten­leveranciers, regionale verwerkers.",
+    q: "We verkopen aan kleinere fabrikanten, niet aan de grote spelers. Werkt de dekking op dat niveau?",
+    a: "Ja. Hooklyne is gebouwd voor bedrijven van 10-100 fte, wat het merendeel van de Europese productie-MKB omvat. Grote industriële concerns hebben gecentraliseerde inkoop met formele RFP-processen. Het segment waar signaalgedreven outreach het meeste oplevert, is de middenmarkt - onafhankelijke fabrikanten, gespecialiseerde componentleveranciers, regionale verwerkers.",
   },
   {
     q: "Wat als Hooklyne niet werkt voor ons industriële ICP?",
-    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte industriële doellijst, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Industrie is een segment waar contactkwaliteit en signaaltiming een buitenproportioneel effect hebben - de pilot laat snel zien of de aanpak werkt voor jouw specifieke ICP.",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte industriële doellijst, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Industrie is een sector waar contactkwaliteit en signaaltiming een buitengewoon grote impact hebben - de pilot laat snel zien of de aanpak werkt voor jouw specifieke ICP.",
   },
 ];
 ---
 
 <DefaultLayout
-  title="Prospecting bij industrie en productie | Hooklyne"
-  description="Hoe je buyers in industrie en productie bereikt: waar de signalen zijn, waarom standaarddatabases productie- en inkoopcontacten missen en hoe je er bent voordat het inkoopvenster sluit."
+  title="Prospecting bij industrie en productiebedrijven | Hooklyne"
+  description="Hoe je buyers in industrie en productie bereikt: waar de signalen zijn, waarom standaarddatabases operations- en inkoopcontacten missen en hoe je er bent voordat de shortlist gesloten is."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
@@ -90,7 +68,7 @@ const faq = [
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Industrie en productie prospecting-gids",
-    "description": "Hoe je industriële en productiebedrijven prospecteert: signalen, contacten en koopvensters.",
+    "description": "Hoe je industrie- en productiebedrijven prospecteert: signalen, contacten en koopvensters.",
     "url": "https://www.hooklyne.com/nl/industrie-prospecting",
     "inLanguage": "nl"
   })} />
@@ -106,14 +84,14 @@ const faq = [
 
   <Background>
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
-      <HeroGlow client:idle signals={false} />
+      <HeroGlow lang="nl" client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Industrie en productie prospecting</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Industriële kopers staan niet op LinkedIn. Hun signalen wel ergens anders.
+          Industriële kopers staan niet op LinkedIn. Hun signalen zijn ergens anders.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Productiemanagers en inkoophoofden in de maakindustrie onderhouden geen publieke profielen. Hun koopsignalen zitten in KVK-registers, certificeringsdatabases, planningsvergunningen en vakpublicaties - niet in een LinkedIn-activiteitsfeed. Deze gids behandelt waar die signalen zijn en hoe je de juiste persoon bereikt voor het inkoopvenster sluit.
+          Productiemanagers en inkoophoofden in de industrie onderhouden geen publieke profielen. Hun koopsignalen zitten in KVK-registers, certificeringsdatabases, vergunningsaanvragen en vakpers - niet in een LinkedIn-feed. Deze gids behandelt waar die signalen zijn en hoe je de juiste persoon bereikt voordat het inkoopvenster sluit.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Als een van deze punten herkenbaar is, is de rest van deze pagina voor jou.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte industriële prospects.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig opgebouwde prospectpakketten uit jouw productie-ICP. Geen betaling, geen contract. Daarna vragen we twintig minuten eerlijke feedback.</p>
             <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Vraag een pilot aan
-              <ArrowRight className="size-3.5" />
+              Vraag een pilot aan <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signalen" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe industriebedrijven kopen</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Vier signalen die een inkoopvenster openen in de maakindustrie.
+      <div class="container max-w-3xl">
+        <div class="mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe industriële bedrijven kopen</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Vier signalen die een productie-inkoopvenster openen.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
             Industriële inkoop wordt gedreven door operationele events - niet door LinkedIn-activiteit. De signalen zijn vroeger, moeilijker te vinden en meer waard als je er als eerste bij bent.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne voor industriegerichte salesteams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Gebouwd voor sectoren waar het contact niet op pagina één van Google staat.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Multi-source contactverificatie, signalen uit registers en vakdatabases en outreach getimed op het inkoopvenster - geen sequence-drip.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Waar Hooklyne past</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Gebouwd voor sectoren waar het contact niet op pagina één van Google staat.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Productie- en industriebedrijven zijn het slechtst gedekte segment in op LinkedIn gebaseerde prospectingtools. Operationeel directeuren, productiemanagers en inkoophoofden hebben zelden publieke profielen. Hooklyne watervalt over 21 providers - waaronder KVK, bedrijvengidsen, sectorspecifieke databases en geverifieerde Europese bronnen - en vindt contacten die een sociaal-eerste tool volledig mist.</p>
+          <p>De beste industriële signalen staan niet op LinkedIn. Ze staan in KVK-wijzigingen, vergunningsdatabases, certificeringsregisters en aanbestedingsportalen. Hooklyne monitort die bronnen naast standaard nieuwsfeeds, waardoor het signaal dat je krijgt doorgaans vroeger is dan wat je concurrenten gebruiken. Als eerste contact maken voordat de shortlist wordt gevormd, is het hele model - niet opvolgbericht nummer zes nadat de beslissing al is genomen.</p>
+          <p>De eerste mail wordt opgesteld in de schrijfstijl van jouw vertegenwoordiger en verwijst naar het specifieke event dat dit bedrijf nu relevant maakt. Een nieuwe locatievergunningsaanvraag, een aanbestedingspublicatie, een ISO-certificeringsupgrade - specifiek benoemd en verbonden aan wat het betekent voor hun inkoopproces. Vroeg binnenkomen met een relevante reden is aanzienlijk effectiever dan met een generiek voorstel aankomen nadat de voorkeursaanbieder al in positie is.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,18 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Gerelateerde gidsen</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/nl/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Alle branchegidsen</a>
+          <a href="/nl/logistiek-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Logistiek en transport</a>
+          <a href="/nl/avg-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">AVG-compliant prospecting</a>
+          <a href="/nl/vergelijken" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool-vergelijkingen</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

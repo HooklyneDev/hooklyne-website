@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, TrendingUp, FileText, Calendar, Search, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -13,76 +13,54 @@ const breadcrumb = breadcrumbList([
 ]);
 
 const pains = [
-  "Een CCO bij een gereguleerde instelling die vraagt 'hoe kom jij aan mijn gegevens?' is geen kleine kwestie.",
-  "Fintech-kopers hebben een kortere lont voor irrelevantie dan bijna elk ander segment.",
-  "Regulatoire mijlpalen zijn je beste timingsignalen - en je bijhoudt ze handmatig in een sheet.",
-  "De CFO is gewisseld. Je wist het toen de mail bouncete.",
+  "Een CCO bij een gereguleerde firma die vraagt 'hoe bent u aan mijn gegevens gekomen?' is geen kleinigheid.",
+  "Fintech-kopers hebben een kortere lont voor irrelevantie dan vrijwel elke andere sector.",
+  "Regelgevingsmijlpalen zijn je beste timing-signalen - en je houdt ze bij in een spreadsheet.",
+  "De CFO was al weg. Dat merkte je toen de mail bounced.",
 ];
 
 const signals = [
   {
-    icon: ShieldCheck,
-    title: "Vergunningen en compliance-mijlpalen.",
-    body: "DNB-registratie, AFM-vergunning, PSD2-compliance, DORA-gereedheid, NIS2 - elk creëert een inkoopvenster. Een fintech die net toestemming heeft gekregen, groeit snel. Een fintech die een deadline nadert, is een gemotiveerde koper met een datum. Beide zijn betere signalen dan 'ze passen op het ICP'.",
+    title: "Regelgevingsautorisaties en compliance-mijlpalen.",
+    body: "FCA-autorisatie, DNB-registratie, PSD2-compliance, DORA-gereedheidsterminijnen, NIS2 - elk creëert een inkoopvenster. Een fintech-bedrijf dat net een vergunning heeft ontvangen, schaalt snel met vers budget en een mandaat om infrastructuur op te bouwen. Een bedrijf dat een compliance-deadline nadert, is een gemotiveerde koper met een datum. Beide zijn sterker als signaal dan 'ze passen op het ICP' - omdat ze aangeven dat de beslissing om te investeren al is genomen.",
   },
   {
-    icon: TrendingUp,
-    title: "Financieringsrondes en productuitlencingen.",
-    body: "Series A tot C in fintech gaan vrijwel altijd gepaard met agressieve wervingsplannen, nieuwe markttoegang en infrastructuuropbouw. Een productlancering - nieuwe betalingsrail, nieuw leenproduct, nieuwe embedded finance-feature - brengt vers budget en nieuwe leveranciersbeslissingen mee.",
+    title: "Financieringsrondes en productlanceringen.",
+    body: "Series A tot C in fintech gaan doorgaans gepaard met agressieve wervingsplannen, nieuwe marktintrede en infrastructuurupbouw op tijdlijnen die zijn vastgesteld door boardverwachtingen. Een productlancering - een nieuw betalingsrail, een nieuw leenproduct, een embedded finance-functie - brengt vaak ook nieuwe leveranciersbeslissingen mee. De inkoop die volgt op een productlancering is vaak gecomprimeerd: teams bewegen snel als er een commerciële deadline aan een nieuwe capability is gekoppeld.",
   },
   {
-    icon: Calendar,
     title: "Compliance-vacatures.",
-    body: "Een nieuwe Head of Compliance, Chief Risk Officer of MLRO is een signaal dat een bedrijf groeit, op regelgevingsdruk reageert, of beide. De nieuwe persoon beoordeelt leveranciersrelaties vroeg. Dat venster is de eerste zestig tot negentig dagen - voor het nieuwe proces vastligt.",
+    body: "Een nieuwe Head of Compliance, Chief Risk Officer of MLRO-hire signaleert dat een bedrijf schaalt, op regelgevingsdruk reageert, of beide. De nieuwe persoon beoordeelt leveranciersrelaties vroeg - voordat bestaande relaties zijn vastgelegd en voordat het nieuwe compliance-kader business as usual wordt. Dat zijn ook de eerste 60 tot 90 dagen. Het is ook het moment waarop een bedrijf het meest open staat voor het wisselen van providers die zijn meegelopen onder de vorige leiding.",
   },
   {
-    icon: FileText,
-    title: "Uitbreiding naar nieuwe markten of betaalcorridors.",
-    body: "Een fintech die van Nederland naar Duitsland uitbreidt of een nieuwe betaalcorridor toevoegt, koopt nieuwe dingen: compliance-infrastructuur, lokale dataproviders, nieuwe bankrelaties. Markttoegangsaankondigingen zijn publiek en de inkoop die volgt is direct.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Search,
-    title: "Geciteerde bronnen bij elk contact.",
-    body: "In gereguleerde sectoren is 'hoe kom jij aan mijn gegevens?' een legitieme vraag met juridisch gewicht. Elk Hooklyne-contact wordt geleverd met zijn bron - publiek profiel, geregistreerde provider, bedrijfswebsite. Als een CCO vraagt, is het antwoord in hetzelfde pakket als het bericht.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "AVG-ingebouwd. Geen grijze zone.",
-    body: "Hooklyne is gebouwd en gehost in Nederland, gebruikt geen gescraped gedragsdata en watervalt over 21 geregistreerde providers. Voor fintech-kopers in gereguleerde omgevingen telt die herkomst - zeker als je eigen compliance-team ooit vraagt hoe jij contacten bronneert.",
-  },
-  {
-    icon: Clock,
-    title: "Getimed op regelgevings- en commerciële events.",
-    body: "Fintech-inkoopbeslissingen clusteren rondom compliance-deadlines, fundingmomenten en productuitlencingen. Hooklyne scoort prospects op die signalen en timet de outreach op het event - niet op dag X van een sequence. Een bericht dat aankomt op het juiste regulatoire moment wordt gelezen. Hetzelfde bericht twee maanden later niet.",
+    title: "Uitbreiding naar nieuwe markten of betalingscorridors.",
+    body: "Een fintech die uitbreidt van Nederland naar Duitsland, of een nieuwe betalingscorridor toevoegt, koopt nieuwe dingen: compliance-infrastructuur, lokale dataproviders, nieuwe bankrelaties en vaak nieuwe tooling voor het uitgebreide toepassingsgebied. Marktuitbreidingsaankondigingen zijn openbaar en de inkoop die volgt is direct. Het team dat de uitbreiding leidt neemt deze beslissingen doorgaans onafhankelijk van het kernproductteam.",
   },
 ];
 
 const faq = [
   {
-    q: "Fintech-complianceteams zijn erg gevoelig over data. Kan Hooklyne hier wel opereren?",
-    a: "Ja - en dit is precies waar Hooklyne's herkomstaanpak het meeste waarde heeft. Elk contact heeft een gedocumenteerde bron. Geen gescraped sessiedata, geen lookalike-audiences, geen 'onze database' als enig antwoord. Voor fintech-bedrijven die eigen GDPR-audits uitvoeren, is Hooklyne's contactbronering documenteerbaar en verdedigbaar.",
+    q: "Fintech compliance-teams zijn erg gevoelig voor data. Kan Hooklyne hier opereren?",
+    a: "Ja - en dit is waar Hooklyne's herkomstbenadering het meest telt. Elk contact heeft een gedocumenteerde bron. Geen gescrapete sessiedata, geen lookalike audiences, geen 'onze database' als enig antwoord. Voor fintech-bedrijven die hun eigen AVG-audits uitvoeren is de contactbronning van Hooklyne documenteerbaar en verdedigbaar.",
   },
   {
-    q: "We verkopen aan heel specifieke fintech-subsegmenten. Klopt de dekking?",
-    a: "Hangt af van het segment. Gevestigde payments-, lending- en wealthtech-bedrijven zijn goed gedekt in Europese providers. Vroeg-stadium fintechs en niche embedded finance-spelers kunnen dunner zijn. De pilot geeft direct antwoord - tien prospects uit jouw exacte ICP, volledig opgebouwd, voor enige toezegging.",
+    q: "We verkopen aan heel specifieke fintech-subsegmenten. Werkt de dekking op dat niveau?",
+    a: "Dat hangt af van het segment. Gevestigde payments-, lending- en wealthtech-bedrijven zijn goed gedekt in Europese provider-databases. Vroege-fase fintechs en niche embedded finance-spelers kunnen dunner zijn. De pilot vertelt het je - tien prospects uit jouw exacte ICP, volledig opgebouwd, voor enige verplichting.",
   },
   {
-    q: "Fintech-verkooptrajecten zijn lang en multi-stakeholder. Is Hooklyne dan nog nuttig?",
-    a: "Het eerste gesprek moet ergens beginnen. Hooklyne brengt je bij het juiste eerste contact op het juiste moment met een reden die een reply verdient. Wat daarna volgt, is jouw proces. De meeste teams die Hooklyne gebruiken in fintech, zetten het in voor de top van de funnel - niet als vervanging van de relatie.",
+    q: "Fintech-verkooptrajecten zijn lang en hebben meerdere stakeholders. Is Hooklyne dan nog nuttig?",
+    a: "Het eerste gesprek moet toch ergens beginnen. Hooklyne brengt je bij het juiste eerste contact op het juiste moment met een reden die een antwoord verdient. Wat daarna gebeurt is jouw proces. De meeste teams die Hooklyne in fintech gebruiken, zetten het in om de bovenkant van de funnel te openen - niet om de relatie te vervangen.",
   },
   {
     q: "Wat als Hooklyne niet werkt voor ons fintech-ICP?",
-    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte fintech-doellijst, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Fintech is een segment waar de bronnings- en timingaanpak snel duidelijk maakt of het werkt.",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte fintech-doellijst, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Fintech is een segment waar de sourcing- en timing-aanpak snel resoneert of niet - de pilot maakt dat duidelijk.",
   },
 ];
 ---
 
 <DefaultLayout
   title="Prospecting bij fintech en financiële diensten | Hooklyne"
-  description="Hoe je buyers in fintech en financiële diensten bereikt: de regulatoire signalen die koopvensters openen, waarom dataprovenance in gereguleerde sectoren telt en hoe je een reply verdient van een CCO."
+  description="Hoe je buyers in fintech en financiële diensten bereikt: de regelgevingssignalen die koopvensters openen, waarom dataprovenance in gereguleerde sectoren telt en hoe je een CCO een antwoord ontlokt."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
@@ -90,7 +68,7 @@ const faq = [
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Fintech en financiële diensten prospecting-gids",
-    "description": "Hoe je bij fintech en financiële diensten prospecteert: signalen, compliance en timing.",
+    "description": "Hoe je fintech- en financiële dienstverleners prospecteert: signalen, compliance en timing.",
     "url": "https://www.hooklyne.com/nl/fintech-prospecting",
     "inLanguage": "nl"
   })} />
@@ -106,14 +84,14 @@ const faq = [
 
   <Background>
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
-      <HeroGlow client:idle signals={false} />
+      <HeroGlow lang="nl" client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Fintech en financiële diensten prospecting</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Fintech-kopers hebben een kortere lont voor irrelevantie dan de meeste.
+          Fintech-kopers hebben een kortere lont voor irrelevantie dan de meesten.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Gereguleerde kopers lezen koude mail kritisch. Een verkeerd bericht wordt niet alleen genegeerd - het laat een negatieve indruk achter. Deze gids behandelt de signalen die een echt venster openen, waarom dataprovenance hier meer telt dan in welk ander segment ook, en hoe je op het juiste moment aankomt.
+          Gereguleerde kopers lezen koude outreach kritisch. Een verkeerd bericht wordt niet alleen genegeerd - het laat een negatieve indruk achter. Deze gids behandelt de signalen die een echt venster openen in financiële diensten, waarom dataprovenance hier meer telt dan ergens anders en hoe je op precies het juiste moment aankomt.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Als een van deze punten herkenbaar is, is de rest van deze pagina voor jou.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte fintech-prospects.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig opgebouwde prospectpakketten uit jouw fintech-ICP. Geen betaling, geen contract. Daarna vragen we twintig minuten eerlijke feedback.</p>
             <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Vraag een pilot aan
-              <ArrowRight className="size-3.5" />
+              Vraag een pilot aan <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signalen" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe fintech-bedrijven kopen</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Vier signalen die een koopvenster openen in financiële diensten.
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Vier signalen die een koopvenster in financiële diensten openen.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Fintech-inkoop is event-gedreven: regulatoire mijlpalen, funding, productuitlencingen, nieuwe markttoegang. Buiten die vensters is de deur dicht. Dit zijn de signalen die aangeven wanneer hij open is.
+            Fintech-inkoop is event-gedreven: regelgevingsmijlpalen, funding, productlanceringen, marktintrede. Buiten die vensters is de deur grotendeels dicht. Dit zijn de signalen die aangeven wanneer hij open is.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne voor fintech-gerichte salesteams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Gebouwd voor kopers die zullen controleren hoe jij ze gevonden hebt.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Geciteerde bronnen, AVG-ingebouwde contactdata en outreach getimed op regulatoire en commerciële events.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Waar Hooklyne past</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Gebouwd voor kopers die kritisch kijken naar hoe je ze hebt gevonden.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>In gereguleerde sectoren heeft 'hoe bent u aan mijn gegevens gekomen?' juridisch gewicht. Elk Hooklyne-contact wordt geleverd met zijn gedocumenteerde bron - publiek profiel, geregistreerde provider, bedrijfswebsite. Hooklyne is gebouwd en gehost in Nederland, gebruikt geen gescrapete gedragsdata en watervalt over 21 geregistreerde providers. Voor fintech-kopers in gereguleerde omgevingen telt die herkomst - zeker als jouw eigen compliance-team ooit vraagt hoe je contacten bronneert.</p>
+          <p>Fintech-inkoop clustert rond regelgevingsdeadlines, funding-events en productlanceringen. Hooklyne scoort prospects op die signalen en bereidt outreach voor om op het event te landen - niet op een sequentiedag. Een bericht dat de DORA-gereedheidstermijn noemt en koppelt aan een concrete infrastructuurimplicatie wordt gelezen. Hetzelfde bericht op een dinsdag-drip niet.</p>
+          <p>Het juiste contact in fintech hangt af van wat je verkoopt. Een betalingsinfrastructuurtool gaat naar de CTO of Head of Engineering. Een compliance-platform gaat naar de Head of Compliance of de nieuwe MLRO. Hooklyne bepaalt het correcte senioriteitsniveau per bedrijf en verifieert het contact voordat het bij jouw vertegenwoordiger terechtkomt - in plaats van een generieke lijst te geven en het oordeel over te laten aan iemand die nog twintig andere prospects te verwerken heeft.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,18 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Gerelateerde gidsen</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/nl/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Alle branchegidsen</a>
+          <a href="/nl/saas-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">B2B SaaS</a>
+          <a href="/nl/avg-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">AVG-compliant prospecting</a>
+          <a href="/nl/vergelijken" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool-vergelijkingen</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

@@ -118,6 +118,8 @@ const imageURL = new URL(finalImage, Astro.url);
     "/logistics-prospecting": "/nl/logistiek-prospecting",
     "/agency-prospecting": "/nl/bureau-prospecting",
     "/industrial-prospecting": "/nl/industrie-prospecting",
+    "/energy-prospecting": "/nl/energie-prospecting",
+    "/construction-prospecting": "/nl/bouw-prospecting",
   };
   const SLUG_NL_TO_EN = Object.fromEntries(
     Object.entries(SLUG_EN_TO_NL).map(([en, nl]) => [nl, en])
@@ -155,6 +157,11 @@ const imageURL = new URL(finalImage, Astro.url);
     "/nl/bureau-prospecting",
     "/nl/fintech-prospecting",
     "/nl/industrie-prospecting",
+    "/nl/energie-prospecting",
+    "/nl/bouw-prospecting",
+    "/nl/agritech-prospecting",
+    "/nl/healthcare-prospecting",
+    "/nl/food-prospecting",
   ]);
   if (!NL_AVAILABLE.has(nlPath)) return null;
   const enUrl = new URL(enPath, Astro.site).toString();

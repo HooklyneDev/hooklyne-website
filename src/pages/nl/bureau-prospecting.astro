@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, Users, Star, TrendingUp, Briefcase, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -13,84 +13,62 @@ const breadcrumb = breadcrumbList([
 ]);
 
 const pains = [
-  "Bureaueigenaren herkennen een generieke koude mail al aan de onderwerpregel.",
-  "Je verkoopt aan mensen die zelf verkopen - en ze kennen elke tactiek.",
-  "De new business-contactpersoon is drie maanden geleden gewisseld. Je wist het niet.",
-  "Je beste opening was vlak na een nieuwe klantaankondiging. Je miste het.",
+  "Bureaueigenaren herkennen een generieke koude mail aan de onderwerpregel.",
+  "Je verkoopt aan mensen die zelf verkopen - ze kennen elke zet.",
+  "De new business-contactpersoon is drie maanden geleden veranderd en niemand vertelde je dat.",
+  "Je beste moment was vlak na een nieuwe klantwinst. Dat vond je te laat.",
 ];
 
 const signals = [
   {
-    icon: TrendingUp,
-    title: "Nieuwe klantaankondigingen en casestudies.",
-    body: "Als een bureau een nieuwe klant bekendmaakt of een casestudy publiceert, loopt de bezetting op en groeit de druk. Dan worden beslissingen genomen over efficiëntie, headcount en nieuwe tools. De meeste bureaus kondigen wins aan op LinkedIn en in vakbladen, binnen een paar weken na ondertekening.",
+    title: "Nieuwe klantwinsten en case study-aankondigingen.",
+    body: "Wanneer een bureau een nieuwe klant aankondigt of een case study publiceert, betekent dat dat de capaciteit vol raakt en de groeivraag toeneemt. Dat is het moment waarop beslissingen over efficiency, tooling of extra headcount daadwerkelijk worden genomen. De meeste bureaus kondigen klantwinsten aan op LinkedIn en in vakbladen binnen een paar dagen na ondertekening. Het probleem voor de meeste verkopers: ze zien het bericht dagen later, handelen er een week na dato op en komen aan als de beslissing al begint te vormen.",
   },
   {
-    icon: Users,
-    title: "Headcount-groei en new business-aannamen.",
-    body: "Een nieuwe Head of New Business is een signaal dat het bureau offensief gaat. Een golf van creatieve of account-aannamen betekent dat de klantlast groeit en de ondersteunende structuur moet meegroeien. Beide signaleren een bedrijf dat actief investeert en openstaat voor gesprekken.",
+    title: "Headcount-groei en new business-hires.",
+    body: "Een Head of New Business-hire signaleert dat het bureau in de aanval gaat. Een golf van creatieve of account-medewerkers betekent dat de klantenload groeit en de ondersteunende infrastructuur moet meegroeien. Een nieuwe Operations Manager betekent vaak dat de eigenaar heeft besloten te stoppen met alles zelf regelen. Deze hiring-signalen hebben een logische koopimplicatie - en ze zijn zichtbaar voordat het interne budgetgesprek is afgerond.",
   },
   {
-    icon: Star,
-    title: "Awards, rankings en shortlist-verschijningen.",
-    body: "Bureauawards zijn geen ijdelheid. Een Emerce-100-notering, een Effie-shortlist of een positie in een brancheranking loopt vaak gelijk met een groeifase. Het is ook een concrete haak - specifiek genoeg om in een eerste bericht te noemen zonder dat het lijkt alsof je dertig seconden googelde.",
+    title: "Awards, rankings en shortlist-vermeldingen.",
+    body: "Bureau-awards volgen groeifases. Een shortlist-vermelding, een effectiviteitsprijs of een branchelijst signaleert een bureau dat commercieel zelfvertrouwen heeft en investeert in zijn profiel. Het is ook een concrete haak voor een eerste bericht - iets specifieks dat je kunt benoemen zonder te klinken als een oproep van iemand die dertig seconden heeft gegoogeld. Awards zijn openbaar en gedateerd. Het koopmotief dat eraan vastzit is reëel.",
   },
   {
-    icon: Briefcase,
-    title: "Uitbreiding van dienstverlening.",
-    body: "Een bureau dat een nieuwe praktijk heeft toegevoegd - performance, data, duurzaamheid, AI - investeert. Nieuwe diensten vragen nieuwe tooling, nieuwe processen en soms nieuwe leveranciers. De aankondiging is publiek; het inkoopgesprek volgt stilletjes in de weken erna.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Target,
-    title: "Juiste contact: eigenaar, MD of head of new business.",
-    body: "Bij een bureau van vijftien mensen neemt de eigenaar de beslissing. Bij zestig medewerkers is het misschien de MD of een Head of Growth. Hooklyne bepaalt het juiste senioriteits­niveau voor jouw propositie bij elk bureau - geverifieerd en klaar - in plaats van een lijst te geven en het oordeel bij jou te laten.",
-  },
-  {
-    icon: Clock,
-    title: "Op het capaciteitssignaal, niet op een dinsdagdrip.",
-    body: "Bureaus kopen opportunistisch - op het moment dat er een probleem te lossen is of een groeimijlpaal te ondersteunen valt. Hooklyne let op de signalen die dat moment aangeven en plaatst je outreach daar, niet in een wekelijkse cyclus.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Een bericht dat zijn opening verdient.",
-    body: "Bureaumensen lezen koude mails kritisch. Hooklyne stelt de eerste mail op in de schrijfstijl van jouw vertegenwoordiger, met een verwijzing naar het specifieke signaal dat dit bureau nu relevant maakt. Een nieuwe klantwin, een dienstuitbreiding, een award - met naam en toelichting, niet 'ik zag jullie recent nieuws'.",
+    title: "Uitbreiding van dienstverleningslijnen.",
+    body: "Een bureau dat net een nieuwe practice heeft toegevoegd - performance, data, duurzaamheid, AI-diensten - is in investeerdersmodus. Nieuwe dienstverleningslijnen vereisen nieuwe tooling, nieuwe processen en soms nieuwe leveranciers. De aankondiging is doorgaans openbaar. Het inkoopgesprek vindt stil plaats in de weken erna, wanneer de mensen die de nieuwe practice leiden uitzoeken welke infrastructuur ze nodig hebben. In dat venster zijn - voordat de interne leverancierslijst is samengesteld - is aanzienlijk makkelijker dan erna.",
   },
 ];
 
 const faq = [
   {
-    q: "Bureaus zijn expert in het filteren van sales. Hoe kom je door?",
-    a: "Je breekt niet door - je arriveert op het juiste moment met een goede reden. Een generiek bericht aan een bureau-MD wordt voor de tweede regel verwijderd. Een bericht dat hun recente klantwin noemt, een concreet probleem dat die win creëert benoemt en dat verbindt aan iets wat jij oplost, wordt gelezen. Hooklyne zorgt voor het moment en de reden.",
+    q: "Bureaus zijn experts in het filteren van sales. Hoe kom je er doorheen?",
+    a: "Je breekt er niet doorheen - je arriveert op het juiste moment met een relevante reden. Een generiek bericht aan een bureau-MD wordt weggegooid voor de tweede regel. Een bericht dat hun recente klantwinst noemt, een specifiek probleem benoemt dat die winst creëert en verbindt aan iets wat jij oplost, wordt gelezen. Hooklyne zorgt voor het moment en geeft je de reden.",
   },
   {
-    q: "Bureaustructuren verschillen enorm. Hoe weet Hooklyne wie te targeten?",
-    a: "Jij definieert het ICP: grootte, specialisme, type dienstverlening. Hooklyne bepaalt het juiste contactsenioriteit bij elk bureau op basis van jouw propositie. Een creatief boutique van tien mensen en een performance-bureau van honderd medewerkers hebben heel andere beslissingsstructuren - Hooklyne past zich daarop aan.",
+    q: "Bureaustructuren variëren enorm. Hoe weet Hooklyne wie de doelstelling is?",
+    a: "Jij definieert het ICP: omvang, sectorspecialisatie, servicetype. Hooklyne bepaalt het juiste contactsenioriteitsniveau bij elk bureau op basis van je aanbod. Een creatief boutique van 10 personen en een performance-bureau van 100 personen hebben heel andere besluitvormingsstructuren - Hooklyne past daar op aan.",
   },
   {
-    q: "We verkopen specifiek aan digitale bureaus. Kent Hooklyne dat segment?",
-    a: "Ja. Digitale bureaus zijn goed gedekt in de bronnen die Hooklyne gebruikt - ze hebben een actieve LinkedIn-aanwezigheid, vakperscoverage en duidelijke signalen rondom klantwinsten en headcount. Het is feitelijk een van de gemakkelijkere bureausegmenten om accuraat te onderzoeken.",
+    q: "We richten ons specifiek op digitale bureaus. Kent Hooklyne dat segment?",
+    a: "Ja. Digitale bureaus zijn goed vertegenwoordigd in de databronnen die Hooklyne gebruikt - ze hebben actieve LinkedIn-profielen, vakpersaandacht en duidelijke signalen rondom klantwinsten en headcount. Het is eigenlijk een van de makkelijker te onderzoeken bureausegmenten.",
   },
   {
     q: "Wat als Hooklyne geen resultaten oplevert bij bureaus?",
-    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte bureau-ICP, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Bureaus zijn een segment waar relevantie alles is - de pilot laat snel zien of de aanpak werkt voor jouw propositie.",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte bureau-ICP, volledig opgebouwd, zonder kaart. Levert de output geen gesprekken op die je anders niet had gehad, dan stop je. Bureaus zijn een segment waar relevantie alles is - de pilot laat snel zien of de signaal-naar-bericht-aanpak werkt voor jouw aanbod.",
   },
 ];
 ---
 
 <DefaultLayout
-  title="Prospecting bij bureaus en consultancies | Hooklyne"
-  description="Hoe je bureaueigenaren en MDs bereikt: de signalen die een koopvenster openen, waarom timing meer oplevert dan volume bij bureaukopers en hoe je een bericht schrijft dat zijn opening verdient."
+  title="Prospecting bij bureaus en agencies | Hooklyne"
+  description="Hoe je bureaueigenaren en MDs bereikt: de signalen die een koopvenster aangeven, waarom timing alles is bij bureaukopers en hoe je een bericht schrijft dat gelezen wordt."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Bureau en consultancy prospecting-gids",
-    "description": "Hoe je bij bureaus en consultancies prospecteert: signalen, timing en het juiste contact.",
+    "name": "Bureau en agency prospecting-gids",
+    "description": "Hoe je bureaus en agencies prospecteert: signalen, timing en het juiste contact.",
     "url": "https://www.hooklyne.com/nl/bureau-prospecting",
     "inLanguage": "nl"
   })} />
@@ -106,14 +84,14 @@ const faq = [
 
   <Background>
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
-      <HeroGlow client:idle signals={false} />
+      <HeroGlow lang="nl" client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Bureau prospecting</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           Verkopen aan bureaus betekent verkopen aan mensen die zelf verkopen.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Bureaueigenaren en MDs verwijderen koude mails sneller dan bijna iedereen. Niet omdat ze niet kopen - ze kopen volop. Maar generieke koude mail is makkelijk te spotten en makkelijk te negeren. Deze gids behandelt de signalen die een echt gesprek openen en waarom timing de enige variabele is die telt.
+          Bureaueigenaren en MDs verwijderen koude mails sneller dan bijna iedereen. Niet omdat ze niet kopen - ze kopen volop. Maar omdat generieke koude mail makkelijk te spotten en te negeren is. Deze gids behandelt de signalen die een echt gesprek openen, waarom timing de enige variabele is die echt uitmaakt en hoe je iets schrijft dat de moeite waard is om te lezen.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -152,17 +130,15 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Als een van deze punten herkenbaar is, is de rest van deze pagina voor jou.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
               <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Gratis pilot, geen kaart</p>
             </div>
-            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte bureau-prospects.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte bureauprospects.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig opgebouwde prospectpakketten uit jouw bureau-ICP. Geen betaling, geen contract. Daarna vragen we twintig minuten eerlijke feedback.</p>
             <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Vraag een pilot aan
-              <ArrowRight className="size-3.5" />
+              Vraag een pilot aan <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signalen" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe bureaus kopen</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Vier signalen die een echte opening creëren bij bureaukopers.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Bureaus kopen als er druk is - groeipressie, capaciteitsdruk of een nieuw probleem gecreëerd door een win. Deze signalen geven aan wanneer die druk er is.
+            Bureaus kopen wanneer er druk is - groeidruk, capaciteitsdruk of een nieuw probleem door een klantwinst. Deze signalen laten zien wanneer die druk er is.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne voor bureaugerichte salesteams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Gebouwd voor kopers die merken als je je huiswerk niet hebt gedaan.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Signaalscoring, geverifieerde contacten op het juiste niveau en een eerste bericht met een echte reden - geen sequence-stap.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Waar Hooklyne past</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Gebouwd voor kopers die merken als je je huiswerk niet hebt gedaan.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Bij een bureau van 15 personen beslist de eigenaar. Bij een bureau van 60 personen is dat de MD, Head of Growth of degene die new business runt. Hooklyne brengt het juiste senioriteitsniveau per bureau in kaart - geverifieerd en klaar - in plaats van een lijst teruggeven en het oordeel bij jou te laten. Bureaustructuren veranderen snel, net als de contactgegevens.</p>
+          <p>Bureauinkoop is opportunistisch. Het gebeurt wanneer er een probleem op te lossen is of een groeimoment te ondersteunen valt - niet op een kalender. Hooklyne kijkt naar de signalen die dat moment aangeven en bereidt outreach voor om op dat moment te landen, niet na zeven dagen in een sequence-cyclus.</p>
+          <p>De eerste mail wordt opgesteld in de schrijfstijl van jouw vertegenwoordiger, met een verwijzing naar het specifieke event dat dit bureau nu relevant maakt. Een nieuwe klantwinst, een practice-uitbreiding, een awards-shortlist - specifiek benoemd en verbonden aan wat het voor hun bedrijf betekent. Bureaumensen lezen koude mail kritisch. Die specificiteit is het verschil tussen verwijderen en antwoorden.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,19 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Gerelateerde gidsen</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/nl/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Alle branchegidsen</a>
+          <a href="/nl/saas-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">B2B SaaS</a>
+          <a href="/nl/fintech-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Fintech en financiële diensten</a>
+          <a href="/nl/avg-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">AVG-compliant prospecting</a>
+          <a href="/nl/vergelijken" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool-vergelijkingen</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, TrendingUp, FileText, Calendar, Search, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -15,48 +15,26 @@ const breadcrumb = breadcrumbList([
 const pains = [
   "A CCO at a regulated firm asking 'how did you get my details?' is not a small problem.",
   "Fintech buyers have a shorter fuse for irrelevance than almost any other sector.",
-  "Regulatory milestones are your best timing signals - and you're tracking them manually in a spreadsheet.",
+  "Regulatory milestones are your best timing signals - and you're tracking them manually.",
   "The CFO changed. You found out when the email bounced.",
 ];
 
 const signals = [
   {
-    icon: ShieldCheck,
     title: "Regulatory authorisations and compliance milestones.",
-    body: "FCA authorisation, DNB registration, PSD2 compliance, DORA readiness deadlines, NIS2 - each one creates a procurement window. A fintech company that just received regulatory approval is in rapid scale mode. One approaching a compliance deadline is a motivated buyer with a date. Both are better signals than 'they match the ICP'.",
+    body: "FCA authorisation, DNB registration, PSD2 compliance, DORA readiness deadlines, NIS2 - each creates a procurement window. A fintech company that just received regulatory approval is in rapid scale mode with fresh budget and a mandate to build infrastructure. One approaching a compliance deadline is a motivated buyer with a date. Both are higher-signal than 'they match the ICP' - because they indicate a decision that has already been made to spend, not just a company that could theoretically benefit from your product.",
   },
   {
-    icon: TrendingUp,
     title: "Funding rounds and product launches.",
-    body: "Series A through C in fintech typically come with aggressive hiring plans, new market entry, and infrastructure build-out. A product launch - new payment rail, new lending product, new embedded finance feature - usually brings fresh budget and new supplier decisions alongside it.",
+    body: "Series A through C in fintech typically come with aggressive hiring plans, new market entry, and infrastructure build-out timelines set by board expectations. A product launch - a new payment rail, a new lending product, an embedded finance feature - usually brings fresh supplier decisions alongside it. The buying that follows a product launch is often compressed: teams move quickly when there's a commercial deadline attached to a new capability. The window is short and the shortlist forms fast.",
   },
   {
-    icon: Calendar,
     title: "Compliance role openings.",
-    body: "A new Head of Compliance, Chief Risk Officer, or MLRO hire signals that a firm is either scaling, responding to regulatory pressure, or both. The incoming person will review supplier relationships early. That review window is typically the first 60 to 90 days - before the new process gets locked in.",
+    body: "A new Head of Compliance, Chief Risk Officer, or MLRO hire signals that a firm is either scaling, responding to regulatory pressure, or both. The incoming person will review supplier relationships early - before existing relationships get locked in and before the new compliance framework becomes business as usual. That review typically happens in the first 60 to 90 days. It is also the moment when a firm is most open to switching providers that were grandfathered in under previous leadership.",
   },
   {
-    icon: FileText,
     title: "Expansion into new markets or payment corridors.",
-    body: "A fintech expanding from NL to DE, or adding a new payment corridor, is buying new things: compliance infrastructure, local data providers, new banking relationships. Market expansion announcements are public and the buying that follows is immediate.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Search,
-    title: "Sourced citations on every contact.",
-    body: "In regulated sectors, 'how did you get my details?' is a legitimate question with legal weight. Every Hooklyne contact ships with its source - public profile, registered provider, company website. If a CCO asks, the answer is in the same package as the message, not buried in a vendor's database terms.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "GDPR-native. No 'grey area' data.",
-    body: "Hooklyne is built and hosted in the Netherlands, uses no scraped behavioural data, and waterfall-verifies across 21 registered providers. For fintech buyers in regulated environments, that provenance matters - especially if your own compliance team ever asks how you source contacts.",
-  },
-  {
-    icon: Clock,
-    title: "Timed to regulatory and commercial events.",
-    body: "Fintech buying decisions cluster around compliance deadlines, funding events, and product launches. Hooklyne scores prospects against those signals and times outreach to the event - not to a sequence day. A message that arrives at the right regulatory moment gets read. The same message two months later does not.",
+    body: "A fintech expanding from the Netherlands to Germany, or adding a new payment corridor, is buying new things: compliance infrastructure, local data providers, new banking relationships, and often new tooling for the expanded scope. Market expansion announcements are public and the procurement that follows is immediate. The team leading the expansion usually makes these decisions independently of the core product team - which means the right contact is different from the one you'd target for a core-product sale.",
   },
 ];
 
@@ -113,7 +91,7 @@ const faq = [
           Fintech buyers have a shorter fuse for irrelevance than most.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Regulated buyers read cold outreach critically. The wrong message isn't just ignored - it creates a negative impression that follows your company. This guide covers the signals that open a real window, why data provenance matters more in this sector than any other, and how to arrive at the right moment.
+          Regulated buyers read cold outreach critically. The wrong message isn't just ignored - it creates a negative impression that follows your company. This guide covers the signals that open a real window in financial services, why data provenance matters more here than anywhere else, and how to arrive at exactly the right moment.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real fintech prospects first.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your fintech ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
             <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Request a pilot
-              <ArrowRight className="size-3.5" />
+              Request a pilot <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How fintech companies buy</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Four signals that open a buying window in financial services.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Fintech buying is event-driven: regulatory milestones, funding, product launches, new market entry. Outside those windows, the door is closed. These are the signals that tell you when it's open.
+            Fintech buying is event-driven: regulatory milestones, funding, product launches, market expansion. Outside those windows, the door is mostly closed. These are the signals that tell you when it's open.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for fintech-focused teams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Built for buyers who will scrutinise how you found them.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Sourced citations, GDPR-native contact data, and outreach timed to regulatory and commercial events - not a weekly drip.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Where Hooklyne fits</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Built for buyers who will scrutinise how you found them.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>In regulated sectors, 'how did you get my details?' carries legal weight. Every Hooklyne contact ships with its documented source - public profile, registered provider, company website. Hooklyne is built and hosted in the Netherlands, uses no scraped behavioural data, and waterfall-verifies across 21 registered providers. For fintech buyers in regulated environments, that provenance matters - especially if your own compliance team ever asks how you source contacts.</p>
+          <p>Fintech buying decisions cluster around regulatory deadlines, funding events, and product launches. Hooklyne scores prospects against those signals and prepares outreach to arrive at the event - not to a sequence day. A message that references the DORA readiness timeline and connects it to a real infrastructure implication gets read. The same message on a Tuesday drip does not.</p>
+          <p>The right contact in fintech depends on what you're selling. A payments infrastructure tool routes to the CTO or Head of Engineering. A compliance platform goes to the Head of Compliance or the incoming MLRO. Hooklyne identifies the correct seniority at each company and verifies the contact before it reaches your rep - rather than surfacing a generic list and leaving the judgement call to someone who has twenty other prospects to work through.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,18 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Related guides</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">All industry guides</a>
+          <a href="/saas-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">B2B SaaS</a>
+          <a href="/gdpr-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">GDPR-compliant prospecting</a>
+          <a href="/compare" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool comparisons</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

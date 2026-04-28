@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, AlertTriangle, FileSearch, ScrollText, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -36,42 +36,20 @@ const requirements = [
 
 const failures = [
   {
-    icon: AlertTriangle,
     title: "Gedragsdata gescrapet uit ingelogde sessies.",
     body: "Sommige tools verrijken contacten met browsegedrag verzameld via cookies, retargeting-pixels of partner-integraties die gebruikers nooit bewust hebben goedgekeurd. Dat is een duidelijk AVG-risico en het type data dat het lastigst is te verdedigen als een toezichthouder vraagt waar het vandaan kwam.",
   },
   {
-    icon: AlertTriangle,
     title: "Single-source databases zonder bronlijn.",
     body: "Kan een tool je niet vertellen welke bron een specifiek contact heeft geleverd en wanneer het voor het laatst is geverifieerd, dan kan diezelfde tool het de toezichthouder ook niet vertellen. 'Onze database' is geen rechtsgrond.",
   },
   {
-    icon: AlertTriangle,
     title: "Massaal scrapen van LinkedIn of bedrijfssites.",
     body: "Op schaal scrapen om B2B-lijsten te bouwen valt niet automatisch onder gerechtvaardigd belang. De voorwaarden van LinkedIn verbieden het, de AVG zegent het niet. Tools die dit verpakken als 'wij verrijken alleen, jij scrapet' leggen de juridische blootstelling bij jou.",
   },
   {
-    icon: AlertTriangle,
     title: "Opt-outs die niet doorlopen.",
     body: "Wanneer een prospect zich afmeldt voor een campagne, maar dezelfde tool hem het volgende kwartaal opnieuw importeert via een database-refresh, is de onderdrukking effectief gefaald. De AVG geeft niet om de refresh - hij geeft om de afmelding van de persoon.",
-  },
-];
-
-const hooklyne = [
-  {
-    icon: ShieldCheck,
-    title: "Europees gebouwd, geen scraping.",
-    body: "Hooklyne is in Nederland gebouwd en wordt in Europa gehost. Wij scrapen geen LinkedIn, retargeten geen cookies en nemen geen gedragsdata uit ingelogde sessies in. Contacten komen uit publieke profielen en geregistreerde dataproviders die opereren onder hun eigen AVG-grond.",
-  },
-  {
-    icon: FileSearch,
-    title: "Citeerbare bronnen op elke claim.",
-    body: "Elke Hooklyne research-brief levert de URL's mee waar de claim vandaan komt. Vraagt een prospect waar je zijn gegevens vandaan hebt, dan staat het antwoord in hetzelfde pakket als het bericht. Audit-klaar door constructie, niet door papierwerk.",
-  },
-  {
-    icon: ScrollText,
-    title: "Onderdrukking die houdt.",
-    body: "Opt-outs, bounces en uitschrijvingen blijven in jouw account, en gelden over toekomstige imports en refreshes. Een contact dat je verwijdert, blijft verwijderd, ook als de onderliggende provider de rij een kwartaal later ververst.",
   },
 ];
 
@@ -192,7 +170,7 @@ const faq = [
     </section>
 
     <section id="vereisten" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-4xl">
+      <div class="container max-w-3xl">
         <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Wat de AVG werkelijk vereist</p>
           <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
@@ -203,27 +181,25 @@ const faq = [
           </p>
         </div>
 
-        <ol class="space-y-5">
+        <div class="space-y-8">
           {requirements.map((r, i) => (
-            <li class="flex gap-4 rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                {i + 1}
-              </div>
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
               <div>
                 <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{r.title}</h3>
                 <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{r.body}</p>
               </div>
-            </li>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em]" style="color: var(--hooklyne-orange);">Waar de meeste tools de mist in gaan</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style="color: var(--hooklyne-orange);">Waar de meeste tools de mist in gaan</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Vier failure modes die een toezichthouder zou opmerken.
           </h2>
           <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
@@ -231,14 +207,14 @@ const faq = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {failures.map((f) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(255,140,66,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(255,140,66,0.10); color: var(--hooklyne-orange);">
-                <f.icon className="size-5" />
+        <div class="space-y-8">
+          {failures.map((f, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{f.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{f.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{f.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>
@@ -246,27 +222,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)]">Hoe Hooklyne hiervoor is gebouwd</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mt-3 mb-4">
-            Compliance-houding, geen compliance-pakket.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Hooklyne is gebouwd om de juiste keuze de makkelijke keuze te maken - niet om een aparte audit-module bovenop het product te verkopen.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklyne.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hoe Hooklyne hiervoor is gebouwd</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-6">
+          Compliance-houding, geen compliance-pakket.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Hooklyne is in Nederland gebouwd en wordt in Europa gehost. We scrapen geen LinkedIn, retargeten geen cookies en nemen geen gedragsdata uit ingelogde sessies in. Elk contact komt uit een publiek profiel of een geregistreerde dataprovider die onder zijn eigen AVG-grond opereert. We kunnen 'hoe kom je aan mijn gegevens?' beantwoorden voordat je het hoeft te vragen.</p>
+          <p>Elke Hooklyne research-brief levert de bron-URL's mee achter elke claim. Vraagt een prospect hoe je hem gevonden hebt, dan staat het antwoord in hetzelfde pakket als het opgestelde bericht - niet begraven in vendor-logs die je niet beheert. Audit-klaar door constructie, niet door papierwerk achteraf.</p>
+          <p>Opt-outs, bounces en uitschrijvingen blijven in jouw account en gelden voor toekomstige imports en refreshes. Een contact dat je verwijdert, blijft verwijderd, ook als de onderliggende provider de rij een kwartaal later ververst. De onderdrukking is duurzaam omdat die duurzaam moet zijn - dat is het onderdeel dat de meeste tools stilletjes fout doen.</p>
         </div>
       </div>
     </section>

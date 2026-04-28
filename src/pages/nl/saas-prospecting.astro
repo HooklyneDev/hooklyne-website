@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, TrendingUp, Users, Zap, Layers, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -21,42 +21,20 @@ const pains = [
 
 const signals = [
   {
-    icon: TrendingUp,
     title: "Financieringsrondes.",
-    body: "Series A en B zijn de betrouwbaarste koopvensters voor SaaS-tools. Een raise betekent uitbreidingsplannen, stack-reviews en een leadership team dat aan een board moet laten zien dat processen schalen. Het venster is ruwweg zes tot tien weken na de aankondiging - daarna heeft iedereen al gebeld.",
+    body: "Series A en B zijn de betrouwbaarste koopvensters voor SaaS-tools. Een raise betekent uitbreidingsplannen, stack-reviews en een leadership team dat aan een board moet laten zien dat processen schalen. Het venster is ruwweg zes tot tien weken na de aankondiging - daarna heeft iedereen al gebeld. Seed-rondes zijn minder betrouwbaar als signaal tenzij de raise expliciet bedoeld is voor GTM-capaciteit en er een headdcount-plan bij staat.",
   },
   {
-    icon: Users,
     title: "RevOps-, SDR- en VP Sales-aannamen.",
-    body: "Een nieuwe Head of RevOps gaat bijna altijd gepaard met een tooling-review. Nieuw SDR-headcount betekent dat de huidige stack moet meegroeien. Een VP of Sales bij een bedrijf van 20-40 mensen zet de outbound-motion vaak helemaal opnieuw. Betere signalen dan 'ze hebben je pricingpagina bezocht'.",
+    body: "Een nieuwe Head of RevOps gaat bijna altijd gepaard met een tooling-review. Nieuw SDR-headcount betekent dat de huidige stack moet meegroeien. Een VP of Sales bij een bedrijf van 20 tot 40 mensen zet de outbound-motion vaak helemaal opnieuw: bestaande tools, sequenties en databronnen worden in de eerste 90 dagen allemaal geëvalueerd. Betere signalen dan 'ze hebben je pricingpagina bezocht', omdat ze wijzen op een besluitvormer met zowel autoriteit als mandaat om iets te veranderen.",
   },
   {
-    icon: Zap,
     title: "Wijzigingen in de tech-stack.",
-    body: "Een bedrijf dat net van HubSpot af is, een datatool heeft laten vallen of een nieuwe integratiepartner heeft aangekondigd, is actief aan het evalueren. Stack-signalen zijn zichtbaar in vacatureteksten ('ervaring met X vereist'), LinkedIn-posts van ops-teamleden en persberichten over nieuwe partnerships.",
+    body: "Een bedrijf dat net van HubSpot af is, een datatool heeft laten vallen of een nieuwe integratiepartner heeft aangekondigd, is actief aan het evalueren. Stack-signalen zijn zichtbaar in vacatureteksten ('ervaring met X vereist'), LinkedIn-posts van ops-teamleden en persberichten over nieuwe partnerships. Een bedrijf dat één toolwissel heeft gedaan, overweegt statistisch gezien ook aangrenzende tools in hetzelfde kwartaal te wisselen.",
   },
   {
-    icon: Layers,
     title: "Groeiversnellingspunten in headcount.",
-    body: "Van 25 naar 50 medewerkers is het punt waarop informele processen breken. Van 50 naar 100 wordt sales ops een echte functie. Bedrijven die deze drempels overschrijden kopen dingen die ze een halfjaar geleden niet konden rechtvaardigen - en het budget is vaak al gereserveerd.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Target,
-    title: "Juiste contact, juist senioriteits­niveau.",
-    body: "Of je de CTO, VP Engineering, Head of RevOps of de SDR-lead nodig hebt, hangt af van wat je verkoopt. Hooklyne brengt de drie best passende contacten per bedrijf naar boven, geverifieerd over 21 databronnen - in plaats van een lijst teruggeven en het oordeel bij jou te laten.",
-  },
-  {
-    icon: Clock,
-    title: "Timing op het signaal, niet op de sequencer.",
-    body: "Hooklyne scoort elke prospect op live signalen: funding, hiring, uitbreiding, stack-wijzigingen. De eerste mail gaat eruit op het moment dat er een reden is die thuishoort in de openingsregel - niet als dag zeven van een sequence aanbreekt.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Een bericht dat een CTO ook leest.",
-    body: "SaaS-kopers ontvangen koude mails voor hun werk. Hooklyne stelt de eerste mail op in de schrijfstijl van jouw vertegenwoordiger, met een verwijzing naar het specifieke signaal dat deze prospect nu relevant maakt. Generiek verliest. Relevant en op het juiste moment wint.",
+    body: "Van 25 naar 50 medewerkers is het punt waarop informele processen breken. Van 50 naar 100 wordt sales ops een echte functie. Vanaf 100 worden toolingbeslissingen centraal ingekocht. Bedrijven die deze drempels overschrijden kopen dingen die ze een halfjaar geleden niet konden rechtvaardigen - en het budget is vaak al gereserveerd voor de tool wordt gekozen. Vroeg in het gesprek zijn weegt zwaarder dan de beste pitch in een overvolle shortlist.",
   },
 ];
 
@@ -82,7 +60,7 @@ const faq = [
 
 <DefaultLayout
   title="B2B SaaS prospecting: timing, signalen en het juiste contact | Hooklyne"
-  description="Hoe je B2B SaaS-bedrijven prospecteert: welke signalen een koopvenster openen, hoe je het juiste senioriteits­niveau vindt en waarom timing meer oplevert dan volume bij SaaS-kopers."
+  description="Hoe je B2B SaaS-bedrijven prospecteert: welke signalen een koopvenster openen, hoe je het juiste senioriteitsniveau vindt en waarom timing meer oplevert dan volume bij SaaS-kopers."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
@@ -106,14 +84,14 @@ const faq = [
 
   <Background>
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
-      <HeroGlow client:idle signals={false} />
+      <HeroGlow lang="nl" client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">B2B SaaS prospecting</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
           SaaS-kopers negeren geen koude mail. Ze negeren slechte timing.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          SaaS-bedrijven kopen in vensters. Een nieuwe financieringsronde, een RevOps-hire, een groeimijlpaal - elk opent een korte periode waarin het juiste bericht op het juiste senioriteits­niveau aankomt. Deze gids behandelt hoe die signalen eruitzien en hoe je er bent voordat het venster sluit.
+          SaaS-bedrijven kopen in vensters. Een nieuwe financieringsronde, een RevOps-hire, een groeimijlpaal - elk opent een korte periode waarin het juiste bericht op het juiste senioriteitsniveau aankomt. Deze gids behandelt hoe die signalen eruitzien en hoe je er bent voordat het venster sluit.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Als een van deze punten herkenbaar is, is de rest van deze pagina voor jou.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte SaaS-prospects.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig opgebouwde prospectpakketten uit jouw SaaS-ICP. Geen betaling, geen contract. Daarna vragen we twintig minuten eerlijke feedback - dat is alles.</p>
             <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Vraag een pilot aan
-              <ArrowRight className="size-3.5" />
+              Vraag een pilot aan <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signalen" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe SaaS-bedrijven kopen</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Vier signalen die een SaaS-koopvenster openen.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
             SaaS-kopers zijn niet permanent gesloten voor nieuwe tools. Ze zijn gesloten voor slechte timing. Dit zijn de signalen die een actief venster aangeven - niet alleen een plausibele ICP-fit.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne voor SaaS-teams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Gebouwd voor de manier waarop SaaS-bedrijven echt kopen.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Signaalscoring, contactverificatie over 21 databronnen en een eerste mail die verwijst naar de reden waarom deze prospect nu relevant is.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Waar Hooklyne past</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Gebouwd voor de manier waarop SaaS-bedrijven echt kopen.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Of je de CTO, VP Engineering, Head of RevOps of de SDR-lead nodig hebt, hangt af van wat je verkoopt. Hooklyne brengt het juiste senioriteitsniveau per bedrijf in kaart en watervalt contacten over 21 databronnen - in plaats van een lijst teruggeven en het oordeel bij jou te laten. Als een contact wisselt, is de hire rondom die wissel vaak ook het koopsignaal.</p>
+          <p>Contactkwaliteit telt, maar timing telt meer. Hooklyne scoort elke prospect op live signalen: funding, hiring, stack-wijzigingen, groeidrempels. De eerste mail gaat eruit op het moment dat er een reden is die thuishoort in de openingsregel - niet als dag zeven van een sequence aanbreekt.</p>
+          <p>De eerste mail wordt opgesteld in de schrijfstijl van jouw vertegenwoordiger, met een verwijzing naar het specifieke signaal dat deze prospect nu relevant maakt. SaaS-kopers lezen koude mails voor hun werk. Een bericht dat de Series A noemt en verbindt aan een concrete tooling-implicatie verdient een lezing. Een sjabloon niet.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,19 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Gerelateerde gidsen</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/nl/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Alle branchegidsen</a>
+          <a href="/nl/logistiek-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Logistiek en transport</a>
+          <a href="/nl/fintech-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Fintech en financiële diensten</a>
+          <a href="/nl/avg-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">AVG-compliant prospecting</a>
+          <a href="/nl/vergelijken" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool-vergelijkingen</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

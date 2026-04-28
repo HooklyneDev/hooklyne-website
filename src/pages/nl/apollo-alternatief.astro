@@ -5,7 +5,7 @@ import { HeroGlow } from '@/components/hero-glow';
 import { DIYCompare } from '@/components/blocks/diy-compare';
 import { HeadToHead } from '@/components/blocks/head-to-head';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, Search, FileText, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -15,17 +15,14 @@ const breadcrumb = breadcrumbList([
 
 const breakdowns = [
   {
-    icon: Search,
     title: "Gebouwd om te onderzoeken, niet om te versturen.",
     body: "Apollo is een verzendmotor bovenop een Amerikaans-georiënteerde contactdatabase. Hooklyne is een onderzoeksworkflow die het prospectpakket samenstelt voordat er iets de deur uitgaat. Loop je vast op volume, dan past Apollo. Loop je vast op antwoordpercentage, dan is het verzendvolume niet de oplossing.",
   },
   {
-    icon: ShieldCheck,
     title: "Europese dekking, vier verificatielagen.",
     body: "De Apollo-dekking voor NL, BE en DACH is dunner dan de Amerikaanse cijfers, omdat de bronmix is gebouwd voor de VS. Wij waterfallen over 21 providers en draaien vier deliverability-checks (SMTP, catch-all, role en deliverable) voordat een contact wordt vrijgegeven, zodat je cold mail de inbox ook daadwerkelijk haalt.",
   },
   {
-    icon: FileText,
     title: "Een signaallaag die Apollo niet heeft.",
     body: "Funding, hiring, leiderschapswisselingen, expansie, productlanceringen, sectorbewegingen en persmomenten, gescoord op jouw ideaal klantprofiel. Elke prospect arriveert met een waarom-nu-reden die een Apollo-CSV niet kan leveren, onderbouwd en citeerbaar zodat de mail zichzelf bijna schrijft - in de stem van de salesmedewerker.",
   },
@@ -156,8 +153,8 @@ const faq = [
     </section>
 
     <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Waar Apollo voor MKB breekt</p>
           <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Drie dingen waar Apollo niet voor is gebouwd.
@@ -167,18 +164,14 @@ const faq = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {breakdowns.map((b) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <b.icon className="size-5" />
+        <div class="space-y-8">
+          {breakdowns.map((b, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">
-                {b.title}
-              </h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                {b.body}
-              </p>
             </div>
           ))}
         </div>

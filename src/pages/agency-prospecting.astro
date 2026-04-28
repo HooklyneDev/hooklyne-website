@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, Users, Star, TrendingUp, Briefcase, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -21,42 +21,20 @@ const pains = [
 
 const signals = [
   {
-    icon: TrendingUp,
     title: "New client wins and case study announcements.",
-    body: "When an agency announces a new client or publishes a case study, it means capacity is filling up and growth pressure is on. That's when decisions about efficiency, headcount, or new tools get made. Most agencies announce wins on LinkedIn and in trade press within a few weeks of signing.",
+    body: "When an agency announces a new client or publishes a case study, it means capacity is filling up and growth pressure is on. That's the moment when decisions about efficiency, tooling, or additional headcount actually get made. Most agencies announce client wins on LinkedIn and in trade press within a few days of signing - and the buying conversation that comes with growth pressure usually starts in the same week. The problem for most sellers is that they see the post days later, act on it a week after that, and arrive after the decision has already started to form.",
   },
   {
-    icon: Users,
     title: "Headcount growth and new business hires.",
-    body: "A Head of New Business hire signals the agency is going on offence. A wave of creative or account hires means client load is growing and support infrastructure needs to catch up. Either signals a business that's actively spending and open to conversations.",
+    body: "A Head of New Business hire signals the agency is going on offence. A wave of creative or account hires means client load is growing and support infrastructure needs to catch up. A new Operations Manager often means the founder has finally decided to stop running everything personally. These hiring signals have a natural buying implication - and they're visible before the internal budget conversation has concluded. The people being hired are usually the ones who will eventually evaluate the tools.",
   },
   {
-    icon: Star,
     title: "Awards, rankings, and shortlist appearances.",
-    body: "Agency awards aren't just vanity. Making a Campaign shortlist, winning a WARC effectiveness award, or appearing in an industry ranking usually tracks with a growth phase. It's also a natural hook - something specific enough to reference in a first message without sounding like you Googled them for thirty seconds.",
+    body: "Agency awards track with growth phases. Making a Campaign shortlist, winning a WARC effectiveness award, or appearing in an industry ranking signals a firm that is commercially confident and investing in its profile. It's also a natural, specific hook for a first message - something that names the actual achievement rather than 'I've been following your agency'. Awards are public and dated. The buying pressure they represent is real. Most sellers reference them too generically to earn a read.",
   },
   {
-    icon: Briefcase,
     title: "Service line expansion.",
-    body: "An agency that just added a new practice - performance, data, sustainability, AI - is in investment mode. New service lines require new tooling, new processes, and sometimes new suppliers. The announcement is usually public, the buying conversation happens quietly in the weeks after.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Target,
-    title: "Right contact: founder, MD, or head of new business.",
-    body: "At a 15-person agency the founder makes the decision. At a 60-person agency it might be the MD or a Head of Growth. Hooklyne identifies the right seniority for your offer at each agency, verified and ready, rather than surfacing a list and leaving the judgement to you.",
-  },
-  {
-    icon: Clock,
-    title: "Timed to the capacity signal.",
-    body: "Agency buying is opportunistic - it happens when there's a problem to solve or a moment of growth to support. Hooklyne watches for the signals that indicate that moment and puts your outreach there, not on a Tuesday drip cycle.",
-  },
-  {
-    icon: MessageSquare,
-    title: "A message that earns its open.",
-    body: "Agency people read cold email critically. Hooklyne drafts the first message in your rep's writing style, referencing the specific signal that makes this agency relevant right now. A new client win, a service expansion, an award - named specifically, not 'I saw your recent news'.",
+    body: "An agency that just added a new practice - performance, data, sustainability, AI services - is in investment mode. New service lines require new tooling, new processes, and often new suppliers. The announcement is usually public. The buying conversation happens quietly in the weeks after, when the people leading the new practice start figuring out what infrastructure they need. Getting in during that window - before the internal vendor list is assembled - is considerably easier than getting in after.",
   },
 ];
 
@@ -113,7 +91,7 @@ const faq = [
           Selling to agencies means selling to people who sell for a living.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Agency owners and MDs delete cold email faster than almost anyone. Not because they're not buying - they buy plenty. Because generic cold email is easy to spot and easy to ignore. This guide covers the signals that open a real conversation and why timing is the only variable that matters.
+          Agency owners and MDs delete cold email faster than almost anyone. Not because they're not buying - they buy plenty. Because generic cold email is easy to spot and easy to ignore. This guide covers the signals that create a real opening, why timing is the only variable that actually matters, and how to write something worth reading.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real agency prospects first.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your agency ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
             <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Request a pilot
-              <ArrowRight className="size-3.5" />
+              Request a pilot <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How agencies buy</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Four signals that create a real opening with agency buyers.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Agencies buy when there is pressure - growth pressure, capacity pressure, or a new problem created by a win. These signals tell you when that pressure is on.
+            Agencies buy when there is pressure - growth pressure, capacity pressure, or a new problem created by a client win. These signals tell you when that pressure is on.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for agency-focused teams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Built for buyers who will notice if you haven't done the work.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Signal scoring, verified contacts at the right seniority, and a first message that references a real reason - not a sequence step.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Where Hooklyne fits</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Built for buyers who will notice if you haven't done the work.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>At a 15-person agency the founder makes the decision. At a 60-person agency it might be the MD, Head of Growth, or whoever runs new business. Hooklyne identifies the right seniority for your offer at each agency - verified and ready - rather than surfacing a list and leaving the judgement to you. Agency structures change fast; so does the contact data.</p>
+          <p>Agency buying is opportunistic. It happens when there's a problem to solve or a moment of growth to support - not on a calendar. Hooklyne watches for the signals that indicate that moment and prepares outreach to arrive when it's live, not seven days into a sequence cycle.</p>
+          <p>The first message is drafted in your rep's writing style, referencing the specific event that makes this agency relevant right now. A new client win, a service expansion, a shortlist appearance - named specifically and connected to what it means for their business, not 'I saw your recent news'. Agency people read cold email critically. That specificity is the difference between a delete and a reply.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,19 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Related guides</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">All industry guides</a>
+          <a href="/saas-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">B2B SaaS</a>
+          <a href="/fintech-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Fintech and financial services</a>
+          <a href="/gdpr-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">GDPR-compliant prospecting</a>
+          <a href="/compare" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool comparisons</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

@@ -1,0 +1,228 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { Background } from '@/components/background';
+import { HeroGlow } from '@/components/hero-glow';
+import { HomePricing } from '@/components/blocks/home-pricing';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
+import { breadcrumbList } from "@/lib/seo";
+
+const breadcrumb = breadcrumbList([
+  { name: "Home", path: "/nl" },
+  { name: "Branches", path: "/nl/industries" },
+  { name: "Voeding en dranken prospecting", path: "/nl/food-prospecting" },
+]);
+
+const pains = [
+  "De productiedirecteur die je nodig hebt runt een fabriek, geen LinkedIn-profiel.",
+  "Voedselveiligheidscertificeringsvernieuwingen zijn je beste timing-signaal - en je mist ze.",
+  "Retailer-listingvereisten drijven leverancierstechnologie-upgrades. Je ontdekt het pas na de upgrade.",
+  "De inkoopbeslissing bij een voedingsbedrijf betreft R&D, productie en commercieel. Je bereikt er een van de drie.",
+];
+
+const signals = [
+  {
+    title: "Voedselveiligheidscertificeringsvernieuwingen en nieuwe schemaadopties.",
+    body: "FSSC 22000, BRC Global Standard, IFS Food en HACCP-certificeringscycli behoren tot de meest betrouwbare inkoop-triggers in de voedingssector. Een producent die certificeringsvernieuwing nadert, beoordeelt of zijn huidige processen, technologie en leveranciers voldoen aan de nieuwste standaardversie. Een bedrijf dat een nieuwe regeling adopteert - vaak gedreven door een retailervereiste - koopt de systemen en consultancy om er te komen. Certificeringsstatus staat vaak openbaar vermeld in schema-databases, wat betekent dat de vernieuwingstijdlijn afleidbaar is zonder koude intelligence.",
+  },
+  {
+    title: "Retailer- en QSR-listingvereisten.",
+    body: "Wanneer een grote retailer of foodservice-operator een nieuwe leveranciersstandaard stelt - traceerbaarheid, verpakking, allergeneenbeheer, koolstofetiketten - heeft elk bedrijf in die toeleveringsketen een nalevingsdeadline gekoppeld aan zijn commerciële relatie. Deze vereisten worden vaak aangekondigd in retailer-duurzaamheidsrapporten en vakbladen ruim voor de leveranciersdeadline. Een voedingsproducent die Albert Heijn, Lidl of een andere grote retailer levert en zojuist een nieuwe verpakkings- of traceerbaarheidsvereiste heeft ontvangen, is een gemotiveerde koper met een datum.",
+  },
+  {
+    title: "Nieuwe productlanceringen en capaciteitsuitbreidingen.",
+    body: "Een voedingsbedrijf dat een nieuw productassortiment lanceert of de productiecapaciteit uitbreidt, bevindt zich in een inkoopvolgorde voor ingrediënten, verpakking, verwerkingsapparatuur, kwaliteitsmanagementsystemen en logistiek. Productlanceringen worden aangekondigd in vakbladen, categoriedatabases en retailerpromotiekalenders. Een capaciteitsuitbreiding is zichtbaar in vergunningsaanvragen en bedrijfsfilings weken voordat de productie start. Beide events creëren voorspelbare inkoop-volgordes die makkelijker aan de voorkant te betreden zijn dan halverwege.",
+  },
+  {
+    title: "EUDR, CSRD en toeleveringsketintraceerbaarheidswetgeving.",
+    body: "De EU-ontbossingverordening (EUDR) en de richtlijn inzake duurzaamheidszorgplicht creëren verplichte traceerbaarheidsverplichtingen voor toeleveringsketens voor voedingsbedrijven boven een omzetdrempel. Implementatiedeadlines zijn gefaseerd op bedrijfsomvang en categorie. Een middelgrote voedselverwerker die zijn EUDR-nalevingsdatum nadert, koopt actief traceerbaarheidssoftware, leveranciersdatasystemen en derde-partijauditdiensten. De regelgevingskalender is openbaar. Bedrijfstoepasselijkheid is grotendeels afleidbaar uit sector en omvang. Die combinatie is het signaal.",
+  },
+];
+
+const faq = [
+  {
+    q: "Voedingsbedrijven zijn relatiegedreven kopers. Werkt outreach-gedreven prospecting hier?",
+    a: "Relatiekopers zijn niet uitsluitend relatiekopers. Ze wisselen van leverancier wanneer er een reden is - een kwaliteitsmislukking, een prijsverschil dat niet te negeren is of een nieuwe vereiste die ze niet kunnen halen met hun huidige leverancier. Hooklyne brengt bedrijven in beeld in het venster waar de reden om te wisselen bestaat, niet bedrijven die perfect tevreden zijn met hun huidige opstelling.",
+  },
+  {
+    q: "De beslissing betreft meerdere afdelingen. Wie target ik bij een voedingsbedrijf?",
+    a: "Voor productietechnologie en kwaliteitssystemen: operationeel directeur of kwaliteitsmanager. Voor ingrediënten en verpakking: inkoopmanager of categorymanager. Voor traceerbaarheids- en duurzaamheidssoftware: duurzaamheidsmanager of CTO bij meer digitaal volwassen bedrijven. Hooklyne bepaalt de juiste rol voor jouw aanbod bij elk bedrijf in plaats van een generieke contactlijst te geven.",
+  },
+  {
+    q: "We verkopen aan voedingsfabrikanten met 50-500 medewerkers. Is dat een goed gedekt segment?",
+    a: "Ja. Middelgrote voedingsfabrikanten zijn goed gedekt in KVK-registraties, voedselveiligheidsschema-databases, brancheverenigingsregistraties en sectorpublicaties. Het is eigenlijk een van de beter gedocumenteerde segmenten in de Europese voedingssector - de regelgevingsvereisten creëren een papieren spoor dat bedrijven vindbaar maakt ook als hun digitale aanwezigheid laag is.",
+  },
+  {
+    q: "Wat als Hooklyne niet werkt voor ons voedingssector-ICP?",
+    a: "Eerst een pilot, dan pas een contract. Tien prospects uit je echte doellijst, volledig opgebouwd, zonder kaart. Voeding is een sector waar de certificeringstimingaanpak ofwel meteen resoneert of het bedrijf nog niet in een inkoopvenster zit - de pilot maakt dat onderscheid snel.",
+  },
+];
+---
+
+<DefaultLayout
+  title="Prospecting bij voeding en dranken | Hooklyne"
+  description="Hoe je buyers in voeding en dranken bereikt: voedselveiligheidscertificeringsignalen, retailer-nalevingsvereisten, EUDR-traceerbaarheidsdeadlines en hoe je het juiste contact vindt in een meerdepartementale inkoopbeslissing."
+  image="/og/home.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Voeding en dranken prospecting-gids",
+    "description": "Hoe je voeding- en drankenbedrijven prospecteert: certificeringsignalen, contacten en koopvensters.",
+    "url": "https://www.hooklyne.com/nl/food-prospecting",
+    "inLanguage": "nl"
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  })} />
+
+  <Background>
+    <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
+      <HeroGlow lang="nl" client:idle signals={false} />
+      <div id="hero-content" class="container max-w-4xl text-center relative z-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Voeding en dranken prospecting</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
+          Voedingskopers zijn niet gesloten voor nieuwe leveranciers. Wel voor irrelevante.
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+          Voedselveiligheidscertificering, retailervereisten en toeleveringsketinwetgeving creëren voorspelbare inkoopvensters in voeding en dranken. De productie- en kwaliteitsdirecteuren die deze beslissingen nemen zijn bereikbaar - wanneer er een reden is om te praten. Deze gids behandelt hoe je die reden vindt en wanneer je erop handelt.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/nl/contact"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
+          >
+            Start een gratis pilot
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#signalen"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group"
+          >
+            Bekijk de signalen
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-6 lg:pt-4 lg:pb-10" data-fade>
+      <div class="container max-w-4xl">
+        <div class="grid md:grid-cols-[1.4fr_1fr] gap-4 md:gap-5 items-stretch">
+          <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="flex items-center gap-2 mb-4">
+              <AlertCircle className="size-4" style={{ color: "var(--hooklyne-orange)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-orange);">Je bent hier waarschijnlijk omdat</p>
+            </div>
+            <ul class="space-y-2.5">
+              {pains.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-[var(--heading)] leading-snug">
+                  <span class="size-1.5 rounded-full mt-2 shrink-0" style="background: var(--hooklyne-orange);"></span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">Als een van deze punten herkenbaar is, is de rest van deze pagina voor jou.</p>
+          </div>
+          <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
+            <div class="flex items-center gap-2 mb-3">
+              <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Gratis pilot, geen kaart</p>
+            </div>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Probeer het eerst op 10 van je echte voedingsprospects.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Tien volledig opgebouwde prospectpakketten uit jouw voedings-ICP. Geen betaling, geen contract. Daarna vragen we twintig minuten eerlijke feedback.</p>
+            <a href="/nl/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
+              Vraag een pilot aan <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signalen" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
+      <div class="container max-w-3xl">
+        <div class="mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Hoe voedingsbedrijven kopen</p>
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+            Vier signalen die een voedingssectorkoopvenster openen.
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Voedingsinkoop volgt certificeringscycli, retailervereisten en wetgevingstijdlijnen - niet LinkedIn-activiteit. De signalen staan in schema-databases, vakbladen en regelgevingskalenders.
+          </p>
+        </div>
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Waar Hooklyne past</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Gebouwd voor sectoren waar het signaal in de regelgevingskalender zit, niet in de newsfeed.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Voedings- en drankcontacten zijn redelijk gedekt in op LinkedIn gebaseerde tools maar slecht gedekt wat betreft koopsignalen. Het LinkedIn-profiel van een productiedirecteur vertelt je zijn functietitel. Het vertelt je niet dat zijn FSSC 22000-vernieuwing over zes maanden is of dat zijn grootste retailer zojuist een nieuwe traceerbaarheidsvereiste heeft uitgevaardigd. Hooklyne monitort certificeringsschema-databases, voedingsindustrie-vakbladen en regulatoire filings om de signalen te vinden die daadwerkelijk een koopvenster aangeven.</p>
+          <p>Het juiste contact in voeding hangt af van de categorie. Kwaliteitsmanagementsystemen gaan naar de kwaliteitsmanager. Ingrediënten en verpakking lopen via inkoop. Technologie en duurzaamheidssoftware gaan steeds vaker naar een dedicated duurzaamheidsmanager of digitaal operations lead. Hooklyne bepaalt de juiste rol bij elk bedrijf op basis van jouw aanbod in plaats van een lijst te geven en de targetingbeslissing aan jouw vertegenwoordiger over te laten met 20 andere prospects te verwerken.</p>
+          <p>De eerste mail verwijst naar het specifieke signaal dat dit bedrijf nu relevant maakt - een certificeringsvernieuwingstijdlijn, een retailervereiste die ze leveren, een productlancering in een categorie waar ze actief in zijn. Voedingskopers ontvangen veel generieke outreach. De berichten die een antwoord verdienen, benoemen iets specifieks en koppelen het aan een echte operationele implicatie. Dat is het verschil tussen lezen en verwijderen.</p>
+        </div>
+      </div>
+    </section>
+  </Background>
+
+  <Background variant="bottom">
+    <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Gerelateerde gidsen</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/nl/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Alle branchegidsen</a>
+          <a href="/nl/agritech-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Agritech en voedseltechnologie</a>
+          <a href="/nl/industrie-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Industrie en productie</a>
+          <a href="/nl/avg-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">AVG-compliant prospecting</a>
+          <a href="/nl/vergelijken" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool-vergelijkingen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
+      <div class="container max-w-3xl">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
+            Vragen over voeding prospecting, beantwoord.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {faq.map((f) => (
+            <details class="group rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="text-[15px] font-semibold text-[var(--heading)] leading-snug">{f.q}</span>
+                <span class="size-6 rounded-full flex items-center justify-center shrink-0 transition-transform group-open:rotate-45" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Background>
+</DefaultLayout>

@@ -267,6 +267,86 @@ export const guides: GuideEntry[] = [
       cta: "Lees de gids",
     },
   },
+  {
+    category: "vertical",
+    status: "live",
+    en: {
+      label: "For energy and cleantech",
+      slug: "/energy-prospecting",
+      description: "Energy buyers move on regulation cycles, not sales cycles. RED III deadlines, ETS compliance windows, and grid connection approvals create narrow moments where new vendors get a hearing. This guide covers where those signals surface first.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor energie en cleantech",
+      slug: "/nl/energie-prospecting",
+      description: "Energiebedrijven kopen op regelgevingscycli, niet op verkoopcycli. RED III-deadlines, ETS-compliancevensters en netaansluitingsgoedkeuringen creëren korte momenten waarop nieuwe leveranciers gehoor krijgen. Deze gids laat zien waar die signalen als eerste opduiken.",
+      cta: "Lees de gids",
+    },
+  },
+  {
+    category: "vertical",
+    status: "live",
+    en: {
+      label: "For construction and real estate",
+      slug: "/construction-prospecting",
+      description: "Construction projects are public before they are private. Planning applications, tender publications, and building permit filings create a lead time of months before any budget conversation happens. This guide covers how to use that window.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor bouw en vastgoed",
+      slug: "/nl/bouw-prospecting",
+      description: "Bouwprojecten zijn publiek voordat ze privé zijn. Omgevingsvergunningen, TenderNed-publicaties en bestemmingsplanwijzigingen creëren een voorsprong van maanden voordat een budgetgesprek plaatsvindt. Deze gids laat zien hoe je dat venster benut.",
+      cta: "Lees de gids",
+    },
+  },
+  {
+    category: "vertical",
+    status: "live",
+    en: {
+      label: "For agritech and food production",
+      slug: "/agritech-prospecting",
+      description: "Agricultural buyers work to seasonal and subsidy cycles that most sales teams ignore. CAP reform deadlines, cooperative investment rounds, and GlobalG.A.P. recertification windows open predictable buying moments. This guide covers where those signals are.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor agritech en voedselproductie",
+      slug: "/nl/agritech-prospecting",
+      description: "Agrarische kopers werken op seizoens- en subsidiescycli die de meeste salesteams negeren. GLB-hervormingsdeadlines, coöperatieve investeringsrondes en GlobalG.A.P.-hercertificeringsvensters creëren voorspelbare koopmomenten. Deze gids laat zien waar die signalen zijn.",
+      cta: "Lees de gids",
+    },
+  },
+  {
+    category: "vertical",
+    status: "live",
+    en: {
+      label: "For healthcare and life sciences",
+      slug: "/healthcare-prospecting",
+      description: "Healthcare procurement is slow by design - until it isn't. Accreditation cycles, EHR migrations, and facility expansions create defined windows where new vendor conversations are not just tolerated but actively sought. This guide covers the signals that mark those moments.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor zorg en life sciences",
+      slug: "/nl/healthcare-prospecting",
+      description: "Zorginkopers zijn traag van opzet - totdat ze dat niet meer zijn. Accreditatiecycli, EPD-migraties en uitbreidingen van zorglocaties creëren duidelijke vensters waarin gesprekken met nieuwe leveranciers niet alleen worden getolereerd maar actief worden gezocht. Deze gids laat zien welke signalen die momenten markeren.",
+      cta: "Lees de gids",
+    },
+  },
+  {
+    category: "vertical",
+    status: "live",
+    en: {
+      label: "For food and beverage",
+      slug: "/food-prospecting",
+      description: "Food manufacturers buy when audits, retailer requirements, or new product launches force the issue. FSSC 22000 recertifications, private-label tenders, and EUDR compliance deadlines all create timed moments where procurement conversations open. This guide covers how to find them.",
+      cta: "Read the guide",
+    },
+    nl: {
+      label: "Voor food en dranken",
+      slug: "/nl/food-prospecting",
+      description: "Voedingsmiddelenproducenten kopen wanneer audits, retailervereisten of nieuwe productlanceringen de kwestie forceren. FSSC 22000-hercertificeringen, private-label-aanbestedingen en EUDR-compliancedeadlines creëren getimede momenten waarop inkoopgesprekken opengaan. Deze gids laat zien hoe je die vindt.",
+      cta: "Lees de gids",
+    },
+  },
 ];
 
 // ── Helpers ────────────────────────────────────────────────────────────────

@@ -9,67 +9,67 @@ import { breadcrumbList } from "@/lib/seo";
 const breadcrumb = breadcrumbList([
   { name: "Home", path: "/" },
   { name: "Industries", path: "/industries" },
-  { name: "Logistics and freight prospecting", path: "/logistics-prospecting" },
+  { name: "Construction and real estate prospecting", path: "/construction-prospecting" },
 ]);
 
 const pains = [
-  "The operations director you need to reach doesn't have a LinkedIn profile.",
-  "Your best signal was a new depot opening - you found it in a news item, a month late.",
-  "You're sending to info@ because the right contact isn't findable in any database.",
-  "Freight and logistics buyers ignore outreach that doesn't arrive at exactly the right moment.",
+  "The project director you need is on-site, not on LinkedIn.",
+  "Planning permissions are your best lead signal - and you're finding them after groundbreaking.",
+  "Construction procurement happens in stages. You're arriving at the wrong one.",
+  "Developer contacts change with every project. You're working from a list that's already out of date.",
 ];
 
 const signals = [
   {
-    title: "Depot and facility expansions.",
-    body: "A new warehouse, distribution centre, or regional hub almost always precedes procurement activity. Planning permissions, company register filings, and trade press announcements are the earliest signals - often weeks before the decision-maker gets a calendar invite about tooling. By the time a depot opening makes general business news, most suppliers have already reached out. The window is in the weeks after the filing, not after the ribbon cutting.",
+    title: "Planning applications and building permits.",
+    body: "A planning application is the earliest possible signal that a construction or development project is real and funded. It precedes contractor appointments, material procurement, and equipment orders by months. Planning applications are filed publicly with local authorities and accessible through national planning portals. In the Netherlands, this means omgevingsvergunning filings through Omgevingsloket. In the UK, planning portal submissions. Most sellers find out about projects from trade press coverage of groundbreakings - at which point the procurement decisions have already been made.",
   },
   {
-    title: "New route wins and contract announcements.",
-    body: "A carrier or freight forwarder that just won a major contract or opened a new lane is in growth mode. That means headcount, new vehicles, and supplier reviews. Route wins typically appear in trade publications and company press releases before they surface in the broader business press - and they're often announced on LinkedIn by the CEO or commercial director within 48 hours of signing. That post is the signal. Most sellers see it too late to act.",
+    title: "Developer and contractor tender publications.",
+    body: "Public and semi-public tenders in construction are listed in procurement portals, sector databases, and trade publications before they close. TenderNed in the Netherlands, Tenders Electronic Daily for EU-threshold projects. Being on the tender list is much easier if you've made contact before the tender is drafted. Procurement managers write specifications around suppliers they've already spoken to. Arriving cold at a tender stage is starting from behind.",
   },
   {
-    title: "Regulatory and compliance deadlines.",
-    body: "Clean transport regulations, ETS extensions, CSRD reporting requirements, and cross-border compliance changes all create procurement windows. The logic is simple: logistics companies buying ahead of a compliance deadline have a date, a budget, and a board asking for status updates. They are not comparison-shopping - they are solving a problem on a timeline. Getting in before the deadline pressure peaks is the difference between being considered and being too late.",
+    title: "Real estate acquisition and portfolio announcements.",
+    body: "A property developer that just acquired a site or announced a new scheme is entering a procurement cycle for professional services, construction management, materials, and technology. Commercial real estate acquisitions are registered in public land registries and often announced in trade press within days. The procurement that follows is both predictable and time-compressed - developers move quickly once planning is secured.",
   },
   {
-    title: "Procurement role openings.",
-    body: "A new Head of Procurement, Supply Chain Director, or Fleet Manager posting is a strong short-term signal. The incoming person almost always reviews supplier relationships in their first 90 days - before existing contracts get reconfirmed and before internal inertia sets in. Job postings are public. Most sellers don't act on them because finding the right contact at the same company takes time they don't have. That's the gap.",
+    title: "Sustainability certification and ESG compliance requirements.",
+    body: "BREEAM, LEED, WELL, and energy performance requirements are increasingly mandatory for commercial development - either by regulation, by investor covenant, or by occupier demand. A developer who has committed to BREEAM Excellent on a scheme is actively procuring the systems, materials, and consultants that make the rating achievable. These commitments appear in planning applications, investment announcements, and company ESG reports before they show up in any database.",
   },
 ];
 
 const faq = [
   {
-    q: "Logistics companies barely use LinkedIn. Can you actually find contacts?",
-    a: "That's exactly why the 21-provider waterfall matters most in this sector. Hooklyne doesn't rely on LinkedIn density. It pulls from company registries, business directories, trade association records, and verified provider databases. Operations and procurement contacts in freight and logistics are findable - they're just not on the platforms most tools use as their primary source.",
+    q: "Construction decisions involve a lot of subcontractors and intermediaries. Who do I actually reach?",
+    a: "It depends on what you sell. For materials and equipment: procurement director or project manager. For professional services: the lead developer or development director. For technology and software: the digital/BIM manager or operations director. Hooklyne identifies the right seniority for your offer at each company rather than surfacing a generic list - construction has more distinct contact types than most sectors.",
   },
   {
-    q: "These are long sales cycles. Is signal-led outreach worth it for freight?",
-    a: "The cycle is long, but getting in before a competitor is still the difference between being on the shortlist and not being on it at all. The signal - new facility, new contract, new procurement hire - is the opening. Missing it and cold calling six months later is harder, not easier.",
+    q: "Construction cycles are long and relationships-driven. Is cold outreach effective?",
+    a: "Cold outreach at the wrong moment is ineffective. Cold outreach at planning stage - before the shortlist forms - is very effective. The goal is to be a known quantity by the time procurement formally opens. That requires reaching the right person before the project is in active procurement, not during it.",
   },
   {
-    q: "Do you cover smaller carriers and freight forwarders, not just the big 3PLs?",
-    a: "Yes. Hooklyne is built for 10-100 FTE companies, which covers most independent carriers, regional freight forwarders, and specialist logistics operators. The big 3PLs have procurement departments that run formal RFP processes - the segment where signal-led outreach has the most leverage is the mid-market.",
+    q: "We focus on residential developers specifically. Does Hooklyne cover that segment?",
+    a: "Yes. Residential developers and housebuilders are covered through company registries, planning databases, and sector sources. Both large volume housebuilders and SME residential developers are in scope. The signal sources differ slightly - residential planning applications tend to be filed through local authority portals, commercial through national databases - but both are monitored.",
   },
   {
-    q: "What if Hooklyne doesn't work for our logistics ICP?",
-    a: "Pilot first. Ten prospects from your actual target list, fully built, no card required. If the output doesn't open conversations you wouldn't have had otherwise, you stop. We'd rather honest feedback than a customer who isn't a fit.",
+    q: "What if Hooklyne doesn't work for our construction ICP?",
+    a: "Pilot first. Ten prospects from your actual target list, fully built, no card required. Construction is a segment where the planning database signal approach either immediately makes sense for your offer or it doesn't - the pilot will show you that quickly.",
   },
 ];
 ---
 
 <DefaultLayout
-  title="Prospecting into logistics and freight companies | Hooklyne"
-  description="How to find buyers in logistics and freight: where the signals are, why standard databases miss operations and procurement contacts, and how to time outreach to a real buying window."
+  title="Prospecting into construction and real estate | Hooklyne"
+  description="How to reach buyers in construction and real estate development: where planning signals are, how to identify active procurement phases, and how to get in before the shortlist closes."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Logistics and freight prospecting guide",
-    "description": "How to prospect into logistics and freight companies: signals, contacts, and buying windows.",
-    "url": "https://www.hooklyne.com/logistics-prospecting",
+    "name": "Construction and real estate prospecting guide",
+    "description": "How to prospect into construction and real estate: planning signals, contacts, and buying phases.",
+    "url": "https://www.hooklyne.com/construction-prospecting",
     "inLanguage": "en"
   })} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
@@ -86,12 +86,12 @@ const faq = [
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Logistics and freight prospecting</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Construction and real estate prospecting</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Logistics buyers are hard to reach. That's the point.
+          Construction procurement is decided before the signs go up.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Operations directors and procurement managers in logistics and freight don't spend time on LinkedIn. Their buying signals sit in trade publications, company registries, planning databases, and route announcements. This guide covers where those signals are, which roles actually make the decisions, and how to reach them before the window closes.
+          By the time a construction project appears in trade press, the supplier shortlist is largely formed. The buyers who matter - project developers, procurement directors, development managers - are reachable months earlier, when the planning application is filed and the procurement hasn't started yet. This guide covers how to find those signals and what to do with them.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -135,8 +135,8 @@ const faq = [
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
               <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
             </div>
-            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real logistics prospects first.</p>
-            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your logistics ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real construction prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your construction ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
             <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
               Request a pilot <ArrowRight className="size-3.5" />
             </a>
@@ -148,12 +148,12 @@ const faq = [
     <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
       <div class="container max-w-3xl">
         <div class="mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How logistics companies buy</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How construction and real estate companies buy</p>
           <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Four signals that open a logistics buying window.
+            Four signals that open a construction buying window.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Logistics and freight procurement is driven by operational events, not LinkedIn activity. The signals are in different places - and they're worth more when you find them first.
+            Construction procurement is predictable if you know where to look. The signals are in planning databases and registries - not in press releases that arrive after the decisions are made.
           </p>
         </div>
         <div class="space-y-8">
@@ -174,12 +174,12 @@ const faq = [
       <div class="container max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Where Hooklyne fits</p>
         <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
-          Built for sectors with low digital footprint.
+          Built for procurement that starts before the project is public.
         </h2>
         <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
-          <p>Logistics and freight is one of the least well-represented sectors in LinkedIn-based prospecting tools. Operations directors, fleet managers, and procurement heads rarely maintain public profiles. Hooklyne waterfalls across 21 providers - including company registries, business directories, trade association records, and sector-specific databases - to surface contacts that a social-first tool would miss entirely.</p>
-          <p>The signals that matter in logistics are not in LinkedIn activity feeds. They're in KVK filings, planning permissions, trade press route announcements, and tender publications. Hooklyne monitors those sources alongside standard news feeds, which means the signal you get is typically earlier than what your competitors are working from.</p>
-          <p>The first message is drafted in your rep's writing style and references the specific event that makes this company relevant right now - a new facility, a contract win, a compliance deadline. A logistics buyer who receives a message that names their recent route expansion and connects it to a real operational implication reads it. A generic sequence does not.</p>
+          <p>Construction and real estate procurement is front-loaded. The decisions that matter - who gets on the shortlist, who writes the specification, who gets invited to tender - happen at planning stage, not at construction stage. Hooklyne monitors planning portals, land registries, and procurement databases to surface the signal at the point where contact still makes a difference.</p>
+          <p>The right contact varies significantly by project stage and company type. A developer at pre-planning stage is different from a contractor at tender stage. Hooklyne identifies the correct role at each company based on your offer and verifies the contact across 21 providers - rather than returning a generic list and leaving the targeting decision to your rep.</p>
+          <p>The first message is drafted in your rep's writing style and references the specific project or filing that makes this company relevant right now. A development director who receives a message that references their recent planning application and connects it to a real procurement need reads it. A generic 'we help construction companies' message does not.</p>
         </div>
       </div>
     </section>
@@ -194,7 +194,7 @@ const faq = [
         <div class="flex flex-wrap gap-x-5 gap-y-2">
           <a href="/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">All industry guides</a>
           <a href="/industrial-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Industrial and manufacturing</a>
-          <a href="/saas-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">B2B SaaS</a>
+          <a href="/energy-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Energy and utilities</a>
           <a href="/gdpr-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">GDPR-compliant prospecting</a>
           <a href="/compare" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool comparisons</a>
         </div>
@@ -206,7 +206,7 @@ const faq = [
         <div class="text-center mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
           <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
-            Logistics prospecting questions, answered.
+            Construction prospecting questions, answered.
           </h2>
         </div>
         <div class="space-y-3">

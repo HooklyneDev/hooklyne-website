@@ -9,67 +9,67 @@ import { breadcrumbList } from "@/lib/seo";
 const breadcrumb = breadcrumbList([
   { name: "Home", path: "/" },
   { name: "Industries", path: "/industries" },
-  { name: "Logistics and freight prospecting", path: "/logistics-prospecting" },
+  { name: "Healthcare prospecting", path: "/healthcare-prospecting" },
 ]);
 
 const pains = [
-  "The operations director you need to reach doesn't have a LinkedIn profile.",
-  "Your best signal was a new depot opening - you found it in a news item, a month late.",
-  "You're sending to info@ because the right contact isn't findable in any database.",
-  "Freight and logistics buyers ignore outreach that doesn't arrive at exactly the right moment.",
+  "Healthcare buyers have strict procurement rules. Cold outreach that ignores them doesn't get a reply.",
+  "The procurement manager changed. You found out from the bounce.",
+  "You're reaching clinicians who have no purchasing authority, not the procurement or operations leads who do.",
+  "Accreditation renewals and digital transformation timelines are your best signals - and you're not tracking them.",
 ];
 
 const signals = [
   {
-    title: "Depot and facility expansions.",
-    body: "A new warehouse, distribution centre, or regional hub almost always precedes procurement activity. Planning permissions, company register filings, and trade press announcements are the earliest signals - often weeks before the decision-maker gets a calendar invite about tooling. By the time a depot opening makes general business news, most suppliers have already reached out. The window is in the weeks after the filing, not after the ribbon cutting.",
+    title: "Digital transformation and EHR implementation projects.",
+    body: "A healthcare organisation that has announced or begun an electronic health record implementation, a digital patient portal, or a clinical decision support project is in an extended procurement cycle that creates multiple adjacent purchasing decisions. IT infrastructure, integration middleware, training, data management, cybersecurity - each is a sub-project with its own procurement window. Implementation announcements are often in annual reports, hospital board minutes (which are public in the Netherlands), and trade press.",
   },
   {
-    title: "New route wins and contract announcements.",
-    body: "A carrier or freight forwarder that just won a major contract or opened a new lane is in growth mode. That means headcount, new vehicles, and supplier reviews. Route wins typically appear in trade publications and company press releases before they surface in the broader business press - and they're often announced on LinkedIn by the CEO or commercial director within 48 hours of signing. That post is the signal. Most sellers see it too late to act.",
+    title: "Accreditation renewals and quality certifications.",
+    body: "NIAZ, JCI, NEN 7510, and ISO 27001 for healthcare information security - each creates a procurement review cycle. A hospital or clinic approaching accreditation renewal is evaluating whether its current suppliers and systems meet the updated criteria. A clinic that just achieved a new accreditation has demonstrated its willingness to invest in quality infrastructure and often has ongoing procurement to maintain the standard. Accreditation cycles are documented and predictable.",
   },
   {
-    title: "Regulatory and compliance deadlines.",
-    body: "Clean transport regulations, ETS extensions, CSRD reporting requirements, and cross-border compliance changes all create procurement windows. The logic is simple: logistics companies buying ahead of a compliance deadline have a date, a budget, and a board asking for status updates. They are not comparison-shopping - they are solving a problem on a timeline. Getting in before the deadline pressure peaks is the difference between being considered and being too late.",
+    title: "Merger, acquisition, and network consolidation.",
+    body: "Healthcare consolidation - hospital mergers, clinic acquisitions, GP practice network formation - creates procurement reviews at the consolidated entity level. The new combined organisation needs to rationalise suppliers, standardise systems, and often upgrade infrastructure to serve the larger patient base. These consolidations are registered with healthcare regulators and often in company registries. The procurement window is in the 6-18 months following the merger, not before it.",
   },
   {
-    title: "Procurement role openings.",
-    body: "A new Head of Procurement, Supply Chain Director, or Fleet Manager posting is a strong short-term signal. The incoming person almost always reviews supplier relationships in their first 90 days - before existing contracts get reconfirmed and before internal inertia sets in. Job postings are public. Most sellers don't act on them because finding the right contact at the same company takes time they don't have. That's the gap.",
+    title: "New facility openings and department expansions.",
+    body: "A new clinic, a department expansion, or a satellite facility opening is a clean procurement trigger: equipment, IT, staffing systems, patient management software. Planning applications for healthcare facilities are filed with municipal authorities and often accompanied by press announcements. The procurement window opens at planning approval, not at opening day. Reaching the operations or procurement director at planning stage is significantly easier than arriving after the equipment decisions have already been made.",
   },
 ];
 
 const faq = [
   {
-    q: "Logistics companies barely use LinkedIn. Can you actually find contacts?",
-    a: "That's exactly why the 21-provider waterfall matters most in this sector. Hooklyne doesn't rely on LinkedIn density. It pulls from company registries, business directories, trade association records, and verified provider databases. Operations and procurement contacts in freight and logistics are findable - they're just not on the platforms most tools use as their primary source.",
+    q: "Healthcare procurement is highly regulated. Can Hooklyne operate in this environment?",
+    a: "Yes - and it's one of the most important reasons to use a GDPR-native tool in this sector. Every Hooklyne contact has a documented source. No scraped contact data, no grey-area databases. For healthcare buyers who run their own compliance checks on vendor relationships, Hooklyne's provenance approach is documentable and defensible.",
   },
   {
-    q: "These are long sales cycles. Is signal-led outreach worth it for freight?",
-    a: "The cycle is long, but getting in before a competitor is still the difference between being on the shortlist and not being on it at all. The signal - new facility, new contract, new procurement hire - is the opening. Missing it and cold calling six months later is harder, not easier.",
+    q: "Hospital procurement often goes through formal tendering. Is outreach-led prospecting useful?",
+    a: "Formal tendering is the end of the process, not the beginning. The organisations that win tenders are usually known to the procurement team before the tender is published. Being a known, credible supplier at the pre-tender stage is the goal. Hooklyne gets you to the right person at the right moment to establish that relationship.",
   },
   {
-    q: "Do you cover smaller carriers and freight forwarders, not just the big 3PLs?",
-    a: "Yes. Hooklyne is built for 10-100 FTE companies, which covers most independent carriers, regional freight forwarders, and specialist logistics operators. The big 3PLs have procurement departments that run formal RFP processes - the segment where signal-led outreach has the most leverage is the mid-market.",
+    q: "We sell to private clinics, not large hospitals. Does coverage work at that level?",
+    a: "Yes. Private clinics and specialist care providers are well-covered in KVK registrations, healthcare regulatory filings, and sector databases. The segment where outreach-led prospecting has the most leverage is often mid-size private healthcare - 20-200 FTE - where procurement isn't fully formalised and relationships matter more than framework agreements.",
   },
   {
-    q: "What if Hooklyne doesn't work for our logistics ICP?",
-    a: "Pilot first. Ten prospects from your actual target list, fully built, no card required. If the output doesn't open conversations you wouldn't have had otherwise, you stop. We'd rather honest feedback than a customer who isn't a fit.",
+    q: "What if Hooklyne doesn't work for our healthcare ICP?",
+    a: "Pilot first. Ten prospects from your actual target list, fully built, no card required. Healthcare is a segment where the accreditation and transformation timing approach either resonates immediately or the buyer isn't in a procurement window yet - the pilot will make that clear quickly.",
   },
 ];
 ---
 
 <DefaultLayout
-  title="Prospecting into logistics and freight companies | Hooklyne"
-  description="How to find buyers in logistics and freight: where the signals are, why standard databases miss operations and procurement contacts, and how to time outreach to a real buying window."
+  title="Prospecting into healthcare organisations | Hooklyne"
+  description="How to reach buyers in healthcare: digital transformation signals, accreditation timelines, facility opening triggers, and how to navigate procurement rules to reach the right decision-maker."
   image="/og/home.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Logistics and freight prospecting guide",
-    "description": "How to prospect into logistics and freight companies: signals, contacts, and buying windows.",
-    "url": "https://www.hooklyne.com/logistics-prospecting",
+    "name": "Healthcare prospecting guide",
+    "description": "How to prospect into healthcare organisations: signals, contacts, and buying windows.",
+    "url": "https://www.hooklyne.com/healthcare-prospecting",
     "inLanguage": "en"
   })} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
@@ -86,12 +86,12 @@ const faq = [
     <section class="pt-32 lg:pt-44 pb-12 lg:pb-16 relative" data-fade>
       <HeroGlow client:idle signals={false} />
       <div id="hero-content" class="container max-w-4xl text-center relative z-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Logistics and freight prospecting</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Healthcare prospecting</p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--heading)] leading-[1.1] mb-5">
-          Logistics buyers are hard to reach. That's the point.
+          Healthcare buyers have strict rules. The ones who matter are still reachable.
         </h1>
         <p class="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-          Operations directors and procurement managers in logistics and freight don't spend time on LinkedIn. Their buying signals sit in trade publications, company registries, planning databases, and route announcements. This guide covers where those signals are, which roles actually make the decisions, and how to reach them before the window closes.
+          Procurement in healthcare is governed by accreditation requirements, digital transformation timelines, and regulatory frameworks - not by LinkedIn activity. The signals that indicate an active buying window are in board minutes, facility filings, and accreditation databases. This guide covers where those signals are and how to reach the right person before the formal process starts.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -135,8 +135,8 @@ const faq = [
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
               <p class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color: var(--hooklyne-teal);">Free pilot, no card</p>
             </div>
-            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real logistics prospects first.</p>
-            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your logistics ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
+            <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real healthcare prospects first.</p>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your healthcare ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
             <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
               Request a pilot <ArrowRight className="size-3.5" />
             </a>
@@ -148,12 +148,12 @@ const faq = [
     <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
       <div class="container max-w-3xl">
         <div class="mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How logistics companies buy</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How healthcare organisations buy</p>
           <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Four signals that open a logistics buying window.
+            Four signals that open a healthcare buying window.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Logistics and freight procurement is driven by operational events, not LinkedIn activity. The signals are in different places - and they're worth more when you find them first.
+            Healthcare procurement follows accreditation cycles, digital transformation projects, and organisational changes - not social media activity. The signals are in public filings and regulatory databases.
           </p>
         </div>
         <div class="space-y-8">
@@ -174,12 +174,12 @@ const faq = [
       <div class="container max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Where Hooklyne fits</p>
         <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
-          Built for sectors with low digital footprint.
+          Built for buyers who check where your data comes from.
         </h2>
         <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
-          <p>Logistics and freight is one of the least well-represented sectors in LinkedIn-based prospecting tools. Operations directors, fleet managers, and procurement heads rarely maintain public profiles. Hooklyne waterfalls across 21 providers - including company registries, business directories, trade association records, and sector-specific databases - to surface contacts that a social-first tool would miss entirely.</p>
-          <p>The signals that matter in logistics are not in LinkedIn activity feeds. They're in KVK filings, planning permissions, trade press route announcements, and tender publications. Hooklyne monitors those sources alongside standard news feeds, which means the signal you get is typically earlier than what your competitors are working from.</p>
-          <p>The first message is drafted in your rep's writing style and references the specific event that makes this company relevant right now - a new facility, a contract win, a compliance deadline. A logistics buyer who receives a message that names their recent route expansion and connects it to a real operational implication reads it. A generic sequence does not.</p>
+          <p>Healthcare buyers are among the most data-conscious in any sector. Every Hooklyne contact has a documented source - public registry, company website, accreditation database. No scraped contact data, no grey-area sourcing. For healthcare procurement teams that run compliance checks on vendor relationships, that provenance is documentable. Hooklyne is built and hosted in the Netherlands and waterfall-verifies contacts across 21 registered providers.</p>
+          <p>The right contact in healthcare depends on what you're selling and the size of the organisation. At a private clinic, the decision maker is often the medical director or practice manager. At a larger hospital, it's the procurement director, CIO, or operations director depending on the category. Hooklyne identifies the correct role at each organisation rather than surfacing a list of clinicians who have no purchasing authority.</p>
+          <p>The first message references the specific trigger that makes this organisation relevant right now - a digital transformation project they've announced, an accreditation renewal approaching, a new facility filing. That specificity matters more in healthcare than almost any other sector, because procurement managers receive a high volume of outreach and filter it based on demonstrated relevance.</p>
         </div>
       </div>
     </section>
@@ -193,8 +193,7 @@ const faq = [
         <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Related guides</p>
         <div class="flex flex-wrap gap-x-5 gap-y-2">
           <a href="/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">All industry guides</a>
-          <a href="/industrial-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Industrial and manufacturing</a>
-          <a href="/saas-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">B2B SaaS</a>
+          <a href="/fintech-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Fintech and financial services</a>
           <a href="/gdpr-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">GDPR-compliant prospecting</a>
           <a href="/compare" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool comparisons</a>
         </div>
@@ -206,7 +205,7 @@ const faq = [
         <div class="text-center mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-3">FAQ</p>
           <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight">
-            Logistics prospecting questions, answered.
+            Healthcare prospecting questions, answered.
           </h2>
         </div>
         <div class="space-y-3">

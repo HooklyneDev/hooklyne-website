@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, Factory, Calendar, FileText, Users, Search, Shield, Clock, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -16,47 +16,25 @@ const pains = [
   "The plant manager you need to reach has no LinkedIn profile and no public email.",
   "ISO certification renewal is your best procurement window - you find out from their website, too late.",
   "You're sending to info@ because the right decision-maker isn't in any database you have.",
-  "Industrial buyers take longer, but the first to reach them usually wins the conversation.",
+  "Industrial buyers move slowly once a shortlist is formed - but you're still trying to get on it.",
 ];
 
 const signals = [
   {
-    icon: Factory,
     title: "Facility expansions and new site openings.",
-    body: "A new production facility, warehouse, or regional site almost always means procurement activity: new equipment, new suppliers, new service contracts. Planning permissions and company register filings appear weeks before a press release does. That's the window - before the shortlist is already decided.",
+    body: "A new production facility, warehouse, or regional site almost always means procurement activity: new equipment, new suppliers, new service contracts. Planning permissions and company register filings appear weeks before a press release does. That is the window - before the shortlist is already formed and before a preferred supplier has been given first right of response. Most sellers find out about facility expansions from news coverage, at which point the early procurement conversations have already happened.",
   },
   {
-    icon: Calendar,
     title: "ISO and quality certification renewals.",
-    body: "ISO 9001, ISO 14001, and industry-specific certification cycles are public and predictable. A company approaching renewal is reviewing suppliers and processes. A company that just achieved or upgraded certification is investing in quality infrastructure. Both are procurement windows - neither shows up in LinkedIn activity.",
+    body: "ISO 9001, ISO 14001, and industry-specific certification cycles are public and predictable. A company approaching renewal is reviewing suppliers and processes against their certification requirements. A company that just achieved or upgraded certification is investing in quality infrastructure and often has fresh budget allocated. Neither event shows up in LinkedIn activity. Both are visible in certification registries if you know where to look.",
   },
   {
-    icon: Users,
     title: "Procurement and operations role openings.",
-    body: "A new Head of Procurement, Operations Director, or Supply Chain Manager typically reviews supplier relationships in their first 90 days. That review is the window. It closes once existing relationships are reconfirmed or new ones are locked in. A job posting is the signal - not the signed contract.",
+    body: "A new Head of Procurement, Operations Director, or Supply Chain Manager typically reviews supplier relationships in their first 90 days. That review is the window - it closes once existing relationships are reconfirmed or new ones are locked in. The job posting appears publicly before the hire starts, which means you have a window of several weeks to get in front of the incoming decision-maker before their inbox fills up with incumbent suppliers.",
   },
   {
-    icon: FileText,
     title: "Tender publications and CAPEX announcements.",
-    body: "Public tenders and CAPEX announcements in manufacturing are often listed in sector databases, procurement portals, and trade press before they reach the broader market. A company that has published a tender is already in active buying mode. The question is whether you're on their list.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Search,
-    title: "21-provider waterfall for low-LinkedIn sectors.",
-    body: "Manufacturing and industrial companies are the least well-covered segment in LinkedIn-based databases. Operations directors, plant managers, and procurement heads rarely maintain public profiles. Hooklyne waterfalls across 21 providers - including company registries, business directories, and sector databases - to surface contacts that a social-first tool would miss entirely.",
-  },
-  {
-    icon: Shield,
-    title: "Signals from registers, not just news feeds.",
-    body: "The best industrial signals are not on LinkedIn. They're in KVK filings, planning databases, certification registries, and trade procurement portals. Hooklyne monitors those sources alongside standard news feeds, so the signal you get is earlier than what your competitors are seeing.",
-  },
-  {
-    icon: Clock,
-    title: "First contact, not follow-up number six.",
-    body: "Industrial buyers move slowly once a shortlist is formed - but they're reachable before it is. Hooklyne scores the signal, verifies the contact across 21 providers, and drafts an opening message in your rep's writing style that references the specific event. Getting in early with a relevant reason is the whole model.",
+    body: "Public tenders and CAPEX announcements in manufacturing are often listed in sector databases, procurement portals, and trade press before they reach the broader market. A company that has published a tender is in active buying mode with a defined timeline and budget. The question is whether your company is on the vendor list. Getting on it before the formal tender closes is significantly easier than winning from outside after the evaluation has started.",
   },
 ];
 
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real industrial prospects first.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your manufacturing ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
             <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Request a pilot
-              <ArrowRight className="size-3.5" />
+              Request a pilot <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How industrial companies buy</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Four signals that open a manufacturing buying window.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
             Industrial procurement is driven by operational events - not LinkedIn activity. The signals are earlier, harder to find, and worth more when you get there first.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for industrial-focused teams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Built for sectors where the contact isn't on page one of Google.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Multi-source contact verification, signals from registers and trade databases, and outreach timed to the procurement window - not a sequence drip.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Where Hooklyne fits</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Built for sectors where the contact isn't on page one of Google.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Manufacturing and industrial companies are the least well-covered segment in LinkedIn-based prospecting tools. Operations directors, plant managers, and procurement heads rarely maintain public profiles. Hooklyne waterfalls across 21 providers - including company registries, business directories, sector databases, and verified European sources - to surface contacts that a social-first tool would miss entirely.</p>
+          <p>The best industrial signals are not on LinkedIn. They're in KVK filings, planning databases, certification registries, and trade procurement portals. Hooklyne monitors those sources alongside standard news feeds, so the signal you get is typically earlier than what your competitors are working from. First contact before the shortlist forms is the whole model - not follow-up number six after the decision has already been made.</p>
+          <p>The first message is drafted in your rep's writing style, referencing the specific event that makes this company relevant right now. A new facility planning application, a tender notice, an ISO certification upgrade - named specifically and connected to what it means for their procurement process. Getting in early with a relevant reason is considerably more effective than arriving with a generic pitch after the preferred supplier is already in position.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,19 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Related guides</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">All industry guides</a>
+          <a href="/logistics-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Logistics and freight</a>
+          <a href="/energy-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Energy and utilities</a>
+          <a href="/construction-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Construction and real estate</a>
+          <a href="/gdpr-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">GDPR-compliant prospecting</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

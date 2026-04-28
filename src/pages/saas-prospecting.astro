@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 import { HeroGlow } from '@/components/hero-glow';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, TrendingUp, Users, Zap, Layers, Target, Clock, MessageSquare, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -21,42 +21,20 @@ const pains = [
 
 const signals = [
   {
-    icon: TrendingUp,
     title: "Funding rounds.",
-    body: "Series A and B are the most reliable SaaS buying windows. A raise means headcount plans, stack reviews, and a leadership team that just got asked by a board to show process and scale. The window is roughly six to ten weeks post-announcement - after that, everyone has already called.",
+    body: "Series A and B are the most reliable SaaS buying windows. A raise means headcount plans, stack reviews, and a leadership team that just got asked by a board to show process and scale. The window is roughly six to ten weeks post-announcement - after that, everyone has already called. Earlier-stage companies at Seed can also be active buyers if the raise was specifically to build GTM capacity, but the signal is less reliable without a headcount plan to confirm it.",
   },
   {
-    icon: Users,
     title: "RevOps, SDR, and VP Sales hires.",
-    body: "A new Head of RevOps almost always precedes a tooling review. New SDR headcount means the current stack needs to scale. A VP of Sales at a 20-40 person company often resets the outbound motion entirely. These are higher-signal than 'they visited your pricing page'.",
+    body: "A new Head of RevOps almost always precedes a tooling review. New SDR headcount means the current stack needs to scale. A VP of Sales at a 20-40 person company often resets the outbound motion entirely - existing tools, sequences, and data sources all get evaluated in the first 90 days. These are higher-signal than 'they visited your pricing page' because they indicate a decision-maker with both authority and a mandate to change something.",
   },
   {
-    icon: Zap,
     title: "Tech stack changes.",
-    body: "A company that just moved off HubSpot, dropped a data tool, or announced a new integration is in active evaluation mode. Stack signals surface in job descriptions ('must have experience with X'), LinkedIn posts from ops team members, and press releases about new partnerships.",
+    body: "A company that just moved off HubSpot, dropped a data tool, or announced a new integration is in active evaluation mode. Stack signals surface in job descriptions ('must have experience with X'), LinkedIn posts from ops team members, and press releases about new partnerships. A company that just made one tech switch is statistically more likely to be reviewing adjacent tools in the same quarter.",
   },
   {
-    icon: Layers,
     title: "Headcount inflection points.",
-    body: "25 to 50 employees is the inflection where informal processes break. 50 to 100 is where sales ops becomes a real function. Companies crossing these thresholds are buying things they couldn't justify six months earlier - and the budget is often already allocated.",
-  },
-];
-
-const hooklynePoints = [
-  {
-    icon: Target,
-    title: "Right contact, right seniority.",
-    body: "Whether you need the CTO, VP of Engineering, Head of RevOps, or the SDR lead depends on your offer. Hooklyne surfaces the three best-matched contacts at each company, verified across 21 providers, rather than returning a list and leaving the judgement to you.",
-  },
-  {
-    icon: Clock,
-    title: "Timing to the signal, not the sequence.",
-    body: "Hooklyne scores each prospect against live signals: funding, hiring, expansion, stack changes. The first message goes out when there is a reason that belongs in the opening line - not when a sequence reaches day seven.",
-  },
-  {
-    icon: MessageSquare,
-    title: "A message a CTO would actually read.",
-    body: "SaaS buyers get cold email for a living. Hooklyne drafts the first message in your rep's voice, referencing the specific signal that makes this prospect relevant right now. Generic loses. Relevant and timed wins.",
+    body: "25 to 50 employees is the inflection where informal processes break. 50 to 100 is where sales ops becomes a real function. 100+ is where tooling decisions get centralised procurement. Companies crossing these thresholds are buying things they couldn't justify six months earlier - and the budget is often already allocated before the tool is picked. Being in the conversation early matters more than being the best pitch in a crowded shortlist.",
   },
 ];
 
@@ -152,7 +130,6 @@ const faq = [
             </ul>
             <p class="text-xs text-[var(--muted-foreground)] mt-4 leading-relaxed">If any of that lands, the rest of this page is for you.</p>
           </div>
-
           <div class="rounded-2xl p-5 sm:p-6 flex flex-col" style="background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.20);">
             <div class="flex items-center gap-2 mb-3">
               <Gift className="size-4" style={{ color: "var(--hooklyne-teal)" }} />
@@ -161,8 +138,7 @@ const faq = [
             <p class="text-sm font-semibold text-[var(--heading)] leading-snug mb-2">Try it on 10 of your real SaaS prospects first.</p>
             <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">Ten fully researched prospect packages from your SaaS ICP. No payment, no contract. Twenty minutes of honest feedback after - that's it.</p>
             <a href="/contact" class="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity btn-shine self-start" style="background: var(--hooklyne-teal);">
-              Request a pilot
-              <ArrowRight className="size-3.5" />
+              Request a pilot <ArrowRight className="size-3.5" />
             </a>
           </div>
         </div>
@@ -170,25 +146,24 @@ const faq = [
     </section>
 
     <section id="signals" class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">How SaaS companies buy</p>
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
+          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Four signals that open a SaaS buying window.
           </h2>
           <p class="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            SaaS buyers are not permanently closed to new tools. They are closed to bad timing. These are the signals that indicate an active window, not just a plausible ICP fit.
+            SaaS buyers are not permanently closed to new tools. They are closed to bad timing. These are the signals that indicate an active window - not just a plausible ICP fit.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-          {signals.map((s) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <s.icon className="size-5" />
+        <div class="space-y-8">
+          {signals.map((s, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{s.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
@@ -196,27 +171,15 @@ const faq = [
     </section>
 
     <section class="pt-2 pb-12 lg:pt-4 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Hooklyne for SaaS teams</p>
-          <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
-            Built for the way SaaS companies actually buy.
-          </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Signal scoring, contact verification across 21 providers, and a drafted first message that references the reason this prospect is relevant right now.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {hooklynePoints.map((h) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid rgba(13,148,136,0.20);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(13,148,136,0.10); color: var(--hooklyne-teal);">
-                <h.icon className="size-5" />
-              </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{h.title}</h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.body}</p>
-            </div>
-          ))}
+      <div class="container max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-teal)] mb-4">Where Hooklyne fits</p>
+        <h2 class="text-2xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] mb-6">
+          Built for the way SaaS companies actually buy.
+        </h2>
+        <div class="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+          <p>Whether you need the CTO, VP of Engineering, Head of RevOps, or the SDR lead depends on what you're selling. Hooklyne identifies the right seniority for each company and waterfall-verifies contacts across 21 providers - rather than returning a list and leaving the judgement call to you.</p>
+          <p>Contact quality matters, but timing matters more. Hooklyne scores each prospect against live signals - funding events, hiring changes, stack updates - and prepares outreach to arrive when the signal is fresh, not when a sequence reaches day seven.</p>
+          <p>The first message is drafted in your rep's writing style, referencing the specific event that makes this prospect relevant right now. SaaS buyers read cold email for a living. A message that names the Series A and connects it to a real tooling implication earns a read. A template does not.</p>
         </div>
       </div>
     </section>
@@ -224,6 +187,19 @@ const faq = [
 
   <Background variant="bottom">
     <HomePricing client:visible />
+
+    <section class="pt-6 pb-4 lg:pt-10 lg:pb-6" data-fade>
+      <div class="container max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Related guides</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/industries" class="text-sm text-[var(--hooklyne-blue)] hover:underline">All industry guides</a>
+          <a href="/logistics-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Logistics and freight</a>
+          <a href="/fintech-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Fintech and financial services</a>
+          <a href="/gdpr-prospecting" class="text-sm text-[var(--hooklyne-blue)] hover:underline">GDPR-compliant prospecting</a>
+          <a href="/compare" class="text-sm text-[var(--hooklyne-blue)] hover:underline">Tool comparisons</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pt-6 pb-20 lg:pt-10 lg:pb-28" data-fade>
       <div class="container max-w-3xl">

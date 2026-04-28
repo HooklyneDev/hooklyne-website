@@ -5,7 +5,7 @@ import { HeroGlow } from '@/components/hero-glow';
 import { DIYCompare } from '@/components/blocks/diy-compare';
 import { HeadToHead } from '@/components/blocks/head-to-head';
 import { HomePricing } from '@/components/blocks/home-pricing';
-import { ArrowRight, ShieldCheck, Search, FileText, AlertCircle, Gift } from 'lucide-react';
+import { ArrowRight, AlertCircle, Gift } from 'lucide-react';
 import { breadcrumbList } from "@/lib/seo";
 
 const breadcrumb = breadcrumbList([
@@ -15,17 +15,14 @@ const breadcrumb = breadcrumbList([
 
 const breakdowns = [
   {
-    icon: Search,
     title: "Built to research, not to send.",
     body: "Apollo is a sending engine on top of a US-first contact database. Hooklyne is a research workflow that produces the prospect package before anything goes out. If your bottleneck is volume, Apollo is fine. If your bottleneck is reply rate, the volume tool is the problem.",
   },
   {
-    icon: ShieldCheck,
     title: "European coverage, four-layer verification.",
     body: "Apollo's NL, BE, and DACH coverage runs thinner than its US numbers because the source mix is wrong for European SMEs. We waterfall across 21 providers and run four deliverability checks (SMTP, catch-all, role, deliverable) before a contact ships, so the cold email actually clears the bar.",
   },
   {
-    icon: FileText,
     title: "A signal layer Apollo doesn't have.",
     body: "Funding, hiring, leadership change, expansion, launch, sector and press signals scored against your ICP. Each prospect arrives with a why-now reason that an Apollo CSV can't tell you, sourced and citable so the email writes itself in the rep's voice.",
   },
@@ -156,8 +153,8 @@ const faq = [
     </section>
 
     <section class="pt-6 pb-12 lg:pt-10 lg:pb-20" data-fade>
-      <div class="container max-w-6xl">
-        <div class="max-w-3xl mb-10">
+      <div class="container max-w-3xl">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">Where Apollo breaks for SMEs</p>
           <h2 class="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-4">
             Three things Apollo wasn't built for.
@@ -167,18 +164,14 @@ const faq = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-          {breakdowns.map((b) => (
-            <div class="rounded-2xl p-5 sm:p-6" style="background: var(--card); border: 1px solid var(--border);">
-              <div class="size-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue);">
-                <b.icon className="size-5" />
+        <div class="space-y-8">
+          {breakdowns.map((b, i) => (
+            <div class="flex gap-5 pb-8 border-b border-[var(--border)] last:pb-0 last:border-0">
+              <span class="text-sm font-bold tabular-nums shrink-0 mt-0.5 w-5" style="color: var(--hooklyne-blue)">{i + 1}</span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">{b.title}</h3>
+                <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{b.body}</p>
               </div>
-              <h3 class="text-base sm:text-lg font-semibold text-[var(--heading)] tracking-tight leading-snug mb-2">
-                {b.title}
-              </h3>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                {b.body}
-              </p>
             </div>
           ))}
         </div>

@@ -69,22 +69,22 @@ const comingSoon = comingSoonByCategory("vertical");
           </div>
         )}
 
-        <div>
-          {live.length > 0 && (
+        {comingSoon.length > 0 && (
+          <div>
             <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-6">Coming soon</h2>
-          )}
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {comingSoon.map((item) => (
-              <div class="rounded-2xl p-6 opacity-50" style="background: var(--card); border: 1px solid var(--border);">
-                <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Industry</span>
-                <p class="text-sm font-medium text-[var(--heading)]">{item.en.label}</p>
-                <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
-                  <Clock className="size-3" /> In progress
-                </span>
-              </div>
-            ))}
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {comingSoon.map((item) => (
+                <div class="rounded-2xl p-6 opacity-50" style="background: var(--card); border: 1px solid var(--border);">
+                  <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-3">Industry</span>
+                  <p class="text-sm font-medium text-[var(--heading)]">{item.en.label}</p>
+                  <span class="inline-flex items-center gap-1 text-xs text-[var(--muted-foreground)] mt-3">
+                    <Clock className="size-3" /> In progress
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   </Background>
