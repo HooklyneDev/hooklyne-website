@@ -7,6 +7,7 @@ import { DIYCompare } from '@/components/blocks/diy-compare';
 import { WhatYouGet } from '@/components/blocks/what-you-get';
 import { WaysToStart } from '@/components/blocks/ways-to-start';
 import { BuiltFor } from '@/components/blocks/built-for';
+import { QuoteStrip } from '@/components/blocks/quote-strip';
 import { HomePricing } from '@/components/blocks/home-pricing';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -55,6 +56,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     <WhatYouGet lang="nl" />
     <WaysToStart lang="nl" client:visible />
     <BuiltFor lang="nl" client:visible />
+    <QuoteStrip lang="nl" client:visible />
     <HomePricing lang="nl" client:visible />
   </Background>
 </DefaultLayout>

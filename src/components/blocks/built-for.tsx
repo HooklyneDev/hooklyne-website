@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Rocket, Truck, Briefcase } from "lucide-react";
 import { useLang, type Lang } from "@/lib/use-lang";
+import { Avatar } from "@/components/avatar";
 
 const EN = {
   eyebrow: "Built for",
@@ -23,16 +24,19 @@ const EN = {
       sector: "B2B SaaS",
       signal: "Series A closed. Founder still the only seller.",
       opener: "Saw the raise. When the founder is still sole seller after a Series A, the first two GTM hires usually go wrong. Worth 15 minutes before you post the roles?",
+      persona: { name: "Mark Janssen", role: "Founder & CEO" },
     },
     {
       sector: "B2B logistics",
       signal: "New VP Sales joined from a market leader. Three AE roles posted within two weeks.",
       opener: "New VP plus three open AEs usually means a full tooling reset. Happy to show how similar teams set up their outbound in the first 90 days.",
+      persona: { name: "Sara de Vries", role: "VP Sales" },
     },
     {
       sector: "B2B professional services",
       signal: "Just signed a Tier 1 retailer contract. Compliance headcount doubling.",
       opener: "Saw the retailer deal. That type of contract creates compliance pressure around month 3 for the vendor side too. Two similar firms ran into it recently - happy to share what they did.",
+      persona: { name: "David Aarts", role: "Head of Compliance" },
     },
   ],
 };
@@ -58,16 +62,19 @@ const NL = {
       sector: "B2B SaaS",
       signal: "Series A afgerond. Founder nog steeds de enige seller.",
       opener: "Zag de ronde. Als de founder na een Series A nog steeds solo verkoopt, gaan de eerste twee salesaanstellingen er vaak naast. Kwartier waard voordat je de vacatures plaatst?",
+      persona: { name: "Mark Janssen", role: "Founder & CEO" },
     },
     {
       sector: "B2B logistiek",
       signal: "Nieuwe VP Sales ingestroomd vanuit een marktleider. Drie AE-vacatures binnen twee weken.",
       opener: "Nieuwe VP plus drie open AE-rollen betekent bijna altijd een volledige tooling-reset. Ik laat graag zien hoe vergelijkbare teams hun outbound in de eerste 90 dagen opzetten.",
+      persona: { name: "Sara de Vries", role: "VP Sales" },
     },
     {
       sector: "B2B professionele dienstverlening",
       signal: "Zojuist een Tier 1-retailercontract getekend. Compliance-headcount verdubbelt.",
       opener: "Zag de retailerdeal. Dat type contract legt ook aan de leverancierskant druk op compliance, meestal rond maand 3. Twee vergelijkbare bedrijven liepen er recent tegenaan - ik deel graag wat ze deden.",
+      persona: { name: "David Aarts", role: "Head of Compliance" },
     },
   ],
 };
@@ -195,6 +202,19 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
 
                     <div className="h-px mb-3" style={{ background: accentBorder }} />
 
+                    {/* Recipient persona */}
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <Avatar name={card.persona.name} tone={tone} size="sm" />
+                      <div className="leading-tight">
+                        <div className="text-[11.5px] font-semibold text-[var(--heading)]">
+                          {card.persona.name}
+                        </div>
+                        <div className="text-[10.5px] text-[var(--muted-foreground)]">
+                          {card.persona.role}
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Opener */}
                     <p className="text-[13px] leading-relaxed" style={{ color: "var(--heading)" }}>
                       {card.opener}
@@ -264,6 +284,13 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
                   <p className="text-[12px] italic text-[var(--muted-foreground)] leading-relaxed mb-2.5">
                     {card.signal}
                   </p>
+                  <div className="flex items-center gap-2 mb-2 pt-2 border-t" style={{ borderColor: "var(--border)" }}>
+                    <Avatar name={card.persona.name} tone={tone} size="sm" />
+                    <div className="leading-tight">
+                      <div className="text-[11.5px] font-semibold text-[var(--heading)]">{card.persona.name}</div>
+                      <div className="text-[10.5px] text-[var(--muted-foreground)]">{card.persona.role}</div>
+                    </div>
+                  </div>
                   <p className="text-[12.5px] leading-relaxed" style={{ color: "var(--heading)" }}>
                     {card.opener}
                   </p>

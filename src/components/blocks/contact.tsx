@@ -193,7 +193,7 @@ export const Contact = ({ lang: langProp }: { lang?: Lang } = {}) => {
   return (
     <section className="pt-32 pb-20 lg:pt-40 lg:pb-28">
       <div className="container max-w-5xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">{t.eyebrow}</p>
           <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-[var(--heading)] mb-4">
             {t.headline}
@@ -201,6 +201,37 @@ export const Contact = ({ lang: langProp }: { lang?: Lang } = {}) => {
           <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
             {t.sub}
           </p>
+        </div>
+
+        <div className="flex justify-center mb-12">
+          <div
+            className="inline-flex items-center gap-3 rounded-full pl-1.5 pr-4 py-1.5"
+            style={{
+              background: "var(--card)",
+              border: "1px solid var(--border)",
+              boxShadow: "var(--shadow-xs)",
+            }}
+          >
+            <span className="inline-flex items-center justify-center size-8 rounded-full overflow-hidden ring-2 ring-white shrink-0">
+              <img
+                src="/about/tim-wissink.jpg"
+                alt="Tim, founder"
+                loading="lazy"
+                decoding="async"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+              />
+            </span>
+            <div className="text-left leading-tight">
+              <div className="text-[12px] font-semibold text-[var(--heading)]">
+                {lang === "nl" ? "Je spreekt met Tim" : "You'll talk to Tim"}
+              </div>
+              <div className="text-[10.5px] text-[var(--muted-foreground)]">
+                {lang === "nl" ? "Founder van Hooklyne" : "Founder of Hooklyne"}
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-5 mb-10">
