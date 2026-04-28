@@ -11,12 +11,16 @@ import { useLang, type Lang } from "@/lib/use-lang";
 
 const HEAD_EN = {
   eyebrow: "FAQ",
-  headline: "Frequently asked, honestly answered.",
+  headline: (
+    <>Frequently asked, <span className="text-accent">honestly answered</span>.</>
+  ),
   sub: "The ones we hear most. If yours isn't here, ask us directly.",
 };
 const HEAD_NL = {
   eyebrow: "FAQ",
-  headline: "Veelgestelde vragen, eerlijk beantwoord.",
+  headline: (
+    <>Veelgestelde vragen, <span className="text-accent">eerlijk beantwoord</span>.</>
+  ),
   sub: "De vragen die we het vaakst horen; staat de jouwe er niet tussen, mail ons dan direct.",
 };
 
