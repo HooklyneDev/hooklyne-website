@@ -102,7 +102,7 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
 
   return (
     <section className="relative pt-10 pb-10 lg:pt-12 lg:pb-12 overflow-hidden" data-fade>
-      <WavePattern tone="blue" intensity="medium" uid="builtfor" />
+      <WavePattern tone="blue" intensity="subtle" uid="builtfor" />
       <div className="container max-w-6xl relative z-10">
         <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 

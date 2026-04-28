@@ -1,8 +1,10 @@
 /**
- * WavePattern - flowing horizontal lines used as section background texture.
- * Subtle, brand blue, fades in/out at the edges.
+ * WavePattern - topographic contour lines used as section background.
  *
- * Drop inside a `position: relative` parent, before the content.
+ * Modern, subtle. Long organic curves with slight diagonal flow,
+ * heavily masked at the edges so it reads as texture, not UI.
+ *
+ * Drop inside a `position: relative; overflow: hidden` parent.
  *
  *   <section className="relative overflow-hidden">
  *     <WavePattern />
@@ -25,32 +27,34 @@ type Props = {
   uid?: string;
 };
 
-const curves = [
-  { y: 60,  amp: 18, freq: 1.0,  phase: 0,    op: 0.55 },
-  { y: 120, amp: 24, freq: 0.9,  phase: 0.4,  op: 0.7  },
-  { y: 190, amp: 16, freq: 1.1,  phase: 0.9,  op: 0.5  },
-  { y: 260, amp: 28, freq: 0.85, phase: 0.2,  op: 0.85 },
-  { y: 340, amp: 20, freq: 1.0,  phase: 0.6,  op: 0.65 },
-  { y: 420, amp: 22, freq: 0.95, phase: 1.1,  op: 0.75 },
-  { y: 500, amp: 16, freq: 1.05, phase: 0.3,  op: 0.5  },
-  { y: 580, amp: 24, freq: 0.9,  phase: 0.8,  op: 0.6  },
+/**
+ * Each curve is a long organic path with cubic beziers that flow across
+ * the viewBox. y-positions and control points are hand-picked so the
+ * resulting lines feel like contour lines on a topographic map - never
+ * parallel, varying gap, slight diagonal drift.
+ */
+const CURVES: { d: string; op: number }[] = [
+  {
+    d: "M -50 120 C 200 60, 400 180, 620 110 S 1000 40, 1250 130",
+    op: 0.55,
+  },
+  {
+    d: "M -50 220 C 240 140, 460 290, 700 210 S 1050 130, 1250 240",
+    op: 0.7,
+  },
+  {
+    d: "M -50 320 C 180 240, 420 380, 660 310 S 1010 230, 1250 340",
+    op: 0.85,
+  },
+  {
+    d: "M -50 420 C 220 340, 480 480, 720 420 S 1080 360, 1250 460",
+    op: 0.7,
+  },
+  {
+    d: "M -50 520 C 260 440, 500 580, 740 520 S 1100 460, 1250 540",
+    op: 0.5,
+  },
 ];
-
-const buildPath = (y: number, amp: number, freq: number, phase: number) => {
-  const segments = 8;
-  const segWidth = 1200 / segments;
-  let d = `M 0 ${y + Math.sin(phase) * amp}`;
-  for (let i = 1; i <= segments; i++) {
-    const x = i * segWidth;
-    const cy = y + Math.sin(phase + i * freq) * amp;
-    const cpx1 = x - segWidth / 2;
-    const cpy1 = y + Math.sin(phase + (i - 0.5) * freq) * amp * 1.3;
-    const cpx2 = x - segWidth / 4;
-    const cpy2 = cy;
-    d += ` C ${cpx1} ${cpy1}, ${cpx2} ${cpy2}, ${x} ${cy}`;
-  }
-  return d;
-};
 
 export const WavePattern = ({
   tone = "blue",
@@ -59,11 +63,13 @@ export const WavePattern = ({
   uid = "wp",
 }: Props) => {
   const stroke = TONE_STROKE[tone];
-  const baseOpacity = intensity === "medium" ? 0.20 : 0.13;
-  const vmask = `${uid}-vmask`;
+  const baseOpacity = intensity === "medium" ? 0.16 : 0.10;
+  const vmaskId = `${uid}-vmask`;
+  const hmaskId = `${uid}-hmask`;
   const vgrad = `${uid}-vgrad`;
   const hgrad = `${uid}-hgrad`;
-  const hmask = `${uid}-hmask`;
+  const blob1 = `${uid}-blob1`;
+  const blob2 = `${uid}-blob2`;
 
   return (
     <div
@@ -77,34 +83,51 @@ export const WavePattern = ({
         className="w-full h-full"
       >
         <defs>
+          {/* Vertical fade so curves don't end abruptly at top/bottom of section */}
           <linearGradient id={vgrad} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%"   stopColor="black" stopOpacity="0" />
             <stop offset="22%"  stopColor="white" stopOpacity="1" />
             <stop offset="78%"  stopColor="white" stopOpacity="1" />
             <stop offset="100%" stopColor="black" stopOpacity="0" />
           </linearGradient>
+          {/* Horizontal fade so curves bleed off the sides */}
           <linearGradient id={hgrad} x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%"   stopColor="black" stopOpacity="0" />
-            <stop offset="14%"  stopColor="white" stopOpacity="1" />
-            <stop offset="86%"  stopColor="white" stopOpacity="1" />
+            <stop offset="12%"  stopColor="white" stopOpacity="1" />
+            <stop offset="88%"  stopColor="white" stopOpacity="1" />
             <stop offset="100%" stopColor="black" stopOpacity="0" />
           </linearGradient>
-          <mask id={vmask}>
+          <mask id={vmaskId}>
             <rect width="1200" height="640" fill={`url(#${vgrad})`} />
           </mask>
-          <mask id={hmask}>
+          <mask id={hmaskId}>
             <rect width="1200" height="640" fill={`url(#${hgrad})`} />
           </mask>
+          {/* Soft brand-coloured glows behind the contour lines */}
+          <radialGradient id={blob1} cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor={stroke} stopOpacity="0.10" />
+            <stop offset="100%" stopColor={stroke} stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id={blob2} cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor={stroke} stopOpacity="0.07" />
+            <stop offset="100%" stopColor={stroke} stopOpacity="0" />
+          </radialGradient>
         </defs>
-        <g mask={`url(#${vmask})`}>
-          <g mask={`url(#${hmask})`}>
-            {curves.map((c, i) => (
+
+        {/* Glows */}
+        <ellipse cx="180" cy="180" rx="380" ry="220" fill={`url(#${blob1})`} />
+        <ellipse cx="1020" cy="460" rx="420" ry="240" fill={`url(#${blob2})`} />
+
+        {/* Topographic contour lines, double-masked top/bottom + sides */}
+        <g mask={`url(#${vmaskId})`}>
+          <g mask={`url(#${hmaskId})`}>
+            {CURVES.map((c, i) => (
               <path
                 key={i}
-                d={buildPath(c.y, c.amp, c.freq, c.phase)}
+                d={c.d}
                 fill="none"
                 stroke={stroke}
-                strokeWidth="1.25"
+                strokeWidth="1"
                 strokeLinecap="round"
                 opacity={baseOpacity * c.op}
               />
