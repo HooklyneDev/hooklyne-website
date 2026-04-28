@@ -3,9 +3,7 @@ import { useLang, type Lang } from "@/lib/use-lang";
 const COPY = {
   en: {
     eyebrow: "Ways to start",
-    heading: (
-      <>Three ways to start. <span className="text-accent">One pipeline</span>.</>
-    ),
+    heading: "Three ways to start. One pipeline.",
     sub: "Pick the path that matches what you already have. Every path lands in My Leads, ready to send.",
     inputLabel: "Input",
     rows: [
@@ -34,9 +32,7 @@ const COPY = {
   },
   nl: {
     eyebrow: "Zo begin je",
-    heading: (
-      <>Drie ingangen. <span className="text-accent">Eén pipeline</span>.</>
-    ),
+    heading: "Drie ingangen. Eén pipeline.",
     sub: "Kies de ingang die past bij wat je al hebt. Elk pad eindigt in Mijn Leads, klaar om te versturen.",
     inputLabel: "Nodig",
     rows: [

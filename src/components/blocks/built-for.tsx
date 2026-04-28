@@ -7,21 +7,15 @@ const EN = {
   eyebrow: "Built for",
   statements: [
     {
-      headline: (
-        <>Founders doing <span className="text-accent">their own sales</span>.</>
-      ),
+      headline: "Founders doing their own sales.",
       body: "No ops team, no researcher, no agency budget. You're the GTM function, and Hooklyne is the research layer you'd hire if you could.",
     },
     {
-      headline: (
-        <>Sales teams at <span className="text-accent">10 to 100 person</span> companies.</>
-      ),
+      headline: "Sales teams at 10 to 100 person companies.",
       body: "One rep or eight, a CRM, maybe a sequencer. You know your ICP but burn hours researching each prospect. Hooklyne gives those hours back, and scales with you as the team grows.",
     },
     {
-      headline: (
-        <>Teams where <span className="text-accent">one good meeting</span> beats fifty cold emails.</>
-      ),
+      headline: "Teams where one good meeting beats fifty cold emails.",
       body: "Complex offers. Considered buyers. Niche ICPs. Where spray-and-pray damages your reputation and every email needs to earn its reply.",
     },
   ],
@@ -57,21 +51,15 @@ const NL = {
   eyebrow: "Gebouwd voor",
   statements: [
     {
-      headline: (
-        <>Founders die <span className="text-accent">zelf verkopen</span>.</>
-      ),
+      headline: "Founders die zelf verkopen.",
       body: "Geen ops-team, geen researcher, geen agency-budget. Jij verkoopt zelf en Hooklyne is de onderzoekslaag die je anders zou inhuren.",
     },
     {
-      headline: (
-        <>Salesteams bij bedrijven van <span className="text-accent">10 tot 100</span>.</>
-      ),
+      headline: "Salesteams bij bedrijven van 10 tot 100.",
       body: "Een salesmedewerker of acht, een CRM, misschien een sequencer. Je kent je ideaal klantprofiel, maar prospect-onderzoek vreet je week op. Hooklyne pakt dat werk over en groeit mee als je team groeit.",
     },
     {
-      headline: (
-        <>Teams die liever <span className="text-accent">één goed gesprek</span> voeren dan vijftig koude mails sturen.</>
-      ),
+      headline: "Teams die liever één goed gesprek voeren dan vijftig koude mails sturen.",
       body: "Complexe proposities, kritische kopers en niche-klantprofielen. Waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
     },
   ],
