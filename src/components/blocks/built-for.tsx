@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Rocket, Truck, Briefcase } from "lucide-react";
+import { TrendUp, UserSwitch, Handshake } from "@phosphor-icons/react";
 import { useLang, type Lang } from "@/lib/use-lang";
 import { Avatar } from "@/components/avatar";
 
@@ -21,22 +21,28 @@ const EN = {
   ],
   cards: [
     {
-      sector: "B2B SaaS",
-      signal: "Series A closed. Founder still the only seller.",
+      signalType: "Funding",
+      signalTime: "2d ago",
+      signalQuote: "Closed our Series A. Time to scale the team.",
       opener: "Saw the raise. When the founder is still sole seller after a Series A, the first two GTM hires usually go wrong. Worth 15 minutes before you post the roles?",
-      persona: { name: "Mark Janssen", role: "Founder & CEO", image: "/personas/mark-janssen.jpg" },
+      draftLabel: "Drafted by Hooklyne",
+      persona: { name: "Mark Janssen", role: "Founder & CEO at Stack Labs", image: "/personas/mark-janssen.jpg" },
     },
     {
-      sector: "B2B logistics",
-      signal: "New VP Sales joined from a market leader. Three AE roles posted within two weeks.",
+      signalType: "Leadership change",
+      signalTime: "1w ago",
+      signalQuote: "Excited to join Hertog Logistics as VP Sales. Hiring three AEs - DM if interested.",
       opener: "New VP plus three open AEs usually means a full tooling reset. Happy to show how similar teams set up their outbound in the first 90 days.",
-      persona: { name: "Sara de Vries", role: "VP Sales", image: "/personas/sara-de-vries.jpg" },
+      draftLabel: "Drafted by Hooklyne",
+      persona: { name: "Sara de Vries", role: "VP Sales at Hertog Logistics", image: "/personas/sara-de-vries.jpg" },
     },
     {
-      sector: "B2B professional services",
-      signal: "Just signed a Tier 1 retailer contract. Compliance headcount doubling.",
+      signalType: "New contract",
+      signalTime: "3d ago",
+      signalQuote: "Signed our biggest retailer to date. Compliance team doubling this quarter.",
       opener: "Saw the retailer deal. That type of contract creates compliance pressure around month 3 for the vendor side too. Two similar firms ran into it recently - happy to share what they did.",
-      persona: { name: "David Aarts", role: "Head of Compliance", image: "/personas/david-aarts.jpg" },
+      draftLabel: "Drafted by Hooklyne",
+      persona: { name: "David Aarts", role: "Head of Compliance at Mercata", image: "/personas/david-aarts.jpg" },
     },
   ],
 };
@@ -59,28 +65,34 @@ const NL = {
   ],
   cards: [
     {
-      sector: "B2B SaaS",
-      signal: "Series A afgerond. Founder nog steeds de enige seller.",
+      signalType: "Funding",
+      signalTime: "2 dagen",
+      signalQuote: "Onze Series A is rond. Tijd om het team op te bouwen.",
       opener: "Zag de ronde. Als de founder na een Series A nog steeds solo verkoopt, gaan de eerste twee salesaanstellingen er vaak naast. Kwartier waard voordat je de vacatures plaatst?",
-      persona: { name: "Mark Janssen", role: "Founder & CEO", image: "/personas/mark-janssen.jpg" },
+      draftLabel: "Opgesteld door Hooklyne",
+      persona: { name: "Mark Janssen", role: "Founder & CEO bij Stack Labs", image: "/personas/mark-janssen.jpg" },
     },
     {
-      sector: "B2B logistiek",
-      signal: "Nieuwe VP Sales ingestroomd vanuit een marktleider. Drie AE-vacatures binnen twee weken.",
+      signalType: "Leiderschapswissel",
+      signalTime: "1 week",
+      signalQuote: "Begonnen als VP Sales bij Hertog Logistics. We zoeken drie AE's - stuur een bericht als je interesse hebt.",
       opener: "Nieuwe VP plus drie open AE-rollen betekent bijna altijd een volledige tooling-reset. Ik laat graag zien hoe vergelijkbare teams hun outbound in de eerste 90 dagen opzetten.",
-      persona: { name: "Sara de Vries", role: "VP Sales", image: "/personas/sara-de-vries.jpg" },
+      draftLabel: "Opgesteld door Hooklyne",
+      persona: { name: "Sara de Vries", role: "VP Sales bij Hertog Logistics", image: "/personas/sara-de-vries.jpg" },
     },
     {
-      sector: "B2B professionele dienstverlening",
-      signal: "Zojuist een Tier 1-retailercontract getekend. Compliance-headcount verdubbelt.",
+      signalType: "Nieuw contract",
+      signalTime: "3 dagen",
+      signalQuote: "Onze grootste retailer ooit getekend. Het compliance-team verdubbelt dit kwartaal.",
       opener: "Zag de retailerdeal. Dat type contract legt ook aan de leverancierskant druk op compliance, meestal rond maand 3. Twee vergelijkbare bedrijven liepen er recent tegenaan - ik deel graag wat ze deden.",
-      persona: { name: "David Aarts", role: "Head of Compliance", image: "/personas/david-aarts.jpg" },
+      draftLabel: "Opgesteld door Hooklyne",
+      persona: { name: "David Aarts", role: "Head of Compliance bij Mercata", image: "/personas/david-aarts.jpg" },
     },
   ],
 };
 
 const CARD_TONES = ["blue", "teal", "orange"] as const;
-const CARD_ICONS = [Rocket, Truck, Briefcase];
+const CARD_ICONS = [TrendUp, UserSwitch, Handshake];
 
 export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
   const lang = useLang(langProp);
@@ -162,7 +174,7 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
                   <button
                     key={i}
                     onClick={() => { setActive(i); setPaused(true); }}
-                    aria-label={`Show ${card.sector}`}
+                    aria-label={`Show signal from ${card.persona.name}`}
                     className="glass-off absolute inset-x-0 text-left rounded-2xl p-5 lg:p-6"
                     style={{
                       top: "50%",
@@ -178,45 +190,49 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
                       pointerEvents: isCenter ? "auto" : "none",
                     }}
                   >
-                    {/* Icon + sector */}
-                    <div className="flex items-center gap-2.5 mb-4">
-                      <span
-                        className="inline-flex items-center justify-center size-9 rounded-lg shrink-0"
-                        style={{ background: accentBg, color: accentColor }}
-                        aria-hidden="true"
-                      >
-                        <Icon className="size-4" />
-                      </span>
-                      <span
-                        className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                        style={{ color: accentColor }}
-                      >
-                        {card.sector}
-                      </span>
-                    </div>
-
-                    {/* Signal */}
-                    <p className="text-[12.5px] italic text-[var(--muted-foreground)] leading-relaxed mb-3">
-                      {card.signal}
-                    </p>
-
-                    <div className="h-px mb-3" style={{ background: accentBorder }} />
-
-                    {/* Recipient persona */}
-                    <div className="flex items-center gap-2 mb-2.5">
-                      <Avatar name={card.persona.name} src={card.persona.image} tone={tone} size="sm" ring />
-                      <div className="leading-tight">
-                        <div className="text-[11.5px] font-semibold text-[var(--heading)]">
+                    {/* Person header */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <Avatar name={card.persona.name} src={card.persona.image} tone={tone} size="lg" />
+                      <div className="leading-tight min-w-0">
+                        <div className="text-[14px] font-semibold text-[var(--heading)] truncate">
                           {card.persona.name}
                         </div>
-                        <div className="text-[10.5px] text-[var(--muted-foreground)]">
+                        <div className="text-[11.5px] text-[var(--muted-foreground)] truncate">
                           {card.persona.role}
                         </div>
                       </div>
                     </div>
 
-                    {/* Opener */}
-                    <p className="text-[13px] leading-relaxed" style={{ color: "var(--heading)" }}>
+                    {/* Signal type pill */}
+                    <div className="flex items-center gap-1.5 mb-2.5">
+                      <Icon size={14} weight="regular" style={{ color: accentColor }} />
+                      <span
+                        className="text-[10.5px] font-semibold uppercase tracking-[0.18em]"
+                        style={{ color: accentColor }}
+                      >
+                        {card.signalType}
+                      </span>
+                      <span className="text-[10.5px] text-[var(--muted-foreground)]">
+                        · {card.signalTime}
+                      </span>
+                    </div>
+
+                    {/* Signal quote */}
+                    <p className="text-[13px] leading-relaxed text-[var(--heading)] mb-4">
+                      "{card.signalQuote}"
+                    </p>
+
+                    {/* Drafted-reply divider */}
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <div className="h-px flex-1" style={{ background: accentBorder }} />
+                      <span className="text-[9.5px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
+                        {card.draftLabel}
+                      </span>
+                      <div className="h-px flex-1" style={{ background: accentBorder }} />
+                    </div>
+
+                    {/* Drafted opener */}
+                    <p className="text-[12.5px] leading-relaxed text-[var(--muted-foreground)] italic">
                       {card.opener}
                     </p>
                   </button>
@@ -266,32 +282,31 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     boxShadow: "var(--shadow-sm)",
                   }}
                 >
-                  <div className="flex items-center gap-2.5 mb-3">
-                    <span
-                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0"
-                      style={{ background: accentBg, color: accentColor }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="size-4" />
-                    </span>
-                    <span
-                      className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                      style={{ color: accentColor }}
-                    >
-                      {card.sector}
-                    </span>
-                  </div>
-                  <p className="text-[12px] italic text-[var(--muted-foreground)] leading-relaxed mb-2.5">
-                    {card.signal}
-                  </p>
-                  <div className="flex items-center gap-2 mb-2 pt-2 border-t" style={{ borderColor: "var(--border)" }}>
-                    <Avatar name={card.persona.name} src={card.persona.image} tone={tone} size="sm" ring />
-                    <div className="leading-tight">
-                      <div className="text-[11.5px] font-semibold text-[var(--heading)]">{card.persona.name}</div>
-                      <div className="text-[10.5px] text-[var(--muted-foreground)]">{card.persona.role}</div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Avatar name={card.persona.name} src={card.persona.image} tone={tone} size="md" />
+                    <div className="leading-tight min-w-0">
+                      <div className="text-[13px] font-semibold text-[var(--heading)] truncate">{card.persona.name}</div>
+                      <div className="text-[11px] text-[var(--muted-foreground)] truncate">{card.persona.role}</div>
                     </div>
                   </div>
-                  <p className="text-[12.5px] leading-relaxed" style={{ color: "var(--heading)" }}>
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <Icon size={12} weight="regular" style={{ color: accentColor }} />
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: accentColor }}>
+                      {card.signalType}
+                    </span>
+                    <span className="text-[10px] text-[var(--muted-foreground)]">· {card.signalTime}</span>
+                  </div>
+                  <p className="text-[12.5px] leading-relaxed text-[var(--heading)] mb-3">
+                    "{card.signalQuote}"
+                  </p>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="h-px flex-1" style={{ background: "var(--border)" }} />
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
+                      {card.draftLabel}
+                    </span>
+                    <div className="h-px flex-1" style={{ background: "var(--border)" }} />
+                  </div>
+                  <p className="text-[12px] leading-relaxed text-[var(--muted-foreground)] italic">
                     {card.opener}
                   </p>
                 </div>
