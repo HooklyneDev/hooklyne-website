@@ -44,6 +44,9 @@ const offerCatalog = {
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Pricing</p>
         <h1 class="hero-headline text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Simple pricing with <span class="text-accent">transparent credits</span>.</h1>
         <p class="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">One credit system. Every action priced the same across plans. No per-seat fees on Start and Growth. Switch plans or cancel anytime.</p>
+        <a href="/how-it-works" class="inline-block mt-3 text-[12.5px] text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] hover:underline transition-colors">
+          How we are different from other prospecting tools →
+        </a>
       </div>
 
       <!-- Free pilot banner (kept inside the hero section so the glow reaches behind it) -->
@@ -157,7 +160,7 @@ const offerCatalog = {
             <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 90 ready-to-send prospects, 30 tracked companies, 10 meeting briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
-            {["2 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 40 companies", "45-min setup + strategy call", "ICP configured with you", "Monthly check-in (first 3 months)"].map((f) => (
+            {["2 seats (add up to 2 extra at €30/seat/mo)", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 40 companies", "45-min setup + strategy call", "ICP configured with you", "Monthly check-in (first 3 months)"].map((f) => (
               <li class="flex items-start gap-2 text-xs text-white/70">
                 <svg class="size-3.5 shrink-0 mt-0.5 text-green-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 {f}
@@ -235,7 +238,7 @@ const offerCatalog = {
 
       <!-- Subnote under plan cards -->
       <p class="text-center text-xs text-[var(--muted-foreground)] leading-relaxed max-w-3xl mx-auto mb-4 -mt-6">
-        Annual plans billed upfront. Credits valid 12 months. Unused credits roll 1 month forward (max balance 2× your monthly quota). Top-up at €0.85/cr on all plans. Signal tracking cap is per workspace, not per user.
+        Annual plans billed upfront. Credits valid 12 months. Unused credits roll 1 month forward (max balance 2× your monthly quota). Top-up at €0.85/cr on all plans. Signal tracking cap is per workspace, not per user. Growth extra seats: +€30/seat/mo, up to 4 seats total.
       </p>
 
       <!-- Why Growth is worth it callout -->
@@ -268,10 +271,10 @@ const offerCatalog = {
 
         <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-5">
           {[
-            { n: "1", title: "Find me companies", featured: true, desc: "Describe your ICP. Hooklyne returns up to 20 ranked companies with up to 3 matched roles each.", lines: [["Discovery (up to 20 companies)", "1cr"], ["Prospect package", "1cr"], ["Contact (email + phone)", "2cr"]], total: "4cr", soon: false },
-            { n: "2", title: "I know the company", featured: false, desc: "Enter a company name and domain. We surface up to 3 matched roles for you to pick from.", lines: [["View matched roles", "Free"], ["Prospect package", "1cr"], ["Contact (email + phone)", "2cr"]], total: "3cr", soon: false },
-            { n: "3", title: "I know who to reach", featured: false, desc: "You have a name and LinkedIn URL. We verify the email and write outreach in your voice.", lines: [["Prospect package", "1cr"], ["Contact (email + phone)", "2cr"]], total: "3cr", soon: false },
-            { n: "4", title: "Find similar companies", featured: false, desc: "Upload your best customers. Hooklyne finds companies that look just like them - same size, sector, and signals.", lines: [["ICP modelling", "TBA"], ["Prospect package", "TBA"], ["Contact (email + phone)", "TBA"]], total: "TBA", soon: true },
+            { n: "1", title: "Find me companies", featured: true, desc: "Describe your ICP. Hooklyne returns up to 20 ranked companies with up to 3 matched roles each.", lines: [["Discovery (up to 20 companies)", "1cr"], ["Prospect package", "1cr"], ["Contact (email + company phone)", "2cr"]], total: "4cr", soon: false },
+            { n: "2", title: "I know the company", featured: false, desc: "Enter a company name and domain. We surface up to 3 matched roles for you to pick from.", lines: [["View matched roles", "Free"], ["Prospect package", "1cr"], ["Contact (email + company phone)", "2cr"]], total: "3cr", soon: false },
+            { n: "3", title: "I know who to reach", featured: false, desc: "You have a name and LinkedIn URL. We verify the email and write outreach in your voice.", lines: [["Prospect package", "1cr"], ["Contact (email + company phone)", "2cr"]], total: "3cr", soon: false },
+            { n: "4", title: "Find similar companies", featured: false, desc: "Upload your best customers. Hooklyne finds companies that look just like them - same size, sector, and signals.", lines: [["ICP modelling", "TBA"], ["Prospect package", "TBA"], ["Contact (email + company phone)", "TBA"]], total: "TBA", soon: true },
           ].map((c) => (
             <div class:list={["relative rounded-2xl p-5 flex flex-col", c.featured ? "border-2" : "border", c.soon && "border-dashed"]} style={c.featured ? "background: var(--card); border-color: var(--hooklyne-blue); box-shadow: var(--shadow-sm)" : c.soon ? "background: #f8fafc; border-color: var(--border-strong)" : "background: var(--card); border-color: var(--border); box-shadow: var(--shadow-xs)"}>
               {c.soon && <span class="absolute top-3 right-3 text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[var(--muted-foreground)] px-2 py-0.5 rounded-full bg-white border border-[var(--border)]">Coming soon</span>}
@@ -298,10 +301,18 @@ const offerCatalog = {
           ))}
         </div>
 
-        <div class="rounded-xl px-5 py-4 mb-12" style="background: rgba(13,148,136,0.08); border: 1px solid rgba(13,148,136,0.22)">
+        <div class="rounded-xl px-5 py-4 mb-4" style="background: rgba(13,148,136,0.08); border: 1px solid rgba(13,148,136,0.22)">
           <p class="text-sm font-semibold mb-1.5" style="color: #0F6E56">How Route 1 works in practice</p>
           <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
             One discovery (1cr) returns up to 20 ranked companies. You decide which to convert. Build the 5 best fits: 1cr discovery + 5 × 3cr packages = <strong class="text-[var(--heading)]">16cr for 5 ready-to-send prospects</strong>. Build all 20: 61cr. Skip a company that does not fit: no extra cost. The discovery credit pays for itself the moment you convert a second company from the same list.
+          </p>
+        </div>
+
+        <!-- Direct dial / mobile coming soon -->
+        <div class="rounded-xl px-5 py-3 mb-12 flex items-start gap-3" style="background: var(--bg); border: 1px dashed var(--border-strong)">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-1 rounded shrink-0" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue)">Coming soon</span>
+          <p class="text-[12.5px] text-[var(--muted-foreground)] leading-relaxed">
+            <strong class="text-[var(--heading)]">Direct dial / mobile - 3cr per number found.</strong> Use credits from any plan to add a verified personal phone to a contact. No find, no charge.
           </p>
         </div>
 
@@ -360,7 +371,7 @@ const offerCatalog = {
             <span class="text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-1 rounded" style="background: rgba(13,148,136,0.12); color: #0F6E56">No extra credit</span>
             <span class="text-[13px] font-semibold text-[var(--heading)]">Included with every tracked signal</span>
           </div>
-          <div class="grid gap-3 sm:grid-cols-3">
+          <div class="grid gap-3 md:grid-cols-3">
             {[
               ["Signal-based email", "Drafted around the specific signal - hire, news, funding, expansion - in NL or EN, your voice."],
               ["LinkedIn request", "Short connection note referencing the trigger. Under 300 characters, ready to copy."],
@@ -413,55 +424,20 @@ const offerCatalog = {
       </div>
 
       <!-- ===========================================================
-           WHAT A MONTH LOOKS LIKE
+           WHAT A TYPICAL MONTH LOOKS LIKE - compressed 3-card row
            =========================================================== -->
       <div class="mb-16">
-        <div class="max-w-3xl mb-8">
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-3">What a month looks like</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">Realistic usage across the three tiers - not max capacity, just typical activity.</p>
-        </div>
-
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6">What a typical month looks like</h2>
         <div class="grid gap-3 md:grid-cols-3">
           {[
-            { tier: "Start - 100 credits", featured: false, lines: [["5 discoveries → 25 prospects converted", "5cr discoveries + 75cr packages = 80cr"], ["10 companies signal-tracked", "Included, no credits spent"], ["5 meeting prep briefs", "5cr · 100cr total used"]], footer: "€39/mo annual · works out to €1.56 per ready-to-send prospect" },
-            { tier: "Growth - 400 credits", featured: true, lines: [["10 discoveries → 90 prospects converted", "10cr discoveries + 270cr packages = 280cr"], ["30 companies signal-tracked", "Included, no credits spent"], ["10 meeting prep briefs", "10cr · 290cr total used, 110cr buffer"]], footer: "€129/mo annual · works out to €1.43 per ready-to-send prospect" },
-            { tier: "Scale - 800 credits", featured: false, lines: [["20 discoveries → 190 prospects converted", "20cr discoveries + 570cr packages = 590cr"], ["60 companies signal-tracked", "Included, no credits spent"], ["20 meeting prep briefs", "20cr · 630cr total used, 170cr buffer"]], footer: "€239/mo annual · works out to €1.26 per ready-to-send prospect" },
+            { tier: "Start · 100 credits", body: "≈ 25 prospects · 10 tracked · 5 briefs", footer: "€1.56 per ready-to-send prospect", featured: false },
+            { tier: "Growth · 400 credits", body: "≈ 90 prospects · 30 tracked · 10 briefs", footer: "€1.43 per ready-to-send prospect", featured: true },
+            { tier: "Scale · 800 credits", body: "≈ 190 prospects · 60 tracked · 20 briefs", footer: "€1.26 per ready-to-send prospect", featured: false },
           ].map((u) => (
-            <div class:list={["rounded-2xl p-5", u.featured ? "border-2" : "border"]} style={u.featured ? "background: var(--card); border-color: var(--hooklyne-blue); box-shadow: var(--shadow-sm)" : "background: var(--card); border-color: var(--border); box-shadow: var(--shadow-xs)"}>
-              <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-3", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
-              <div class="space-y-2.5">
-                {u.lines.map(([h, sub]) => (
-                  <div class="text-[12px] leading-relaxed">
-                    <p class="text-[var(--heading)] font-medium">{h}</p>
-                    <p class="text-[11px] text-[var(--muted-foreground)]">{sub}</p>
-                  </div>
-                ))}
-              </div>
-              <p class="mt-4 pt-3 border-t border-[var(--border)] text-[11.5px] text-[#0F6E56] leading-relaxed">{u.footer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- ===========================================================
-           WHAT MAKES HOOKLYNE DIFFERENT
-           =========================================================== -->
-      <div class="mb-16">
-        <div class="max-w-3xl mb-8">
-          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-3">What makes Hooklyne different</h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">Most tools give you a database and leave you to figure out the rest. Hooklyne is built around the work you actually want done.</p>
-        </div>
-
-        <div class="grid gap-3 md:grid-cols-2">
-          {[
-            ["Signal-led, not list-led", "Every prospect comes with a real reason to reach out: a hire, a news event, an expansion. Not just contact details."],
-            ["Dutch and English, in your voice", "Setup captures your tone. Every email and LinkedIn message matches it. No template feel."],
-            ["No CRM required", "Your prospects, signals, and outreach all live in My Leads. Export to CSV anytime. Pair with any CRM if you have one."],
-            ["Built for 1-3 reps, not enterprise", "Self-serve, single dashboard, no implementation project. You're sending outreach the same week you sign up."],
-          ].map(([t, d]) => (
-            <div class="rounded-2xl p-5" style="background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-xs)">
-              <p class="text-[14px] font-semibold text-[var(--heading)] mb-2">{t}</p>
-              <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed">{d}</p>
+            <div class:list={["rounded-xl p-4", u.featured ? "border-2" : "border"]} style={u.featured ? "background: var(--card); border-color: var(--hooklyne-blue); box-shadow: var(--shadow-sm)" : "background: var(--card); border-color: var(--border); box-shadow: var(--shadow-xs)"}>
+              <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-2", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
+              <p class="text-[13px] text-[var(--heading)] mb-2 leading-relaxed">{u.body}</p>
+              <p class="text-[11.5px] text-[#0F6E56]">{u.footer}</p>
             </div>
           ))}
         </div>
@@ -487,6 +463,10 @@ const offerCatalog = {
             {
               q: "Why is the company phone included in contact finding?",
               a: "Because we found it costs us almost nothing to deliver, and it materially improves what you can do with each prospect. Other tools charge separately for it. We just include it."
+            },
+            {
+              q: "Can I add more seats to my plan?",
+              a: "On Growth, yes. You can add up to 2 extra seats at €30/seat/mo (so up to 4 seats total). Beyond that, you'll move to Scale, which already includes 5 seats and gives you 4× more credits. Start is solo-rep only - if you need a second seat, you're better off on Growth where you also get more credits, signals, and a setup call. Scale and Enterprise have fixed seat counts; for more seats on those tiers, talk to us."
             },
             {
               q: "What is a credit?",
