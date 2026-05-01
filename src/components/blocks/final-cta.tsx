@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, MapPin, FileText, ArrowCounterClockwise } from "@phosphor-icons/react";
+import { ArrowRight, ShieldCheck, MapPin, FileText, ArrowCounterClockwise, Database, ChatCircle } from "@phosphor-icons/react";
 import { useLang, type Lang } from "@/lib/use-lang";
 
 export type CTAVariant = "home" | "how-it-works" | "product" | "about" | "pricing" | "faq";
@@ -115,17 +115,17 @@ const NL_VARIANTS: Record<CTAVariant, CTACopy> = {
 };
 
 const EN_TRUST = [
-  { icon: ShieldCheck, label: "GDPR-compliant" },
-  { icon: MapPin,      label: "EU-native" },
+  { icon: ChatCircle,  label: "Native NL + EN" },
+  { icon: Database,    label: "No CRM required" },
+  { icon: ShieldCheck, label: "GDPR · EU-native" },
   { icon: FileText,    label: "No contract, try anytime" },
-  { icon: ArrowCounterClockwise,   label: "Cancel whenever" },
 ];
 
 const NL_TRUST = [
-  { icon: ShieldCheck, label: "AVG-proof" },
-  { icon: MapPin,      label: "EU-gevestigd" },
-  { icon: FileText,    label: "Geen contract" },
-  { icon: ArrowCounterClockwise,   label: "Altijd opzegbaar" },
+  { icon: ChatCircle,  label: "Native NL + EN" },
+  { icon: Database,    label: "Geen CRM nodig" },
+  { icon: ShieldCheck, label: "AVG · EU-gevestigd" },
+  { icon: FileText,    label: "Geen contract, altijd opzegbaar" },
 ];
 
 export const FinalCTA = ({ variant = "home", lang: langProp }: { variant?: CTAVariant; lang?: Lang }) => {
