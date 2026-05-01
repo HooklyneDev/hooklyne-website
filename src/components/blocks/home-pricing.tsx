@@ -3,15 +3,15 @@ import { cn } from "@/lib/utils";
 import { useLang, type Lang } from "@/lib/use-lang";
 
 const EN_PLANS = [
-  { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test and validate your outbound.", highlighted: false },
-  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Full pipeline. Everything included.", highlighted: true },
-  { name: "Scale", from: 239, credits: 800, sub: "Small sales team. Up to 5 reps.", highlighted: false },
+  { name: "Start", from: 39, credits: 100, sub: "Solo rep. Test and validate your outbound. Self-serve.", highlighted: false },
+  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Full pipeline. Setup call included.", highlighted: true },
+  { name: "Scale", from: 239, credits: 800, sub: "Small sales team. Volume outbound. Up to 5 reps.", highlighted: false },
 ];
 
 const NL_PLANS = [
-  { name: "Start", from: 39, credits: 100, sub: "Voor solo reps die hun outbound willen valideren.", highlighted: false },
-  { name: "Growth", from: 129, credits: 400, sub: "Voor 1-2 reps met een volle pipeline en alles erbij.", highlighted: true },
-  { name: "Scale", from: 239, credits: 800, sub: "Voor teams tot 5 reps met volume-outbound.", highlighted: false },
+  { name: "Start", from: 39, credits: 100, sub: "Eén rep. Test en valideer je outbound. Self-serve.", highlighted: false },
+  { name: "Growth", from: 129, credits: 400, sub: "1-2 reps. Volledige pipeline. Setup call inbegrepen.", highlighted: true },
+  { name: "Scale", from: 239, credits: 800, sub: "Klein salesteam. Volume outbound. Tot 5 reps.", highlighted: false },
 ];
 
 const EN_T = {
