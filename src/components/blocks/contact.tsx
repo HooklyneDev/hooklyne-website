@@ -10,14 +10,14 @@ type Interest = "" | "Pilot" | "Demo" | "Question";
 type Status = "idle" | "loading" | "success" | "error";
 
 const EN = {
-  submit: { "": "Send message", Pilot: "Start my free pilot", Demo: "Book my demo", Question: "Send message" } as Record<Interest, string>,
+  submit: { "": "Send message", Pilot: "Start my free trial", Demo: "Book my demo", Question: "Send message" } as Record<Interest, string>,
   eyebrow: "Contact",
   headline: "Let's talk.",
-  sub: "Book a demo, start a free pilot, or ask a question. Most replies inside four hours, never more than one business day.",
+  sub: "Book a demo, start a free trial, or ask a question. Most replies inside four hours, never more than one business day.",
   pilotEyebrow: "10 credits, free",
   pilotTitle: "Start a free trial",
   pilotBody: "10 credits. 1 seat. Sector news for 2 weeks. Signals visible but locked. No payment, no card. In return: 20-min feedback call and case study rights.",
-  pilotCta: "Request a pilot →",
+  pilotCta: "Try free →",
   pilotBadge: "Recommended",
   demoEyebrow: "20 minutes",
   demoTitle: "Book a demo",
@@ -37,7 +37,7 @@ const EN = {
   emailPh: "me@company.com",
   interestLabel: "What are you after?",
   pickOne: "Pick one",
-  optPilot: "Free pilot - 10 prospects built for us",
+  optPilot: "Free trial - 10 prospects built for us",
   optDemo: "Live demo of the portal",
   optQuestion: "Just a question",
   message: "Message",
@@ -51,7 +51,7 @@ const EN = {
   preferEmail: "Prefer email? Write to us at",
   basedIn: "Based in the Netherlands, reachable across EMEA.",
   subjects: {
-    Pilot: "Pilot request from hooklyne.com",
+    Pilot: "Trial request from hooklyne.com",
     Demo: "Demo request from hooklyne.com",
     Question: "Question from hooklyne.com",
     "": "New message from hooklyne.com",
@@ -64,14 +64,14 @@ const EN = {
 };
 
 const NL = {
-  submit: { "": "Verstuur bericht", Pilot: "Start mijn gratis pilot", Demo: "Boek mijn demo", Question: "Verstuur bericht" } as Record<Interest, string>,
+  submit: { "": "Verstuur bericht", Pilot: "Start mijn gratis trial", Demo: "Boek mijn demo", Question: "Verstuur bericht" } as Record<Interest, string>,
   eyebrow: "Contact",
   headline: "Laten we praten.",
-  sub: "Boek een demo, start een gratis pilot of stel ons een vraag. De meeste antwoorden komen binnen vier uur en nooit later dan een werkdag.",
+  sub: "Boek een demo, start een gratis trial of stel ons een vraag. De meeste antwoorden komen binnen vier uur en nooit later dan een werkdag.",
   pilotEyebrow: "10 credits, gratis",
   pilotTitle: "Start een gratis trial",
   pilotBody: "10 credits. 1 zetel. Sectornieuws voor 2 weken. Signalen zichtbaar maar op slot. Geen betaling, geen creditcard. In ruil: feedbackgesprek van 20 minuten en case study-rechten.",
-  pilotCta: "Vraag een pilot aan →",
+  pilotCta: "Probeer gratis →",
   pilotBadge: "Meest gekozen",
   demoEyebrow: "20 minuten",
   demoTitle: "Boek een demo",
@@ -91,7 +91,7 @@ const NL = {
   emailPh: "ik@bedrijf.nl",
   interestLabel: "Waar kunnen we mee helpen?",
   pickOne: "Kies een optie",
-  optPilot: "Gratis pilot - tien prospects voor ons gebouwd",
+  optPilot: "Gratis trial - tien prospects voor ons gebouwd",
   optDemo: "Live demo van het portaal",
   optQuestion: "Gewoon een vraag",
   message: "Bericht",
@@ -105,7 +105,7 @@ const NL = {
   preferEmail: "Liever mailen? Schrijf naar",
   basedIn: "Gevestigd in Nederland en bereikbaar door heel EMEA.",
   subjects: {
-    Pilot: "Pilot-aanvraag via hooklyne.com",
+    Pilot: "Trial-aanvraag via hooklyne.com",
     Demo: "Demo-aanvraag via hooklyne.com",
     Question: "Vraag via hooklyne.com",
     "": "Nieuw bericht via hooklyne.com",

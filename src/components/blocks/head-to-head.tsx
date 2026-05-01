@@ -227,7 +227,7 @@ const COGNISM_EN: Profile = {
     {
       dimension: "Time to first prospect",
       competitor: "2–4 weeks from contract signed",
-      hooklyne: "10 prospects in your inbox during the pilot",
+      hooklyne: "10 prospects in your inbox during the trial",
       verdict: "hooklyne",
     },
     {
@@ -301,7 +301,7 @@ const COGNISM_NL: Profile = {
     {
       dimension: "Tijd tot eerste prospect",
       competitor: "2–4 weken na contractondertekening",
-      hooklyne: "10 prospects in je inbox tijdens de pilot",
+      hooklyne: "10 prospects in je inbox tijdens de trial",
       verdict: "hooklyne",
     },
     {
