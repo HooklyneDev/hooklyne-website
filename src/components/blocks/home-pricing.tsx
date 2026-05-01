@@ -27,6 +27,10 @@ const EN_T = {
   secondaryHref: "/contact",
   founderQuote: "“Most teams can't pick between proper research and enough outreach, so they sacrifice both. Hooklyne is what we built to stop doing that.”",
   founderLine: "Tim · Founder · Hooklyne · The Netherlands",
+  statHead: "Pilots see",
+  statValue: "€1.26 - €1.56",
+  statLabel: "per ready-to-send prospect",
+  statNote: "Effective unit cost across the three plans, based on typical monthly usage.",
 };
 
 const NL_T = {
@@ -42,6 +46,10 @@ const NL_T = {
   secondaryHref: "/nl/contact",
   founderQuote: "“De meeste teams moeten kiezen tussen goed onderzoek en genoeg outreach, en leveren daardoor op allebei in. Hooklyne is gebouwd om die keuze weg te nemen.”",
   founderLine: "Tim · Founder · Hooklyne · Nederland",
+  statHead: "Pilots zien",
+  statValue: "€1,26 - €1,56",
+  statLabel: "per verzendklare prospect",
+  statNote: "Effectieve prijs per stuk over de drie plannen, op basis van typisch maandgebruik.",
 };
 
 export const HomePricing = ({ lang: langProp }: { lang?: Lang } = {}) => {
@@ -111,7 +119,23 @@ export const HomePricing = ({ lang: langProp }: { lang?: Lang } = {}) => {
           })}
         </div>
 
-        <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-4">
+        {/* Effective unit cost strip - concrete numbers, tabular nums */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
+          <p className="text-[12px] uppercase tracking-[0.18em] font-semibold text-[var(--muted-foreground)]">
+            {t.statHead}
+          </p>
+          <p className="text-[22px] md:text-[26px] font-semibold tabular-nums text-[var(--heading)] leading-none">
+            {t.statValue}
+          </p>
+          <p className="text-[13px] text-[var(--muted-foreground)]">
+            {t.statLabel}
+          </p>
+        </div>
+        <p className="mt-2 text-center text-[11px] text-[var(--muted-foreground)] max-w-md mx-auto leading-relaxed italic">
+          {t.statNote}
+        </p>
+
+        <div className="text-center mt-8 flex flex-wrap items-center justify-center gap-4">
           <a
             href={t.primaryHref}
             className="inline-flex items-center gap-1.5 h-11 px-6 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine group"
