@@ -49,36 +49,6 @@ const offerCatalog = {
         </a>
       </div>
 
-      <!-- Free pilot banner (kept inside the hero section so the glow reaches behind it) -->
-      <div class="mt-14 rounded-2xl overflow-hidden" style="background: var(--card); box-shadow: var(--shadow-xs); border: 1px solid var(--border)">
-        <div class="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center p-6">
-          <div class="flex items-center gap-3">
-            <div class="flex items-center justify-center size-10 rounded-xl" style="background: rgba(13,148,136,0.12)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hooklyne-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7l8 5 8-5-8-5Z"/><path d="m4 12 8 5 8-5"/><path d="m4 17 8 5 8-5"/></svg>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-teal)]">Free pilot</p>
-              <p class="text-base font-semibold text-[var(--heading)]">Try it before you pay.</p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-6 text-sm md:border-l md:border-r md:border-[var(--border)] md:px-6">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">You get</p>
-              <p class="text-[var(--foreground)] leading-relaxed">10 prospect packages, fully built. Portal access. Two weeks of sector news.</p>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">We ask</p>
-              <p class="text-[var(--foreground)] leading-relaxed">20 minutes of honest feedback. Permission to mention you if it works.</p>
-            </div>
-          </div>
-
-          <a href="/contact" class="inline-flex items-center justify-center gap-1.5 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 btn-shine whitespace-nowrap" style="background: var(--hooklyne-teal)">
-            Start pilot
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -293,20 +263,12 @@ const offerCatalog = {
           ))}
         </div>
 
-        <div class="rounded-xl px-5 py-4 mb-4" style="background: rgba(13,148,136,0.08); border: 1px solid rgba(13,148,136,0.22)">
-          <p class="text-sm font-semibold mb-1.5" style="color: #0F6E56">How Route 1 works in practice</p>
-          <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            One discovery (1cr) returns up to 20 ranked companies. You decide which to convert. Build the 5 best fits: 1cr discovery + 5 × 3cr packages = <strong class="text-[var(--heading)]">16cr for 5 ready-to-send prospects</strong>. Build all 20: 61cr. Skip a company that does not fit: no extra cost. The discovery credit pays for itself the moment you convert a second company from the same list.
-          </p>
-        </div>
-
-        <!-- Direct dial / mobile coming soon -->
-        <div class="rounded-xl px-5 py-3 mb-12 flex items-start gap-3" style="background: var(--bg); border: 1px dashed var(--border-strong)">
-          <span class="text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-1 rounded shrink-0" style="background: rgba(52,76,163,0.10); color: var(--hooklyne-blue)">Coming soon</span>
-          <p class="text-[12.5px] text-[var(--muted-foreground)] leading-relaxed">
-            <strong class="text-[var(--heading)]">Direct dial / mobile - 3cr per number found.</strong> Use credits from any plan to add a verified personal phone to a contact. No find, no charge.
-          </p>
-        </div>
+        <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3 max-w-3xl">
+          <span class="font-semibold text-[var(--heading)]">In practice:</span> one discovery (1cr) returns up to 20 ranked companies. Build the 5 best fits = <span class="font-semibold text-[var(--heading)]">16cr for 5 ready-to-send prospects</span>. Build all 20 = 61cr. Skip a company that does not fit: no extra cost.
+        </p>
+        <p class="text-[12px] text-[var(--muted-foreground)] leading-relaxed mb-12">
+          <span class="text-[var(--hooklyne-blue)] font-semibold">Coming soon ·</span> Direct dial / mobile, 3cr per number found. Use credits from any plan to add a verified personal phone. No find, no charge.
+        </p>
 
         <!-- ─── STAGE 2 ─── -->
         <div class="flex items-center gap-3.5 mb-5">
@@ -358,61 +320,54 @@ const offerCatalog = {
           </div>
         </div>
 
-        <div class="rounded-2xl p-5 md:p-6 mb-12" style="background: rgba(13,148,136,0.06); border: 1px solid rgba(13,148,136,0.20)">
-          <div class="flex items-center gap-2.5 mb-4">
-            <span class="text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-1 rounded" style="background: rgba(13,148,136,0.12); color: #0F6E56">No extra credit</span>
-            <span class="text-[13px] font-semibold text-[var(--heading)]">Included with every tracked signal</span>
-          </div>
-          <div class="grid gap-3 md:grid-cols-3">
-            {[
-              ["Signal-based email", "Drafted around the specific signal - hire, news, funding, expansion - in NL or EN, your voice."],
-              ["LinkedIn request", "Short connection note referencing the trigger. Under 300 characters, ready to copy."],
-              ["Call script", "Opening line + pitch + 3 discovery questions. Fires automatically on high-score signals."],
-            ].map(([t, d]) => (
-              <div>
-                <p class="text-[12px] font-semibold text-[var(--heading)] mb-1">{t}</p>
-                <p class="text-[11.5px] text-[var(--muted-foreground)] leading-relaxed">{d}</p>
-              </div>
-            ))}
-          </div>
+        <p class="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3 max-w-3xl">
+          <span class="font-semibold text-[var(--heading)]">No extra credit.</span> Tracked prospects with hot signals come with three drafts ready to copy.
+        </p>
+        <div class="grid gap-x-8 gap-y-4 sm:grid-cols-3 mb-12 max-w-4xl">
+          {[
+            ["Signal-based email", "Drafted around the specific signal - hire, news, funding, expansion - in NL or EN, your voice."],
+            ["LinkedIn request", "Short connection note referencing the trigger. Under 300 characters, ready to copy."],
+            ["Call script", "Opening line + pitch + 3 discovery questions. Fires automatically on high-score signals."],
+          ].map(([t, d]) => (
+            <div>
+              <p class="text-[13px] font-semibold text-[var(--heading)] mb-1">{t}</p>
+              <p class="text-[12px] text-[var(--muted-foreground)] leading-relaxed">{d}</p>
+            </div>
+          ))}
         </div>
 
         <!-- ─── ALWAYS FREE ─── -->
         <div class="flex items-center gap-3.5 mb-5">
-          <span class="inline-flex items-center justify-center h-9 px-3.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.1em] text-white shrink-0" style="background: #0F6E56">Free</span>
+          <span class="flex items-center justify-center size-9 rounded-full text-base font-bold text-white shrink-0" style="background: #0F6E56">✓</span>
           <div>
             <p class="text-[15px] font-semibold text-[var(--heading)] leading-tight">Always free</p>
             <p class="text-[12.5px] text-[var(--muted-foreground)] leading-snug mt-0.5">Things you'll do every day that never cost a credit.</p>
           </div>
         </div>
 
-        <div class="rounded-2xl overflow-hidden mb-6" style="background: var(--card); border: 1px solid var(--border)">
+        <div class="rounded-2xl overflow-hidden mb-4" style="background: var(--card); border: 1px solid var(--border)">
           <table class="w-full text-sm">
             <tbody>
               {[
-                ["Browsing My Leads", "View, sort, filter, edit your pipeline", "Free"],
-                ["Reading signals", "Open and read any signal feed at any time", "Free"],
-                ["Weekly sector briefing", "5-10 articles from your market, scored for relevance", "Included"],
-                ["Match to prospects", "See which of your tracked companies match the latest sector news", "Free"],
-                ["Export to CSV", "Full export of your leads, signals, and outreach drafts", "Free"],
-                ["View matched roles", "See up to 3 decision-makers per company before committing credits", "Free"],
-              ].map(([k, v, tag]) => (
+                ["Browsing My Leads", "View, sort, filter, edit your pipeline"],
+                ["Reading signals", "Open and read any signal feed at any time"],
+                ["Weekly sector briefing", "5-10 articles from your market, scored for relevance"],
+                ["Match to prospects", "See which of your tracked companies match the latest sector news"],
+                ["Export to CSV", "Full export of your leads, signals, and outreach drafts"],
+                ["View matched roles", "See up to 3 decision-makers per company before committing credits"],
+              ].map(([k, v]) => (
                 <tr class="border-b border-[var(--border)] last:border-0">
                   <td class="px-5 py-3 text-[12.5px] font-medium text-[var(--foreground)] whitespace-nowrap">{k}</td>
-                  <td class="px-5 py-3 text-[12.5px] text-[var(--muted-foreground)] hidden md:table-cell">{v}</td>
-                  <td class="px-5 py-3 text-right text-[12px] italic text-[#0F6E56] whitespace-nowrap">{tag}</td>
+                  <td class="px-5 py-3 text-[12.5px] text-[var(--muted-foreground)]">{v}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div class="rounded-xl px-5 py-4" style="background: rgba(52,76,163,0.06); border: 1px solid rgba(52,76,163,0.18)">
-          <p class="text-sm font-semibold text-[var(--heading)] mb-1.5">Top-up any time</p>
-          <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            Ran out mid-month? Add credits at €0.85 each, any plan, any amount. No minimum. Top-up credits roll forward like plan credits (1× your plan quota max).
-          </p>
-        </div>
+        <p class="text-[12px] text-[var(--muted-foreground)] leading-relaxed">
+          <span class="font-semibold text-[var(--heading)]">Top-up any time:</span> add credits at €0.85 each, any plan, any amount. No minimum. Top-up credits roll forward (max 1× your plan quota).
+        </p>
       </div>
 
       <!-- ===========================================================

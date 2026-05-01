@@ -10,7 +10,7 @@ const EN = {
     <>Find the prospects <span className="text-accent">actually worth</span> reaching out to.</>
   ),
   sub: "A research workflow that finds fitting companies, verifies decision-makers across 21 data providers, watches for live buying signals, and drafts first outreach in your rep's voice.",
-  cta: "Start your free pilot",
+  cta: "Get started",
   secondary: "See how it works",
 };
 
@@ -20,7 +20,7 @@ const NL = {
     <>Vind de prospects die er <span className="text-accent">echt toe doen</span>.</>
   ),
   sub: "Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 21 databronnen, real-time koopsignalen volgt en eerste outreach opstelt in de schrijfstijl van jouw salesmedewerker.",
-  cta: "Start je gratis pilot",
+  cta: "Aan de slag",
   secondary: "Zie hoe het werkt",
 };
 
