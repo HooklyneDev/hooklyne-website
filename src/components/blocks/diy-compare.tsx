@@ -410,6 +410,7 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
       <>Van ideaal klantprofiel naar <span className="text-accent">inbox in zes stappen</span>.</>
     ),
     sub: "Zes stappen, volledig automatisch. Je salesmedewerker krijgt een compleet pakket: contact gevonden, context klaar, eerste bericht geschreven. Beoordelen en versturen in minder dan een minuut.",
+    homeSub: "90 seconden per prospect. Onderzoek, contact, signaal, eerste mail - allemaal geregeld. Jouw medewerker beoordeelt en verstuurt.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
     compareLink: { href: "/nl/hoe-het-werkt", text: "Hoe vergelijkt het?" },
@@ -419,6 +420,7 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
       <>From ICP to <span className="text-accent">inbox in six steps</span>.</>
     ),
     sub: "Six steps, fully automated. The rep gets a complete prospect package - contact found, context built, outreach drafted. Review and send in under a minute.",
+    homeSub: "90 seconds per prospect. Research, contact, signal, first draft - all handled. Your rep reviews and sends.",
     compareWith: "Compare with",
     estCost: "est. tool cost",
     compareLink: { href: "/how-it-works", text: "How does it compare?" },
@@ -470,7 +472,7 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
             {labels.headline}
           </h2>
           <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            {labels.sub}
+            {hideCompare ? labels.homeSub : labels.sub}
           </p>
         </div>
 
@@ -578,69 +580,103 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {active.steps.map((s) => {
             const isOpen = openStep === s.step;
-            return (
-              <div
-                key={s.step}
-                className="group relative flex flex-col h-full rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-sm"
-                style={{
-                  background: "var(--card)",
-                  border: "1px solid var(--border)",
-                  boxShadow: "var(--shadow-xs)",
-                }}
-              >
-                {/* Header row - tappable on mobile, decorative on md+ */}
-                <button
-                  type="button"
-                  className="flex items-center gap-3 text-left p-4 md:p-5 lg:p-7 md:pb-3 md:cursor-default"
-                  onClick={() => setOpenStep((prev) => prev === s.step ? null : s.step)}
-                  aria-expanded={isOpen}
-                  aria-controls={`step-${active.key}-${s.step}`}
-                >
-                  <span
-                    className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold shrink-0"
-                    style={{
-                      background: isHooklyne ? "var(--hooklyne-navy)" : tone.fg,
-                      color: "#fff",
-                      boxShadow:
-                        "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 10px -2px rgba(15,23,42,0.2)",
-                    }}
-                  >
-                    {s.step}
-                  </span>
-                  <span className="flex-1 text-[14.5px] md:text-[15px] font-semibold text-[var(--heading)] leading-tight md:hidden">
-                    {s.label}
-                  </span>
-                  <span
-                    className="text-[10px] font-mono font-semibold px-2 py-1 rounded shrink-0"
-                    style={{ background: tone.soft, color: tone.fg }}
-                  >
-                    {s.time}
-                  </span>
-                  <CaretDown
-                    size={16}
-                    weight="regular"
-                    className={`md:hidden shrink-0 text-[var(--muted-foreground)] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {/* Body - hidden when collapsed on mobile, always visible md+ */}
+            return hideCompare ? (
                 <div
-                  id={`step-${active.key}-${s.step}`}
-                  className={`px-4 md:px-5 lg:px-7 pb-4 md:pb-5 lg:pb-7 md:flex md:flex-col md:flex-1 ${isOpen ? "block" : "hidden md:flex"}`}
+                  key={s.step}
+                  className="relative flex flex-col p-4 md:p-5 rounded-2xl"
+                  style={{
+                    background: "var(--card)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-xs)",
+                  }}
                 >
-                  <div className="hidden md:block text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
-                  <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
-                  <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
-                    {s.good ? (
-                      <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
-                    ) : (
-                      <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
-                    )}
-                    <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span
+                      className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold shrink-0"
+                      style={{
+                        background: "var(--hooklyne-navy)",
+                        color: "#fff",
+                        boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 10px -2px rgba(15,23,42,0.2)",
+                      }}
+                    >
+                      {s.step}
+                    </span>
+                    <span className="flex-1 text-[14px] font-semibold text-[var(--heading)] leading-tight">{s.label}</span>
+                    <span
+                      className="text-[10px] font-mono font-semibold px-2 py-1 rounded shrink-0"
+                      style={{ background: tone.soft, color: tone.fg }}
+                    >
+                      {s.time}
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-1.5">
+                    <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
+                    <span className="text-[12px] font-medium text-[var(--muted-foreground)]">{s.callout}</span>
                   </div>
                 </div>
-              </div>
-            );
+              ) : (
+                <div
+                  key={s.step}
+                  className="group relative flex flex-col h-full rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-sm"
+                  style={{
+                    background: "var(--card)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-xs)",
+                  }}
+                >
+                  {/* Header row - tappable on mobile, decorative on md+ */}
+                  <button
+                    type="button"
+                    className="flex items-center gap-3 text-left p-4 md:p-5 lg:p-7 md:pb-3 md:cursor-default"
+                    onClick={() => setOpenStep((prev) => prev === s.step ? null : s.step)}
+                    aria-expanded={isOpen}
+                    aria-controls={`step-${active.key}-${s.step}`}
+                  >
+                    <span
+                      className="inline-flex items-center justify-center size-8 rounded-lg text-[11px] font-bold shrink-0"
+                      style={{
+                        background: isHooklyne ? "var(--hooklyne-navy)" : tone.fg,
+                        color: "#fff",
+                        boxShadow:
+                          "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 10px -2px rgba(15,23,42,0.2)",
+                      }}
+                    >
+                      {s.step}
+                    </span>
+                    <span className="flex-1 text-[14.5px] md:text-[15px] font-semibold text-[var(--heading)] leading-tight md:hidden">
+                      {s.label}
+                    </span>
+                    <span
+                      className="text-[10px] font-mono font-semibold px-2 py-1 rounded shrink-0"
+                      style={{ background: tone.soft, color: tone.fg }}
+                    >
+                      {s.time}
+                    </span>
+                    <CaretDown
+                      size={16}
+                      weight="regular"
+                      className={`md:hidden shrink-0 text-[var(--muted-foreground)] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+
+                  {/* Body - hidden when collapsed on mobile, always visible md+ */}
+                  <div
+                    id={`step-${active.key}-${s.step}`}
+                    className={`px-4 md:px-5 lg:px-7 pb-4 md:pb-5 lg:pb-7 md:flex md:flex-col md:flex-1 ${isOpen ? "block" : "hidden md:flex"}`}
+                  >
+                    <div className="hidden md:block text-[15px] font-semibold text-[var(--heading)] mb-2 leading-tight">{s.label}</div>
+                    <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed mb-3">{s.detail}</p>
+                    <div className="flex items-start gap-1.5 pt-3 mt-auto border-t border-dashed border-[var(--border)]">
+                      {s.good ? (
+                        <Check className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-teal)" }} />
+                      ) : (
+                        <X className="size-3.5 shrink-0 mt-0.5" style={{ color: "var(--hooklyne-orange)" }} />
+                      )}
+                      <span className="text-[12px] font-medium text-[var(--heading)]">{s.callout}</span>
+                    </div>
+                  </div>
+                </div>
+              );
           })}
           {/* Summary card fills the empty grid slot when step count < 6 */}
           {active.footerNote && active.steps.length < 6 && (
