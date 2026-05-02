@@ -11,9 +11,9 @@ const MOVERS = [
 type Phase = "header" | "numbers" | "movers" | "alert";
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
+type Props = { ratio?: Ratio; mobileRatio?: Ratio; xsMobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
 
-export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, tabletRatio, lang: langProp }: Props = {}) => {
+export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletRatio, lang: langProp }: Props = {}) => {
   const lang = useLang(langProp);
 
   const t = lang === "nl" ? {
@@ -120,6 +120,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, tabletRatio, lang: lan
         statusTone="orange"
         ratio={ratio}
         mobileRatio={mobileRatio}
+        xsMobileRatio={xsMobileRatio}
         tabletRatio={tabletRatio}
       >
         <style>{`

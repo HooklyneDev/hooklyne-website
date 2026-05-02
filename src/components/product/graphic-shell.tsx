@@ -33,8 +33,10 @@ type Props = {
   status?: string;
   statusTone?: Tone;
   ratio?: Ratio;
-  /** Optional override for sub-md viewports. */
+  /** Optional override for sub-md viewports (480px–767px). */
   mobileRatio?: Ratio;
+  /** Optional override for very small phones (< 480px). */
+  xsMobileRatio?: Ratio;
   /** Optional override for md..lg viewports. */
   tabletRatio?: Ratio;
   children: ReactNode;
@@ -47,6 +49,7 @@ export const GraphicShell = ({
   statusTone = "teal",
   ratio = "16/9",
   mobileRatio,
+  xsMobileRatio,
   tabletRatio,
   children,
   className,
@@ -55,8 +58,12 @@ export const GraphicShell = ({
   const reactId = useId().replace(/[:]/g, "");
   const stageClass = `gs-stage-${reactId}`;
   const responsiveCss =
-    mobileRatio || tabletRatio
-      ? `${mobileRatio ? `@media (max-width: 767px){.${stageClass}{padding-bottom:${RATIO_PB[mobileRatio]} !important;}}` : ""}${tabletRatio ? `@media (min-width: 768px) and (max-width: 1023px){.${stageClass}{padding-bottom:${RATIO_PB[tabletRatio]} !important;}}` : ""}`
+    mobileRatio || tabletRatio || xsMobileRatio
+      ? [
+          xsMobileRatio ? `@media (max-width: 479px){.${stageClass}{padding-bottom:${RATIO_PB[xsMobileRatio]} !important;}}` : "",
+          mobileRatio ? `@media (min-width: 480px) and (max-width: 767px){.${stageClass}{padding-bottom:${RATIO_PB[mobileRatio]} !important;}}` : "",
+          tabletRatio ? `@media (min-width: 768px) and (max-width: 1023px){.${stageClass}{padding-bottom:${RATIO_PB[tabletRatio]} !important;}}` : "",
+        ].join("")
       : null;
   return (
     <div className={`relative w-full rounded-2xl overflow-visible ${className ?? ""}`}>
