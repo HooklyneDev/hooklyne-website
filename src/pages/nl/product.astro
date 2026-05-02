@@ -442,15 +442,20 @@ const breadcrumb = breadcrumbList([
       </div>
     </section>
 
-    <section class="py-10 sm:py-12 lg:py-16" data-fade>
+  </Background>
+
+  <div style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--hooklyne-navy) 0%, #011f37 100%);">
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 50% 0%, rgba(52,76,163,0.4) 0%, transparent 70%);"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent 0%, rgba(52,76,163,0.5) 30%, rgba(255,140,66,0.25) 55%, transparent 100%);"></div>
+    <section class="py-14 lg:py-20 relative" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-12">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Prospecten</p>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-3 sm:mb-4 leading-tight">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--hooklyne-orange);">Prospecten</p>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight mb-3 sm:mb-4 leading-tight" style="color: #fff;">
             Vier ingangen, hetzelfde pakket eruit.
           </h2>
-          <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
-            Begin met een ideaal klantprofiel, een domein, een naam of je beste klanten - elk pad eindigt op een verzendklare prospectkaart.
+          <p class="text-base leading-relaxed" style="color: rgba(255,255,255,0.6);">
+            Begin met een ideaal klantprofiel, een domein, een naam of je beste klanten. Elk pad eindigt op een verzendklare prospectkaart.
           </p>
         </div>
 
@@ -474,7 +479,7 @@ const breadcrumb = breadcrumbList([
         </div>
 
         <div class="mt-10 text-center">
-          <a href="/nl/how-it-works" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--hooklyne-blue)] hover:opacity-80 transition-opacity group">
+          <a href="/nl/hoe-het-werkt" class="inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-80 transition-opacity group" style="color: rgba(255,255,255,0.7);">
             Zie wat er achter elk pad gebeurt
             <svg class="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
@@ -482,7 +487,9 @@ const breadcrumb = breadcrumbList([
 
       </div>
     </section>
+  </div>
 
+  <Background>
     <section class="py-10 sm:py-12 lg:py-16" data-fade>
       <div class="container max-w-6xl">
         <div class="text-center max-w-2xl mx-auto mb-10">

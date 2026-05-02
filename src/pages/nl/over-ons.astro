@@ -306,39 +306,30 @@ const breadcrumb = breadcrumbList([
       </div>
     </section>
 
-  </Background>
 
-  <div style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--hooklyne-navy) 0%, #011f37 100%);">
-    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 50% 0%, rgba(52,76,163,0.4) 0%, transparent 70%);"></div>
-    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent 0%, rgba(52,76,163,0.5) 30%, rgba(255,140,66,0.25) 55%, transparent 100%);"></div>
-    <section class="py-14 sm:py-20 lg:py-24 relative text-center" data-fade>
-      <div class="container max-w-2xl">
-        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--hooklyne-orange);">Voor wie</p>
-        <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight mb-4 leading-tight" style="color: #fff;">
-          Nederlands en Brits MKB eerst. Engels door heel EMEA.
-        </h2>
-        <p class="text-base leading-relaxed mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.6);">
-          We beginnen dichtbij huis, omdat we beide talen native spreken en de kopers in deze markten kennen. Engelstalige teams elders in EMEA zijn net zo welkom. AVG-proof, EU-verwerkt.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="/nl/contact"
-            class="inline-flex items-center gap-1.5 rounded-lg text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine"
-            style="background: var(--hooklyne-orange);"
-          >
-            Probeer gratis
-            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="/nl/hoe-het-werkt"
-            class="inline-flex items-center gap-1.5 text-sm font-medium hover:opacity-80 transition-opacity group"
-            style="color: rgba(255,255,255,0.7);"
-          >
-            Bekijk hoe het werkt
-            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </a>
+    <section class="py-10 sm:py-14 md:py-16 lg:py-20" data-fade>
+      <div class="container max-w-4xl">
+        <div class="glass-off relative rounded-3xl p-8 md:p-12 overflow-hidden text-center" style="background: linear-gradient(180deg, var(--card) 0%, var(--card-hover) 100%); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-3">Voor wie</p>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight mb-4 leading-tight">
+            Nederlands en Brits MKB eerst, Engels door heel EMEA.
+          </h2>
+          <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-7 max-w-2xl mx-auto">
+            We beginnen dichtbij huis, omdat we beide talen native spreken en de kopers in deze markten kennen. Engelstalige teams elders in EMEA zijn net zo welkom, met dezelfde AVG-proof en EU-verwerkte basis.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="/nl/contact" class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--hooklyne-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity group btn-shine">
+              Probeer gratis
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+            <a href="/nl/hoe-het-werkt" class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--heading)] hover:text-[var(--hooklyne-blue)] transition-colors group">
+              Bekijk hoe het werkt
+              <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
-  </div>
+
+  </Background>
 </DefaultLayout>
