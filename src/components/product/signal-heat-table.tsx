@@ -142,6 +142,15 @@ const TREND: Record<Trend, { bg: string; fg: string }> = {
 
 const MAX_HEAT = 38;
 
+const COMPANY_LOGOS: Record<string, { logo: string; color: string }> = {
+  "Innocent Drinks":     { logo: "IN", color: "#16a34a" },
+  "Eneco":               { logo: "EN", color: "#ea580c" },
+  "DPD Netherlands":     { logo: "DP", color: "#dc2626" },
+  "Vattenfall":          { logo: "VA", color: "#0369a1" },
+  "Dachser Netherlands": { logo: "DA", color: "#7c3aed" },
+  "Siemens Netherlands": { logo: "SI", color: "#0891b2" },
+};
+
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
 export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: SignalHeatTableProps = {}) => {
@@ -312,6 +321,7 @@ export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, lang:
           <div className="flex flex-col">
             {ROWS.map((r, i) => {
               const clickable = r.isNew && r.body.length > 0;
+              const cl = COMPANY_LOGOS[r.company] ?? { logo: r.company.slice(0, 2).toUpperCase(), color: "#344ca3" };
               return (
                 <div
                   key={r.company}
@@ -334,16 +344,24 @@ export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, lang:
                     borderColor: "var(--border)",
                   }}
                 >
-                  <div className="min-w-0 pr-2">
-                    <div className="flex items-center gap-1.5">
-                      <p className="font-semibold truncate" style={{ color: "var(--heading)" }}>{r.company}</p>
-                      {r.isNew && (
-                        <span className="text-[7px] sm:text-[8px] font-bold uppercase tracking-wider px-1 py-0.5 rounded shrink-0" style={{ background: "rgba(13,148,136,0.14)", color: "var(--hooklyne-teal)" }}>
-                          {t.newBadge}
-                        </span>
-                      )}
+                  <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 pr-2">
+                    <div
+                      className="size-5 sm:size-6 rounded shrink-0 flex items-center justify-center text-[7px] sm:text-[8px] font-bold text-white leading-none"
+                      style={{ background: cl.color }}
+                    >
+                      {cl.logo}
                     </div>
-                    <p className="text-[9px] sm:text-[10px] truncate" style={{ color: "var(--muted-foreground)" }}>{r.contact}</p>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <p className="font-semibold truncate" style={{ color: "var(--heading)" }}>{r.company}</p>
+                        {r.isNew && (
+                          <span className="text-[7px] sm:text-[8px] font-bold uppercase tracking-wider px-1 py-0.5 rounded shrink-0" style={{ background: "rgba(13,148,136,0.14)", color: "var(--hooklyne-teal)" }}>
+                            {t.newBadge}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[9px] sm:text-[10px] truncate" style={{ color: "var(--muted-foreground)" }}>{r.contact}</p>
+                    </div>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 pr-2">
                     <span className="font-bold tabular-nums w-7 sm:w-9" style={{ color: r.heat >= 20 ? "#dc2626" : r.heat >= 10 ? "#dc2626" : "var(--hooklyne-blue)" }}>

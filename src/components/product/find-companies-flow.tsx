@@ -70,6 +70,12 @@ const CONF_NL: Record<Conf, { label: string; bg: string; fg: string; icon: strin
   low: { label: "Lage zekerheid", bg: "rgba(220,38,38,0.12)", fg: "#b91c1c", icon: "arrow" },
 };
 
+const COMPANY_LOGOS: Record<string, { logo: string; color: string }> = {
+  "Ekomenu":      { logo: "EK", color: "#16a34a" },
+  "Marley Spoon": { logo: "MS", color: "#dc2626" },
+  "Stach Food":   { logo: "SF", color: "#d97706" },
+};
+
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
 export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: FindCompaniesFlowProps = {}) => {
@@ -292,6 +298,14 @@ export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio, lan
                     <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
                       <div className="size-3 sm:size-3.5 rounded shrink-0" style={{ border: "1.5px solid var(--border-strong, #cbd5e1)" }} />
                       <span className="text-[9px] sm:text-[10px] font-bold" style={{ color: "var(--muted-foreground)" }}>#{c.n}</span>
+                      {COMPANY_LOGOS[c.name] && (
+                        <div
+                          className="size-4 sm:size-5 rounded shrink-0 flex items-center justify-center text-[7px] sm:text-[8px] font-bold text-white leading-none"
+                          style={{ background: COMPANY_LOGOS[c.name]!.color }}
+                        >
+                          {COMPANY_LOGOS[c.name]!.logo}
+                        </div>
+                      )}
                       <span className="text-[11px] sm:text-[13px] font-semibold" style={{ color: "var(--heading)" }}>{c.name}</span>
                       <span className="text-[9px] sm:text-[10px] truncate" style={{ color: "var(--hooklyne-blue)" }}>{c.domain}</span>
                       <span className="text-[9px] px-1 py-0.5 rounded" style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--muted-foreground)" }}>{c.size}</span>
