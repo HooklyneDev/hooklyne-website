@@ -167,45 +167,40 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             </p>
           </div>
 
-          {/* Email body */}
-          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-2 sm:py-3 flex flex-col gap-0">
+          {/* Email body - justify-between fills the full height, no dead space */}
+          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-3 sm:py-4 flex flex-col justify-between">
 
-            {/* Numbers section */}
+            {/* Numbers: 2×2 grid with large figures */}
             {(phase === "numbers" || phase === "movers" || phase === "alert") && (
-              <div className="wb-fade mb-2">
-                <p className="text-[9px] sm:text-[10px] font-medium mb-1.5" style={{ color: "var(--muted-foreground)" }}>
+              <div className="wb-fade">
+                <p className="text-[9px] sm:text-[10px] font-medium mb-2 sm:mb-2.5" style={{ color: "var(--muted-foreground)" }}>
                   {t.numbersTitle}
                 </p>
-                <div className="flex flex-col" style={{ gap: "2px" }}>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
                   {t.stats.map((s) => (
-                    <div key={s.label} className="flex items-baseline justify-between">
-                      <span className="text-[10px] sm:text-[11px]" style={{ color: "var(--muted-foreground)" }}>
-                        {s.label}
-                      </span>
-                      <span
-                        className={`text-[11px] sm:text-[13px] font-bold tabular-nums ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
+                    <div key={s.label}>
+                      <div
+                        className={`text-[22px] sm:text-[26px] font-bold tabular-nums leading-none ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
                         style={{ color: s.hot ? "var(--hooklyne-orange)" : "var(--heading)" }}
                       >
                         {s.value}
-                      </span>
+                      </div>
+                      <div className="text-[9px] sm:text-[10px] mt-0.5" style={{ color: "var(--muted-foreground)" }}>
+                        {s.label}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Divider */}
-            {(phase === "movers" || phase === "alert") && (
-              <div className="wb-fade shrink-0 mb-2" style={{ borderTop: "1px solid var(--border)" }} />
-            )}
-
             {/* Heat movers */}
             {(phase === "movers" || phase === "alert") && (
-              <div className="wb-fade">
+              <div className="wb-fade pt-2.5 sm:pt-3" style={{ borderTop: "1px solid var(--border)" }}>
                 <p className="text-[9px] sm:text-[10px] font-medium mb-1.5" style={{ color: "var(--muted-foreground)" }}>
                   {t.moversTitle}
                 </p>
-                <div className="flex flex-col" style={{ gap: "3px" }}>
+                <div className="flex flex-col" style={{ gap: "4px" }}>
                   {MOVERS.map((m, i) =>
                     i < moversVisible ? (
                       <div
@@ -237,7 +232,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             {/* Missed opportunities */}
             {phase === "alert" && (
               <div
-                className="wb-row mt-3 pl-2.5 py-2"
+                className="wb-row pl-2.5 py-2"
                 style={{ borderLeft: "2px solid var(--hooklyne-orange)" }}
               >
                 <p className="text-[9px] sm:text-[10px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
