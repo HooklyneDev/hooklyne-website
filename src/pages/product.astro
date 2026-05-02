@@ -276,7 +276,11 @@ const breadcrumb = breadcrumbList([
               {b.step === "01" && (
                 <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center gap-2 sm:gap-3 mb-3">
-                    <div class="size-8 sm:size-9 rounded-lg flex items-center justify-center text-[11px] font-bold text-white shrink-0" style="background: #1e3a8a;">AL</div>
+                    <div class="size-8 sm:size-9 rounded-lg flex items-center justify-center text-white shrink-0" style="background: #1e3a8a;">
+                      <svg viewBox="0 0 24 24" fill="currentColor" class="size-[18px] sm:size-5" aria-hidden="true">
+                        <path d="M3 21V9l9-5.5L21 9v12H3zm2-2h5v-5h4v5h5V10.08L12 5.28 5 10.08V19z"/>
+                      </svg>
+                    </div>
                     <div class="min-w-0 flex-1">
                       <p class="text-[13px] font-semibold text-[var(--heading)] truncate">Axiom Logistics</p>
                       <p class="text-[11px] text-[var(--muted-foreground)] truncate">Logistics &middot; Venlo &middot; 240 FTE</p>

@@ -52,20 +52,20 @@ export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
       <div className="container max-w-6xl">
 
         {/* Text */}
-        <div className="max-w-2xl mb-8 lg:mb-10">
+        <div className="max-w-4xl mx-auto text-center mb-8 lg:mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
             {t.eyebrow}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
             {t.headline}
           </h2>
-          <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
+          <p className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto">
             {t.subline}
           </p>
         </div>
 
         {/* Screenshot: brand-color glow layer bleeds behind the frame */}
-        <div className="max-w-5xl mx-auto" style={{ position: "relative" }}>
+        <div className="max-w-4xl mx-auto" style={{ position: "relative" }}>
           <div
             aria-hidden="true"
             style={{
