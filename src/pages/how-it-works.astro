@@ -330,25 +330,32 @@ const breadcrumb = breadcrumbList([
       </div>
     </section>
 
-    <section class="pb-14 lg:pb-20" data-fade>
+  </Background>
+
+  <div style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--hooklyne-navy) 0%, #011f37 100%);">
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 50% 0%, rgba(52,76,163,0.4) 0%, transparent 70%);"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent 0%, rgba(52,76,163,0.5) 30%, rgba(255,140,66,0.25) 55%, transparent 100%);"></div>
+    <section class="py-14 lg:py-20 relative" data-fade>
       <div class="container max-w-6xl">
         <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
           <div class="w-full lg:w-3/5 order-2 lg:order-1">
             <WeeklyBrief client:visible ratio="3/2" tabletRatio="16/9" mobileRatio="4/3" xsMobileRatio="1/1" />
           </div>
           <div class="lg:w-2/5 order-1 lg:order-2">
-            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-orange)] mb-4">Signal brief</p>
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style="color: var(--hooklyne-orange);">Signal brief</p>
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight mb-4" style="color: #fff;">
               After setup, it works without you.
             </h2>
-            <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            <p class="text-base leading-relaxed" style="color: rgba(255,255,255,0.6);">
               Once your ICP is set, Hooklyne monitors your tracked prospects all week. Every Monday you get a brief - who moved, what the signal means, what to send. You show up to a prepared pipeline, not an empty one.
             </p>
           </div>
         </div>
       </div>
     </section>
+  </div>
 
+  <Background variant="bottom">
     <DIYCompare client:visible />
 
     <section class="pt-4 pb-12 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-24" data-fade>
