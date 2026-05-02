@@ -8,7 +8,7 @@ const MOVERS = [
   { name: "Mindful Chef", signals: 1 },
 ];
 
-type Phase = "numbers" | "movers" | "alert";
+type Phase = "header" | "numbers" | "movers" | "alert";
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
 type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
@@ -17,45 +17,42 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, tabletRatio, lang: lan
   const lang = useLang(langProp);
 
   const t = lang === "nl" ? {
-    crumb: "Signaalbriefing / Week 17",
-    status: "1 hot signaal",
-    subject: "Wekelijkse signaalbriefing",
-    week: "Week van 12 april 2026",
+    crumb: "Inbox / Hooklyne Signals",
+    status: "1 ongelezen",
+    from: "Hooklyne Signals",
+    time: "ma 14 apr · 08:04",
+    subject: "Wekelijkse signaalbriefing · Week 17",
     numbersTitle: "Deze week in cijfers",
     stats: [
-      { label: "Signalen verzameld", value: 79, hot: false },
-      { label: "Relevant (score 5+)", value: 14, hot: false },
-      { label: "Hot (score 8+)", value: 1, hot: true },
-      { label: "Prospects gevolgd", value: 3, hot: false },
+      { label: "Signalen verzameld", value: "79", hot: false },
+      { label: "Relevant (score 5+)", value: "14", hot: false },
+      { label: "Hot (score 8+)", value: "1", hot: true },
+      { label: "Prospects gevolgd", value: "3", hot: false },
     ],
-    moversTitle: "Meest actief deze week",
-    signalsIn30: "signalen in 30 dagen",
-    newBadge: "Nieuw",
+    moversTitle: "Meest actief",
+    signalsIn30: "signalen · 30 d",
     missedTitle: "Gemiste kansen",
     missed: "8 gekwalificeerde kansen staan onaangeroerd. Elke dag zonder actie riskeer je dat een concurrent die plek inneemt.",
   } : {
-    crumb: "Signal Brief / Week 17",
-    status: "1 hot signal",
-    subject: "Weekly Intelligence Brief",
-    week: "Week of April 12, 2026",
+    crumb: "Inbox / Hooklyne Signals",
+    status: "1 unread",
+    from: "Hooklyne Signals",
+    time: "Mon Apr 14 · 08:04",
+    subject: "Weekly Intelligence Brief · Week 17",
     numbersTitle: "This week in numbers",
     stats: [
-      { label: "Signals collected", value: 79, hot: false },
-      { label: "Relevant (score 5+)", value: 14, hot: false },
-      { label: "Hot (score 8+)", value: 1, hot: true },
-      { label: "Prospects tracked", value: 3, hot: false },
+      { label: "Signals collected", value: "79", hot: false },
+      { label: "Relevant (score 5+)", value: "14", hot: false },
+      { label: "Hot (score 8+)", value: "1", hot: true },
+      { label: "Prospects tracked", value: "3", hot: false },
     ],
-    moversTitle: "Heat movers this week",
-    signalsIn30: "signals in 30 days",
-    newBadge: "New",
+    moversTitle: "Heat movers",
+    signalsIn30: "signals · 30 d",
     missedTitle: "Missed opportunities",
     missed: "8 qualified openings are sitting untouched. Every day without outreach risks a competitor getting there first.",
   };
 
-  const targets = t.stats.map((s) => s.value);
-
-  const [phase, setPhase] = useState<Phase>("numbers");
-  const [statVals, setStatVals] = useState([0, 0, 0, 0]);
+  const [phase, setPhase] = useState<Phase>("header");
   const [moversVisible, setMoversVisible] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [inView, setInView] = useState(false);
@@ -82,41 +79,33 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, tabletRatio, lang: lan
 
   useEffect(() => {
     if (reduced) {
-      setStatVals(targets);
-      setMoversVisible(MOVERS.length);
       setPhase("alert");
+      setMoversVisible(MOVERS.length);
       return;
     }
     if (!inView) return;
     let cancelled = false;
     const run = async () => {
       while (!cancelled) {
-        setPhase("numbers");
-        setStatVals([0, 0, 0, 0]);
+        setPhase("header");
         setMoversVisible(0);
-
-        const steps = 32;
-        const duration = 1100;
-        for (let step = 1; step <= steps && !cancelled; step++) {
-          const p = step / steps;
-          const eased = 1 - Math.pow(1 - p, 3);
-          setStatVals(targets.map((t) => Math.round(t * eased)));
-          await new Promise((r) => setTimeout(r, duration / steps));
-        }
-        setStatVals(targets);
+        await new Promise((r) => setTimeout(r, 700));
         if (cancelled) return;
 
-        await new Promise((r) => setTimeout(r, 350));
+        setPhase("numbers");
+        await new Promise((r) => setTimeout(r, 600));
+        if (cancelled) return;
+
         setPhase("movers");
         for (let i = 1; i <= MOVERS.length && !cancelled; i++) {
           setMoversVisible(i);
-          await new Promise((r) => setTimeout(r, 280));
+          await new Promise((r) => setTimeout(r, 260));
         }
 
-        await new Promise((r) => setTimeout(r, 450));
+        await new Promise((r) => setTimeout(r, 500));
         if (cancelled) return;
         setPhase("alert");
-        await new Promise((r) => setTimeout(r, 3600));
+        await new Promise((r) => setTimeout(r, 4000));
       }
     };
     run();
@@ -134,134 +123,128 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, tabletRatio, lang: lan
         tabletRatio={tabletRatio}
       >
         <style>{`
-          @keyframes wb-in { from { opacity: 0; transform: translateX(-7px); } to { opacity: 1; transform: translateX(0); } }
-          @keyframes wb-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-          @keyframes wb-throb { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
-          .wb-in { animation: wb-in 0.28s cubic-bezier(.2,.7,.2,1) both; }
-          .wb-up { animation: wb-up 0.38s cubic-bezier(.2,.7,.2,1) both; }
-          .wb-throb { animation: wb-throb 1.7s ease-in-out infinite; }
+          @keyframes wb-fade { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes wb-row { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+          @keyframes wb-slide { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
+          @keyframes wb-blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+          .wb-fade { animation: wb-fade 0.35s ease both; }
+          .wb-row { animation: wb-row 0.3s ease both; }
+          .wb-slide { animation: wb-slide 0.25s ease both; }
+          .wb-blink { animation: wb-blink 1.8s ease-in-out infinite; }
           @media (prefers-reduced-motion: reduce) {
-            .wb-in, .wb-up, .wb-throb { animation: none !important; }
+            .wb-fade,.wb-row,.wb-slide,.wb-blink { animation: none !important; }
           }
         `}</style>
 
-        <div className="absolute inset-0 flex flex-col px-3 py-3 sm:px-5 sm:py-4 gap-2 sm:gap-2.5">
+        <div className="absolute inset-0 flex flex-col overflow-hidden" style={{ background: "var(--card)" }}>
 
-          {/* Brief header - looks like an email subject line */}
+          {/* Email sender row */}
           <div
-            className="rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 flex items-start justify-between gap-3"
-            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+            className="flex items-center gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 shrink-0"
+            style={{ borderBottom: "1px solid var(--border)" }}
           >
-            <div>
-              <p className="text-[11px] sm:text-[13px] font-bold leading-tight" style={{ color: "var(--heading)" }}>
-                {t.subject}
-              </p>
-              <p className="text-[9px] sm:text-[10px] mt-0.5" style={{ color: "var(--muted-foreground)" }}>
-                {t.week}
+            <div
+              className="shrink-0 size-6 sm:size-7 rounded-md flex items-center justify-center text-[10px] sm:text-[11px] font-bold text-white"
+              style={{ background: "var(--hooklyne-navy)" }}
+            >
+              H
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] sm:text-[12px] font-semibold truncate" style={{ color: "var(--heading)" }}>
+                {t.from}
               </p>
             </div>
-            <span
-              className={`shrink-0 text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-md whitespace-nowrap ${phase === "alert" ? "wb-throb" : ""}`}
-              style={{ background: "rgba(255,140,66,0.12)", color: "var(--hooklyne-orange)" }}
-            >
-              {t.status}
-            </span>
+            <p className="text-[9px] sm:text-[10px] shrink-0 tabular-nums" style={{ color: "var(--muted-foreground)" }}>
+              {t.time}
+            </p>
           </div>
 
-          {/* Stats table */}
-          <div
-            className="rounded-lg px-3 py-2 sm:px-4 sm:py-2.5"
-            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
-          >
-            <p
-              className="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest mb-1.5"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              {t.numbersTitle}
+          {/* Subject */}
+          <div className="px-3 sm:px-4 pt-2 pb-1.5 sm:pt-2.5 sm:pb-2 shrink-0" style={{ borderBottom: "1px solid var(--border)" }}>
+            <p className="text-[11px] sm:text-[13px] font-semibold" style={{ color: "var(--heading)" }}>
+              {t.subject}
             </p>
-            <div className="flex flex-col gap-0.5">
-              {t.stats.map((s, i) => (
-                <div key={s.label} className="flex items-center justify-between py-0.5">
-                  <span className="text-[10px] sm:text-[11px]" style={{ color: "var(--muted-foreground)" }}>
-                    {s.label}
-                  </span>
-                  <span
-                    className={`text-[11px] sm:text-[13px] font-bold tabular-nums ${s.hot && phase === "alert" ? "wb-throb" : ""}`}
-                    style={{ color: s.hot ? "var(--hooklyne-orange)" : "var(--heading)" }}
-                  >
-                    {statVals[i]}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Heat movers */}
-          <div
-            className="rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 flex-1 min-h-0 flex flex-col"
-            style={{ background: "var(--card)", border: "1px solid var(--border)" }}
-          >
-            <p
-              className="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest mb-2"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              {t.moversTitle}
-            </p>
-            <div className="flex flex-col gap-1.5">
-              {MOVERS.map((m, i) =>
-                i < moversVisible ? (
-                  <div
-                    key={m.name}
-                    className="wb-in flex items-center justify-between"
-                    style={{ animationDelay: `${i * 0.04}s` }}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <span
-                        className="text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 rounded"
-                        style={{ background: "rgba(255,140,66,0.10)", color: "var(--hooklyne-orange)" }}
-                      >
-                        {t.newBadge}
+          {/* Email body */}
+          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-2 sm:py-3 flex flex-col gap-0">
+
+            {/* Numbers section */}
+            {(phase === "numbers" || phase === "movers" || phase === "alert") && (
+              <div className="wb-fade mb-2">
+                <p className="text-[9px] sm:text-[10px] font-medium mb-1.5" style={{ color: "var(--muted-foreground)" }}>
+                  {t.numbersTitle}
+                </p>
+                <div className="flex flex-col" style={{ gap: "2px" }}>
+                  {t.stats.map((s) => (
+                    <div key={s.label} className="flex items-baseline justify-between">
+                      <span className="text-[10px] sm:text-[11px]" style={{ color: "var(--muted-foreground)" }}>
+                        {s.label}
                       </span>
-                      <span className="text-[10px] sm:text-[11px] font-semibold" style={{ color: "var(--heading)" }}>
-                        {m.name}
+                      <span
+                        className={`text-[11px] sm:text-[13px] font-bold tabular-nums ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
+                        style={{ color: s.hot ? "var(--hooklyne-orange)" : "var(--heading)" }}
+                      >
+                        {s.value}
                       </span>
                     </div>
-                    <span className="text-[9px] sm:text-[10px] tabular-nums" style={{ color: "var(--muted-foreground)" }}>
-                      {m.signals} {t.signalsIn30}
-                    </span>
-                  </div>
-                ) : (
-                  <div key={m.name} className="flex items-center justify-between" style={{ opacity: 0.18 }}>
-                    <div className="h-2 rounded" style={{ width: "45%", background: "var(--border)" }} />
-                    <div className="h-2 rounded" style={{ width: "22%", background: "var(--border)" }} />
-                  </div>
-                )
-              )}
-            </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-            {/* Missed opportunities - alert phase only */}
+            {/* Divider */}
+            {(phase === "movers" || phase === "alert") && (
+              <div className="wb-fade shrink-0 mb-2" style={{ borderTop: "1px solid var(--border)" }} />
+            )}
+
+            {/* Heat movers */}
+            {(phase === "movers" || phase === "alert") && (
+              <div className="wb-fade">
+                <p className="text-[9px] sm:text-[10px] font-medium mb-1.5" style={{ color: "var(--muted-foreground)" }}>
+                  {t.moversTitle}
+                </p>
+                <div className="flex flex-col" style={{ gap: "3px" }}>
+                  {MOVERS.map((m, i) =>
+                    i < moversVisible ? (
+                      <div
+                        key={m.name}
+                        className="wb-slide flex items-baseline justify-between"
+                        style={{ animationDelay: `${i * 0.04}s` }}
+                      >
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[9px]" style={{ color: "var(--hooklyne-orange)" }}>→</span>
+                          <span className="text-[10px] sm:text-[11px] font-semibold" style={{ color: "var(--heading)" }}>
+                            {m.name}
+                          </span>
+                        </div>
+                        <span className="text-[9px] sm:text-[10px] tabular-nums" style={{ color: "var(--muted-foreground)" }}>
+                          {m.signals} {t.signalsIn30}
+                        </span>
+                      </div>
+                    ) : (
+                      <div key={m.name} className="flex items-center justify-between" style={{ opacity: 0.15 }}>
+                        <div className="h-1.5 rounded" style={{ width: "42%", background: "var(--border)" }} />
+                        <div className="h-1.5 rounded" style={{ width: "20%", background: "var(--border)" }} />
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Missed opportunities */}
             {phase === "alert" && (
               <div
-                className="wb-up mt-auto pt-2"
-                style={{ borderTop: "1px solid var(--border)" }}
+                className="wb-row mt-auto pl-2.5 py-2"
+                style={{ borderLeft: "2px solid var(--hooklyne-orange)", marginTop: "auto" }}
               >
-                <div
-                  className="rounded-md px-2.5 py-2"
-                  style={{
-                    background: "rgba(255,140,66,0.06)",
-                    borderLeft: "2px solid var(--hooklyne-orange)",
-                  }}
-                >
-                  <p
-                    className="text-[8px] sm:text-[9px] font-bold uppercase tracking-wider mb-0.5"
-                    style={{ color: "var(--hooklyne-orange)" }}
-                  >
-                    {t.missedTitle}
-                  </p>
-                  <p className="text-[9px] sm:text-[10px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-                    {t.missed}
-                  </p>
-                </div>
+                <p className="text-[9px] sm:text-[10px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
+                  {t.missedTitle}
+                </p>
+                <p className="text-[9px] sm:text-[10px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+                  {t.missed}
+                </p>
               </div>
             )}
           </div>
