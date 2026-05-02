@@ -236,8 +236,8 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, tabletRatio, lang: lan
             {/* Missed opportunities */}
             {phase === "alert" && (
               <div
-                className="wb-row mt-auto pl-2.5 py-2"
-                style={{ borderLeft: "2px solid var(--hooklyne-orange)", marginTop: "auto" }}
+                className="wb-row mt-3 pl-2.5 py-2"
+                style={{ borderLeft: "2px solid var(--hooklyne-orange)" }}
               >
                 <p className="text-[9px] sm:text-[10px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
                   {t.missedTitle}

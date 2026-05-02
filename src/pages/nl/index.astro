@@ -72,13 +72,15 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     </section>
 
     <section class="pb-10 lg:pb-14" data-fade>
-      <div class="container max-w-6xl">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 px-5 sm:px-8 py-5 sm:py-6 rounded-2xl" style="background: var(--card); border: 1px solid var(--border);">
-          <img src="/about/tim-wissink.jpg" alt="Tim Wissink" class="size-24 sm:size-32 rounded-2xl object-cover shrink-0" />
-          <div class="min-w-0">
-            <p class="text-[15px] sm:text-base text-[var(--heading)] leading-relaxed">
-              "Verkopen blijft mensenwerk. Software hoort je vrij te maken voor het gesprek, niet het gesprek over te nemen."
-            </p>
+      <div class="container max-w-2xl text-center">
+        <p class="text-xl sm:text-2xl font-medium text-[var(--heading)] leading-relaxed mb-6">
+          "Verkopen blijft mensenwerk. Software hoort je vrij te maken voor het gesprek, niet het gesprek over te nemen."
+        </p>
+        <div class="inline-flex items-center gap-3">
+          <img src="/about/tim-wissink.jpg" alt="Tim Wissink" class="size-10 rounded-full object-cover shrink-0" />
+          <div class="text-left">
+            <p class="text-sm font-semibold" style="color: var(--heading);">Tim Wissink</p>
+            <p class="text-xs" style="color: var(--muted-foreground);">Oprichter, Hooklyne</p>
           </div>
         </div>
       </div>
@@ -88,7 +90,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
       <div class="container max-w-6xl">
         <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
           <div class="w-full lg:w-3/5 order-2 lg:order-1">
-            <WeeklyBrief lang="nl" client:visible ratio="3/2" tabletRatio="16/9" mobileRatio="4/3" />
+            <WeeklyBrief lang="nl" client:visible ratio="16/9" tabletRatio="16/9" mobileRatio="4/3" />
           </div>
           <div class="lg:w-2/5 order-1 lg:order-2">
             <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-orange)] mb-4">Signaalbriefing</p>
