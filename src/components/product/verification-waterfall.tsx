@@ -165,9 +165,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio,
         <div className="absolute inset-0 flex flex-col px-3 py-3 sm:px-5 sm:py-4 gap-2 sm:gap-3">
           {/* Contact header */}
           <div className="rounded-lg p-2 sm:p-2.5 flex items-center gap-2 sm:gap-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-            <div className="size-8 sm:size-9 rounded-full flex items-center justify-center text-[11px] sm:text-[12px] font-bold shrink-0" style={{ background: "rgba(52,76,163,0.10)", color: "var(--hooklyne-blue)" }}>
-              MV
-            </div>
+            <img src="/personas/sara-de-vries.jpg" alt="Marieke de Vries" className="size-8 sm:size-9 rounded-full shrink-0 object-cover" />
             <div className="min-w-0 flex-1">
               <p className="text-[12px] sm:text-[13px] font-semibold leading-tight truncate" style={{ color: "var(--heading)" }}>
                 Marieke de Vries

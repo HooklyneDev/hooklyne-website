@@ -182,7 +182,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: la
       <div className="absolute inset-0 flex flex-col px-4 py-3 sm:px-6 sm:py-5">
         <div className="rounded-xl flex-1 flex flex-col min-h-0" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
           <div className="px-3 sm:px-4 py-2 sm:py-2.5 border-b flex items-center gap-2 sm:gap-3" style={{ borderColor: "var(--border)" }}>
-            <div className="size-7 sm:size-8 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0" style={{ background: "rgba(52,76,163,0.10)", color: "var(--hooklyne-blue)" }}>MV</div>
+            <img src="/personas/sara-de-vries.jpg" alt="Marieke de Vries" className="size-7 sm:size-8 rounded-full shrink-0 object-cover" />
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
                 <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>Marieke de Vries</span>
