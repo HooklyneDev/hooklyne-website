@@ -112,7 +112,7 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
   }, [reduced, paused]);
 
   return (
-    <section className="pt-10 pb-10 lg:pt-12 lg:pb-12" data-fade>
+    <section className="pt-8 pb-8 lg:pt-10 lg:pb-10" data-fade>
       <div className="container max-w-6xl">
         <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-16 lg:items-center">
 

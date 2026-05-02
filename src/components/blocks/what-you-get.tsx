@@ -48,7 +48,7 @@ export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
   }, []);
 
   return (
-    <section className="pt-14 pb-10 lg:pt-20 lg:pb-12" data-fade>
+    <section className="pt-10 pb-8 lg:pt-14 lg:pb-10" data-fade>
       <div className="container max-w-6xl">
 
         {/* Text */}
