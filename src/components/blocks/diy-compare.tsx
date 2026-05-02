@@ -59,7 +59,7 @@ const EN_TABS: TabDef[] = [
       {
         step: "2", label: "Pick who to reach",
         detail: "Each company shows available roles. You pick the one that fits. We run a waterfall across 21 contact providers with four verification layers - because no single database has more than 40% of any market.",
-        time: "30 sec", callout: "No database has it all. We run 21.", good: true,
+        time: "30 sec", callout: "21 providers. Four layers. One verdict.", good: true,
       },
       {
         step: "3", label: "Lands in Leads with a reason",
@@ -257,7 +257,7 @@ const NL_TABS: TabDef[] = [
         time: "2 min", callout: "Een gerangschikte shortlist, geen data-dump", good: true },
       { step: "2", label: "Kies wie je wilt bereiken",
         detail: "Per bedrijf zie je beschikbare rollen. Jij kiest welke past. Wij draaien een waterval over 21 contactproviders met vier verificatie-lagen - want geen enkele database dekt meer dan 40% van een markt.",
-        time: "30 sec", callout: "Geen database heeft alles. Wij draaien er 21.", good: true },
+        time: "30 sec", callout: "21 providers. Vier lagen. Één verdict.", good: true },
       { step: "3", label: "Belandt in Leads met een aanleiding",
         detail: "Elke prospect komt binnen met een signaal: fundingronde, nieuwe aanstelling, leiderschapswissel, lancering. Twee keer gescoord - een keer voor het bedrijf, een keer voor wat jij verkoopt. Alleen wat door beide komt, bereikt jou.",
         time: "auto", callout: "Een aanleiding, niet alleen een naam.", good: true },
