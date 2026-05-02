@@ -401,7 +401,7 @@ const TONE: Record<TabDef["tone"], { bg: string; border: string; fg: string; sof
 
 const NUDGE_ORDER: TabKey[] = ["database", "aioutreach", "diy", "agency"];
 
-export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
+export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideCompare?: boolean } = {}) => {
   const lang = useLang(langProp);
   const TABS = lang === "nl" ? NL_TABS : EN_TABS;
   const labels = lang === "nl" ? {
@@ -412,6 +412,7 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
     sub: "Zes stappen, volledig automatisch. Je salesmedewerker krijgt een compleet pakket: contact gevonden, context klaar, eerste bericht geschreven. Beoordelen en versturen in minder dan een minuut.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
+    compareLink: { href: "/nl/hoe-het-werkt", text: "Hoe vergelijkt het?" },
   } : {
     eyebrow: "The workflow",
     headline: (
@@ -420,6 +421,7 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
     sub: "Six steps, fully automated. The rep gets a complete prospect package - contact found, context built, outreach drafted. Review and send in under a minute.",
     compareWith: "Compare with",
     estCost: "est. tool cost",
+    compareLink: { href: "/how-it-works", text: "How does it compare?" },
   };
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -437,7 +439,7 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
   }, [hasInteracted]);
 
   const nudgeKey: TabKey | null = hasInteracted ? null : NUDGE_ORDER[nudgeIdx];
-  const active = TABS.find((t) => t.key === tab)!;
+  const active = hideCompare ? TABS.find((t) => t.key === "hooklyne")! : TABS.find((t) => t.key === tab)!;
   const tone = TONE[active.tone];
   const isHooklyne = active.key === "hooklyne";
 
@@ -472,70 +474,73 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
           </p>
         </div>
 
-        {/* Tab label */}
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">{labels.compareWith}</span>
-          <span className="flex-1 h-px" style={{ background: "var(--border)" }} />
-        </div>
+        {/* Tab label + tabs - hidden in hideCompare mode */}
+        {!hideCompare && (
+          <>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--muted-foreground)]">{labels.compareWith}</span>
+              <span className="flex-1 h-px" style={{ background: "var(--border)" }} />
+            </div>
 
-        {/* Tabs */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 mb-5 p-1.5 rounded-2xl"
-          style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-xs)" }}
-          role="tablist"
-        >
-          {TABS.map((t) => {
-            const isActive = tab === t.key;
-            const tTone = TONE[t.tone];
-            const Icon = t.icon;
-            const nudge = !isActive && t.key === nudgeKey;
-            return (
-              <button
-                key={t.key}
-                onClick={() => { setTab(t.key); setHasInteracted(true); }}
-                role="tab"
-                aria-selected={isActive}
-                className={`relative text-left px-2.5 py-2.5 md:px-4 md:py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm${nudge ? " diycompare-auto-hover" : ""}`}
-                style={{
-                  background: isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.bg) : "transparent",
-                  border: `1px solid ${isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.border) : "transparent"}`,
-                }}
-                onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.background = "var(--card-hover)"; e.currentTarget.style.borderColor = "var(--border-strong)"; } }}
-                onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "transparent"; } }}
-              >
-                <div className="flex items-start gap-2.5 w-full">
-                  {t.key === "hooklyne" ? (
-                    <HooklyneMark className="size-8 rounded-lg shrink-0 mt-0.5" />
-                  ) : (
-                    <span
-                      className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 mt-0.5 transition-colors"
-                      style={{ background: isActive ? tTone.fg : "var(--card-hover)", color: isActive ? "#fff" : "var(--muted-foreground)" }}
-                    >
-                      <Icon className="size-4" />
-                    </span>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <div
-                      className={`text-[13px] leading-tight ${t.key === "hooklyne" ? "font-bold" : "font-medium"}`}
-                      style={{ color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--heading)" }}
-                    >
-                      {t.label}
+            <div
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 mb-5 p-1.5 rounded-2xl"
+              style={{ background: "var(--card)", border: "1px solid var(--border)", boxShadow: "var(--shadow-xs)" }}
+              role="tablist"
+            >
+              {TABS.map((t) => {
+                const isActive = tab === t.key;
+                const tTone = TONE[t.tone];
+                const Icon = t.icon;
+                const nudge = !isActive && t.key === nudgeKey;
+                return (
+                  <button
+                    key={t.key}
+                    onClick={() => { setTab(t.key); setHasInteracted(true); }}
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`relative text-left px-2.5 py-2.5 md:px-4 md:py-3 rounded-xl transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm${nudge ? " diycompare-auto-hover" : ""}`}
+                    style={{
+                      background: isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.bg) : "transparent",
+                      border: `1px solid ${isActive ? (t.key === "hooklyne" ? "var(--hooklyne-navy)" : tTone.border) : "transparent"}`,
+                    }}
+                    onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.background = "var(--card-hover)"; e.currentTarget.style.borderColor = "var(--border-strong)"; } }}
+                    onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "transparent"; } }}
+                  >
+                    <div className="flex items-start gap-2.5 w-full">
+                      {t.key === "hooklyne" ? (
+                        <HooklyneMark className="size-8 rounded-lg shrink-0 mt-0.5" />
+                      ) : (
+                        <span
+                          className="inline-flex items-center justify-center size-8 rounded-lg shrink-0 mt-0.5 transition-colors"
+                          style={{ background: isActive ? tTone.fg : "var(--card-hover)", color: isActive ? "#fff" : "var(--muted-foreground)" }}
+                        >
+                          <Icon className="size-4" />
+                        </span>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div
+                          className={`text-[13px] leading-tight ${t.key === "hooklyne" ? "font-bold" : "font-medium"}`}
+                          style={{ color: isActive && t.key === "hooklyne" ? "#ffffff" : "var(--heading)" }}
+                        >
+                          {t.label}
+                        </div>
+                        <div
+                          className="text-[11px] leading-tight mt-0.5 truncate"
+                          style={{ color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.85)" : "var(--muted-foreground)" }}
+                        >
+                          {t.sub}
+                        </div>
+                      </div>
                     </div>
-                    <div
-                      className="text-[11px] leading-tight mt-0.5 truncate"
-                      style={{ color: isActive && t.key === "hooklyne" ? "rgba(255,255,255,0.85)" : "var(--muted-foreground)" }}
-                    >
-                      {t.sub}
-                    </div>
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        )}
 
-        {/* Totals strip */}
-        <div
+        {/* Totals strip - hidden in hideCompare mode */}
+        {!hideCompare && <div
           className="mb-5 px-3.5 py-2.5 md:py-2 rounded-lg"
           style={{ background: tone.bg, border: `1px solid ${tone.border}` }}
         >
@@ -566,7 +571,7 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
               </div>
             )}
           </div>
-        </div>
+        </div>}
 
         {/* Steps grid. Mobile: each step is collapsible, only the active one
             shows detail + callout. md+: full grid, every step always expanded. */}
@@ -654,7 +659,7 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
         </div>
 
         {/* Full-width footer line when all 6 slots are filled */}
-        {active.footerNote && active.steps.length >= 6 && (
+        {!hideCompare && active.footerNote && active.steps.length >= 6 && (
           <div
             className="mt-4 px-4 py-3 rounded-xl flex items-start gap-2.5"
             style={{ background: tone.soft, border: `1px dashed ${tone.border}` }}
@@ -663,6 +668,18 @@ export const DIYCompare = ({ lang: langProp }: { lang?: Lang } = {}) => {
             <p className="text-[13px] text-[var(--muted-foreground)] leading-relaxed italic">
               {active.footerNote}
             </p>
+          </div>
+        )}
+
+        {/* Quiet compare link shown only in hideCompare mode */}
+        {hideCompare && (
+          <div className="mt-6 flex justify-start">
+            <a
+              href={labels.compareLink.href}
+              className="text-sm text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] transition-colors underline underline-offset-4"
+            >
+              {labels.compareLink.text}
+            </a>
           </div>
         )}
       </div>

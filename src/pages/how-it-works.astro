@@ -9,6 +9,7 @@ import { SignalHeatTable } from '@/components/product/signal-heat-table';
 import { EmailCompose } from '@/components/product/email-compose';
 import { VerificationWaterfall } from '@/components/product/verification-waterfall';
 import { ArrowRight } from "@phosphor-icons/react";
+import { DIYCompare } from '@/components/blocks/diy-compare';
 
 const stages = [
   {
@@ -327,6 +328,8 @@ const breadcrumb = breadcrumbList([
         ))}
       </div>
     </section>
+
+    <DIYCompare client:visible />
 
     <section class="pt-4 pb-12 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-24" data-fade>
       <div class="container max-w-4xl">
