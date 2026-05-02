@@ -10,7 +10,7 @@ import { useLang, type Lang } from "@/lib/use-lang";
 
 const SUBJECT_EN = "The 3.2 MW rooftop at Venlo - how you're planning to use it";
 const BODY_EN: string[] = [
-  "Hi Marieke,",
+  "Hi James,",
   "",
   "Saw the announcement on the 3.2 MW rooftop array going live at the Venlo DC next month. Congrats, that's a serious step.",
   "",
@@ -27,7 +27,7 @@ const BODY_EN: string[] = [
 
 const SUBJECT_NL = "Het 3,2 MW zonnedak in Venlo - hoe jullie het willen inzetten";
 const BODY_NL: string[] = [
-  "Hoi Marieke,",
+  "Hoi Daan,",
   "",
   "Zag de aankondiging van het 3,2 MW zonnedak dat volgende maand live gaat op DC Venlo. Gefeliciteerd, serieuze stap.",
   "",
@@ -55,7 +55,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: la
     actioned: "Verzonden",
     drafting: "Opstellen",
     verified: "Geverifieerd",
-    role: "Head of Operations, Axiom Logistics · m.devries@axiom.nl",
+    role: "Head of Operations, Axiom Logistics · d.visser@axiom.nl",
     hookTag: "Hook: 3,2 MW zonnedak",
     venloTag: "Venlo DC",
     subjectLabel: "Onderwerp",
@@ -67,7 +67,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: la
     actioned: "Actioned",
     drafting: "Drafting",
     verified: "Verified",
-    role: "Head of Operations, Axiom Logistics · m.devries@axiom.nl",
+    role: "Head of Operations, Axiom Logistics · j.porter@axiom.co.uk",
     hookTag: "Hook: 3.2 MW solar",
     venloTag: "Venlo DC",
     subjectLabel: "Subject",
@@ -182,10 +182,10 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: la
       <div className="absolute inset-0 flex flex-col px-4 py-3 sm:px-6 sm:py-5">
         <div className="rounded-xl flex-1 flex flex-col min-h-0" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
           <div className="px-3 sm:px-4 py-2 sm:py-2.5 border-b flex items-center gap-2 sm:gap-3" style={{ borderColor: "var(--border)" }}>
-            <img src="/personas/sara-de-vries.jpg" alt="Marieke de Vries" className="size-7 sm:size-8 rounded-full shrink-0 object-cover" />
+            <img src="/personas/mark-janssen.jpg" alt="" className="size-7 sm:size-8 rounded-full shrink-0 object-cover" />
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>Marieke de Vries</span>
+                <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>{lang === "nl" ? "Daan Visser" : "James Porter"}</span>
                 <span className="relative flex size-1.5 shrink-0">
                   <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-teal)" }} />
                   <span className="relative inline-flex rounded-full size-1.5" style={{ background: "var(--hooklyne-teal)" }} />

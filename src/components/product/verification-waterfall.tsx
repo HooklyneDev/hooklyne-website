@@ -52,7 +52,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio,
     matched: "match",
     layersTitle: "4 deliverability-lagen",
     passed: "geslaagd",
-    ingest: "Kandidaat ingelezen · m.devries@axiom.nl",
+    ingest: "Kandidaat ingelezen · n.huijsman@axiom.nl",
     providers: "Kruisreferentie over 21 providers",
     layers: "Deliverability-checks draaien",
     cleared: "Door alle 4 lagen · veilig om te versturen",
@@ -65,7 +65,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio,
     matched: "matched",
     layersTitle: "4 deliverability layers",
     passed: "passed",
-    ingest: "Ingesting candidate · m.devries@axiom.nl",
+    ingest: "Ingesting candidate · s.clarke@axiom.co.uk",
     providers: "Cross-referencing 21 providers",
     layers: "Running deliverability checks",
     cleared: "Cleared all 4 layers · safe to send",
@@ -165,13 +165,13 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio,
         <div className="absolute inset-0 flex flex-col px-3 py-3 sm:px-5 sm:py-4 gap-2 sm:gap-3">
           {/* Contact header */}
           <div className="rounded-lg p-2 sm:p-2.5 flex items-center gap-2 sm:gap-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-            <img src="/personas/sara-de-vries.jpg" alt="Marieke de Vries" className="size-8 sm:size-9 rounded-full shrink-0 object-cover" />
+            <img src="/personas/sara-de-vries.jpg" alt="" className="size-8 sm:size-9 rounded-full shrink-0 object-cover" />
             <div className="min-w-0 flex-1">
               <p className="text-[12px] sm:text-[13px] font-semibold leading-tight truncate" style={{ color: "var(--heading)" }}>
-                Marieke de Vries
+                {lang === "nl" ? "Noor Huijsman" : "Sophie Clarke"}
               </p>
               <p className="text-[10px] sm:text-[11px] truncate" style={{ color: "var(--muted-foreground)" }}>
-                {t.role} · m.devries@axiom.nl
+                {t.role} · {lang === "nl" ? "n.huijsman@axiom.nl" : "s.clarke@axiom.co.uk"}
               </p>
             </div>
             {phase === "verified" ? (

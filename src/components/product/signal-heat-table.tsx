@@ -45,7 +45,7 @@ const ROWS_EN: Row[] = [
   },
   {
     company: "Eneco",
-    contact: "Laura Smits",
+    contact: "Lauren Nash",
     heat: 24.0,
     trend: "Rising",
     date: "Today",
@@ -53,7 +53,7 @@ const ROWS_EN: Row[] = [
     signal: "CFO change + Q1 earnings call flagged cost review",
     subject: "The cost review the new CFO mentioned on the call",
     body: [
-      "Hi Laura,",
+      "Hi Lauren,",
       "Caught the Q1 call. The cost review the new CFO flagged lines up with two workstreams we've cut for Dutch utilities post-transition.",
       "Want the short summary of where the savings usually land?",
       "",
@@ -64,7 +64,7 @@ const ROWS_EN: Row[] = [
   },
   {
     company: "DPD Netherlands",
-    contact: "Mark van den Berg",
+    contact: "Alex Turner",
     heat: 16.0,
     trend: "Stable",
     date: "Today",
@@ -72,7 +72,7 @@ const ROWS_EN: Row[] = [
     signal: "Hiring 3 route planners + new depot announced",
     subject: "Before the Tilburg depot goes live",
     body: [
-      "Hi Mark,",
+      "Hi Alex,",
       "The Tilburg depot plus three route-planner hires is the exact window we usually get pulled in for.",
       "Two questions we'd ask first if useful, or a quick call.",
       "",
@@ -83,16 +83,16 @@ const ROWS_EN: Row[] = [
   },
   { company: "Vattenfall", contact: "Sarah Mitchell", heat: 12.0, trend: "Rising", date: "8 Apr 2026", signal: "", subject: "", body: [] },
   { company: "Dachser Netherlands", contact: "Thomas Reiter", heat: 6.0, trend: "Cooling", date: "7 Apr 2026", signal: "", subject: "", body: [] },
-  { company: "Siemens Netherlands", contact: "Erik Janssen", heat: 3.0, trend: "Stable", date: "6 Apr 2026", signal: "", subject: "", body: [] },
+  { company: "Siemens Netherlands", contact: "Chris Webb", heat: 3.0, trend: "Stable", date: "6 Apr 2026", signal: "", subject: "", body: [] },
 ];
 
 const ROWS_NL: Row[] = [
   {
-    company: "Innocent Drinks", contact: "Rebecca Clarke", heat: 38.0, trend: "Rising", date: "Vandaag", isNew: true,
+    company: "Innocent Drinks", contact: "Eva Vermeer", heat: 38.0, trend: "Rising", date: "Vandaag", isNew: true,
     signal: "VP Ops start maandag + 4 ops-rollen open",
     subject: "Twee diagnostics voordat de nieuwe VP Ops maandag start",
     body: [
-      "Hoi Rebecca,",
+      "Hoi Eva,",
       "Vier ops-rollen open in Rotterdam sinds de Series B, en de nieuwe VP Ops start maandag.",
       "Stuur graag de twee diagnostics die wij eerst zouden draaien. 15 minuten als je liever even belt.",
       "",
@@ -116,11 +116,11 @@ const ROWS_NL: Row[] = [
     ],
   },
   {
-    company: "DPD Netherlands", contact: "Mark van den Berg", heat: 16.0, trend: "Stable", date: "Vandaag", isNew: true,
+    company: "DPD Netherlands", contact: "Tim Wolters", heat: 16.0, trend: "Stable", date: "Vandaag", isNew: true,
     signal: "3 routeplanners aangenomen + nieuwe depot aangekondigd",
     subject: "Voordat het Tilburg-depot live gaat",
     body: [
-      "Hoi Mark,",
+      "Hoi Tim,",
       "Het Tilburg-depot plus drie routeplanners is precies het moment waarop we meestal worden binnengehaald.",
       "Twee vragen die we eerst zouden stellen als nuttig, of een korte call.",
       "",
@@ -129,9 +129,9 @@ const ROWS_NL: Row[] = [
       "Hooklyne",
     ],
   },
-  { company: "Vattenfall", contact: "Sarah Mitchell", heat: 12.0, trend: "Rising", date: "8 apr 2026", signal: "", subject: "", body: [] },
+  { company: "Vattenfall", contact: "Sophie Mulder", heat: 12.0, trend: "Rising", date: "8 apr 2026", signal: "", subject: "", body: [] },
   { company: "Dachser Netherlands", contact: "Thomas Reiter", heat: 6.0, trend: "Cooling", date: "7 apr 2026", signal: "", subject: "", body: [] },
-  { company: "Siemens Netherlands", contact: "Erik Janssen", heat: 3.0, trend: "Stable", date: "6 apr 2026", signal: "", subject: "", body: [] },
+  { company: "Siemens Netherlands", contact: "Bas de Groot", heat: 3.0, trend: "Stable", date: "6 apr 2026", signal: "", subject: "", body: [] },
 ];
 
 const TREND: Record<Trend, { bg: string; fg: string }> = {
