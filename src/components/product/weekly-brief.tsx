@@ -145,10 +145,10 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             style={{ borderBottom: "1px solid var(--border)" }}
           >
             <div
-              className="shrink-0 size-6 sm:size-7 rounded-md flex items-center justify-center text-[10px] sm:text-[11px] font-bold text-white"
+              className="shrink-0 size-6 sm:size-7 rounded-md flex items-center justify-center p-1"
               style={{ background: "var(--hooklyne-navy)" }}
             >
-              H
+              <img src="/logo-mark.svg" alt="Hooklyne" className="w-full h-full object-contain" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-[11px] sm:text-[12px] font-semibold truncate" style={{ color: "var(--heading)" }}>
