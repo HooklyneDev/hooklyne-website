@@ -60,9 +60,16 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-4">
               21 providers. Vier lagen. Één verdict.
             </h2>
-            <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
               Geen enkele database dekt je markt volledig. Wij draaien er 21 tegelijk en sturen elk resultaat door vier deliverability-checks. Alleen veilige adressen komen door.
             </p>
+            <div class="flex items-center gap-3 pt-4" style="border-top: 1px solid var(--border);">
+              <img src="/about/tim-wissink.jpg" alt="Tim Wissink" class="size-9 rounded-full object-cover shrink-0" />
+              <p class="text-sm text-[var(--muted-foreground)] leading-snug italic">
+                "Verkopen blijft mensenwerk. Software hoort je vrij te maken voor het gesprek, niet het gesprek over te nemen."
+                <span class="block not-italic font-medium text-[var(--heading)] mt-1">Tim Wissink, Oprichter</span>
+              </p>
+            </div>
           </div>
           <div class="w-full lg:w-3/5">
             <VerificationWaterfall lang="nl" client:visible ratio="3/2" tabletRatio="16/9" mobileRatio="4/3" />
@@ -70,41 +77,28 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
         </div>
       </div>
     </section>
+  </Background>
 
-    <section class="pb-10 lg:pb-14" data-fade>
-      <div class="container max-w-2xl text-center">
-        <p class="text-xl sm:text-2xl font-medium text-[var(--heading)] leading-relaxed mb-6">
-          "Verkopen blijft mensenwerk. Software hoort je vrij te maken voor het gesprek, niet het gesprek over te nemen."
-        </p>
-        <div class="inline-flex items-center gap-3">
-          <img src="/about/tim-wissink.jpg" alt="Tim Wissink" class="size-10 rounded-full object-cover shrink-0" />
-          <div class="text-left">
-            <p class="text-sm font-semibold" style="color: var(--heading);">Tim Wissink</p>
-            <p class="text-xs" style="color: var(--muted-foreground);">Oprichter, Hooklyne</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pb-14 lg:pb-20" data-fade>
+  <div style="background: var(--hooklyne-navy);">
+    <section class="py-14 lg:py-20" data-fade>
       <div class="container max-w-6xl">
         <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
           <div class="w-full lg:w-3/5 order-2 lg:order-1">
-            <WeeklyBrief lang="nl" client:visible ratio="16/9" tabletRatio="16/9" mobileRatio="4/3" />
+            <WeeklyBrief lang="nl" client:visible ratio="3/2" tabletRatio="16/9" mobileRatio="4/3" />
           </div>
           <div class="lg:w-2/5 order-1 lg:order-2">
-            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-orange)] mb-4">Signaalbriefing</p>
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--heading)] tracking-tight leading-tight mb-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style="color: var(--hooklyne-orange);">Signaalbriefing</p>
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight mb-4" style="color: #fff;">
               Je markt gebrieft. Elke maandagochtend.
             </h2>
-            <p class="text-base text-[var(--muted-foreground)] leading-relaxed">
+            <p class="text-base leading-relaxed" style="color: rgba(255,255,255,0.6);">
               Hooklyne scant de hele week koopsignalen bij je gevolgde prospects. Je ontvangt een briefing - wie bewoog, wat het betekent, wat je als eerste stuurt. Geen dashboard om te checken. Het vindt jou.
             </p>
           </div>
         </div>
       </div>
     </section>
-  </Background>
+  </div>
 
   <Background variant="bottom">
     <WhatYouGet lang="nl" />

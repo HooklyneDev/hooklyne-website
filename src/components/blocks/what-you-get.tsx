@@ -52,48 +52,46 @@ export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
   return (
     <section className="pt-14 pb-10 lg:pt-20 lg:pb-12" data-fade>
       <div className="container max-w-6xl">
-        <div className="grid lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
 
-          {/* Left: screenshot with blue glow + scroll-tilt */}
-          <div
-            ref={shotRef}
-            className="w-full rounded-2xl overflow-hidden order-first"
-            style={{
-              border: "1px solid var(--border)",
-              boxShadow:
-                "0 20px 60px -20px rgba(52,76,163,0.25), 0 0 100px 0 rgba(52,76,163,0.15), var(--shadow-xl)",
-              transformOrigin: "center bottom",
-              willChange: "transform",
-            }}
-          >
-            <picture>
-              <source srcSet="/home/dashboard.webp" type="image/webp" />
-              <img
-                src="/home/dashboard.jpg"
-                alt="Hooklyne dashboard: daily focus actions, signal heat for top prospects, and market intel headlines"
-                className="w-full h-auto block"
-                loading="lazy"
-                decoding="async"
-                width={1600}
-                height={990}
-              />
-            </picture>
-          </div>
-
-          {/* Right: text */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
-              {t.eyebrow}
-            </p>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.15] md:leading-[1.1] mb-5">
-              {t.headline}
-            </h2>
-            <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
-              {t.subline}
-            </p>
-          </div>
-
+        {/* Text: large left-aligned headline */}
+        <div className="max-w-2xl mb-8 lg:mb-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
+            {t.eyebrow}
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
+            {t.headline}
+          </h2>
+          <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
+            {t.subline}
+          </p>
         </div>
+
+        {/* Full-width screenshot with scroll-tilt */}
+        <div
+          ref={shotRef}
+          className="w-full rounded-2xl overflow-hidden"
+          style={{
+            border: "1px solid var(--border)",
+            boxShadow:
+              "0 20px 60px -20px rgba(52,76,163,0.25), 0 0 100px 0 rgba(52,76,163,0.15), var(--shadow-xl)",
+            transformOrigin: "center top",
+            willChange: "transform",
+          }}
+        >
+          <picture>
+            <source srcSet="/home/dashboard.webp" type="image/webp" />
+            <img
+              src="/home/dashboard.jpg"
+              alt="Hooklyne dashboard: daily focus actions, signal heat for top prospects, and market intel headlines"
+              className="w-full h-auto block"
+              loading="lazy"
+              decoding="async"
+              width={1600}
+              height={990}
+            />
+          </picture>
+        </div>
+
       </div>
     </section>
   );
