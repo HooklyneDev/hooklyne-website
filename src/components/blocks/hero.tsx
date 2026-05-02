@@ -10,7 +10,7 @@ const EN = {
     <>Find the prospects <span className="text-accent">actually worth</span> reaching out to.</>
   ),
   sub: "A research workflow that finds fitting companies, verifies decision-makers across 21 data providers, watches for live buying signals, and drafts first outreach in your rep's voice.",
-  cta: "Try free",
+  cta: "Try for free",
   secondary: "See how it works",
 };
 

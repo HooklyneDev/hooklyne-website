@@ -17,7 +17,7 @@ const EN = {
   pilotEyebrow: "10 credits, free",
   pilotTitle: "Start a free trial",
   pilotBody: "10 credits. 1 seat. Sector news for 2 weeks. Signals visible but locked. No payment, no card. In return: 20-min feedback call and case study rights.",
-  pilotCta: "Try free →",
+  pilotCta: "Try for free →",
   pilotBadge: "Recommended",
   demoEyebrow: "20 minutes",
   demoTitle: "Book a demo",

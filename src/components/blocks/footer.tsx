@@ -98,7 +98,7 @@ export const Footer = ({ lang: langProp }: { lang?: Lang } = {}) => {
               <span className="flex-1" style={{ background: "#FFFFFF" }} />
               <span className="flex-1" style={{ background: "#21468B" }} />
             </span>
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-white/70">
               {lang === "nl" ? "Gemaakt in Nederland" : "Made in the Netherlands"}
             </p>
           </div>
