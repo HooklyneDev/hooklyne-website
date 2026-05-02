@@ -102,12 +102,8 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     </section>
   </div>
 
-  <div style="position: relative; overflow: hidden; background: linear-gradient(180deg, #011f37 0%, #020f1e 100%);">
-    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 50% 100%, rgba(52,76,163,0.2) 0%, transparent 70%);"></div>
-    <WhatYouGet lang="nl" />
-  </div>
-
   <Background variant="bottom">
+    <WhatYouGet lang="nl" />
     <WaysToStart lang="nl" client:visible />
     <BuiltFor lang="nl" client:visible />
     <HomePricing lang="nl" client:visible />

@@ -4,7 +4,7 @@ import { useLang, type Lang } from "@/lib/use-lang";
 const EN = {
   eyebrow: "What you get",
   headline: (
-    <>Every prospect, <span style={{ color: "var(--hooklyne-orange)" }}>fully packaged</span>.</>
+    <>Every prospect, <span className="text-accent">fully packaged</span>.</>
   ),
   subline: "Verified contact, scored signal, drafted message - all in one card, ready to review and send.",
 };
@@ -12,7 +12,7 @@ const EN = {
 const NL = {
   eyebrow: "Wat je krijgt",
   headline: (
-    <>Elke prospect, <span style={{ color: "var(--hooklyne-orange)" }}>compleet samengesteld</span>.</>
+    <>Elke prospect, <span className="text-accent">compleet samengesteld</span>.</>
   ),
   subline: "Geverifieerd contact, gescoord signaal en een opgestelde mail. Alles op één plek, klaar om te beoordelen en te versturen.",
 };
@@ -48,33 +48,32 @@ export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
   }, []);
 
   return (
-    <section className="pt-14 pb-16 lg:pt-20 lg:pb-24" data-fade>
+    <section className="pt-14 pb-10 lg:pt-20 lg:pb-12" data-fade>
       <div className="container max-w-6xl">
 
         {/* Text */}
-        <div className="max-w-2xl mb-10 lg:mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "var(--hooklyne-orange)" }}>
+        <div className="max-w-2xl mb-8 lg:mb-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--hooklyne-blue)] mb-4">
             {t.eyebrow}
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1] mb-4" style={{ color: "#fff" }}>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[var(--heading)] tracking-tight leading-[1.1] mb-4">
             {t.headline}
           </h2>
-          <p className="text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
             {t.subline}
           </p>
         </div>
 
-        {/* Screenshot: glow layer behind, tilt on top */}
+        {/* Screenshot: brand-color glow layer bleeds behind the frame */}
         <div style={{ position: "relative" }}>
-          {/* Bleeding brand-color glow — extends beyond the screenshot edges */}
           <div
             aria-hidden="true"
             style={{
               position: "absolute",
-              inset: "-60px -80px",
+              inset: "-40px -60px",
               background:
-                "radial-gradient(ellipse 75% 55% at 50% 65%, rgba(52,76,163,0.65) 0%, rgba(52,76,163,0.25) 45%, transparent 75%)",
-              filter: "blur(32px)",
+                "radial-gradient(ellipse 70% 50% at 50% 60%, rgba(52,76,163,0.18) 0%, rgba(52,76,163,0.06) 50%, transparent 75%)",
+              filter: "blur(24px)",
               pointerEvents: "none",
               zIndex: 0,
             }}
@@ -85,9 +84,9 @@ export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
             style={{
               position: "relative",
               zIndex: 1,
-              border: "1px solid rgba(52,76,163,0.35)",
+              border: "1px solid var(--border)",
               boxShadow:
-                "0 0 0 1px rgba(52,76,163,0.15), 0 40px 80px -20px rgba(2,15,30,0.7)",
+                "0 30px 80px -20px rgba(52,76,163,0.22), 0 0 0 1px rgba(52,76,163,0.08), var(--shadow-xl)",
               transformOrigin: "center top",
               willChange: "transform",
             }}
