@@ -78,16 +78,40 @@
     radial-gradient(circle at 50% 50%, transparent 48%, rgba(52,76,163,0.13) 50%, transparent 52%),
     radial-gradient(circle at 50% 50%, transparent 65%, rgba(52,76,163,0.08) 67%, transparent 69%),
     radial-gradient(circle at 50% 50%, transparent 82%, rgba(52,76,163,0.05) 84%, transparent 86%);
-  animation: hero-mobile-pulse 4s ease-in-out infinite;
+  animation: hero-mobile-pulse 12s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes hero-mobile-pulse {
   0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
-  50%       { transform: translate(-50%, -50%) scale(1.10); opacity: 0.65; }
+  50%       { transform: translate(-50%, -50%) scale(1.04); opacity: 0.88; }
 }
 
+/* ── Desktop hero motion — subtle "breathing" on the existing
+      blue lights. No new elements, no JS, compositor-only.
+      Three different cycle lengths (12 / 14 / 16s) so the lights
+      never sync — that's what makes it feel organic, not mechanical. */
+@keyframes hero-glow-breathe {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 1; }
+}
+@keyframes hero-edge-drift-left {
+  0%, 100% { transform: translate(0, 0);     opacity: 0.7; }
+  50%       { transform: translate(10px, -6px); opacity: 1; }
+}
+@keyframes hero-edge-drift-right {
+  0%, 100% { transform: translate(0, 0);      opacity: 0.7; }
+  50%       { transform: translate(-10px, 6px); opacity: 1; }
+}
+.hero-glow-breathe       { animation: hero-glow-breathe       12s ease-in-out infinite; will-change: opacity;   }
+.hero-edge-drift-left    { animation: hero-edge-drift-left    14s ease-in-out infinite; will-change: transform, opacity; }
+.hero-edge-drift-right   { animation: hero-edge-drift-right   16s ease-in-out infinite; will-change: transform, opacity; }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-mobile-pulse { animation: none; }
+  .hero-mobile-pulse,
+  .hero-glow-breathe,
+  .hero-edge-drift-left,
+  .hero-edge-drift-right { animation: none; }
 }
 
 /* ── Primary button glare sweep ────────────────────────────────────── */

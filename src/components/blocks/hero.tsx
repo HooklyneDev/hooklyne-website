@@ -104,9 +104,9 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         <div className="hero-mobile-pulse" />
       </div>
 
-      {/* ── Desktop: centre glow ──────────────────────────────────── */}
+      {/* ── Desktop: centre glow (breathes) ──────────────────────── */}
       <div
-        className="hidden sm:block absolute inset-0 pointer-events-none"
+        className="hidden sm:block hero-glow-breathe absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
           background: "radial-gradient(ellipse 50% 38% at 50% 30%, rgba(52,76,163,0.28) 0%, rgba(52,76,163,0.10) 50%, transparent 72%)",
@@ -131,18 +131,18 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         <GridSignals />
       </div>
 
-      {/* ── Directional edge light — left ─────────────────────────── */}
+      {/* ── Directional edge light — left (drifts) ────────────────── */}
       <div
-        className="hidden sm:block absolute inset-0 pointer-events-none"
+        className="hidden sm:block hero-edge-drift-left absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
           background: "radial-gradient(ellipse 60% 50% at -5% 55%, rgba(52,76,163,0.09) 0%, transparent 65%)",
         }}
       />
 
-      {/* ── Directional edge light — right ────────────────────────── */}
+      {/* ── Directional edge light — right (drifts) ───────────────── */}
       <div
-        className="hidden sm:block absolute inset-0 pointer-events-none"
+        className="hidden sm:block hero-edge-drift-right absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
           background: "radial-gradient(ellipse 55% 45% at 105% 60%, rgba(52,76,163,0.07) 0%, transparent 65%)",
