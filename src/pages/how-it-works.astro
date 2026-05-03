@@ -308,11 +308,11 @@ const breadcrumb = breadcrumbList([
             </div>
 
             <div class="min-w-0">
-              {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
-              {s.n === 2 && <VerificationWaterfall client:visible ratio="5/4" tabletRatio="16/9" mobileRatio="1/1" />}
-              {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
+              {s.n === 1 && <FindCompaniesFlow client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" xsMobileRatio="3/4" />}
+              {s.n === 2 && <VerificationWaterfall client:visible ratio="5/4" tabletRatio="16/9" mobileRatio="1/1" xsMobileRatio="3/4" />}
+              {s.n === 3 && <SignalHeatTable client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" xsMobileRatio="3/4" />}
               {s.n === 4 && <ResearchBrief />}
-              {s.n === 5 && <EmailCompose client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" />}
+              {s.n === 5 && <EmailCompose client:visible ratio="4/3" tabletRatio="16/9" mobileRatio="3/4" xsMobileRatio="3/4" />}
               {s.n === 6 && (
                 <PortalShot
                   label={s.shot.label}

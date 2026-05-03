@@ -38,9 +38,9 @@ const LAYERS = LAYERS_EN; // referenced in lengths; actual labels picked at rend
 type Phase = "ingest" | "providers" | "layers" | "verified";
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
+type Props = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; xsMobileRatio?: Ratio; lang?: Lang };
 
-export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: Props = {}) => {
+export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobileRatio, lang: langProp }: Props = {}) => {
   const lang = useLang(langProp);
   const layersRender = lang === "nl" ? LAYERS_NL : LAYERS_EN;
   const t = lang === "nl" ? {
@@ -146,7 +146,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio,
 
   return (
     <div ref={rootRef}>
-      <GraphicShell crumb={t.crumb} ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio}>
+      <GraphicShell crumb={t.crumb} ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio} xsMobileRatio={xsMobileRatio}>
         <style>{`
           @keyframes vw-tick { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
           @keyframes vw-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }

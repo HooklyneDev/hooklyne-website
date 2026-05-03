@@ -152,8 +152,8 @@ const COMPANY_LOGOS: Record<string, { logo: string; color: string }> = {
 };
 
 type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
-type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; lang?: Lang };
-export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, lang: langProp }: SignalHeatTableProps = {}) => {
+type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; xsMobileRatio?: Ratio; lang?: Lang };
+export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobileRatio, lang: langProp }: SignalHeatTableProps = {}) => {
   const lang = useLang(langProp);
   const ROWS = lang === "nl" ? ROWS_NL : ROWS_EN;
   const t = lang === "nl" ? {
@@ -220,7 +220,7 @@ export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, lang:
   const selectedRow = selected ? ROWS.find((r) => r.company === selected) ?? null : null;
 
   return (
-    <GraphicShell crumb={t.crumb} status="Live" statusTone="teal" ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio}>
+    <GraphicShell crumb={t.crumb} status="Live" statusTone="teal" ratio={ratio} mobileRatio={mobileRatio} tabletRatio={tabletRatio} xsMobileRatio={xsMobileRatio}>
       <style>{`
         @keyframes sh-row { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes sh-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }

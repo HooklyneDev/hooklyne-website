@@ -65,7 +65,7 @@ export const WhatYouGet = ({ lang: langProp }: { lang?: Lang } = {}) => {
         </div>
 
         {/* Screenshot: brand-color glow layer bleeds behind the frame */}
-        <div className="max-w-4xl mx-auto" style={{ position: "relative" }}>
+        <div className="mx-auto" style={{ position: "relative" }}>
           <div
             aria-hidden="true"
             style={{
