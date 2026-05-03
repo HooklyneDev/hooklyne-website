@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 
 const SPACING = 48;
 const PULSE_DURATION = 3200;
-const EDGE_PAD = SPACING;
+const EDGE_PAD = 132;
 const ZONE_PAD = 24;
 // Label footprint (px): label is ~9px font, up to ~18 chars + 12px gap from dot.
 const LABEL_REACH = 110;
