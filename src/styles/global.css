@@ -386,10 +386,13 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Card surfaces — solid white, clean border.
-     No frosted glass. No gradient overlays.
-     The .glass-off class is kept for legacy opt-out but is now a
-     no-op; all surfaces use the same solid treatment.
+     Liquid glass — applies to all card surfaces site-wide.
+     Catches both usage patterns:
+       1. Tailwind class:  bg-[var(--card)]
+       2. Inline style:    style="background: var(--card)"
+     Backdrop-filter is desktop-only (md+) for mobile perf;
+     mobile falls back to a lightly tinted opaque white.
+     Opt-out with the .glass-off class on the element.
      ───────────────────────────────────────────────────────────── */
   .glass-surface,
   .bg-card:not(.glass-off),
@@ -405,12 +408,20 @@
   [style*="background: var(--background)"]:not(.glass-off),
   [style*="background:var(--background)"]:not(.glass-off),
   [style*="var(--card-hover)"]:not(.glass-off) {
-    background-color: #ffffff !important;
-    background-image: none !important;
-    border-color: rgba(15, 23, 42, 0.08) !important;
+    background-color: rgba(255, 255, 255, 0.80) !important;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.05) 35%,
+      rgba(255, 255, 255, 0) 65%,
+      rgba(15, 23, 42, 0.04) 100%
+    ) !important;
+    border-color: rgba(15, 23, 42, 0.06) !important;
     box-shadow:
-      0 1px 2px rgba(15, 23, 42, 0.04),
-      0 4px 12px rgba(15, 23, 42, 0.06) !important;
+      0 1px 2px rgba(15, 23, 42, 0.05),
+      0 8px 24px rgba(15, 23, 42, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
   }
 }
 
