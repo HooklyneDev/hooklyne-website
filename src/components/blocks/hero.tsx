@@ -115,32 +115,11 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         }}
       />
 
-      {/* ── Desktop: radar sweep — pivots from above the video,
-            sweeps ±78° like a searchlight over the rings.
-            200vmax ensures the beam reaches every edge of the section. */}
-      <div
-        className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
-        style={{ zIndex: 1 }}
-      >
-        <div
-          className="hero-radar"
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "72%",
-            width: "200vmax",
-            height: "200vmax",
-            borderRadius: "50%",
-            background: "conic-gradient(from -16deg, transparent 0deg, rgba(52,76,163,0.07) 10deg, rgba(52,76,163,0.16) 16deg, rgba(52,76,163,0.07) 22deg, transparent 32deg, transparent 360deg)",
-          }}
-        />
-      </div>
-
       {/* ── Desktop: concentric rings ─────────────────────────────── */}
       <div
         className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
         style={{
-          zIndex: 2,
+          zIndex: 0,
           backgroundImage: rings,
           maskImage: ringMask,
           WebkitMaskImage: ringMask,
@@ -148,7 +127,7 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
       />
 
       {/* ── Desktop: grid signal pulses ───────────────────────────── */}
-      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 5 }}>
+      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 4 }}>
         <GridSignals />
       </div>
 

@@ -130,20 +130,6 @@
 }
 
 
-/* ── Hero radar sweep ───────────────────────────────────────────────── */
-@keyframes radar-pendulum {
-  0%   { transform: translate(-50%, -50%) rotate(-78deg); }
-  50%  { transform: translate(-50%, -50%) rotate(78deg); }
-  100% { transform: translate(-50%, -50%) rotate(-78deg); }
-}
-.hero-radar {
-  animation: radar-pendulum 11s ease-in-out infinite;
-  will-change: transform;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-radar { animation: none; transform: translate(-50%, -50%) rotate(0deg); }
-}
-
 /* ── Video frame glow pulse ─────────────────────────────────────────── */
 @keyframes hero-frame-glow {
   0%, 100% {
