@@ -149,22 +149,6 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         }}
       />
 
-      {/* ── Grain texture: desktop only.
-            feTurbulence is GPU-cheap on desktop but expensive on
-            lower-end mobile, and at 4.5% opacity it doesn't add much
-            on a small viewport anyway. */}
-      <svg
-        className="hidden md:block absolute inset-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 2, opacity: 0.045 }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <filter id="hero-grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#hero-grain)" />
-      </svg>
-
       {/* Vignette + bottom fade removed: they painted slate/white
           over the body's gradient wash and produced a visible seam
           above the signal ticker. Page wash now flows uninterrupted. */}
