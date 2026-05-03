@@ -123,21 +123,23 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         }}
       />
 
-      {/* ── Desktop: radar sweep ─────────────────────────────────── */}
+      {/* ── Desktop: radar sweep — pivots from above the video,
+            sweeps ±78° like a searchlight over the rings.
+            200vmax ensures the beam reaches every edge of the section. */}
       <div
         className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
-        style={{ zIndex: 1, maskImage: ringMask, WebkitMaskImage: ringMask }}
+        style={{ zIndex: 1 }}
       >
         <div
           className="hero-radar"
           style={{
             position: "absolute",
             left: "50%",
-            top: "35%",
-            width: "1100px",
-            height: "1100px",
+            top: "72%",
+            width: "200vmax",
+            height: "200vmax",
             borderRadius: "50%",
-            background: "conic-gradient(from 0deg, transparent 0deg, rgba(52,76,163,0.13) 12deg, rgba(52,76,163,0.22) 18deg, rgba(52,76,163,0.13) 24deg, transparent 36deg, transparent 360deg)",
+            background: "conic-gradient(from -16deg, transparent 0deg, rgba(52,76,163,0.07) 10deg, rgba(52,76,163,0.16) 16deg, rgba(52,76,163,0.07) 22deg, transparent 32deg, transparent 360deg)",
           }}
         />
       </div>

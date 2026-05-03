@@ -131,16 +131,17 @@
 
 
 /* ── Hero radar sweep ───────────────────────────────────────────────── */
-@keyframes radar-spin {
-  from { transform: translate(-50%, -35%) rotate(0deg); }
-  to   { transform: translate(-50%, -35%) rotate(360deg); }
+@keyframes radar-pendulum {
+  0%   { transform: translate(-50%, -50%) rotate(-78deg); }
+  50%  { transform: translate(-50%, -50%) rotate(78deg); }
+  100% { transform: translate(-50%, -50%) rotate(-78deg); }
 }
 .hero-radar {
-  animation: radar-spin 9s linear infinite;
+  animation: radar-pendulum 11s ease-in-out infinite;
   will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-radar { animation: none; }
+  .hero-radar { animation: none; transform: translate(-50%, -50%) rotate(0deg); }
 }
 
 /* ── Video frame glow pulse ─────────────────────────────────────────── */
@@ -453,6 +454,7 @@
 html,
 body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 /* Portal-style soft page wash. Applied directly to html so it scrolls
    with the document — no fixed pseudo-element, no compositor layer
