@@ -413,7 +413,7 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
     homeSub: "90 seconden per prospect. Onderzoek, contact, signaal, eerste mail - allemaal klaar. Beoordelen en versturen.",
     compareWith: "Vergelijk met",
     estCost: "geschatte toolkosten",
-    compareLink: { href: "/nl/hoe-het-werkt", text: "Hoe vergelijkt het?" },
+    compareLink: { href: "/nl/hoe-het-werkt#workflow", text: "Hoe vergelijkt het?" },
   } : {
     eyebrow: "The workflow",
     headline: (
@@ -423,7 +423,7 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
     homeSub: "90 seconds per prospect. Research, contact, signal, first draft - all handled. Your rep reviews and sends.",
     compareWith: "Compare with",
     estCost: "est. tool cost",
-    compareLink: { href: "/how-it-works", text: "How does it compare?" },
+    compareLink: { href: "/how-it-works#workflow", text: "How does it compare?" },
   };
   const [tab, setTab] = useState<TabKey>("hooklyne");
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -452,7 +452,7 @@ export const DIYCompare = ({ lang: langProp, hideCompare }: { lang?: Lang; hideC
   }, [tab]);
 
   return (
-    <section className="pt-8 pb-14 lg:pt-10 lg:pb-20" data-fade>
+    <section id="workflow" className="pt-8 pb-14 lg:pt-10 lg:pb-20" data-fade>
       <style>{`
         @keyframes diycompareAutoHover {
           0%       { background: transparent; border-color: transparent; transform: translateY(0); }

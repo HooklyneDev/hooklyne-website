@@ -12,6 +12,8 @@ export const faqGroups: Group[] = [
       { q: "How is Hooklyne different from a sales agency?", a: "Agencies cost €2,500+ a month and take the sending away from you. Hooklyne costs a fraction of that and keeps you in the sales seat, with the research already done." },
       { q: "Does Hooklyne use AI?", a: "Hooklyne combines several research and data systems into one workflow. Point is what shows up in the inbox, not what's under the hood." },
       { q: "Will the messages sound like a bot wrote them?", a: "No. Voice is calibrated from a 30-minute interview and up to five example emails. Every draft is reasoned through four times before it reaches you." },
+      { q: "What are the different ways to start prospecting?", a: "Four paths: describe your ICP and get a ranked shortlist, paste a domain and get matched decision-makers, paste a name or LinkedIn URL and get verified contact and outreach, or upload your best customers to find the next 50 with the same shape (coming soon). Every path lands on the same ready-to-send package." },
+      { q: "Where do my completed prospects go?", a: "Into My Leads - a pipeline view with status, signal, and outreach angle for every prospect. Filter, sort, expand for the full brief, and go straight to Meeting Prep from there. No CSV or CRM entry needed to track them." },
     ],
   },
   {
@@ -27,6 +29,7 @@ export const faqGroups: Group[] = [
       { q: "Why don't I see every hire and press release?", a: "Every signal is scored twice: matters to them, matters to you. Only the ones that pass both land in your inbox." },
       { q: "How accurate is the data?", a: "We ship only verified contacts. The four-layer verification holds bounce rate well below the 2% industry safe zone." },
       { q: "Is the data GDPR-compliant?", a: "Yes. Dutch-built, EU-first. Every provider in the waterfall operates under GDPR. Compliance is baked in, not bolted on." },
+      { q: "Can I track signals from a prospect after I've already reached out?", a: "Yes. Flip tracking on for any lead in My Leads. When something new happens - a hire, a funding round, a launch - it surfaces in your dashboard. You pick the moment, not the calendar." },
     ],
   },
   {
@@ -36,6 +39,7 @@ export const faqGroups: Group[] = [
       { q: "How do you avoid making stuff up about my prospects?", a: "Live web research, not training data. Every claim traces back to a current URL you can click. No invented quotes, no made-up stats, no fabricated customers." },
       { q: "Can I see the sources behind a meeting brief?", a: "Yes. Every brief shows its citations, clickable, so you can verify any fact before you walk in." },
       { q: "How do you personalise the messages?", a: "Sender Profile: five tabs - company, voice, example emails, products, rules. Set it once (about 30 minutes). Every message from that point inherits your voice through four reasoning passes." },
+      { q: "What is Meeting Prep?", a: "A live-researched brief built for the prospect you are about to meet. Company snapshot, decision-maker context, recent signals, and talking points - each claim linked to a real URL. One click from My Leads, pre-filled." },
     ],
   },
   {
@@ -85,6 +89,8 @@ export const faqGroupsNL: Group[] = [
       { q: "Wat is het verschil met een sales agency?", a: "Een agency kost €2.500+ per maand en haalt het versturen uit jouw handen. Hooklyne kost een fractie daarvan en houdt jou aan het stuur, met het onderzoek al gedaan." },
       { q: "Gebruikt Hooklyne AI?", a: "Hooklyne combineert verschillende onderzoeks- en datasystemen tot één workflow. Wat telt is wat in de inbox terechtkomt, niet wat eronder draait." },
       { q: "Klinkt het bericht alsof een bot het schreef?", a: "Nee. We kalibreren je stem op basis van een interview van 30 minuten en tot vijf voorbeeldmails, en elk concept gaat door vier controlestappen voor het bij jou belandt." },
+      { q: "Hoe kan ik starten met prospecten?", a: "Vier manieren: beschrijf je ideale klant en ontvang een gerangschikte shortlist, plak een domein en krijg drie matched beslissers, plak een naam of LinkedIn-URL en ontvang geverifieerd contact met concept-outreach, of upload je beste klanten om de volgende 50 met hetzelfde profiel te vinden (binnenkort). Elke weg leidt naar hetzelfde kant-en-klare pakket." },
+      { q: "Waar komen mijn afgeronde prospects terecht?", a: "In My Leads, een pipelineoverzicht met status, signaal en outreach-invalshoek per prospect. Filteren, sorteren, uitklappen voor het volledige briefje, en direct doorsturen naar Gespreksvoorbereiding. Geen CSV of CRM-invoer nodig." },
     ],
   },
   {
@@ -100,6 +106,7 @@ export const faqGroupsNL: Group[] = [
       { q: "Waarom zie ik niet elke nieuwe aanstelling of elk persbericht?", a: "Elk signaal krijgt twee scores, een voor relevantie aan hun kant en een voor jouw kant. Alleen signalen die door beide checks komen, belanden in jouw inbox." },
       { q: "Hoe goed is de data?", a: "We versturen alleen geverifieerde contacten, en de viertraps-verificatie houdt de bouncerate ruim onder de 2% safe zone die in de markt gangbaar is." },
       { q: "Is de data AVG-proof?", a: "Ja. Hooklyne is in Nederland gebouwd en EU-first opgezet; elke provider in de waterval werkt onder de AVG en compliance is van begin af aan ingebakken in de workflow, niet er bovenop geplakt." },
+      { q: "Kan ik signalen blijven volgen nadat ik een prospect heb benaderd?", a: "Ja. Zet tracking aan voor elke lead in My Leads. Bij een nieuwe aanstelling, fundingronde of lancering zie je het direct in je dashboard. Jij kiest het juiste moment, niet de kalender." },
     ],
   },
   {
@@ -109,6 +116,7 @@ export const faqGroupsNL: Group[] = [
       { q: "Hoe voorkomen jullie dat er onzin over mijn prospects wordt verzonnen?", a: "We doen live webonderzoek in plaats van te leunen op stoffige trainingsdata, en elke claim is te herleiden naar een actuele URL die je kunt aanklikken. Geen verzonnen quotes, geen verzonnen cijfers, geen verzonnen klanten." },
       { q: "Kan ik de bronnen achter een meeting brief zien?", a: "Ja. Elke brief toont zijn citaties klikbaar in de tekst, zodat je elk feit kunt verifiëren voordat je het gesprek ingaat." },
       { q: "Hoe personaliseren jullie de berichten?", a: "Via het Sender Profile met vijf tabs: bedrijf, stem, voorbeeldmails, producten en regels. Eenmalig invullen kost zo'n 30 minuten, en vanaf dat moment erft elk bericht jouw toon via vier controlestappen." },
+      { q: "Wat is Gespreksvoorbereiding?", a: "Een live-onderzocht briefje voor de prospect die je gaat ontmoeten. Bedrijfsoverzicht, contactcontext, recente signalen en gespreksaanknopingspunten - elke claim gekoppeld aan een echte URL. Eén klik vanuit My Leads, al ingevuld." },
     ],
   },
   {

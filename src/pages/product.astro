@@ -277,8 +277,9 @@ const breadcrumb = breadcrumbList([
                 <div class="mt-auto rounded-xl p-2.5 sm:p-3.5" style="background: var(--background); border: 1px solid var(--border);">
                   <div class="flex items-center gap-2 sm:gap-3 mb-3">
                     <div class="size-8 sm:size-9 rounded-lg flex items-center justify-center text-white shrink-0" style="background: #1e3a8a;">
-                      <svg viewBox="0 0 24 24" fill="currentColor" class="size-[18px] sm:size-5" aria-hidden="true">
-                        <path d="M3 21V9l9-5.5L21 9v12H3zm2-2h5v-5h4v5h5V10.08L12 5.28 5 10.08V19z"/>
+                      <svg viewBox="0 0 24 24" fill="none" class="size-[18px] sm:size-5" aria-hidden="true">
+                        <path d="M7 5l5 7-5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 5l5 7-5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </div>
                     <div class="min-w-0 flex-1">
@@ -380,7 +381,7 @@ const breadcrumb = breadcrumbList([
           </div>
         </div>
 
-        <EmailCompose client:visible tabletRatio="3/2" mobileRatio="3/4" />
+        <EmailCompose client:visible ratio="5/2" tabletRatio="2/1" mobileRatio="3/4" />
 
         <ul class="grid md:grid-cols-2 gap-3 mt-12 max-w-4xl mx-auto">
           {[
@@ -467,15 +468,15 @@ const breadcrumb = breadcrumbList([
 
         <div class="grid gap-4 md:grid-cols-2">
           {prospectingModes.map((m) => (
-            <div class="rounded-2xl bg-[var(--card)] p-4 sm:p-6 flex flex-col" style="box-shadow: var(--shadow-xs)">
+            <div class="rounded-2xl p-4 sm:p-6 flex flex-col" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
               <div class="flex items-center gap-3 mb-3">
-                <span class="text-xs font-bold tracking-widest text-[var(--hooklyne-blue)]/60">{m.n}</span>
-                <h3 class="text-base font-semibold text-[var(--heading)]">{m.title}</h3>
+                <span class="text-xs font-bold tracking-widest" style="color: rgba(255,255,255,0.3);">{m.n}</span>
+                <h3 class="text-base font-semibold" style="color: #fff;">{m.title}</h3>
                 {m.soon && (
-                  <span class="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full" style="background: rgba(255,140,66,0.12); color: var(--hooklyne-orange)">Soon</span>
+                  <span class="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full" style="background: rgba(255,140,66,0.18); color: var(--hooklyne-orange)">Soon</span>
                 )}
               </div>
-              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{m.body}</p>
+              <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.55);">{m.body}</p>
             </div>
           ))}
         </div>

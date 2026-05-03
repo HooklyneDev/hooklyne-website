@@ -12,34 +12,28 @@ const SUBJECT_EN = "The 3.2 MW rooftop at Venlo - how you're planning to use it"
 const BODY_EN: string[] = [
   "Hi James,",
   "",
-  "Saw the announcement on the 3.2 MW rooftop array going live at the Venlo DC next month. Congrats, that's a serious step.",
+  "Saw the 3.2 MW rooftop going live at Venlo next month. Congrats.",
   "",
-  "The question we keep seeing at this scale: how much of that production actually offsets your load in real time versus getting sold back at wholesale. Most Dutch operators we talk to are leaving 18-30% on the table in the first year because the forecasting and charging windows aren't tied to the DC's shift pattern.",
+  "One question at this scale: how much of that output offsets your real-time load versus going back at wholesale? Most Dutch operators leave 18-30% on the table in year one because the charging windows don't match the shift pattern.",
   "",
-  "We help teams close that gap with an energy management layer that sits between your PV inverters, the grid contract, and the forklift and cold-storage load. Two operators in your range cut net energy spend by ~22% inside six months.",
-  "",
-  "Worth a 20-minute look before the array goes live? Happy to send a one-pager first.",
+  "Worth a 20-minute call before it goes live?",
   "",
   "Best,",
   "Tim",
-  "Hooklyne",
 ];
 
 const SUBJECT_NL = "Het 3,2 MW zonnedak in Venlo - hoe jullie het willen inzetten";
 const BODY_NL: string[] = [
   "Hoi Daan,",
   "",
-  "Zag de aankondiging van het 3,2 MW zonnedak dat volgende maand live gaat op DC Venlo. Gefeliciteerd, serieuze stap.",
+  "Zag de aankondiging van het 3,2 MW zonnedak op DC Venlo volgende maand. Gefeliciteerd.",
   "",
-  "De vraag die we op deze schaal steeds zien: hoeveel van die productie compenseert echt jullie verbruik in real time, en hoeveel wordt teruggeleverd tegen groothandelsprijzen. De meeste Nederlandse operators laten 18-30% liggen in het eerste jaar omdat forecasting- en laadvensters niet aansluiten op het ploegenpatroon van het DC.",
+  "Eén vraag op deze schaal: hoeveel van die productie compenseert echt jullie verbruik in real time, en hoeveel wordt teruggeleverd tegen groothandelsprijzen? De meeste operators laten 18-30% liggen in het eerste jaar omdat laadvensters niet aansluiten op het ploegenpatroon.",
   "",
-  "We helpen teams dat gat dichten met een energy management-laag tussen de PV-omvormers, het netcontract, en de heftruck- en koelhuislast. Twee operators in jullie range schoven de netto energiekosten ~22% omlaag binnen zes maanden.",
-  "",
-  "20 minuten ervoor uittrekken voordat het dak live gaat? Ik stuur eerst een one-pager als dat helpt.",
+  "20 minuten ervoor uittrekken voordat het dak live gaat?",
   "",
   "Groet,",
   "Tim",
-  "Hooklyne",
 ];
 
 type Phase = "typing-subject" | "typing-body" | "review" | "actioned";

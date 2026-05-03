@@ -41,31 +41,31 @@ const signalsEN: Signal[] = [
     sector: "Fintech · Benelux",
     title: "Opened 6 senior AE roles, doubling outbound team",
     source: "Job boards", when: "1d ago" },
-  { type: "Expansion", tone: "teal", icon: "expansion",
+  { type: "Expansion", tone: "emerald", icon: "expansion",
     sector: "Food processing · NL",
     title: "New Rotterdam plant announced, controls engineer gap",
     source: "Company news", when: "5h ago" },
-  { type: "Leadership", tone: "teal", icon: "leadership",
+  { type: "Leadership", tone: "rose", icon: "leadership",
     sector: "MedTech · DACH",
     title: "Head of Procurement stepped down, supplier review window",
     source: "Public profiles", when: "3h ago" },
-  { type: "Launch", tone: "blue", icon: "launch",
+  { type: "Launch", tone: "indigo", icon: "launch",
     sector: "B2B SaaS · UK",
     title: "Launched EU product line, compliance partners needed",
     source: "Company blog", when: "7h ago" },
-  { type: "Funding", tone: "orange", icon: "funding",
+  { type: "Funding", tone: "amber", icon: "funding",
     sector: "Climate tech · NL",
     title: "€4.2M seed closed, first sales hire posted same week",
     source: "Funding tracker", when: "12h ago" },
-  { type: "Sector", tone: "blue", icon: "sector",
+  { type: "Sector", tone: "teal", icon: "sector",
     sector: "Freight · EMEA",
     title: "Diesel spot rates +18%, margin pressure on mid-market ops",
     source: "Industry trackers", when: "1d ago" },
-  { type: "Hiring", tone: "blue", icon: "hiring",
+  { type: "Hiring", tone: "orange", icon: "hiring",
     sector: "Manufacturing · BE",
     title: "Reopened 2 AE roles after a 6-month freeze",
     source: "Job boards", when: "6h ago" },
-  { type: "Press", tone: "orange", icon: "press",
+  { type: "Press", tone: "blue", icon: "press",
     sector: "Energy · NL",
     title: "Named in Dutch fast-growth 50, investor call next week",
     source: "Press wires", when: "9h ago" },
@@ -84,31 +84,31 @@ const signalsNL: Signal[] = [
     sector: "Fintech · Benelux",
     title: "6 senior AE-rollen open. Outbound-team verdubbelt.",
     source: "Vacaturesites", when: "1d geleden" },
-  { type: "Expansie", tone: "teal", icon: "expansion",
+  { type: "Expansie", tone: "emerald", icon: "expansion",
     sector: "Voedingsmiddelen · NL",
     title: "Nieuwe Rotterdamse fabriek aangekondigd. Gat in controls engineering.",
     source: "Bedrijfsnieuws", when: "5u geleden" },
-  { type: "Leiderschap", tone: "teal", icon: "leadership",
+  { type: "Leiderschap", tone: "rose", icon: "leadership",
     sector: "MedTech · DACH",
     title: "Head of Procurement opgestapt. Leveranciersreview-window open.",
     source: "LinkedIn-profielen", when: "3u geleden" },
-  { type: "Launch", tone: "blue", icon: "launch",
+  { type: "Launch", tone: "indigo", icon: "launch",
     sector: "B2B SaaS · UK",
     title: "EU-productlijn gelanceerd. Compliance-partners gezocht.",
     source: "Bedrijfsblog", when: "7u geleden" },
-  { type: "Funding", tone: "orange", icon: "funding",
+  { type: "Funding", tone: "amber", icon: "funding",
     sector: "Klimaattechniek · NL",
     title: "€4,2M seed rond. Eerste sales hire dezelfde week geplaatst.",
     source: "Funding tracker", when: "12u geleden" },
-  { type: "Sector", tone: "blue", icon: "sector",
+  { type: "Sector", tone: "teal", icon: "sector",
     sector: "Vracht · EMEA",
     title: "Dieselprijzen +18%. Marge-druk op mid-market operaties.",
     source: "Sectorbronnen", when: "1d geleden" },
-  { type: "Hiring", tone: "blue", icon: "hiring",
+  { type: "Hiring", tone: "orange", icon: "hiring",
     sector: "Maakindustrie · BE",
     title: "2 AE-rollen heropend. Na een vacature-stop van 6 maanden.",
     source: "Vacaturesites", when: "6u geleden" },
-  { type: "Pers", tone: "orange", icon: "press",
+  { type: "Pers", tone: "blue", icon: "press",
     sector: "Energie · NL",
     title: "Genoemd in Nederlandse fast-growth 50. Investor-call volgende week.",
     source: "Persberichten", when: "9u geleden" },
@@ -191,7 +191,7 @@ const track = [...signals, ...signals];
         >
           <span
             class="inline-flex items-center justify-center size-9 rounded-lg shrink-0"
-            style={`background: ${toneBg[iconToTone[s.icon]]}; color: ${toneMap[iconToTone[s.icon]]};`}
+            style={`background: ${toneBg[s.tone]}; color: ${toneMap[s.tone]};`}
             aria-hidden="true"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" set:html={iconPaths[s.icon]} />
@@ -200,7 +200,7 @@ const track = [...signals, ...signals];
             <div class="flex items-center gap-2 mb-0.5">
               <span
                 class="text-[9px] font-bold uppercase tracking-[0.18em] px-1.5 py-0.5 rounded"
-                style={`background: ${toneBg[iconToTone[s.icon]]}; color: ${toneMap[iconToTone[s.icon]]};`}
+                style={`background: ${toneBg[s.tone]}; color: ${toneMap[s.tone]};`}
               >
                 {s.type}
               </span>
