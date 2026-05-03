@@ -17,7 +17,7 @@ const lang = Astro.url.pathname.startsWith('/nl') ? 'nl' : 'en';
         <BaseHead title={title} description={description} image={image} ogType={ogType} publishedTime={publishedTime} modifiedTime={modifiedTime} />
         <slot name="head" />
     </head>
-    <body class={`h-screen antialiased`}
+    <body class={`h-screen antialiased overflow-x-hidden`}
     >
         <Navbar lang={lang} client:only='react' />
         <main><slot /></main>

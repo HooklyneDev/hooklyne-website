@@ -88,9 +88,12 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
     };
   }, []);
 
-  const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 50%, transparent 70%)";
+  const ringMask = "linear-gradient(to bottom, transparent 0%, black 9%, black 55%, transparent 72%)";
   const rings = [150, 300, 450, 600, 750, 900, 1050]
-    .map(r => `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,0.11) ${r}px, transparent ${r + 1}px)`)
+    .map((r, i) => {
+      const opacity = 0.16 - i * 0.015;
+      return `radial-gradient(circle at 50% 35%, transparent ${r - 1}px, rgba(52,76,163,${opacity.toFixed(3)}) ${r}px, transparent ${r + 1}px)`;
+    })
     .join(", ");
 
   return (
@@ -106,7 +109,7 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         className="hidden sm:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 55% 40% at 50% 32%, rgba(52,76,163,0.22) 0%, rgba(52,76,163,0.08) 45%, transparent 70%)",
+          background: "radial-gradient(ellipse 50% 38% at 50% 30%, rgba(52,76,163,0.28) 0%, rgba(52,76,163,0.10) 50%, transparent 72%)",
           maskImage: ringMask,
           WebkitMaskImage: ringMask,
         }}
@@ -128,15 +131,21 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         <GridSignals />
       </div>
 
-      {/* ── Ambient gradient blobs ────────────────────────────────── */}
+      {/* ── Directional edge light — left ─────────────────────────── */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hidden sm:block absolute inset-0 pointer-events-none"
         style={{
-          background: `
-            radial-gradient(ellipse 55% 40% at 15% 40%, rgba(52,76,163,0.07) 0%, transparent 70%),
-            radial-gradient(ellipse 45% 35% at 85% 65%, rgba(52,76,163,0.05) 0%, transparent 70%),
-            radial-gradient(ellipse 35% 25% at 60% 10%, rgba(13,148,136,0.04) 0%, transparent 65%)
-          `,
+          zIndex: 0,
+          background: "radial-gradient(ellipse 60% 50% at -5% 55%, rgba(52,76,163,0.09) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* ── Directional edge light — right ────────────────────────── */}
+      <div
+        className="hidden sm:block absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 0,
+          background: "radial-gradient(ellipse 55% 45% at 105% 60%, rgba(52,76,163,0.07) 0%, transparent 65%)",
         }}
       />
 
