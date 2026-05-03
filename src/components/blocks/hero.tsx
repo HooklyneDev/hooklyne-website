@@ -35,18 +35,13 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
   useEffect(() => {
     const el = screenshotRef.current;
     if (!el) return;
-    /* Promote the element to its own compositor layer immediately so
-       the rotateX update never triggers a CPU repaint. */
-    el.style.willChange = "transform";
     let ticking = false;
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh   = window.innerHeight;
       const prog = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.9)));
-      const deg  = 22 * (1 - prog);
-      /* perspective on the parent (set once in JSX), only rotateX here —
-         this keeps the transform compositor-only with no paint. */
-      el.style.transform = `rotateX(${deg}deg)`;
+      const deg  = 26 * (1 - prog);
+      el.style.transform = `perspective(900px) rotateX(${deg}deg)`;
       ticking = false;
     };
     const onScroll = () => {
@@ -56,10 +51,7 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
     };
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      el.style.willChange = "auto";
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   /* Hero video playback. Three things going on:
@@ -229,7 +221,7 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
       </div>
 
       {/* ── Hero video ────────────────────────────────────────────── */}
-      <div id="hero-video" className="relative z-10 container max-w-6xl mt-14 lg:mt-16" style={{ perspective: "900px" }}>
+      <div id="hero-video" className="relative z-10 container max-w-6xl mt-14 lg:mt-16">
         <div
           ref={screenshotRef}
           className="relative w-full rounded-2xl overflow-hidden"
