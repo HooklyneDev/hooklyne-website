@@ -87,25 +87,25 @@
   50%       { transform: translate(-50%, -50%) scale(1.04); opacity: 0.88; }
 }
 
-/* ── Desktop hero motion — subtle "breathing" on the existing
-      blue lights. No new elements, no JS, compositor-only.
-      Three different cycle lengths (12 / 14 / 16s) so the lights
-      never sync — that's what makes it feel organic, not mechanical. */
+/* ── Desktop hero motion — "breathing" on the existing blue lights.
+      No new elements, no JS, compositor-only. Three different cycle
+      lengths (9 / 11 / 13s) so the lights never sync — the asymmetry
+      is what reads as organic, not mechanical. */
 @keyframes hero-glow-breathe {
-  0%, 100% { opacity: 0.85; }
+  0%, 100% { opacity: 0.55; }
   50%       { opacity: 1; }
 }
 @keyframes hero-edge-drift-left {
-  0%, 100% { transform: translate(0, 0);     opacity: 0.7; }
-  50%       { transform: translate(10px, -6px); opacity: 1; }
+  0%, 100% { transform: translate(0, 0);        opacity: 0.4; }
+  50%       { transform: translate(22px, -14px); opacity: 1; }
 }
 @keyframes hero-edge-drift-right {
-  0%, 100% { transform: translate(0, 0);      opacity: 0.7; }
-  50%       { transform: translate(-10px, 6px); opacity: 1; }
+  0%, 100% { transform: translate(0, 0);        opacity: 0.4; }
+  50%       { transform: translate(-22px, 14px); opacity: 1; }
 }
-.hero-glow-breathe       { animation: hero-glow-breathe       12s ease-in-out infinite; will-change: opacity;   }
-.hero-edge-drift-left    { animation: hero-edge-drift-left    14s ease-in-out infinite; will-change: transform, opacity; }
-.hero-edge-drift-right   { animation: hero-edge-drift-right   16s ease-in-out infinite; will-change: transform, opacity; }
+.hero-glow-breathe       { animation: hero-glow-breathe       9s  ease-in-out infinite; will-change: opacity;   }
+.hero-edge-drift-left    { animation: hero-edge-drift-left    11s ease-in-out infinite; will-change: transform, opacity; }
+.hero-edge-drift-right   { animation: hero-edge-drift-right   13s ease-in-out infinite; will-change: transform, opacity; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-mobile-pulse,
