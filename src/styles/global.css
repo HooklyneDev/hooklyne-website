@@ -440,7 +440,7 @@
 html,
 body {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 /* Portal-style soft page wash. Applied directly to html so it scrolls
    with the document — no fixed pseudo-element, no compositor layer
