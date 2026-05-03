@@ -123,11 +123,30 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         }}
       />
 
+      {/* ── Desktop: radar sweep ─────────────────────────────────── */}
+      <div
+        className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ zIndex: 1, maskImage: ringMask, WebkitMaskImage: ringMask }}
+      >
+        <div
+          className="hero-radar"
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "35%",
+            width: "1100px",
+            height: "1100px",
+            borderRadius: "50%",
+            background: "conic-gradient(from 0deg, transparent 0deg, rgba(52,76,163,0.13) 12deg, rgba(52,76,163,0.22) 18deg, rgba(52,76,163,0.13) 24deg, transparent 36deg, transparent 360deg)",
+          }}
+        />
+      </div>
+
       {/* ── Desktop: concentric rings ─────────────────────────────── */}
       <div
         className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none"
         style={{
-          zIndex: 0,
+          zIndex: 2,
           backgroundImage: rings,
           maskImage: ringMask,
           WebkitMaskImage: ringMask,
@@ -135,7 +154,7 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
       />
 
       {/* ── Desktop: grid signal pulses ───────────────────────────── */}
-      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 4 }}>
+      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 5 }}>
         <GridSignals />
       </div>
 

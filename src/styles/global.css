@@ -130,6 +130,19 @@
 }
 
 
+/* ── Hero radar sweep ───────────────────────────────────────────────── */
+@keyframes radar-spin {
+  from { transform: translate(-50%, -35%) rotate(0deg); }
+  to   { transform: translate(-50%, -35%) rotate(360deg); }
+}
+.hero-radar {
+  animation: radar-spin 9s linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-radar { animation: none; }
+}
+
 /* ── Video frame glow pulse ─────────────────────────────────────────── */
 @keyframes hero-frame-glow {
   0%, 100% {
