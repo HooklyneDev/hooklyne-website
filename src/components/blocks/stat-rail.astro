@@ -1,0 +1,50 @@
+---
+/**
+ * Stat rail — a tight horizontal strip of key proof numbers.
+ * Sits between the hero and the signal ticker.
+ * All four stats on one line on lg+, wraps to 2×2 on smaller screens.
+ *
+ * IMPORTANT: confirm the signal lookback period (14d or 30d) before
+ * publishing — currently shows "14-day" to match the signal ticker copy.
+ */
+
+const isNL = Astro.url.pathname.startsWith("/nl");
+
+type Stat = { n: string; label: string };
+
+const statsEN: Stat[] = [
+  { n: "21",    label: "contact providers" },
+  { n: "4",     label: "verification layers" },
+  { n: "7",     label: "signal categories" },
+  { n: "<60s",  label: "to review and send" },
+];
+
+const statsNL: Stat[] = [
+  { n: "21",    label: "contactproviders" },
+  { n: "4",     label: "verificatielagen" },
+  { n: "7",     label: "signaalcategorieën" },
+  { n: "<60s",  label: "beoordelen en versturen" },
+];
+
+const stats = isNL ? statsNL : statsEN;
+---
+
+<div class="border-y border-[var(--border)]" style="background: var(--background);">
+  <div class="container max-w-6xl">
+    <dl class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[var(--border)]">
+      {stats.map((s) => (
+        <div class="flex items-baseline gap-2.5 px-6 py-4 lg:py-5">
+          <dt
+            class="text-[22px] lg:text-[26px] font-bold tabular-nums tracking-tight leading-none shrink-0"
+            style="color: var(--heading); font-variant-numeric: tabular-nums;"
+          >
+            {s.n}
+          </dt>
+          <dd class="text-[12px] lg:text-[13px] leading-snug" style="color: var(--muted-foreground);">
+            {s.label}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</div>
