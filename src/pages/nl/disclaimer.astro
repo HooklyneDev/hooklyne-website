@@ -2,72 +2,93 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { Background } from '@/components/background';
 
-const lastUpdated = "18 april 2026";
+const lastUpdated = "4 mei 2026";
 ---
 
-<DefaultLayout title="Disclaimer | Hooklyne" description="Disclaimer voor de website en dienst van Hooklyne. Wat we beloven, wat niet, en de aansprakelijkheidsgrenzen voor B2B prospect-onderzoek.">
+<DefaultLayout title="Gebruiksvoorwaarden | Hooklyne" description="Gebruiksvoorwaarden van Hooklyne. Abonnementsvoorwaarden, facturering, credits, opzegging en aansprakelijkheidsgrenzen voor B2B prospect-onderzoek.">
   <Background>
     <section class="pt-32 lg:pt-40 pb-20">
       <div class="container max-w-4xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Juridisch</p>
-        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Disclaimer.</h1>
+        <h1 class="text-3xl md:text-5xl font-semibold text-[var(--heading)] tracking-tight mb-4">Gebruiksvoorwaarden.</h1>
         <p class="text-sm text-[var(--muted-foreground)] mb-12">Laatst bijgewerkt: {lastUpdated}</p>
 
         <div class="space-y-10">
 
           <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Accuratesse van informatie</h2>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">1. Voor wie deze voorwaarden gelden</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Deze voorwaarden gelden voor iedereen die de Hooklyne-dienst gebruikt, inclusief het portaal, prospect-onderzoeksresultaten en bijbehorende functies. Door een account aan te maken of een betaling te doen, ga je akkoord met deze voorwaarden.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">2. Abonnementen en facturering</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Hooklyne werkt met een maandelijks of jaarlijks abonnement. Abonnementen verlengen automatisch aan het einde van elke periode, tenzij je voor de verlengingsdatum opzegt. Jaarplannen worden vooraf in rekening gebracht voor het volledige jaar. Prijzen staan op onze prijzenpagina en kunnen met 30 dagen opzegtermijn voor bestaande abonnees wijzigen. Betalingen worden verwerkt door Stripe, Inc. Hooklyne slaat geen betaalkaartgegevens op.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">3. Credits</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Elk abonnement bevat een maandelijks creditbudget. Credits worden gebruikt bij aanvragen voor prospect-pakketten, contactopzoekingen en andere credit-verbruikende acties. Ongebruikte credits rollen een maand door tot een maximum van 2x je maandbudget. Credits boven dat plafond vervallen. Credits hebben geen contante waarde en worden niet terugbetaald.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">4. Opzegging en terugbetaling</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Je kunt op elk moment opzeggen. De opzegging gaat in aan het einde van de lopende periode; je behoudt toegang en credits tot die datum. Maandabonnementen worden niet terugbetaald voor gedeeltelijke perioden. Jaarabonnementen komen binnen 14 dagen na aankoop in aanmerking voor een pro-rata terugbetaling als er nog geen credits zijn gebruikt. Verzoeken via <a href="mailto:billing@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">billing@hooklyne.com</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">5. Toegestaan gebruik</h2>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Je mag Hooklyne alleen gebruiken voor rechtmatige B2B-verkoop en -marketing. Doorverkoop, sublicentiëring of herverspreiding van data of output is niet toegestaan. Je bent zelf verantwoordelijk dat je outreach voldoet aan de geldende wet- en regelgeving, waaronder de AVG en de Telecommunicatiewet. Accounts die worden gebruikt voor spam, scraping of ander misbruik worden zonder terugbetaling opgeschort.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">6. Accuratesse van informatie</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed">
               We doen ons best om de informatie op deze website actueel en correct te houden. Garanties over volledigheid of juistheid kunnen we niet geven. Prijzen, functies en beschikbaarheid kunnen zonder kennisgeving veranderen. Voor de meest actuele informatie: neem direct contact met ons op.
             </p>
           </section>
 
           <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Informatie over de dienst</h2>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">7. Accuratesse van prospect-data</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed">
-              De beschrijvingen van onze dienst (signaalbronnen, verificatiemethoden, outreach-mogelijkheden) geven de algemene werking weer. Individuele resultaten variëren. Per sector. Per doelmarkt. Per ideaal klantprofiel-kwaliteit. En per hoe de klant de outreach uitvoert. We garanderen geen specifieke uitkomsten zoals reactiepercentages, geboekte meetings of omzet.
+              Contactgegevens komen uit externe zakelijke databronnen en publieke bronnen. We passen verificatiestappen toe, maar kunnen niet garanderen dat alle gegevens op het moment van gebruik actueel of correct zijn. Individuele resultaten variëren per sector, doelmarkt en hoe de outreach wordt uitgevoerd. We garanderen geen specifieke uitkomsten zoals reactiepercentages, geboekte meetings of omzet.
             </p>
           </section>
 
           <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Accuratesse van prospect-data</h2>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">8. Geen juridisch of compliance-advies</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Contactgegevens komen uit externe zakelijke databronnen en publieke bronnen. We passen verificatiestappen toe. Maar we kunnen niet garanderen dat alle gegevens op het moment van gebruik actueel of correct zijn. Verifieer contacten voor je belangrijke berichten verstuurt.
+              Niets op deze website is juridisch advies. Klanten zijn zelf verantwoordelijk dat hun gebruik van Hooklyne en hun outreach voldoet aan de geldende wetten. Bij twijfel: raadpleeg een juridisch adviseur.
             </p>
           </section>
 
           <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Geen juridisch of compliance-advies</h2>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">9. Beperking van aansprakelijkheid</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Niets op deze website is juridisch advies. Klanten zijn zelf verantwoordelijk dat hun gebruik van Hooklyne (en hun outreach) voldoet aan de geldende wetten. Daaronder vallen de AVG, de Telecommunicatiewet en sectorspecifieke regelgeving. Bij twijfel: raadpleeg een juridisch adviseur.
+              Voor zover wettelijk toegestaan is Hooklyne niet aansprakelijk voor directe of indirecte schade door gebruik van deze website of onze dienst. Onze totale aansprakelijkheid in een periode van 12 maanden is beperkt tot het bedrag dat je in die periode voor de dienst hebt betaald.
             </p>
           </section>
 
           <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Externe links</h2>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">10. Toepasselijk recht</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Deze site kan linken naar websites van derden. We zijn niet verantwoordelijk voor hun inhoud, privacypraktijken of beschikbaarheid.
+              Deze voorwaarden vallen onder Nederlands recht. Geschillen worden behandeld door de bevoegde rechtbanken in Nederland.
             </p>
           </section>
 
           <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Beperking van aansprakelijkheid</h2>
+            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">11. Contact</h2>
             <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Voor zover wettelijk toegestaan is Hooklyne niet aansprakelijk voor directe of indirecte schade door gebruik van deze website of onze dienst. Daaronder valt schade door onjuiste prospect-data, mislukte outreach of serviceonderbrekingen.
-            </p>
-          </section>
-
-          <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Toepasselijk recht</h2>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Deze disclaimer valt onder Nederlands recht. Geschillen worden behandeld door de bevoegde rechtbanken in Nederland.
-            </p>
-          </section>
-
-          <section>
-            <h2 class="text-xl font-semibold text-[var(--heading)] mb-3">Contact</h2>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Voor vragen over deze disclaimer, mail naar <a href="mailto:legal@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">legal@hooklyne.com</a>.
+              Voor vragen over deze voorwaarden, mail naar <a href="mailto:legal@hooklyne.com" class="text-[var(--hooklyne-blue)] hover:opacity-80">legal@hooklyne.com</a>.
             </p>
           </section>
 

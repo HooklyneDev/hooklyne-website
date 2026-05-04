@@ -4,8 +4,8 @@ import { useLang, type Lang } from "@/lib/use-lang";
 
 const MOVERS = [
   { name: "HelloFresh", signals: 44 },
-  { name: "Foodbag", signals: 4 },
-  { name: "Mindful Chef", signals: 1 },
+  { name: "Brunel", signals: 7 },
+  { name: "Mammoet", signals: 2 },
 ];
 
 type Phase = "header" | "numbers" | "movers" | "alert";

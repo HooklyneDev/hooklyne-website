@@ -10,7 +10,7 @@ import { useLang, type Lang } from "@/lib/use-lang";
 
 const SUBJECT_EN = "The 3.2 MW rooftop at Venlo - how you're planning to use it";
 const BODY_EN: string[] = [
-  "Hi James,",
+  "Hi Lars,",
   "",
   "Saw the 3.2 MW rooftop going live at Venlo next month. Congrats.",
   "",
@@ -24,7 +24,7 @@ const BODY_EN: string[] = [
 
 const SUBJECT_NL = "Het 3,2 MW zonnedak in Venlo - hoe jullie het willen inzetten";
 const BODY_NL: string[] = [
-  "Hoi Daan,",
+  "Hoi Femke,",
   "",
   "Zag de aankondiging van het 3,2 MW zonnedak op DC Venlo volgende maand. Gefeliciteerd.",
   "",
@@ -49,7 +49,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobile
     actioned: "Verzonden",
     drafting: "Opstellen",
     verified: "Geverifieerd",
-    role: "Head of Operations, Axiom Logistics · d.visser@axiom.nl",
+    role: "Inkoopmanager, Celsus Energy BV · f.deboer@celsus.nl",
     hookTag: "Hook: 3,2 MW zonnedak",
     venloTag: "Venlo DC",
     subjectLabel: "Onderwerp",
@@ -61,7 +61,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobile
     actioned: "Actioned",
     drafting: "Drafting",
     verified: "Verified",
-    role: "Head of Operations, Axiom Logistics · j.porter@axiom.co.uk",
+    role: "Procurement Director, Celsus Energy · l.hendriks@celsus.nl",
     hookTag: "Hook: 3.2 MW solar",
     venloTag: "Venlo DC",
     subjectLabel: "Subject",
@@ -180,7 +180,7 @@ export const EmailCompose = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobile
             <img src="/personas/mark-janssen.jpg" alt="" className="size-7 sm:size-8 rounded-full shrink-0 object-cover" />
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>{lang === "nl" ? "Daan Visser" : "James Porter"}</span>
+                <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>{lang === "nl" ? "Femke de Boer" : "Lars Hendriks"}</span>
                 <span className="relative flex size-1.5 shrink-0">
                   <span className="absolute inline-flex h-full w-full rounded-full opacity-70 animate-ping" style={{ background: "var(--hooklyne-teal)" }} />
                   <span className="relative inline-flex rounded-full size-1.5" style={{ background: "var(--hooklyne-teal)" }} />

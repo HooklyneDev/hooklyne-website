@@ -22,7 +22,7 @@ const EN = {
   legalCol: { title: "Legal", links: [
     { label: "Privacy", href: "/privacy" },
     { label: "Cookies", href: "/cookies" },
-    { label: "Disclaimer", href: "/disclaimer" },
+    { label: "Terms of Service", href: "/disclaimer" },
   ]},
   rights: "All rights reserved.",
 };
@@ -49,7 +49,7 @@ const NL = {
   legalCol: { title: "Juridisch", links: [
     { label: "Privacy", href: "/nl/privacy" },
     { label: "Cookies", href: "/nl/cookies" },
-    { label: "Disclaimer", href: "/nl/disclaimer" },
+    { label: "Gebruiksvoorwaarden", href: "/nl/disclaimer" },
   ]},
   rights: "Alle rechten voorbehouden.",
 };
