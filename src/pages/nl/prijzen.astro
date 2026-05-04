@@ -396,14 +396,13 @@ const offerCatalog = {
         <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6">Hoe een typische maand eruitziet</h2>
         <div class="grid gap-3 md:grid-cols-3">
           {[
-            { tier: "Start · 100 credits", body: "≈ 25 prospects · 10 getrackt · 5 briefings", footer: "€1,56 per verzendklare prospect", featured: false },
-            { tier: "Growth · 400 credits", body: "≈ 90 prospects · 30 getrackt · 10 briefings", footer: "€1,43 per verzendklare prospect", featured: true },
-            { tier: "Scale · 800 credits", body: "≈ 190 prospects · 60 getrackt · 20 briefings", footer: "€1,26 per verzendklare prospect", featured: false },
+            { tier: "Start · 100 credits", body: "≈ 25 prospects · 10 getrackt · 5 briefings", featured: false },
+            { tier: "Growth · 400 credits", body: "≈ 90 prospects · 30 getrackt · 10 briefings", featured: true },
+            { tier: "Scale · 800 credits", body: "≈ 190 prospects · 60 getrackt · 20 briefings", featured: false },
           ].map((u) => (
             <div class:list={["rounded-xl p-4", u.featured ? "border-2" : "border"]} style={u.featured ? "background: var(--card); border-color: var(--hooklyne-blue); box-shadow: var(--shadow-sm)" : "background: var(--card); border-color: var(--border); box-shadow: var(--shadow-xs)"}>
               <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-2", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
-              <p class="text-[13px] text-[var(--heading)] mb-2 leading-relaxed">{u.body}</p>
-              <p class="text-[11.5px] text-[#0F6E56]">{u.footer}</p>
+              <p class="text-[13px] text-[var(--heading)] leading-relaxed">{u.body}</p>
             </div>
           ))}
         </div>
