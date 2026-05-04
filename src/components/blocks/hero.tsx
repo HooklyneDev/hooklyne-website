@@ -104,12 +104,12 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         <div className="hero-mobile-pulse" />
       </div>
 
-      {/* ── Desktop: centre glow (breathes) ──────────────────────── */}
+      {/* ── Centre glow (breathes) — visible on all sizes ─────────── */}
       <div
-        className="hidden sm:block hero-glow-breathe absolute inset-0 pointer-events-none"
+        className="hero-glow-breathe absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 50% 38% at 50% 30%, rgba(52,76,163,0.28) 0%, rgba(52,76,163,0.10) 50%, transparent 72%)",
+          background: "radial-gradient(ellipse 50% 38% at 50% 30%, rgba(52,76,163,0.45) 0%, rgba(52,76,163,0.16) 50%, transparent 72%)",
           maskImage: ringMask,
           WebkitMaskImage: ringMask,
         }}
@@ -131,21 +131,21 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         <GridSignals />
       </div>
 
-      {/* ── Directional edge light — left (drifts) ────────────────── */}
+      {/* ── Edge light — left (drifts) — visible on all sizes ───── */}
       <div
-        className="hidden sm:block hero-edge-drift-left absolute inset-0 pointer-events-none"
+        className="hero-edge-drift-left absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 60% 50% at -5% 55%, rgba(52,76,163,0.09) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 60% 50% at -5% 55%, rgba(52,76,163,0.18) 0%, transparent 65%)",
         }}
       />
 
-      {/* ── Directional edge light — right (drifts) ───────────────── */}
+      {/* ── Edge light — right (drifts) — visible on all sizes ──── */}
       <div
-        className="hidden sm:block hero-edge-drift-right absolute inset-0 pointer-events-none"
+        className="hero-edge-drift-right absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 55% 45% at 105% 60%, rgba(52,76,163,0.07) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 55% 45% at 105% 60%, rgba(52,76,163,0.15) 0%, transparent 65%)",
         }}
       />
 
