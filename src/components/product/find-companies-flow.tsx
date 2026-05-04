@@ -76,7 +76,7 @@ const COMPANY_LOGOS: Record<string, { logo: string; color: string }> = {
   "Stach Food":   { logo: "SF", color: "#d97706" },
 };
 
-type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4" | "2/3";
 type FindCompaniesFlowProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; xsMobileRatio?: Ratio; lang?: Lang };
 export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobileRatio, lang: langProp }: FindCompaniesFlowProps = {}) => {
   const lang = useLang(langProp);

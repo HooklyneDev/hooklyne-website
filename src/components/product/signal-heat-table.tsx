@@ -151,7 +151,7 @@ const COMPANY_LOGOS: Record<string, { logo: string; color: string }> = {
   "Siemens Netherlands": { logo: "SI", color: "#0891b2" },
 };
 
-type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4";
+type Ratio = "16/9" | "4/3" | "3/2" | "2/1" | "5/2" | "21/9" | "1/1" | "5/4" | "4/5" | "3/4" | "2/3";
 type SignalHeatTableProps = { ratio?: Ratio; mobileRatio?: Ratio; tabletRatio?: Ratio; xsMobileRatio?: Ratio; lang?: Lang };
 export const SignalHeatTable = ({ ratio = "2/1", mobileRatio, tabletRatio, xsMobileRatio, lang: langProp }: SignalHeatTableProps = {}) => {
   const lang = useLang(langProp);
