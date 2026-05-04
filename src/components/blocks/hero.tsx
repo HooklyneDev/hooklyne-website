@@ -12,6 +12,7 @@ const EN = {
   sub: "A research workflow that finds fitting companies, verifies decision-makers across 21 data providers, watches for live buying signals, and drafts first outreach in your rep's voice.",
   cta: "Try for free",
   secondary: "See how it works",
+  trust: ["10 free prospects", "No credit card", "GDPR-native"],
 };
 
 const NL = {
@@ -22,6 +23,7 @@ const NL = {
   sub: "Een onderzoeksworkflow die relevante bedrijven identificeert, besluitvormers verifieert via 21 databronnen, real-time koopsignalen volgt en eerste outreach opstelt in de schrijfstijl van jouw salesmedewerker.",
   cta: "Probeer gratis",
   secondary: "Zie hoe het werkt",
+  trust: ["10 gratis prospects", "Geen creditcard", "AVG-conform"],
 };
 
 /* ── Component ──────────────────────────────────────────────────────── */
@@ -200,6 +202,20 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
             <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>
+
+        {/* Trust strip */}
+        <p
+          className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[12px] text-[var(--muted-foreground)]"
+          style={{ animation: "hero-fade-up 0.55s ease both", animationDelay: "420ms" }}
+        >
+          {t.trust.map((item, i) => (
+            <>
+              {i > 0 && <span key={`dot-${i}`} className="select-none" style={{ color: "var(--border)" }} aria-hidden="true">·</span>}
+              <span key={item}>{item}</span>
+            </>
+          ))}
+        </p>
+
       </div>
 
       {/* ── Hero video ────────────────────────────────────────────── */}

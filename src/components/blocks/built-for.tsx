@@ -125,14 +125,30 @@ export const BuiltFor = ({ lang: langProp }: { lang?: Lang } = {}) => {
 
             <div className="space-y-8 lg:space-y-12">
               {t.statements.map((s, i) => (
-                <div key={i} className="max-w-xl">
-                  <h2 className="text-xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight leading-[1.2] md:leading-[1.15] mb-3">
+                <button
+                  key={i}
+                  onClick={() => { setActive(i); setPaused(true); }}
+                  className="max-w-xl text-left block w-full pl-4 border-l-2 transition-all duration-500"
+                  style={{
+                    borderColor: i === active ? "var(--hooklyne-blue)" : "transparent",
+                  }}
+                >
+                  <h2
+                    className="text-xl md:text-3xl font-semibold tracking-tight leading-[1.2] md:leading-[1.15] mb-3 transition-colors duration-500"
+                    style={{ color: i === active ? "var(--heading)" : "var(--muted-foreground)" }}
+                  >
                     {s.headline}
                   </h2>
-                  <p className="text-base text-[var(--muted-foreground)] leading-relaxed">
+                  <p
+                    className="text-base leading-relaxed transition-opacity duration-500"
+                    style={{
+                      color: "var(--muted-foreground)",
+                      opacity: i === active ? 1 : 0.55,
+                    }}
+                  >
                     {s.body}
                   </p>
-                </div>
+                </button>
               ))}
             </div>
           </div>
