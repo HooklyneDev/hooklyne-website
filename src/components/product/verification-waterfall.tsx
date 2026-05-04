@@ -208,7 +208,7 @@ export const VerificationWaterfall = ({ ratio = "2/1", mobileRatio, tabletRatio,
                 {totalChecked}/21 <span style={{ color: "var(--muted-foreground)", fontWeight: 500 }}>· {matchedCount} {t.matched}</span>
               </p>
             </div>
-            <div className="flex-1 overflow-hidden grid grid-cols-2 gap-x-2 gap-y-1 px-2.5 sm:px-3 py-2">
+            <div className="flex-1 overflow-hidden grid grid-cols-2 gap-x-2 gap-y-1 px-2.5 sm:px-3 py-2 content-start">
               {PROVIDERS.map((p, i) => {
                 const checked = i < providerIdx;
                 const matched = i < matchedCount;

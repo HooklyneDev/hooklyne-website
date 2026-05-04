@@ -296,9 +296,9 @@ export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio, xsM
                     className="fc-slide rounded-lg p-2 sm:p-2.5"
                     style={{ background: "var(--background)", border: "1px solid var(--border)", animationDelay: `${i * 0.18}s` }}
                   >
-                    <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-1 min-w-0">
                       <div className="size-3 sm:size-3.5 rounded shrink-0" style={{ border: "1.5px solid var(--border-strong, #cbd5e1)" }} />
-                      <span className="text-[9px] sm:text-[10px] font-bold" style={{ color: "var(--muted-foreground)" }}>#{c.n}</span>
+                      <span className="text-[9px] sm:text-[10px] font-bold shrink-0" style={{ color: "var(--muted-foreground)" }}>#{c.n}</span>
                       {COMPANY_LOGOS[c.name] && (
                         <div
                           className="size-4 sm:size-5 rounded shrink-0 flex items-center justify-center text-[7px] sm:text-[8px] font-bold text-white leading-none"
@@ -307,10 +307,10 @@ export const FindCompaniesFlow = ({ ratio = "2/1", mobileRatio, tabletRatio, xsM
                           {COMPANY_LOGOS[c.name]!.logo}
                         </div>
                       )}
-                      <span className="text-[11px] sm:text-[13px] font-semibold" style={{ color: "var(--heading)" }}>{c.name}</span>
-                      <span className="text-[9px] sm:text-[10px] truncate" style={{ color: "var(--hooklyne-blue)" }}>{c.domain}</span>
-                      <span className="text-[9px] px-1 py-0.5 rounded" style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--muted-foreground)" }}>{c.size}</span>
-                      <span className="text-[9px] sm:text-[10px]" style={{ color: "var(--muted-foreground)" }}>{c.city}</span>
+                      <span className="text-[11px] sm:text-[13px] font-semibold truncate" style={{ color: "var(--heading)" }}>{c.name}</span>
+                      <span className="text-[9px] sm:text-[10px] truncate hidden sm:inline" style={{ color: "var(--hooklyne-blue)" }}>{c.domain}</span>
+                      <span className="text-[9px] px-1 py-0.5 rounded shrink-0" style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--muted-foreground)" }}>{c.size}</span>
+                      <span className="text-[9px] sm:text-[10px] shrink-0 hidden sm:inline" style={{ color: "var(--muted-foreground)" }}>{c.city}</span>
                     </div>
                     <p className="text-[10px] sm:text-[11px] leading-snug mb-1 sm:mb-1.5 line-clamp-1 sm:line-clamp-2" style={{ color: "var(--foreground)" }}>{c.body}</p>
                     <div className="flex items-start gap-1.5 rounded px-1.5 py-1" style={{ background: "rgba(52,76,163,0.05)", borderLeft: "2px solid var(--hooklyne-blue)" }}>
