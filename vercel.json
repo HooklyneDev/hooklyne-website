@@ -48,6 +48,16 @@
       "source": "/nl/gdpr-prospecting",
       "destination": "/nl/avg-prospecting",
       "permanent": true
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/terms-of-service",
+      "permanent": true
+    },
+    {
+      "source": "/nl/disclaimer",
+      "destination": "/nl/terms-of-service",
+      "permanent": true
     }
   ]
 }
