@@ -1,6 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { CaretDown, Globe } from "@phosphor-icons/react";
+import { CaretDown } from "@phosphor-icons/react";
+
+const Flag = ({ code }: { code: "en" | "nl" }) => (
+  <span
+    className="inline-flex items-center justify-center size-[22px] rounded-full overflow-hidden shrink-0 ring-1 ring-black/10"
+    style={{ fontSize: "15px", lineHeight: 1 }}
+    aria-hidden="true"
+  >
+    {code === "nl" ? "🇳🇱" : "🇬🇧"}
+  </span>
+);
 import { cn } from "@/lib/utils";
 import { useLang, switchLangUrl, type Lang } from "@/lib/use-lang";
 type NavChild = { label: string; href: string };
@@ -177,8 +187,8 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                 aria-expanded={langOpen}
                 className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
               >
-                <Globe className="size-4" />
-                <span className="text-xs font-semibold">{lang === "nl" ? "NL" : "EN"}</span>
+                <Flag code={lang === "nl" ? "nl" : "en"} />
+                <CaretDown className="size-3 opacity-50" />
               </button>
               {langOpen && (
                 <div
@@ -197,13 +207,13 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     aria-checked={lang === "en"}
                     onClick={() => handleSwitch("en")}
                     className={cn(
-                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors",
+                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2.5",
                       lang === "en"
                         ? "text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
                         : "text-[var(--foreground)] hover:bg-[var(--card-hover)]",
                     )}
                   >
-                    English
+                    <Flag code="en" /> English
                   </button>
                   <button
                     type="button"
@@ -211,13 +221,13 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     aria-checked={lang === "nl"}
                     onClick={() => handleSwitch("nl")}
                     className={cn(
-                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors",
+                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2.5",
                       lang === "nl"
                         ? "text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
                         : "text-[var(--foreground)] hover:bg-[var(--card-hover)]",
                     )}
                   >
-                    Nederlands
+                    <Flag code="nl" /> Nederlands
                   </button>
                 </div>
               )}
@@ -305,28 +315,27 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
               );
             })}
             <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-sm">
-                <Globe className="size-4 text-[var(--foreground)]/80" />
+              <div className="flex items-center gap-3 text-sm">
                 <button
                   type="button"
                   onClick={() => { setIsMenuOpen(false); handleSwitch("en"); }}
                   className={cn(
-                    "font-medium transition-colors",
+                    "inline-flex items-center gap-1.5 font-medium transition-colors",
                     lang === "en" ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]",
                   )}
                 >
-                  English
+                  <Flag code="en" /> English
                 </button>
                 <span className="text-[var(--muted-foreground)]/40">/</span>
                 <button
                   type="button"
                   onClick={() => { setIsMenuOpen(false); handleSwitch("nl"); }}
                   className={cn(
-                    "font-medium transition-colors",
+                    "inline-flex items-center gap-1.5 font-medium transition-colors",
                     lang === "nl" ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]",
                   )}
                 >
-                  Nederlands
+                  <Flag code="nl" /> Nederlands
                 </button>
               </div>
               <a
