@@ -17,7 +17,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
   const lang = useLang(langProp);
 
   const t = lang === "nl" ? {
-    crumb: "Inbox / Hooklyne Signals",
+    crumb: "Inbox",
     status: "1 ongelezen",
     from: "Hooklyne Signals",
     time: "ma 14 apr · 08:04",
@@ -34,7 +34,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
     missedTitle: "Gemiste kansen",
     missed: "8 gekwalificeerde kansen staan onaangeroerd. Elke dag zonder actie riskeer je dat een concurrent die plek inneemt.",
   } : {
-    crumb: "Inbox / Hooklyne Signals",
+    crumb: "Inbox",
     status: "1 unread",
     from: "Hooklyne Signals",
     time: "Mon Apr 14 · 08:04",
@@ -135,70 +135,60 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
 
         <div className="absolute inset-0 flex flex-col overflow-hidden" style={{ background: "var(--card)" }}>
 
-          {/* Branded top band */}
-          <div
-            className="shrink-0 flex items-center gap-2 px-3 sm:px-4"
-            style={{
-              height: "28px",
-              background: "linear-gradient(90deg, var(--hooklyne-navy) 0%, #0a3a5e 100%)",
-            }}
-          >
-            <img src="/logo-mark.svg" alt="" className="h-3 w-3 object-contain opacity-80" />
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: "rgba(255,255,255,0.75)" }}>
-              Hooklyne Signals
-            </span>
-          </div>
-
           {/* Sender row */}
           <div
-            className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 shrink-0"
+            className="flex items-center gap-2 px-3 sm:px-4 py-1.5 shrink-0"
             style={{ borderBottom: "1px solid var(--border)" }}
           >
+            <div
+              className="shrink-0 size-5 sm:size-6 rounded flex items-center justify-center p-0.5"
+              style={{ background: "var(--hooklyne-navy)" }}
+            >
+              <img src="/logo-mark.svg" alt="Hooklyne" className="w-full h-full object-contain" />
+            </div>
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-[11px] font-semibold truncate" style={{ color: "var(--heading)" }}>
                 {t.from}
               </p>
             </div>
-            <p className="text-[9px] sm:text-[10px] shrink-0 tabular-nums" style={{ color: "var(--muted-foreground)" }}>
+            <p className="text-[9px] shrink-0 tabular-nums" style={{ color: "var(--muted-foreground)" }}>
               {t.time}
             </p>
           </div>
 
           {/* Subject */}
-          <div className="px-3 sm:px-4 pt-2 pb-1.5 sm:pt-2 sm:pb-2 shrink-0" style={{ borderBottom: "1px solid var(--border)" }}>
-            <p className="text-[11px] sm:text-[12px] font-semibold" style={{ color: "var(--heading)" }}>
+          <div className="px-3 sm:px-4 py-1.5 shrink-0" style={{ borderBottom: "1px solid var(--border)" }}>
+            <p className="text-[10.5px] sm:text-[12px] font-semibold leading-snug" style={{ color: "var(--heading)" }}>
               {t.subject}
             </p>
           </div>
 
-          {/* Email body */}
-          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-2.5 sm:py-3 flex flex-col gap-2.5 sm:gap-3">
+          {/* Email body — justify-between fills the shell height at every ratio */}
+          <div className="flex-1 min-h-0 overflow-hidden px-3 sm:px-4 py-2 sm:py-2.5 flex flex-col justify-between gap-0">
 
-            {/* Numbers: 2×2 grid with tinted stat tiles */}
+            {/* Numbers: 2×2 tinted stat tiles */}
             {(phase === "numbers" || phase === "movers" || phase === "alert") && (
               <div className="wb-fade">
-                <p className="text-[8.5px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] mb-1.5 sm:mb-2" style={{ color: "var(--muted-foreground)" }}>
+                <p className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.18em] mb-1.5" style={{ color: "var(--muted-foreground)" }}>
                   {t.numbersTitle}
                 </p>
-                <div className="grid grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-2 gap-1 sm:gap-1.5">
                   {t.stats.map((s) => (
                     <div
                       key={s.label}
-                      className="rounded-lg px-2.5 py-2 sm:px-3 sm:py-2.5"
+                      className="rounded-md px-2 py-1.5 sm:px-2.5 sm:py-2"
                       style={{
-                        background: s.hot
-                          ? "rgba(255,140,66,0.10)"
-                          : "rgba(52,76,163,0.055)",
-                        border: `1px solid ${s.hot ? "rgba(255,140,66,0.18)" : "rgba(52,76,163,0.10)"}`,
+                        background: s.hot ? "rgba(255,140,66,0.09)" : "rgba(52,76,163,0.055)",
+                        border: `1px solid ${s.hot ? "rgba(255,140,66,0.18)" : "rgba(52,76,163,0.09)"}`,
                       }}
                     >
                       <div
-                        className={`text-[20px] sm:text-[24px] font-bold tabular-nums leading-none ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
+                        className={`text-[18px] sm:text-[22px] font-bold tabular-nums leading-none ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
                         style={{ color: s.hot ? "var(--hooklyne-orange)" : "var(--heading)" }}
                       >
                         {s.value}
                       </div>
-                      <div className="text-[8.5px] sm:text-[9.5px] mt-0.5 leading-tight" style={{ color: "var(--muted-foreground)" }}>
+                      <div className="text-[7.5px] sm:text-[9px] mt-0.5 leading-tight" style={{ color: "var(--muted-foreground)" }}>
                         {s.label}
                       </div>
                     </div>
@@ -211,34 +201,28 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             {(phase === "movers" || phase === "alert") && (() => {
               const maxSignals = Math.max(...MOVERS.map((m) => m.signals));
               return (
-                <div className="wb-fade" style={{ borderTop: "1px solid var(--border)", paddingTop: "8px" }}>
-                  <p className="text-[8.5px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] mb-1.5" style={{ color: "var(--muted-foreground)" }}>
+                <div className="wb-fade" style={{ borderTop: "1px solid var(--border)", paddingTop: "7px" }}>
+                  <p className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.18em] mb-1.5" style={{ color: "var(--muted-foreground)" }}>
                     {t.moversTitle}
                   </p>
-                  <div className="flex flex-col" style={{ gap: "6px" }}>
+                  <div className="flex flex-col" style={{ gap: "5px" }}>
                     {MOVERS.map((m, i) =>
                       i < moversVisible ? (
-                        <div
-                          key={m.name}
-                          className="wb-slide"
-                          style={{ animationDelay: `${i * 0.04}s` }}
-                        >
-                          <div className="flex items-baseline justify-between mb-1">
+                        <div key={m.name} className="wb-slide" style={{ animationDelay: `${i * 0.04}s` }}>
+                          <div className="flex items-baseline justify-between mb-0.5">
                             <span className="text-[10px] sm:text-[11px] font-semibold" style={{ color: "var(--heading)" }}>
                               {m.name}
                             </span>
-                            <span className="text-[9px] tabular-nums" style={{ color: "var(--muted-foreground)" }}>
+                            <span className="text-[8.5px] tabular-nums" style={{ color: "var(--muted-foreground)" }}>
                               {m.signals} {t.signalsIn30}
                             </span>
                           </div>
-                          <div className="h-1 rounded-full w-full" style={{ background: "rgba(52,76,163,0.10)" }}>
+                          <div className="h-[3px] rounded-full w-full" style={{ background: "rgba(52,76,163,0.10)" }}>
                             <div
-                              className="h-1 rounded-full"
+                              className="h-[3px] rounded-full"
                               style={{
                                 width: `${(m.signals / maxSignals) * 100}%`,
-                                background: i === 0
-                                  ? "var(--hooklyne-blue)"
-                                  : "rgba(52,76,163,0.45)",
+                                background: i === 0 ? "var(--hooklyne-blue)" : "rgba(52,76,163,0.40)",
                                 transition: "width 0.6s cubic-bezier(0.4,0,0.2,1)",
                               }}
                             />
@@ -246,11 +230,11 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
                         </div>
                       ) : (
                         <div key={m.name} style={{ opacity: 0.15 }}>
-                          <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center justify-between mb-0.5">
                             <div className="h-1.5 rounded" style={{ width: "38%", background: "var(--border)" }} />
-                            <div className="h-1.5 rounded" style={{ width: "22%", background: "var(--border)" }} />
+                            <div className="h-1.5 rounded" style={{ width: "20%", background: "var(--border)" }} />
                           </div>
-                          <div className="h-1 rounded-full" style={{ background: "var(--border)" }} />
+                          <div className="h-[3px] rounded-full" style={{ background: "var(--border)" }} />
                         </div>
                       )
                     )}
@@ -262,16 +246,16 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             {/* Missed opportunities */}
             {phase === "alert" && (
               <div
-                className="wb-row rounded-lg px-2.5 py-2 sm:px-3 sm:py-2.5"
+                className="wb-row rounded-md px-2.5 py-1.5 sm:px-3 sm:py-2"
                 style={{
                   background: "rgba(255,140,66,0.08)",
                   border: "1px solid rgba(255,140,66,0.20)",
                 }}
               >
-                <p className="text-[9px] sm:text-[10px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
+                <p className="text-[8.5px] sm:text-[9.5px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
                   {t.missedTitle}
                 </p>
-                <p className="text-[8.5px] sm:text-[9.5px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+                <p className="text-[8px] sm:text-[9px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
                   {t.missed}
                 </p>
               </div>
