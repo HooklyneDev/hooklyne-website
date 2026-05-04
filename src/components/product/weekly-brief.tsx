@@ -228,7 +228,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             {/* Missed opportunities */}
             {phase === "alert" && (
               <div
-                className="wb-row pl-2.5 py-2"
+                className="wb-row pl-2.5 py-2 mb-2"
                 style={{ borderLeft: "2px solid var(--hooklyne-orange)" }}
               >
                 <p className="text-[9px] sm:text-[10px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
