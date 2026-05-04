@@ -77,13 +77,18 @@ export const HomePricing = ({ lang: langProp }: { lang?: Lang } = {}) => {
                 key={p.name}
                 className={cn(
                   "rounded-2xl p-5 md:p-6 flex flex-col relative",
-                  isFeatured ? "text-white" : "bg-[var(--card)]",
+                  isFeatured ? "text-white overflow-hidden" : "bg-[var(--card)]",
                 )}
                 style={{
                   background: isFeatured ? "var(--hooklyne-navy)" : undefined,
                   boxShadow: isFeatured ? "var(--shadow-xl)" : "var(--shadow-xs)",
                 }}
               >
+                {isFeatured && (<>
+                  <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px pointer-events-none" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)" }} />
+                  <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-48 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(52,76,163,0.42) 0%, rgba(52,76,163,0.20) 40%, rgba(52,76,163,0.08) 70%, transparent 95%)" }} />
+                  <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(255,140,66,0.10) 0%, rgba(255,140,66,0.04) 50%, transparent 100%)" }} />
+                </>)}
                 {isFeatured && (
                   <div
                     className="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap"
