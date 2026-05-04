@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CaretDown } from "@phosphor-icons/react";
 
-const Flag = ({ code }: { code: "en" | "nl" }) => (
+const Flag = ({ code, size = 26 }: { code: "en" | "nl"; size?: number }) => (
   <span
-    className="inline-flex items-center justify-center size-[22px] rounded-full overflow-hidden shrink-0 ring-1 ring-black/10"
-    style={{ fontSize: "15px", lineHeight: 1 }}
+    className="inline-flex items-center justify-center rounded-full overflow-hidden shrink-0 ring-1 ring-black/10"
+    style={{ width: size, height: size, fontSize: Math.round(size * 0.77), lineHeight: 1 }}
     aria-hidden="true"
   >
     {code === "nl" ? "🇳🇱" : "🇬🇧"}
@@ -185,10 +185,9 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                 aria-label="Language"
                 aria-haspopup="menu"
                 aria-expanded={langOpen}
-                className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:bg-[var(--card-hover)] hover:border-[var(--border-strong)] transition-colors"
+                className="inline-flex items-center rounded-full transition-opacity hover:opacity-75"
               >
-                <Flag code={lang === "nl" ? "nl" : "en"} />
-                <CaretDown className="size-3 opacity-50" />
+                <Flag code={lang === "nl" ? "nl" : "en"} size={30} />
               </button>
               {langOpen && (
                 <div
@@ -206,28 +205,22 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     role="menuitemradio"
                     aria-checked={lang === "en"}
                     onClick={() => handleSwitch("en")}
-                    className={cn(
-                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2.5",
-                      lang === "en"
-                        ? "text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
-                        : "text-[var(--foreground)] hover:bg-[var(--card-hover)]",
-                    )}
+                    className="w-full text-left px-3 py-2.5 text-sm font-medium transition-colors flex items-center gap-3 hover:bg-[var(--card-hover)] rounded-lg"
                   >
-                    <Flag code="en" /> English
+                    <Flag code="en" size={34} />
+                    <span className={cn("flex-1", lang === "en" ? "text-[var(--heading)]" : "text-[var(--foreground)]")}>English</span>
+                    {lang === "en" && <span className="text-[var(--muted-foreground)] text-xs">✓</span>}
                   </button>
                   <button
                     type="button"
                     role="menuitemradio"
                     aria-checked={lang === "nl"}
                     onClick={() => handleSwitch("nl")}
-                    className={cn(
-                      "w-full text-left px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2.5",
-                      lang === "nl"
-                        ? "text-[var(--hooklyne-blue)] bg-[var(--hooklyne-blue)]/10"
-                        : "text-[var(--foreground)] hover:bg-[var(--card-hover)]",
-                    )}
+                    className="w-full text-left px-3 py-2.5 text-sm font-medium transition-colors flex items-center gap-3 hover:bg-[var(--card-hover)] rounded-lg"
                   >
-                    <Flag code="nl" /> Nederlands
+                    <Flag code="nl" size={34} />
+                    <span className={cn("flex-1", lang === "nl" ? "text-[var(--heading)]" : "text-[var(--foreground)]")}>Dutch</span>
+                    {lang === "nl" && <span className="text-[var(--muted-foreground)] text-xs">✓</span>}
                   </button>
                 </div>
               )}
@@ -324,7 +317,7 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     lang === "en" ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]",
                   )}
                 >
-                  <Flag code="en" /> English
+                  <Flag code="en" size={22} /> English
                 </button>
                 <span className="text-[var(--muted-foreground)]/40">/</span>
                 <button
@@ -335,7 +328,7 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                     lang === "nl" ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]",
                   )}
                 >
-                  <Flag code="nl" /> Nederlands
+                  <Flag code="nl" size={22} /> Dutch
                 </button>
               </div>
               <a
