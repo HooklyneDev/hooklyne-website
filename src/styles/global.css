@@ -95,16 +95,16 @@
   50%       { opacity: 1; }
 }
 @keyframes hero-edge-drift-left {
-  0%, 100% { transform: translate(0, 0);        opacity: 0.25; }
-  50%       { transform: translate(34px, -20px); opacity: 1; }
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 1; }
 }
 @keyframes hero-edge-drift-right {
-  0%, 100% { transform: translate(0, 0);        opacity: 0.25; }
-  50%       { transform: translate(-34px, 20px); opacity: 1; }
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 1; }
 }
-.hero-glow-breathe       { animation: hero-glow-breathe       8s  ease-in-out infinite; will-change: opacity;   }
-.hero-edge-drift-left    { animation: hero-edge-drift-left    10s ease-in-out infinite; will-change: transform, opacity; }
-.hero-edge-drift-right   { animation: hero-edge-drift-right   12s ease-in-out infinite; will-change: transform, opacity; }
+.hero-glow-breathe       { animation: hero-glow-breathe       8s  ease-in-out infinite; will-change: opacity; }
+.hero-edge-drift-left    { animation: hero-edge-drift-left    10s ease-in-out infinite; will-change: opacity; }
+.hero-edge-drift-right   { animation: hero-edge-drift-right   12s ease-in-out infinite; will-change: opacity; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-mobile-pulse,
