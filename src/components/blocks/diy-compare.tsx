@@ -295,7 +295,7 @@ const NL_TABS: TabDef[] = [
         detail: "Sommige databases hebben ingebouwde verificatie, andere niet. Per regio en database verschilt de dekking sterk en data veroudert snel. Bouncerates op single-source data liggen op Europese MKB-doelgroepen vaak zo hoog dat kopers er een tweede verificatietool bovenop zetten voor ze versturen.",
         time: "10 min", callout: "Verificatiekwaliteit varieert. Een tweede tool is gebruikelijk.", good: false },
       { step: "4", label: "Onderzoek elke prospect",
-        detail: "De data vertelt wat ze doen, niet wat er deze week speelt. Je checkt LinkedIn, nieuws, fundingsites zelf om een aanleiding te vinden.",
+        detail: "De data vertelt wat ze doen, niet wat zich deze week afspeelt. Je checkt LinkedIn, nieuws, fundingsites zelf om een aanleiding te vinden.",
         time: "15 min", callout: "De database weet niet wat er sinds de laatste update is veranderd", good: false },
       { step: "5", label: "Schrijf de mail",
         detail: "Vanaf nul of vanuit een template. Geen automatische personalisatie, geen stemkalibratie, geen aanhaak op het signaal - dat doe jij allemaal.",

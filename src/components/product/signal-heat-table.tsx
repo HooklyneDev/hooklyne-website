@@ -107,7 +107,7 @@ const ROWS_NL: Row[] = [
     subject: "De kostenreview die de nieuwe CFO in de call noemde",
     body: [
       "Hoi Laura,",
-      "Pakte de Q1-call mee. De kostenreview die de nieuwe CFO noemde sluit aan op twee workstreams die we voor Nederlandse utilities post-transitie hebben gedraaid.",
+      "Volgde de Q1-call. De kostenreview die de nieuwe CFO noemde sluit aan op twee workstreams die we voor Nederlandse utilities post-transitie hebben gedraaid.",
       "Wil je de korte samenvatting van waar de besparingen meestal landen?",
       "",
       "Groet,",

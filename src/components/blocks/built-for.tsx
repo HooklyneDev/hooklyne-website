@@ -60,7 +60,7 @@ const NL = {
     },
     {
       headline: "Teams die liever één goed gesprek voeren dan vijftig koude mails sturen.",
-      body: "Complexe proposities, kritische kopers en niche-klantprofielen. Waar spray-and-pray je reputatie sloopt en elke mail de reply moet verdienen.",
+      body: "Complexe proposities, kritische kopers en niche-klantprofielen. Geen spray-and-pray. Elke mail moet de reply verdienen.",
     },
   ],
   cards: [
@@ -84,7 +84,7 @@ const NL = {
       signalType: "Nieuw contract",
       signalTime: "3 dagen",
       signalQuote: "Onze grootste retailer ooit getekend. Het compliance-team verdubbelt dit kwartaal.",
-      opener: "Zag de retailerdeal. Dat type contract legt ook aan de leverancierskant druk op compliance, meestal rond maand 3. Twee vergelijkbare bedrijven liepen er recent tegenaan - ik deel graag wat ze deden.",
+      opener: "Zag de retailerdeal. Dat type contract drukt ook bij leveranciers op compliance, meestal rond maand 3. Twee vergelijkbare bedrijven liepen er recent tegenaan - ik deel graag wat ze deden.",
       draftLabel: "Opgesteld door Hooklyne",
       persona: { name: "Ruben Dekker", role: "Head of Compliance bij Mercata", image: "/personas/sara-de-vries.jpg" },
     },

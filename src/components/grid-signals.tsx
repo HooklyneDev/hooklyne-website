@@ -3,11 +3,11 @@ import { useEffect, useRef, useState, useCallback } from "react";
 
 const SPACING = 48;
 const PULSE_DURATION = 3200;
-const EDGE_PAD = 132;
+const EDGE_PAD = 148;
 const ZONE_PAD = 24;
 // Label footprint (px): label is ~9px font, up to ~18 chars + 12px gap from dot.
 const LABEL_REACH = 110;
-const LABEL_HALF_H = 14;
+const LABEL_HALF_H = 16;
 const DOT_HALF = 14;
 
 const SIGNAL_LABELS = [
@@ -122,9 +122,6 @@ export const GridSignals = () => {
 
  type Candidate = { x: number; y: number; labelSide: "left" | "right"; side: "left" | "right" };
  const candidates: Candidate[] = [];
- const dotFootprint = (x: number, y: number): Rect => ({
- x1: x - DOT_HALF, y1: y - DOT_HALF, x2: x + DOT_HALF, y2: y + DOT_HALF,
- });
 
  const pushBand = (xMin: number, xMax: number, side: "left" | "right") => {
  const cMin = Math.ceil(xMin / SPACING);
@@ -136,7 +133,8 @@ export const GridSignals = () => {
  const x = c * SPACING;
  const y = r * SPACING;
  if (y < bandTop || y > bandBottom) continue;
- const fp = dotFootprint(x, y);
+ // Use full label footprint (not just dot) so labels never overlap existing signals.
+ const fp = pulseRect(x, y, labelSide);
  if (active.some((a) => rectsOverlap(fp, a))) continue;
  candidates.push({ x, y, labelSide, side });
  }
