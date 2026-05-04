@@ -135,19 +135,27 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
 
         <div className="absolute inset-0 flex flex-col overflow-hidden" style={{ background: "var(--card)" }}>
 
-          {/* Email sender row */}
+          {/* Branded top band */}
           <div
-            className="flex items-center gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 shrink-0"
+            className="shrink-0 flex items-center gap-2 px-3 sm:px-4"
+            style={{
+              height: "28px",
+              background: "linear-gradient(90deg, var(--hooklyne-navy) 0%, #0a3a5e 100%)",
+            }}
+          >
+            <img src="/logo-mark.svg" alt="" className="h-3 w-3 object-contain opacity-80" />
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: "rgba(255,255,255,0.75)" }}>
+              Hooklyne Signals
+            </span>
+          </div>
+
+          {/* Sender row */}
+          <div
+            className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 shrink-0"
             style={{ borderBottom: "1px solid var(--border)" }}
           >
-            <div
-              className="shrink-0 size-6 sm:size-7 rounded-md flex items-center justify-center p-1"
-              style={{ background: "var(--hooklyne-navy)" }}
-            >
-              <img src="/logo-mark.svg" alt="Hooklyne" className="w-full h-full object-contain" />
-            </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] sm:text-[12px] font-semibold truncate" style={{ color: "var(--heading)" }}>
+              <p className="text-[10px] sm:text-[11px] font-semibold truncate" style={{ color: "var(--heading)" }}>
                 {t.from}
               </p>
             </div>
@@ -157,31 +165,40 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
           </div>
 
           {/* Subject */}
-          <div className="px-3 sm:px-4 pt-2 pb-1.5 sm:pt-2.5 sm:pb-2 shrink-0" style={{ borderBottom: "1px solid var(--border)" }}>
-            <p className="text-[11px] sm:text-[13px] font-semibold" style={{ color: "var(--heading)" }}>
+          <div className="px-3 sm:px-4 pt-2 pb-1.5 sm:pt-2 sm:pb-2 shrink-0" style={{ borderBottom: "1px solid var(--border)" }}>
+            <p className="text-[11px] sm:text-[12px] font-semibold" style={{ color: "var(--heading)" }}>
               {t.subject}
             </p>
           </div>
 
           {/* Email body */}
-          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-3 sm:py-4 flex flex-col gap-3 sm:gap-4">
+          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-2.5 sm:py-3 flex flex-col gap-2.5 sm:gap-3">
 
-            {/* Numbers: 2×2 grid with large figures */}
+            {/* Numbers: 2×2 grid with tinted stat tiles */}
             {(phase === "numbers" || phase === "movers" || phase === "alert") && (
               <div className="wb-fade">
-                <p className="text-[9px] sm:text-[10px] font-medium mb-2 sm:mb-2.5" style={{ color: "var(--muted-foreground)" }}>
+                <p className="text-[8.5px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] mb-1.5 sm:mb-2" style={{ color: "var(--muted-foreground)" }}>
                   {t.numbersTitle}
                 </p>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+                <div className="grid grid-cols-2 gap-1.5">
                   {t.stats.map((s) => (
-                    <div key={s.label}>
+                    <div
+                      key={s.label}
+                      className="rounded-lg px-2.5 py-2 sm:px-3 sm:py-2.5"
+                      style={{
+                        background: s.hot
+                          ? "rgba(255,140,66,0.10)"
+                          : "rgba(52,76,163,0.055)",
+                        border: `1px solid ${s.hot ? "rgba(255,140,66,0.18)" : "rgba(52,76,163,0.10)"}`,
+                      }}
+                    >
                       <div
-                        className={`text-[22px] sm:text-[26px] font-bold tabular-nums leading-none ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
+                        className={`text-[20px] sm:text-[24px] font-bold tabular-nums leading-none ${s.hot && phase === "alert" ? "wb-blink" : ""}`}
                         style={{ color: s.hot ? "var(--hooklyne-orange)" : "var(--heading)" }}
                       >
                         {s.value}
                       </div>
-                      <div className="text-[9px] sm:text-[10px] mt-0.5" style={{ color: "var(--muted-foreground)" }}>
+                      <div className="text-[8.5px] sm:text-[9.5px] mt-0.5 leading-tight" style={{ color: "var(--muted-foreground)" }}>
                         {s.label}
                       </div>
                     </div>
@@ -190,51 +207,71 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
               </div>
             )}
 
-            {/* Heat movers */}
-            {(phase === "movers" || phase === "alert") && (
-              <div className="wb-fade" style={{ borderTop: "1px solid var(--border)", paddingTop: "10px" }}>
-                <p className="text-[9px] sm:text-[10px] font-medium mb-1.5" style={{ color: "var(--muted-foreground)" }}>
-                  {t.moversTitle}
-                </p>
-                <div className="flex flex-col" style={{ gap: "4px" }}>
-                  {MOVERS.map((m, i) =>
-                    i < moversVisible ? (
-                      <div
-                        key={m.name}
-                        className="wb-slide flex items-baseline justify-between"
-                        style={{ animationDelay: `${i * 0.04}s` }}
-                      >
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[9px]" style={{ color: "var(--hooklyne-orange)" }}>→</span>
-                          <span className="text-[10px] sm:text-[11px] font-semibold" style={{ color: "var(--heading)" }}>
-                            {m.name}
-                          </span>
+            {/* Heat movers with signal bars */}
+            {(phase === "movers" || phase === "alert") && (() => {
+              const maxSignals = Math.max(...MOVERS.map((m) => m.signals));
+              return (
+                <div className="wb-fade" style={{ borderTop: "1px solid var(--border)", paddingTop: "8px" }}>
+                  <p className="text-[8.5px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] mb-1.5" style={{ color: "var(--muted-foreground)" }}>
+                    {t.moversTitle}
+                  </p>
+                  <div className="flex flex-col" style={{ gap: "6px" }}>
+                    {MOVERS.map((m, i) =>
+                      i < moversVisible ? (
+                        <div
+                          key={m.name}
+                          className="wb-slide"
+                          style={{ animationDelay: `${i * 0.04}s` }}
+                        >
+                          <div className="flex items-baseline justify-between mb-1">
+                            <span className="text-[10px] sm:text-[11px] font-semibold" style={{ color: "var(--heading)" }}>
+                              {m.name}
+                            </span>
+                            <span className="text-[9px] tabular-nums" style={{ color: "var(--muted-foreground)" }}>
+                              {m.signals} {t.signalsIn30}
+                            </span>
+                          </div>
+                          <div className="h-1 rounded-full w-full" style={{ background: "rgba(52,76,163,0.10)" }}>
+                            <div
+                              className="h-1 rounded-full"
+                              style={{
+                                width: `${(m.signals / maxSignals) * 100}%`,
+                                background: i === 0
+                                  ? "var(--hooklyne-blue)"
+                                  : "rgba(52,76,163,0.45)",
+                                transition: "width 0.6s cubic-bezier(0.4,0,0.2,1)",
+                              }}
+                            />
+                          </div>
                         </div>
-                        <span className="text-[9px] sm:text-[10px] tabular-nums" style={{ color: "var(--muted-foreground)" }}>
-                          {m.signals} {t.signalsIn30}
-                        </span>
-                      </div>
-                    ) : (
-                      <div key={m.name} className="flex items-center justify-between" style={{ opacity: 0.15 }}>
-                        <div className="h-1.5 rounded" style={{ width: "42%", background: "var(--border)" }} />
-                        <div className="h-1.5 rounded" style={{ width: "20%", background: "var(--border)" }} />
-                      </div>
-                    )
-                  )}
+                      ) : (
+                        <div key={m.name} style={{ opacity: 0.15 }}>
+                          <div className="flex items-center justify-between mb-1">
+                            <div className="h-1.5 rounded" style={{ width: "38%", background: "var(--border)" }} />
+                            <div className="h-1.5 rounded" style={{ width: "22%", background: "var(--border)" }} />
+                          </div>
+                          <div className="h-1 rounded-full" style={{ background: "var(--border)" }} />
+                        </div>
+                      )
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {/* Missed opportunities */}
             {phase === "alert" && (
               <div
-                className="wb-row pl-2.5 py-2 mb-2"
-                style={{ borderLeft: "2px solid var(--hooklyne-orange)" }}
+                className="wb-row rounded-lg px-2.5 py-2 sm:px-3 sm:py-2.5"
+                style={{
+                  background: "rgba(255,140,66,0.08)",
+                  border: "1px solid rgba(255,140,66,0.20)",
+                }}
               >
                 <p className="text-[9px] sm:text-[10px] font-semibold mb-0.5" style={{ color: "var(--hooklyne-orange)" }}>
                   {t.missedTitle}
                 </p>
-                <p className="text-[9px] sm:text-[10px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+                <p className="text-[8.5px] sm:text-[9.5px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
                   {t.missed}
                 </p>
               </div>
