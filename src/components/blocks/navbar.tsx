@@ -4,11 +4,15 @@ import { CaretDown } from "@phosphor-icons/react";
 
 const Flag = ({ code, size = 26 }: { code: "en" | "nl"; size?: number }) => (
   <span
-    className="inline-flex items-center justify-center rounded-full overflow-hidden shrink-0 ring-1 ring-black/10"
-    style={{ width: size, height: size, fontSize: Math.round(size * 0.77), lineHeight: 1 }}
+    className="inline-flex rounded-full overflow-hidden shrink-0 ring-1 ring-black/10"
+    style={{ width: size, height: size }}
     aria-hidden="true"
   >
-    {code === "nl" ? "🇳🇱" : "🇬🇧"}
+    <img
+      src={code === "nl" ? "/flags/nl.svg" : "/flags/gb.svg"}
+      alt=""
+      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+    />
   </span>
 );
 import { cn } from "@/lib/utils";
