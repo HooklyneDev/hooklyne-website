@@ -52,8 +52,8 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
     missed: "8 qualified openings are sitting untouched. Every day without outreach risks a competitor getting there first.",
   };
 
-  const [phase, setPhase] = useState<Phase>("header");
-  const [moversVisible, setMoversVisible] = useState(0);
+  const [phase, setPhase] = useState<Phase>("alert");
+  const [moversVisible, setMoversVisible] = useState(MOVERS.length);
   const [reduced, setReduced] = useState(false);
   const [inView, setInView] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -87,13 +87,9 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
     let cancelled = false;
     const run = async () => {
       while (!cancelled) {
-        setPhase("header");
         setMoversVisible(0);
-        await new Promise((r) => setTimeout(r, 700));
-        if (cancelled) return;
-
         setPhase("numbers");
-        await new Promise((r) => setTimeout(r, 600));
+        await new Promise((r) => setTimeout(r, 800));
         if (cancelled) return;
 
         setPhase("movers");
@@ -105,7 +101,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
         await new Promise((r) => setTimeout(r, 500));
         if (cancelled) return;
         setPhase("alert");
-        await new Promise((r) => setTimeout(r, 4000));
+        await new Promise((r) => setTimeout(r, 3500));
       }
     };
     run();
@@ -167,8 +163,8 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
             </p>
           </div>
 
-          {/* Email body - justify-between fills the full height, no dead space */}
-          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-3 sm:py-4 flex flex-col justify-between">
+          {/* Email body */}
+          <div className="flex-1 overflow-hidden px-3 sm:px-4 py-3 sm:py-4 flex flex-col gap-3 sm:gap-4">
 
             {/* Numbers: 2×2 grid with large figures */}
             {(phase === "numbers" || phase === "movers" || phase === "alert") && (
@@ -196,7 +192,7 @@ export const WeeklyBrief = ({ ratio = "3/2", mobileRatio, xsMobileRatio, tabletR
 
             {/* Heat movers */}
             {(phase === "movers" || phase === "alert") && (
-              <div className="wb-fade pt-2.5 sm:pt-3" style={{ borderTop: "1px solid var(--border)" }}>
+              <div className="wb-fade" style={{ borderTop: "1px solid var(--border)", paddingTop: "10px" }}>
                 <p className="text-[9px] sm:text-[10px] font-medium mb-1.5" style={{ color: "var(--muted-foreground)" }}>
                   {t.moversTitle}
                 </p>
