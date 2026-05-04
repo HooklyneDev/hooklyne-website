@@ -131,12 +131,15 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         <GridSignals />
       </div>
 
-      {/* ── Edge light — left (drifts) — visible on all sizes ───── */}
+      {/* ── Edge light — left (drifts) — visible on all sizes.
+            Centre at -25% so the bright peak stays well off-screen
+            even after the drift translate; only the soft fade-out is
+            ever inside the element box. */}
       <div
         className="hero-edge-drift-left absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 60% 50% at -5% 55%, rgba(52,76,163,0.18) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 80% 60% at -25% 55%, rgba(52,76,163,0.32) 0%, rgba(52,76,163,0.12) 35%, transparent 70%)",
         }}
       />
 
@@ -145,7 +148,7 @@ export const Hero = ({ lang: langProp }: { lang?: Lang } = {}) => {
         className="hero-edge-drift-right absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: "radial-gradient(ellipse 55% 45% at 105% 60%, rgba(52,76,163,0.15) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 75% 55% at 125% 60%, rgba(52,76,163,0.28) 0%, rgba(52,76,163,0.10) 35%, transparent 70%)",
         }}
       />
 
