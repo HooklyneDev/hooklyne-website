@@ -106,7 +106,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 25 ready-to-send prospects, 10 tracked companies, 5 meeting briefs</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 20 prospects + 8 tracked + 4 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["1 seat", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 10 companies"].map((f) => (
@@ -146,7 +146,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-blue-300">400</span>
               <span class="text-xs text-white/40">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 90 ready-to-send prospects, 30 tracked companies, 10 meeting briefs</p>
+            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 80 prospects + 30 tracked + 20 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["2 seats (add up to 2 extra at €30/seat/mo)", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 40 companies", "45-min setup + strategy call", "ICP configured with you", "Monthly check-in (first 3 months)"].map((f) => (
@@ -178,7 +178,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 190 ready-to-send prospects, 60 tracked companies, 20 meeting briefs</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 160 prospects + 60 tracked + 40 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["5 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 100 companies", "Full setup + team training", "Dedicated WhatsApp", "Bi-weekly check-in calls", "Monthly playbook iteration"].map((f) => (
@@ -396,13 +396,29 @@ const offerCatalog = {
         <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6">What a typical month looks like</h2>
         <div class="grid gap-3 md:grid-cols-3">
           {[
-            { tier: "Start · 100 credits", body: "≈ 25 prospects · 10 tracked · 5 briefs", featured: false },
-            { tier: "Growth · 400 credits", body: "≈ 90 prospects · 30 tracked · 10 briefs", featured: true },
-            { tier: "Scale · 800 credits", body: "≈ 190 prospects · 60 tracked · 20 briefs", featured: false },
+            {
+              tier: "Start · 100 credits",
+              prospects: "≈ 20 ready-to-send prospects",
+              rest: "+ 8 tracked companies · + 4 meeting briefs",
+              featured: false,
+            },
+            {
+              tier: "Growth · 400 credits",
+              prospects: "≈ 80 ready-to-send prospects",
+              rest: "+ 30 tracked companies · + 20 meeting briefs",
+              featured: true,
+            },
+            {
+              tier: "Scale · 800 credits",
+              prospects: "≈ 160 ready-to-send prospects",
+              rest: "+ 60 tracked companies · + 40 meeting briefs",
+              featured: false,
+            },
           ].map((u) => (
             <div class:list={["rounded-xl p-4", u.featured ? "border-2" : "border"]} style={u.featured ? "background: var(--card); border-color: var(--hooklyne-blue); box-shadow: var(--shadow-sm)" : "background: var(--card); border-color: var(--border); box-shadow: var(--shadow-xs)"}>
-              <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-2", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
-              <p class="text-[13px] text-[var(--heading)] leading-relaxed">{u.body}</p>
+              <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-2.5", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
+              <p class="text-[13.5px] font-semibold text-[var(--heading)] leading-snug mb-1">{u.prospects}</p>
+              <p class="text-[11px] text-[var(--muted-foreground)] leading-relaxed">{u.rest}</p>
             </div>
           ))}
         </div>

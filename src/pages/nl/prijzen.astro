@@ -106,7 +106,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / mnd</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 25 verzendklare prospects, 10 getrackte bedrijven, 5 meeting briefings</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 20 prospects + 8 getrackt + 4 briefings</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["1 zetel", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktbriefing", "Meeting prep briefings", "Signal tracking: tot 10 bedrijven"].map((f) => (
@@ -146,7 +146,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-blue-300">400</span>
               <span class="text-xs text-white/40">credits / mnd</span>
             </div>
-            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 90 verzendklare prospects, 30 getrackte bedrijven, 10 meeting briefings</p>
+            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 80 prospects + 30 getrackt + 20 briefings</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["2 zetels (max 2 extra zetels bij +€30/zetel/mo)", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktbriefing", "Meeting prep briefings", "Signal tracking: tot 40 bedrijven", "45-min setup + strategiegesprek", "Ideaal klantprofiel samen met jou geconfigureerd", "Maandelijkse check-in (eerste 3 maanden)"].map((f) => (
@@ -178,7 +178,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / mnd</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 190 verzendklare prospects, 60 getrackte bedrijven, 20 meeting briefings</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 160 prospects + 60 getrackt + 40 briefings</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["5 zetels", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktbriefing", "Meeting prep briefings", "Signal tracking: tot 100 bedrijven", "Volledige setup + teamtraining", "Eigen WhatsApp", "Tweewekelijkse check-in calls", "Maandelijkse playbook-iteratie"].map((f) => (
@@ -396,13 +396,29 @@ const offerCatalog = {
         <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6">Hoe een typische maand eruitziet</h2>
         <div class="grid gap-3 md:grid-cols-3">
           {[
-            { tier: "Start · 100 credits", body: "≈ 25 prospects · 10 getrackt · 5 briefings", featured: false },
-            { tier: "Growth · 400 credits", body: "≈ 90 prospects · 30 getrackt · 10 briefings", featured: true },
-            { tier: "Scale · 800 credits", body: "≈ 190 prospects · 60 getrackt · 20 briefings", featured: false },
+            {
+              tier: "Start · 100 credits",
+              prospects: "≈ 20 verzendklare prospects",
+              rest: "+ 8 getrackte bedrijven · + 4 meeting briefings",
+              featured: false,
+            },
+            {
+              tier: "Growth · 400 credits",
+              prospects: "≈ 80 verzendklare prospects",
+              rest: "+ 30 getrackte bedrijven · + 20 meeting briefings",
+              featured: true,
+            },
+            {
+              tier: "Scale · 800 credits",
+              prospects: "≈ 160 verzendklare prospects",
+              rest: "+ 60 getrackte bedrijven · + 40 meeting briefings",
+              featured: false,
+            },
           ].map((u) => (
             <div class:list={["rounded-xl p-4", u.featured ? "border-2" : "border"]} style={u.featured ? "background: var(--card); border-color: var(--hooklyne-blue); box-shadow: var(--shadow-sm)" : "background: var(--card); border-color: var(--border); box-shadow: var(--shadow-xs)"}>
-              <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-2", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
-              <p class="text-[13px] text-[var(--heading)] leading-relaxed">{u.body}</p>
+              <p class:list={["text-[10px] font-semibold uppercase tracking-[0.12em] mb-2.5", u.featured ? "text-[var(--hooklyne-blue)]" : "text-[var(--muted-foreground)]"]}>{u.tier}</p>
+              <p class="text-[13.5px] font-semibold text-[var(--heading)] leading-snug mb-1">{u.prospects}</p>
+              <p class="text-[11px] text-[var(--muted-foreground)] leading-relaxed">{u.rest}</p>
             </div>
           ))}
         </div>
