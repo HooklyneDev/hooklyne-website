@@ -2,19 +2,23 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CaretDown } from "@phosphor-icons/react";
 
-const Flag = ({ code, size = 26 }: { code: "en" | "nl"; size?: number }) => (
-  <span
-    className="inline-flex rounded-full overflow-hidden shrink-0 ring-1 ring-black/10"
-    style={{ width: size, height: size }}
-    aria-hidden="true"
-  >
-    <img
-      src={code === "nl" ? "/flags/nl.svg" : "/flags/gb.svg"}
-      alt=""
-      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
-    />
-  </span>
-);
+const Flag = ({ code, size = 26 }: { code: "en" | "nl"; size?: number }) => {
+  const inner = size - 4;
+  return (
+    <span
+      className="inline-flex items-center justify-center rounded-full shrink-0 bg-white"
+      style={{ width: size, height: size, boxShadow: "0 0 0 1.5px rgba(0,0,0,0.13)", padding: "2px" }}
+      aria-hidden="true"
+    >
+      <img
+        src={code === "nl" ? "/flags/nl.svg" : "/flags/gb.svg"}
+        alt=""
+        className="rounded-full block"
+        style={{ width: inner, height: inner, objectFit: "cover", objectPosition: "center" }}
+      />
+    </span>
+  );
+};
 import { cn } from "@/lib/utils";
 import { useLang, switchLangUrl, type Lang } from "@/lib/use-lang";
 type NavChild = { label: string; href: string };
@@ -189,7 +193,7 @@ export const Navbar = ({ lang: langProp }: { lang?: Lang } = {}) => {
                 aria-label="Language"
                 aria-haspopup="menu"
                 aria-expanded={langOpen}
-                className="inline-flex items-center rounded-full transition-opacity hover:opacity-75"
+                className="inline-flex items-center justify-center h-9 w-9 rounded-full transition-opacity hover:opacity-75"
               >
                 <Flag code={lang === "nl" ? "nl" : "en"} size={30} />
               </button>
