@@ -20,11 +20,8 @@ const statsNL: Stat[] = [
 const stats = isNL ? statsNL : statsEN;
 ---
 
-<div class="py-6">
+<div class="py-5">
   <div class="container max-w-6xl">
-    <p class="text-center text-[10px] font-semibold uppercase tracking-[0.25em] mb-4" style="color: var(--muted-foreground); opacity: 0.7;">
-      {isNL ? "In cijfers" : "By the numbers"}
-    </p>
     <dl class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 sm:gap-x-12">
       {stats.map((s, i) => (
         <div class="flex items-baseline gap-2">
