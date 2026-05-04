@@ -123,10 +123,12 @@ const offerCatalog = {
         </div>
 
         <!-- Growth (featured) -->
-        <div class="rounded-2xl p-5 flex flex-col relative text-white overflow-hidden" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-xl)">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-px pointer-events-none" style="background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)"></div>
-          <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-48 pointer-events-none" style="background: radial-gradient(ellipse 80% 100% at 50% 100%, rgba(52,76,163,0.42) 0%, rgba(52,76,163,0.20) 40%, rgba(52,76,163,0.08) 70%, transparent 95%)"></div>
-          <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style="background: linear-gradient(to top, rgba(255,140,66,0.10) 0%, rgba(255,140,66,0.04) 50%, transparent 100%)"></div>
+        <div class="rounded-2xl p-5 flex flex-col relative text-white" style="background: var(--hooklyne-navy); box-shadow: var(--shadow-xl)">
+          <div aria-hidden="true" class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+            <div class="absolute inset-x-0 top-0 h-px" style="background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)"></div>
+            <div class="absolute inset-x-0 bottom-0 h-48" style="background: radial-gradient(ellipse 80% 100% at 50% 100%, rgba(52,76,163,0.42) 0%, rgba(52,76,163,0.20) 40%, rgba(52,76,163,0.08) 70%, transparent 95%)"></div>
+            <div class="absolute inset-x-0 bottom-0 h-32" style="background: linear-gradient(to top, rgba(255,140,66,0.10) 0%, rgba(255,140,66,0.04) 50%, transparent 100%)"></div>
+          </div>
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap" style="background: var(--hooklyne-orange)">
             Recommended
           </div>
