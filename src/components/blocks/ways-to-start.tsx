@@ -38,17 +38,17 @@ const COPY = {
     rows: [
       {
         title: "Begin met een beschrijving.",
-        body: "Beschrijf wie je wilt bereiken; wij zoeken, sorteren op signaalsterkte en vinden het juiste contact bij elk bedrijf.",
+        body: "Beschrijf wie je wilt bereiken. Wij zoeken, sorteren op signaalsterkte en vinden het juiste contact per bedrijf.",
         input: "Alleen een beschrijving",
       },
       {
         title: "Begin met een bedrijf.",
-        body: "Geef ons naam en domein, en wij tonen de drie best passende besluitvormers waaruit jij kiest.",
+        body: "Geef naam en domein. Wij tonen drie best passende besluitvormers. Jij kiest.",
         input: "Bedrijf + domein",
       },
       {
         title: "Begin met een contact.",
-        body: "Eén naam of een hele lijst, en wij verifiëren elk mailadres en schrijven de outreach in de stem van je salesmedewerker.",
+        body: "Eén naam of een hele lijst. Wij verifiëren elk mailadres en schrijven de outreach in de stem van je salesmedewerker.",
         input: "Naam + LinkedIn",
       },
     ],

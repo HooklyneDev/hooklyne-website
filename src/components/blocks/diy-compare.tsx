@@ -253,7 +253,7 @@ const NL_TABS: TabDef[] = [
     totalSub: "30s om het contact te kiezen, onder een minuut om te beoordelen en versturen",
     steps: [
       { step: "1", label: "Beschrijf het bedrijfstype",
-        detail: "Gewone taal, geen filter-rasters. We draaien een semantische match over miljarden pagina's en geven een gerangschikte lijst terug. Beste match bovenaan, gescoord tegen jouw ideaal klantprofiel.",
+        detail: "Gewone taal, geen filter-rasters. We draaien een semantische match over miljarden pagina's en sturen een gerangschikte lijst. Beste match bovenaan, gescoord tegen jouw ideaal klantprofiel.",
         time: "2 min", callout: "Een gerangschikte shortlist, geen data-dump", good: true },
       { step: "2", label: "Kies wie je wilt bereiken",
         detail: "Per bedrijf zie je beschikbare rollen. Jij kiest welke past. Wij draaien een waterval over 21 contactproviders met vier verificatie-lagen - want geen enkele database dekt meer dan 40% van een markt.",
@@ -326,7 +326,7 @@ const NL_TABS: TabDef[] = [
         time: "auto", callout: "Verzendinfra is volwassen", good: true },
       { step: "4", label: "Reageer op de antwoorden",
         detail: "Sommige mails komen aan. Sommige bouncen (hangt van je lijstkwaliteit af). Sommige worden als generiek geflagd. Wie reageert, komt terug zonder context van waarom ze zijn gemaild.",
-        time: "doorlopend", callout: "Generieke personalisatie leest als generiek. Reactiepercentages weerspiegelen dat.", good: false },
+        time: "doorlopend", callout: "Generieke personalisatie klinkt generiek. Reactiepercentages weerspiegelen dat.", good: false },
     ],
   },
   {

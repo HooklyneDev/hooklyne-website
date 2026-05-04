@@ -82,10 +82,10 @@ export const faqGroupsNL: Group[] = [
     short: "Hoe het werkt",
     items: [
       { q: "Wat doet Hooklyne precies?", a: "Een onderzoeksworkflow die kant-en-klare prospectpakketten oplevert, met een geverifieerd contact, een real-time koopsignaal en een eerste mail in jouw stem; alles in één portaal en binnen een minuut te beoordelen en te versturen." },
-      { q: "Is Hooklyne leadgeneratie-software?", a: "Deels: we leveren leads, maar geen platte lijst. Een leadgeneratie-tool stopt bij een naam en een mailadres, terwijl wij het hele pakket leveren met een geverifieerd contact, een actuele aanleiding en een opgestelde mail. Voor MKB-teams die liever tien goede prospects benaderen dan duizend slechte." },
-      { q: "Werkt dit voor koude acquisitie?", a: "Daar is Hooklyne voor gebouwd. Koude acquisitie werkt alleen als de aanleiding klopt en de mail niet als spam leest, dus verifiëren we elk contact, scoren we elk signaal dubbel (relevant voor hen, relevant voor jou) en schrijven we in jouw eigen toon." },
-      { q: "Is dit weer zo'n AI-prospecting tool?", a: "Nee. De meeste AI-tools zijn één prompt op één database, terwijl Hooklyne zes gespecialiseerde fases combineert die samenwerken: eerst onderzoek, dan pas schrijven." },
-      { q: "Wat is het verschil met een contactdatabase?", a: "Een database geeft je een naam, terwijl Hooklyne je een geverifieerd contact, een actuele aanleiding én een opgestelde mail levert. Databases stoppen bij de regel; wij leveren het hele pakket." },
+      { q: "Is Hooklyne leadgeneratie-software?", a: "Deels: we leveren leads, maar geen platte lijst. Een leadgeneratie-tool stopt bij een naam en een mailadres. Wij leveren het hele pakket: een geverifieerd contact, een actuele aanleiding en een opgestelde mail. Voor MKB-teams die liever tien goede prospects benaderen dan duizend slechte." },
+      { q: "Werkt dit voor koude acquisitie?", a: "Daar is Hooklyne voor gebouwd. Koude acquisitie werkt alleen als de aanleiding klopt en de mail niet als spam binnenkomt, dus verifiëren we elk contact, scoren we elk signaal dubbel (relevant voor hen, relevant voor jou) en schrijven we in jouw eigen toon." },
+      { q: "Is dit weer zo'n AI-prospecting tool?", a: "Nee. De meeste AI-tools zijn één prompt op één database. Hooklyne combineert zes gespecialiseerde fases die samenwerken: eerst onderzoek, dan pas schrijven." },
+      { q: "Wat is het verschil met een contactdatabase?", a: "Een database geeft je een naam. Hooklyne levert je een geverifieerd contact, een actuele aanleiding én een opgestelde mail. Databases stoppen bij de regel; wij leveren het hele pakket." },
       { q: "Wat is het verschil met een sales agency?", a: "Een agency kost €2.500+ per maand en haalt het versturen uit jouw handen. Hooklyne kost een fractie daarvan en houdt jou aan het stuur, met het onderzoek al gedaan." },
       { q: "Gebruikt Hooklyne AI?", a: "Hooklyne combineert verschillende onderzoeks- en datasystemen tot één workflow. Wat telt is wat in de inbox terechtkomt, niet wat eronder draait." },
       { q: "Klinkt het bericht alsof een bot het schreef?", a: "Nee. We kalibreren je stem op basis van een interview van 30 minuten en tot vijf voorbeeldmails, en elk concept gaat door vier controlestappen voor het bij jou belandt." },
@@ -133,7 +133,7 @@ export const faqGroupsNL: Group[] = [
     title: "Credits, abonnementen en facturatie",
     short: "Credits & plans",
     items: [
-      { q: "Hoe werkt het credit-systeem?", a: "Prospecten, intelligence en meeting prep verbruiken credits, terwijl beoordelen en bewerken altijd gratis blijven. Het dashboard toont je verbruik en het saldo, dat maandelijks reset." },
+      { q: "Hoe werkt het credit-systeem?", a: "Prospecten, intelligence en meeting prep verbruiken credits. Beoordelen en bewerken zijn altijd gratis. Het dashboard toont je verbruik en het saldo, dat maandelijks reset." },
       { q: "Betaal ik voor contacten die jullie niet kunnen verifiëren?", a: "Nee. Alleen geverifieerde hits worden afgerekend: geen hit, geen kosten." },
       { q: "Wat als ik halverwege de maand zonder credits zit?", a: "Op elk plan kun je top-uppen voor €0,85 per credit; op Enterprise gelden custom prijzen." },
       { q: "Kan ik van plan wisselen?", a: "Ja, op elk moment." },

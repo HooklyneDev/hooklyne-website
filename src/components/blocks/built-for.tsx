@@ -52,7 +52,7 @@ const NL = {
   statements: [
     {
       headline: "Founders die zelf verkopen.",
-      body: "Geen ops-team, geen researcher, geen agency-budget. Jij verkoopt zelf en Hooklyne is de onderzoekslaag die je anders zou inhuren.",
+      body: "Geen ops-team, geen researcher, geen agency-budget. Jij verkoopt. Hooklyne levert het onderzoek. Wat je anders zou inhuren.",
     },
     {
       headline: "Salesteams bij bedrijven van 10 tot 100.",
