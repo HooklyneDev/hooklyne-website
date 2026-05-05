@@ -146,10 +146,10 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-blue-300">400</span>
               <span class="text-xs text-white/40">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 80 prospects + 30 tracked + 20 briefs</p>
+            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 100 prospects + 20 tracked + 10 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
-            {["2 seats (add up to 2 extra at €30/seat/mo)", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 40 companies", "45-min setup + strategy call", "ICP configured with you", "Monthly check-in (first 3 months)"].map((f) => (
+            {["2 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 40 companies", "45-min setup + strategy call", "ICP configured with you", "Monthly check-in (first 3 months)"].map((f) => (
               <li class="flex items-start gap-2 text-xs text-white/70">
                 <svg class="size-3.5 shrink-0 mt-0.5 text-green-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 {f}
@@ -178,7 +178,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 160 prospects + 60 tracked + 40 briefs</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 200 prospects + 40 tracked + 20 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["5 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 100 companies", "Full setup + team training", "Dedicated WhatsApp", "Bi-weekly check-in calls", "Monthly playbook iteration"].map((f) => (
@@ -227,7 +227,7 @@ const offerCatalog = {
 
       <!-- Subnote under plan cards -->
       <p class="text-center text-xs text-[var(--muted-foreground)] leading-relaxed max-w-3xl mx-auto mb-20 -mt-6">
-        Annual plans billed upfront. Credits valid 12 months. Unused credits roll 1 month forward (max balance 2× your monthly quota). Top-up at €0.85/cr on all plans. Signal tracking cap is per workspace, not per user. Growth extra seats: +€30/seat/mo, up to 4 seats total.
+        Annual plans billed upfront. Credits valid 12 months. Unused credits roll 1 month forward (max balance 2× your monthly quota). Top-up at €0.85/cr on all plans. Signal tracking cap is per workspace, not per user.
       </p>
 
       <!-- ===========================================================
@@ -404,14 +404,14 @@ const offerCatalog = {
             },
             {
               tier: "Growth · 400 credits",
-              prospects: "≈ 80 ready-to-send prospects",
-              rest: "+ 30 tracked companies · + 20 meeting briefs",
+              prospects: "≈ 100 ready-to-send prospects",
+              rest: "+ 20 tracked companies · + 10 meeting briefs",
               featured: true,
             },
             {
               tier: "Scale · 800 credits",
-              prospects: "≈ 160 ready-to-send prospects",
-              rest: "+ 60 tracked companies · + 40 meeting briefs",
+              prospects: "≈ 200 ready-to-send prospects",
+              rest: "+ 40 tracked companies · + 20 meeting briefs",
               featured: false,
             },
           ].map((u) => (
@@ -447,7 +447,7 @@ const offerCatalog = {
             },
             {
               q: "Can I add more seats to my plan?",
-              a: "On Growth, yes. You can add up to 2 extra seats at €30/seat/mo (so up to 4 seats total). Beyond that, you'll move to Scale, which already includes 5 seats and gives you 4× more credits. Start is solo-rep only - if you need a second seat, you're better off on Growth where you also get more credits, signals, and a setup call. Scale and Enterprise have fixed seat counts; for more seats on those tiers, talk to us."
+              a: "Each plan comes with a fixed number of seats: Start has 1, Growth has 2, Scale has 5. If you need more seats than your plan includes, move up a tier or talk to us about Enterprise."
             },
             {
               q: "What is a credit?",
