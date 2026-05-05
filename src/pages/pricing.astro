@@ -43,7 +43,7 @@ const offerCatalog = {
       <div class="text-center max-w-3xl mx-auto">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Pricing</p>
         <h1 class="hero-headline text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Pay per prospect, <span class="text-accent">not per seat</span>.</h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">One credit system across all plans. Verified contact, live signal, drafted message - that's one credit. Seats are bundled by plan. Switch or cancel anytime.</p>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">One credit system across all plans. Credits are spent when you produce a deliverable — a prospect, a contact, a brief. Seats are bundled per plan. Switch or cancel anytime.</p>
         <a href="/how-it-works" class="inline-block mt-3 text-[12.5px] text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] hover:underline transition-colors">
           How we are different from other prospecting tools →
         </a>
@@ -106,7 +106,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 20 prospects + 8 tracked + 4 briefs</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">e.g. 20 prospects + 8 tracked + 4 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["1 seat", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 10 companies"].map((f) => (
@@ -146,7 +146,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-blue-300">400</span>
               <span class="text-xs text-white/40">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 100 prospects + 20 tracked + 10 briefs</p>
+            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">e.g. 100 prospects + 20 tracked + 10 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["2 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 40 companies", "45-min setup + strategy call", "ICP configured with you", "Monthly check-in (first 3 months)"].map((f) => (
@@ -178,7 +178,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / month</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 200 prospects + 40 tracked + 20 briefs</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">e.g. 200 prospects + 40 tracked + 20 briefs</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["5 seats", "Find companies + contacts", "Outreach in NL + EN", "Weekly market briefing", "Meeting prep briefs", "Signal tracking: up to 100 companies", "Full setup + team training", "Dedicated WhatsApp", "Bi-weekly check-in calls", "Monthly playbook iteration"].map((f) => (
@@ -393,24 +393,25 @@ const offerCatalog = {
            WHAT A TYPICAL MONTH LOOKS LIKE - compressed 3-card row
            =========================================================== -->
       <div class="mb-16">
-        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6">What a typical month looks like</h2>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-2">Credits are yours to split.</h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">More prospects this month, less tracking — or the reverse. The examples below show one way to use each plan. You decide the mix.</p>
         <div class="grid gap-3 md:grid-cols-3">
           {[
             {
               tier: "Start · 100 credits",
-              prospects: "≈ 20 ready-to-send prospects",
+              prospects: "e.g. 20 ready-to-send prospects",
               rest: "+ 8 tracked companies · + 4 meeting briefs",
               featured: false,
             },
             {
               tier: "Growth · 400 credits",
-              prospects: "≈ 100 ready-to-send prospects",
+              prospects: "e.g. 100 ready-to-send prospects",
               rest: "+ 20 tracked companies · + 10 meeting briefs",
               featured: true,
             },
             {
               tier: "Scale · 800 credits",
-              prospects: "≈ 200 ready-to-send prospects",
+              prospects: "e.g. 200 ready-to-send prospects",
               rest: "+ 40 tracked companies · + 20 meeting briefs",
               featured: false,
             },
@@ -459,7 +460,7 @@ const offerCatalog = {
             },
             {
               q: "What is signal tracking?",
-              a: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. Additional companies above your limit cost 2cr per company per month."
+              a: "Signal tracking monitors a company daily for relevant events: job postings, news, funding rounds, leadership changes, and more. Each signal is scored for relevance to what you sell. Start includes up to 10 companies, Growth up to 40, Scale up to 100. Enterprise is negotiated. To track more companies than your plan allows, upgrade your plan."
             },
             {
               q: "Can I switch plans?",

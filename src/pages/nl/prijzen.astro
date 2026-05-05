@@ -43,7 +43,7 @@ const offerCatalog = {
       <div class="text-center max-w-3xl mx-auto">
         <p class="text-xs font-semibold uppercase tracking-widest text-[var(--hooklyne-blue)] mb-4">Prijzen</p>
         <h1 class="hero-headline text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--heading)] leading-[1.1] mb-5">Betaal per prospect, <span class="text-accent">niet per seat</span>.</h1>
-        <p class="text-lg text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">Één creditsysteem op alle abonnementen. Geverifieerd contact, live signaal, opgesteld bericht - dat is één credit. Seats zitten inbegrepen per plan. Wissel of zeg op wanneer je wilt.</p>
+        <p class="text-lg text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">Één creditsysteem op alle abonnementen. Credits gebruik je wanneer je iets produceert — een prospect, een contact, een briefing. Seats zitten inbegrepen per plan. Wissel of zeg op wanneer je wilt.</p>
         <a href="/nl/hoe-het-werkt" class="inline-block mt-3 text-[12.5px] text-[var(--muted-foreground)] hover:text-[var(--hooklyne-blue)] hover:underline transition-colors">
           Hoe wij anders zijn dan andere prospecting tools →
         </a>
@@ -106,7 +106,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">100</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / mnd</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 20 prospects + 8 getrackt + 4 briefings</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">bijv. 20 prospects + 8 getrackt + 4 briefings</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["1 zetel", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktbriefing", "Meeting prep briefings", "Signal tracking: tot 10 bedrijven"].map((f) => (
@@ -146,7 +146,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-blue-300">400</span>
               <span class="text-xs text-white/40">credits / mnd</span>
             </div>
-            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">≈ 100 prospects + 20 getrackt + 10 briefings</p>
+            <p class="text-[10.5px] text-white/55 leading-snug mt-1.5">bijv. 100 prospects + 20 getrackt + 10 briefings</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["2 zetels", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktbriefing", "Meeting prep briefings", "Signal tracking: tot 40 bedrijven", "45-min setup + strategiegesprek", "Ideaal klantprofiel samen met jou geconfigureerd", "Maandelijkse check-in (eerste 3 maanden)"].map((f) => (
@@ -178,7 +178,7 @@ const offerCatalog = {
               <span class="text-2xl font-bold text-[var(--hooklyne-blue)]">800</span>
               <span class="text-xs text-[var(--muted-foreground)]">credits / mnd</span>
             </div>
-            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">≈ 200 prospects + 40 getrackt + 20 briefings</p>
+            <p class="text-[10.5px] text-[var(--muted-foreground)] leading-snug mt-1.5">bijv. 200 prospects + 40 getrackt + 20 briefings</p>
           </div>
           <ul class="flex-1 space-y-2 mb-5">
             {["5 zetels", "Bedrijven + contacten vinden", "Outreach in NL + EN", "Wekelijkse marktbriefing", "Meeting prep briefings", "Signal tracking: tot 100 bedrijven", "Volledige setup + teamtraining", "Eigen WhatsApp", "Tweewekelijkse check-in calls", "Maandelijkse playbook-iteratie"].map((f) => (
@@ -393,24 +393,25 @@ const offerCatalog = {
            HOE EEN TYPISCHE MAAND ERUITZIET - compressed 3-card row
            =========================================================== -->
       <div class="mb-16">
-        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-6">Hoe een typische maand eruitziet</h2>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--heading)] tracking-tight mb-2">Credits verdeel je zelf.</h2>
+        <p class="text-sm text-[var(--muted-foreground)] mb-6">Deze maand meer prospects, minder tracking — of andersom. De voorbeelden hieronder tonen één mogelijke verdeling. Jij bepaalt de mix.</p>
         <div class="grid gap-3 md:grid-cols-3">
           {[
             {
               tier: "Start · 100 credits",
-              prospects: "≈ 20 verzendklare prospects",
+              prospects: "bijv. 20 verzendklare prospects",
               rest: "+ 8 getrackte bedrijven · + 4 meeting briefings",
               featured: false,
             },
             {
               tier: "Growth · 400 credits",
-              prospects: "≈ 100 verzendklare prospects",
+              prospects: "bijv. 100 verzendklare prospects",
               rest: "+ 20 getrackte bedrijven · + 10 meeting briefings",
               featured: true,
             },
             {
               tier: "Scale · 800 credits",
-              prospects: "≈ 200 verzendklare prospects",
+              prospects: "bijv. 200 verzendklare prospects",
               rest: "+ 40 getrackte bedrijven · + 20 meeting briefings",
               featured: false,
             },
@@ -460,7 +461,7 @@ const offerCatalog = {
             },
             {
               q: "Wat is signal tracking?",
-              a: "Signal tracking volgt een bedrijf dagelijks op vacatures, nieuws, fundingrondes en leiderschapswissels, en elk signaal wordt gescoord op relevantie voor wat jij verkoopt. Start dekt tot 10 bedrijven, Growth tot 40, Scale tot 100, en Enterprise op maat. Extra bedrijven boven je limiet kosten 2 credits per bedrijf per maand."
+              a: "Signal tracking volgt een bedrijf dagelijks op vacatures, nieuws, fundingrondes en leiderschapswissels, en elk signaal wordt gescoord op relevantie voor wat jij verkoopt. Start dekt tot 10 bedrijven, Growth tot 40, Scale tot 100, en Enterprise op maat. Wil je meer bedrijven tracken dan je plan toelaat, upgrade dan je abonnement."
             },
             {
               q: "Kan ik van plan wisselen?",
